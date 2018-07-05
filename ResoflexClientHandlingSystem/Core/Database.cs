@@ -12,8 +12,6 @@ namespace ResoflexClientHandlingSystem.Core
     {
         public static void saveClient(Client client)
         {
-            //Api raja ibbo
-
             try
             {
                 DBConnection.updateDB("insert into client (name, tel, add) values ()");

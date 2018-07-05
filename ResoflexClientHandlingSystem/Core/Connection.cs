@@ -14,6 +14,8 @@ namespace ResoflexClientHandlingSystem.Core
         private static MySqlConnection conn = new MySqlConnection(connString);
         private static MySqlConnection tmpConn = null;
 
+        //test
+
         private DBConnection() { }
 
         private static MySqlConnection getConnection()

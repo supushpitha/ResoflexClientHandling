@@ -15,6 +15,7 @@ namespace ResoflexClientHandlingSystem.Core
         private static MySqlConnection tmpConn = null;
 
         //test
+        //test 2
 
         private DBConnection() { }
 

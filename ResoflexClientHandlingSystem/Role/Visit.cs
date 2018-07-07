@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +20,7 @@ namespace ResoflexClientHandlingSystem.Role
         public Visit()
         {
         }
-
-        //getter and setter
+        
         public int VisitID { get => visitID; set => visitID = value; }
         public int ProjectID { get => projectID; set => projectID = value; }
         public string Type { get => type; set => type = value; }
@@ -30,7 +29,5 @@ namespace ResoflexClientHandlingSystem.Role
         public DateTime ToDateTime { get => toDateTime; set => toDateTime = value; }
         public string VehicalDetails { get => vehicalDetails; set => vehicalDetails = value; }
         public float Mileage { get => mileage; set => mileage = value; }
-
-        //other methods
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using ResoflexClientHandlingSystem.Role;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,8 +13,6 @@ namespace ResoflexClientHandlingSystem.Core
     {
         public static void saveClient(Client client)
         {
-            //Api raja ibbo
-
             try
             {
                 DBConnection.updateDB("insert into client (name, tel, add) values ()");

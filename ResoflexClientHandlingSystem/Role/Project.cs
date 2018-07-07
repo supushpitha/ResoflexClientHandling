@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +25,7 @@ namespace ResoflexClientHandlingSystem.Role
         public Project()
         {
         }
-
-        //getters and setters
+        
         public int ProjectID { get => projectID; set => projectID = value; }
         public int ClientID { get => clientID; set => clientID = value; }
         public string Type { get => type; set => type = value; }
@@ -40,8 +39,5 @@ namespace ResoflexClientHandlingSystem.Role
         public string SupportTerms { get => supportTerms; set => supportTerms = value; }
         public string WarrantyTerms { get => warrantyTerms; set => warrantyTerms = value; }
         public string ProjectName { get => projectName; set => projectName = value; }
-
-        //other 3 methods
-
     }
 }

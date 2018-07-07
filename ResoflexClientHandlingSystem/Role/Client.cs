@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,8 +20,7 @@ namespace ResoflexClientHandlingSystem.Role
         public Client()
         {
         }
-
-        //getters and setters
+        
         public int ClientID { get => clientID; set => clientID = value; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }

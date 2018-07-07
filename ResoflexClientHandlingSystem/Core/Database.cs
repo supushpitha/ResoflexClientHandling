@@ -13,6 +13,9 @@ namespace ResoflexClientHandlingSystem.Core
     {
         public static void saveClient(Client client)
         {
+
+            //Please pissu natanna lasthi wenna epa
+
             try
             {
                 DBConnection.updateDB("insert into client (name, tel, add) values ()");

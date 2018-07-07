@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
+// Resx 1
+//tetst
+
+
 namespace ResoflexClientHandlingSystem.Core
 {
     class DBConnection

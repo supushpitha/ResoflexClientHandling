@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace ResoflexClientHandlingSystem.Core//kkk
+namespace ResoflexClientHandlingSystem.Core
 {
     class DBConnection
     {

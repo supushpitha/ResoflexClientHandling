@@ -23,8 +23,4 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
     }
-
-  
-    //coco jumbo
-
 }

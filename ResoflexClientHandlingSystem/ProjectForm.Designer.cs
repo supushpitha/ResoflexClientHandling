@@ -852,7 +852,7 @@
             // metroDateTime9
             // 
             this.metroDateTime9.Location = new System.Drawing.Point(182, 197);
-            this.metroDateTime9.MinimumSize = new System.Drawing.Size(0, 30);
+            this.metroDateTime9.MinimumSize = new System.Drawing.Size(4, 30);
             this.metroDateTime9.Name = "metroDateTime9";
             this.metroDateTime9.Size = new System.Drawing.Size(260, 30);
             this.metroDateTime9.TabIndex = 25;
@@ -860,7 +860,7 @@
             // metroDateTime10
             // 
             this.metroDateTime10.Location = new System.Drawing.Point(182, 152);
-            this.metroDateTime10.MinimumSize = new System.Drawing.Size(0, 30);
+            this.metroDateTime10.MinimumSize = new System.Drawing.Size(4, 30);
             this.metroDateTime10.Name = "metroDateTime10";
             this.metroDateTime10.Size = new System.Drawing.Size(260, 30);
             this.metroDateTime10.TabIndex = 24;

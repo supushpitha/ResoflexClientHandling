@@ -21,6 +21,7 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MessageBox.Show("Something went wrong!", "Add client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+//Github is awesome
         }
     }
 }

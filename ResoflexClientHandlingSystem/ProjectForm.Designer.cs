@@ -90,6 +90,7 @@
             this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
             this.metroTile5 = new MetroFramework.Controls.MetroTile();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
+            this.metroTile11 = new MetroFramework.Controls.MetroTile();
             this.metroTile10 = new MetroFramework.Controls.MetroTile();
             this.metroTile9 = new MetroFramework.Controls.MetroTile();
             this.metroTile8 = new MetroFramework.Controls.MetroTile();
@@ -137,7 +138,6 @@
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroTextBox14 = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile11 = new MetroFramework.Controls.MetroTile();
             this.metroPanel1.SuspendLayout();
             this.addClientTabControl.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
@@ -190,7 +190,7 @@
             this.addClientTabControl.Location = new System.Drawing.Point(1, -9);
             this.addClientTabControl.Multiline = true;
             this.addClientTabControl.Name = "addClientTabControl";
-            this.addClientTabControl.SelectedIndex = 2;
+            this.addClientTabControl.SelectedIndex = 0;
             this.addClientTabControl.Size = new System.Drawing.Size(1261, 673);
             this.addClientTabControl.TabIndex = 4;
             this.addClientTabControl.UseSelectable = true;
@@ -1015,6 +1015,17 @@
             this.metroTabPage3.VerticalScrollbarBarColor = true;
             this.metroTabPage3.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage3.VerticalScrollbarSize = 10;
+            // 
+            // metroTile11
+            // 
+            this.metroTile11.ActiveControl = null;
+            this.metroTile11.Location = new System.Drawing.Point(267, 353);
+            this.metroTile11.Name = "metroTile11";
+            this.metroTile11.Size = new System.Drawing.Size(103, 123);
+            this.metroTile11.TabIndex = 49;
+            this.metroTile11.Text = "Other\r\nResource ";
+            this.metroTile11.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile11.UseSelectable = true;
             // 
             // metroTile10
             // 
@@ -1927,17 +1938,6 @@
             this.metroLabel11.Size = new System.Drawing.Size(196, 20);
             this.metroLabel11.TabIndex = 2;
             this.metroLabel11.Text = "Client Index                         :";
-            // 
-            // metroTile11
-            // 
-            this.metroTile11.ActiveControl = null;
-            this.metroTile11.Location = new System.Drawing.Point(267, 353);
-            this.metroTile11.Name = "metroTile11";
-            this.metroTile11.Size = new System.Drawing.Size(103, 123);
-            this.metroTile11.TabIndex = 49;
-            this.metroTile11.Text = "Other\r\nResource ";
-            this.metroTile11.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile11.UseSelectable = true;
             // 
             // ProjectForm
             // 

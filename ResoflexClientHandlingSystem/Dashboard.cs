@@ -26,7 +26,14 @@ namespace ResoflexClientHandlingSystem
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
-            metroProgressSpinner1.Value = 75;
+            dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+
+            setAttendance();
+        }
+
+        private void setAttendance()
+        {
+            metroLabel2.Text = "12";
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
@@ -37,6 +44,11 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
         {
 
         }

@@ -81,10 +81,18 @@
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Role\Attendance.cs" />
     <Compile Include="Role\Client.cs" />
-    <Compile Include="Role\Expense.cs" />
+    <Compile Include="Role\Event.cs" />
+    <Compile Include="Role\Expenses.cs" />
+    <Compile Include="Role\Income.cs" />
+    <Compile Include="Role\Office Expenses.cs" />
+    <Compile Include="Role\Project Expenses.cs" />
     <Compile Include="Role\Project.cs" />
-    <Compile Include="Role\Visit.cs" />
+    <Compile Include="Role\Project_Income.cs" />
+    <Compile Include="Role\Staff expenses.cs" />
+    <Compile Include="Role\Staff.cs" />
+    <Compile Include="Role\User.cs" />
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>

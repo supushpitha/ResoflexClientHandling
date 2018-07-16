@@ -13,10 +13,6 @@ namespace ResoflexClientHandlingSystem.Core
     {
         public static void saveClient(Client client)
         {
-            //y u do dis ?
-            //fjj\
-            //rngfhgf
-
             try
             {
                 DBConnection.updateDB("insert into client (name, tel, add) values ()");
@@ -28,4 +24,3 @@ namespace ResoflexClientHandlingSystem.Core
         }
     }
 }
-//Dilshan pull request

@@ -13,7 +13,7 @@ namespace ResoflexClientHandlingSystem.Role
         private string lastName;
         private string address;
         private string[] phoneNo = new string[2];
-        private string nIC;
+        private string nic;
         private string email;
         private List<Project> projectList;
 
@@ -21,14 +21,14 @@ namespace ResoflexClientHandlingSystem.Role
         {
         }
 
-        public Client(int clientID, string firstName, string lastName, string address, string[] phoneNo, string nIC, string email)
+        public Client(int clientID, string firstName, string lastName, string address, string[] phoneNo, string nic, string email)
         {
             this.clientID = clientID;
             this.firstName = firstName;
             this.lastName = lastName;
             this.address = address;
             this.phoneNo = phoneNo;
-            this.nIC = nIC;
+            this.nic = nic;
             this.email = email;
         }
 
@@ -37,7 +37,7 @@ namespace ResoflexClientHandlingSystem.Role
         public string LastName { get => lastName; set => lastName = value; }
         public string Address { get => address; set => address = value; }
         public string[] PhoneNo { get => phoneNo; set => phoneNo = value; }
-        public string NIC1 { get => nIC; set => nIC = value; }
+        public string NIC { get => nic; set => nic = value; }
         public string Email { get => email; set => email = value; }
         internal List<Project> ProjectList { get => projectList; set => projectList = value; }
     }

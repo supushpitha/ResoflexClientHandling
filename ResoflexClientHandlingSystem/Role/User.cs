@@ -6,31 +6,31 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class User
+    class User : Staff
     {
-        protected int userId;
-        protected String userType;
-        protected String firstName;
-        protected String lastName;
-        protected String nIC;
-        protected String address;
-        protected String[] teleNumber;
-        protected String email;
+        private string uName;
+        private string pword;
+        private string permission;
 
-        public User()
+        public User(string uName, string pword, string permission, int staffId) : base (staffId)
         {
+            this.uName = uName;
+            this.pword = pword;
+            this.permission = permission;
         }
 
-        public User(int userId, string userType, string firstName, string lastName, string nIC, string address, string[] teleNumber, string email)
+        public User(string uName, string pword, string permission, string[] telNumber) : base(telNumber)
         {
-            this.userId = userId;
-            this.userType = userType;
-            this.firstName = firstName;
-            this.lastName = lastName;
-            this.nIC = nIC;
-            this.address = address;
-            this.teleNumber = teleNumber;
-            this.email = email;
+            this.uName = uName;
+            this.pword = pword;
+            this.permission = permission;
+        }
+
+        public User(string uName, string pword, string permission)
+        {
+            this.uName = uName;
+            this.pword = pword;
+            this.permission = permission;
         }
     }
 }

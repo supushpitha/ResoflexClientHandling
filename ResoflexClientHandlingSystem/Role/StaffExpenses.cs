@@ -18,15 +18,12 @@ namespace ResoflexClientHandlingSystem.Role
 
         public Staff_expenses(int StaffID, String staffExpType, int expID, string type, double amount) : base(expID, type, amount)
         {
-            this.staffExpType = staffExpType; 
-           staffID = StaffID;
-            
+            this.staffExpType = staffExpType;
+            staffID = StaffID;
         }
 
         public int StaffId { get => staffID; set => staffID = value; }
         //public string[] Attendance { get => attendance; set => attendance = value; }
-       
-
     }
 
 

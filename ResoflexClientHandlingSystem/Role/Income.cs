@@ -11,9 +11,8 @@ namespace ResoflexClientHandlingSystem.Role
         private int incomeID;
         private double amount;
         private string type;
-        private Project_Income[] pIncome;
+        private ProjectIncome[] pIncome;
         
-
         public Income()
         {
         }
@@ -28,8 +27,5 @@ namespace ResoflexClientHandlingSystem.Role
         public int IncomeID { get => incomeID; set => incomeID = value; }
         public double Amount { get => amount; set => amount = value; }
         public string Type { get => type; set => type = value; }
-        
-
-
     }
 }

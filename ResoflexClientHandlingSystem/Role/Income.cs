@@ -11,7 +11,7 @@ namespace ResoflexClientHandlingSystem.Role
         private int incomeID;
         private double amount;
         private string type;
-        private Project_Income[] pIncome;
+        private ProjectIncome[] pIncome;
         
 
         public Income()

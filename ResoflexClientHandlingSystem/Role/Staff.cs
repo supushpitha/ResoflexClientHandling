@@ -9,13 +9,13 @@ namespace ResoflexClientHandlingSystem.Role
     class Staff: User
     {
         private int staffId;
-        private List<Attendance> attndance;
+        private List<Attendance> attendance;
 
         public Staff()
         {
         }
 
-        public Staff(int staffId,int userId, string userType, string firstName, string lastName, string nIC, string address, string[] teleNumber, string email): base(userId, userType, firstName, lastName, nIC, address, teleNumber, email)
+        public Staff(int staffId,int userId, string userType, string firstName, string lastName, string NIC, string address, string[] telNumber, string email): base(userId, userType, firstName, lastName, NIC, address, telNumber, email)
         {
             this.staffId = staffId;
         } 

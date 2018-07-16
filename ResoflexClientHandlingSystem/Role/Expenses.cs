@@ -11,8 +11,7 @@ namespace ResoflexClientHandlingSystem.Role
         private int expID;
         private string type;
         private double amount;
-
-
+        
         public Expenses()
         {
         }
@@ -22,14 +21,10 @@ namespace ResoflexClientHandlingSystem.Role
             ExpID = expID;
             Type = type;
             Amount = amount;
-         
         }
 
         public int ExpID { get => expID; set => expID = value; }
-             public string Type{ get => type; set => type = value; }
-             public double Amount { get => amount; set => amount= value; }
-
-
-
+        public string Type{ get => type; set => type = value; }
+        public double Amount { get => amount; set => amount= value; }
     }
 }

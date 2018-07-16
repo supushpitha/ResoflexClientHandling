@@ -17,12 +17,10 @@ namespace ResoflexClientHandlingSystem.Role
             projectID = ProjectID;
             eventID = EventID;
             category = Category;
-
         }
 
         public int ProjectID { get => projectID; set => projectID = value; }
         public int EventID { get => eventID; set => eventID = value; }
         public string Category { get => category; set => category= value; }
-
     }
 }

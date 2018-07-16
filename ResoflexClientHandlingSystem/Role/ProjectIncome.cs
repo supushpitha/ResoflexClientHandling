@@ -12,15 +12,11 @@ namespace ResoflexClientHandlingSystem.Role
         
         public ProjectIncome(){ }
         
-
         public ProjectIncome(int projectID)
         {
             projectID = ProjectID;
         }
 
-
         public int ProjectID { get => projectID; set => projectID = value; }
-
-
     }
 }

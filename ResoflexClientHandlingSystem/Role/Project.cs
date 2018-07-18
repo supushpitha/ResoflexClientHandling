@@ -12,7 +12,7 @@ namespace ResoflexClientHandlingSystem.Role
         private string projectName;
         private int clientID;
         private string projectType;
-        private int project_SubID;
+        private int project_subID;
         private DateTime firstInitDate;
         private DateTime tEndDate1;
         private DateTime tEndDate2;
@@ -27,13 +27,13 @@ namespace ResoflexClientHandlingSystem.Role
 
         }
 
-        public Project(int projectID, string projectName, int clientID, string projectType, int project_SubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
+        public Project(int projectID, string projectName, int clientID, string projectType, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
         {
             this.projectID = projectID;
             this.projectName = projectName;
             this.clientID = clientID;
             this.projectType = projectType;
-            this.project_SubID = project_SubID;
+            this.project_subID = project_subID;
             this.firstInitDate = firstInitDate;
             this.tEndDate1 = tEndDate1;
             this.tEndDate2 = tEndDate2;

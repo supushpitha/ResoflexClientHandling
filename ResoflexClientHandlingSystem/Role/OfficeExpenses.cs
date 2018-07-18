@@ -11,7 +11,6 @@ namespace ResoflexClientHandlingSystem.Role
         private int oExp;
         private string department;
        
-
         public Office_Expenses(int OExp,string Department, int expID, string type, double amount) :base(expID,type,amount)
         {
             oExp = OExp;
@@ -20,6 +19,5 @@ namespace ResoflexClientHandlingSystem.Role
 
         public int OExp { get => oExp; set => oExp = value; }
         public string Department { get => department; set => department = value; }
-        
     }
 }

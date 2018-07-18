@@ -6,21 +6,17 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Project_Income
+    class ProjectIncome
     {
         private int projectID;
         
-        public Project_Income(){ }
+        public ProjectIncome(){ }
         
-
-        public Project_Income(int projectID)
+        public ProjectIncome(int projectID)
         {
             projectID = ProjectID;
         }
 
-
         public int ProjectID { get => projectID; set => projectID = value; }
-
-
     }
 }

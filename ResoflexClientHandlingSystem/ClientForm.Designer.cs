@@ -95,6 +95,7 @@
             this.addNewClientBtn.TabIndex = 1;
             this.addNewClientBtn.Text = "Add New Client";
             this.addNewClientBtn.UseSelectable = true;
+            this.addNewClientBtn.Click += new System.EventHandler(this.addNewClientBtn_Click);
             // 
             // ClientForm
             // 

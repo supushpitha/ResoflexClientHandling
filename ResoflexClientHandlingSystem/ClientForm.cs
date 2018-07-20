@@ -41,5 +41,14 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
+
+        private void addNewClientBtn_Click(object sender, EventArgs e)
+        {
+            AddNewClientForm frm = new AddNewClientForm();
+            
+            frm.ShowDialog(this);
+
+            clientGrid.DataSource = getClients();
+        }
     }
 }

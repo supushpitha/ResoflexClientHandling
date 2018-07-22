@@ -85,6 +85,7 @@
             this.clientGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientGrid.Size = new System.Drawing.Size(754, 297);
             this.clientGrid.TabIndex = 0;
+            this.clientGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientGrid_RowHeaderMouseClick);
             // 
             // addNewClientBtn
             // 

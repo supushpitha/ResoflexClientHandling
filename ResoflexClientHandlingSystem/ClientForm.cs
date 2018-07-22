@@ -50,5 +50,22 @@ namespace ResoflexClientHandlingSystem
 
             clientGrid.DataSource = getClients();
         }
+
+        private void clientGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int id = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string name = clientGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string address = clientGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string mobile = clientGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string office = clientGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+            string fax = clientGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+            string email = clientGrid.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+            UpdateClientForm frm = new UpdateClientForm(id, name, address, mobile, office, fax, email);
+
+            frm.ShowDialog(this);
+
+            clientGrid.DataSource = getClients();
+        }
     }
 }

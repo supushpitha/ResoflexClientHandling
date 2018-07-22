@@ -52,7 +52,7 @@
             this.updateClientBtn.Name = "updateClientBtn";
             this.updateClientBtn.Size = new System.Drawing.Size(168, 40);
             this.updateClientBtn.TabIndex = 25;
-            this.updateClientBtn.Text = "Add Client";
+            this.updateClientBtn.Text = "Update Client";
             this.updateClientBtn.UseSelectable = true;
             this.updateClientBtn.Click += new System.EventHandler(this.updateClientBtn_Click);
             // 

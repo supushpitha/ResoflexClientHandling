@@ -22,6 +22,17 @@ namespace ResoflexClientHandlingSystem.Role
         {
         }
 
+        public Client(int clientID, string firstName, string lastName, string address, string[] phoneNo, string fax, string email)
+        {
+            this.clientID = clientID;
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.address = address;
+            this.phoneNo = phoneNo;
+            this.fax = fax;
+            this.email = email;
+        }
+
         public Client(string firstName, string lastName, string address, string[] phoneNo, string fax, string email)
         {
             this.firstName = firstName;

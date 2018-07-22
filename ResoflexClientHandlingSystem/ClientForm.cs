@@ -46,7 +46,7 @@ namespace ResoflexClientHandlingSystem
         {
             AddNewClientForm frm = new AddNewClientForm();
             
-            frm.ShowDialog(this);
+            frm.ShowDialog();
 
             clientGrid.DataSource = getClients();
         }
@@ -63,7 +63,44 @@ namespace ResoflexClientHandlingSystem
 
             UpdateClientForm frm = new UpdateClientForm(id, name, address, mobile, office, fax, email);
 
-            frm.ShowDialog(this);
+            frm.ShowDialog();
+
+            clientGrid.DataSource = getClients();
+        }
+
+        private void searchClientTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            string qry = "";
+            string clientNameTxt = searchClientTxtBox.Text;
+
+            qry = "SELECT * FROM client WHERE name LIKE '%" + clientNameTxt + "%'";
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData(qry);
+
+                if (reader.HasRows)
+                {
+                    System.Data.DataTable table = new System.Data.DataTable();
+
+                    table.Load(reader);
+
+                    clientGrid.DataSource = table;
+                }
+                else
+                {
+                    reader.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Invalid data!\n" + exc.StackTrace, "Client finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void showAllClientBtn_Click(object sender, EventArgs e)
+        {
+            searchClientTxtBox.Text = "";
 
             clientGrid.DataSource = getClients();
         }

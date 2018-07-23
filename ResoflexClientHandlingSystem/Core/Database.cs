@@ -15,11 +15,29 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into client (name, tel, add) values ()");
+                DBConnection.updateDB("insert into client (name, address, phone_mobile, phone_office, fax, email)" +
+                                      " values ('" + client.FirstName + " " + client.LastName + "', '" + client.Address + "', " +
+                                      "'" + client.PhoneNo[0] + "', '" + client.PhoneNo[1] + "', '" + client.Fax + "', " +
+                                      "'" + client.Email + "')");
             }
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Add client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateClient(Client client)
+        {
+            try
+            {
+                DBConnection.updateDB("update client set name='" + client.FirstName + " " + client.LastName + "', " +
+                                      "address='" + client.Address + "', phone_mobile='" + client.PhoneNo[0] + "', " +
+                                      "phone_office='" + client.PhoneNo[1] + "', fax='" + client.Fax + "', email='" + client.Email + "' " +
+                                      "where client_id=" + client.ClientID);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

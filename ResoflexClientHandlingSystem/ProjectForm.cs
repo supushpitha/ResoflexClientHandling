@@ -12,14 +12,22 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class ProjectForm : MetroFramework.Forms.MetroForm
     {
+        int clientId;
+
         public ProjectForm()
         {
             InitializeComponent();
         }
 
+        public ProjectForm(int clientId)
+        {
+            this.clientId = clientId;
+            InitializeComponent();
+        }
+
         private void ProjectForm_Load(object sender, EventArgs e)
         {
-
+            metroTextBox1.Text = "" + clientId;
         }
 
         private void metroButton3_Click(object sender, EventArgs e)

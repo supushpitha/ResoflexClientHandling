@@ -24,6 +24,10 @@ namespace ResoflexClientHandlingSystem
             clientGrid.DataSource = getClients();
 
             clientGrid.Columns[0].Visible = false;
+            noOfProjTile.BackColor = Color.LightBlue;
+            noOfVisitsTile.BackColor = Color.LightGreen;
+            totalExpTile.BackColor = Color.LightSalmon;
+            gridViewUsageLbl.ForeColor = Color.Red;
         }
 
         private void fillTiles(int clientId)
@@ -132,6 +136,31 @@ namespace ResoflexClientHandlingSystem
             frm.ShowDialog();
 
             clientGrid.DataSource = getClients();
+        }
+
+        private void ClientForm_MinimumSizeChanged(object sender, EventArgs e)
+        {/*
+            if (this.Height == this.DefaultMaximumSize.Height)
+            {
+                int h = clientGrid.Height;
+                // grid h = 297
+                // form h = 600
+
+                int newGridHeight = (int)(0.5 * this.Height);
+
+                clientGrid.Height = newGridHeight;
+            }*/
+        }
+
+        private void ClientForm_SizeChanged(object sender, EventArgs e)
+        {/*
+            int h = clientGrid.Height;
+            // grid h = 297
+            // form h = 600
+
+            int newGridHeight = (int)(0.5 * this.Height);
+
+            clientGrid.Height = newGridHeight;*/
         }
     }
 }

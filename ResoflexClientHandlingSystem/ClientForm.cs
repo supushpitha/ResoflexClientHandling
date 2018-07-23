@@ -42,13 +42,31 @@ namespace ResoflexClientHandlingSystem
                 }
 
                 reader.Close();
+
+                reader = DBConnection.getData("select IFNULL(COUNT(event_id), 0) as count from event e inner join project p on p.proj_id=e.proj_id where p.client_id=" + clientId);
+
+                while (reader.Read())
+                {
+                    noOfVisitsTile.Text = reader.GetInt32("count").ToString();
+                }
+
+                reader.Close();
+                /*
+                reader = DBConnection.getData("select IFNULL(SUM(proj_id), 0) as count from project where client_id=" + clientId);
+
+                while (reader.Read())
+                {
+                    totalExpTile.Text = reader.GetInt32("count").ToString();
+                }
+
+                reader.Close();*/
             }
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            noOfVisitsTile.Text = "" + 15;
+            //noOfVisitsTile.Text = "" + 15;
             totalExpTile.Text = "Rs." + 13000.00;
         }
 

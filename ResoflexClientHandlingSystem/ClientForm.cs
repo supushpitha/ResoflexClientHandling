@@ -26,6 +26,28 @@ namespace ResoflexClientHandlingSystem
             clientGrid.Columns[0].Visible = false;
         }
 
+        private void fillTiles(int clientId)
+        {
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select IFNULL(COUNT(proj_id), 0) as count from project where client_id=" + clientId);
+
+                while (reader.Read())
+                {
+                    noOfProjTile.Text = reader.GetInt32("count").ToString();
+                }
+
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            noOfVisitsTile.Text = "" + 15;
+            totalExpTile.Text = "Rs." + 13000.00;
+        }
+
         private DataTable getClients()
         {
             DataTable table = new DataTable();
@@ -53,19 +75,9 @@ namespace ResoflexClientHandlingSystem
 
         private void clientGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            int id = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-            string name = clientGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
-            string address = clientGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-            string mobile = clientGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
-            string office = clientGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-            string fax = clientGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
-            string email = clientGrid.Rows[e.RowIndex].Cells[6].Value.ToString();
+            int clientId = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
 
-            UpdateClientForm frm = new UpdateClientForm(id, name, address, mobile, office, fax, email);
-
-            frm.ShowDialog();
-
-            clientGrid.DataSource = getClients();
+            fillTiles(clientId);
         }
 
         private void searchClientTxtBox_TextChanged(object sender, EventArgs e)
@@ -101,6 +113,23 @@ namespace ResoflexClientHandlingSystem
         private void showAllClientBtn_Click(object sender, EventArgs e)
         {
             searchClientTxtBox.Text = "";
+
+            clientGrid.DataSource = getClients();
+        }
+
+        private void clientGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int id = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string name = clientGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+            string address = clientGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+            string mobile = clientGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+            string office = clientGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+            string fax = clientGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+            string email = clientGrid.Rows[e.RowIndex].Cells[6].Value.ToString();
+
+            UpdateClientForm frm = new UpdateClientForm(id, name, address, mobile, office, fax, email);
+
+            frm.ShowDialog();
 
             clientGrid.DataSource = getClients();
         }

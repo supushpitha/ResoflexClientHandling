@@ -69,10 +69,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddNewClientForm.cs">
+    <Compile Include="ClientForms\AddNewClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewClientForm.Designer.cs">
+    <Compile Include="ClientForms\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Connection.cs" />
@@ -83,10 +83,10 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientForm.cs">
+    <Compile Include="ClientForms\ClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientForm.Designer.cs">
+    <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -122,10 +122,10 @@
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
     <Compile Include="Role\User.cs" />
-    <Compile Include="UpdateClientForm.cs">
+    <Compile Include="ClientForms\UpdateClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateClientForm.Designer.cs">
+    <Compile Include="ClientForms\UpdateClientForm.Designer.cs">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateProjectForm.cs">
@@ -134,13 +134,13 @@
     <Compile Include="UpdateProjectForm.Designer.cs">
       <DependentUpon>UpdateProjectForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewClientForm.resx">
+    <EmbeddedResource Include="ClientForms\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientForm.resx">
+    <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Project.resx">
@@ -161,7 +161,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UpdateClientForm.resx">
+    <EmbeddedResource Include="ClientForms\UpdateClientForm.resx">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateProjectForm.resx">
@@ -182,7 +182,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ClientForms\" />
     <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

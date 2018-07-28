@@ -142,7 +142,7 @@ namespace ResoflexClientHandlingSystem
 
             clientGrid.DataSource = getClients();
         }
-        
+
         private void clientGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
         {/*
             int id = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());

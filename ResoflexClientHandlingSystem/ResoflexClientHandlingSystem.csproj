@@ -75,6 +75,7 @@
     <Compile Include="ClientForms\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Common\Internet.cs" />
     <Compile Include="Core\Connection.cs" />
     <Compile Include="Core\Database.cs" />
     <Compile Include="Dashboard.cs">
@@ -181,8 +182,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

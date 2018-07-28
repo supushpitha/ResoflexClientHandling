@@ -51,7 +51,8 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.AllowUserToAddRows = false;
             this.clientGrid.AllowUserToDeleteRows = false;
             this.clientGrid.AllowUserToResizeRows = false;
-            this.clientGrid.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.clientGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.clientGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.clientGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -101,7 +102,7 @@ namespace ResoflexClientHandlingSystem
             // 
             // addNewClientBtn
             // 
-            this.addNewClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.addNewClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewClientBtn.Location = new System.Drawing.Point(650, 234);
             this.addNewClientBtn.Name = "addNewClientBtn";
             this.addNewClientBtn.Size = new System.Drawing.Size(127, 29);
@@ -112,7 +113,6 @@ namespace ResoflexClientHandlingSystem
             // 
             // searchClientTxtBox
             // 
-            this.searchClientTxtBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             // 
             // 
             // 
@@ -146,7 +146,6 @@ namespace ResoflexClientHandlingSystem
             // 
             // showAllClientBtn
             // 
-            this.showAllClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.showAllClientBtn.Location = new System.Drawing.Point(255, 240);
             this.showAllClientBtn.Name = "showAllClientBtn";
             this.showAllClientBtn.Size = new System.Drawing.Size(100, 23);
@@ -241,7 +240,7 @@ namespace ResoflexClientHandlingSystem
             // 
             // updateClientBtn
             // 
-            this.updateClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.updateClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.updateClientBtn.Location = new System.Drawing.Point(517, 234);
             this.updateClientBtn.Name = "updateClientBtn";
             this.updateClientBtn.Size = new System.Drawing.Size(127, 29);

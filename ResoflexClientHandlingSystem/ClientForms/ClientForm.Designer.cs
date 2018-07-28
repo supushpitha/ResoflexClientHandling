@@ -1,4 +1,4 @@
-﻿namespace ResoflexClientHandlingSystem
+namespace ResoflexClientHandlingSystem
 {
     partial class ClientForm
     {

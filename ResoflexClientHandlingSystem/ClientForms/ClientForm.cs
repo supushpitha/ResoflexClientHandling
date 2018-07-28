@@ -65,8 +65,7 @@ namespace ResoflexClientHandlingSystem
             {
                 MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //noOfVisitsTile.Text = "" + 15;
+            
             totalExpTile.Text = "Rs." + 13000.00;
         }
 
@@ -97,8 +96,6 @@ namespace ResoflexClientHandlingSystem
 
         private void clientGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // Goto the projects view of the selected client
-
             int clientId = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
 
             ProjectForm frm = new ProjectForm(clientId);

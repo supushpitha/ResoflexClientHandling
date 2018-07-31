@@ -34,12 +34,12 @@
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroButton7 = new MetroFramework.Controls.MetroButton();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -110,19 +110,6 @@
             this.metroLabel1.TabIndex = 22;
             this.metroLabel1.Text = "Today Attendance :";
             // 
-            // metroButton5
-            // 
-            this.metroButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton5.BackgroundImage")));
-            this.metroButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.metroButton5.Location = new System.Drawing.Point(504, 263);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(148, 118);
-            this.metroButton5.TabIndex = 21;
-            this.metroButton5.Text = "Settings";
-            this.metroButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.metroButton5.UseSelectable = true;
-            // 
             // metroButton4
             // 
             this.metroButton4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -188,6 +175,20 @@
             this.metroButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton1.UseSelectable = true;
             // 
+            // metroButton5
+            // 
+            this.metroButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroButton5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton5.BackgroundImage")));
+            this.metroButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton5.Location = new System.Drawing.Point(504, 263);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(148, 118);
+            this.metroButton5.TabIndex = 21;
+            this.metroButton5.Text = "Client";
+            this.metroButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -213,7 +214,6 @@
         private MetroFramework.Controls.MetroLabel dateTimeLbl;
         private MetroFramework.Controls.MetroButton metroButton6;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton7;
         private MetroFramework.Controls.MetroButton metroButton3;
@@ -221,5 +221,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroButton metroButton5;
     }
 }

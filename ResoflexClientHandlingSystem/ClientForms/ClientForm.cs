@@ -97,8 +97,18 @@ namespace ResoflexClientHandlingSystem
         private void clientGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int clientId = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string clientName = "";
 
-            ProjectForm frm = new ProjectForm(clientId);
+            MySqlDataReader reader = DBConnection.getData("select * from client where client_id=" + clientId);
+
+            while (reader.Read())
+            {
+                clientName = reader.GetString("name");
+            }
+
+            reader.Close();
+
+            Project frm = new Project(clientName);
 
             frm.Show();
         }

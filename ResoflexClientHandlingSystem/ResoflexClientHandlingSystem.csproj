@@ -75,6 +75,12 @@
     <Compile Include="ClientForms\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientForms\EmailClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\EmailClientForm.Designer.cs">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Internet.cs" />
     <Compile Include="Core\Connection.cs" />
     <Compile Include="Core\Database.cs" />
@@ -137,6 +143,9 @@
     </Compile>
     <EmbeddedResource Include="ClientForms\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>

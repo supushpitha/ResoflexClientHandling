@@ -97,6 +97,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.Size = new System.Drawing.Size(754, 297);
             this.clientGrid.TabIndex = 0;
             this.clientGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientGrid_CellClick);
+            this.clientGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientGrid_CellContentClick);
             this.clientGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientGrid_RowHeaderMouseClick);
             this.clientGrid.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientGrid_RowHeaderMouseDoubleClick);
             // 
@@ -233,9 +234,10 @@ namespace ResoflexClientHandlingSystem
             this.gridViewUsageLbl.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.gridViewUsageLbl.Location = new System.Drawing.Point(33, 580);
             this.gridViewUsageLbl.Name = "gridViewUsageLbl";
-            this.gridViewUsageLbl.Size = new System.Drawing.Size(377, 17);
+            this.gridViewUsageLbl.Size = new System.Drawing.Size(621, 17);
             this.gridViewUsageLbl.TabIndex = 10;
-            this.gridViewUsageLbl.Text = "*Click row to view details      *Click row header to goto projects";
+            this.gridViewUsageLbl.Text = "*Click row to view details      *Click row header to goto projects      *Click on" +
+    " a email cell to send an email";
             this.gridViewUsageLbl.UseCustomForeColor = true;
             // 
             // updateClientBtn

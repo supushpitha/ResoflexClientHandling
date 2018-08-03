@@ -12,12 +12,12 @@ namespace ResoflexClientHandlingSystem.Common
 {
     class Internet
     {
-        private string email = "techninjas3.0v@gmail.com";
-        private string pw = "Techninjas@SLIIT";
+        private static string email = "techninjas3.0v@gmail.com";
+        private static string pw = "Techninjas@SLIIT";
         private string ip;
         private string hostName;
 
-        public bool sendMail(string to, string subject, string body)
+        public static bool sendMail(string to, string subject, string body)
         {
             try
             {
@@ -71,7 +71,7 @@ namespace ResoflexClientHandlingSystem.Common
             }
         }
 
-        public bool pingHost(string nameOrAddress)
+        public static bool pingHost(string nameOrAddress)
         {
             bool pingable = false;
             Ping pinger = null;

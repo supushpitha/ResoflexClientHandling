@@ -15,6 +15,8 @@ namespace ResoflexClientHandlingSystem.Role
         private String address;
         private String[] telNumber;
         private String email;
+        private float basicSalary;
+        private float otRate;
         private Designation designation;
 
         private List<Attendance> attendance;
@@ -33,7 +35,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.TelNumber = telNumber;
         }
 
-        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string address, string[] telNumber, string email)
+        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string address, string[] telNumber, string email, float basicSalary, float otRate)
         {
             this.StaffId = staffId;
             this.Designation = designation;
@@ -43,6 +45,8 @@ namespace ResoflexClientHandlingSystem.Role
             this.Address = address;
             this.TelNumber = telNumber;
             this.Email = email;
+            this.BasicSalary = basicSalary;
+            this.OtRate = otRate;
         }
 
         public int StaffId { get => staffId; set => staffId = value; }
@@ -52,6 +56,8 @@ namespace ResoflexClientHandlingSystem.Role
         public string Address { get => address; set => address = value; }
         public string[] TelNumber { get => telNumber; set => telNumber = value; }
         public string Email { get => email; set => email = value; }
+        public float BasicSalary { get => basicSalary; set => basicSalary = value; }
+        public float OtRate { get => otRate; set => otRate = value; }
         internal List<Attendance> Attendance { get => attendance; set => attendance = value; }
         internal Designation Designation { get => designation; set => designation = value; }
     }

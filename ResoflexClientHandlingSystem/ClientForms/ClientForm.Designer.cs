@@ -28,9 +28,9 @@ namespace ResoflexClientHandlingSystem
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.clientGrid = new MetroFramework.Controls.MetroGrid();
             this.addNewClientBtn = new MetroFramework.Controls.MetroButton();
             this.searchClientTxtBox = new MetroFramework.Controls.MetroTextBox();
@@ -43,6 +43,7 @@ namespace ResoflexClientHandlingSystem
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.gridViewUsageLbl = new MetroFramework.Controls.MetroLabel();
             this.updateClientBtn = new MetroFramework.Controls.MetroButton();
+            this.ShowMoreBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.clientGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,23 +60,23 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.clientGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.clientGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.clientGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.clientGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientGrid.DefaultCellStyle = dataGridViewCellStyle14;
             this.clientGrid.EnableHeadersVisualStyles = false;
             this.clientGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.clientGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -83,14 +84,14 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.Name = "clientGrid";
             this.clientGrid.ReadOnly = true;
             this.clientGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.clientGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.clientGrid.RowTemplate.Height = 24;
             this.clientGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -160,7 +161,7 @@ namespace ResoflexClientHandlingSystem
             this.noOfProjTile.ActiveControl = null;
             this.noOfProjTile.Location = new System.Drawing.Point(23, 99);
             this.noOfProjTile.Name = "noOfProjTile";
-            this.noOfProjTile.Size = new System.Drawing.Size(161, 104);
+            this.noOfProjTile.Size = new System.Drawing.Size(146, 73);
             this.noOfProjTile.TabIndex = 4;
             this.noOfProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -173,7 +174,7 @@ namespace ResoflexClientHandlingSystem
             this.noOfVisitsTile.ActiveControl = null;
             this.noOfVisitsTile.Location = new System.Drawing.Point(241, 99);
             this.noOfVisitsTile.Name = "noOfVisitsTile";
-            this.noOfVisitsTile.Size = new System.Drawing.Size(161, 104);
+            this.noOfVisitsTile.Size = new System.Drawing.Size(114, 73);
             this.noOfVisitsTile.TabIndex = 5;
             this.noOfVisitsTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfVisitsTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -186,9 +187,9 @@ namespace ResoflexClientHandlingSystem
             this.totalExpTile.ActiveControl = null;
             this.totalExpTile.Location = new System.Drawing.Point(457, 99);
             this.totalExpTile.Name = "totalExpTile";
-            this.totalExpTile.Size = new System.Drawing.Size(238, 104);
+            this.totalExpTile.Size = new System.Drawing.Size(187, 73);
             this.totalExpTile.TabIndex = 6;
-            this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.totalExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.totalExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.totalExpTile.UseCustomBackColor = true;
@@ -249,11 +250,25 @@ namespace ResoflexClientHandlingSystem
             this.updateClientBtn.UseSelectable = true;
             this.updateClientBtn.Click += new System.EventHandler(this.updateClientBtn_Click);
             // 
+            // ShowMoreBtn
+            // 
+            this.ShowMoreBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowMoreBtn.Location = new System.Drawing.Point(701, 148);
+            this.ShowMoreBtn.Name = "ShowMoreBtn";
+            this.ShowMoreBtn.Size = new System.Drawing.Size(75, 23);
+            this.ShowMoreBtn.Style = MetroFramework.MetroColorStyle.Brown;
+            this.ShowMoreBtn.TabIndex = 12;
+            this.ShowMoreBtn.Text = "More";
+            this.ShowMoreBtn.UseSelectable = true;
+            this.ShowMoreBtn.UseStyleColors = true;
+            this.ShowMoreBtn.Click += new System.EventHandler(this.ShowMoreBtn_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.ShowMoreBtn);
             this.Controls.Add(this.updateClientBtn);
             this.Controls.Add(this.gridViewUsageLbl);
             this.Controls.Add(this.metroLabel3);
@@ -292,6 +307,7 @@ namespace ResoflexClientHandlingSystem
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel gridViewUsageLbl;
         private MetroFramework.Controls.MetroButton updateClientBtn;
+        private MetroFramework.Controls.MetroButton ShowMoreBtn;
     }
 }
 

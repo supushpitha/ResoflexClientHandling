@@ -21,5 +21,18 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            ProjectManager pm = new ProjectManager();
+            this.Close();
+            pm.Show();
+        }
+
+        private void addEvent_Click(object sender, EventArgs e)
+        {
+            AddEventForm ef = new AddEventForm();
+            ef.ShowDialog();
+        }
     }
 }

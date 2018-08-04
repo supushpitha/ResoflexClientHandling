@@ -187,14 +187,7 @@ namespace ResoflexClientHandlingSystem
 
         private void clientGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            DataGridView dgv = sender as DataGridView;
 
-            if (dgv.CurrentRow.Selected)
-            {
-                int clientId = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-
-                fillTiles(clientId);
-            }
         }
     }
 }

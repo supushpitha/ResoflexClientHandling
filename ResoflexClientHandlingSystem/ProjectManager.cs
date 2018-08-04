@@ -32,7 +32,9 @@ namespace ResoflexClientHandlingSystem
 
         private void eventBtn_Click(object sender, EventArgs e)
         {
-            
+            EventForm ef = new EventForm();
+            this.Close();
+            ef.Show();
         }
 
     }

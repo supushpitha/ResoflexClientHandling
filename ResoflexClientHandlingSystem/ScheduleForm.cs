@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.Role;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,10 @@ namespace ResoflexClientHandlingSystem
         public ScheduleForm()
         {
             InitializeComponent();
+
+            Schedule s = new Schedule();
+
+            //scheduleGrid.DataSource = s.getSchedules();
         }
 
         private void ScheduleForm_Load(object sender, EventArgs e)
@@ -44,6 +49,17 @@ namespace ResoflexClientHandlingSystem
             ProjectManager pm = new ProjectManager();
             this.Close();
             pm.Show();
+        }
+
+        private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void addEvent_Click(object sender, EventArgs e)
+        {
+            AddEventForm ef = new AddEventForm();
+            ef.ShowDialog();
         }
     }
 }

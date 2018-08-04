@@ -68,7 +68,7 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-            totalExpTile.Text = "Rs." + 13000.00;
+            totalExpTile.Text = "Rs." + 130000.00;
         }
 
         private DataTable getClients()
@@ -235,6 +235,13 @@ namespace ResoflexClientHandlingSystem
 
                 frm.ShowDialog(this);
             }
+        }
+
+        private void ShowMoreBtn_Click(object sender, EventArgs e)
+        {
+            SeeMoreClientForm frm = new SeeMoreClientForm();
+
+            frm.Show();
         }
     }
 }

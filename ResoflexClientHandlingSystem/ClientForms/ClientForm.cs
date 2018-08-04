@@ -65,8 +65,7 @@ namespace ResoflexClientHandlingSystem
             {
                 MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            //noOfVisitsTile.Text = "" + 15;
+            
             totalExpTile.Text = "Rs." + 13000.00;
         }
 
@@ -97,11 +96,19 @@ namespace ResoflexClientHandlingSystem
 
         private void clientGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            // Goto the projects view of the selected client
-
             int clientId = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+            string clientName = "";
 
-            ProjectForm frm = new ProjectForm(clientId);
+            MySqlDataReader reader = DBConnection.getData("select * from client where client_id=" + clientId);
+
+            while (reader.Read())
+            {
+                clientName = reader.GetString("name");
+            }
+
+            reader.Close();
+
+            Project frm = new Project(clientName);
 
             frm.Show();
         }
@@ -144,7 +151,7 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void clientGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
-        {
+        {/*
             int id = Int32.Parse(clientGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
             string name = clientGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
             string address = clientGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -157,7 +164,7 @@ namespace ResoflexClientHandlingSystem
 
             frm.ShowDialog();
 
-            clientGrid.DataSource = getClients();
+            clientGrid.DataSource = getClients();*/
         }
 
         private void ClientForm_MinimumSizeChanged(object sender, EventArgs e)
@@ -188,6 +195,25 @@ namespace ResoflexClientHandlingSystem
         private void clientGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void updateClientBtn_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = clientGrid.CurrentRow;
+
+            int id = Int32.Parse(row.Cells[0].Value.ToString());
+            string name = row.Cells[1].Value.ToString();
+            string address = row.Cells[2].Value.ToString();
+            string mobile = row.Cells[3].Value.ToString();
+            string office = row.Cells[4].Value.ToString();
+            string fax = row.Cells[5].Value.ToString();
+            string email = row.Cells[6].Value.ToString();
+
+            UpdateClientForm frm = new UpdateClientForm(id, name, address, mobile, office, fax, email);
+
+            frm.ShowDialog();
+
+            clientGrid.DataSource = getClients();
         }
     }
 }

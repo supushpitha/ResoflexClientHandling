@@ -8,7 +8,7 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Project
     {
-        private int projectID;
+        private int projectId;
         private string projectName;
         private int clientID;
         private string projectType;
@@ -27,9 +27,9 @@ namespace ResoflexClientHandlingSystem.Role
 
         }
 
-        public Project(int projectID, string projectName, int clientID, string projectType, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
+        public Project(int projectId, string projectName, int clientID, string projectType, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
         {
-            this.projectID = projectID;
+            this.projectId = projectId;
             this.projectName = projectName;
             this.clientID = clientID;
             this.projectType = projectType;

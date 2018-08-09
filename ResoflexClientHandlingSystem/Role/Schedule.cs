@@ -13,11 +13,11 @@ namespace ResoflexClientHandlingSystem.Role
     {
         private int visitId;
         private int projectId;
-        private String type;
-        private String servEngineer;
+        private string type;
+        private string servEngineer;
         private DateTime from;
         private DateTime to;
-        private String vehicle;
+        private string vehicle;
         private float mileage;
         
         public Schedule()

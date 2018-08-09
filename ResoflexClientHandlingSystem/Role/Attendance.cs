@@ -8,25 +8,23 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Attendance
     {
-        private int attendanceId;
         private int staffId;
         private DateTime date;
-        private Boolean halfDay;
-        private Boolean overTime;
-        private float otHours;
+        private DateTime inTime;
+        private DateTime outTime;
+        private int hoursWorked;
 
         public Attendance()
         {
         }
 
-        public Attendance(int attendanceId, int staffId, DateTime date, bool halfDay, bool overTime, float otHours)
+        public Attendance(int staffId, DateTime date, DateTime inTime, DateTime outTime, int hoursWorked)
         {
-            this.attendanceId = attendanceId;
             this.staffId = staffId;
             this.date = date;
-            this.halfDay = halfDay;
-            this.overTime = overTime;
-            this.otHours = otHours;
+            this.inTime = inTime;
+            this.outTime = outTime;
+            this.hoursWorked = hoursWorked;
         }
     }
 }

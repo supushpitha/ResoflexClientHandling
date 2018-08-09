@@ -8,40 +8,49 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Project
     {
-        private int projectId;
+        private int projectID;
         private string projectName;
+        private string projectdesc;
         private int clientID;
-        private string projectType;
-        private int project_subID;
+        private int projectSubID;
         private DateTime firstInitDate;
         private DateTime tEndDate1;
         private DateTime tEndDate2;
         private DateTime warrantyStart;
-        private DateTime warrantyEnd;
+        private int warrantyPeriod;
         private string supportTerms;
         private string warrantyTerms;
-        private int noOfVisits;
-        
-        public Project()
-        {
+        private string visitTerms;
 
+        public Project(int projectID, string projectName, string projectdesc, int clientID, int projectSubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
+        {
+            this.ProjectID = projectID;
+            this.ProjectName = projectName;
+            this.Projectdesc = projectdesc;
+            this.ClientID = clientID;
+            this.ProjectSubID = projectSubID;
+            this.FirstInitDate = firstInitDate;
+            this.TEndDate1 = tEndDate1;
+            this.TEndDate2 = tEndDate2;
+            this.WarrantyStart = warrantyStart;
+            this.WarrantyPeriod = warrantyPeriod;
+            this.SupportTerms = supportTerms;
+            this.WarrantyTerms = warrantyTerms;
+            this.VisitTerms = visitTerms;
         }
 
-        public Project(int projectId, string projectName, int clientID, string projectType, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
-        {
-            this.projectId = projectId;
-            this.projectName = projectName;
-            this.clientID = clientID;
-            this.projectType = projectType;
-            this.project_subID = project_subID;
-            this.firstInitDate = firstInitDate;
-            this.tEndDate1 = tEndDate1;
-            this.tEndDate2 = tEndDate2;
-            this.warrantyStart = warrantyStart;
-            this.warrantyEnd = warrantyEnd;
-            this.supportTerms = supportTerms;
-            this.warrantyTerms = warrantyTerms;
-            this.noOfVisits = noOfVisits;
-        }
+        public int ProjectID { get => projectID; set => projectID = value; }
+        public string ProjectName { get => projectName; set => projectName = value; }
+        public string Projectdesc { get => projectdesc; set => projectdesc = value; }
+        public int ClientID { get => clientID; set => clientID = value; }
+        public int ProjectSubID { get => projectSubID; set => projectSubID = value; }
+        public DateTime FirstInitDate { get => firstInitDate; set => firstInitDate = value; }
+        public DateTime TEndDate1 { get => tEndDate1; set => tEndDate1 = value; }
+        public DateTime TEndDate2 { get => tEndDate2; set => tEndDate2 = value; }
+        public DateTime WarrantyStart { get => warrantyStart; set => warrantyStart = value; }
+        public int WarrantyPeriod { get => warrantyPeriod; set => warrantyPeriod = value; }
+        public string SupportTerms { get => supportTerms; set => supportTerms = value; }
+        public string WarrantyTerms { get => warrantyTerms; set => warrantyTerms = value; }
+        public string VisitTerms { get => visitTerms; set => visitTerms = value; }
     }
 }

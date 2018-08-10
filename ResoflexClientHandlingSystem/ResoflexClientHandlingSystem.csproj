@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="eCryptography, Version=1.0.0.1, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -88,6 +91,12 @@
     <Compile Include="ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\Login.Designer.cs">
+      <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ProjectForm.cs">
       <SubType>Form</SubType>
@@ -100,12 +109,17 @@
     <Compile Include="Role\Client.cs" />
     <Compile Include="Role\Designation.cs" />
     <Compile Include="Role\Event.cs" />
+    <Compile Include="Role\EventTechnician.cs" />
+    <Compile Include="Role\ExpenseDetailEvent.cs" />
+    <Compile Include="Role\ExpenseDetailSchedule.cs" />
     <Compile Include="Role\Expenses.cs" />
+    <Compile Include="Role\ExpenseType.cs" />
     <Compile Include="Role\Income.cs" />
     <Compile Include="Role\OfficeExpenses.cs" />
-    <Compile Include="Role\ProjectExpenses.cs" />
     <Compile Include="Role\Project.cs" />
+    <Compile Include="Role\ProjectCategory.cs" />
     <Compile Include="Role\ProjectIncome.cs" />
+    <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
     <Compile Include="Role\User.cs" />
@@ -115,6 +129,18 @@
     <Compile Include="UpdateClientForm.Designer.cs">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserAddForm.Designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserLog.Designer.cs">
+      <DependentUpon>UserLog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
@@ -138,6 +167,12 @@
     </Compile>
     <EmbeddedResource Include="UpdateClientForm.resx">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserAddForm.resx">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserLog.resx">
+      <DependentUpon>UserLog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

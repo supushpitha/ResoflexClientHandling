@@ -8,16 +8,17 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Office_Expenses:Expenses
     {
-        private int oExp;
-        private string department;
-       
-        public Office_Expenses(int OExp,string Department, int expID, string type, double amount) :base(expID,type,amount)
-        {
-            oExp = OExp;
-            department = Department;
-        }
+        private int offExpenseId;
+        private int staffId;
+        private DateTime date;
+        private String task;
 
-        public int OExp { get => oExp; set => oExp = value; }
-        public string Department { get => department; set => department = value; }
+        public Office_Expenses(int offExpenseId, int staffId, DateTime date, string task)
+        {
+            this.offExpenseId = offExpenseId;
+            this.staffId = staffId;
+            this.date = date;
+            this.task = task;
+        }
     }
 }

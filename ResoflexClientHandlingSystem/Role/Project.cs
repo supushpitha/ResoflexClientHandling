@@ -10,38 +10,38 @@ namespace ResoflexClientHandlingSystem.Role
     {
         private int projectID;
         private string projectName;
+        private string projectdesc;
         private int clientID;
-        private string projectType;
         private int project_subID;
         private DateTime firstInitDate;
         private DateTime tEndDate1;
         private DateTime tEndDate2;
         private DateTime warrantyStart;
-        private DateTime warrantyEnd;
+        private int warrantyPeriod;
         private string supportTerms;
         private string warrantyTerms;
-        private int noOfVisits;
+        private string visitTerms;
         
         public Project()
         {
 
         }
 
-        public Project(int projectID, string projectName, int clientID, string projectType, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, DateTime warrantyEnd, string supportTerms, string warrantyTerms, int noOfVisits)
+        public Project(int projectID, string projectName, string projectdesc, int clientID, int project_subID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
         {
             this.projectID = projectID;
             this.projectName = projectName;
+            this.projectdesc = projectdesc;
             this.clientID = clientID;
-            this.projectType = projectType;
             this.project_subID = project_subID;
             this.firstInitDate = firstInitDate;
             this.tEndDate1 = tEndDate1;
             this.tEndDate2 = tEndDate2;
             this.warrantyStart = warrantyStart;
-            this.warrantyEnd = warrantyEnd;
+            this.warrantyPeriod = warrantyPeriod;
             this.supportTerms = supportTerms;
             this.warrantyTerms = warrantyTerms;
-            this.noOfVisits = noOfVisits;
+            this.visitTerms = visitTerms;
         }
     }
 }

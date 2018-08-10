@@ -13,7 +13,6 @@ namespace ResoflexClientHandlingSystem.Role
         private string lastName;
         private string address;
         private string[] phoneNo = new string[2];
-        private string nic;
         private string email;
         private string fax;
         private List<Project> projectList;
@@ -53,7 +52,6 @@ namespace ResoflexClientHandlingSystem.Role
         public string LastName { get => lastName; set => lastName = value; }
         public string Address { get => address; set => address = value; }
         public string[] PhoneNo { get => phoneNo; set => phoneNo = value; }
-        public string NIC { get => nic; set => nic = value; }
         public string Email { get => email; set => email = value; }
         public string Fax { get => fax; set => fax = value; }
         internal List<Project> ProjectList { get => projectList; set => projectList = value; }

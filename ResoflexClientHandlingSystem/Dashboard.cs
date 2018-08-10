@@ -19,9 +19,7 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile1_Click(object sender, EventArgs e)
         {
-            ClientForm frm = new ClientForm();
 
-            frm.Show();
         }
 
         private void Dashboard_Load(object sender, EventArgs e)

@@ -95,13 +95,19 @@
       <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Project.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Project.Designer.cs">
+      <DependentUpon>Project.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectForm.Designer.cs">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectManager.cs">
+    <Compile Include="ProjectUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectManager.Designer.cs">
@@ -110,15 +116,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\Attendance.cs" />
     <Compile Include="Role\Client.cs" />
+    <Compile Include="Role\ClientRequest.cs" />
     <Compile Include="Role\Designation.cs" />
     <Compile Include="Role\Event.cs" />
-    <Compile Include="Role\Expenses.cs" />
-    <Compile Include="Role\Income.cs" />
+    <Compile Include="Role\EventTechnician.cs" />
+    <Compile Include="Role\ExpenseDetailEvent.cs" />
+    <Compile Include="Role\ExpenseDetailSchedule.cs" />
+    <Compile Include="Role\ExpenseType.cs" />
+    <Compile Include="Role\Iou.cs" />
     <Compile Include="Role\OfficeExpenses.cs" />
+    <Compile Include="Role\ProjectCategory.cs" />
     <Compile Include="Role\ProjectExpenses.cs" />
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\ProjectIncome.cs" />
-    <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
     <Compile Include="Role\User.cs" />
@@ -134,6 +144,12 @@
     <EmbeddedResource Include="Schedule Forms\AddScheduleForm.resx">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\SeeMoreClientForm.resx">
+      <DependentUpon>SeeMoreClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
@@ -143,8 +159,8 @@
     <EmbeddedResource Include="ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectManager.resx">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectUpdate.resx">
+      <DependentUpon>ProjectUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

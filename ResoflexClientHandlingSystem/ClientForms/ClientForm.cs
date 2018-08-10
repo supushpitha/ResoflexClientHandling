@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.Core;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,7 @@ namespace ResoflexClientHandlingSystem
             clientGrid.DataSource = getClients();
 
             clientGrid.Columns[0].Visible = false;
+            clientGrid.Columns[6].DefaultCellStyle.ForeColor = Color.SteelBlue;
             noOfProjTile.BackColor = Color.LightBlue;
             noOfVisitsTile.BackColor = Color.LightGreen;
             totalExpTile.BackColor = Color.LightSalmon;
@@ -66,14 +68,15 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
-            totalExpTile.Text = "Rs." + 13000.00;
+            totalExpTile.Text = "Rs." + 130000.00;
         }
 
         private DataTable getClients()
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select * from client");
+            MySqlDataReader reader = DBConnection.getData("select client_id, name as Name, address as Address, " +
+                "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email from client");
 
             table.Load(reader);
 
@@ -118,7 +121,8 @@ namespace ResoflexClientHandlingSystem
             string qry = "";
             string clientNameTxt = searchClientTxtBox.Text;
 
-            qry = "SELECT * FROM client WHERE name LIKE '%" + clientNameTxt + "%'";
+            qry = "SELECT client_id, name as Name, address as Address, " +
+                "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email FROM client WHERE name LIKE '%" + clientNameTxt + "%'";
 
             try
             {
@@ -214,6 +218,23 @@ namespace ResoflexClientHandlingSystem
             frm.ShowDialog();
 
             clientGrid.DataSource = getClients();
+        }
+
+        private void clientGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6 && e.RowIndex != -1)
+            {
+                EmailClientForm frm = new EmailClientForm(clientGrid.Rows[e.RowIndex].Cells[6].Value.ToString());
+
+                frm.ShowDialog(this);
+            }
+        }
+
+        private void ShowMoreBtn_Click(object sender, EventArgs e)
+        {
+            SeeMoreClientForm frm = new SeeMoreClientForm();
+
+            frm.Show();
         }
     }
 }

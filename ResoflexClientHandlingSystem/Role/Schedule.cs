@@ -1,11 +1,11 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Core;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using ResoflexClientHandlingSystem.Core;
 
 namespace ResoflexClientHandlingSystem.Role
 {
@@ -13,18 +13,18 @@ namespace ResoflexClientHandlingSystem.Role
     {
         private int visitId;
         private int projectId;
-        private String type;
-        private String servEngineer;
+        private string type;
+        private string servEngineer;
         private DateTime from;
         private DateTime to;
-        private String vehicle;
+        private string vehicle;
         private float mileage;
-
+        
         public Schedule()
         {
 
         }
-
+        
         public Schedule(int visitId, int projectId, string type, string servEngineer, DateTime from, DateTime to, string vehicle, float mileage)
         {
             this.visitId = visitId;
@@ -36,15 +36,15 @@ namespace ResoflexClientHandlingSystem.Role
             this.vehicle = vehicle;
             this.mileage = mileage;
         }
-
+        
         public DataTable getSchedules()
         {
             DataTable dt = new DataTable();
-
+            
             MySqlDataReader reader = DBConnection.getData("select * from schedule");
-
+            
             dt.Load(reader);
-
+            
             return dt;
         }
     }

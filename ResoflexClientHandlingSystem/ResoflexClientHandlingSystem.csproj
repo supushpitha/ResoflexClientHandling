@@ -68,22 +68,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddEventForm.cs">
+    <Compile Include="Event Forms\AddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddEventForm.Designer.cs">
+    <Compile Include="Event Forms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewClientForm.cs">
+    <Compile Include="Schedule Forms\AddScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewClientForm.Designer.cs">
-      <DependentUpon>AddNewClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddScheduleForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AddScheduleForm.Designer.cs">
+    <Compile Include="Schedule Forms\AddScheduleForm.Designer.cs">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Connection.cs" />
@@ -94,16 +88,10 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientForm.cs">
+    <Compile Include="Event Forms\EventForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientForm.Designer.cs">
-      <DependentUpon>ClientForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EventForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EventForm.Designer.cs">
+    <Compile Include="Event Forms\EventForm.Designer.cs">
       <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -134,40 +122,22 @@
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
     <Compile Include="Role\User.cs" />
-    <Compile Include="ScheduleForm.cs">
+    <Compile Include="Schedule Forms\ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScheduleForm.Designer.cs">
+    <Compile Include="Schedule Forms\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ServiceEngineerFeedbackForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ServiceEngineerFeedbackForm.Designer.cs">
-      <DependentUpon>ServiceEngineerFeedbackForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UpdateClientForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UpdateClientForm.Designer.cs">
-      <DependentUpon>UpdateClientForm.cs</DependentUpon>
-    </Compile>
-    <EmbeddedResource Include="AddEventForm.resx">
+    <EmbeddedResource Include="Event Forms\AddEventForm.resx">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddNewClientForm.resx">
-      <DependentUpon>AddNewClientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AddScheduleForm.resx">
+    <EmbeddedResource Include="Schedule Forms\AddScheduleForm.resx">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientForm.resx">
-      <DependentUpon>ClientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EventForm.resx">
+    <EmbeddedResource Include="Event Forms\EventForm.resx">
       <DependentUpon>EventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForm.resx">
@@ -185,14 +155,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ScheduleForm.resx">
+    <EmbeddedResource Include="Schedule Forms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ServiceEngineerFeedbackForm.resx">
-      <DependentUpon>ServiceEngineerFeedbackForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UpdateClientForm.resx">
-      <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

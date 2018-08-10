@@ -24,8 +24,12 @@ namespace ResoflexClientHandlingSystem
 
         private void schCancel_Click(object sender, EventArgs e)
         {
-            ServiceEngineerFeedbackForm feedback = new ServiceEngineerFeedbackForm();
-            feedback.ShowDialog();
+
+        }
+
+        private void addExpenses(object sender, EventArgs e)
+        {
+
         }
     }
 }

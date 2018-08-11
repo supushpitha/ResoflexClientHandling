@@ -34,7 +34,7 @@
             this.eventBtn = new MetroFramework.Controls.MetroButton();
             this.home.SuspendLayout();
             this.SuspendLayout();
-            // 
+            //
             // home
             // 
             this.home.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
@@ -52,18 +52,18 @@
             this.home.VerticalScrollbarBarColor = true;
             this.home.VerticalScrollbarHighlightOnWheel = false;
             this.home.VerticalScrollbarSize = 10;
-            // 
+            //
             // projectBtn
-            // 
+            //
             this.projectBtn.Location = new System.Drawing.Point(3, 3);
             this.projectBtn.Name = "projectBtn";
             this.projectBtn.Size = new System.Drawing.Size(75, 23);
             this.projectBtn.TabIndex = 2;
             this.projectBtn.Text = "Projects";
             this.projectBtn.UseSelectable = true;
-            // 
+            //
             // scheduleBtn
-            // 
+            //
             this.scheduleBtn.Location = new System.Drawing.Point(84, 3);
             this.scheduleBtn.Name = "scheduleBtn";
             this.scheduleBtn.Size = new System.Drawing.Size(75, 23);
@@ -71,9 +71,9 @@
             this.scheduleBtn.Text = "Schedules";
             this.scheduleBtn.UseSelectable = true;
             this.scheduleBtn.Click += new System.EventHandler(this.scheduleBtn_Click);
-            // 
+            //
             // eventBtn
-            // 
+            //
             this.eventBtn.Location = new System.Drawing.Point(165, 3);
             this.eventBtn.Name = "eventBtn";
             this.eventBtn.Size = new System.Drawing.Size(75, 23);
@@ -81,9 +81,9 @@
             this.eventBtn.Text = "Events";
             this.eventBtn.UseSelectable = true;
             this.eventBtn.Click += new System.EventHandler(this.eventBtn_Click);
-            // 
+            //
             // ProjectManager
-            // 
+            //
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);

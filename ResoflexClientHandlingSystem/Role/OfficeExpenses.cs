@@ -9,14 +9,14 @@ namespace ResoflexClientHandlingSystem.Role
     class OfficeExpenses
     {
         private int offExpenseId;
-        private int staffId;
+        private Staff staffIssued;
         private DateTime date;
         private string task;
 
-        public OfficeExpenses(int offExpenseId, int staffId, DateTime date, string task)
+        public OfficeExpenses(int offExpenseId, Staff staffIssued, DateTime date, string task)
         {
             this.offExpenseId = offExpenseId;
-            this.staffId = staffId;
+            this.staffIssued = staffIssued;
             this.date = date;
             this.task = task;
         }

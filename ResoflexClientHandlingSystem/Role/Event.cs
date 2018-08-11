@@ -9,9 +9,9 @@ namespace ResoflexClientHandlingSystem.Role
     class Event
     {
         private int eventId;
-        private int projectId;
-        private string type;
-        private String servEngineer;
+        private Project eventProject;
+        private EventType type;
+        private Staff servEngineer;
         private DateTime from;
         private DateTime to;
         private string vehicleDetails;
@@ -26,10 +26,10 @@ namespace ResoflexClientHandlingSystem.Role
         private string meals;
         private int schNo;
 
-        public Event(int eventId, int projectId, string type, string servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, int schNo)
+        public Event(int eventId, Project eventProject, EventType type, Staff servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, int schNo)
         {
             this.eventId = eventId;
-            this.projectId = projectId;
+            this.eventProject = eventProject;
             this.type = type;
             this.servEngineer = servEngineer;
             this.from = from;

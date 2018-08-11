@@ -68,16 +68,70 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Event Forms\AddEventForm.cs">
+    <Compile Include="ClientForms\AddNewClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Event Forms\AddEventForm.Designer.cs">
+    <Compile Include="ClientForms\AddNewClientForm.Designer.cs">
+      <DependentUpon>AddNewClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\ClientForm.Designer.cs">
+      <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\EmailClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\EmailClientForm.Designer.cs">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\SeeMoreClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\SeeMoreClientForm.Designer.cs">
+      <DependentUpon>SeeMoreClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\UpdateClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\UpdateClientForm.Designer.cs">
+      <DependentUpon>UpdateClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Common\Internet.cs" />
+    <Compile Include="EventForms\AddEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Schedule Forms\AddScheduleForm.cs">
+    <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule Forms\AddScheduleForm.Designer.cs">
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectManager.Designer.cs">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectUpdate.Designer.cs">
+      <DependentUpon>ProjectUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Role\EventType.cs" />
+    <Compile Include="Role\ProjectRequest.cs" />
+    <Compile Include="Role\ProjectSubCategory.cs" />
+    <Compile Include="Role\Salary.cs" />
+    <Compile Include="Role\Schedule.cs" />
+    <Compile Include="ScheduleForms\AddScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\AddScheduleForm.Designer.cs">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Connection.cs" />
@@ -88,10 +142,10 @@
     <Compile Include="Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Event Forms\EventForm.cs">
+    <Compile Include="EventForms\EventForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Event Forms\EventForm.Designer.cs">
+    <Compile Include="EventForms\EventForm.Designer.cs">
       <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -100,18 +154,6 @@
     </Compile>
     <Compile Include="Project.Designer.cs">
       <DependentUpon>Project.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectForm.Designer.cs">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectManager.Designer.cs">
-      <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\Attendance.cs" />
@@ -126,23 +168,27 @@
     <Compile Include="Role\Iou.cs" />
     <Compile Include="Role\OfficeExpenses.cs" />
     <Compile Include="Role\ProjectCategory.cs" />
-    <Compile Include="Role\ProjectExpenses.cs" />
     <Compile Include="Role\Project.cs" />
-    <Compile Include="Role\ProjectIncome.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
     <Compile Include="Role\User.cs" />
-    <Compile Include="Schedule Forms\ScheduleForm.cs">
+    <Compile Include="ScheduleForms\ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Schedule Forms\ScheduleForm.Designer.cs">
+    <Compile Include="ScheduleForms\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Event Forms\AddEventForm.resx">
-      <DependentUpon>AddEventForm.cs</DependentUpon>
+    <Compile Include="UpdateProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateProjectForm.Designer.cs">
+      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="ClientForms\AddNewClientForm.resx">
+      <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Schedule Forms\AddScheduleForm.resx">
-      <DependentUpon>AddScheduleForm.cs</DependentUpon>
+    <EmbeddedResource Include="ClientForms\ClientForm.resx">
+      <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>
@@ -150,17 +196,29 @@
     <EmbeddedResource Include="ClientForms\SeeMoreClientForm.resx">
       <DependentUpon>SeeMoreClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dashboard.resx">
-      <DependentUpon>Dashboard.cs</DependentUpon>
+    <EmbeddedResource Include="ClientForms\UpdateClientForm.resx">
+      <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Event Forms\EventForm.resx">
-      <DependentUpon>EventForm.cs</DependentUpon>
+    <EmbeddedResource Include="EventForms\AddEventForm.resx">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForm.resx">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectManager.resx">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectUpdate.resx">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\AddScheduleForm.resx">
+      <DependentUpon>AddScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventForm.resx">
+      <DependentUpon>EventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -171,9 +229,14 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Schedule Forms\ScheduleForm.resx">
+    <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UpdateProjectForm.resx">
+      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -188,8 +251,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

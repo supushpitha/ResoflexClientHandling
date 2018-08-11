@@ -14,7 +14,7 @@ namespace ResoflexClientHandlingSystem
     {
         public ProjectManager()
         {
-            //InitializeComponent();
+            InitializeComponent();
 
         }
 

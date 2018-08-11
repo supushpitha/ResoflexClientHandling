@@ -11,7 +11,7 @@ namespace ResoflexClientHandlingSystem.Role
         private int projectID;
         private string projectName;
         private string projectdesc;
-        private int clientID;
+        private Client clientOfProject;
         private int projectSubID;
         private DateTime firstInitDate;
         private DateTime tEndDate1;
@@ -22,12 +22,12 @@ namespace ResoflexClientHandlingSystem.Role
         private string warrantyTerms;
         private string visitTerms;
 
-        public Project(int projectID, string projectName, string projectdesc, int clientID, int projectSubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
+        public Project(int projectID, string projectName, string projectdesc, Client ClientOfProject, int projectSubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
         {
             this.ProjectID = projectID;
             this.ProjectName = projectName;
             this.Projectdesc = projectdesc;
-            this.ClientID = clientID;
+            this.ClientOfProject = ClientOfProject;
             this.ProjectSubID = projectSubID;
             this.FirstInitDate = firstInitDate;
             this.TEndDate1 = tEndDate1;
@@ -42,7 +42,7 @@ namespace ResoflexClientHandlingSystem.Role
         public int ProjectID { get => projectID; set => projectID = value; }
         public string ProjectName { get => projectName; set => projectName = value; }
         public string Projectdesc { get => projectdesc; set => projectdesc = value; }
-        public int ClientID { get => clientID; set => clientID = value; }
+        public Client ClientOfProject { get => clientOfProject; set => clientOfProject = value; }
         public int ProjectSubID { get => projectSubID; set => projectSubID = value; }
         public DateTime FirstInitDate { get => firstInitDate; set => firstInitDate = value; }
         public DateTime TEndDate1 { get => tEndDate1; set => tEndDate1 = value; }

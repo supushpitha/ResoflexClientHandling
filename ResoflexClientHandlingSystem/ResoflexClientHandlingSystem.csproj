@@ -123,6 +123,7 @@
     <Compile Include="ProjectUpdate.Designer.cs">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Role\EventType.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\Salary.cs" />
@@ -167,7 +168,6 @@
     <Compile Include="Role\Iou.cs" />
     <Compile Include="Role\OfficeExpenses.cs" />
     <Compile Include="Role\ProjectCategory.cs" />
-    <Compile Include="Role\ProjectExpenses.cs" />
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
@@ -235,6 +235,8 @@
     <EmbeddedResource Include="UpdateProjectForm.resx">
       <DependentUpon>UpdateProjectForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

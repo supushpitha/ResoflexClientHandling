@@ -9,17 +9,17 @@ namespace ResoflexClientHandlingSystem.Role
     class Iou
     {
         private int iouID;
-        private int projectID;
-        private int schNo;
+        private Project projectOfIou;
+        private Schedule scheduleOfIou;
         private DateTime date;
         private float amount;
         private string detail;
 
-        public Iou(int iouID, int projectID, int schNo, DateTime date, float amount, string detail)
+        public Iou(int iouID, Project projectOfIou, Schedule scheduleOfIou, DateTime date, float amount, string detail)
         {
             this.iouID = iouID;
-            this.projectID = projectID;
-            this.schNo = schNo;
+            this.projectOfIou = projectOfIou;
+            this.scheduleOfIou = scheduleOfIou;
             this.date = date;
             this.amount = amount;
             this.detail = detail;

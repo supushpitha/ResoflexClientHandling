@@ -8,7 +8,7 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class ProjectRequest
     {
-        private int projectId;
+        private Project projectOfRequest;
         private int reqId;
         private string request;
         private bool state;
@@ -16,11 +16,11 @@ namespace ResoflexClientHandlingSystem.Role
         private DateTime startedDate;
         private DateTime endedDate;
         private bool urgent;
-        private int staff_id;
+        private Staff staffOfRequest;
         
-        public ProjectRequest(int projectId, int reqId, string request, bool state, DateTime addedDate, DateTime startedDate, DateTime endedDate, bool urgent, int staff_id)
+        public ProjectRequest(Project projectOfRequest, int reqId, string request, bool state, DateTime addedDate, DateTime startedDate, DateTime endedDate, bool urgent, Staff staffOfRequest)
         {
-            this.ProjectId = projectId;
+            this.ProjectOfRequest = projectOfRequest;
             this.ReqId = reqId;
             this.Request = request;
             this.State = state;
@@ -28,28 +28,28 @@ namespace ResoflexClientHandlingSystem.Role
             this.StartedDate = startedDate;
             this.EndedDate = endedDate;
             this.Urgent = urgent;
-            this.Staff_id = staff_id;
+            this.StaffOfRequest = staffOfRequest;
         }
 
-        public ProjectRequest(int projectId, int reqId)
+        public ProjectRequest(Project projectOfRequest, int reqId)
         {
-            this.ProjectId = projectId;
+            this.ProjectOfRequest = projectOfRequest;
             this.ReqId = reqId;
         }
 
-        public ProjectRequest(int projectId, string request, bool state, DateTime addedDate, DateTime startedDate, DateTime endedDate, bool urgent, int staff_id)
+        public ProjectRequest(Project projectOfRequest, string request, bool state, DateTime addedDate, DateTime startedDate, DateTime endedDate, bool urgent, Staff staffOfRequest)
         {
-            this.ProjectId = projectId;
+            this.ProjectOfRequest = projectOfRequest;
             this.Request = request;
             this.State = state;
             this.AddedDate = addedDate;
             this.StartedDate = startedDate;
             this.EndedDate = endedDate;
             this.Urgent = urgent;
-            this.Staff_id = staff_id;
+            this.StaffOfRequest = staffOfRequest;
         }
 
-        public int ProjectId { get => projectId; set => projectId = value; }
+        public Project ProjectOfRequest { get => projectOfRequest; set => projectOfRequest = value; }
         public int ReqId { get => reqId; set => reqId = value; }
         public string Request { get => request; set => request = value; }
         public bool State { get => state; set => state = value; }
@@ -57,6 +57,6 @@ namespace ResoflexClientHandlingSystem.Role
         public DateTime StartedDate { get => startedDate; set => startedDate = value; }
         public DateTime EndedDate { get => endedDate; set => endedDate = value; }
         public bool Urgent { get => urgent; set => urgent = value; }
-        public int Staff_id { get => staff_id; set => staff_id = value; }
+        public Staff StaffOfRequest { get => staffOfRequest; set => staffOfRequest = value; }
     }
 }

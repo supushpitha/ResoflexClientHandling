@@ -8,7 +8,7 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Salary
     {
-        private int staffID;
+        private Staff staffOfSalary;
         private int salaryID;
         private DateTime salaryDate;
         private double basicSalAmount;
@@ -16,9 +16,9 @@ namespace ResoflexClientHandlingSystem.Role
         private float allowance;
         private double etfEpf;
 
-        public Salary(int staffID, int salaryID, DateTime salaryDate, double basicSalAmount, double otAmount, float allowance, double etfEpf)
+        public Salary(Staff staffOfSalary, int salaryID, DateTime salaryDate, double basicSalAmount, double otAmount, float allowance, double etfEpf)
         {
-            this.staffID = staffID;
+            this.staffOfSalary = staffOfSalary;
             this.salaryID = salaryID;
             this.salaryDate = salaryDate;
             this.basicSalAmount = basicSalAmount;

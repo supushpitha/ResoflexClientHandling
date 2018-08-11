@@ -11,10 +11,10 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Schedule
     {
-        private int visitId;
-        private int projectId;
-        private string type;
-        private string servEngineer;
+        private int scheduleId;
+        private Project projectOfSchedule;
+        private EventType type;
+        private Staff servEngineer;
         private DateTime from;
         private DateTime to;
         private string vehicle;
@@ -25,10 +25,10 @@ namespace ResoflexClientHandlingSystem.Role
 
         }
         
-        public Schedule(int visitId, int projectId, string type, string servEngineer, DateTime from, DateTime to, string vehicle, float mileage)
+        public Schedule(int scheduleId, Project projectOfSchedule, EventType type, Staff servEngineer, DateTime from, DateTime to, string vehicle, float mileage)
         {
-            this.visitId = visitId;
-            this.projectId = projectId;
+            this.scheduleId = scheduleId;
+            this.projectOfSchedule = projectOfSchedule;
             this.type = type;
             this.servEngineer = servEngineer;
             this.from = from;

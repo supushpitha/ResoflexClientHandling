@@ -8,7 +8,7 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Staff_expenses
     {
-        private int staffID;
+        private Staff staffOfExpenses;
         private List<Attendance> attendnceList;
         private string staffExpType;
 
@@ -16,14 +16,13 @@ namespace ResoflexClientHandlingSystem.Role
         {
         }
 
-        public Staff_expenses(int StaffID, String staffExpType, int expID, string type, double amount)
+        public Staff_expenses(Staff staffOfExpenses, String staffExpType, int expID, string type, double amount)
         {
             this.staffExpType = staffExpType;
-            staffID = StaffID;
+            StaffOfExpenses = staffOfExpenses;
         }
 
-        public int StaffId { get => staffID; set => staffID = value; }
-        //public string[] Attendance { get => attendance; set => attendance = value; }
+        public Staff StaffOfExpenses { get => staffOfExpenses; set => staffOfExpenses = value; }
     }
 
 

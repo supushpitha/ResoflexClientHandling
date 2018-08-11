@@ -114,6 +114,9 @@
     <Compile Include="ProjectManager.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="ProjectManager.Designer.cs">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectUpdate.cs">
       <SubType>Form</SubType>
     </Compile>

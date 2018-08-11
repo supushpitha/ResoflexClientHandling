@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Project_Expenses:Expenses
+    class Project_Expenses
     {
         private int projectID;
         private int eventID;
         private string category;
 
-        public Project_Expenses(int ProjectID,int EventID,string Category, int expID, string type, double amount) :base(expID, type, amount) {
-
+        public Project_Expenses(int ProjectID,int EventID,string Category, int expID, string type, double amount)
+        {
             projectID = ProjectID;
             eventID = EventID;
             category = Category;

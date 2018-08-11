@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 
@@ -84,6 +85,63 @@ namespace ResoflexClientHandlingSystem
         private void closeForm()
         {
             this.Close();
+        }
+
+        private void mobilePhoneTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidPhoneNumber(mobilePhoneTxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                mobilePhoneTxtBox.Select(0, mobilePhoneTxtBox.Text.Length);
+
+                updateClientErrorProvider.SetError(mobilePhoneTxtBox, errorMsg);
+            }
+        }
+
+        private void mobilePhoneTxtBox_Validated(object sender, EventArgs e)
+        {
+            updateClientErrorProvider.SetError(mobilePhoneTxtBox, "");
+        }
+
+        private void officePhoneTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidPhoneNumber(officePhoneTxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                officePhoneTxtBox.Select(0, officePhoneTxtBox.Text.Length);
+
+                updateClientErrorProvider.SetError(officePhoneTxtBox, errorMsg);
+            }
+        }
+
+        private void officePhoneTxtBox_Validated(object sender, EventArgs e)
+        {
+            updateClientErrorProvider.SetError(officePhoneTxtBox, "");
+        }
+
+        private void emailTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg = "";
+
+            if (!Validation.isValidEmail(emailTxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                emailTxtBox.Select(0, emailTxtBox.Text.Length);
+
+                this.updateClientErrorProvider.SetError(emailTxtBox, errorMsg);
+            }
+        }
+
+        private void emailTxtBox_Validated(object sender, EventArgs e)
+        {
+            updateClientErrorProvider.SetError(emailTxtBox, "");
         }
     }
 }

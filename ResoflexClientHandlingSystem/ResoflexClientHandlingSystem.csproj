@@ -99,6 +99,7 @@
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Internet.cs" />
+    <Compile Include="Common\Validation.cs" />
     <Compile Include="EventForms\AddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>

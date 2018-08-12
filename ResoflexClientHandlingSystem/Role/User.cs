@@ -8,10 +8,11 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class User : Staff
     {
+        private int userId;
         private string uName;
         private string pword;
         private string permission;
-        
+
         public User(int userId, string uName, string pword, string permission) : base (userId)
         {
             this.UName = uName;

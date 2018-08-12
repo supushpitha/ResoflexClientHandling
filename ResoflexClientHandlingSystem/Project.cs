@@ -32,9 +32,11 @@ namespace ResoflexClientHandlingSystem
         {
             projectGrid.DataSource = getProjects();
 
+            if (clientName != "")
+                searchProjectByClientTxtBox.Text = clientName;
+
             projectGrid.Columns[0].Visible = false;
         }
-
 
         private DataTable getProjects()
         {
@@ -46,8 +48,6 @@ namespace ResoflexClientHandlingSystem
 
             return table;
         }
-
-
 
         private void searchProjectTxtBox_TextChanged(object sender, EventArgs e)
         {
@@ -79,7 +79,6 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
-
         private void projectGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -97,6 +96,37 @@ namespace ResoflexClientHandlingSystem
             frm.ShowDialog();
 
             projectGrid.DataSource = getProjects();
+        }
+
+        private void searchProjectByClientTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            string qry = "";
+            string clientNameTxt = searchProjectByClientTxtBox.Text;
+
+            qry = "SELECT * FROM project p inner join client c on p.client_id=c.client_id" +
+                  " WHERE c.name LIKE '%" + clientNameTxt + "%'";
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData(qry);
+
+                if (reader.HasRows)
+                {
+                    System.Data.DataTable table = new System.Data.DataTable();
+
+                    table.Load(reader);
+
+                    projectGrid.DataSource = table;
+                }
+                else
+                {
+                    reader.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Invalid data!\n" + exc.StackTrace, "Project finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

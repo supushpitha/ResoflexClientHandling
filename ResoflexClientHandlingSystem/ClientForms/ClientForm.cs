@@ -108,7 +108,7 @@ namespace ResoflexClientHandlingSystem
 
             reader.Close();
 
-            ResoflexClientHandlingSystem.Project frm = new ResoflexClientHandlingSystem.Project(clientName);
+            Project frm = new Project(clientName);
 
             frm.Show();
         }

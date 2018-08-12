@@ -30,11 +30,9 @@ namespace ResoflexClientHandlingSystem
 
         private void Project_Load(object sender, EventArgs e)
         {
-
             projectGrid.DataSource = getProjects();
 
             projectGrid.Columns[0].Visible = false;
-
         }
 
 

@@ -95,6 +95,7 @@
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Role\EventType.cs" />
+    <Compile Include="Role\Iou.cs" />
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>

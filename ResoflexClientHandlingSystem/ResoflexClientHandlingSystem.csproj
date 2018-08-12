@@ -159,6 +159,23 @@
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesForm.designer.cs">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    <Compile Include="OfficeExpenses\OfficeExpensesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpenses\OfficeExpensesForm.Designer.cs">
+      <DependentUpon>OfficeExpensesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpenses\Paid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpenses\Paid.Designer.cs">
+      <DependentUpon>Paid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpenses\Salary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpenses\Salary.Designer.cs">
+      <DependentUpon>Salary.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectManager.cs">
       <SubType>Form</SubType>
@@ -277,6 +294,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    <EmbeddedResource Include="OfficeExpenses\OfficeExpensesForm.resx">
+      <DependentUpon>OfficeExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpenses\Paid.resx">
+      <DependentUpon>Paid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpenses\Salary.resx">
+      <DependentUpon>Salary.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectManager.resx">
       <DependentUpon>ProjectManager.cs</DependentUpon>

@@ -112,6 +112,54 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExpenses\AddExpensesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\AddExpensesForm.designer.cs">
+      <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\CashIssuingForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\CashIssuingForm.designer.cs">
+      <DependentUpon>CashIssuingForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\EventDetailsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\EventDetailsForm.designer.cs">
+      <DependentUpon>EventDetailsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.designer.cs">
+      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\ExpensesTypeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ExpensesTypeForm.designer.cs">
+      <DependentUpon>ExpensesTypeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\GenarateReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
+      <DependentUpon>GenarateReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\IOUListForm1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\IOUListForm1.designer.cs">
+      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpensesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpensesForm.designer.cs">
+      <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,6 +253,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
+      <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\CashIssuingForm.resx">
+      <DependentUpon>CashIssuingForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\EventDetailsForm.resx">
+      <DependentUpon>EventDetailsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ExpensesAnalysisForm.resx">
+      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ExpensesTypeForm.resx">
+      <DependentUpon>ExpensesTypeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
+      <DependentUpon>GenarateReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\IOUListForm1.resx">
+      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
+      <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectManager.resx">
       <DependentUpon>ProjectManager.cs</DependentUpon>

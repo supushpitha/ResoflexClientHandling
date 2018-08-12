@@ -53,9 +53,26 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
             ClientForm frm = new ClientForm();
 
             frm.Show();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ProjectManager pm = new ProjectManager();
+
+            pm.Show();
         }
     }
 }

@@ -43,6 +43,7 @@ namespace ResoflexClientHandlingSystem
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.gridViewUsageLbl = new MetroFramework.Controls.MetroLabel();
             this.updateClientBtn = new MetroFramework.Controls.MetroButton();
+            this.ShowMoreBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.clientGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,6 +98,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.Size = new System.Drawing.Size(754, 297);
             this.clientGrid.TabIndex = 0;
             this.clientGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientGrid_CellClick);
+            this.clientGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.clientGrid_CellContentClick);
             this.clientGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientGrid_RowHeaderMouseClick);
             this.clientGrid.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.clientGrid_RowHeaderMouseDoubleClick);
             // 
@@ -106,9 +108,11 @@ namespace ResoflexClientHandlingSystem
             this.addNewClientBtn.Location = new System.Drawing.Point(650, 234);
             this.addNewClientBtn.Name = "addNewClientBtn";
             this.addNewClientBtn.Size = new System.Drawing.Size(127, 29);
+            this.addNewClientBtn.Style = MetroFramework.MetroColorStyle.Blue;
             this.addNewClientBtn.TabIndex = 1;
             this.addNewClientBtn.Text = "Add New Client";
             this.addNewClientBtn.UseSelectable = true;
+            this.addNewClientBtn.UseStyleColors = true;
             this.addNewClientBtn.Click += new System.EventHandler(this.addNewClientBtn_Click);
             // 
             // searchClientTxtBox
@@ -159,7 +163,7 @@ namespace ResoflexClientHandlingSystem
             this.noOfProjTile.ActiveControl = null;
             this.noOfProjTile.Location = new System.Drawing.Point(23, 99);
             this.noOfProjTile.Name = "noOfProjTile";
-            this.noOfProjTile.Size = new System.Drawing.Size(161, 104);
+            this.noOfProjTile.Size = new System.Drawing.Size(146, 73);
             this.noOfProjTile.TabIndex = 4;
             this.noOfProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -172,7 +176,7 @@ namespace ResoflexClientHandlingSystem
             this.noOfVisitsTile.ActiveControl = null;
             this.noOfVisitsTile.Location = new System.Drawing.Point(241, 99);
             this.noOfVisitsTile.Name = "noOfVisitsTile";
-            this.noOfVisitsTile.Size = new System.Drawing.Size(161, 104);
+            this.noOfVisitsTile.Size = new System.Drawing.Size(114, 73);
             this.noOfVisitsTile.TabIndex = 5;
             this.noOfVisitsTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfVisitsTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
@@ -183,12 +187,11 @@ namespace ResoflexClientHandlingSystem
             // totalExpTile
             // 
             this.totalExpTile.ActiveControl = null;
-            this.totalExpTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.totalExpTile.Location = new System.Drawing.Point(457, 99);
             this.totalExpTile.Name = "totalExpTile";
-            this.totalExpTile.Size = new System.Drawing.Size(238, 104);
+            this.totalExpTile.Size = new System.Drawing.Size(187, 73);
             this.totalExpTile.TabIndex = 6;
-            this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.totalExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.totalExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.totalExpTile.UseCustomBackColor = true;
@@ -216,7 +219,6 @@ namespace ResoflexClientHandlingSystem
             // 
             // metroLabel3
             // 
-            this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel3.Location = new System.Drawing.Point(457, 73);
@@ -233,9 +235,10 @@ namespace ResoflexClientHandlingSystem
             this.gridViewUsageLbl.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.gridViewUsageLbl.Location = new System.Drawing.Point(33, 580);
             this.gridViewUsageLbl.Name = "gridViewUsageLbl";
-            this.gridViewUsageLbl.Size = new System.Drawing.Size(377, 17);
+            this.gridViewUsageLbl.Size = new System.Drawing.Size(621, 17);
             this.gridViewUsageLbl.TabIndex = 10;
-            this.gridViewUsageLbl.Text = "*Click row to view details      *Click row header to goto projects";
+            this.gridViewUsageLbl.Text = "*Click row to view details      *Click row header to goto projects      *Click on" +
+    " a email cell to send an email";
             this.gridViewUsageLbl.UseCustomForeColor = true;
             // 
             // updateClientBtn
@@ -244,16 +247,32 @@ namespace ResoflexClientHandlingSystem
             this.updateClientBtn.Location = new System.Drawing.Point(517, 234);
             this.updateClientBtn.Name = "updateClientBtn";
             this.updateClientBtn.Size = new System.Drawing.Size(127, 29);
+            this.updateClientBtn.Style = MetroFramework.MetroColorStyle.Blue;
             this.updateClientBtn.TabIndex = 11;
             this.updateClientBtn.Text = "Update Client";
             this.updateClientBtn.UseSelectable = true;
+            this.updateClientBtn.UseStyleColors = true;
             this.updateClientBtn.Click += new System.EventHandler(this.updateClientBtn_Click);
+            // 
+            // ShowMoreBtn
+            // 
+            this.ShowMoreBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.ShowMoreBtn.Location = new System.Drawing.Point(701, 148);
+            this.ShowMoreBtn.Name = "ShowMoreBtn";
+            this.ShowMoreBtn.Size = new System.Drawing.Size(75, 23);
+            this.ShowMoreBtn.Style = MetroFramework.MetroColorStyle.Brown;
+            this.ShowMoreBtn.TabIndex = 12;
+            this.ShowMoreBtn.Text = "More";
+            this.ShowMoreBtn.UseSelectable = true;
+            this.ShowMoreBtn.UseStyleColors = true;
+            this.ShowMoreBtn.Click += new System.EventHandler(this.ShowMoreBtn_Click);
             // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.ShowMoreBtn);
             this.Controls.Add(this.updateClientBtn);
             this.Controls.Add(this.gridViewUsageLbl);
             this.Controls.Add(this.metroLabel3);
@@ -292,6 +311,7 @@ namespace ResoflexClientHandlingSystem
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel gridViewUsageLbl;
         private MetroFramework.Controls.MetroButton updateClientBtn;
+        private MetroFramework.Controls.MetroButton ShowMoreBtn;
     }
 }
 

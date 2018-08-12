@@ -119,9 +119,10 @@
             this.metroButton5.Name = "metroButton5";
             this.metroButton5.Size = new System.Drawing.Size(148, 118);
             this.metroButton5.TabIndex = 21;
-            this.metroButton5.Text = "Settings";
+            this.metroButton5.Text = "Client";
             this.metroButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
             // 
             // metroButton4
             // 
@@ -175,6 +176,7 @@
             this.metroButton2.Text = "Manager";
             this.metroButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroButton1
             // 
@@ -213,7 +215,6 @@
         private MetroFramework.Controls.MetroLabel dateTimeLbl;
         private MetroFramework.Controls.MetroButton metroButton6;
         private MetroFramework.Controls.MetroPanel metroPanel1;
-        private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton metroButton4;
         private MetroFramework.Controls.MetroButton metroButton7;
         private MetroFramework.Controls.MetroButton metroButton3;
@@ -221,5 +222,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroButton metroButton5;
     }
 }

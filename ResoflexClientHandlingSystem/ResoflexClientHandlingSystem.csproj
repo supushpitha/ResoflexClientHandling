@@ -78,6 +78,18 @@
     <Compile Include="ClientForms\AddNewClientForm.Designer.cs">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ClientForms\EmailClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\EmailClientForm.designer.cs">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\SeeMoreClientForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\SeeMoreClientForm.designer.cs">
+      <DependentUpon>SeeMoreClientForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Common\Internet.cs" />
     <Compile Include="Common\Validation.cs" />
     <Compile Include="Core\Connection.cs" />
@@ -94,9 +106,51 @@
     <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventForms\AddEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\AddEventForm.designer.cs">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventForm.designer.cs">
+      <DependentUpon>EventForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectManager.designer.cs">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="Role\EventType.cs" />
     <Compile Include="Role\Iou.cs" />
     <Compile Include="Role\Schedule.cs" />
+    <Compile Include="ScheduleForms\AddScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\AddScheduleForm.Designer.cs">
+      <DependentUpon>AddScheduleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\ScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\ScheduleForm.Designer.cs">
+      <DependentUpon>ScheduleForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateProjectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpdateProjectForm.Designer.cs">
+      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,11 +204,29 @@
     <Compile Include="UserForms\UserLog.Designer.cs">
       <DependentUpon>UserLog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
+      <DependentUpon>EmailClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\SeeMoreClientForm.resx">
+      <DependentUpon>SeeMoreClientForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\AddEventForm.resx">
+      <DependentUpon>AddEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventForm.resx">
+      <DependentUpon>EventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectManager.resx">
+      <DependentUpon>ProjectManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectUpdate.resx">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
@@ -170,6 +242,15 @@
     </Compile>
     <EmbeddedResource Include="ClientForms\UpdateClientForm.resx">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\AddScheduleForm.resx">
+      <DependentUpon>AddScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
+      <DependentUpon>ScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UpdateProjectForm.resx">
+      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

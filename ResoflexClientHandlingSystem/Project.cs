@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using System;
 using System.Collections.Generic;
@@ -38,6 +38,7 @@ namespace ResoflexClientHandlingSystem
             projectGrid.Columns[0].Visible = false;
         }
 
+
         private DataTable getProjects()
         {
             DataTable table = new DataTable();
@@ -48,6 +49,8 @@ namespace ResoflexClientHandlingSystem
 
             return table;
         }
+
+
 
         private void searchProjectTxtBox_TextChanged(object sender, EventArgs e)
         {
@@ -79,6 +82,7 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+
         private void projectGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -86,7 +90,11 @@ namespace ResoflexClientHandlingSystem
 
         private void addProjectBtn_Click(object sender, EventArgs e)
         {
-            //meh formeka dan naha. wena ekak thiyenne.. 
+            UpdateProjectForm frm = new UpdateProjectForm();
+
+            frm.ShowDialog();
+
+            projectGrid.DataSource = getProjects();
         }
 
         private void updateProjectBtn_Click(object sender, EventArgs e)

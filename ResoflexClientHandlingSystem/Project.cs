@@ -38,7 +38,6 @@ namespace ResoflexClientHandlingSystem
             projectGrid.Columns[0].Visible = false;
         }
 
-
         private DataTable getProjects()
         {
             DataTable table = new DataTable();
@@ -49,8 +48,6 @@ namespace ResoflexClientHandlingSystem
 
             return table;
         }
-
-
 
         private void searchProjectTxtBox_TextChanged(object sender, EventArgs e)
         {
@@ -82,7 +79,6 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
-
         private void projectGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -90,11 +86,7 @@ namespace ResoflexClientHandlingSystem
 
         private void addProjectBtn_Click(object sender, EventArgs e)
         {
-            UpdateProjectForm frm = new UpdateProjectForm();
-
-            frm.ShowDialog();
-
-            projectGrid.DataSource = getProjects();
+            //meh formeka dan naha. wena ekak thiyenne.. 
         }
 
         private void updateProjectBtn_Click(object sender, EventArgs e)

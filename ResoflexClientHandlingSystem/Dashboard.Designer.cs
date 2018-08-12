@@ -163,6 +163,7 @@
             this.metroButton3.Text = "Accountant";
             this.metroButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton3.UseSelectable = true;
+            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click_1);
             // 
             // metroButton2
             // 

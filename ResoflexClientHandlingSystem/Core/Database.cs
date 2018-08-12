@@ -26,6 +26,17 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        public static void addUsers(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values ("+user.StaffId+",'"+user.UName+"','"+user.Pword+"','"+user.Permission+"')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         public static void updateClient(Client client)
         {
             try

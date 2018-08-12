@@ -13,26 +13,29 @@ namespace ResoflexClientHandlingSystem.Role
         private string pword;
         private string permission;
 
-        public User(int userId, string uName, string pword, string permission, int staffId) : base (staffId)
+        public User(int userId, string uName, string pword, string permission) : base (userId)
         {
-            this.userId = userId;
-            this.uName = uName;
-            this.pword = pword;
-            this.permission = permission;
+            this.UName = uName;
+            this.Pword = pword;
+            this.Permission = permission;
         }
 
         public User(string uName, string pword, string permission, string[] telNumber) : base(telNumber)
         {
-            this.uName = uName;
-            this.pword = pword;
-            this.permission = permission;
+            this.UName = uName;
+            this.Pword = pword;
+            this.Permission = permission;
         }
 
         public User(string uName, string pword, string permission)
         {
-            this.uName = uName;
-            this.pword = pword;
-            this.permission = permission;
+            this.UName = uName;
+            this.Pword = pword;
+            this.Permission = permission;
         }
+
+        public string UName { get => uName; set => uName = value; }
+        public string Pword { get => pword; set => pword = value; }
+        public string Permission { get => permission; set => permission = value; }
     }
 }

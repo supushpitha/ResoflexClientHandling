@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using System;
 using System.Collections.Generic;

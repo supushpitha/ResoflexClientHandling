@@ -9,13 +9,13 @@ namespace ResoflexClientHandlingSystem.Role
     class ProjectSubCategory
     {
         private int projectSubCatId;
-        private int projectCatId;
-        private String subCatName;
+        private ProjectCategory projectCat;
+        private string subCatName;
 
-        public ProjectSubCategory(int projectSubCatId, int projectCatId, string subCatName)
+        public ProjectSubCategory(int projectSubCatId, ProjectCategory projectCat, string subCatName)
         {
             this.projectSubCatId = projectSubCatId;
-            this.projectCatId = projectCatId;
+            this.projectCat = projectCat;
             this.subCatName = subCatName;
         }
     }

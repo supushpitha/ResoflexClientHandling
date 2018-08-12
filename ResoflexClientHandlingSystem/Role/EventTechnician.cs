@@ -8,14 +8,14 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class EventTechnician
     {
-        private int eventId;
-        private int techId;
+        private Event eventOfTechnician;
+        private Staff technician;
         private int feedback;
 
-        public EventTechnician(int eventId, int techId, int feedback)
+        public EventTechnician(Event eventOfTechnician, Staff technician, int feedback)
         {
-            this.eventId = eventId;
-            this.techId = techId;
+            this.eventOfTechnician = eventOfTechnician;
+            this.technician = technician;
             this.feedback = feedback;
         }
     }

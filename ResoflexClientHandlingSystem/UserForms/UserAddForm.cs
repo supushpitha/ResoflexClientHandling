@@ -139,9 +139,9 @@ namespace ResoflexClientHandlingSystem
             string username = uname.Text.ToString();
             string pass = Eramake.eCryptography.Encrypt(pwd.Text);
             String per = perm.SelectedItem.ToString();
-            int staffid = Int32.Parse(metroComboBox1.SelectedItem.ToString());
+            int staffId = Int32.Parse(metroComboBox1.SelectedItem.ToString());
             
-            User us = new User(username, pass, per, staffid);
+            User us = new User(staffId, username, pass, per);
 
             try
             {

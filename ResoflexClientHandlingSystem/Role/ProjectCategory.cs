@@ -9,7 +9,7 @@ namespace ResoflexClientHandlingSystem.Role
     class ProjectCategory
     {
         private int projectCatId;
-        private String categoryNAme;
+        private string categoryNAme;
 
         public ProjectCategory(int projectCatId, string categoryNAme)
         {

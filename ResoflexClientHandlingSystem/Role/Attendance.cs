@@ -8,7 +8,7 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Attendance
     {
-        private int staffId;
+        private Staff staff;
         private DateTime date;
         private DateTime inTime;
         private DateTime outTime;
@@ -18,13 +18,19 @@ namespace ResoflexClientHandlingSystem.Role
         {
         }
 
-        public Attendance(int staffId, DateTime date, DateTime inTime, DateTime outTime, int hoursWorked)
+        public Attendance(Staff staff, DateTime date, DateTime inTime, DateTime outTime, int hoursWorked)
         {
-            this.staffId = staffId;
-            this.date = date;
-            this.inTime = inTime;
-            this.outTime = outTime;
-            this.hoursWorked = hoursWorked;
+            this.Staff = staff;
+            this.Date = date;
+            this.InTime = inTime;
+            this.OutTime = outTime;
+            this.HoursWorked = hoursWorked;
         }
+
+        public DateTime Date { get => date; set => date = value; }
+        public DateTime InTime { get => inTime; set => inTime = value; }
+        public DateTime OutTime { get => outTime; set => outTime = value; }
+        public int HoursWorked { get => hoursWorked; set => hoursWorked = value; }
+        internal Staff Staff { get => staff; set => staff = value; }
     }
 }

@@ -79,6 +79,7 @@
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Internet.cs" />
+    <Compile Include="Common\Validation.cs" />
     <Compile Include="Core\Connection.cs" />
     <Compile Include="Core\Database.cs" />
     <Compile Include="Dashboard.cs">
@@ -93,6 +94,8 @@
     <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Role\EventType.cs" />
+    <Compile Include="Role\Schedule.cs" />
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -105,12 +108,6 @@
     </Compile>
     <Compile Include="Project.Designer.cs">
       <DependentUpon>Project.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ProjectForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectForm.Designer.cs">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectUpdate.cs">
       <SubType>Form</SubType>
@@ -126,13 +123,10 @@
     <Compile Include="Role\EventTechnician.cs" />
     <Compile Include="Role\ExpenseDetailEvent.cs" />
     <Compile Include="Role\ExpenseDetailSchedule.cs" />
-    <Compile Include="Role\Expenses.cs" />
     <Compile Include="Role\ExpenseType.cs" />
-    <Compile Include="Role\Income.cs" />
     <Compile Include="Role\OfficeExpenses.cs" />
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\ProjectCategory.cs" />
-    <Compile Include="Role\ProjectIncome.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
@@ -143,17 +137,23 @@
     <Compile Include="ClientForms\UpdateClientForm.Designer.cs">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AddNewClientForm.resx">
-      <DependentUpon>AddNewClientForm.cs</DependentUpon>
-    </EmbeddedResource>
+    <Compile Include="UserForms\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserAddForm.Designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\UserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\UserLog.Designer.cs">
+      <DependentUpon>UserLog.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForm.resx">
-      <DependentUpon>ProjectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectUpdate.resx">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
@@ -169,6 +169,15 @@
     </Compile>
     <EmbeddedResource Include="ClientForms\UpdateClientForm.resx">
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Login.resx">
+      <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserAddForm.resx">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\UserLog.resx">
+      <DependentUpon>UserLog.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

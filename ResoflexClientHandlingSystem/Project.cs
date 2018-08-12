@@ -14,9 +14,18 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class Project : MetroFramework.Forms.MetroForm
     {
+        string clientName = "";
+
         public Project()
         {
             InitializeComponent();
+        }
+
+        public Project(string clientName)
+        {
+            InitializeComponent();
+
+            this.clientName = clientName;
         }
 
         private void Project_Load(object sender, EventArgs e)
@@ -80,11 +89,7 @@ namespace ResoflexClientHandlingSystem
 
         private void addProjectBtn_Click(object sender, EventArgs e)
         {
-            UpdateProjectForm frm = new UpdateProjectForm();
-
-            frm.ShowDialog();
-
-            projectGrid.DataSource = getProjects();
+            //meh formeka dan naha. wena ekak thiyenne.. 
         }
 
         private void updateProjectBtn_Click(object sender, EventArgs e)

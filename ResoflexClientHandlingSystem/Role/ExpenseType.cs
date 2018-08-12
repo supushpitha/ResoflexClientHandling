@@ -9,7 +9,7 @@ namespace ResoflexClientHandlingSystem.Role
     class ExpenseType
     {
         private int expTypeId;
-        private String type;
+        private string type;
 
         public ExpenseType(int expTypeId, string type)
         {

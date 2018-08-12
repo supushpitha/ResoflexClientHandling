@@ -9,12 +9,16 @@ namespace ResoflexClientHandlingSystem.Role
     class Staff
     {
         private int staffId;
-        private String firstName;
-        private String lastName;
-        private String nic;
-        private String address;
-        private String[] telNumber;
-        private String email;
+        private string firstName;
+        private string lastName;
+        private string nic;
+        private string address;
+        private string[] telNumber;
+        private string email;
+        private string facebook;
+        private string linkedIn;
+        private float basicSalary;
+        private float otRate;
         private Designation designation;
 
         private List<Attendance> attendance;
@@ -33,7 +37,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.TelNumber = telNumber;
         }
 
-        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string address, string[] telNumber, string email)
+        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string address, string[] telNumber, string email, string facebook, string linkedIn, float basicSalary, float otRate)
         {
             this.StaffId = staffId;
             this.Designation = designation;
@@ -43,6 +47,10 @@ namespace ResoflexClientHandlingSystem.Role
             this.Address = address;
             this.TelNumber = telNumber;
             this.Email = email;
+            this.Facebook = facebook;
+            this.LinkedIn = linkedIn;
+            this.BasicSalary = basicSalary;
+            this.OtRate = otRate;
         }
 
         public int StaffId { get => staffId; set => staffId = value; }
@@ -52,6 +60,10 @@ namespace ResoflexClientHandlingSystem.Role
         public string Address { get => address; set => address = value; }
         public string[] TelNumber { get => telNumber; set => telNumber = value; }
         public string Email { get => email; set => email = value; }
+        public float BasicSalary { get => basicSalary; set => basicSalary = value; }
+        public float OtRate { get => otRate; set => otRate = value; }
+        public string Facebook { get => facebook; set => facebook = value; }
+        public string LinkedIn { get => linkedIn; set => linkedIn = value; }
         internal List<Attendance> Attendance { get => attendance; set => attendance = value; }
         internal Designation Designation { get => designation; set => designation = value; }
     }

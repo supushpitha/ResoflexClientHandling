@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Office_Expenses:Expenses
+    class OfficeExpenses
     {
         private int offExpenseId;
-        private int staffId;
+        private Staff staffIssued;
         private DateTime date;
-        private String task;
+        private string task;
 
-        public Office_Expenses(int offExpenseId, int staffId, DateTime date, string task)
+        public OfficeExpenses(int offExpenseId, Staff staffIssued, DateTime date, string task)
         {
             this.offExpenseId = offExpenseId;
-            this.staffId = staffId;
+            this.staffIssued = staffIssued;
             this.date = date;
             this.task = task;
         }

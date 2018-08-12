@@ -8,17 +8,17 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class ExpenseDetailEvent
     {
-        private int expTypeId;
-        private int eventId;
-        private Int64 projectId;
+        private ExpenseType expType;
+        private Event eventOfExp;
+        private Project projectOfEvent;
         private double amount;
-        private String comment;
+        private string comment;
 
-        public ExpenseDetailEvent(int expTypeId, int eventId, long projectId, double amount, string comment)
+        public ExpenseDetailEvent(ExpenseType expType, Event eventOfExp, Project projectOfEvent, double amount, string comment)
         {
-            this.expTypeId = expTypeId;
-            this.eventId = eventId;
-            this.projectId = projectId;
+            this.expType = expType;
+            this.eventOfExp = eventOfExp;
+            this.projectOfEvent = projectOfEvent;
             this.amount = amount;
             this.comment = comment;
         }

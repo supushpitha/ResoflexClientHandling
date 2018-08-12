@@ -8,17 +8,17 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class ExpenseDetailSchedule
     {
-        private int expTypeId;
-        private int schNo;
-        private Int64 projectId;
+        private ExpenseType expType;
+        private Schedule scheduleOfExp;
+        private Project projectOfSchedule;
         private double amount;
-        private String comment;
+        private string comment;
 
-        public ExpenseDetailSchedule(int expTypeId, int schNo, long projectId, double amount, string comment)
+        public ExpenseDetailSchedule(ExpenseType expType, Schedule scheduleOfExp, Project projectOfSchedule, double amount, string comment)
         {
-            this.expTypeId = expTypeId;
-            this.schNo = schNo;
-            this.projectId = projectId;
+            this.expType = expType;
+            this.scheduleOfExp = scheduleOfExp;
+            this.projectOfSchedule = projectOfSchedule;
             this.amount = amount;
             this.comment = comment;
         }

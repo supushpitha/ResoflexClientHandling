@@ -15,6 +15,7 @@ namespace ResoflexClientHandlingSystem.Role
         private string[] phoneNo = new string[2];
         private string email;
         private string fax;
+
         private List<Project> projectList;
 
         public Client()

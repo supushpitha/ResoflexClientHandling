@@ -42,21 +42,23 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(96, 104);
+            this.pictureBox1.Location = new System.Drawing.Point(86, 103);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox1.Size = new System.Drawing.Size(40, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(96, 180);
+            this.pictureBox2.Location = new System.Drawing.Point(86, 170);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
+            this.pictureBox2.Size = new System.Drawing.Size(40, 40);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBox2.TabIndex = 1;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // unameTextBox
             // 
@@ -77,6 +79,7 @@
             this.unameTextBox.MaxLength = 32767;
             this.unameTextBox.Name = "unameTextBox";
             this.unameTextBox.PasswordChar = '\0';
+            this.unameTextBox.PromptText = "Username";
             this.unameTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.unameTextBox.SelectedText = "";
             this.unameTextBox.SelectionLength = 0;
@@ -85,8 +88,10 @@
             this.unameTextBox.Size = new System.Drawing.Size(212, 31);
             this.unameTextBox.TabIndex = 2;
             this.unameTextBox.UseSelectable = true;
+            this.unameTextBox.WaterMark = "Username";
             this.unameTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.unameTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.unameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.unameTextBox_Validating);
             // 
             // pwdTextBox
             // 
@@ -107,6 +112,7 @@
             this.pwdTextBox.MaxLength = 32767;
             this.pwdTextBox.Name = "pwdTextBox";
             this.pwdTextBox.PasswordChar = '*';
+            this.pwdTextBox.PromptText = "Password";
             this.pwdTextBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.pwdTextBox.SelectedText = "";
             this.pwdTextBox.SelectionLength = 0;
@@ -115,6 +121,7 @@
             this.pwdTextBox.Size = new System.Drawing.Size(212, 31);
             this.pwdTextBox.TabIndex = 3;
             this.pwdTextBox.UseSelectable = true;
+            this.pwdTextBox.WaterMark = "Password";
             this.pwdTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.pwdTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -126,6 +133,7 @@
             this.metroButton1.TabIndex = 4;
             this.metroButton1.Text = "Login";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // metroLink1
             // 

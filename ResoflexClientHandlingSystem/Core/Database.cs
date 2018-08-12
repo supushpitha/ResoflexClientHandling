@@ -26,7 +26,6 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        //DCode
         public static void addUsers(User user)
         {
             try

@@ -9,29 +9,27 @@ namespace ResoflexClientHandlingSystem.Role
     class Event
     {
         private int eventId;
-        private int projectId;
-        private int visitTypeId;
-        private String type;
-        private String servEngineer;
+        private Project eventProject;
+        private EventType type;
+        private Staff servEngineer;
         private DateTime from;
         private DateTime to;
-        private String vehicleDetails;
+        private string vehicleDetails;
         private float mileage;
-        private String feedback;
-        private String other;
-        private String todoList;
-        private String resource;
-        private String checklist;
-        private String travelMode;
-        private String accomodationMode;
-        private String meals;
+        private string feedback;
+        private string other;
+        private string todoList;
+        private string resource;
+        private string checklist;
+        private string travelMode;
+        private string accommodationMode;
+        private string meals;
         private int schNo;
 
-        public Event(int eventId, int projectId, int visitTypeId, string type, string servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accomodationMode, string meals, int schNo)
+        public Event(int eventId, Project eventProject, EventType type, Staff servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, int schNo)
         {
             this.eventId = eventId;
-            this.projectId = projectId;
-            this.visitTypeId = visitTypeId;
+            this.eventProject = eventProject;
             this.type = type;
             this.servEngineer = servEngineer;
             this.from = from;
@@ -44,7 +42,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.resource = resource;
             this.checklist = checklist;
             this.travelMode = travelMode;
-            this.accomodationMode = accomodationMode;
+            this.accommodationMode = accommodationMode;
             this.meals = meals;
             this.schNo = schNo;
         }

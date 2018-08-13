@@ -41,7 +41,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.clientsCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.totalTimeTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
@@ -62,6 +61,7 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.visitedTechOfClientGrid = new MetroFramework.Controls.MetroGrid();
+            this.searchClientTxtBox = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.projectOfClientGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.requestOfClientGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.visitToClientGrid)).BeginInit();
@@ -77,17 +77,6 @@
             this.metroLabel1.Size = new System.Drawing.Size(104, 20);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Choose Client";
-            // 
-            // clientsCmbBox
-            // 
-            this.clientsCmbBox.FormattingEnabled = true;
-            this.clientsCmbBox.ItemHeight = 24;
-            this.clientsCmbBox.Location = new System.Drawing.Point(154, 80);
-            this.clientsCmbBox.Name = "clientsCmbBox";
-            this.clientsCmbBox.Size = new System.Drawing.Size(287, 30);
-            this.clientsCmbBox.TabIndex = 1;
-            this.clientsCmbBox.UseSelectable = true;
-            this.clientsCmbBox.SelectedValueChanged += new System.EventHandler(this.clientsCmbBox_SelectedValueChanged);
             // 
             // totalTimeTile
             // 
@@ -474,11 +463,45 @@
             this.visitedTechOfClientGrid.Size = new System.Drawing.Size(554, 269);
             this.visitedTechOfClientGrid.TabIndex = 14;
             // 
+            // searchClientTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.searchClientTxtBox.CustomButton.Image = null;
+            this.searchClientTxtBox.CustomButton.Location = new System.Drawing.Point(271, 1);
+            this.searchClientTxtBox.CustomButton.Name = "";
+            this.searchClientTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.searchClientTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.searchClientTxtBox.CustomButton.TabIndex = 1;
+            this.searchClientTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.searchClientTxtBox.CustomButton.UseSelectable = true;
+            this.searchClientTxtBox.CustomButton.Visible = false;
+            this.searchClientTxtBox.Lines = new string[0];
+            this.searchClientTxtBox.Location = new System.Drawing.Point(158, 80);
+            this.searchClientTxtBox.MaxLength = 32767;
+            this.searchClientTxtBox.Name = "searchClientTxtBox";
+            this.searchClientTxtBox.PasswordChar = '\0';
+            this.searchClientTxtBox.PromptText = "client name";
+            this.searchClientTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.searchClientTxtBox.SelectedText = "";
+            this.searchClientTxtBox.SelectionLength = 0;
+            this.searchClientTxtBox.SelectionStart = 0;
+            this.searchClientTxtBox.ShortcutsEnabled = true;
+            this.searchClientTxtBox.Size = new System.Drawing.Size(293, 23);
+            this.searchClientTxtBox.TabIndex = 26;
+            this.searchClientTxtBox.UseSelectable = true;
+            this.searchClientTxtBox.WaterMark = "client name";
+            this.searchClientTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.searchClientTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.searchClientTxtBox.TextChanged += new System.EventHandler(this.searchClientTxtBox_TextChanged);
+            // 
             // SeeMoreClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1200, 788);
+            this.Controls.Add(this.searchClientTxtBox);
             this.Controls.Add(this.metroLabel11);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroLabel9);
@@ -499,7 +522,6 @@
             this.Controls.Add(this.metroTile1);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.totalTimeTile);
-            this.Controls.Add(this.clientsCmbBox);
             this.Controls.Add(this.metroLabel1);
             this.MinimumSize = new System.Drawing.Size(1200, 788);
             this.Name = "SeeMoreClientForm";
@@ -518,7 +540,6 @@
         #endregion
 
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroComboBox clientsCmbBox;
         private MetroFramework.Controls.MetroTile totalTimeTile;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroTile metroTile1;
@@ -539,5 +560,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroGrid visitedTechOfClientGrid;
+        private MetroFramework.Controls.MetroTextBox searchClientTxtBox;
     }
 }

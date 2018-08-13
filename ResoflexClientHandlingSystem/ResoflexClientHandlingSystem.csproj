@@ -159,6 +159,7 @@
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesForm.designer.cs">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="OfficeExpenses\OfficeExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -294,6 +295,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpenses\OfficeExpensesForm.resx">
       <DependentUpon>OfficeExpensesForm.cs</DependentUpon>
     </EmbeddedResource>

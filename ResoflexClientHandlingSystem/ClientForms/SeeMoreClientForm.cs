@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,12 +22,64 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
         private void SeeMoreClientForm_Load(object sender, EventArgs e)
         {
-            fillClientCmbBox();
-            clientsCmbBox.SelectedIndex = 1;
+            //fillClientCmbBox();
+            //clientsCmbBox.SelectedIndex = 1;
+            setClientSearch();
 
             projectOfClientGrid.DataSource = getProjectsOfClient();
+            requestOfClientGrid.DataSource = getRequestsOfClient();
 
             projectOfClientGrid.Columns[0].Visible = false;
+
+            foreach (DataGridViewRow row in requestOfClientGrid.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[2]))
+                {
+                    row.DefaultCellStyle.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private DataTable getRequestsOfClient()
+        {
+            DataTable table = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project_Name, r.request as Request, " +
+                "r.state as State, r.added_date as Added_Date_Time, r.urgent " +
+                "FROM proj_request r INNER JOIN project p on r.proj_id = p.proj_id INNER JOIN client c on p.client_id = c.client_id " +
+                "WHERE c.name = '" + searchClientTxtBox.Text + "'");
+
+            table.Load(reader);
+
+            return table;
+        }
+
+        private void setClientSearch()
+        {
+            AutoCompleteStringCollection clients = new AutoCompleteStringCollection();
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select name from client");
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        clients.Add(reader.GetString("name"));
+                    }
+                }
+
+                searchClientTxtBox.AutoCompleteCustomSource = clients;
+                searchClientTxtBox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                searchClientTxtBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+
+                reader.Close();
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error in filling the client comboBox!", "clients Filler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private DataTable getProjectsOfClient()
@@ -37,7 +90,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
                 "p.description as Description, c.sub_cat_name as Subcategory, p.first_init_date " +
                 "from project p inner join proj_sub_category c on p.proj_sub_cat_id=c.proj_sub_cat_id and " +
                 "p.proj_cat_id=c.proj_cat_id inner join client l on p.client_id=l.client_id " +
-                "where l.name='" + clientsCmbBox.SelectedItem.ToString() + "'");
+                "where l.name='" + searchClientTxtBox.Text + "'");
 
             table.Load(reader);
 
@@ -45,7 +98,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
         }
 
         private void fillClientCmbBox()
-        {
+        {/*
             clientsCmbBox.Items.Clear();
 
             try
@@ -60,17 +113,39 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     }
                 }
 
+                //clientsCmbBox.AutoCompleteCustomSource = reader.GetString("name").ToArray;
+                clientsCmbBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+                clientsCmbBox.AutoCompleteMode = AutoCompleteMode.Suggest;
+
                 reader.Close();
             }
             catch (Exception)
             {
                 MessageBox.Show("Error in filling the client comboBox!", "clients Filler", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
         private void clientsCmbBox_SelectedValueChanged(object sender, EventArgs e)
         {
             projectOfClientGrid.DataSource = getProjectsOfClient();
+        }
+
+        private void searchClientTxtBox_TextChanged(object sender, EventArgs e)
+        {
+            projectOfClientGrid.DataSource = getProjectsOfClient();
+            requestOfClientGrid.DataSource = getRequestsOfClient();
+
+            foreach (DataGridViewRow row in requestOfClientGrid.Rows)
+            {
+                if (Convert.ToBoolean(row.Cells[4].Value) && !Convert.ToBoolean(row.Cells[2].Value))
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                }
+                else if (Convert.ToBoolean(row.Cells[2].Value))
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                }
+            }
         }
     }
 }

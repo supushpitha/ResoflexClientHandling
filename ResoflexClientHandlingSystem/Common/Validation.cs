@@ -37,15 +37,21 @@ namespace ResoflexClientHandlingSystem.Common
 
         public static bool isValidPhoneNumber(string number, out string errorMsg)
         {
-            if (Regex.IsMatch(number, "^[0-9 ]+$"))
+            if ((Regex.IsMatch(number, "^[0-9 ]+$")) && (number.Length == 10))
             {
                 errorMsg = "";
 
                 return true;
             }
+            else if (number.Length != 10)
+            {
+                errorMsg = "phone number must only have 10 digits!";
+
+                return false;
+            }
             else
             {
-                errorMsg = "Phone number is invalid!";
+                errorMsg = "Phone number can only have numbers!";
 
                 return false;
             }

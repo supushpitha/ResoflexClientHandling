@@ -16,7 +16,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into client (name, address, phone_mobile, phone_office, fax, email)" +
-                                      " values ('" + client.FirstName + "', '" + client.Address + "', " +
+                                      " values ('" + client.FirstName + " " + client.LastName + "', '" + client.Address + "', " +
                                       "'" + client.PhoneNo[0] + "', '" + client.PhoneNo[1] + "', '" + client.Fax + "', " +
                                       "'" + client.Email + "')");
             }
@@ -37,6 +37,22 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        public static void addLog(int uid, string ip,string logIDatetime, string logODateTime, string det)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
+                    "(" + uid + ",'" + logIDatetime + "','" + logODateTime + "','" + det + "', '" + ip + "')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong!", "Logging out", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void updateClient(Client client)
         {
             try
@@ -49,6 +65,19 @@ namespace ResoflexClientHandlingSystem.Core
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateUser(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
+                    user.Pword + "' where user_id ='" + user.UserId + "';");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

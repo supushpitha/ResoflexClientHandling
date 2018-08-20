@@ -10,19 +10,21 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class ProjectUpdate : MetroFramework.Forms.MetroForm
+    public partial class JobPerformanceForm : MetroFramework.Forms.MetroForm
     {
-        public ProjectUpdate()
+        
+
+        public JobPerformanceForm()
         {
             InitializeComponent();
         }
 
-        private void ProjectUpdate_Load(object sender, EventArgs e)
+        private void metroTextBox2_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void metroLabel10_Click(object sender, EventArgs e)
+        private void metroButton1_Click(object sender, EventArgs e)
         {
 
         }

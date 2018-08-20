@@ -39,12 +39,12 @@ namespace ResoflexClientHandlingSystem.Core
         }
 
 
-        public static void addLog(int uid, string ip,string logIDatetime, string logODateTime, string det)
+        public static void addLog(Role.UserLog log)
         {
             try
             {
                 DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
-                    "(" + uid + ",'" + logIDatetime + "','" + logODateTime + "','" + det + "', '" + ip + "')");
+                    "(" + log.UserId + ",'" + log.LoggedInDateTime + "','" + log.LoggedOutDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
             }
             catch (Exception ex)
             {
@@ -73,7 +73,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
-                    user.Pword + "' where user_id ='" + user.UserId + "';");
+                    user.Pword + "' where user_id = "+ user.UserId + ";");
             }
             catch (Exception)
             {

@@ -90,6 +90,7 @@ namespace ResoflexClientHandlingSystem
         {
             fNameTxtBox.Clear();
             lNameTxtBox.Clear();
+            addNICtxtBox.Clear();
             pAddTxtBox.Clear();
             sAddTxtBox.Clear();
             telMobileTxtBox.Clear();
@@ -100,6 +101,9 @@ namespace ResoflexClientHandlingSystem
             basicSalTxtBox.Clear();
             otRateTxtBox.Clear();
             desgCmbBox.SelectedItem = null;
+
+            addNewDesTxtBox.Clear();
+            addDesIdTxtBox.Clear();
         }
 
       
@@ -114,6 +118,50 @@ namespace ResoflexClientHandlingSystem
 
                 clear();
             }
+        }
+
+        private void staffClearBtn_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void clearNewDesBtn_Click(object sender, EventArgs e)
+        {
+            clear();
+        }
+
+        private void addNewDesBtn_Click(object sender, EventArgs e)
+        {
+            string designation = addNewDesTxtBox.Text;
+            int desigId = Int32.Parse(addDesIdTxtBox.Text.ToString());
+
+            Designation des = new Designation(desigId, designation);
+        }
+
+        private void staffAddBtn_Click(object sender, EventArgs e)
+        {
+            string firstName = fNameTxtBox.Text;
+            string lastName = lNameTxtBox.Text;
+            string Nic = addNICtxtBox.Text;
+            string pAddress = pAddTxtBox.Text;
+            string sAddress = sAddTxtBox.Text;
+            string[] telNumber = new string[2];
+            telNumber[0] = telMobileTxtBox.Text;
+            telNumber[1] = telLanTxtBox.Text;
+            string email = emailTxtBox.Text;
+            string facebook = fNameTxtBox.Text;
+            string linkedIn = linkedTxtBox.Text;
+            float basicSal = float.Parse(basicSalTxtBox.Text.ToString());
+            float otRate = float.Parse(otRateTxtBox.Text.ToString());
+
+            Designation desg = new Designation(desgCmbBox.SelectedItem.ToString());
+
+            MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation='" + desg.DesignationName + "'");
+
+            if (reader.Read())
+                desg.DesigId = reader.GetInt32("desig_id");
+
+            Staff stf = new Staff(firstName, lastName, Nic, pAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
         }
     }
 }

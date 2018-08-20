@@ -32,16 +32,19 @@
             // 
             // EmployeeTaskTimeComparisonForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(841, 528);
             this.Name = "EmployeeTaskTimeComparisonForm";
             this.Text = "Employee Task Time Comparison";
-            this.Load += new System.EventHandler(this.EmployeeTaskTimeComparisonForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private MetroFramework.Controls.MetroGrid ResGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resValue;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resQty;
     }
 }

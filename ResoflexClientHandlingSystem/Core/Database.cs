@@ -80,5 +80,62 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
+        {
+            Client client = project.ClientOfProject;
+
+            try
+            {
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                        + " values (" + client.ClientID
+                                        + ",'" + project.ProjectName
+                                        + "'," + project.ProjectSubID
+                                        + ",'" + project.Projectdesc
+                                        + "','" + project.WarrantyTerms
+                                        + "','" + project.VisitTerms
+                                        + "','" + project.SupportTerms + "')");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
+        public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
+        {
+
+
+            try
+            {
+                DBConnection.updateDB("insert into proj_category (cat_name) values ('" + projectCat.CategoryName + "')");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /* public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
+         {
+             try
+             {
+                 DBConnection.updateDB("update project set (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                         + " values (" + project.ClientID
+                                         + ",'" + project.ProjectName
+                                         + "'," + project.Project_subID
+                                         + ",'" + project.ProjectDesc
+                                         + "','" + project.WarrantyTerms
+                                         + "','" + project.VisitTerms
+                                         + "','" + project.SupportTerms + "')");
+             }
+             catch (Exception exc)
+             {
+                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }*/
     }
 }

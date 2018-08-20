@@ -88,5 +88,11 @@ namespace ResoflexClientHandlingSystem
 
             frm.Show();
         }
+
+        private void metroButton7_Click(object sender, EventArgs e)
+        {
+            StaffEvalutionForm sEf = new StaffEvalutionForm();
+            sEf.Show();
+        }
     }
 }

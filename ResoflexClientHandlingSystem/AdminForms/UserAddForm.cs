@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.Common;
 
 namespace ResoflexClientHandlingSystem
 {
@@ -19,7 +20,7 @@ namespace ResoflexClientHandlingSystem
         public UserAddForm()
         {
             InitializeComponent();
-            
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -31,14 +32,16 @@ namespace ResoflexClientHandlingSystem
 
         private void UserAddForm_Load(object sender, EventArgs e)
         {
+            id.Visible = false;
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT staff_id FROM staff where staff_id not in( select user_id from user)");
+                MySqlDataReader reader = DBConnection.getData("SELECT first_name, last_name, staff_id FROM staff where staff_id not in( select user_id from user)");
 
                 while (reader.Read())
                 {
-                    metroComboBox1.Items.Add(reader.GetValue(0).ToString());
+                    metroComboBox1.Items.Add(reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                    id.Text = (reader.GetValue(2).ToString());
 
                 }
                 reader.Close();
@@ -72,28 +75,6 @@ namespace ResoflexClientHandlingSystem
             return dt;
         }
 
-        public void setName(String uid)
-        {
-            try
-            {
-                MySqlDataReader reader = DBConnection.getData("SELECT first_name, last_name from staff where staff_id = " + uid + ";");
-
-                while (reader.Read())
-                {
-                    fname.Text = (reader.GetValue(0).ToString());
-                    lname.Text = (reader.GetValue(1).ToString());
-
-                }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
-
-
-        }
-
 
         public void setPriv(String uid)
         {
@@ -123,8 +104,17 @@ namespace ResoflexClientHandlingSystem
 
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            setName(metroComboBox1.Text.ToString());
-            setPriv(metroComboBox1.Text.ToString());
+            try
+            {
+                setPriv(id.Text.ToString());
+                
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
         }
 
         private void clr_Click(object sender, EventArgs e)
@@ -135,19 +125,36 @@ namespace ResoflexClientHandlingSystem
 
         private void add_Click(object sender, EventArgs e)
         {
-            
+
             string username = uname.Text.ToString();
             string pass = Eramake.eCryptography.Encrypt(pwd.Text);
             String per = perm.SelectedItem.ToString();
-            int staffId = Int32.Parse(metroComboBox1.SelectedItem.ToString());
-            
-            User us = new User(staffId, username, pass, per);
+            int uid = int.Parse(id.Text);
+            String email;
+            User us = new User(uid,username, pass, per);
 
             try
             {
                 Database.addUsers(us);
 
-                clearTextBoxes();
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("SELECT email FROM staff where staff_id ='"+uid+"';");
+
+                    while (reader.Read())
+                    {
+                        email = reader["email"].ToString();
+                        emailUser(username, Eramake.eCryptography.Decrypt(pass), email);
+                    }
+                    reader.Close();
+
+                    clearTextBoxes();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
 
             }
             catch (Exception)
@@ -163,10 +170,34 @@ namespace ResoflexClientHandlingSystem
 
         public void clearTextBoxes()
         {
-            fname.Text = "";
-            lname.Text="";
             pwd.Text = "";
             uname.Text = "";
+        }
+
+        public void emailUser(string username, string pass, string email)
+        {
+
+            string subject = "Successful User Registration";
+            string message = "You are successfully added as a User. Your username: " + username + " and your password: " + pass + " are now in use. Be mindful of changing the password at your first login.";
+
+            try
+            {
+                bool isSuccess = Internet.sendMail(email, subject, message);
+
+                if (isSuccess)
+                {
+                    MessageBox.Show("Confirmation mail sent");
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong!\nPlease check your internet connetion and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!\nPlease check your internet connetion and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }

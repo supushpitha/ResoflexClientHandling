@@ -38,6 +38,8 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
             }
+
+            //Trying to disable selectability of grids
         }
 
         private DataTable getRequestsOfClient()
@@ -140,10 +142,12 @@ namespace ResoflexClientHandlingSystem.ClientForms
                 if (Convert.ToBoolean(row.Cells[4].Value) && !Convert.ToBoolean(row.Cells[2].Value))
                 {
                     row.DefaultCellStyle.ForeColor = Color.Red;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Red;
                 }
                 else if (Convert.ToBoolean(row.Cells[2].Value))
                 {
                     row.DefaultCellStyle.ForeColor = Color.Green;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Green;
                 }
             }
         }

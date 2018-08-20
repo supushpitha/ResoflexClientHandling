@@ -88,7 +88,8 @@
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.metroGrid1.Location = new System.Drawing.Point(10, 63);
+            this.metroGrid1.Location = new System.Drawing.Point(13, 78);
+            this.metroGrid1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.ReadOnly = true;
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -102,7 +103,7 @@
             this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid1.Size = new System.Drawing.Size(643, 456);
+            this.metroGrid1.Size = new System.Drawing.Size(857, 561);
             this.metroGrid1.TabIndex = 0;
             // 
             // LogId
@@ -145,10 +146,11 @@
             // 
             this.frmComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.frmComboBox.FormattingEnabled = true;
-            this.frmComboBox.ItemHeight = 23;
-            this.frmComboBox.Location = new System.Drawing.Point(111, 559);
+            this.frmComboBox.ItemHeight = 24;
+            this.frmComboBox.Location = new System.Drawing.Point(148, 688);
+            this.frmComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.frmComboBox.Name = "frmComboBox";
-            this.frmComboBox.Size = new System.Drawing.Size(121, 29);
+            this.frmComboBox.Size = new System.Drawing.Size(160, 30);
             this.frmComboBox.TabIndex = 1;
             this.frmComboBox.UseSelectable = true;
             // 
@@ -156,10 +158,11 @@
             // 
             this.userComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.userComboBox.FormattingEnabled = true;
-            this.userComboBox.ItemHeight = 23;
-            this.userComboBox.Location = new System.Drawing.Point(551, 559);
+            this.userComboBox.ItemHeight = 24;
+            this.userComboBox.Location = new System.Drawing.Point(735, 688);
+            this.userComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.userComboBox.Name = "userComboBox";
-            this.userComboBox.Size = new System.Drawing.Size(121, 29);
+            this.userComboBox.Size = new System.Drawing.Size(160, 30);
             this.userComboBox.TabIndex = 2;
             this.userComboBox.UseSelectable = true;
             // 
@@ -167,10 +170,11 @@
             // 
             this.toComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.toComboBox.FormattingEnabled = true;
-            this.toComboBox.ItemHeight = 23;
-            this.toComboBox.Location = new System.Drawing.Point(330, 559);
+            this.toComboBox.ItemHeight = 24;
+            this.toComboBox.Location = new System.Drawing.Point(440, 688);
+            this.toComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.toComboBox.Name = "toComboBox";
-            this.toComboBox.Size = new System.Drawing.Size(121, 29);
+            this.toComboBox.Size = new System.Drawing.Size(160, 30);
             this.toComboBox.TabIndex = 3;
             this.toComboBox.UseSelectable = true;
             // 
@@ -179,9 +183,10 @@
             this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(296, 559);
+            this.metroLabel1.Location = new System.Drawing.Point(395, 688);
+            this.metroLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(28, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(30, 25);
             this.metroLabel1.TabIndex = 4;
             this.metroLabel1.Text = "To";
             // 
@@ -190,9 +195,10 @@
             this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(499, 559);
+            this.metroLabel2.Location = new System.Drawing.Point(665, 688);
+            this.metroLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(46, 25);
+            this.metroLabel2.Size = new System.Drawing.Size(47, 25);
             this.metroLabel2.TabIndex = 5;
             this.metroLabel2.Text = "User";
             // 
@@ -201,18 +207,20 @@
             this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel3.Location = new System.Drawing.Point(54, 559);
+            this.metroLabel3.Location = new System.Drawing.Point(72, 688);
+            this.metroLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(51, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(54, 25);
             this.metroLabel3.TabIndex = 6;
             this.metroLabel3.Text = "From";
             // 
             // addUsers
             // 
             this.addUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addUsers.Location = new System.Drawing.Point(672, 63);
+            this.addUsers.Location = new System.Drawing.Point(896, 78);
+            this.addUsers.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.addUsers.Name = "addUsers";
-            this.addUsers.Size = new System.Drawing.Size(105, 29);
+            this.addUsers.Size = new System.Drawing.Size(140, 36);
             this.addUsers.TabIndex = 7;
             this.addUsers.Text = "Add users";
             this.addUsers.UseSelectable = true;
@@ -220,9 +228,9 @@
             // 
             // UserLog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.addUsers);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
@@ -231,8 +239,10 @@
             this.Controls.Add(this.userComboBox);
             this.Controls.Add(this.frmComboBox);
             this.Controls.Add(this.metroGrid1);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1067, 738);
             this.Name = "UserLog";
+            this.Padding = new System.Windows.Forms.Padding(27, 74, 27, 25);
             this.Text = "User Log";
             this.Load += new System.EventHandler(this.UserLog_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();

@@ -168,8 +168,6 @@ namespace ResoflexClientHandlingSystem
             pwd.Text = "";
             uname.Text = "";
         }
-
-        
     }
 }
     

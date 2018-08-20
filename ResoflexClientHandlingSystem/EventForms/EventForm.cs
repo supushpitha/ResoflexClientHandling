@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,12 @@ namespace ResoflexClientHandlingSystem
         public EventForm()
         {
             InitializeComponent();
+
+            eventGrid.DataSource = null;
+
+            //Autocompelete data source
+            projectName.AutoCompleteCustomSource = projectNameAutoComplete();
+            clientName.AutoCompleteCustomSource = clientNameAutoComplete();
         }
 
         private void EventForm_Load(object sender, EventArgs e)
@@ -33,6 +41,55 @@ namespace ResoflexClientHandlingSystem
         {
             AddEventForm ef = new AddEventForm();
             ef.ShowDialog();
+        }
+
+        //Data for grid
+        private DataTable getEvents()
+        {
+            DataTable dt = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("");
+
+            dt.Load(reader);
+
+
+            return dt;
+        }
+
+        //for autocomplete project names
+        private AutoCompleteStringCollection projectNameAutoComplete()
+        {
+            DataTable dt = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("select proj_name from project");
+            dt.Load(reader);
+
+            AutoCompleteStringCollection colString = new AutoCompleteStringCollection();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                colString.Add(Convert.ToString(item[0]));
+            }
+
+            return colString;
+        }
+
+        //for autocomplete client names
+        private AutoCompleteStringCollection clientNameAutoComplete()
+        {
+            DataTable dt = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("select name from client");
+            dt.Load(reader);
+
+            AutoCompleteStringCollection colString = new AutoCompleteStringCollection();
+
+            foreach (DataRow item in dt.Rows)
+            {
+                colString.Add(Convert.ToString(item[0]));
+            }
+
+            return colString;
         }
     }
 }

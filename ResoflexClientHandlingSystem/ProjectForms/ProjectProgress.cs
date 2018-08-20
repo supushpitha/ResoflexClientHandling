@@ -8,21 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ResoflexClientHandlingSystem
+namespace ResoflexClientHandlingSystem.ProjectForms
 {
-    public partial class ProjectUpdate : MetroFramework.Forms.MetroForm
+    public partial class ProjectProgress : MetroFramework.Forms.MetroForm
     {
-        public ProjectUpdate()
+        public ProjectProgress()
         {
             InitializeComponent();
         }
 
-        private void ProjectUpdate_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroLabel10_Click(object sender, EventArgs e)
+        private void ProjectProgress_Load(object sender, EventArgs e)
         {
 
         }

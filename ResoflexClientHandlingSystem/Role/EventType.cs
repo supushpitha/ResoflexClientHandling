@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class EventType
+    public class EventType
     {
         private int eventTypeId;
         private string eventName;

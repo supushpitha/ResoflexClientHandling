@@ -65,8 +65,8 @@ namespace ResoflexClientHandlingSystem
                         Console.WriteLine(Logglobals.login);
                         Dashboard pf = new Dashboard();
                         
-                        pf.Show();
-
+                        pf.ShowDialog();
+                        this.Close();
                     }
                     else if(dataReader1["permission"].ToString() == "HRM")
                     {
@@ -81,8 +81,8 @@ namespace ResoflexClientHandlingSystem
                         this.Hide();
 
                         Dashboard pf = new Dashboard();
-                        pf.Show();
-
+                        pf.ShowDialog();
+                        this.Close();
                     }
                     else if (dataReader1["permission"].ToString() == "ADM")
                     {
@@ -96,8 +96,8 @@ namespace ResoflexClientHandlingSystem
                         this.Hide();
 
                         Dashboard pf = new Dashboard();
-                        pf.Show();
-
+                        pf.ShowDialog();
+                        this.Close();
                     }
                     else if (dataReader1["permission"].ToString() == "ACC")
                     {
@@ -111,8 +111,8 @@ namespace ResoflexClientHandlingSystem
                         this.Hide();
 
                         Dashboard pf = new Dashboard();
-                        pf.Show();
-
+                        pf.ShowDialog();
+                        this.Close();
                     }
                     else if (dataReader1["permission"].ToString() == "PM")
                     {
@@ -126,7 +126,8 @@ namespace ResoflexClientHandlingSystem
                         this.Hide();
 
                         Dashboard pf = new Dashboard();
-                        pf.Show();
+                        pf.ShowDialog();
+                        this.Close();
                     }
                     else
                     {
@@ -159,6 +160,11 @@ namespace ResoflexClientHandlingSystem
             IPAddress ip = Dns.GetHostAddresses(Dns.GetHostName()).Where(address =>
             address.AddressFamily == AddressFamily.InterNetwork).First();
             return ip;
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

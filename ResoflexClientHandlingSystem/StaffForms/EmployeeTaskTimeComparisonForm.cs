@@ -10,22 +10,16 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class UserLog : MetroFramework.Forms.MetroForm
+    public partial class EmployeeTaskTimeComparisonForm : MetroFramework.Forms.MetroForm
     {
-        public UserLog()
+        public EmployeeTaskTimeComparisonForm()
         {
             InitializeComponent();
         }
 
-        private void UserLog_Load(object sender, EventArgs e)
+        private void EmployeeTaskTimeComparisonForm_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void addUsers_Click(object sender, EventArgs e)
-        {
-            UserAddForm uaf = new UserAddForm();
-            uaf.Show();
         }
     }
 }

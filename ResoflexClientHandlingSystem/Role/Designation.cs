@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Designation
+    public class Designation
     {
         private int desigId;
         private string designation;

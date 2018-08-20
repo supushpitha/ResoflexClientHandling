@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Project
+    public class Project
     {
         private int projectID;
         private string projectName;
@@ -21,6 +21,11 @@ namespace ResoflexClientHandlingSystem.Role
         private string supportTerms;
         private string warrantyTerms;
         private string visitTerms;
+
+        public Project(int projectID)
+        {
+            this.projectID = projectID; 
+        }
 
         public Project(int projectID, string projectName, string projectdesc, Client ClientOfProject, int projectSubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
         {

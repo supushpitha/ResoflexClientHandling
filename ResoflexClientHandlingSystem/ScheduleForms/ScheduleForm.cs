@@ -2,6 +2,7 @@
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,7 @@ namespace ResoflexClientHandlingSystem
 
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
-            
+            scheduleGrid.Columns[1].Visible = false;            
         }
 
         //buttons
@@ -75,7 +76,7 @@ namespace ResoflexClientHandlingSystem
 
             string projName = projectName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
                          " from schedule s, project p, visit_type vt " +
                          " where(s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.proj_name like '%" + projName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -111,7 +112,7 @@ namespace ResoflexClientHandlingSystem
 
             string cName = clientName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
                          " from schedule s, project p, visit_type vt, client c " +
                          " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%"+ cName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -142,26 +143,50 @@ namespace ResoflexClientHandlingSystem
         }
 
         //getting all the relavent data for selected row
-        private Schedule getScheduleRow(int schNo)
+        private Schedule getScheduleRow(int schNo, int proj_id)
         {
-            Schedule s = new Schedule();
-            DataTable dt1 = new DataTable();
-            DataTable dt2 = new DataTable();
-
-            LinkedList<String> serviceEng = new LinkedList<String>();
+            Schedule sch;
+            ArrayList serviceEng = new ArrayList();
 
             MySqlDataReader reader1 = DBConnection.getData("select * from schedule where sch_no =" + schNo + ";");
-            MySqlDataReader reader2 = DBConnection.getData("select  from schedule_technicians where sch_no =" + schNo + ";");
 
-            dt1.Load(reader1);
-            dt2.Load(reader2);
+            if (reader1.Read()) {
 
-            foreach (DataRow row in dt2.Rows)
-            {
+                int scheduleId = int.Parse(reader1.GetString("sch_no"));
+                Role.Project projectOfSchedule = new Role.Project(proj_id);
+                EventType type = new EventType(int.Parse(reader1.GetString("visit_type_id")));
+                DateTime from = reader1.GetDateTime("from_date_time");
+                DateTime to = reader1.GetDateTime("to_date_time");
+                string vehicle = reader1.GetString("vehicle_details");
+                float mileage = reader1.GetFloat("mileage");
+                string todoList = reader1.GetString("to_do_list");
+                string resource = reader1.GetString("resource");
+                string checklist = reader1.GetString("check_list");
+                string travelMode = reader1.GetString("travelling_mode");
+                string accommodationMode = reader1.GetString("accommodation");
+                string meals = reader1.GetString("meals");
+
+                reader1.Close();
+
+                MySqlDataReader reader2 = DBConnection.getData("select staff_id from schedule_technicians where ( sch_no =" + schNo + " and proj_id = " + proj_id + ");");
+
+                while (reader2.NextResult())
+                {
+                    Staff staff = new Staff(int.Parse(reader1.GetString("staff_id")));
+                    serviceEng.Add(staff);
+                }
+
+                reader2.Close();
+
+                sch = new Schedule(scheduleId,  projectOfSchedule,  type,  serviceEng,  from,  to,  vehicle,  mileage,  todoList,  resource,  checklist,  travelMode,  accommodationMode,  meals);
 
             }
+            else
+            {
+                sch = null;
+            }
 
-            return null; //for now
+            return sch;
         }
 
 
@@ -169,11 +194,14 @@ namespace ResoflexClientHandlingSystem
         {
             DataGridViewRow row = scheduleGrid.CurrentRow;
 
-            int sch_no = int.Parse((row.Cells[0].Value.ToString()));
-            
+            int sch_no = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
 
-            Schedule s = new Schedule();
+            Schedule s = getScheduleRow(sch_no, proj_id);
 
+            AddScheduleForm asf = new AddScheduleForm(s);
+
+            asf.Show();
         }
 
         //Data for grid
@@ -181,7 +209,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.vehicle_details as Vehicle_Details, s.mileage as Mileage, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
                                                             "from schedule s, project p, visit_type vt " +
                                                             "where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) " +
                                                             " order by s.sch_no, s.proj_id;");

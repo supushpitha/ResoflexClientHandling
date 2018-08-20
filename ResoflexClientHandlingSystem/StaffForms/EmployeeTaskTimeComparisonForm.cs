@@ -10,21 +10,17 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class ProjectUpdate : MetroFramework.Forms.MetroForm
+    public partial class EmployeeTaskTimeComparisonForm : MetroFramework.Forms.MetroForm
     {
-        public ProjectUpdate()
+        public EmployeeTaskTimeComparisonForm()
         {
             InitializeComponent();
         }
 
-        private void ProjectUpdate_Load(object sender, EventArgs e)
+        private void EmployeeTaskTimeComparisonForm_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void metroLabel10_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

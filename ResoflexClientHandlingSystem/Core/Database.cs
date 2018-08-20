@@ -80,5 +80,89 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
+        {
+            Client client = project.ClientOfProject;
+
+            try
+            {
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                        + " values (" + client.ClientID
+                                        + ",'" + project.ProjectName
+                                        + "'," + project.ProjectSubID
+                                        + ",'" + project.Projectdesc
+                                        + "','" + project.WarrantyTerms
+                                        + "','" + project.VisitTerms
+                                        + "','" + project.SupportTerms + "')");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
+        public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
+        {
+
+
+            try
+            {
+                DBConnection.updateDB("insert into proj_category (cat_name) values ('" + projectCat.CategoryName + "')");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /* public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
+         {
+             try
+             {
+                 DBConnection.updateDB("update project set (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                         + " values (" + project.ClientID
+                                         + ",'" + project.ProjectName
+                                         + "'," + project.Project_subID
+                                         + ",'" + project.ProjectDesc
+                                         + "','" + project.WarrantyTerms
+                                         + "','" + project.VisitTerms
+                                         + "','" + project.SupportTerms + "')");
+             }
+             catch (Exception exc)
+             {
+                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }*/
+
+        public static void addRecord(Attendance atten)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into attendance(employee_no, name, in_time, out_time, hours_worked)values('" + atten.EmployeeNo + "','" + atten.Name + "', '" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addJobPerformance(JobPerformance jobPerformanceObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

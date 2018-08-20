@@ -36,7 +36,7 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            Project frm = new Project();
+            Project1 frm = new Project1();
 
             frm.Show();
         }
@@ -87,6 +87,12 @@ namespace ResoflexClientHandlingSystem
             UserLog frm = new UserLog();
 
             frm.Show();
+        }
+
+        private void metroButton7_Click(object sender, EventArgs e)
+        {
+            StaffEvalutionForm sEf = new StaffEvalutionForm();
+            sEf.Show();
         }
     }
 }

@@ -43,6 +43,8 @@
             this.emailTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.addNewClientBtn = new MetroFramework.Controls.MetroButton();
             this.notifySuccessClientAdding = new System.Windows.Forms.NotifyIcon(this.components);
+            this.addClientErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.addClientErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -141,6 +143,7 @@
             this.clientNameTxtBox.UseSelectable = true;
             this.clientNameTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.clientNameTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.clientNameTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.clientNameTxtBox_Validating);
             // 
             // clientAddressTxtBox
             // 
@@ -203,6 +206,8 @@
             this.mobilePhoneTxtBox.UseSelectable = true;
             this.mobilePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mobilePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mobilePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.mobilePhoneTxtBox_Validating);
+            this.mobilePhoneTxtBox.Validated += new System.EventHandler(this.mobilePhoneTxtBox_Validated);
             // 
             // officePhoneTxtBox
             // 
@@ -234,6 +239,8 @@
             this.officePhoneTxtBox.UseSelectable = true;
             this.officePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.officePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.officePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.officePhoneTxtBox_Validating);
+            this.officePhoneTxtBox.Validated += new System.EventHandler(this.officePhoneTxtBox_Validated);
             // 
             // faxTxtBox
             // 
@@ -296,6 +303,8 @@
             this.emailTxtBox.UseSelectable = true;
             this.emailTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.emailTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.emailTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTxtBox_Validating);
+            this.emailTxtBox.Validated += new System.EventHandler(this.emailTxtBox_Validated);
             // 
             // addNewClientBtn
             // 
@@ -303,15 +312,21 @@
             this.addNewClientBtn.Location = new System.Drawing.Point(296, 373);
             this.addNewClientBtn.Name = "addNewClientBtn";
             this.addNewClientBtn.Size = new System.Drawing.Size(168, 40);
+            this.addNewClientBtn.Style = MetroFramework.MetroColorStyle.Green;
             this.addNewClientBtn.TabIndex = 12;
             this.addNewClientBtn.Text = "Add Client";
             this.addNewClientBtn.UseSelectable = true;
+            this.addNewClientBtn.UseStyleColors = true;
             this.addNewClientBtn.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // notifySuccessClientAdding
             // 
             this.notifySuccessClientAdding.Text = "Client Successfully added!";
             this.notifySuccessClientAdding.Visible = true;
+            // 
+            // addClientErrorProvider
+            // 
+            this.addClientErrorProvider.ContainerControl = this;
             // 
             // AddNewClientForm
             // 
@@ -338,6 +353,7 @@
             this.Text = "Add new client";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.AddNewClientForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.addClientErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -359,5 +375,6 @@
         private MetroFramework.Controls.MetroTextBox emailTxtBox;
         private MetroFramework.Controls.MetroButton addNewClientBtn;
         private System.Windows.Forms.NotifyIcon notifySuccessClientAdding;
+        private System.Windows.Forms.ErrorProvider addClientErrorProvider;
     }
 }

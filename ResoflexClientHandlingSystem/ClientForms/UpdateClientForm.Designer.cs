@@ -43,6 +43,8 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.notifySuccessClientUpdating = new System.Windows.Forms.NotifyIcon(this.components);
+            this.updateClientErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.updateClientErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // updateClientBtn
@@ -51,9 +53,11 @@
             this.updateClientBtn.Location = new System.Drawing.Point(294, 382);
             this.updateClientBtn.Name = "updateClientBtn";
             this.updateClientBtn.Size = new System.Drawing.Size(168, 40);
+            this.updateClientBtn.Style = MetroFramework.MetroColorStyle.Green;
             this.updateClientBtn.TabIndex = 25;
             this.updateClientBtn.Text = "Update Client";
             this.updateClientBtn.UseSelectable = true;
+            this.updateClientBtn.UseStyleColors = true;
             this.updateClientBtn.Click += new System.EventHandler(this.updateClientBtn_Click);
             // 
             // emailTxtBox
@@ -86,6 +90,8 @@
             this.emailTxtBox.UseSelectable = true;
             this.emailTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.emailTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.emailTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTxtBox_Validating);
+            this.emailTxtBox.Validated += new System.EventHandler(this.emailTxtBox_Validated);
             // 
             // faxTxtBox
             // 
@@ -148,6 +154,8 @@
             this.officePhoneTxtBox.UseSelectable = true;
             this.officePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.officePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.officePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.officePhoneTxtBox_Validating);
+            this.officePhoneTxtBox.Validated += new System.EventHandler(this.officePhoneTxtBox_Validated);
             // 
             // mobilePhoneTxtBox
             // 
@@ -179,6 +187,8 @@
             this.mobilePhoneTxtBox.UseSelectable = true;
             this.mobilePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mobilePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mobilePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.mobilePhoneTxtBox_Validating);
+            this.mobilePhoneTxtBox.Validated += new System.EventHandler(this.mobilePhoneTxtBox_Validated);
             // 
             // clientAddressTxtBox
             // 
@@ -313,6 +323,10 @@
             this.notifySuccessClientUpdating.Text = "Client successfully updated!";
             this.notifySuccessClientUpdating.Visible = true;
             // 
+            // updateClientErrorProvider
+            // 
+            this.updateClientErrorProvider.ContainerControl = this;
+            // 
             // UpdateClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -337,6 +351,7 @@
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Update Client";
             this.Load += new System.EventHandler(this.UpdateClientForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.updateClientErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -358,5 +373,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private System.Windows.Forms.NotifyIcon notifySuccessClientUpdating;
+        private System.Windows.Forms.ErrorProvider updateClientErrorProvider;
     }
 }

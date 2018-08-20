@@ -1,4 +1,4 @@
-﻿using MySql.Data.MySqlClient;
+using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using System;
 using System.Collections.Generic;
@@ -14,6 +14,8 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class Project : MetroFramework.Forms.MetroForm
     {
+        string clientName = "";
+
         public Project()
         {
             InitializeComponent();
@@ -23,12 +25,15 @@ namespace ResoflexClientHandlingSystem
         {
             InitializeComponent();
 
-            searchProjectByClientTxtBox.Text = clientName;
+            this.clientName = clientName;
         }
 
         private void Project_Load(object sender, EventArgs e)
         {
             projectGrid.DataSource = getProjects();
+
+            if (clientName != "")
+                searchProjectByClientTxtBox.Text = clientName;
 
             projectGrid.Columns[0].Visible = false;
         }

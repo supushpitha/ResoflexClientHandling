@@ -36,7 +36,7 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            Project frm = new Project();
+            Project1 frm = new Project1();
 
             frm.Show();
         }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UpdateProjectForm));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
@@ -35,7 +37,6 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.IDTxt = new MetroFramework.Controls.MetroTextBox();
             this.nameTxt = new MetroFramework.Controls.MetroTextBox();
             this.CatagoTxt = new MetroFramework.Controls.MetroTextBox();
             this.DescripTxt = new MetroFramework.Controls.MetroTextBox();
@@ -44,6 +45,9 @@
             this.warTerTxt = new MetroFramework.Controls.MetroTextBox();
             this.addBtn = new System.Windows.Forms.Button();
             this.clearBtn = new System.Windows.Forms.Button();
+            this.notifySuccessProjectAdding = new System.Windows.Forms.NotifyIcon(this.components);
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.catComboBox = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -117,43 +121,13 @@
             this.metroLabel13.TabIndex = 25;
             this.metroLabel13.Text = "Warranty \r\nTerms";
             // 
-            // IDTxt
-            // 
-            // 
-            // 
-            // 
-            this.IDTxt.CustomButton.Image = null;
-            this.IDTxt.CustomButton.Location = new System.Drawing.Point(164, 1);
-            this.IDTxt.CustomButton.Name = "";
-            this.IDTxt.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.IDTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.IDTxt.CustomButton.TabIndex = 1;
-            this.IDTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.IDTxt.CustomButton.UseSelectable = true;
-            this.IDTxt.CustomButton.Visible = false;
-            this.IDTxt.Lines = new string[0];
-            this.IDTxt.Location = new System.Drawing.Point(150, 96);
-            this.IDTxt.MaxLength = 32767;
-            this.IDTxt.Name = "IDTxt";
-            this.IDTxt.PasswordChar = '\0';
-            this.IDTxt.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.IDTxt.SelectedText = "";
-            this.IDTxt.SelectionLength = 0;
-            this.IDTxt.SelectionStart = 0;
-            this.IDTxt.ShortcutsEnabled = true;
-            this.IDTxt.Size = new System.Drawing.Size(538, 23);
-            this.IDTxt.TabIndex = 26;
-            this.IDTxt.UseSelectable = true;
-            this.IDTxt.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.IDTxt.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // nameTxt
             // 
             // 
             // 
             // 
             this.nameTxt.CustomButton.Image = null;
-            this.nameTxt.CustomButton.Location = new System.Drawing.Point(164, 1);
+            this.nameTxt.CustomButton.Location = new System.Drawing.Point(516, 1);
             this.nameTxt.CustomButton.Name = "";
             this.nameTxt.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.nameTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -183,7 +157,7 @@
             // 
             // 
             this.CatagoTxt.CustomButton.Image = null;
-            this.CatagoTxt.CustomButton.Location = new System.Drawing.Point(164, 1);
+            this.CatagoTxt.CustomButton.Location = new System.Drawing.Point(516, 1);
             this.CatagoTxt.CustomButton.Name = "";
             this.CatagoTxt.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.CatagoTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -214,9 +188,9 @@
             // 
             // 
             this.DescripTxt.CustomButton.Image = null;
-            this.DescripTxt.CustomButton.Location = new System.Drawing.Point(122, 2);
+            this.DescripTxt.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.DescripTxt.CustomButton.Name = "";
-            this.DescripTxt.CustomButton.Size = new System.Drawing.Size(61, 61);
+            this.DescripTxt.CustomButton.Size = new System.Drawing.Size(79, 79);
             this.DescripTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.DescripTxt.CustomButton.TabIndex = 1;
             this.DescripTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -245,9 +219,9 @@
             // 
             // 
             this.visitTermTxt.CustomButton.Image = null;
-            this.visitTermTxt.CustomButton.Location = new System.Drawing.Point(122, 2);
+            this.visitTermTxt.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.visitTermTxt.CustomButton.Name = "";
-            this.visitTermTxt.CustomButton.Size = new System.Drawing.Size(61, 61);
+            this.visitTermTxt.CustomButton.Size = new System.Drawing.Size(79, 79);
             this.visitTermTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.visitTermTxt.CustomButton.TabIndex = 1;
             this.visitTermTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -276,9 +250,9 @@
             // 
             // 
             this.supTermTxt.CustomButton.Image = null;
-            this.supTermTxt.CustomButton.Location = new System.Drawing.Point(122, 2);
+            this.supTermTxt.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.supTermTxt.CustomButton.Name = "";
-            this.supTermTxt.CustomButton.Size = new System.Drawing.Size(61, 61);
+            this.supTermTxt.CustomButton.Size = new System.Drawing.Size(79, 79);
             this.supTermTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.supTermTxt.CustomButton.TabIndex = 1;
             this.supTermTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -307,9 +281,9 @@
             // 
             // 
             this.warTerTxt.CustomButton.Image = null;
-            this.warTerTxt.CustomButton.Location = new System.Drawing.Point(122, 2);
+            this.warTerTxt.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.warTerTxt.CustomButton.Name = "";
-            this.warTerTxt.CustomButton.Size = new System.Drawing.Size(61, 61);
+            this.warTerTxt.CustomButton.Size = new System.Drawing.Size(79, 79);
             this.warTerTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.warTerTxt.CustomButton.TabIndex = 1;
             this.warTerTxt.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -341,6 +315,7 @@
             this.addBtn.TabIndex = 39;
             this.addBtn.Text = "ADD";
             this.addBtn.UseVisualStyleBackColor = false;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // clearBtn
             // 
@@ -352,11 +327,39 @@
             this.clearBtn.Text = "CLEAR";
             this.clearBtn.UseVisualStyleBackColor = false;
             // 
+            // notifySuccessProjectAdding
+            // 
+            this.notifySuccessProjectAdding.Icon = ((System.Drawing.Icon)(resources.GetObject("notifySuccessProjectAdding.Icon")));
+            this.notifySuccessProjectAdding.Text = "Project Successfully Added";
+            this.notifySuccessProjectAdding.Visible = true;
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 24;
+            this.metroComboBox1.Location = new System.Drawing.Point(150, 93);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(536, 30);
+            this.metroComboBox1.TabIndex = 41;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // catComboBox
+            // 
+            this.catComboBox.FormattingEnabled = true;
+            this.catComboBox.ItemHeight = 24;
+            this.catComboBox.Location = new System.Drawing.Point(150, 213);
+            this.catComboBox.Name = "catComboBox";
+            this.catComboBox.Size = new System.Drawing.Size(535, 30);
+            this.catComboBox.TabIndex = 42;
+            this.catComboBox.UseSelectable = true;
+            // 
             // UpdateProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(710, 570);
+            this.Controls.Add(this.catComboBox);
+            this.Controls.Add(this.metroComboBox1);
             this.Controls.Add(this.clearBtn);
             this.Controls.Add(this.addBtn);
             this.Controls.Add(this.warTerTxt);
@@ -365,7 +368,6 @@
             this.Controls.Add(this.DescripTxt);
             this.Controls.Add(this.CatagoTxt);
             this.Controls.Add(this.nameTxt);
-            this.Controls.Add(this.IDTxt);
             this.Controls.Add(this.metroLabel13);
             this.Controls.Add(this.metroLabel12);
             this.Controls.Add(this.metroLabel11);
@@ -391,7 +393,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroLabel metroLabel13;
-        private MetroFramework.Controls.MetroTextBox IDTxt;
         private MetroFramework.Controls.MetroTextBox nameTxt;
         private MetroFramework.Controls.MetroTextBox CatagoTxt;
         private MetroFramework.Controls.MetroTextBox DescripTxt;
@@ -400,5 +401,8 @@
         private MetroFramework.Controls.MetroTextBox warTerTxt;
         private System.Windows.Forms.Button addBtn;
         private System.Windows.Forms.Button clearBtn;
+        private System.Windows.Forms.NotifyIcon notifySuccessProjectAdding;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private MetroFramework.Controls.MetroComboBox catComboBox;
     }
 }

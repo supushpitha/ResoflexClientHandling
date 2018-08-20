@@ -53,6 +53,20 @@ namespace ResoflexClientHandlingSystem.Role
             this.OtRate = otRate;
         }
 
+        public Staff(string firstName, string lastName, string nic, string address, string[] telNumber, string email, string facebook, string linkedIn, float basicSal, float otRate)
+        {
+            this.FirstName = firstName;
+            this.LastName = lastName;
+            this.Nic = nic;
+            this.Address = address;
+            this.TelNumber = telNumber;
+            this.Email = email;
+            this.Facebook = facebook;
+            this.LinkedIn = linkedIn;
+            this.BasicSalary = basicSal;
+            this.OtRate = otRate;
+        }
+
         public int StaffId { get => staffId; set => staffId = value; }
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }

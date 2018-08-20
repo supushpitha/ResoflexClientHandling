@@ -71,6 +71,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminForms\UserAddForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\UserAddForm.designer.cs">
+      <DependentUpon>UserAddForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\UserLog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\UserLog.Designer.cs">
+      <DependentUpon>UserLog.cs</DependentUpon>
+    </Compile>
     <Compile Include="ClientForms\AddNewClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +115,7 @@
     </Compile>
     <Compile Include="Common\Internet.cs" />
     <Compile Include="Common\Validation.cs" />
+    <Compile Include="Core\Database.cs" />
     <Compile Include="EventForms\AddEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,6 +211,7 @@
     <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\Salary.cs" />
     <Compile Include="Role\Schedule.cs" />
+    <Compile Include="Role\User.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -205,7 +219,6 @@
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Core\Connection.cs" />
-    <Compile Include="Core\Database.cs" />
     <Compile Include="Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -241,7 +254,6 @@
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
-    <Compile Include="Role\User.cs" />
     <Compile Include="ScheduleForms\ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -257,21 +269,21 @@
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\Login.designer.cs">
+    <Compile Include="UserForms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForms\UserAddForm.cs">
+    <Compile Include="UserForms\ProfileForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForms\UserAddForm.designer.cs">
+    <Compile Include="UserForms\ProfileForm.Designer.cs">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserForms\UserLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UserForms\UserLog.designer.cs">
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\UserLog.resx">
       <DependentUpon>UserLog.cs</DependentUpon>
-    </Compile>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -359,11 +371,8 @@
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserAddForm.resx">
-      <DependentUpon>UserAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserForms\UserLog.resx">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <EmbeddedResource Include="UserForms\ProfileForm.resx">
+      <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="ClassDiagram1.cd" />
     <None Include="ClassDiagram2.cd" />

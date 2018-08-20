@@ -6,6 +6,22 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
+    public static class Userglobals
+    {
+        public static int uid = 0;
+        public static string uname = "";
+        public static string priv = "";
+
+    }
+
+    public static class Logglobals
+    {
+        public static DateTime login;
+        public static DateTime logout;
+        public static string ip;
+        public static string detail;
+    }
+
     class User : Staff
     {
         private int userId;
@@ -34,6 +50,14 @@ namespace ResoflexClientHandlingSystem.Role
             this.Permission = permission;
         }
 
+        public User(int userId, string uName, string pword)
+        {
+            this.UName = uName;
+            this.Pword = pword;
+            this.userId = userId;
+        }
+
+        public int UserId { get => userId; set => userId = value; }
         public string UName { get => uName; set => uName = value; }
         public string Pword { get => pword; set => pword = value; }
         public string Permission { get => permission; set => permission = value; }

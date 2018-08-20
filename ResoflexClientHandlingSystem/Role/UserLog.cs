@@ -9,25 +9,25 @@ namespace ResoflexClientHandlingSystem.Role
     class UserLog
     {
         private int logId;
-        private int userId;
+        private Staff user;
         private string loggedInDateTime;
         private string loggedOutDateTime;
         private string detail;
         private string ip;
 
-        public UserLog(int logId, int userId, string loggedInDateTime, string loggedOutDateTime, string detail, string ip)
+        public UserLog(int logId, Staff user, string loggedInDateTime, string loggedOutDateTime, string detail, string ip)
         {
             this.logId = logId;
-            this.userId = userId;
+            this.user = user;
             this.loggedInDateTime = loggedInDateTime;
             this.loggedOutDateTime = loggedOutDateTime;
             this.detail = detail;
             this.ip = ip;
         }
 
-        public UserLog(int userId, string loggedInDateTime, string loggedOutDateTime, string ip, string detail)
+        public UserLog(Staff user, string loggedInDateTime, string loggedOutDateTime, string ip, string detail)
         {
-            this.userId = userId;
+            this.user = user;
             this.loggedInDateTime = loggedInDateTime;
             this.loggedOutDateTime = loggedOutDateTime;
             this.ip = ip;
@@ -36,7 +36,7 @@ namespace ResoflexClientHandlingSystem.Role
         }
 
         public int LogId { get => logId; set => logId = value; }
-        public int UserId { get => userId; set => userId = value; }
+        public Staff User { get => user; set => user = value; }
         public string LoggedInDateTime { get => loggedInDateTime; set => loggedInDateTime = value; }
         public string LoggedOutDateTime { get => loggedOutDateTime; set => loggedOutDateTime = value; }
         public string Detail { get => detail; set => detail = value; }

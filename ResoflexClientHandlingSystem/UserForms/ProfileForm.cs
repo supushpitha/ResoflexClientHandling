@@ -82,31 +82,64 @@ namespace ResoflexClientHandlingSystem.UserForms
 
         public void onClick()
         {
-            if (txtUname.Text.ToString().Equals(Userglobals.uname.ToString()))
+            if (string.IsNullOrWhiteSpace(txtCurPass.Text))
+            {
+
+                MessageBox.Show("Enter the current password to update credentials");
+            }
+            else if (txtUname.Text.ToString().Equals(Userglobals.uname.ToString()) && (string.IsNullOrWhiteSpace(txtPass.Text)))
             {
                 MessageBox.Show("Enter a different username to update");
 
             }
-            else if (txt)
+            else if (string.IsNullOrWhiteSpace(txtPass.Text))
             {
-
-
-            }
-            else
-            {
-                MySqlDataReader reader = DBConnection.getData("select password from user where user_id = '"+Userglobals.uid+"';");
+                MySqlDataReader reader = DBConnection.getData("select password from user where user_id = '" + Userglobals.uid + "';");
                 String curPass;
 
                 if (reader.Read())
                 {
                     curPass = reader.GetValue(0).ToString();
 
-                    if (!(Eramake.eCryptography.Encrypt(txtPass.Text).ToString().Equals(curPass))){
+                    reader.Close();
+
+                    User user = new User(int.Parse(Userglobals.uid.ToString()), txtUname.Text.ToString(), curPass);
+
+                    try
+                    {
+                        Database.updateUser(user);
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Every detail must be added!", "Updating Profile", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    MessageBox.Show("Profile updated successfully", "Updating Profile", MessageBoxButtons.OK);
+
+                    this.Refresh();
+                }
+                else
+                {
+                    reader.Close();
+                }
+            }
+            else
+            {
+                MySqlDataReader reader = DBConnection.getData("select password from user where user_id = '" + Userglobals.uid + "';");
+                String curPass;
+
+                if (reader.Read())
+                {
+                    curPass = reader.GetValue(0).ToString();
+
+                    if ((Eramake.eCryptography.Encrypt(txtPass.Text).ToString().Equals(curPass)))
+                    {
 
                         reader.Close();
                         MessageBox.Show("Your new password has to be different to the previous one");
                     }
-                    else{
+                    else
+                    {
                         reader.Close();
 
                         User user = new User(int.Parse(Userglobals.uid.ToString()), txtUname.Text.ToString(), Eramake.eCryptography.Encrypt(txtCurPass.Text).ToString());
@@ -122,12 +155,12 @@ namespace ResoflexClientHandlingSystem.UserForms
 
                         MessageBox.Show("Profile updated successfully", "Updating Profile", MessageBoxButtons.OK);
 
-                        this.Refresh();        
+                        this.Refresh();
                     }
                 }
                 reader.Close();
 
-                    
+
             }
         }
 

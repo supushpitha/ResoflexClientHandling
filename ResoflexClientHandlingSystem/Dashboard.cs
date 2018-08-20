@@ -81,5 +81,12 @@ namespace ResoflexClientHandlingSystem
 
             frm.Show();
         }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            UserLog frm = new UserLog();
+
+            frm.Show();
+        }
     }
 }

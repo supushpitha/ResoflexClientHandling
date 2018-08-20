@@ -137,5 +137,32 @@ namespace ResoflexClientHandlingSystem.Core
                  MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
              }
          }*/
+
+        public static void addRecord(Attendance atten)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into attendance(employee_no, name, in_time, out_time, hours_worked)values('" + atten.EmployeeNo + "','" + atten.Name + "', '" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addJobPerformance(JobPerformance jobPerformanceObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
     }
 }

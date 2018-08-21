@@ -44,7 +44,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
-                    "(" + log.UserId + ",'" + log.LoggedInDateTime + "','" + log.LoggedOutDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+                    "(" + log.User.StaffId + ",'" + log.LoggedInDateTime + "','" + log.LoggedOutDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
             }
             catch (Exception ex)
             {

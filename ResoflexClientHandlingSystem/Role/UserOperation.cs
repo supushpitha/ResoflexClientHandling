@@ -8,18 +8,18 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class UserOperation
     {
-        private int logId;
+        private UserLog log;
         private int opId;
         private string operation;
 
-        public UserOperation(int logId, int opId, string operation)
+        public UserOperation(UserLog log, int opId, string operation)
         {
-            this.logId = logId;
+            this.log = log;
             this.opId = opId;
             this.operation = operation;
         }
 
-        public int LogId { get => logId; set => logId = value; }
+        public UserLog LogId { get => log; set => log = value; }
         public int OpId { get => opId; set => opId = value; }
         public string Operation { get => operation; set => operation = value; }
     }

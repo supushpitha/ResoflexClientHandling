@@ -44,18 +44,23 @@ namespace ResoflexClientHandlingSystem
                 
             }
 
+
         }
 
         private void addUsers_Click(object sender, EventArgs e)
         {
             UserAddForm uaf = new UserAddForm();
-            uaf.Show();
+            this.Hide();
+            uaf.ShowDialog();
+            this.Close();
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
             ProfileForm prffrm = new ProfileForm();
-            prffrm.Show();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
 
         private DataTable getLogList()
@@ -119,9 +124,19 @@ namespace ResoflexClientHandlingSystem
 
         private void metroDateTime1_ValueChanged(object sender, EventArgs e)
         {
-            DateTime dateTime = metroDateTime1.Value;
 
-            if (!dateTime.Equals(metroDateTime2.Value))
+        }
+
+        private void metroLabel1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimefrom_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime dateTime = dateTimefrom.Value;
+
+            if (dateTime.Equals(dateTimeTo.Value) || dateTime > dateTimeTo.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -139,7 +154,6 @@ namespace ResoflexClientHandlingSystem
                         System.Data.DataTable table = new System.Data.DataTable();
 
                         table.Load(reader);
-
                         LogGrid.DataSource = table;
                     }
                     else
@@ -152,6 +166,12 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Invalid data!\n" + exc.StackTrace, "User Log finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+
+        }
+
+        private void metroLabel2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

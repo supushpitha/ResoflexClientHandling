@@ -62,7 +62,7 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT user_id, u_name, permission FROM user");
+                MySqlDataReader reader = DBConnection.getData("SELECT user_id as UserID, u_name as Username, permission as Permission FROM user");
 
                 dt.Load(reader);
 

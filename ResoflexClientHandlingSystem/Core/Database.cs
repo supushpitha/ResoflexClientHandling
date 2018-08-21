@@ -164,5 +164,24 @@ namespace ResoflexClientHandlingSystem.Core
             }
 
         }
+
+        public static void addStaff(Staff staff)
+        {
+
+            try
+            {
+                DBConnection.updateDB("insert into staff(first_name, last_name, " +
+                    "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
+                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic+ "'," +
+                    "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
+                    "'" + staff.Email+ "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
+                    "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -83,11 +83,11 @@
     <Compile Include="AdminForms\UserAddForm.designer.cs">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForms\UserLog.cs">
+    <Compile Include="AdminForms\UserLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForms\UserLog.Designer.cs">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <Compile Include="AdminForms\UserLogForm.Designer.cs">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForms\EvaluateEmployeeForm.cs">
       <SubType>Form</SubType>
@@ -280,6 +280,8 @@
     <Compile Include="Role\Salary.cs" />
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
+    <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,8 +363,8 @@
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForms\UserLog.resx">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <EmbeddedResource Include="AdminForms\UserLogForm.resx">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\EvaluateEmployeeForm.resx">
       <DependentUpon>EvaluateEmployeeForm.cs</DependentUpon>

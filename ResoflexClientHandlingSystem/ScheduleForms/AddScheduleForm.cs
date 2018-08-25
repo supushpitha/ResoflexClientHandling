@@ -1,4 +1,5 @@
 ﻿using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.Common;
 using System;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
@@ -15,8 +16,10 @@ using System.Collections;
 namespace ResoflexClientHandlingSystem
 {
     public partial class AddScheduleForm : MetroFramework.Forms.MetroForm
-    { 
-        //
+    {
+        private DataTable engGrid = new DataTable();
+
+        //service engineer datasource
         public DataTable serviceEngDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
@@ -44,6 +47,7 @@ namespace ResoflexClientHandlingSystem
             return dt2;
         }
 
+        //travelling mode datasource
         public DataTable travelModeDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select id, details from travelingmode");
@@ -108,7 +112,7 @@ namespace ResoflexClientHandlingSystem
         public AddScheduleForm()
         {
             InitializeComponent();
-           
+
             projectName.DataSource = projectDataSource();
             projectName.ValueMember = "proj_id";
             projectName.DisplayMember = "proj_name";
@@ -136,11 +140,15 @@ namespace ResoflexClientHandlingSystem
             //to resolve startup bug
             projectNameChange();
 
+            engGrid.Columns.Add("staff_id", typeof(int));
+            engGrid.Columns.Add("fullname", typeof(string));
+
+            serviceEngGrid.DataSource = engGrid; 
         }
 
         private void AddScheduleForm_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         //when project name combox box is changed
@@ -199,7 +207,30 @@ namespace ResoflexClientHandlingSystem
         //adding service engineers
         private void addEng_MouseClick(object sender, MouseEventArgs e)
         {
-            serviceEngList.Text = serviceEngList.Text + serviceEngCombo.Text.ToString() + ",\n";
+            DataRow row;
+
+            row = engGrid.NewRow();
+            row["staff_id"] = serviceEngCombo.SelectedValue;
+            row["fullname"] = serviceEngCombo.Text.ToString();
+            engGrid.Rows.Add(row);
+            
+        }
+
+        //removing service engineers
+        private void removeSerEng_Click(object sender, EventArgs e)
+        {
+            for (int i = engGrid.Rows.Count - 1;  i >= 0 ; i--)
+            {
+                DataRow r = engGrid.Rows[i];
+                DataGridViewRow gr = serviceEngGrid.CurrentRow;
+
+                if (r["staff_id"].ToString().Equals(gr.Cells[0].Value.ToString()))
+                {
+                    engGrid.Rows[i].Delete();
+                    
+                    break;
+                }
+            }
         }
 
         //adding resources
@@ -208,26 +239,70 @@ namespace ResoflexClientHandlingSystem
             resoBox.Text = resoBox.Text + schReso.Text + ", ";
         }
 
+        //adding a new schedule
         private void schSave_Click(object sender, EventArgs e)
         {
             Schedule schedule = new Schedule();
 
-            schedule.ProjectOfSchedule.ProjectID = (int) projectName.SelectedValue;
+            ArrayList serviceEng = new ArrayList();
+
+            foreach (DataRow dr in engGrid.Rows)
+            {
+                serviceEng.Add(new Staff((int)dr[0]));
+            }
+
+            schedule.ScheduleId = int.Parse(schNo.Text.ToString());
+            schedule.ProjectOfSchedule= new Project(int.Parse(projectName.SelectedValue.ToString()));
             schedule.Type = new EventType(int.Parse(scheduleType.SelectedValue.ToString()));
-            schedule.To = Convert.ToDateTime(schStartDate + " " + schStartTime);
-            schedule.From = Convert.ToDateTime(schEndDate + " " + schEndTime);
+            schedule.ServEngineer = serviceEng;
+            schedule.To = Convert.ToDateTime(schStartDate.Text.ToString() + " " + schStartTime.Text.ToString());
+            schedule.From = Convert.ToDateTime(schEndDate.Text.ToString() + " " + schEndTime.Text.ToString());
             schedule.TodoList = todoList.Text.ToString();
             schedule.Resource = resoBox.Text.ToString();
             schedule.Checklist = checkList.Text.ToString();
             schedule.TravelMode = travelingMode.Text.ToString();
             schedule.AccommodationMode = accomodation.Text.ToString();
             schedule.Meals = meals.Text.ToString();
+            schedule.Logs = schLogs.Text.ToString();
 
-            Database.addSchedule(schedule);
+            //checking if the insertion is successful
+            if (Database.addSchedule(schedule))
+            {
+                //sending mails
+                if (schSendMail.Checked)
+                {
+                    foreach (var ary in schedule.ServEngineer)
+                    {
+                        Staff s = (Staff)ary;
 
-            MessageBox.Show("Schedule Successfully Added !");
+                        MySqlDataReader reader = DBConnection.getData("select email, first_name, last_name from staff where staff_id = " + s.StaffId + " ");
 
+                        reader.Read();
+
+                        string subject = "New Schedule Added";
+                        string body = "Dear " + reader.GetString("first_name") + " " + reader.GetString("last_name") + 
+                            "\n A new schedule has been added for project " + projectName.Text.ToString() + ". Please check your schedules ASAP." ;
+
+                        Internet.sendMail(reader.GetString("email"), subject, body);
+                    }
+                }
+
+                MessageBox.Show("Schedule Successfully Added !");
+                this.Close();
+            }
+            
+        }
+
+        //closing form
+        private void schCancel_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        //resetting form
+        private void schReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

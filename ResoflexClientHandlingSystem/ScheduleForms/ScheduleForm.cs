@@ -31,13 +31,29 @@ namespace ResoflexClientHandlingSystem
 
         private void ScheduleForm_Load(object sender, EventArgs e)
         {
-            scheduleGrid.Columns[1].Visible = false;            
+            scheduleGrid.Columns[1].Visible = false;
+            scheduleGrid.Columns[2].Visible = false;
         }
 
         //buttons
         private void deleteSchedule_Click(object sender, EventArgs e)
         {
+            DataGridViewRow dr = scheduleGrid.CurrentRow;
 
+            Schedule schedule = new Schedule();
+            schedule.ScheduleId = int.Parse(dr.Cells[0].Value.ToString());
+            schedule.ProjectOfSchedule = new Project(int.Parse(dr.Cells[1].Value.ToString()));
+
+            if (Database.deleteSchedule(schedule))
+            {
+                MessageBox.Show("Schedule Successfully Deleted\n", "Schedule Deleted", MessageBoxButtons.OK);
+
+                scheduleGrid.DataSource = getSchedules();
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!\n", "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void updateSchedule_Click(object sender, EventArgs e)
@@ -146,26 +162,27 @@ namespace ResoflexClientHandlingSystem
         //getting all the relavent data for selected row
         private Schedule getScheduleRow(int schNo, int proj_id)
         {
-            Schedule sch;
+            Schedule sch = new Schedule();
             ArrayList serviceEng = new ArrayList();
 
-            MySqlDataReader reader1 = DBConnection.getData("select * from schedule where sch_no =" + schNo + ";");
+            MySqlDataReader reader1 = DBConnection.getData("select * from schedule where sch_no =" + schNo + " and proj_id = " + proj_id + ";");
 
             if (reader1.Read()) {
 
-                int scheduleId = int.Parse(reader1.GetString("sch_no"));
-                Role.Project projectOfSchedule = new Role.Project(proj_id);
-                EventType type = new EventType(int.Parse(reader1.GetString("visit_type_id")));
-                DateTime from = reader1.GetDateTime("from_date_time");
-                DateTime to = reader1.GetDateTime("to_date_time");
-                string vehicle = reader1.GetString("vehicle_details");
-                float mileage = reader1.GetFloat("mileage");
-                string todoList = reader1.GetString("to_do_list");
-                string resource = reader1.GetString("resource");
-                string checklist = reader1.GetString("check_list");
-                string travelMode = reader1.GetString("travelling_mode");
-                string accommodationMode = reader1.GetString("accommodation");
-                string meals = reader1.GetString("meals");
+                sch.ScheduleId = int.Parse(reader1.GetString("sch_no"));
+                sch.ProjectOfSchedule = new Role.Project(proj_id);
+                sch.Type = new EventType(int.Parse(reader1.GetString("visit_type_id")));
+                sch.From = reader1.GetDateTime("from_date_time");
+                sch.To = reader1.GetDateTime("to_date_time");
+                sch.Vehicle = reader1.GetString("vehicle_details");
+                sch.Mileage = reader1.GetFloat("mileage");
+                sch.TodoList = reader1.GetString("to_do_list");
+                sch.Resource = reader1.GetString("resource");
+                sch.Checklist = reader1.GetString("check_list");
+                sch.TravelMode = reader1.GetString("travelling_mode");
+                sch.AccommodationMode = reader1.GetString("accommodation");
+                sch.Meals = reader1.GetString("meals");
+                sch.Logs = reader1.GetString("logs");
 
                 reader1.Close();
 
@@ -179,7 +196,7 @@ namespace ResoflexClientHandlingSystem
 
                 reader2.Close();
 
-                sch = new Schedule(scheduleId,  projectOfSchedule,  type,  serviceEng,  from,  to,  vehicle,  mileage,  todoList,  resource,  checklist,  travelMode,  accommodationMode,  meals);
+                sch.ServEngineer = serviceEng;
 
             }
             else

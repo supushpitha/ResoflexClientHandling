@@ -80,5 +80,25 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void addSchedule(Schedule schedule)
+        {
+            try
+            {
+
+                DBConnection.updateDB("INSERT INTO schedule (sch_no, proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
+                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals) " +
+                    "VALUES ("+ schedule.ProjectOfSchedule.ProjectID +", " + schedule.Type + ", '" + schedule.Vehicle + "'," +
+                    "" + schedule.Mileage + ", '" + schedule.To + "', '" + schedule.From + "', '" + schedule.TodoList + "', " +
+                    "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
+                    " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "'); ");
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Something went wrong!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

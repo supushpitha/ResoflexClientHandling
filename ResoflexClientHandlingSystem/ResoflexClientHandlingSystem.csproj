@@ -122,12 +122,6 @@
     <Compile Include="EventForms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form1.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,12 +194,6 @@
     <Compile Include="ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectUpdate.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectUpdate.Designer.cs">
-      <DependentUpon>ProjectUpdate.cs</DependentUpon>
-    </Compile>
     <Compile Include="Role\EventType.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
@@ -232,12 +220,6 @@
       <DependentUpon>EventForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
-    <Compile Include="Project.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Project.Designer.cs">
-      <DependentUpon>Project.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Role\Attendance.cs" />
     <Compile Include="Role\Client.cs" />
@@ -260,11 +242,11 @@
     <Compile Include="ScheduleForms\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UpdateProjectForm.cs">
+    <Compile Include="ScheduleForms\UpdateScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateProjectForm.Designer.cs">
-      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
+    <Compile Include="ScheduleForms\UpdateScheduleForm.Designer.cs">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
@@ -302,9 +284,6 @@
     <EmbeddedResource Include="EventForms\AddEventForm.resx">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -341,9 +320,6 @@
     <EmbeddedResource Include="ProjectManager.resx">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectUpdate.resx">
-      <DependentUpon>ProjectUpdate.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\AddScheduleForm.resx">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -365,8 +341,8 @@
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UpdateProjectForm.resx">
-      <DependentUpon>UpdateProjectForm.cs</DependentUpon>
+    <EmbeddedResource Include="ScheduleForms\UpdateScheduleForm.resx">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

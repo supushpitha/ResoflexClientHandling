@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.ScheduleForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -199,9 +200,9 @@ namespace ResoflexClientHandlingSystem
 
             Schedule s = getScheduleRow(sch_no, proj_id);
 
-            AddScheduleForm asf = new AddScheduleForm(s);
+            UpdateScheduleForm usf = new UpdateScheduleForm(s);
 
-            asf.Show();
+            usf.Show();
         }
 
         //Data for grid

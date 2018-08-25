@@ -15,70 +15,127 @@ using System.Collections;
 namespace ResoflexClientHandlingSystem
 {
     public partial class AddScheduleForm : MetroFramework.Forms.MetroForm
-    {
-        private Schedule schedule;
+    { 
+        //
+        public DataTable serviceEngDataSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
 
-        public void setDataSources()
+            DataTable dt1 = new DataTable();
+            DataTable dt2 = new DataTable(); 
+
+            dt1.Load(reader);
+
+            dt2.Columns.Add("staff_id", typeof(int));
+            dt2.Columns.Add("fullname", typeof(string));
+
+            foreach (DataRow dr in dt1.Rows)
+            {
+                DataRow row;
+
+                row = dt2.NewRow();
+                row["staff_id"] = dr["staff_id"];
+                row["fullname"] = dr["first_name"].ToString() + " " + dr["last_name"].ToString();
+                dt2.Rows.Add(row);
+            }
+
+            reader.Close();
+
+            return dt2;
+        }
+
+        public DataTable travelModeDataSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select id, details from travelingmode");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
+        public DataTable accomodationDataSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select id, details from accomodation");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
+        public DataTable projectDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select proj_id, proj_name from project");
 
             DataTable dt = new DataTable();
             dt.Load(reader);
 
-            projectName.DataSource = dt;
+            reader.Close();
 
+            return dt;
+        }
+
+        public DataTable clientDataSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select client_id, name from client");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
 
             reader.Close();
 
-
+            return dt;
         }
 
+        public DataTable scheduleTypeDataSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select visit_type_id, type from visit_type ");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
+        //Constructor
         public AddScheduleForm()
         {
             InitializeComponent();
-        }
+           
+            projectName.DataSource = projectDataSource();
+            projectName.ValueMember = "proj_id";
+            projectName.DisplayMember = "proj_name";
 
-        public AddScheduleForm(Schedule schedule)
-        {
-            InitializeComponent();
+            schClientName.DataSource = clientDataSource();
+            schClientName.ValueMember = "client_id";
+            schClientName.DisplayMember = "name";
 
-            this.schedule = schedule;
+            scheduleType.DataSource = scheduleTypeDataSource();
+            scheduleType.ValueMember = "visit_type_id";
+            scheduleType.DisplayMember = "type";
 
-            int proj_id = schedule.ProjectOfSchedule.ProjectID;
-            
-            //filling the data grids
-            prevSchedulesGrid.DataSource = getPrevSchedules(proj_id);
+            travelingMode.DataSource = travelModeDataSource();
+            travelingMode.ValueMember = "id";
+            travelingMode.DisplayMember = "details";
 
-            //getting client name; 
-            MySqlDataReader clientName = DBConnection.getData("select c.name from project p, client c " +
-                                                            "where p.proj_id =" + proj_id + " and (p.client_id = c.client_id)");
+            accomodation.DataSource = accomodationDataSource();
+            accomodation.ValueMember = "id";
+            accomodation.DisplayMember = "details";
 
-            clientName.Read();
+            serviceEngCombo.DataSource = serviceEngDataSource();
+            serviceEngCombo.ValueMember = "staff_id";
+            serviceEngCombo.DisplayMember = "fullname";
 
-            //
-            schClientName.SelectedText = clientName.GetString("name"); 
+            //to resolve startup bug
+            projectNameChange();
 
-            schNo.Text = this.schedule.ScheduleId.ToString();
-            todoList.Text = this.schedule.TodoList.ToString();
-
-            //getting all the service eng
-            ArrayList eng = this.schedule.ServEngineer;
-            String se = "";
-
-            foreach (string serEng in eng)
-            {
-                se = se + serEng + ", ";
-            }
-
-            serviceEngList.Text = se + "123";
-            resoBox.Text = this.schedule.Resource.ToString();
-            travelingMode.SelectedValue = this.schedule.TravelMode.ToString();
-            meals.Text = this.schedule.Meals.ToString();
-            checkList.Text = this.schedule.Checklist.ToString();
-            schStartDate.Value = this.schedule.To;
-            schEndDate.Value = this.schedule.From;
-
-            clientName.Close();
         }
 
         private void AddScheduleForm_Load(object sender, EventArgs e)
@@ -86,11 +143,45 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-        private void serviceEngList_Click(object sender, EventArgs e)
+        //when project name combox box is changed
+        public void onProjectNameChange(object sender, EventArgs e)
         {
+            projectNameChange();
+        }
+
+        //when client name is changed
+        public void onClientNameChnage()
+        {
+            int client_id = int.Parse(schClientName.SelectedValue.ToString());
+
 
         }
 
+        //project name change method
+        public void projectNameChange()
+        {
+            int proj_id = int.Parse(projectName.SelectedValue.ToString());
+            int client_id;
+
+            prevSchedulesGrid.DataSource = getPrevSchedules(proj_id);
+
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p " +
+                                                            "where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id) order by sch_no DESC limit 0, 1;");
+
+            if (reader.Read())
+            {
+
+                int sn = reader.GetInt16("sch_no") + 1;
+                client_id = reader.GetInt16("client_id");
+
+                schNo.Text = sn.ToString();
+                schClientName.SelectedValue = client_id;
+            }
+
+            reader.Close();
+        }
+
+        //data for prevScheGrid
         public DataTable getPrevSchedules(int proj_id)
         {
             DataTable dt = new DataTable();
@@ -103,6 +194,40 @@ namespace ResoflexClientHandlingSystem
             prevSch.Close();
 
             return dt;
+        }
+
+        //adding service engineers
+        private void addEng_MouseClick(object sender, MouseEventArgs e)
+        {
+            serviceEngList.Text = serviceEngList.Text + serviceEngCombo.Text.ToString() + ",\n";
+        }
+
+        //adding resources
+        private void addReso_MouseClick(object sender, MouseEventArgs e)
+        {
+            resoBox.Text = resoBox.Text + schReso.Text + ", ";
+        }
+
+        private void schSave_Click(object sender, EventArgs e)
+        {
+            Schedule schedule = new Schedule();
+
+            schedule.ProjectOfSchedule.ProjectID = (int) projectName.SelectedValue;
+            schedule.Type = new EventType(int.Parse(scheduleType.SelectedValue.ToString()));
+            schedule.To = Convert.ToDateTime(schStartDate + " " + schStartTime);
+            schedule.From = Convert.ToDateTime(schEndDate + " " + schEndTime);
+            schedule.TodoList = todoList.Text.ToString();
+            schedule.Resource = resoBox.Text.ToString();
+            schedule.Checklist = checkList.Text.ToString();
+            schedule.TravelMode = travelingMode.Text.ToString();
+            schedule.AccommodationMode = accomodation.Text.ToString();
+            schedule.Meals = meals.Text.ToString();
+
+            Database.addSchedule(schedule);
+
+            MessageBox.Show("Schedule Successfully Added !");
+
+            this.Close();
         }
     }
 }

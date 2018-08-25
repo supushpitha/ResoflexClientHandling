@@ -1,6 +1,6 @@
-﻿namespace ResoflexClientHandlingSystem
+﻿namespace ResoflexClientHandlingSystem.ScheduleForms
 {
-    partial class AddScheduleForm
+    partial class UpdateScheduleForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,14 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.schEndTime = new System.Windows.Forms.DateTimePicker();
-            this.schStartTime = new System.Windows.Forms.DateTimePicker();
-            this.schEndDate = new System.Windows.Forms.DateTimePicker();
-            this.schStartDate = new System.Windows.Forms.DateTimePicker();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.scheduleType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
             this.accomodation = new MetroFramework.Controls.MetroComboBox();
@@ -43,12 +39,15 @@
             this.prevSchedulesGrid = new MetroFramework.Controls.MetroGrid();
             this.metroLabel16 = new MetroFramework.Controls.MetroLabel();
             this.schLogs = new MetroFramework.Controls.MetroTextBox();
+            this.schEndDate = new MetroFramework.Controls.MetroDateTime();
+            this.schStartDate = new MetroFramework.Controls.MetroDateTime();
             this.schClientName = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.schCancel = new MetroFramework.Controls.MetroButton();
+            this.schEdit = new MetroFramework.Controls.MetroButton();
             this.schReset = new MetroFramework.Controls.MetroButton();
             this.schSave = new MetroFramework.Controls.MetroButton();
             this.checkList = new MetroFramework.Controls.MetroTextBox();
@@ -58,6 +57,7 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.addReso = new MetroFramework.Controls.MetroButton();
             this.schReso = new MetroFramework.Controls.MetroTextBox();
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.addEng = new MetroFramework.Controls.MetroButton();
             this.serviceEngCombo = new MetroFramework.Controls.MetroComboBox();
             this.serviceEngList = new MetroFramework.Controls.MetroTextBox();
@@ -75,105 +75,22 @@
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).BeginInit();
+            this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // metroPanel1
+            // htmlLabel1
             // 
-            this.metroPanel1.AutoScroll = true;
-            this.metroPanel1.Controls.Add(this.schEndTime);
-            this.metroPanel1.Controls.Add(this.schStartTime);
-            this.metroPanel1.Controls.Add(this.schEndDate);
-            this.metroPanel1.Controls.Add(this.schStartDate);
-            this.metroPanel1.Controls.Add(this.scheduleType);
-            this.metroPanel1.Controls.Add(this.metroLabel17);
-            this.metroPanel1.Controls.Add(this.accomodation);
-            this.metroPanel1.Controls.Add(this.travelingMode);
-            this.metroPanel1.Controls.Add(this.prevSchedulesGrid);
-            this.metroPanel1.Controls.Add(this.metroLabel16);
-            this.metroPanel1.Controls.Add(this.schLogs);
-            this.metroPanel1.Controls.Add(this.schClientName);
-            this.metroPanel1.Controls.Add(this.metroLabel15);
-            this.metroPanel1.Controls.Add(this.metroLabel14);
-            this.metroPanel1.Controls.Add(this.metroLabel13);
-            this.metroPanel1.Controls.Add(this.metroLabel12);
-            this.metroPanel1.Controls.Add(this.schCancel);
-            this.metroPanel1.Controls.Add(this.schReset);
-            this.metroPanel1.Controls.Add(this.schSave);
-            this.metroPanel1.Controls.Add(this.checkList);
-            this.metroPanel1.Controls.Add(this.meals);
-            this.metroPanel1.Controls.Add(this.resoBox);
-            this.metroPanel1.Controls.Add(this.metroCheckBox1);
-            this.metroPanel1.Controls.Add(this.metroLabel8);
-            this.metroPanel1.Controls.Add(this.addReso);
-            this.metroPanel1.Controls.Add(this.schReso);
-            this.metroPanel1.Controls.Add(this.addEng);
-            this.metroPanel1.Controls.Add(this.serviceEngCombo);
-            this.metroPanel1.Controls.Add(this.serviceEngList);
-            this.metroPanel1.Controls.Add(this.todoList);
-            this.metroPanel1.Controls.Add(this.schDateTime);
-            this.metroPanel1.Controls.Add(this.schNo);
-            this.metroPanel1.Controls.Add(this.projectName);
-            this.metroPanel1.Controls.Add(this.metroLabel11);
-            this.metroPanel1.Controls.Add(this.metroLabel10);
-            this.metroPanel1.Controls.Add(this.metroLabel9);
-            this.metroPanel1.Controls.Add(this.metroLabel7);
-            this.metroPanel1.Controls.Add(this.metroLabel6);
-            this.metroPanel1.Controls.Add(this.metroLabel5);
-            this.metroPanel1.Controls.Add(this.metroLabel4);
-            this.metroPanel1.Controls.Add(this.metroLabel3);
-            this.metroPanel1.Controls.Add(this.metroLabel2);
-            this.metroPanel1.Controls.Add(this.metroLabel1);
-            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel1.HorizontalScrollbar = true;
-            this.metroPanel1.HorizontalScrollbarBarColor = true;
-            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 10;
-            this.metroPanel1.Location = new System.Drawing.Point(20, 60);
-            this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(727, 520);
-            this.metroPanel1.TabIndex = 0;
-            this.metroPanel1.VerticalScrollbar = true;
-            this.metroPanel1.VerticalScrollbarBarColor = true;
-            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // schEndTime
-            // 
-            this.schEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.schEndTime.Location = new System.Drawing.Point(604, 98);
-            this.schEndTime.Name = "schEndTime";
-            this.schEndTime.ShowUpDown = true;
-            this.schEndTime.Size = new System.Drawing.Size(95, 20);
-            this.schEndTime.TabIndex = 50;
-            // 
-            // schStartTime
-            // 
-            this.schStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.schStartTime.Location = new System.Drawing.Point(604, 58);
-            this.schStartTime.Name = "schStartTime";
-            this.schStartTime.ShowUpDown = true;
-            this.schStartTime.Size = new System.Drawing.Size(95, 20);
-            this.schStartTime.TabIndex = 49;
-            // 
-            // schEndDate
-            // 
-            this.schEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.schEndDate.Location = new System.Drawing.Point(499, 99);
-            this.schEndDate.Name = "schEndDate";
-            this.schEndDate.Size = new System.Drawing.Size(99, 20);
-            this.schEndDate.TabIndex = 48;
-            // 
-            // schStartDate
-            // 
-            this.schStartDate.CustomFormat = "";
-            this.schStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.schStartDate.Location = new System.Drawing.Point(499, 58);
-            this.schStartDate.Name = "schStartDate";
-            this.schStartDate.Size = new System.Drawing.Size(99, 20);
-            this.schStartDate.TabIndex = 47;
+            this.htmlLabel1.AutoScroll = true;
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(139, 32);
+            this.htmlLabel1.AutoSize = false;
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.htmlLabel1.Location = new System.Drawing.Point(319, 20);
+            this.htmlLabel1.Name = "htmlLabel1";
+            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
+            this.htmlLabel1.TabIndex = 4;
+            this.htmlLabel1.Text = "Schedule Form";
             // 
             // scheduleType
             // 
@@ -221,37 +138,37 @@
             this.prevSchedulesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.prevSchedulesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.prevSchedulesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prevSchedulesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prevSchedulesGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.prevSchedulesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.prevSchedulesGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.prevSchedulesGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.prevSchedulesGrid.EnableHeadersVisualStyles = false;
             this.prevSchedulesGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.prevSchedulesGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.prevSchedulesGrid.Location = new System.Drawing.Point(366, 277);
             this.prevSchedulesGrid.Name = "prevSchedulesGrid";
             this.prevSchedulesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.prevSchedulesGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.prevSchedulesGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.prevSchedulesGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.prevSchedulesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.prevSchedulesGrid.Size = new System.Drawing.Size(333, 439);
@@ -296,6 +213,22 @@
             this.schLogs.UseSelectable = true;
             this.schLogs.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.schLogs.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // schEndDate
+            // 
+            this.schEndDate.Location = new System.Drawing.Point(499, 94);
+            this.schEndDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.schEndDate.Name = "schEndDate";
+            this.schEndDate.Size = new System.Drawing.Size(200, 29);
+            this.schEndDate.TabIndex = 39;
+            // 
+            // schStartDate
+            // 
+            this.schStartDate.Location = new System.Drawing.Point(499, 53);
+            this.schStartDate.MinimumSize = new System.Drawing.Size(0, 29);
+            this.schStartDate.Name = "schStartDate";
+            this.schStartDate.Size = new System.Drawing.Size(200, 29);
+            this.schStartDate.TabIndex = 38;
             // 
             // schClientName
             // 
@@ -345,31 +278,39 @@
             // 
             // schCancel
             // 
-            this.schCancel.Location = new System.Drawing.Point(584, 742);
+            this.schCancel.Location = new System.Drawing.Point(624, 742);
             this.schCancel.Name = "schCancel";
-            this.schCancel.Size = new System.Drawing.Size(115, 23);
+            this.schCancel.Size = new System.Drawing.Size(75, 23);
             this.schCancel.TabIndex = 32;
             this.schCancel.Text = "Cancel";
             this.schCancel.UseSelectable = true;
             // 
+            // schEdit
+            // 
+            this.schEdit.Location = new System.Drawing.Point(134, 742);
+            this.schEdit.Name = "schEdit";
+            this.schEdit.Size = new System.Drawing.Size(75, 23);
+            this.schEdit.TabIndex = 31;
+            this.schEdit.Text = "Edit";
+            this.schEdit.UseSelectable = true;
+            // 
             // schReset
             // 
-            this.schReset.Location = new System.Drawing.Point(230, 742);
+            this.schReset.Location = new System.Drawing.Point(247, 742);
             this.schReset.Name = "schReset";
-            this.schReset.Size = new System.Drawing.Size(115, 23);
+            this.schReset.Size = new System.Drawing.Size(75, 23);
             this.schReset.TabIndex = 30;
             this.schReset.Text = "Clear";
             this.schReset.UseSelectable = true;
             // 
             // schSave
             // 
-            this.schSave.Location = new System.Drawing.Point(5, 742);
+            this.schSave.Location = new System.Drawing.Point(22, 742);
             this.schSave.Name = "schSave";
-            this.schSave.Size = new System.Drawing.Size(115, 23);
+            this.schSave.Size = new System.Drawing.Size(75, 23);
             this.schSave.TabIndex = 29;
             this.schSave.Text = "Save";
             this.schSave.UseSelectable = true;
-            this.schSave.Click += new System.EventHandler(this.schSave_Click);
             // 
             // checkList
             // 
@@ -490,7 +431,6 @@
             this.addReso.TabIndex = 21;
             this.addReso.Text = "Add";
             this.addReso.UseSelectable = true;
-            this.addReso.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addReso_MouseClick);
             // 
             // schReso
             // 
@@ -522,6 +462,65 @@
             this.schReso.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.schReso.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroPanel1
+            // 
+            this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.scheduleType);
+            this.metroPanel1.Controls.Add(this.metroLabel17);
+            this.metroPanel1.Controls.Add(this.accomodation);
+            this.metroPanel1.Controls.Add(this.travelingMode);
+            this.metroPanel1.Controls.Add(this.prevSchedulesGrid);
+            this.metroPanel1.Controls.Add(this.metroLabel16);
+            this.metroPanel1.Controls.Add(this.schLogs);
+            this.metroPanel1.Controls.Add(this.schEndDate);
+            this.metroPanel1.Controls.Add(this.schStartDate);
+            this.metroPanel1.Controls.Add(this.schClientName);
+            this.metroPanel1.Controls.Add(this.metroLabel15);
+            this.metroPanel1.Controls.Add(this.metroLabel14);
+            this.metroPanel1.Controls.Add(this.metroLabel13);
+            this.metroPanel1.Controls.Add(this.metroLabel12);
+            this.metroPanel1.Controls.Add(this.schCancel);
+            this.metroPanel1.Controls.Add(this.schEdit);
+            this.metroPanel1.Controls.Add(this.schReset);
+            this.metroPanel1.Controls.Add(this.schSave);
+            this.metroPanel1.Controls.Add(this.checkList);
+            this.metroPanel1.Controls.Add(this.meals);
+            this.metroPanel1.Controls.Add(this.resoBox);
+            this.metroPanel1.Controls.Add(this.metroCheckBox1);
+            this.metroPanel1.Controls.Add(this.metroLabel8);
+            this.metroPanel1.Controls.Add(this.addReso);
+            this.metroPanel1.Controls.Add(this.schReso);
+            this.metroPanel1.Controls.Add(this.addEng);
+            this.metroPanel1.Controls.Add(this.serviceEngCombo);
+            this.metroPanel1.Controls.Add(this.serviceEngList);
+            this.metroPanel1.Controls.Add(this.todoList);
+            this.metroPanel1.Controls.Add(this.schDateTime);
+            this.metroPanel1.Controls.Add(this.schNo);
+            this.metroPanel1.Controls.Add(this.projectName);
+            this.metroPanel1.Controls.Add(this.metroLabel11);
+            this.metroPanel1.Controls.Add(this.metroLabel10);
+            this.metroPanel1.Controls.Add(this.metroLabel9);
+            this.metroPanel1.Controls.Add(this.metroLabel7);
+            this.metroPanel1.Controls.Add(this.metroLabel6);
+            this.metroPanel1.Controls.Add(this.metroLabel5);
+            this.metroPanel1.Controls.Add(this.metroLabel4);
+            this.metroPanel1.Controls.Add(this.metroLabel3);
+            this.metroPanel1.Controls.Add(this.metroLabel2);
+            this.metroPanel1.Controls.Add(this.metroLabel1);
+            this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel1.HorizontalScrollbar = true;
+            this.metroPanel1.HorizontalScrollbarBarColor = true;
+            this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(20, 60);
+            this.metroPanel1.Name = "metroPanel1";
+            this.metroPanel1.Size = new System.Drawing.Size(727, 520);
+            this.metroPanel1.TabIndex = 3;
+            this.metroPanel1.VerticalScrollbar = true;
+            this.metroPanel1.VerticalScrollbarBarColor = true;
+            this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
             // addEng
             // 
             this.addEng.Location = new System.Drawing.Point(299, 250);
@@ -530,7 +529,6 @@
             this.addEng.TabIndex = 19;
             this.addEng.Text = "Add";
             this.addEng.UseSelectable = true;
-            this.addEng.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addEng_MouseClick);
             // 
             // serviceEngCombo
             // 
@@ -606,8 +604,6 @@
             // 
             // schDateTime
             // 
-            this.schDateTime.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            this.schDateTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.schDateTime.Location = new System.Drawing.Point(139, 115);
             this.schDateTime.MinimumSize = new System.Drawing.Size(0, 29);
             this.schDateTime.Name = "schDateTime";
@@ -654,8 +650,6 @@
             this.projectName.Size = new System.Drawing.Size(200, 29);
             this.projectName.TabIndex = 13;
             this.projectName.UseSelectable = true;
-            this.projectName.SelectionChangeCommitted += new System.EventHandler(this.onProjectNameChange);
-            this.projectName.ValueMemberChanged += new System.EventHandler(this.onProjectNameChange);
             // 
             // metroLabel11
             // 
@@ -747,44 +741,60 @@
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Project Name";
             // 
-            // htmlLabel1
-            // 
-            this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(139, 32);
-            this.htmlLabel1.AutoSize = false;
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlLabel1.Location = new System.Drawing.Point(319, 20);
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
-            this.htmlLabel1.TabIndex = 2;
-            this.htmlLabel1.Text = "Schedule Form";
-            // 
-            // AddScheduleForm
+            // UpdateScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(767, 600);
             this.Controls.Add(this.htmlLabel1);
             this.Controls.Add(this.metroPanel1);
-            this.Name = "AddScheduleForm";
-            this.Style = MetroFramework.MetroColorStyle.Green;
-            this.Load += new System.EventHandler(this.AddScheduleForm_Load);
+            this.Name = "UpdateScheduleForm";
+            ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
+        private MetroFramework.Controls.MetroComboBox scheduleType;
+        private MetroFramework.Controls.MetroLabel metroLabel17;
+        private MetroFramework.Controls.MetroComboBox accomodation;
+        private MetroFramework.Controls.MetroComboBox travelingMode;
+        private MetroFramework.Controls.MetroGrid prevSchedulesGrid;
+        private MetroFramework.Controls.MetroLabel metroLabel16;
+        private MetroFramework.Controls.MetroTextBox schLogs;
+        private MetroFramework.Controls.MetroDateTime schEndDate;
+        private MetroFramework.Controls.MetroDateTime schStartDate;
+        private MetroFramework.Controls.MetroComboBox schClientName;
+        private MetroFramework.Controls.MetroLabel metroLabel15;
+        private MetroFramework.Controls.MetroLabel metroLabel14;
+        private MetroFramework.Controls.MetroLabel metroLabel13;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroButton schCancel;
+        private MetroFramework.Controls.MetroButton schEdit;
+        private MetroFramework.Controls.MetroButton schReset;
+        private MetroFramework.Controls.MetroButton schSave;
+        private MetroFramework.Controls.MetroTextBox checkList;
+        private MetroFramework.Controls.MetroTextBox meals;
+        private MetroFramework.Controls.MetroTextBox resoBox;
+        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
+        private MetroFramework.Controls.MetroLabel metroLabel8;
+        private MetroFramework.Controls.MetroButton addReso;
+        private MetroFramework.Controls.MetroTextBox schReso;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroButton addEng;
+        private MetroFramework.Controls.MetroComboBox serviceEngCombo;
+        private MetroFramework.Controls.MetroTextBox serviceEngList;
+        private MetroFramework.Controls.MetroTextBox todoList;
+        private MetroFramework.Controls.MetroDateTime schDateTime;
+        private MetroFramework.Controls.MetroTextBox schNo;
+        private MetroFramework.Controls.MetroComboBox projectName;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel9;
-        private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -792,37 +802,5 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroTextBox schNo;
-        private MetroFramework.Controls.MetroComboBox projectName;
-        private MetroFramework.Controls.MetroTextBox todoList;
-        private MetroFramework.Controls.MetroDateTime schDateTime;
-        private MetroFramework.Controls.MetroTextBox serviceEngList;
-        private MetroFramework.Controls.MetroTextBox meals;
-        private MetroFramework.Controls.MetroTextBox resoBox;
-        private MetroFramework.Controls.MetroCheckBox metroCheckBox1;
-        private MetroFramework.Controls.MetroButton addReso;
-        private MetroFramework.Controls.MetroTextBox schReso;
-        private MetroFramework.Controls.MetroButton addEng;
-        private MetroFramework.Controls.MetroComboBox serviceEngCombo;
-        private MetroFramework.Controls.MetroGrid prevSchedulesGrid;
-        private MetroFramework.Controls.MetroLabel metroLabel16;
-        private MetroFramework.Controls.MetroTextBox schLogs;
-        private MetroFramework.Controls.MetroComboBox schClientName;
-        private MetroFramework.Controls.MetroLabel metroLabel15;
-        private MetroFramework.Controls.MetroLabel metroLabel14;
-        private MetroFramework.Controls.MetroLabel metroLabel13;
-        private MetroFramework.Controls.MetroLabel metroLabel12;
-        private MetroFramework.Controls.MetroButton schCancel;
-        private MetroFramework.Controls.MetroButton schReset;
-        private MetroFramework.Controls.MetroButton schSave;
-        private MetroFramework.Controls.MetroTextBox checkList;
-        private MetroFramework.Controls.MetroComboBox accomodation;
-        private MetroFramework.Controls.MetroComboBox travelingMode;
-        private MetroFramework.Controls.MetroComboBox scheduleType;
-        private MetroFramework.Controls.MetroLabel metroLabel17;
-        private System.Windows.Forms.DateTimePicker schEndDate;
-        private System.Windows.Forms.DateTimePicker schStartDate;
-        private System.Windows.Forms.DateTimePicker schEndTime;
-        private System.Windows.Forms.DateTimePicker schStartTime;
     }
 }

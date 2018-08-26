@@ -112,7 +112,7 @@ namespace ResoflexClientHandlingSystem
             reader.Close();
 
             Project1 frm = new Project1(clientName);
-
+            
             frm.Show();
         }
 

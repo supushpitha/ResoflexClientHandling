@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace ResoflexClientHandlingSystem.Core
 {
@@ -81,6 +82,58 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        //Adding a new schedule
+        public static Boolean addSchedule(Schedule schedule)
+        {
+            try
+            {
+                //for now
+                schedule.Vehicle = " ";
+                schedule.Mileage = 0;
+
+                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
+                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
+                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.Vehicle + "'," +
+                    "" + schedule.Mileage + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
+                    "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
+                    " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
+
+                foreach (var ary in schedule.ServEngineer)
+                {
+                    Staff s = (Staff) ary;
+
+                    DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType() , "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean deleteSchedule(Schedule schedule)
+        {
+          
+            try
+            {
+                DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+      
         public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
         {
             Client client = project.ClientOfProject;
@@ -155,14 +208,12 @@ namespace ResoflexClientHandlingSystem.Core
 
             try
             {
-
                 DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
             }
             catch (Exception)
             {
-                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!", "Add job performance", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
 
         public static void addStaff(Staff staff)

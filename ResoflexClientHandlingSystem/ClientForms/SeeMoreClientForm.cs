@@ -28,18 +28,40 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
             projectOfClientGrid.DataSource = getProjectsOfClient();
             requestOfClientGrid.DataSource = getRequestsOfClient();
+            //visitToClientGrid.DataSource = getVisitsOfClient();
+            //visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
 
             projectOfClientGrid.Columns[0].Visible = false;
-
+            /*
             foreach (DataGridViewRow row in requestOfClientGrid.Rows)
             {
                 if (Convert.ToBoolean(row.Cells[2]))
                 {
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
-            }
+            }*/
+        }
 
-            //Trying to disable selectability of grids
+        private DataTable getVisitedTechniciansOfClient()
+        {
+            DataTable table = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("");
+
+            table.Load(reader);
+
+            return table;
+        }
+
+        private DataTable getVisitsOfClient()
+        {
+            DataTable table = new DataTable();
+
+            MySqlDataReader reader = DBConnection.getData("");
+
+            table.Load(reader);
+
+            return table;
         }
 
         private DataTable getRequestsOfClient()

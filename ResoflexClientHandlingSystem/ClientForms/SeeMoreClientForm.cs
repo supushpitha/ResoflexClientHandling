@@ -30,6 +30,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
             requestOfClientGrid.DataSource = getRequestsOfClient();
             visitToClientGrid.DataSource = getVisitsOfClient();
             visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
+            fillTiles();
 
             projectOfClientGrid.Columns[0].Visible = false;
             /*
@@ -40,6 +41,56 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
             }*/
+        }
+
+        private void fillTiles()
+        {
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("SELECT IFNULL(SUM(HOUR(TIMEDIFF(e.to_date_time, e.from_date_time))), 0) as Diff " +
+                    "FROM client c LEFT JOIN project p ON c.client_id=p.client_id LEFT JOIN event e ON p.proj_id=e.proj_id WHERE c.name='" + searchClientTxtBox.Text + "'");
+
+                while (reader.Read())
+                {
+                    totalTimeTile.Text = reader.GetInt32("diff").ToString();
+                }
+
+                reader.Close();
+
+                reader = DBConnection.getData("select IFNULL(SUM(e.amount), 0) as sum FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                              "INNER JOIN exp_detail_event e ON e.proj_id=p.proj_id WHERE c.name='" + searchClientTxtBox.Text + "'");
+
+                while (reader.Read())
+                {
+                    totalExpTile.Text = "Rs." + reader.GetDouble("sum");
+                }
+
+                reader.Close();
+
+                reader = DBConnection.getData("select c.name as name, SUM(e.amount) as sum_amount " +
+                                              "FROM client c INNER JOIN project p ON c.client_id = p.client_id INNER JOIN exp_detail_event e ON e.proj_id = p.proj_id GROUP BY c.name " +
+                                              "ORDER BY sum_amount DESC");
+
+                rankTile.Text = "0";
+                int rank = 0;
+
+                while (reader.Read())
+                {
+                    rank++;
+
+                    if (reader.GetString("name").ToLower().Equals(searchClientTxtBox.Text.ToLower()))
+                    {
+                        rankTile.Text = "" + rank;
+                        break;
+                    }
+                }
+
+                reader.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Client Details", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private DataTable getVisitedTechniciansOfClient()
@@ -164,6 +215,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
             requestOfClientGrid.DataSource = getRequestsOfClient();
             visitToClientGrid.DataSource = getVisitsOfClient();
             visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
+            fillTiles();
 
             foreach (DataGridViewRow row in requestOfClientGrid.Rows)
             {

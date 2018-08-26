@@ -56,5 +56,15 @@ namespace ResoflexClientHandlingSystem.Common
                 return false;
             }
         }
+
+        public static bool isNumber(string text)
+        {
+            return (Regex.IsMatch(text, "^[0-9 ]+$"));
+        }
+
+        public static bool isFuture(DateTime date)
+        {
+            return (date > DateTime.Now);
+        }
     }
 }

@@ -33,13 +33,12 @@ namespace ResoflexClientHandlingSystem.UserForms
         private void metroButton1_Click(object sender, EventArgs e)
         {
             Logglobals.logout = DateTime.Now;
-            Staff staff = new Staff(Userglobals.uid);
 
-            Role.UserLog log = new Role.UserLog(staff, Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.ip, Logglobals.detail);
+            Role.UserLog log = new Role.UserLog(Logglobals.id, Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.detail);
 
             try
             {
-                Database.addLog(log);
+                Database.updateLog(log);
 
                 Userglobals.uid = 0;
                 Userglobals.uname = "";
@@ -49,6 +48,7 @@ namespace ResoflexClientHandlingSystem.UserForms
                 Logglobals.ip = "";
                 Logglobals.login.ToLocalTime();
                 Logglobals.logout.ToLocalTime();
+                Logglobals.id = 0;
 
                 this.Close();
 

@@ -1,6 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +25,7 @@ namespace ResoflexClientHandlingSystem
         private void Form1_Load(object sender, EventArgs e)
         {
             clientGrid.DataSource = getClients();
+            findNonProfitClients();
 
             clientGrid.Columns[0].Visible = false;
             clientGrid.Columns[6].DefaultCellStyle.ForeColor = Color.SteelBlue;
@@ -30,6 +33,64 @@ namespace ResoflexClientHandlingSystem
             noOfVisitsTile.BackColor = Color.LightGreen;
             totalExpTile.BackColor = Color.LightSalmon;
             gridViewUsageLbl.ForeColor = Color.Red;
+
+            if (Userglobals.uname == "")
+            {
+                profileBtn.Visible = false;
+            }
+            else
+            {
+                if (Userglobals.priv != "ADM")
+                {
+                    addNewClientBtn.Visible = false;
+                    updateClientBtn.Visible = false;
+                }
+
+                profileBtn.Visible = true;
+                profileBtn.Text = Userglobals.uname;
+            }
+        }
+
+        private void findNonProfitClients()
+        {
+            foreach (DataGridViewRow row in clientGrid.Rows)
+            {
+                int clientId = Int32.Parse(row.Cells[0].Value.ToString());
+                double expAmount = 0.0;
+                double inAmount = 0.0;
+
+                MySqlDataReader readerExp = DBConnection.getData("select IFNULL(SUM(e.amount), 0) as sum FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                                              "INNER JOIN exp_detail_event e ON e.proj_id=p.proj_id WHERE c.client_id=" + clientId);
+
+                if (readerExp.HasRows)
+                {
+                    while (readerExp.Read())
+                    {
+                        expAmount = readerExp.GetDouble("sum");
+                    }
+                }
+
+                readerExp.Close();
+
+                MySqlDataReader readerIn = DBConnection.getData("SELECT IFNULL(SUM(e.amount), 0) as sumIn FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                                                "INNER JOIN project_exp_in_amount e ON e.project_id=p.proj_id WHERE c.client_id=" + clientId);
+
+                if (readerIn.HasRows)
+                {
+                    while (readerIn.Read())
+                    {
+                        inAmount = readerIn.GetDouble("sumIn");
+                    }
+                }
+
+                readerIn.Close();
+
+                if (expAmount > inAmount)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+            }
         }
 
         private void fillTiles(int clientId)
@@ -53,22 +114,21 @@ namespace ResoflexClientHandlingSystem
                 }
 
                 reader.Close();
-                /*
-                reader = DBConnection.getData("select IFNULL(SUM(proj_id), 0) as count from project where client_id=" + clientId);
+                
+                reader = DBConnection.getData("select IFNULL(SUM(e.amount), 0) as sum FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                              "INNER JOIN exp_detail_event e ON e.proj_id=p.proj_id where c.client_id=" + clientId);
 
                 while (reader.Read())
                 {
-                    totalExpTile.Text = reader.GetInt32("count").ToString();
+                    totalExpTile.Text = "Rs." + reader.GetDouble("sum");
                 }
 
-                reader.Close();*/
+                reader.Close();
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!", "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\n" + exc, "Client Retreive", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-            totalExpTile.Text = "Rs." + 130000.00;
         }
 
         private DataTable getClients()
@@ -242,6 +302,14 @@ namespace ResoflexClientHandlingSystem
             SeeMoreClientForm frm = new SeeMoreClientForm();
 
             frm.Show();
+        }
+
+        private void profileBtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
     }
 }

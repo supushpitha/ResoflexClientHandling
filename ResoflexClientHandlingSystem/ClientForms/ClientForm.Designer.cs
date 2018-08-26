@@ -44,6 +44,7 @@ namespace ResoflexClientHandlingSystem
             this.gridViewUsageLbl = new MetroFramework.Controls.MetroLabel();
             this.updateClientBtn = new MetroFramework.Controls.MetroButton();
             this.ShowMoreBtn = new MetroFramework.Controls.MetroButton();
+            this.profileBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.clientGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,7 +63,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -71,7 +72,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -81,7 +82,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.clientGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.clientGrid.Location = new System.Drawing.Point(17, 228);
-            this.clientGrid.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.clientGrid.Margin = new System.Windows.Forms.Padding(2);
             this.clientGrid.Name = "clientGrid";
             this.clientGrid.ReadOnly = true;
             this.clientGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -107,7 +108,7 @@ namespace ResoflexClientHandlingSystem
             // 
             this.addNewClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.addNewClientBtn.Location = new System.Drawing.Point(688, 190);
-            this.addNewClientBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addNewClientBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addNewClientBtn.Name = "addNewClientBtn";
             this.addNewClientBtn.Size = new System.Drawing.Size(95, 24);
             this.addNewClientBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -123,10 +124,10 @@ namespace ResoflexClientHandlingSystem
             // 
             // 
             this.searchClientTxtBox.CustomButton.Image = null;
-            this.searchClientTxtBox.CustomButton.Location = new System.Drawing.Point(106, 1);
-            this.searchClientTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchClientTxtBox.CustomButton.Location = new System.Drawing.Point(141, 1);
+            this.searchClientTxtBox.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.searchClientTxtBox.CustomButton.Name = "";
-            this.searchClientTxtBox.CustomButton.Size = new System.Drawing.Size(13, 14);
+            this.searchClientTxtBox.CustomButton.Size = new System.Drawing.Size(17, 17);
             this.searchClientTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.searchClientTxtBox.CustomButton.TabIndex = 1;
             this.searchClientTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
@@ -134,7 +135,7 @@ namespace ResoflexClientHandlingSystem
             this.searchClientTxtBox.CustomButton.Visible = false;
             this.searchClientTxtBox.Lines = new string[0];
             this.searchClientTxtBox.Location = new System.Drawing.Point(17, 195);
-            this.searchClientTxtBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.searchClientTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.searchClientTxtBox.MaxLength = 32767;
             this.searchClientTxtBox.Name = "searchClientTxtBox";
             this.searchClientTxtBox.PasswordChar = '\0';
@@ -155,7 +156,7 @@ namespace ResoflexClientHandlingSystem
             // showAllClientBtn
             // 
             this.showAllClientBtn.Location = new System.Drawing.Point(191, 195);
-            this.showAllClientBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.showAllClientBtn.Margin = new System.Windows.Forms.Padding(2);
             this.showAllClientBtn.Name = "showAllClientBtn";
             this.showAllClientBtn.Size = new System.Drawing.Size(75, 19);
             this.showAllClientBtn.TabIndex = 3;
@@ -167,7 +168,7 @@ namespace ResoflexClientHandlingSystem
             // 
             this.noOfProjTile.ActiveControl = null;
             this.noOfProjTile.Location = new System.Drawing.Point(17, 80);
-            this.noOfProjTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.noOfProjTile.Margin = new System.Windows.Forms.Padding(2);
             this.noOfProjTile.Name = "noOfProjTile";
             this.noOfProjTile.Size = new System.Drawing.Size(110, 59);
             this.noOfProjTile.TabIndex = 4;
@@ -181,7 +182,7 @@ namespace ResoflexClientHandlingSystem
             // 
             this.noOfVisitsTile.ActiveControl = null;
             this.noOfVisitsTile.Location = new System.Drawing.Point(181, 80);
-            this.noOfVisitsTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.noOfVisitsTile.Margin = new System.Windows.Forms.Padding(2);
             this.noOfVisitsTile.Name = "noOfVisitsTile";
             this.noOfVisitsTile.Size = new System.Drawing.Size(86, 59);
             this.noOfVisitsTile.TabIndex = 5;
@@ -195,7 +196,7 @@ namespace ResoflexClientHandlingSystem
             // 
             this.totalExpTile.ActiveControl = null;
             this.totalExpTile.Location = new System.Drawing.Point(343, 80);
-            this.totalExpTile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.totalExpTile.Margin = new System.Windows.Forms.Padding(2);
             this.totalExpTile.Name = "totalExpTile";
             this.totalExpTile.Size = new System.Drawing.Size(140, 59);
             this.totalExpTile.TabIndex = 6;
@@ -257,7 +258,7 @@ namespace ResoflexClientHandlingSystem
             // 
             this.updateClientBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.updateClientBtn.Location = new System.Drawing.Point(588, 190);
-            this.updateClientBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.updateClientBtn.Margin = new System.Windows.Forms.Padding(2);
             this.updateClientBtn.Name = "updateClientBtn";
             this.updateClientBtn.Size = new System.Drawing.Size(95, 24);
             this.updateClientBtn.Style = MetroFramework.MetroColorStyle.Blue;
@@ -270,8 +271,8 @@ namespace ResoflexClientHandlingSystem
             // ShowMoreBtn
             // 
             this.ShowMoreBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.ShowMoreBtn.Location = new System.Drawing.Point(726, 120);
-            this.ShowMoreBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.ShowMoreBtn.Location = new System.Drawing.Point(727, 143);
+            this.ShowMoreBtn.Margin = new System.Windows.Forms.Padding(2);
             this.ShowMoreBtn.Name = "ShowMoreBtn";
             this.ShowMoreBtn.Size = new System.Drawing.Size(56, 19);
             this.ShowMoreBtn.Style = MetroFramework.MetroColorStyle.Brown;
@@ -281,11 +282,25 @@ namespace ResoflexClientHandlingSystem
             this.ShowMoreBtn.UseStyleColors = true;
             this.ShowMoreBtn.Click += new System.EventHandler(this.ShowMoreBtn_Click);
             // 
+            // profileBtn
+            // 
+            this.profileBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profileBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profileBtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profileBtn.Location = new System.Drawing.Point(678, 59);
+            this.profileBtn.Name = "profileBtn";
+            this.profileBtn.Size = new System.Drawing.Size(105, 29);
+            this.profileBtn.TabIndex = 13;
+            this.profileBtn.UseCustomBackColor = true;
+            this.profileBtn.UseSelectable = true;
+            this.profileBtn.Click += new System.EventHandler(this.profileBtn_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.profileBtn);
             this.Controls.Add(this.ShowMoreBtn);
             this.Controls.Add(this.updateClientBtn);
             this.Controls.Add(this.gridViewUsageLbl);
@@ -299,10 +314,10 @@ namespace ResoflexClientHandlingSystem
             this.Controls.Add(this.searchClientTxtBox);
             this.Controls.Add(this.addNewClientBtn);
             this.Controls.Add(this.clientGrid);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ClientForm";
-            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Text = "Client";
             this.MinimumSizeChanged += new System.EventHandler(this.ClientForm_MinimumSizeChanged);
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -328,6 +343,7 @@ namespace ResoflexClientHandlingSystem
         private MetroFramework.Controls.MetroLabel gridViewUsageLbl;
         private MetroFramework.Controls.MetroButton updateClientBtn;
         private MetroFramework.Controls.MetroButton ShowMoreBtn;
+        private MetroFramework.Controls.MetroButton profileBtn;
     }
 }
 

@@ -25,8 +25,6 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-
-            //setAttendance();
         }
 
         private void setAttendance()
@@ -96,6 +94,11 @@ namespace ResoflexClientHandlingSystem
             StaffEvalutionForm sEf = new StaffEvalutionForm();
 
             sEf.Show();
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

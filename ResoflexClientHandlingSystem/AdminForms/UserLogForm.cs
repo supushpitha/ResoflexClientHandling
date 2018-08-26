@@ -132,11 +132,11 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-        private void dateTimefrom_ValueChanged(object sender, EventArgs e)
+        private void dateTimeto_ValueChanged(object sender, EventArgs e)
         {
             DateTime dateTime = dateTimefrom.Value;
 
-            if (dateTime.Equals(dateTimeTo.Value) || dateTime > dateTimeTo.Value)
+            if (dateTime.Equals(dateTimeTo.Value) || dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -146,8 +146,8 @@ namespace ResoflexClientHandlingSystem
 
                 try
                 {
-                    MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime, " +
-                        " u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and ");
+                    MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
+                       +" u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) <= '"+ dateTimefrom.Value.Date +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.Date + "';");
 
                     if (reader.HasRows)
                     {

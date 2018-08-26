@@ -125,7 +125,7 @@ namespace ResoflexClientHandlingSystem
 
         private void Login_Load(object sender, EventArgs e)
         {
-            
+            //unameTextBox.
         }
     }
 }

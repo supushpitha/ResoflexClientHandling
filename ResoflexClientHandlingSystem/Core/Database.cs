@@ -119,23 +119,16 @@ namespace ResoflexClientHandlingSystem.Core
         }
 
 
-        /* public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
+        public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
          {
              try
              {
-                 DBConnection.updateDB("update project set (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
-                                         + " values (" + project.ClientID
-                                         + ",'" + project.ProjectName
-                                         + "'," + project.Project_subID
-                                         + ",'" + project.ProjectDesc
-                                         + "','" + project.WarrantyTerms
-                                         + "','" + project.VisitTerms
-                                         + "','" + project.SupportTerms + "')");
+                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate+"', training_comp_first_end_date='"+project.TEndDate1+"', training_comp_second_end_date='"+project.TEndDate2+"', warranty_start_date='"+project.WarrantyStart+"', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
              }
              catch (Exception exc)
              {
                  MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
              }
-         }*/
+         }
     }
 }

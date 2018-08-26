@@ -25,14 +25,11 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-
-            setAttendance();
-            Console.Write(Eramake.eCryptography.Encrypt("123"));
         }
 
         private void setAttendance()
         {
-            metroLabel2.Text = "12";
+            //metroLabel2.Text = "12";
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
@@ -54,7 +51,9 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            
+            resourceForm frm = new resourceForm();
+
+            frm.Show();
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
@@ -93,6 +92,7 @@ namespace ResoflexClientHandlingSystem
         private void metroButton7_Click(object sender, EventArgs e)
         {
             StaffEvalutionForm sEf = new StaffEvalutionForm();
+
             sEf.Show();
         }
 

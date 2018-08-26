@@ -33,10 +33,13 @@ namespace ResoflexClientHandlingSystem.UserForms
         private void metroButton1_Click(object sender, EventArgs e)
         {
             Logglobals.logout = DateTime.Now;
+            Staff staff = new Staff(Userglobals.uid);
+
+            Role.UserLog log = new Role.UserLog(staff, Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.ip, Logglobals.detail);
 
             try
             {
-                Database.addLog(Userglobals.uid, Logglobals.ip, Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.detail);
+                Database.addLog(log);
 
                 Userglobals.uid = 0;
                 Userglobals.uname = "";
@@ -156,6 +159,7 @@ namespace ResoflexClientHandlingSystem.UserForms
                         MessageBox.Show("Profile updated successfully", "Updating Profile", MessageBoxButtons.OK);
 
                         this.Refresh();
+                        Refresh();
                     }
                 }
                 reader.Close();

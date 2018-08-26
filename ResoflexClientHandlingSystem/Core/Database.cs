@@ -40,12 +40,12 @@ namespace ResoflexClientHandlingSystem.Core
         }
 
 
-        public static void addLog(int uid, string ip,string logIDatetime, string logODateTime, string det)
+        public static void addLog(Role.UserLog log)
         {
             try
             {
                 DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
-                    "(" + uid + ",'" + logIDatetime + "','" + logODateTime + "','" + det + "', '" + ip + "')");
+                    "(" + log.User.StaffId + ",'" + log.LoggedInDateTime + "','" + log.LoggedOutDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
             }
             catch (Exception ex)
             {
@@ -74,7 +74,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
-                    user.Pword + "' where user_id ='" + user.UserId + "';");
+                    user.Pword + "' where user_id = "+ user.UserId + ";");
             }
             catch (Exception)
             {
@@ -119,7 +119,7 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static Boolean deleteSchedule(Schedule schedule)
         {
-
+          
             try
             {
                 DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
@@ -131,6 +131,107 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
+            }
+        }
+      
+        public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
+        {
+            Client client = project.ClientOfProject;
+
+            try
+            {
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                        + " values (" + client.ClientID
+                                        + ",'" + project.ProjectName
+                                        + "'," + project.ProjectSubID
+                                        + ",'" + project.Projectdesc
+                                        + "','" + project.WarrantyTerms
+                                        + "','" + project.VisitTerms
+                                        + "','" + project.SupportTerms + "')");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        
+        public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
+        {
+
+
+            try
+            {
+                DBConnection.updateDB("insert into proj_category (cat_name) values ('" + projectCat.CategoryName + "')");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        /* public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
+         {
+             try
+             {
+                 DBConnection.updateDB("update project set (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                         + " values (" + project.ClientID
+                                         + ",'" + project.ProjectName
+                                         + "'," + project.Project_subID
+                                         + ",'" + project.ProjectDesc
+                                         + "','" + project.WarrantyTerms
+                                         + "','" + project.VisitTerms
+                                         + "','" + project.SupportTerms + "')");
+             }
+             catch (Exception exc)
+             {
+                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }*/
+
+        public static void addRecord(Attendance atten)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into attendance(employee_no, name, in_time, out_time, hours_worked)values('" + atten.EmployeeNo + "','" + atten.Name + "', '" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addJobPerformance(JobPerformance jobPerformanceObj)
+        {
+
+            try
+            {
+                DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add job performance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addStaff(Staff staff)
+        {
+
+            try
+            {
+                DBConnection.updateDB("insert into staff(first_name, last_name, " +
+                    "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
+                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic+ "'," +
+                    "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
+                    "'" + staff.Email+ "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
+                    "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

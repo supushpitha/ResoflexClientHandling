@@ -111,9 +111,9 @@ namespace ResoflexClientHandlingSystem
 
             reader.Close();
 
-            //Project frm = new Project(clientName);
-
-            //frm.Show();
+            Project1 frm = new Project1(clientName);
+            
+            frm.Show();
         }
 
         private void searchClientTxtBox_TextChanged(object sender, EventArgs e)

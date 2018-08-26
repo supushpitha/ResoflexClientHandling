@@ -93,6 +93,7 @@
             this.metroButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroButton5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton5.BackgroundImage")));
             this.metroButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton5.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton5.Location = new System.Drawing.Point(280, 26);
             this.metroButton5.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton5.Name = "metroButton5";
@@ -108,6 +109,7 @@
             this.metroButton4.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.metroButton4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton4.BackgroundImage")));
             this.metroButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton4.Location = new System.Drawing.Point(280, 307);
             this.metroButton4.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton4.Name = "metroButton4";
@@ -123,6 +125,7 @@
             this.metroButton7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroButton7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton7.BackgroundImage")));
             this.metroButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton7.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton7.Location = new System.Drawing.Point(2, 307);
             this.metroButton7.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton7.Name = "metroButton7";
@@ -138,6 +141,7 @@
             this.metroButton3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton3.BackgroundImage")));
             this.metroButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton3.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton3.Location = new System.Drawing.Point(557, 26);
             this.metroButton3.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton3.Name = "metroButton3";
@@ -152,6 +156,7 @@
             // 
             this.metroButton2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton2.BackgroundImage")));
             this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton2.Location = new System.Drawing.Point(2, 26);
             this.metroButton2.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton2.Name = "metroButton2";
@@ -167,6 +172,7 @@
             this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.metroButton1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton1.BackgroundImage")));
             this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton1.Location = new System.Drawing.Point(557, 307);
             this.metroButton1.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton1.Name = "metroButton1";

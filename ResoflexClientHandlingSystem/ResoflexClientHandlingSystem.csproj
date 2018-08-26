@@ -77,6 +77,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingMain.Designer.cs">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\UserAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -329,7 +335,7 @@
     </Compile>
     <Compile Include="ScheduleForms\UpdateScheduleForm.Designer.cs">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
-    </Compile>
+    </Compile>  
     <Compile Include="StaffForms\EmployeeTaskTimeComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -366,6 +372,9 @@
     <Compile Include="UserForms\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountingMain.resx">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -485,7 +494,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
-    </EmbeddedResource>
+    </EmbeddedResource> 
     <EmbeddedResource Include="StaffForms\EmployeeTaskTimeComparisonForm.resx">
       <DependentUpon>EmployeeTaskTimeComparisonForm.cs</DependentUpon>
     </EmbeddedResource>

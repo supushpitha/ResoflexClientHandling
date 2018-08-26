@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,6 +27,29 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+            
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+
+            }
+            else
+            {
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+            }
+
+            setAttendance();
+            
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
 
         private void setAttendance()

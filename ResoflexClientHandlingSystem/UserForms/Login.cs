@@ -49,93 +49,36 @@ namespace ResoflexClientHandlingSystem
                 MySqlDataReader dataReader1 = DBConnection.getData("SELECT COUNT(user_id) as count,permission, u_name, user_id FROM user WHERE u_name='" + uname + "' and password='" + pwd+"';");
 
                 if (dataReader1.HasRows)
-                { 
+                {
+                    while(dataReader1.Read()){
 
-                    if (dataReader1.Read() && dataReader1["permission"].ToString() == "TCH")
-                    {
                         Userglobals.uid = int.Parse(dataReader1["user_id"].ToString());
                         Userglobals.uname = dataReader1["u_name"].ToString();
                         Userglobals.priv = dataReader1["permission"].ToString();
                         Logglobals.ip = GetIPAddress().ToString();
                         Logglobals.login = DateTime.Now;
+                    }
+                    
 
-
+                    if (dataReader1["permission"].ToString() != "NA")
+                    {
                         dataReader1.Close();
+                        loginFunction();
+
+                        Console.WriteLine(Logglobals.id);
+
                         this.Hide();
-                        Console.WriteLine(Logglobals.login);
+                        
                         Dashboard pf = new Dashboard();
                         
                         pf.ShowDialog();
                         this.Close();
                     }
-                    else if(dataReader1["permission"].ToString() == "HRM")
-                    {
-                        Userglobals.uid = int.Parse(dataReader1["user_id"].ToString());
-                        Userglobals.uname = dataReader1["u_name"].ToString();
-                        Userglobals.priv = dataReader1["permission"].ToString();
-                        Logglobals.ip = GetIPAddress().ToString();
-                        Logglobals.login = DateTime.Now;
-
-
-                        dataReader1.Close();
-                        this.Hide();
-
-                        Dashboard pf = new Dashboard();
-                        pf.ShowDialog();
-                        this.Close();
-                    }
-                    else if (dataReader1["permission"].ToString() == "ADM")
-                    {
-                        Userglobals.uid = int.Parse(dataReader1["user_id"].ToString());
-                        Userglobals.uname = dataReader1["u_name"].ToString();
-                        Userglobals.priv = dataReader1["permission"].ToString();
-                        Logglobals.ip = GetIPAddress().ToString();
-                        Logglobals.login = DateTime.Now;
-
-                        dataReader1.Close();
-                        this.Hide();
-
-                        Dashboard pf = new Dashboard();
-                        pf.ShowDialog();
-                        this.Close();
-                    }
-                    else if (dataReader1["permission"].ToString() == "ACC")
-                    {
-                        Userglobals.uid = int.Parse(dataReader1["user_id"].ToString());
-                        Userglobals.uname = dataReader1["u_name"].ToString();
-                        Userglobals.priv = dataReader1["permission"].ToString();
-                        Logglobals.ip = GetIPAddress().ToString();
-                        Logglobals.login = DateTime.Now;
-
-                        dataReader1.Close();
-                        this.Hide();
-
-                        Dashboard pf = new Dashboard();
-                        pf.ShowDialog();
-                        this.Close();
-                    }
-                    else if (dataReader1["permission"].ToString() == "PM")
-                    {
-                        Userglobals.uid = int.Parse(dataReader1["user_id"].ToString());
-                        Userglobals.uname = dataReader1["u_name"].ToString();
-                        Userglobals.priv = dataReader1["permission"].ToString();
-                        Logglobals.ip = GetIPAddress().ToString();
-                        Logglobals.login = DateTime.Now;
-
-                        dataReader1.Close();
-                        this.Hide();
-
-                        Dashboard pf = new Dashboard();
-                        pf.ShowDialog();
-                        this.Close();
-                    }
                     else
                     {
-                        dataReader1.Close();
                         MessageBox.Show("You are not authorized to log in..");
 
                     }
-
 
                 }
                 else
@@ -162,9 +105,27 @@ namespace ResoflexClientHandlingSystem
             return ip;
         }
 
+        private void loginFunction()
+        {
+            User user = new User(Userglobals.uid);
+
+            Role.UserLog log = new Role.UserLog(user, Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.ip);
+
+            Database.addLog(log);
+
+            MySqlDataReader dataReader = DBConnection.getData("SELECT log_id FROM user_log WHERE user_id='" + user.UserId + "' and logged_in_dateTime='" + Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss") + "'and ip ='" + Logglobals.ip + "'; ");
+
+            while (dataReader.Read())
+            {
+                Logglobals.id = int.Parse(dataReader["log_id"].ToString());
+            }
+            dataReader.Close();
+
+        }
+
         private void Login_Load(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

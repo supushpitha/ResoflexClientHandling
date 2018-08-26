@@ -16,6 +16,7 @@ namespace ResoflexClientHandlingSystem.Role
 
     public static class Logglobals
     {
+        public static int id;
         public static DateTime login;
         public static DateTime logout;
         public static string ip;
@@ -55,6 +56,12 @@ namespace ResoflexClientHandlingSystem.Role
             this.UName = uName;
             this.Pword = pword;
             this.userId = userId;
+        }
+
+        public User(int userId)
+        {
+            this.userId = userId;
+            
         }
 
         public int UserId { get => userId; set => userId = value; }

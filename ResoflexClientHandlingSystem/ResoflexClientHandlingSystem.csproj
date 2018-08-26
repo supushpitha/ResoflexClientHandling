@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CircularProgressBar">
+      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
+    </Reference>
     <Reference Include="eCryptography">
       <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
     </Reference>
@@ -69,19 +72,58 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WinFormAnimation">
+      <HintPath>..\packages\WinFormAnimation.1.5.6298.3372\lib\net35-client\WinFormAnimation.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingMain.Designer.cs">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\UserAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForms\UserAddForm.designer.cs">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForms\UserLog.cs">
+    <Compile Include="AdminForms\UserLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForms\UserLog.Designer.cs">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <Compile Include="AdminForms\UserLogForm.Designer.cs">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\EvaluateEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\EvaluateEmployeeForm.Designer.cs">
+      <DependentUpon>EvaluateEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\JobPerformanceAddEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\JobPerformanceAddEntryForm.Designer.cs">
+      <DependentUpon>JobPerformanceAddEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\JobPerformanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\JobPerformanceForm.Designer.cs">
+      <DependentUpon>JobPerformanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\RecordAttendanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\RecordAttendanceForm.Designer.cs">
+      <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\StaffEvalutionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\StaffEvalutionForm.Designer.cs">
+      <DependentUpon>StaffEvalutionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientForms\AddNewClientForm.cs">
       <SubType>Form</SubType>
@@ -237,12 +279,15 @@
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
     <Compile Include="Role\EventType.cs" />
+    <Compile Include="Role\JobPerformance.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\Resource.cs" />
     <Compile Include="Role\Salary.cs" />
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
+    <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -285,6 +330,12 @@
     <Compile Include="ScheduleForms\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleForms\UpdateScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\UpdateScheduleForm.Designer.cs">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </Compile>  
     <Compile Include="StaffForms\EmployeeTaskTimeComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,11 +348,11 @@
     <Compile Include="StaffForms\MemberListForm.Designer.cs">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StaffForms\resourceForm.cs">
+    <Compile Include="StaffForms\ResourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StaffForms\resourceForm.Designer.cs">
-      <DependentUpon>resourceForm.cs</DependentUpon>
+    <Compile Include="StaffForms\ResourceForm.Designer.cs">
+      <DependentUpon>ResourceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffForms\StaffForm.cs">
       <SubType>Form</SubType>
@@ -321,11 +372,29 @@
     <Compile Include="UserForms\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountingMain.resx">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForms\UserLog.resx">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <EmbeddedResource Include="AdminForms\UserLogForm.resx">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\EvaluateEmployeeForm.resx">
+      <DependentUpon>EvaluateEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\JobPerformanceAddEntryForm.resx">
+      <DependentUpon>JobPerformanceAddEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\JobPerformanceForm.resx">
+      <DependentUpon>JobPerformanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\RecordAttendanceForm.resx">
+      <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\StaffEvalutionForm.resx">
+      <DependentUpon>StaffEvalutionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\AddNewClientForm.resx">
       <DependentUpon>AddNewClientForm.cs</DependentUpon>
@@ -423,14 +492,17 @@
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\UpdateScheduleForm.resx">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource> 
     <EmbeddedResource Include="StaffForms\EmployeeTaskTimeComparisonForm.resx">
       <DependentUpon>EmployeeTaskTimeComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\MemberListForm.resx">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StaffForms\resourceForm.resx">
-      <DependentUpon>resourceForm.cs</DependentUpon>
+    <EmbeddedResource Include="StaffForms\ResourceForm.resx">
+      <DependentUpon>ResourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
@@ -441,8 +513,6 @@
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

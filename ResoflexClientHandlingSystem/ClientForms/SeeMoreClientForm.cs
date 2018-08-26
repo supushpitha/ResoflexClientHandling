@@ -28,18 +28,18 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
             projectOfClientGrid.DataSource = getProjectsOfClient();
             requestOfClientGrid.DataSource = getRequestsOfClient();
-            visitToClientGrid.DataSource = getVisitsOfClient();
-            visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
+            //visitToClientGrid.DataSource = getVisitsOfClient();
+            //visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
 
             projectOfClientGrid.Columns[0].Visible = false;
-
+            /*
             foreach (DataGridViewRow row in requestOfClientGrid.Rows)
             {
                 if (Convert.ToBoolean(row.Cells[2]))
                 {
                     row.DefaultCellStyle.BackColor = Color.Red;
                 }
-            }
+            }*/
         }
 
         private DataTable getVisitedTechniciansOfClient()

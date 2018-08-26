@@ -30,6 +30,45 @@ namespace ResoflexClientHandlingSystem
             noOfVisitsTile.BackColor = Color.LightGreen;
             totalExpTile.BackColor = Color.LightSalmon;
             gridViewUsageLbl.ForeColor = Color.Red;
+
+            foreach (DataGridViewRow row in clientGrid.Rows)
+            {
+                int clientId = Int32.Parse(row.Cells[0].Value.ToString());
+                double expAmount = 0.0;
+                double inAmount = 0.0;
+
+                MySqlDataReader readerExp = DBConnection.getData("select IFNULL(SUM(e.amount), 0) as sum FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                                              "INNER JOIN exp_detail_event e ON e.proj_id=p.proj_id WHERE c.client_id=" + clientId);
+
+                if (readerExp.HasRows)
+                {
+                    while (readerExp.Read())
+                    {
+                        expAmount = readerExp.GetDouble("sum");
+                    }
+                }
+
+                readerExp.Close();
+
+                MySqlDataReader readerIn = DBConnection.getData("SELECT IFNULL(SUM(e.amount), 0) as sumIn FROM client c INNER JOIN project p ON c.client_id=p.client_id " +
+                                                                "INNER JOIN project_exp_in_amount e ON e.project_id=p.proj_id WHERE c.client_id=" + clientId);
+
+                if (readerIn.HasRows)
+                {
+                    while (readerIn.Read())
+                    {
+                        inAmount = readerIn.GetDouble("sumIn");
+                    }
+                }
+
+                readerIn.Close();
+
+                if (expAmount > inAmount)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                }
+            }
         }
 
         private void fillTiles(int clientId)

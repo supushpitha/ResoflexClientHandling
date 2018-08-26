@@ -27,6 +27,7 @@ namespace ResoflexClientHandlingSystem
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
 
             setAttendance();
+            Console.Write(Eramake.eCryptography.Encrypt("123"));
         }
 
         private void setAttendance()
@@ -93,6 +94,11 @@ namespace ResoflexClientHandlingSystem
         {
             StaffEvalutionForm sEf = new StaffEvalutionForm();
             sEf.Show();
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

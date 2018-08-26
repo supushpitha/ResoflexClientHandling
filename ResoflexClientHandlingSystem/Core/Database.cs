@@ -43,8 +43,22 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
-                    "(" + log.User.StaffId + ",'" + log.LoggedInDateTime + "','" + log.LoggedOutDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+                DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, detail, ip) values " +
+                    "(" + log.User.UserId+ ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong!", "Logging in", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateLog(Role.UserLog log)
+        {
+            try
+            {
+                DBConnection.updateDB("update user_log set logged_out_dateTime='" + log.LoggedOutDateTime + "', detail='" + log.Detail + "' where log_id = '" + log.LogId + "';");
+                    
             }
             catch (Exception ex)
             {

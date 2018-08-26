@@ -28,8 +28,8 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
             projectOfClientGrid.DataSource = getProjectsOfClient();
             requestOfClientGrid.DataSource = getRequestsOfClient();
-            //visitToClientGrid.DataSource = getVisitsOfClient();
-            //visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
+            visitToClientGrid.DataSource = getVisitsOfClient();
+            visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
 
             projectOfClientGrid.Columns[0].Visible = false;
             /*
@@ -46,7 +46,9 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("");
+            MySqlDataReader reader = DBConnection.getData("SELECT s.first_name as Tech, p.proj_name as Project_Name, e.from_date_time as From_Date, e.to_date_time as To_Date, et.feedback as Feedback " +
+                "FROM event_technicians et INNER JOIN event e ON et.event_id=e.event_id AND et.proj_id=e.proj_id INNER JOIN project p ON p.proj_id=e.proj_id " +
+                "INNER JOIN staff s ON s.staff_id=et.staff_id INNER JOIN client c ON c.client_id=p.client_id WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
             table.Load(reader);
 
@@ -57,7 +59,9 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("");
+            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Client, p.proj_name as Project_Name, t.type as Event_Type, e.from_date_time as " +
+                "From_Date, e.to_date_time as To_Date FROM event e INNER JOIN project p ON e.proj_id=p.proj_id " +
+                "INNER JOIN visit_type t ON t.visit_type_id=e.visit_type_id INNER JOIN client c ON c.client_id=p.client_id WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
             table.Load(reader);
 
@@ -69,7 +73,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
             DataTable table = new DataTable();
 
             MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project_Name, r.request as Request, " +
-                "r.state as State, r.added_date as Added_Date_Time, r.urgent " +
+                "r.state as State, r.added_date as Added_Date_Time, r.urgent as Urgent " +
                 "FROM proj_request r INNER JOIN project p on r.proj_id = p.proj_id INNER JOIN client c on p.client_id = c.client_id " +
                 "WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
@@ -158,6 +162,8 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             projectOfClientGrid.DataSource = getProjectsOfClient();
             requestOfClientGrid.DataSource = getRequestsOfClient();
+            visitToClientGrid.DataSource = getVisitsOfClient();
+            visitedTechOfClientGrid.DataSource = getVisitedTechniciansOfClient();
 
             foreach (DataGridViewRow row in requestOfClientGrid.Rows)
             {
@@ -170,6 +176,29 @@ namespace ResoflexClientHandlingSystem.ClientForms
                 {
                     row.DefaultCellStyle.ForeColor = Color.Green;
                     row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                }
+            }
+
+            foreach (DataGridViewRow row in visitToClientGrid.Rows)
+            {
+                if ((Convert.ToDateTime(row.Cells[3].Value) <= DateTime.Now) && (Convert.ToDateTime(row.Cells[4].Value) > DateTime.Now))
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                }
+            }
+
+            foreach (DataGridViewRow row in visitedTechOfClientGrid.Rows)
+            {
+                if (Convert.ToInt32(row.Cells[4].Value) > 6)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Green;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                }
+                else if (Convert.ToInt32(row.Cells[4].Value) < 4)
+                {
+                    row.DefaultCellStyle.ForeColor = Color.Red;
+                    row.DefaultCellStyle.SelectionForeColor = Color.Red;
                 }
             }
         }

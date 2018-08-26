@@ -38,6 +38,7 @@
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.profilebtn = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,11 +184,25 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
             // 
+            // profilebtn
+            // 
+            this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profilebtn.Location = new System.Drawing.Point(680, 26);
+            this.profilebtn.Name = "profilebtn";
+            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.TabIndex = 19;
+            this.profilebtn.UseCustomBackColor = true;
+            this.profilebtn.UseSelectable = true;
+            this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroButton6);
             this.Controls.Add(this.dateTimeLbl);
@@ -213,5 +228,6 @@
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton5;
+        private MetroFramework.Controls.MetroButton profilebtn;
     }
 }

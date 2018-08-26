@@ -134,20 +134,19 @@ namespace ResoflexClientHandlingSystem
 
         private void dateTimeto_ValueChanged(object sender, EventArgs e)
         {
-            DateTime dateTime = dateTimefrom.Value;
+            DateTime dateTime = dateTimeTo.Value;
 
-            if (dateTime.Equals(dateTimeTo.Value) || dateTime < dateTimefrom.Value)
+
+            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
             else
             {
-                DataTable dt = new DataTable();
-
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
-                       +" u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) <= '"+ dateTimefrom.Value.Date +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.Date + "';");
+                       +" u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '"+ dateTimefrom.Value.ToString("yyyy/MM/dd") +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "';");
 
                     if (reader.HasRows)
                     {
@@ -172,6 +171,41 @@ namespace ResoflexClientHandlingSystem
         private void metroLabel2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dateTimeTo_ValueChanged_1(object sender, EventArgs e)
+        {
+            DateTime dateTime = dateTimeTo.Value;
+
+
+            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
+            {
+                MessageBox.Show("Invalid 'from' date");
+            }
+            else
+            {
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
+                       + " u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "';");
+
+                    if (reader.HasRows)
+                    {
+                        System.Data.DataTable table = new System.Data.DataTable();
+
+                        table.Load(reader);
+                        LogGrid.DataSource = table;
+                    }
+                    else
+                    {
+                        reader.Close();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Invalid data!\n" + exc.StackTrace, "User Log finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

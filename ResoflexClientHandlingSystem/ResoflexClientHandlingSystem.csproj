@@ -329,6 +329,7 @@
     </Compile>
     <Compile Include="ScheduleForms\UpdateScheduleForm.Designer.cs">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffForms\EmployeeTaskTimeComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -484,6 +485,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\UpdateScheduleForm.resx">
       <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\EmployeeTaskTimeComparisonForm.resx">
       <DependentUpon>EmployeeTaskTimeComparisonForm.cs</DependentUpon>
     </EmbeddedResource>

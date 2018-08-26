@@ -93,6 +93,7 @@ namespace ResoflexClientHandlingSystem
         private void emailTxtBox_Validated(object sender, EventArgs e)
         {
             addClientErrorProvider.SetError(emailTxtBox, "");
+            addClientErrorProvider.Clear();
         }
 
         private void officePhoneTxtBox_Validating(object sender, CancelEventArgs e)
@@ -112,6 +113,7 @@ namespace ResoflexClientHandlingSystem
         private void officePhoneTxtBox_Validated(object sender, EventArgs e)
         {
             addClientErrorProvider.SetError(officePhoneTxtBox, "");
+            addClientErrorProvider.Clear();
         }
 
         private void mobilePhoneTxtBox_Validating(object sender, CancelEventArgs e)
@@ -131,6 +133,29 @@ namespace ResoflexClientHandlingSystem
         private void mobilePhoneTxtBox_Validated(object sender, EventArgs e)
         {
             addClientErrorProvider.SetError(mobilePhoneTxtBox, "");
+            addClientErrorProvider.Clear();
+        }
+
+        private void AddNewClientForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            //this.AutoValidate = AutoValidate.EnableAllowFocusChange;
+        }
+
+        private void addNewClientCancelBtn_Click(object sender, EventArgs e)
+        {/*
+            this.AutoValidate = AutoValidate.EnableAllowFocusChange;
+
+            this.ValidateChildren();
+            
+            /*
+            CausesValidation = false;
+
+            while (Controls.Count > 0)
+            {
+                Controls[0].Dispose();
+            }
+            */
+            this.Close();
         }
     }
 }

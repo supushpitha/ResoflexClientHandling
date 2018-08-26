@@ -73,7 +73,7 @@ namespace ResoflexClientHandlingSystem
             if (reader.Read())
                 desg.DesigId = reader.GetInt32("desig_id");
 
-            Staff stf = new Staff(firstName, lastName, Nic, pAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+            Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
         }
 
         private void metroLink2_Click(object sender, EventArgs e)
@@ -161,7 +161,7 @@ namespace ResoflexClientHandlingSystem
             if (reader.Read())
                 desg.DesigId = reader.GetInt32("desig_id");
 
-            Staff stf = new Staff(firstName, lastName, Nic, pAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+            Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
         }
     }
 }

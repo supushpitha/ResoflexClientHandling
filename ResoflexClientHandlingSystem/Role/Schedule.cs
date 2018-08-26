@@ -26,13 +26,14 @@ namespace ResoflexClientHandlingSystem.Role
         private string travelMode;
         private string accommodationMode;
         private string meals;
+        private string logs;
 
         public Schedule()
         {
 
         }
 
-        public Schedule(int scheduleId, Project projectOfSchedule, EventType type, ArrayList servEngineer, DateTime from, DateTime to, string vehicle, float mileage, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals)
+        public Schedule(int scheduleId, Project projectOfSchedule, EventType type, ArrayList servEngineer, DateTime from, DateTime to, string vehicle, float mileage, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, string logs)
         {
             this.ScheduleId = scheduleId;
             this.ProjectOfSchedule = projectOfSchedule;
@@ -48,6 +49,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.TravelMode = travelMode;
             this.AccommodationMode = accommodationMode;
             this.Meals = meals;
+            this.Logs = logs;
         }
 
         public int ScheduleId { get => scheduleId; set => scheduleId = value; }
@@ -64,5 +66,6 @@ namespace ResoflexClientHandlingSystem.Role
         public string TravelMode { get => travelMode; set => travelMode = value; }
         public string AccommodationMode { get => accommodationMode; set => accommodationMode = value; }
         public string Meals { get => meals; set => meals = value; }
+        public string Logs { get => logs; set => logs = value; }
     }
 }

@@ -296,8 +296,12 @@
     <Compile Include="ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="Role\ClientRelations.cs" />
-    <Compile Include="Role\CommunicationSkills.cs" />
+    <Compile Include="RequestForms\RequestForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestForms\RequestForm.Designer.cs">
+      <DependentUpon>RequestForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Role\EventType.cs" />
     <Compile Include="Role\InterpersonalSkills.cs" />
     <Compile Include="Role\JobPerformance.cs" />
@@ -501,6 +505,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectManager.resx">
       <DependentUpon>ProjectManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForms\RequestForm.resx">
+      <DependentUpon>RequestForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\AddScheduleForm.resx">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>

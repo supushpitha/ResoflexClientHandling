@@ -12,7 +12,8 @@ namespace ResoflexClientHandlingSystem.Role
         private string firstName;
         private string lastName;
         private string nic;
-        private string address;
+        private string Paddress;
+        private string Saddress;
         private string[] telNumber;
         private string email;
         private string facebook;
@@ -37,14 +38,15 @@ namespace ResoflexClientHandlingSystem.Role
             this.TelNumber = telNumber;
         }
 
-        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string address, string[] telNumber, string email, string facebook, string linkedIn, float basicSalary, float otRate)
+        public Staff(int staffId, Designation designation, string firstName, string lastName, string nic, string Paddress, string Saddress, string[] telNumber, string email, string facebook, string linkedIn, float basicSalary, float otRate)
         {
             this.StaffId = staffId;
             this.Designation = designation;
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Nic = nic;
-            this.Address = address;
+            this.Paddress = pAddress;
+            this.Saddress = sAddress;
             this.TelNumber = telNumber;
             this.Email = email;
             this.Facebook = facebook;
@@ -53,12 +55,13 @@ namespace ResoflexClientHandlingSystem.Role
             this.OtRate = otRate;
         }
 
-        public Staff(string firstName, string lastName, string nic, string address, string[] telNumber, string email, string facebook, string linkedIn, float basicSal, float otRate)
+        public Staff(string firstName, string lastName, string nic, string Paddress, string Saddress, string[] telNumber, string email, string facebook, string linkedIn, float basicSal, float otRate)
         {
             this.FirstName = firstName;
             this.LastName = lastName;
             this.Nic = nic;
-            this.Address = address;
+            this.Paddress = pAddress;
+            this.Saddress = sAddress;
             this.TelNumber = telNumber;
             this.Email = email;
             this.Facebook = facebook;
@@ -71,7 +74,8 @@ namespace ResoflexClientHandlingSystem.Role
         public string FirstName { get => firstName; set => firstName = value; }
         public string LastName { get => lastName; set => lastName = value; }
         public string Nic { get => nic; set => nic = value; }
-        public string Address { get => address; set => address = value; }
+        public string pAddress { get => Paddress; set => Paddress = value; }
+        public string sAddress { get => Saddress; set => Saddress = value; }
         public string[] TelNumber { get => telNumber; set => telNumber = value; }
         public string Email { get => email; set => email = value; }
         public float BasicSalary { get => basicSalary; set => basicSalary = value; }

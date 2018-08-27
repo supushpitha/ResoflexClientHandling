@@ -23,16 +23,18 @@ namespace ResoflexClientHandlingSystem
         DateTime secondTrainComp;
         DateTime warDate;
         int warPeriod;
-        
+
         public ProjectUpdate(DateTime firstTrainComp, DateTime secondTrainComp, DateTime install, DateTime warDate, int warPeriod)
         {
-            InitializeComponent();
+            
 
             this.firstTrainComp = firstTrainComp;
             this.secondTrainComp = secondTrainComp;
             this.install = install;
             this.warDate = warDate;
             this.warPeriod = warPeriod;
+
+            InitializeComponent();
         }
 
         public ProjectUpdate()
@@ -56,13 +58,6 @@ namespace ResoflexClientHandlingSystem
             {
                 Console.WriteLine(ex.StackTrace);
             }
-
-
-            firstTraCompDate.Text = "" +firstTrainComp;
-            secoTraCompDate.Text = "" + secondTrainComp;
-            installDate.Text = "" + install;
-            warStarDate.Text= "" + warDate;
-            warrPerTxt.Text = "" +warPeriod;
         }
 
         private void metroLabel10_Click(object sender, EventArgs e)
@@ -70,11 +65,12 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-      /*  private void addBtn_Click(object sender, EventArgs e)
+        private void addBtn_Click(object sender, EventArgs e)
         {
             {
                 try
                 {
+                    string projname = metroComboBox1.Text;
                     string firstTran = firstTraCompDate.Text;
                     string secondTran = secoTraCompDate.Text;
                     string ins = installDate.Text;
@@ -82,16 +78,19 @@ namespace ResoflexClientHandlingSystem
                     string warPer = warrPerTxt.Text;
 
 
-                    ResoflexClientHandlingSystem.Role.Project project = new Role.Project(tEndDate1,tEndDate2,firstInitDate,warrantyStart,warrantyPeriod);
+                    ResoflexClientHandlingSystem.Role.Project project = new Role.Project(firstTrainComp, secondTrainComp, install,warDate, warPeriod);
 
-                    Database.addProject(project);
+                    Database.updateProject(project);
 
 
                 }
-                catch (Exception)
+                catch (Exception exc)
                 {
-                    MessageBox.Show("Every detail must be there!", "Project Updating", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }*/
+                    MessageBox.Show(exc.ToString());
+                }
 
             }
         }
+    }
+
+}

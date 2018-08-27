@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,9 +24,10 @@ namespace ResoflexClientHandlingSystem.RequestForms
         {
             verticalLineLbl.AutoSize = false;
             verticalLineLbl.Width = 2;
-            verticalLineLbl.Height = 500;
+            verticalLineLbl.Height = 900;
             verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            fillClientReqCmb();
+            fillClientCmbBoxes();
+            fillProjectCmbBox();
 
             searchTypeCmbBox.SelectedIndex = 0;
 
@@ -33,13 +35,32 @@ namespace ResoflexClientHandlingSystem.RequestForms
             clientReqGrid.DataSource = getClientRequests();
         }
 
-        private void fillClientReqCmb()
+        private void fillProjectCmbBox()
+        {
+            MySqlDataReader reader = DBConnection.getData("SELECT proj_name as name FROM project");
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    addChangeReqProjCmbBox.Items.Add(reader.GetString("name"));
+                }
+            }
+
+            reader.Close();
+        }
+
+        private void fillClientCmbBoxes()
         {
             MySqlDataReader reader = DBConnection.getData("SELECT name as name FROM client");
 
-            while (reader.Read())
+            if (reader.HasRows)
             {
-                searchClientNameCmbBox.Items.Add(reader.GetString("name"));
+                while (reader.Read())
+                {
+                    searchClientNameCmbBox.Items.Add(reader.GetString("name"));
+                    addClientReqClientNameCmbBox.Items.Add(reader.GetString("name"));
+                }
             }
 
             reader.Close();
@@ -47,7 +68,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getClientRequests()
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.note as Note, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
                 "ON cr.client_id=c.client_id;");
             
             DataTable table = new DataTable();
@@ -59,7 +80,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getClientRequestsByClient(string clientName)
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.note as Note, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
                 "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "'");
 
             DataTable table = new DataTable();
@@ -159,6 +180,52 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private void searchClientNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
+        }
+
+        private void addNewChangeReqBtn_Click(object sender, EventArgs e)
+        {
+            string projectName = addChangeReqProjCmbBox.SelectedItem.ToString();
+            
+            if (addReqTxtBox.Text == null || addReqTxtBox.Text == "")
+            {
+                MessageBox.Show("There must be a request!", "Save Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                addReqTxtBox.Focus();
+            }
+            else
+            {
+                string request = addReqTxtBox.Text;
+                bool urgent = addReqUrgentCheckBox.Checked;
+                int projId = 0;
+
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("Select * from project where proj_name='" + projectName + "'");
+
+                    while (reader.Read())
+                    {
+                        projId = reader.GetInt32("proj_id");
+                    }
+
+                    reader.Close();
+
+                    ProjectRequest req = new ProjectRequest(new Project(projId), request, urgent);
+
+                    Database.saveChangerequest(req);
+
+                    addReqNotify.Icon = SystemIcons.Application;
+                    addReqNotify.BalloonTipText = "Change Request Successfully added!";
+                    addReqNotify.ShowBalloonTip(1000);
+
+                    addChangeReqProjCmbBox.SelectedIndex = 0;
+                    addReqUrgentCheckBox.Checked = false;
+                    addReqTxtBox.Text = "";
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Something went wrong!\n" + exc, "Save Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

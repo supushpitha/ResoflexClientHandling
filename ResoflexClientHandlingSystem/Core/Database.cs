@@ -415,5 +415,18 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void saveChangerequest(ProjectRequest req)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into proj_request (proj_id, request, added_date, urgent) " +
+                    "values (" + req.ProjectOfRequest.ProjectID + ", '" + req.Request + "', '" + req.AddedDate.ToString("yyyy/MM/d HH:mm:ss") + "', " + req.Urgent + ")");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

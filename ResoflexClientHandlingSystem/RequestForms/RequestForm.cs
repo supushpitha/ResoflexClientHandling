@@ -83,7 +83,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequests()
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name, c.name, r.request, r.state, r.added_date, r.started_dateTime, r.ended_dateTime, r.urgent, s.first_name " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
                 "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id;");
             
             DataTable table = new DataTable();
@@ -95,7 +95,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequestsByProject(string project)
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name, c.name, r.request, r.state, r.added_date, r.started_dateTime, r.ended_dateTime, r.urgent, s.first_name " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
                 "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE p.proj_name='" + project + "';");
 
             DataTable table = new DataTable();

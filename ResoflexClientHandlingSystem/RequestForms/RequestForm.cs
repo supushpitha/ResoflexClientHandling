@@ -213,6 +213,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                     Database.saveChangerequest(req);
 
+                    changeReqGrid.DataSource = getChangeRequests();
+
                     addReqNotify.Icon = SystemIcons.Application;
                     addReqNotify.BalloonTipText = "Change Request Successfully added!";
                     addReqNotify.ShowBalloonTip(1000);

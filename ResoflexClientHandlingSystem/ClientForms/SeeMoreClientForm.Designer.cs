@@ -47,7 +47,7 @@
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.rankTile = new MetroFramework.Controls.MetroTile();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.reportBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
@@ -152,18 +152,19 @@
             this.rankTile.UseSelectable = true;
             this.rankTile.UseStyleColors = true;
             // 
-            // metroButton2
+            // reportBtn
             // 
-            this.metroButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton2.Location = new System.Drawing.Point(1188, 65);
-            this.metroButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(74, 24);
-            this.metroButton2.Style = MetroFramework.MetroColorStyle.Magenta;
-            this.metroButton2.TabIndex = 12;
-            this.metroButton2.Text = "Reports";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.UseStyleColors = true;
+            this.reportBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportBtn.Location = new System.Drawing.Point(1188, 65);
+            this.reportBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.reportBtn.Name = "reportBtn";
+            this.reportBtn.Size = new System.Drawing.Size(74, 24);
+            this.reportBtn.Style = MetroFramework.MetroColorStyle.Magenta;
+            this.reportBtn.TabIndex = 12;
+            this.reportBtn.Text = "Reports";
+            this.reportBtn.UseSelectable = true;
+            this.reportBtn.UseStyleColors = true;
+            this.reportBtn.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // metroLabel11
             // 
@@ -565,7 +566,7 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.visitedTechOfClientGrid);
-            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.reportBtn);
             this.Controls.Add(this.rankTile);
             this.Controls.Add(this.metroLabel8);
             this.Controls.Add(this.metroLabel7);
@@ -598,7 +599,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroTile rankTile;
-        private MetroFramework.Controls.MetroButton metroButton2;
+        private MetroFramework.Controls.MetroButton reportBtn;
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroLabel metroLabel9;

@@ -259,5 +259,12 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             searchClientTxtBox.Focus();
         }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ClientReportForm frm = new ClientReportForm();
+
+            frm.Show();
+        }
     }
 }

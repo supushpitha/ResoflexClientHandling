@@ -77,17 +77,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingMain.Designer.cs">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="AdminForms\UserAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminForms\UserAddForm.designer.cs">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForms\UserLog.cs">
+    <Compile Include="AdminForms\UserLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForms\UserLog.Designer.cs">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <Compile Include="AdminForms\UserLogForm.Designer.cs">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForms\ClientRelationsAddEntryForm.cs">
       <SubType>Form</SubType>
@@ -154,6 +160,12 @@
     </Compile>
     <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClientForms\ClientReportForm.Designer.cs">
+      <DependentUpon>ClientReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ClientForms\EmailClientForm.cs">
       <SubType>Form</SubType>
@@ -254,11 +266,11 @@
     <Compile Include="ProjectForms\AddCatagory.designer.cs">
       <DependentUpon>AddCatagory.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectForms\Project1.cs">
+    <Compile Include="ProjectForms\Maintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectForms\Project1.Designer.cs">
-      <DependentUpon>Project1.cs</DependentUpon>
+    <Compile Include="ProjectForms\Maintenance.Designer.cs">
+      <DependentUpon>Maintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\ProjectForm.cs">
       <SubType>Form</SubType>
@@ -308,6 +320,8 @@
     <Compile Include="Role\Salary.cs" />
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
+    <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -350,6 +364,12 @@
     <Compile Include="ScheduleForms\ScheduleForm.Designer.cs">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleForms\UpdateScheduleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\UpdateScheduleForm.Designer.cs">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="StaffForms\EmployeeTaskTimeComparisonForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,11 +382,11 @@
     <Compile Include="StaffForms\MemberListForm.Designer.cs">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StaffForms\resourceForm.cs">
+    <Compile Include="StaffForms\ResourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StaffForms\resourceForm.Designer.cs">
-      <DependentUpon>resourceForm.cs</DependentUpon>
+    <Compile Include="StaffForms\ResourceForm.Designer.cs">
+      <DependentUpon>ResourceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffForms\StaffForm.cs">
       <SubType>Form</SubType>
@@ -386,11 +406,14 @@
     <Compile Include="UserForms\ProfileForm.Designer.cs">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AccountingMain.resx">
+      <DependentUpon>AccountingMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminForms\UserLog.resx">
-      <DependentUpon>UserLog.cs</DependentUpon>
+    <EmbeddedResource Include="AdminForms\UserLogForm.resx">
+      <DependentUpon>UserLogForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\ClientRelationsAddEntryForm.resx">
       <DependentUpon>ClientRelationsAddEntryForm.cs</DependentUpon>
@@ -424,6 +447,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReportForm.resx">
+      <DependentUpon>ClientReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>
@@ -473,8 +499,8 @@
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectForms\Project1.resx">
-      <DependentUpon>Project1.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectForms\Maintenance.resx">
+      <DependentUpon>Maintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\ProjectForm.resx">
       <DependentUpon>ProjectForm.cs</DependentUpon>
@@ -515,14 +541,17 @@
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\UpdateScheduleForm.resx">
+      <DependentUpon>UpdateScheduleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\EmployeeTaskTimeComparisonForm.resx">
       <DependentUpon>EmployeeTaskTimeComparisonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\MemberListForm.resx">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StaffForms\resourceForm.resx">
-      <DependentUpon>resourceForm.cs</DependentUpon>
+    <EmbeddedResource Include="StaffForms\ResourceForm.resx">
+      <DependentUpon>ResourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
@@ -533,8 +562,6 @@
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="ClassDiagram2.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

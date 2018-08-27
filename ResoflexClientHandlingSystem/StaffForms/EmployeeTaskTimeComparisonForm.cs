@@ -21,5 +21,35 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
+
+        private void metroComboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SelectMemComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comparisonChart_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void htmlLabel5_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

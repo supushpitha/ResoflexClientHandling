@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;

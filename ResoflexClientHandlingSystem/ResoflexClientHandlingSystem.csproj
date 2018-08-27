@@ -125,18 +125,6 @@
     <Compile Include="AttendanceForms\JobPerformanceAddEntryForm.Designer.cs">
       <DependentUpon>JobPerformanceAddEntryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AttendanceForms\JobPerformanceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AttendanceForms\JobPerformanceForm.Designer.cs">
-      <DependentUpon>JobPerformanceForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AttendanceForms\ProjectShortcomingsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AttendanceForms\ProjectShortcomingsForm.Designer.cs">
-      <DependentUpon>ProjectShortcomingsForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AttendanceForms\RecordAttendanceForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -429,12 +417,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\JobPerformanceAddEntryForm.resx">
       <DependentUpon>JobPerformanceAddEntryForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AttendanceForms\JobPerformanceForm.resx">
-      <DependentUpon>JobPerformanceForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AttendanceForms\ProjectShortcomingsForm.resx">
-      <DependentUpon>ProjectShortcomingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\RecordAttendanceForm.resx">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>

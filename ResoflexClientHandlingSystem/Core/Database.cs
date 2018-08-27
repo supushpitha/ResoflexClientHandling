@@ -140,15 +140,43 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addRecord(Attendance atten)
         {
-            try
+
+
+            
+           MySqlDataReader reader1021 = DBConnection.getData("select * from attendanceview where DATE(in_time) = '" + atten.InTime+ "%' and staff_id = '" + atten.EmployeeNo + "'");
+
+
+            if (reader1021.HasRows == false)
             {
-                DBConnection.updateDB("insert into attendance(employee_no, name, in_time, out_time, hours_worked)values('" + atten.EmployeeNo + "','" + atten.Name + "', '" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
+                reader1021.Close();
+                //  try
+                // {
+                DBConnection.updateDB("insert into attendance(staff_id, in_time, out_time, total_hours)values('" + atten.EmployeeNo + "','" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
+
+
+               // }
+               // catch (Exception)
+              //  {
+                   // MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+               // }
+                
             }
-            catch (Exception)
+            else
             {
-                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
+
+                MessageBox.Show("There is another record with the same date!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                reader1021.Close();
+
             }
+
+
+
         }
+
 
         public static void addJobPerformance(JobPerformance jobPerformanceObj)
         {
@@ -156,7 +184,46 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
+                DBConnection.updateDB("insert into job_performance(staff_id, perf_year, knowledge, saftey, quality, adaptability, productivity, Initiative)values" +
+                    "('" + jobPerformanceObj.StaffId + "','" + jobPerformanceObj.PerfYear.ToString("yyyy/M/d") + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "'," +
+                    "'" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "')");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong!'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void updateJobPerformance(JobPerformance jobPerformanceObj)//This update does not work
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("update job_performance set knowledge = '" + jobPerformanceObj.Knowledge + "'," +
+                    "saftey = '" + jobPerformanceObj.Safety + "'," +
+                    "quality =  '" + jobPerformanceObj.Quality + "'," +
+                    "adaptability = '" + jobPerformanceObj.Adaptability + "'," +
+                    "productivity = '" + jobPerformanceObj.Productivity + "'," +
+                    "Initiative = '" + jobPerformanceObj.Initiative + "'" +
+                    "where perf_year = '" + jobPerformanceObj.PerfYear.ToString("yyyy/M/d") + "'");
+                    
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong!'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void addClientRelations(ClientRelations clientRelationsObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into client_relations(staff_id, rel_year, telephone_skills, problem_resolution, salesmanship, pro_activeness, politeness)values('" + clientRelationsObj.StaffId + "','" + clientRelationsObj.RelYear.ToString("yyyy/M/d") + "', '" + clientRelationsObj.TelephoneSkills + "', '" + clientRelationsObj.ProblemResolution + "','" + clientRelationsObj.Salesmanship+ "','" + clientRelationsObj.ProActiveness + "','" + clientRelationsObj.Politeness + "')");
             }
             catch (Exception)
             {
@@ -164,5 +231,133 @@ namespace ResoflexClientHandlingSystem.Core
             }
 
         }
+
+        public static void updateClientRelations(ClientRelations clientRelationsObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("update client_relations set" +
+                    " telephone_skills = '" + clientRelationsObj.TelephoneSkills + "'," +
+                    " problem_resolution = '" + clientRelationsObj.ProblemResolution + "', salesmanship = '" + clientRelationsObj.Salesmanship + "'," +
+                    " pro_activeness = '" + clientRelationsObj.ProActiveness + "', politeness = '" + clientRelationsObj.Politeness + "' where rel_year = '" + clientRelationsObj.RelYear.ToString("yyyy/M/d") + "'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! + '"+ex+"'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void addCommunicationSkills(CommunicationSkills communicationSkillsObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into communication_skills(staff_id, comm_year, influence, presentation, relationship, listening, negotiation)values('" + communicationSkillsObj.StaffId + "','" + communicationSkillsObj.CommYear + "', '" + communicationSkillsObj.Influence + "', '" + communicationSkillsObj.Presentation + "','" + communicationSkillsObj.Relationships + "','" + communicationSkillsObj.Listening + "','" + communicationSkillsObj.Negotiation + "')");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrongYAYA! +'"+ex+"' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void updateCommunicationSkills(CommunicationSkills communicationSkillsObj)//This update works
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("update communication_skills set influence = '" + communicationSkillsObj.Influence + "', presentation = '" + communicationSkillsObj.Presentation + "', relationship = '" + communicationSkillsObj.Relationships+ "' , listening = '" + communicationSkillsObj.Listening + "', negotiation = '" + communicationSkillsObj.Negotiation + "' where comm_year = '" + communicationSkillsObj.CommYear.ToString("yyyy/M/d") + "'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrongYAYA! +'" + ex + "' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+
+        public static void addInterpersonalSkills(InterpersonalSkills interpersonalSkillsObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into interpersonal_skills(staff_id, inter_year, interaction_with_customers, interaction_with_supervisors, interaction_with_clients, motivational_skills, leadership)values('" + interpersonalSkillsObj.StaffId + "','" + interpersonalSkillsObj.InterYear + "', '" + interpersonalSkillsObj.InteractionWithCoworkers + "', '" + interpersonalSkillsObj.InteractionWithSupervisors + "','" + interpersonalSkillsObj.InteractionWithClients + "','" + interpersonalSkillsObj.MotivationalSkills + "','" + interpersonalSkillsObj.Leadership + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+       }
+
+
+        public static void updateInterpersonalSkills(InterpersonalSkills interpersonalSkillsObj)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("update interpersonal_skills set interaction_with_customers ='" + interpersonalSkillsObj.InteractionWithCoworkers + "' , interaction_with_supervisors = '" + interpersonalSkillsObj.InteractionWithSupervisors + "', interaction_with_clients = '" + interpersonalSkillsObj.InteractionWithClients + "', motivational_skills = '" + interpersonalSkillsObj.MotivationalSkills + "', leadership = '" + interpersonalSkillsObj.Leadership + "' where inter_year = '" + interpersonalSkillsObj.InterYear.ToString("yyyy/M/d") + "'");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addProjectShortcomings(ProjectShortcomings projectShortcomings) {
+
+            try
+            {
+
+                DBConnection.updateDB("insert into project_shortcomings(staff_id,proj_id,event_id,description)values('" + projectShortcomings.StaffId + "','" + projectShortcomings.ProjectId + "','" + projectShortcomings.EventId + "','" + projectShortcomings.Description + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void updateProjectShortcomings(ProjectShortcomings projectShortcomings)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("update project_shortcomings set description = '" + projectShortcomings.Description + "',proj_id = '" + projectShortcomings.ProjectId + "',event_id = '" + projectShortcomings.EventId + "' where staff_id = '" + projectShortcomings.StaffId + "'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! '"+ex+"'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void deleteProjectShortcomings(ProjectShortcomings projectShortcomings)
+        {
+
+            try
+            {
+
+                DBConnection.updateDB("delete from project_shortcomings where staff_id = '" + projectShortcomings.StaffId + "'");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public static void updateRecord(Attendance atten)
+        {
+            
+        }
+
     }
 }

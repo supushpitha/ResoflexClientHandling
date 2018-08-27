@@ -89,11 +89,29 @@
     <Compile Include="AdminForms\UserLog.Designer.cs">
       <DependentUpon>UserLog.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceForms\ClientRelationsAddEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\ClientRelationsAddEntryForm.Designer.cs">
+      <DependentUpon>ClientRelationsAddEntryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\CommunicationSkillsAddEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\CommunicationSkillsAddEntryForm.Designer.cs">
+      <DependentUpon>CommunicationSkillsAddEntryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AttendanceForms\EvaluateEmployeeForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AttendanceForms\EvaluateEmployeeForm.Designer.cs">
       <DependentUpon>EvaluateEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\InterpersonalSkillsAddEntryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\InterpersonalSkillsAddEntryForm.Designer.cs">
+      <DependentUpon>InterpersonalSkillsAddEntryForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForms\JobPerformanceAddEntryForm.cs">
       <SubType>Form</SubType>
@@ -106,6 +124,12 @@
     </Compile>
     <Compile Include="AttendanceForms\JobPerformanceForm.Designer.cs">
       <DependentUpon>JobPerformanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\ProjectShortcomingsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\ProjectShortcomingsForm.Designer.cs">
+      <DependentUpon>ProjectShortcomingsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="AttendanceForms\RecordAttendanceForm.cs">
       <SubType>Form</SubType>
@@ -272,9 +296,13 @@
     <Compile Include="ProjectManager.Designer.cs">
       <DependentUpon>ProjectManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="Role\ClientRelations.cs" />
+    <Compile Include="Role\CommunicationSkills.cs" />
     <Compile Include="Role\EventType.cs" />
+    <Compile Include="Role\InterpersonalSkills.cs" />
     <Compile Include="Role\JobPerformance.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
+    <Compile Include="Role\ProjectShortcomings.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
     <Compile Include="Role\Resource.cs" />
     <Compile Include="Role\Salary.cs" />
@@ -364,14 +392,26 @@
     <EmbeddedResource Include="AdminForms\UserLog.resx">
       <DependentUpon>UserLog.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\ClientRelationsAddEntryForm.resx">
+      <DependentUpon>ClientRelationsAddEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\CommunicationSkillsAddEntryForm.resx">
+      <DependentUpon>CommunicationSkillsAddEntryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\EvaluateEmployeeForm.resx">
       <DependentUpon>EvaluateEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\InterpersonalSkillsAddEntryForm.resx">
+      <DependentUpon>InterpersonalSkillsAddEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\JobPerformanceAddEntryForm.resx">
       <DependentUpon>JobPerformanceAddEntryForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\JobPerformanceForm.resx">
       <DependentUpon>JobPerformanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\ProjectShortcomingsForm.resx">
+      <DependentUpon>ProjectShortcomingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\RecordAttendanceForm.resx">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>

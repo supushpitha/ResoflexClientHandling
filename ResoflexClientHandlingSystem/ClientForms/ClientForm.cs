@@ -311,5 +311,13 @@ namespace ResoflexClientHandlingSystem
             prffrm.ShowDialog();
             this.Close();
         }
+
+        private void home_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            this.Hide();
+            dashboard.ShowDialog();
+            this.Close();
+        }
     }
 }

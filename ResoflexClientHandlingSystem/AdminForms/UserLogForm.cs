@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.AdminForms;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
@@ -29,6 +30,7 @@ namespace ResoflexClientHandlingSystem
             {
                 profilebtn.Visible = false;
 
+
             }
             else
             {
@@ -36,6 +38,7 @@ namespace ResoflexClientHandlingSystem
                 {
                     addUsers.Visible = false;
                     updateUsers.Visible = false;
+                    reportbtn.Visible = false;
                 }
 
                 profilebtn.Visible = true;
@@ -206,6 +209,20 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Invalid data!\n" + exc.StackTrace, "User Log finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void updateUsers_Click(object sender, EventArgs e)
+        {
+            UserUpdateForm updateForm = new UserUpdateForm();
+            this.Hide();
+            updateForm.ShowDialog();
+            this.Close();
+
+        }
+
+        private void LogGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
         }
     }
 }

@@ -74,6 +74,9 @@ namespace ResoflexClientHandlingSystem
                 desg.DesigId = reader.GetInt32("desig_id");
 
             Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+
+            reader.Close();
+
         }
 
         private void metroLink2_Click(object sender, EventArgs e)
@@ -140,6 +143,7 @@ namespace ResoflexClientHandlingSystem
 
         private void staffAddBtn_Click(object sender, EventArgs e)
         {
+            /*
             string firstName = fNameTxtBox.Text;
             string lastName = lNameTxtBox.Text;
             string Nic = addNICtxtBox.Text;
@@ -162,6 +166,71 @@ namespace ResoflexClientHandlingSystem
                 desg.DesigId = reader.GetInt32("desig_id");
 
             Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+
+            reader.Close();
+
+            Database.addStaff(stf);
+            */
+
+            string firstName = fNameTxtBox.Text;
+            string lastName = lNameTxtBox.Text;
+            string Nic = addNICtxtBox.Text;
+            string pAddress = pAddTxtBox.Text;
+            string sAddress = sAddTxtBox.Text;
+            string[] telNumber = new string[2];
+            telNumber[0] = telMobileTxtBox.Text;
+            telNumber[1] = telLanTxtBox.Text;
+            string email = emailTxtBox.Text;
+            string facebook = fNameTxtBox.Text;
+            string linkedIn = linkedTxtBox.Text;
+            float basicSal = float.Parse(basicSalTxtBox.Text.ToString());
+            float otRate = float.Parse(otRateTxtBox.Text.ToString());
+
+            Designation desg = new Designation(desgCmbBox.SelectedItem.ToString());
+
+            Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+
+
+            try
+            {
+                Database.addStaff(stf);
+
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation='" + desg.DesignationName + "'");
+
+                    while (reader.Read())
+                    {
+                        if (reader.Read())
+                            desg.DesigId = reader.GetInt32("desig_id"); ;
+                    }
+
+                    reader.Close();
+
+                    clear();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Every detail must be added!", "New member adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            MessageBox.Show("New member added successfully", "New member Adding", MessageBoxButtons.OK);
+
+           // metroGrid1.DataSource = getUserList();
         }
+
+        private void AddMemberTab_Click(object sender, EventArgs e)
+        {
+
+        }
+
+     
     }
 }

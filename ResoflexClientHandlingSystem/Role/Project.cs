@@ -61,7 +61,17 @@ namespace ResoflexClientHandlingSystem.Role
 
         public Project(int projectID)
         {
-            this.ProjectID = projectID;
+            ProjectID = projectID;
+        }
+
+        public Project(string projectName, DateTime tEndDate1, DateTime tEndDate2, DateTime firstInitDate, DateTime warrantyStart, int warrantyPeriod)
+        {
+            this.ProjectName = projectName;
+            this.TEndDate1 = tEndDate1;
+            this.TEndDate2 = tEndDate2;
+            this.FirstInitDate = firstInitDate;
+            this.WarrantyStart = warrantyStart;
+            this.WarrantyPeriod = warrantyPeriod;
         }
 
         public int ProjectID { get => projectID; set => projectID = value; }

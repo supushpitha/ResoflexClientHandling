@@ -129,6 +129,7 @@
             this.AddMemberTab.VerticalScrollbarBarColor = true;
             this.AddMemberTab.VerticalScrollbarHighlightOnWheel = false;
             this.AddMemberTab.VerticalScrollbarSize = 10;
+            this.AddMemberTab.Click += new System.EventHandler(this.AddMemberTab_Click);
             // 
             // htmlLabel2
             // 

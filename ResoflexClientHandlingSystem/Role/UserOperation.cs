@@ -19,6 +19,12 @@ namespace ResoflexClientHandlingSystem.Role
             this.operation = operation;
         }
 
+        public UserOperation(UserLog log, string operation)
+        {
+            this.log = log;
+            this.operation = operation;
+        }
+
         public UserLog LogId { get => log; set => log = value; }
         public int OpId { get => opId; set => opId = value; }
         public string Operation { get => operation; set => operation = value; }

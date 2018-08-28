@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.addProjectBtn = new MetroFramework.Controls.MetroButton();
             this.updateProjectBtn = new MetroFramework.Controls.MetroButton();
             this.progressBtn = new MetroFramework.Controls.MetroButton();
@@ -48,13 +48,14 @@
             this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
             this.maintenanceBtn = new MetroFramework.Controls.MetroButton();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
+            this.reqBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.projectGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // addProjectBtn
             // 
             this.addProjectBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.addProjectBtn.Location = new System.Drawing.Point(34, 184);
+            this.addProjectBtn.Location = new System.Drawing.Point(34, 214);
             this.addProjectBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addProjectBtn.Name = "addProjectBtn";
             this.addProjectBtn.Size = new System.Drawing.Size(103, 26);
@@ -66,7 +67,7 @@
             // updateProjectBtn
             // 
             this.updateProjectBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.updateProjectBtn.Location = new System.Drawing.Point(172, 184);
+            this.updateProjectBtn.Location = new System.Drawing.Point(172, 214);
             this.updateProjectBtn.Margin = new System.Windows.Forms.Padding(2);
             this.updateProjectBtn.Name = "updateProjectBtn";
             this.updateProjectBtn.Size = new System.Drawing.Size(103, 26);
@@ -78,7 +79,7 @@
             // progressBtn
             // 
             this.progressBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.progressBtn.Location = new System.Drawing.Point(446, 184);
+            this.progressBtn.Location = new System.Drawing.Point(446, 214);
             this.progressBtn.Margin = new System.Windows.Forms.Padding(2);
             this.progressBtn.Name = "progressBtn";
             this.progressBtn.Size = new System.Drawing.Size(103, 26);
@@ -90,7 +91,7 @@
             // incomeBtn
             // 
             this.incomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.incomeBtn.Location = new System.Drawing.Point(350, 241);
+            this.incomeBtn.Location = new System.Drawing.Point(350, 275);
             this.incomeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.incomeBtn.Name = "incomeBtn";
             this.incomeBtn.Size = new System.Drawing.Size(65, 24);
@@ -119,7 +120,7 @@
             this.searchProjectTxtBox.CustomButton.Visible = false;
             this.searchProjectTxtBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.searchProjectTxtBox.Lines = new string[0];
-            this.searchProjectTxtBox.Location = new System.Drawing.Point(35, 241);
+            this.searchProjectTxtBox.Location = new System.Drawing.Point(35, 275);
             this.searchProjectTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.searchProjectTxtBox.MaxLength = 32767;
             this.searchProjectTxtBox.Multiline = true;
@@ -141,7 +142,7 @@
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(248, 241);
+            this.searchBtn.Location = new System.Drawing.Point(248, 275);
             this.searchBtn.Margin = new System.Windows.Forms.Padding(2);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(89, 24);
@@ -157,7 +158,7 @@
             this.projIdTile.Location = new System.Drawing.Point(36, 86);
             this.projIdTile.Margin = new System.Windows.Forms.Padding(2);
             this.projIdTile.Name = "projIdTile";
-            this.projIdTile.Size = new System.Drawing.Size(76, 71);
+            this.projIdTile.Size = new System.Drawing.Size(95, 91);
             this.projIdTile.TabIndex = 7;
             this.projIdTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.projIdTile.UseCustomBackColor = true;
@@ -169,10 +170,10 @@
             this.totExpenceTile.ActiveControl = null;
             this.totExpenceTile.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.totExpenceTile.AutoSize = true;
-            this.totExpenceTile.Location = new System.Drawing.Point(154, 86);
+            this.totExpenceTile.Location = new System.Drawing.Point(254, 86);
             this.totExpenceTile.Margin = new System.Windows.Forms.Padding(2);
             this.totExpenceTile.Name = "totExpenceTile";
-            this.totExpenceTile.Size = new System.Drawing.Size(142, 71);
+            this.totExpenceTile.Size = new System.Drawing.Size(161, 91);
             this.totExpenceTile.TabIndex = 8;
             this.totExpenceTile.UseCustomBackColor = true;
             this.totExpenceTile.UseSelectable = true;
@@ -183,10 +184,10 @@
             this.warrantyTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.warrantyTile.AutoSize = true;
             this.warrantyTile.BackColor = System.Drawing.Color.White;
-            this.warrantyTile.Location = new System.Drawing.Point(352, 86);
+            this.warrantyTile.Location = new System.Drawing.Point(552, 86);
             this.warrantyTile.Margin = new System.Windows.Forms.Padding(2);
             this.warrantyTile.Name = "warrantyTile";
-            this.warrantyTile.Size = new System.Drawing.Size(76, 71);
+            this.warrantyTile.Size = new System.Drawing.Size(95, 91);
             this.warrantyTile.TabIndex = 9;
             this.warrantyTile.UseCustomBackColor = true;
             this.warrantyTile.UseSelectable = true;
@@ -204,43 +205,43 @@
             this.projectGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.projectGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.projectGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.projectGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.projectGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.projectGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.projectGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.projectGrid.EnableHeadersVisualStyles = false;
             this.projectGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.projectGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.projectGrid.Location = new System.Drawing.Point(17, 282);
+            this.projectGrid.Location = new System.Drawing.Point(17, 323);
             this.projectGrid.Margin = new System.Windows.Forms.Padding(2);
             this.projectGrid.Name = "projectGrid";
             this.projectGrid.ReadOnly = true;
             this.projectGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.projectGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.projectGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.projectGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.projectGrid.RowTemplate.Height = 24;
             this.projectGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.projectGrid.Size = new System.Drawing.Size(566, 181);
+            this.projectGrid.Size = new System.Drawing.Size(766, 252);
             this.projectGrid.Style = MetroFramework.MetroColorStyle.Yellow;
             this.projectGrid.TabIndex = 10;
             this.projectGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectGrid_CellContentClick);
@@ -262,7 +263,7 @@
             this.metroLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel2.Location = new System.Drawing.Point(154, 60);
+            this.metroLabel2.Location = new System.Drawing.Point(254, 60);
             this.metroLabel2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(98, 19);
@@ -274,7 +275,7 @@
             this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel3.Location = new System.Drawing.Point(350, 60);
+            this.metroLabel3.Location = new System.Drawing.Point(550, 60);
             this.metroLabel3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(74, 19);
@@ -284,7 +285,7 @@
             // metroButton1
             // 
             this.metroButton1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.metroButton1.Location = new System.Drawing.Point(420, 241);
+            this.metroButton1.Location = new System.Drawing.Point(425, 275);
             this.metroButton1.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(88, 24);
@@ -302,7 +303,7 @@
             this.metroLabel11.FontSize = MetroFramework.MetroLabelSize.Small;
             this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel11.ForeColor = System.Drawing.Color.Crimson;
-            this.metroLabel11.Location = new System.Drawing.Point(456, 470);
+            this.metroLabel11.Location = new System.Drawing.Point(656, 582);
             this.metroLabel11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.metroLabel11.Name = "metroLabel11";
             this.metroLabel11.Size = new System.Drawing.Size(145, 15);
@@ -313,7 +314,7 @@
             // maintenanceBtn
             // 
             this.maintenanceBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.maintenanceBtn.Location = new System.Drawing.Point(312, 184);
+            this.maintenanceBtn.Location = new System.Drawing.Point(312, 214);
             this.maintenanceBtn.Margin = new System.Windows.Forms.Padding(2);
             this.maintenanceBtn.Name = "maintenanceBtn";
             this.maintenanceBtn.Size = new System.Drawing.Size(103, 26);
@@ -327,18 +328,32 @@
             this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.profilebtn.Location = new System.Drawing.Point(478, 36);
+            this.profilebtn.Location = new System.Drawing.Point(678, 36);
             this.profilebtn.Name = "profilebtn";
             this.profilebtn.Size = new System.Drawing.Size(105, 29);
             this.profilebtn.TabIndex = 28;
             this.profilebtn.UseCustomBackColor = true;
             this.profilebtn.UseSelectable = true;
             // 
+            // reqBtn
+            // 
+            this.reqBtn.ForeColor = System.Drawing.Color.Sienna;
+            this.reqBtn.Location = new System.Drawing.Point(522, 275);
+            this.reqBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.reqBtn.Name = "reqBtn";
+            this.reqBtn.Size = new System.Drawing.Size(71, 24);
+            this.reqBtn.TabIndex = 29;
+            this.reqBtn.Text = "Request";
+            this.reqBtn.UseCustomBackColor = true;
+            this.reqBtn.UseCustomForeColor = true;
+            this.reqBtn.UseSelectable = true;
+            // 
             // Project1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 488);
+            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.reqBtn);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.maintenanceBtn);
             this.Controls.Add(this.metroLabel11);
@@ -387,5 +402,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel11;
         private MetroFramework.Controls.MetroButton maintenanceBtn;
         private MetroFramework.Controls.MetroButton profilebtn;
+        private MetroFramework.Controls.MetroButton reqBtn;
     }
 }

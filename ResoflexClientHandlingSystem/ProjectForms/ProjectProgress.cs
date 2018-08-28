@@ -78,8 +78,16 @@ namespace ResoflexClientHandlingSystem.ProjectForms
 
                 while (reader.Read())
                 {
-                    metroTextBox4.Text = (reader.GetValue(0).ToString());
-                    metroTextBox6.Text = (reader.GetValue(1).ToString());
+                    metroTextBox4.Text = reader.GetString(0);
+                    metroTextBox6.Text = reader.GetDateTime("Starts").ToString("yyyy/MM/d");
+
+
+                    DateTime wsd = Convert.ToDateTime(metroTextBox6.Text);
+                    int months = Int32.Parse(metroTextBox4.Text);
+
+                    DateTime wld = wsd.AddMonths(months);
+
+                    metroTextBox7.Text = wld.ToString();
                 }
                 reader.Close();
             }

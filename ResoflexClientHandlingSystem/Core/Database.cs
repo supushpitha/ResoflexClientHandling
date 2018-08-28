@@ -31,7 +31,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values ("+user.StaffId+",'"+user.UName+"','"+user.Pword+"','"+user.Permission+"')");
+                DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values (" + user.StaffId + ",'" + user.UName + "','" + user.Pword + "','" + user.Permission + "')");
             }
             catch (Exception)
             {
@@ -45,7 +45,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, detail, ip) values " +
-                    "(" + log.User.UserId+ ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+                    "(" + log.User.UserId + ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
             }
             catch (Exception ex)
             {
@@ -54,12 +54,26 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        public static void addOp(Role.UserOperation operation)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into user_operations (log_id, operation) values " +
+                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong!", "Adding user operations", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void updateLog(Role.UserLog log)
         {
             try
             {
                 DBConnection.updateDB("update user_log set logged_out_dateTime='" + log.LoggedOutDateTime + "', detail='" + log.Detail + "' where log_id = '" + log.LogId + "';");
-                    
+
             }
             catch (Exception ex)
             {
@@ -88,11 +102,106 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
-                    user.Pword + "' where user_id = "+ user.UserId + ";");
+                    user.Pword + "' where user_id = " + user.UserId + ";");
             }
             catch (Exception)
             {
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        
+        public static void updateUserPassPerm(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set password='" +
+                    user.Pword + "', permission='" + user.Permission + "' where user_id = " + user.UserId + ";");
+
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("User Password can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateUserPerm(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set permission'" + user.Permission + "' where user_id = " + user.UserId + ";");
+
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("User Permission can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void deleteUser(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set permission='NA' where user_id = " + user.UserId + ";");
+                DBConnection.updateDB("update staff set desig_id = (select desig_id from designation where designation = 'NA')" +
+                    "where staff_id ='" + user.UserId + "';");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //Adding a new schedule
+        public static Boolean addSchedule(Schedule schedule)
+        {
+            try
+            {
+                //for now
+                schedule.Vehicle = " ";
+                schedule.Mileage = 0;
+
+                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
+                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
+                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.Vehicle + "'," +
+                    "" + schedule.Mileage + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
+                    "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
+                    " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
+
+                foreach (var ary in schedule.ServEngineer)
+                {
+                    Staff s = (Staff) ary;
+
+                    DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType() , "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean deleteSchedule(Schedule schedule)
+        {
+          
+            try
+            {
+                DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
             }
         }
       
@@ -138,7 +247,9 @@ namespace ResoflexClientHandlingSystem.Core
          {
              try
              {
-                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate+"', training_comp_first_end_date='"+project.TEndDate1+"', training_comp_second_end_date='"+project.TEndDate2+"', warranty_start_date='"+project.WarrantyStart+"', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate.ToString("yyyy/MM/d")+"', training_comp_first_end_date='"+project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='"+project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='"+project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+
+                MessageBox.Show("Show");
              }
              catch (Exception exc)
              {
@@ -349,15 +460,17 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addStaff(Staff staff)
         {
+
             try
             {
                 DBConnection.updateDB("insert into staff(first_name, last_name, " +
                     "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
-                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic+ "'," +
+                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic + "'," +
                     "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
-                    "'" + staff.Email+ "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
+                    "'" + staff.Email + "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
                     "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
             }
+
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -401,7 +514,6 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static Boolean deleteSchedule(Schedule schedule)
         {
-
             try
             {
                 DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
@@ -475,7 +587,27 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
-      
+        
+        public static void addResource(Resource resource)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into resource(name, value, total_qty, available_qty) " +
+                    "values('" + resource.Name + "', '" + resource.Value + "','" + resource.TotalQty + "'" +
+                    ",'" + resource.AvailableQty + "')");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Resource", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addDesignation()
+        {
+            DBConnection.updateDB("insert into designation(designation) values()");
+        }
+
         public static void saveChangerequest(ProjectRequest req)
         {
             try

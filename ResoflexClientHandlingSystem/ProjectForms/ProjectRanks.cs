@@ -86,8 +86,8 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_id, p.proj_name as Project, c.name as Client, p.warranty_start_date as Warranty_Start ,p.warranty_period as Months from project p, client c where p.client_id=c.client_id order by p.warranty_period");
-
+            MySqlDataReader reader = DBConnection.getData("select p.proj_id, p.proj_name as Project, c.name as Client, p.warranty_start_date as Warranty_Start, p.warranty_period as Months from project p, client c where p.client_id = c.client_id and p.warranty_period is not null ");
+            
             table.Load(reader);
             visitGrid.ClearSelection();
             return table;
@@ -126,6 +126,7 @@ namespace ResoflexClientHandlingSystem
 
         private void projectExGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            projectExGrid.ClearSelection();
             for (int i = 0; i < projectExGrid.Rows.Count; i++)
             {
                 int val = Int32.Parse(projectExGrid.Rows[i].Cells[3].Value.ToString());
@@ -137,6 +138,8 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+
+
        
 
         private void visitGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -146,15 +149,7 @@ namespace ResoflexClientHandlingSystem
 
         private void visitGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            for (int i = 0; i < visitGrid.Rows.Count; i++)
-            {
-                int val = Int32.Parse(visitGrid.Rows[i].Cells[3].Value.ToString());
-                if (val >= 2)
-                {
-                    visitGrid.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
-                }
-
-            }
+            visitGrid.Rows[0].DefaultCellStyle.BackColor = Color.LightSalmon;
         }
 
 
@@ -163,16 +158,21 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-        private void warGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+      private void warGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            for (int i = 0; i < warGrid.Rows.Count; i++)
+            projectExGrid.ClearSelection();
+            foreach (DataGridViewRow row in warGrid.Rows)
             {
-                int val = Int32.Parse(warGrid.Rows[i].Cells[4].Value.ToString());
-                if (val <= 5)
+                DateTime exDate = Convert.ToDateTime(row.Cells[3].Value);
+                
+                if (DateTime.Now >  exDate)
                 {
-                    warGrid.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                    row.DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
-
+                else if (DateTime.Now < exDate)
+                {
+                    row.DefaultCellStyle.BackColor = Color.LightSkyBlue;
+                }
             }
         }
 

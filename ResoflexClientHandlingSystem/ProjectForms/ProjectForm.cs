@@ -193,7 +193,7 @@ namespace ResoflexClientHandlingSystem
             string projectNameTxt = searchProjectTxtBox.Text;
        
 
-            qry = "SELECT p.proj_id, " +
+            qry = "SELECT p.proj_id as ID, " +
                 "p.proj_name, " +
                 "p.description, " +
                 "p.proj_sub_cat_id, " +

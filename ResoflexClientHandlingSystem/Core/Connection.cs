@@ -69,7 +69,9 @@ namespace ResoflexClientHandlingSystem.Core
         public static void updateDB(string qry)
         {
             if (conn != null)
-            {
+            { 
+
+
                 new MySqlCommand(qry, getConnection()).ExecuteNonQuery();
             }
         }

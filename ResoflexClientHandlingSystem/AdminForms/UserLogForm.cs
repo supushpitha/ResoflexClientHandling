@@ -29,7 +29,9 @@ namespace ResoflexClientHandlingSystem
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
-
+                addUsers.Visible = false;
+                updateUsers.Visible = false;
+                reportbtn.Visible = false;
 
             }
             else
@@ -53,17 +55,13 @@ namespace ResoflexClientHandlingSystem
         private void addUsers_Click(object sender, EventArgs e)
         {
             UserAddForm uaf = new UserAddForm();
-            this.Hide();
-            uaf.ShowDialog();
-            this.Close();
+            uaf.Show();
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
             ProfileForm prffrm = new ProfileForm();
-            this.Hide();
-            prffrm.ShowDialog();
-            this.Close();
+            prffrm.Show();
         }
 
         private DataTable getLogList()
@@ -140,7 +138,7 @@ namespace ResoflexClientHandlingSystem
             DateTime dateTime = dateTimeTo.Value;
 
 
-            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
+            if (dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -181,7 +179,7 @@ namespace ResoflexClientHandlingSystem
             DateTime dateTime = dateTimeTo.Value;
 
 
-            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
+            if (dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -220,9 +218,14 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-        private void LogGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void LogGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            int logid = Int32.Parse(LogGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
 
+            UserOperationsForm uof = new UserOperationsForm(logid);
+
+            uof.Show();
         }
+
     }
 }

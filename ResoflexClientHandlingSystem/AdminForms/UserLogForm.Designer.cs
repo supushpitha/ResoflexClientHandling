@@ -94,7 +94,7 @@
             this.LogGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogGrid.Size = new System.Drawing.Size(643, 456);
             this.LogGrid.TabIndex = 0;
-            this.LogGrid.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.LogGrid_RowHeaderMouseDoubleClick);
+            this.LogGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.LogGrid_RowHeaderMouseClick);
             // 
             // metroLabel1
             // 

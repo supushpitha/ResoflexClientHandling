@@ -111,8 +111,9 @@ namespace ResoflexClientHandlingSystem
         private void metroButton1_Click_1(object sender, EventArgs e)
         {
             UserLog frm = new UserLog();
-
-            frm.Show();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
 
         private void metroButton7_Click(object sender, EventArgs e)

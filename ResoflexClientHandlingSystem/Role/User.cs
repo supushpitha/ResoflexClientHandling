@@ -78,6 +78,13 @@ namespace ResoflexClientHandlingSystem.Role
             this.Pword = pass;
         }
 
+        public User(int userId, string uName, string pword, string fname, string lname, string permission) : base(userId, fname, lname)
+        {
+            this.UName = uName;
+            this.Pword = pword;
+            this.Permission = permission;
+        }
+
 
 
         public int UserId { get => userId; set => userId = value; }

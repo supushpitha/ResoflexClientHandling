@@ -48,24 +48,22 @@ namespace ResoflexClientHandlingSystem.AdminForms
             try
             {
                 MySqlDataReader reader = DBConnection.getData("SELECT s.first_name, s.last_name, d.designation FROM staff s, designation d where s.staff_id =(SELECT user_id from user where u_name='" + unameComboBox.SelectedValue.ToString() + "') and " +
-                    "s.desig_id = d.desig_id;");
+                        "s.desig_id = d.desig_id;");
 
                 while (reader.Read())
                 {
                     Linkname.Text = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
                     permComboBox.SelectedItem = reader["designation"].ToString();
-                }    
+                }
                 reader.Close();
 
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
-
             
-
         }
 
         private void updtbtn_Click(object sender, EventArgs e)
@@ -96,6 +94,16 @@ namespace ResoflexClientHandlingSystem.AdminForms
                         try
                         {
                             Database.updateUserPerm(user);
+                            UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Updated User data", uid);
+
+                            try
+                            {
+                                Database.addOp(operation);
+                            }
+                            catch (Exception ex)
+                            {
+                                Console.WriteLine(ex.StackTrace);
+                            }
                         }
                         catch(Exception ex)
                         {
@@ -113,7 +121,7 @@ namespace ResoflexClientHandlingSystem.AdminForms
                         try
                         {
                             Database.updateUserPassPerm(user);
-                            UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Updated User data");
+                            UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Updated User data", uid);
 
                             try
                             {

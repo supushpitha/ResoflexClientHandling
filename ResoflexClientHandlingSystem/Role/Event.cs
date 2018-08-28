@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +10,10 @@ namespace ResoflexClientHandlingSystem.Role
     class Event
     {
         private int eventId;
+        private Schedule scheduleId;
         private Project eventProject;
         private EventType type;
-        private Staff servEngineer;
+        private ArrayList servEngineer;
         private DateTime from;
         private DateTime to;
         private string vehicleDetails;
@@ -42,14 +44,20 @@ namespace ResoflexClientHandlingSystem.Role
         public int SchNo { get => schNo; set => schNo = value; }
         internal Project EventProject { get => eventProject; set => eventProject = value; }
         internal EventType Type { get => type; set => type = value; }
-        internal Staff ServEngineer { get => servEngineer; set => servEngineer = value; }
+        internal ArrayList ServEngineer { get => servEngineer; set => servEngineer = value; }
+        public Schedule ScheduleId { get => scheduleId; set => scheduleId = value; }
 
         public Event()
         {
 
         }
 
-        public Event(int eventId, Project eventProject, EventType type, Staff servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, int schNo)
+        public Event(int evntId)
+        {
+            this.EventId = evntId;
+        }
+
+        public Event(int eventId, Project eventProject, EventType type, ArrayList servEngineer, DateTime from, DateTime to, string vehicleDetails, float mileage, string feedback, string other, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, int schNo)
         {
             this.eventId = eventId;
             this.eventProject = eventProject;

@@ -774,6 +774,8 @@
             this.ClientSize = new System.Drawing.Size(767, 600);
             this.Controls.Add(this.htmlLabel1);
             this.Controls.Add(this.metroPanel1);
+            this.MaximumSize = new System.Drawing.Size(767, 800);
+            this.MinimumSize = new System.Drawing.Size(767, 600);
             this.Name = "UpdateScheduleForm";
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).EndInit();

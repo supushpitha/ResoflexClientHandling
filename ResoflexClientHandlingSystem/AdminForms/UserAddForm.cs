@@ -17,10 +17,40 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class UserAddForm : MetroFramework.Forms.MetroForm
     {
+        private string staffname;
+        private string uname1;
+        private string pass;
+        private string permission;
+
         public UserAddForm()
         {
             InitializeComponent();
 
+        }
+
+        public UserAddForm(string name, string uname1, string pass, string permission)
+        {
+           
+            this.uname1 = uname1;
+            this.pass = pass;
+            this.permission = permission;
+
+            InitializeComponent();
+
+            metroComboBox1.SelectedItem = name;
+            metroComboBox1.Enabled = false;
+
+            uname.ReadOnly = true;
+            uname.Text = uname1;
+
+            pwd.ReadOnly = true;
+            pwd.Text = pass;
+
+            perm.SelectedItem = permission;
+            perm.Enabled = false;
+
+            add.Visible = false;
+            clr.Visible = false;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -135,24 +165,35 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 Database.addUsers(us);
+                UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new User", uid);
 
                 try
                 {
-                    MySqlDataReader reader = DBConnection.getData("SELECT email FROM staff where staff_id ='"+uid+"';");
+                    Database.addOp(operation);
 
-                    while (reader.Read())
+                    try
                     {
-                        email = reader["email"].ToString();
-                        emailUser(username, Eramake.eCryptography.Decrypt(pass), email);
-                    }
-                    reader.Close();
+                        MySqlDataReader reader = DBConnection.getData("SELECT email FROM staff where staff_id ='" + uid + "';");
 
-                    clearTextBoxes();
+                        while (reader.Read())
+                        {
+                            email = reader["email"].ToString();
+                            emailUser(username, Eramake.eCryptography.Decrypt(pass), email);
+                        }
+                        reader.Close();
+
+                        clearTextBoxes();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
                 }
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.StackTrace);
                 }
+                
 
 
             }

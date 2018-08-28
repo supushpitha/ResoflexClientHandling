@@ -33,6 +33,13 @@ namespace ResoflexClientHandlingSystem.Role
             this.StaffId = staffId;
         }
 
+        public Staff(int staffId, string firstName, string lastName)
+        {
+            this.StaffId = staffId;
+            this.FirstName = firstName;
+            this.LastName = lastName;
+        }
+
         public Staff(string[] telNumber)
         {
             this.TelNumber = telNumber;

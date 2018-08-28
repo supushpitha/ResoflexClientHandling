@@ -1,6 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +19,7 @@ namespace ResoflexClientHandlingSystem
     {
         private DataTable engGrid = new DataTable();
         private DataTable feedbackGrid = new DataTable();
+        private int event_id;
 
         //service engineer datasource
         public DataTable serviceEngDataSource()
@@ -155,6 +159,55 @@ namespace ResoflexClientHandlingSystem
             serviceEngFeed.DisplayMember = "fullname";
         }
 
+        public AddEventForm(int sch_no)
+        {
+            InitializeComponent();
+
+            projectName.DataSource = projectDataSource();
+            projectName.ValueMember = "proj_id";
+            projectName.DisplayMember = "proj_name";
+
+            eventClientName.DataSource = clientDataSource();
+            eventClientName.ValueMember = "client_id";
+            eventClientName.DisplayMember = "name";
+
+            scheduleType.DataSource = scheduleTypeDataSource();
+            scheduleType.ValueMember = "visit_type_id";
+            scheduleType.DisplayMember = "type";
+
+            travelingMode.DataSource = travelModeDataSource();
+            travelingMode.ValueMember = "id";
+            travelingMode.DisplayMember = "details";
+
+            accomodation.DataSource = accomodationDataSource();
+            accomodation.ValueMember = "id";
+            accomodation.DisplayMember = "details";
+
+            serviceEngCombo.DataSource = serviceEngDataSource();
+            serviceEngCombo.ValueMember = "staff_id";
+            serviceEngCombo.DisplayMember = "fullname";
+
+            //to resolve startup bug
+            projectNameChange();
+
+            //eng grid columns
+            engGrid.Columns.Add("staff_id", typeof(int));
+            engGrid.Columns.Add("fullname", typeof(string));
+
+            //feedback grid columns
+            feedbackGrid.Columns.Add("staff_id", typeof(int));
+            feedbackGrid.Columns.Add("fullname", typeof(string));
+            feedbackGrid.Columns.Add("feedback", typeof(string));
+            feedbackGrid.Columns.Add("task", typeof(string));
+
+            serviceEngGrid.DataSource = engGrid;
+            clientFeedback.DataSource = feedbackGrid;
+
+            serviceEngFeed.DataSource = engGrid;
+            serviceEngFeed.ValueMember = "staff_id";
+            serviceEngFeed.DisplayMember = "fullname";
+        }
+
         private void AddEventForm_Load(object sender, EventArgs e)
         {
 
@@ -226,6 +279,7 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+        //adding details to feedback grid
         private void addFeedback_MouseClick(object sender, MouseEventArgs e)
         {
             DataRow row;
@@ -237,11 +291,92 @@ namespace ResoflexClientHandlingSystem
             row["task"] = eventTask.Text.ToString();
             feedbackGrid.Rows.Add(row);
 
+            eventTask.Text = "";
         }
 
         private void eventSave_Click(object sender, EventArgs e)
         {
+            Event evnt = new Event();
 
+            ArrayList serviceEng = new ArrayList();
+            ArrayList mailEng = new ArrayList();
+
+            MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
+
+            if (reader.Read())
+            {
+                event_id = reader.GetInt16("event_id") + 1;
+            }
+            else
+            {
+                event_id = 1;
+            }
+
+            foreach (DataRow dr in feedbackGrid.Rows)
+            {
+                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString()));
+            }
+
+            foreach (DataRow dr in engGrid.Rows)
+            {
+                mailEng.Add(new Staff((int)dr[0]));
+            }
+
+            reader.Close();
+
+            evnt.EventId = event_id;
+            evnt.ScheduleId = new Schedule(int.Parse(eventsSch.SelectedValue.ToString()));
+            evnt.EventProject = new Project(int.Parse(projectName.SelectedValue.ToString()));
+            evnt.Type = new EventType(int.Parse(scheduleType.SelectedValue.ToString()));
+            evnt.ServEngineer = serviceEng;
+            evnt.To = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
+            evnt.From = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
+            evnt.TodoList = todoList.Text.ToString();
+            evnt.Resource = resoBox.Text.ToString();
+            evnt.Checklist = checkList.Text.ToString();
+            evnt.TravelMode = travelingMode.Text.ToString();
+            evnt.AccommodationMode = accomodation.Text.ToString();
+            evnt.Meals = meals.Text.ToString();
+            evnt.Other = other.Text.ToString();
+            evnt.Feedback = overFeedback.Text.ToString();
+
+            //checking if the insertion is successful
+            if (Database.addEvent(evnt))
+            {
+                //sending mails
+                if (evntSendMail.Checked)
+                {
+                    foreach (var ary in mailEng)
+                    {
+                        Staff et = (Staff)ary;
+
+                        MySqlDataReader rdr = DBConnection.getData("select email, first_name, last_name from staff where staff_id = " + et.StaffId + " ");
+
+                        rdr.Read();
+
+                        string subject = "New Event Added";
+                        string body = "Dear " + rdr.GetString("first_name") + " " + rdr.GetString("last_name") +
+                            "\n A new event has been added for a schedule of project " + projectName.Text.ToString() + ". Please check your schedules/events ASAP.";
+
+                        Internet.sendMail(rdr.GetString("email"), subject, body);
+
+                        rdr.Close();
+                    }
+                }
+
+                MessageBox.Show("Event Successfully Added !");
+                this.Close();
+            }
+        }
+
+        //adding resources
+        private void addReso_Click(object sender, EventArgs e)
+        {
+            string resources = eventReso.Text.ToString();
+            eventReso.Text = "";
+
+            resoBox.AppendText(resources + " ");
+            resoBox.AppendText(Environment.NewLine);
         }
 
         private void serviceEngGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)

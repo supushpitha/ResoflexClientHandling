@@ -15,9 +15,18 @@ namespace ResoflexClientHandlingSystem.RequestForms
 {
     public partial class RequestForm : MetroFramework.Forms.MetroForm
     {
+        private string projName = "";
+
         public RequestForm()
         {
             InitializeComponent();
+        }
+
+        public RequestForm(string projectName)
+        {
+            InitializeComponent();
+
+            this.projName = projectName;
         }
 
         private void RequestForm_Load(object sender, EventArgs e)
@@ -28,11 +37,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
             verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             fillClientCmbBoxes();
             fillProjectCmbBox();
+            
+            clientReqGrid.DataSource = getClientRequests();
 
             searchTypeCmbBox.SelectedIndex = 0;
 
-            changeReqGrid.DataSource = getChangeRequests();
-            clientReqGrid.DataSource = getClientRequests();
+            if (!projName.Equals(""))
+            {
+                SearchNameCmbBox.SelectedItem = projName;
+                changeReqGrid.DataSource = getChangeRequestsByProject(projName);
+            }
+            else
+            {
+                changeReqGrid.DataSource = getChangeRequests();
+            }
         }
 
         private void fillProjectCmbBox()

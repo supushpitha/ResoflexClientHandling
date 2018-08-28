@@ -109,7 +109,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         public static void updateUserPassPerm(User user)
         {
             try
@@ -138,6 +138,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("User Permission can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static void deleteUser(User user)
         {
             try
@@ -152,59 +153,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //Adding a new schedule
-        public static Boolean addSchedule(Schedule schedule)
-        {
-            try
-            {
-                //for now
-                schedule.Vehicle = " ";
-                schedule.Mileage = 0;
-
-                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
-                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
-                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.Vehicle + "'," +
-                    "" + schedule.Mileage + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
-                    "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
-                    " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
-
-                foreach (var ary in schedule.ServEngineer)
-                {
-                    Staff s = (Staff) ary;
-
-                    DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
-                }
-
-                return true;
-
-            }
-            catch (Exception e)
-            {
-
-                MessageBox.Show("Something went wrong!\n" + e.GetType() , "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
-            }
-        }
-
-        public static Boolean deleteSchedule(Schedule schedule)
-        {
-          
-            try
-            {
-                DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
-
-                return true;
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
-            }
-        }
-      
+        
         public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
         {
             Client client = project.ClientOfProject;
@@ -247,7 +196,9 @@ namespace ResoflexClientHandlingSystem.Core
          {
              try
              {
-                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate+"', training_comp_first_end_date='"+project.TEndDate1+"', training_comp_second_end_date='"+project.TEndDate2+"', warranty_start_date='"+project.WarrantyStart+"', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate.ToString("yyyy/MM/d")+"', training_comp_first_end_date='"+project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='"+project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='"+project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+
+                MessageBox.Show("Show");
              }
              catch (Exception exc)
              {
@@ -458,19 +409,152 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addStaff(Staff staff)
         {
+
             try
             {
                 DBConnection.updateDB("insert into staff(first_name, last_name, " +
                     "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
-                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic+ "'," +
+                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic + "'," +
                     "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
-                    "'" + staff.Email+ "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
+                    "'" + staff.Email + "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
                     "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
             }
+
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+      
+        //Adding a new schedule
+        public static Boolean addSchedule(Schedule schedule)
+        {
+            try
+            {
+                //for now
+                schedule.Vehicle = " ";
+                schedule.Mileage = 0;
+
+                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
+                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
+                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.Vehicle + "'," +
+                    "" + schedule.Mileage + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
+                    "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
+                    " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
+
+                foreach (var ary in schedule.ServEngineer)
+                {
+                    Staff s = (Staff)ary;
+
+                    DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean deleteSchedule(Schedule schedule)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        //adding service eng
+        public static Boolean addServiceEngineer(Schedule schedule, int staff_id)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into schedule_technicians (proj_id, sch_no, staff_id ) values (" + schedule.ProjectOfSchedule.ProjectID + "," + schedule.ScheduleId + ", " + staff_id + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        //removing service eng
+        public static Boolean deleteServiceEngineer(Schedule schedule, int staff_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from schedule_technicians where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and staff_id = " + staff_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean updateSchedule(Schedule schedule)
+        {
+            try
+            {
+                //for now
+                schedule.Vehicle = " ";
+                schedule.Mileage = 0;
+
+                DBConnection.updateDB("update schedule set visit_type_id = " + schedule.Type.EventTypeId + ", to_date_time = '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") +
+                    "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', to_do_list = '" + schedule.TodoList + "', resource = " +
+                    "'" + schedule.Resource + "', check_list = '" + schedule.Checklist + "', travelling_mode = '" + schedule.TravelMode + "'," +
+                    " accommodation = '" + schedule.AccommodationMode + "', meals = '" + schedule.Meals + "', logs = '" + schedule.Logs + "' where proj_id = "
+                    + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+        
+        public static void addResource(Resource resource)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into resource(name, value, total_qty, available_qty) " +
+                    "values('" + resource.Name + "', '" + resource.Value + "','" + resource.TotalQty + "'" +
+                    ",'" + resource.AvailableQty + "')");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Resource", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addDesignation()
+        {
+            DBConnection.updateDB("insert into designation(designation) values()");
         }
 
         public static void saveChangerequest(ProjectRequest req)

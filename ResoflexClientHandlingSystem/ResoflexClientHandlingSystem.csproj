@@ -188,6 +188,12 @@
     <Compile Include="EventForms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventForms\UpdateEventForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\UpdateEventForm.Designer.cs">
+      <DependentUpon>UpdateEventForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,11 +388,11 @@
     <Compile Include="StaffForms\MemberListForm.Designer.cs">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="StaffForms\ResourceForm.cs">
+    <Compile Include="StaffForms\resourceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StaffForms\ResourceForm.Designer.cs">
-      <DependentUpon>ResourceForm.cs</DependentUpon>
+    <Compile Include="StaffForms\resourceForm.Designer.cs">
+      <DependentUpon>resourceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="StaffForms\StaffForm.cs">
       <SubType>Form</SubType>
@@ -459,6 +465,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EventForms\AddEventForm.resx">
       <DependentUpon>AddEventForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
+      <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
@@ -550,8 +559,8 @@
     <EmbeddedResource Include="StaffForms\MemberListForm.resx">
       <DependentUpon>MemberListForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StaffForms\ResourceForm.resx">
-      <DependentUpon>ResourceForm.cs</DependentUpon>
+    <EmbeddedResource Include="StaffForms\resourceForm.resx">
+      <DependentUpon>resourceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
@@ -576,6 +585,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="TaskForms\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

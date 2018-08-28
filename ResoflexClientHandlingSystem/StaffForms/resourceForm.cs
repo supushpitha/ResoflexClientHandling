@@ -54,6 +54,30 @@ namespace ResoflexClientHandlingSystem
 
             Resource reso = new Resource(name, value, totalQty, availableQty);
 
+            try
+            {
+                Core.Database.addResource(reso);
+
+                try
+                {
+                    clear();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Every detail must be added!", "New resource adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            MessageBox.Show("New resource added successfully", "New resource Adding", MessageBoxButtons.OK);
+
+            // metroGrid1.DataSource = getUserList();
+
         }
     }
 }

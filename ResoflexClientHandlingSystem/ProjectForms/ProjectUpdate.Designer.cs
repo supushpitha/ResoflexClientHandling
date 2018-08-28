@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.secoTraCompDate = new MetroFramework.Controls.MetroDateTime();
             this.firstTraCompDate = new MetroFramework.Controls.MetroDateTime();
             this.installDate = new MetroFramework.Controls.MetroDateTime();
@@ -41,12 +42,13 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.warrPerTxt = new MetroFramework.Controls.MetroTextBox();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.SuspendLayout();
             // 
             // secoTraCompDate
             // 
             this.secoTraCompDate.Location = new System.Drawing.Point(171, 171);
-            this.secoTraCompDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.secoTraCompDate.Margin = new System.Windows.Forms.Padding(2);
             this.secoTraCompDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.secoTraCompDate.Name = "secoTraCompDate";
             this.secoTraCompDate.Size = new System.Drawing.Size(202, 29);
@@ -55,7 +57,7 @@
             // firstTraCompDate
             // 
             this.firstTraCompDate.Location = new System.Drawing.Point(171, 125);
-            this.firstTraCompDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.firstTraCompDate.Margin = new System.Windows.Forms.Padding(2);
             this.firstTraCompDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.firstTraCompDate.Name = "firstTraCompDate";
             this.firstTraCompDate.Size = new System.Drawing.Size(202, 29);
@@ -64,7 +66,7 @@
             // installDate
             // 
             this.installDate.Location = new System.Drawing.Point(171, 228);
-            this.installDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.installDate.Margin = new System.Windows.Forms.Padding(2);
             this.installDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.installDate.Name = "installDate";
             this.installDate.Size = new System.Drawing.Size(202, 29);
@@ -118,17 +120,18 @@
             // 
             this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.addBtn.Location = new System.Drawing.Point(171, 397);
-            this.addBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.addBtn.Margin = new System.Windows.Forms.Padding(2);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(83, 36);
             this.addBtn.TabIndex = 48;
             this.addBtn.Text = "UPDATE";
             this.addBtn.UseVisualStyleBackColor = false;
+            this.addBtn.Click += new System.EventHandler(this.addBtn_Click);
             // 
             // warStarDate
             // 
             this.warStarDate.Location = new System.Drawing.Point(171, 279);
-            this.warStarDate.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.warStarDate.Margin = new System.Windows.Forms.Padding(2);
             this.warStarDate.MinimumSize = new System.Drawing.Size(0, 29);
             this.warStarDate.Name = "warStarDate";
             this.warStarDate.Size = new System.Drawing.Size(202, 29);
@@ -163,7 +166,7 @@
             // 
             this.warrPerTxt.CustomButton.Image = null;
             this.warrPerTxt.CustomButton.Location = new System.Drawing.Point(175, 2);
-            this.warrPerTxt.CustomButton.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.warrPerTxt.CustomButton.Margin = new System.Windows.Forms.Padding(2);
             this.warrPerTxt.CustomButton.Name = "";
             this.warrPerTxt.CustomButton.Size = new System.Drawing.Size(23, 23);
             this.warrPerTxt.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -173,7 +176,7 @@
             this.warrPerTxt.CustomButton.Visible = false;
             this.warrPerTxt.Lines = new string[0];
             this.warrPerTxt.Location = new System.Drawing.Point(172, 328);
-            this.warrPerTxt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.warrPerTxt.Margin = new System.Windows.Forms.Padding(2);
             this.warrPerTxt.MaxLength = 32767;
             this.warrPerTxt.Multiline = true;
             this.warrPerTxt.Name = "warrPerTxt";
@@ -194,11 +197,16 @@
             this.metroComboBox1.FormattingEnabled = true;
             this.metroComboBox1.ItemHeight = 23;
             this.metroComboBox1.Location = new System.Drawing.Point(171, 77);
-            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.metroComboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.metroComboBox1.Name = "metroComboBox1";
             this.metroComboBox1.Size = new System.Drawing.Size(202, 29);
             this.metroComboBox1.TabIndex = 53;
             this.metroComboBox1.UseSelectable = true;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
             // 
             // ProjectUpdate
             // 
@@ -218,9 +226,9 @@
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel5);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ProjectUpdate";
-            this.Padding = new System.Windows.Forms.Padding(15, 49, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Update Project ";
             this.Load += new System.EventHandler(this.ProjectUpdate_Load);
@@ -243,5 +251,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTextBox warrPerTxt;
         private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

@@ -15,15 +15,15 @@ namespace ResoflexClientHandlingSystem.Role
         private string outTime;
         private int hoursWorked;
 
-        public Attendance(int attendance, int employeeNo, string name, string inTime, string outTime, int hoursWorked)
-        {
-            this.StaffAttendance = attendance;
-            this.EmployeeNo = employeeNo;
-            this.Name = name;
-            this.InTime = inTime;
-            this.OutTime = outTime;
-            this.HoursWorked = hoursWorked;
-        }
+        //public Attendance(int attendance, int employeeNo, string name, DateTime inTime, DateTime outTime, int hoursWorked)
+        //{
+        //    this.StaffAttendance = attendance;
+        //    this.EmployeeNo = employeeNo;
+        //    this.Name = name;
+        //    this.InTime = inTime;
+        //    this.OutTime = outTime;
+        //    this.HoursWorked = hoursWorked;
+        //}
 
         public Attendance(int employeeNo, string name, string inTime, string outTime, int hoursWorked)
         {

@@ -133,5 +133,65 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
+
+        //adding service eng
+        public static Boolean addServiceEngineer(Schedule schedule, int staff_id)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into schedule_technicians (proj_id, sch_no, staff_id ) values (" + schedule.ProjectOfSchedule.ProjectID + "," + schedule.ScheduleId + ", " + staff_id + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        //removing service eng
+        public static Boolean deleteServiceEngineer(Schedule schedule, int staff_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from schedule_technicians where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and staff_id = " + staff_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean updateSchedule(Schedule schedule)
+        {
+            try
+            {
+                //for now
+                schedule.Vehicle = " ";
+                schedule.Mileage = 0;
+
+                DBConnection.updateDB("update schedule set visit_type_id = " + schedule.Type.EventTypeId + ", to_date_time = '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") +
+                    "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', to_do_list = '" + schedule.TodoList + "', resource = " +
+                    "'" + schedule.Resource + "', check_list = '" + schedule.Checklist + "', travelling_mode = '" + schedule.TravelMode + "'," +
+                    " accommodation = '" + schedule.AccommodationMode + "', meals = '" + schedule.Meals + "', logs = '" + schedule.Logs + "' where proj_id = " 
+                    + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
     }
 }

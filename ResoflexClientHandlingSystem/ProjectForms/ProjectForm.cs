@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -265,6 +266,15 @@ namespace ResoflexClientHandlingSystem
         {
             ProjectForms.Maintenance frm = new ProjectForms.Maintenance();
             frm.ShowDialog();
+        }
+
+        private void reqBtn_Click(object sender, EventArgs e)
+        {
+            string projectName = projectGrid.CurrentRow.Cells[1].Value.ToString();
+
+            RequestForm frm = new RequestForm(projectName);
+
+            frm.Show();
         }
 
 

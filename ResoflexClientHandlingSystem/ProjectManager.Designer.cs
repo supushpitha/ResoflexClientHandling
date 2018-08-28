@@ -52,7 +52,7 @@
             this.home.HorizontalScrollbarSize = 10;
             this.home.Location = new System.Drawing.Point(20, 60);
             this.home.Name = "home";
-            this.home.Size = new System.Drawing.Size(560, 408);
+            this.home.Size = new System.Drawing.Size(760, 520);
             this.home.TabIndex = 0;
             this.home.VerticalScrollbarBarColor = true;
             this.home.VerticalScrollbarHighlightOnWheel = false;
@@ -64,7 +64,7 @@
             this.btnTasks.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnTasks.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnTasks.BackgroundImage")));
             this.btnTasks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnTasks.Location = new System.Drawing.Point(292, 211);
+            this.btnTasks.Location = new System.Drawing.Point(392, 323);
             this.btnTasks.Margin = new System.Windows.Forms.Padding(2);
             this.btnTasks.Name = "btnTasks";
             this.btnTasks.Size = new System.Drawing.Size(111, 96);
@@ -80,7 +80,7 @@
             this.btnEvents.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEvents.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEvents.BackgroundImage")));
             this.btnEvents.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEvents.Location = new System.Drawing.Point(141, 211);
+            this.btnEvents.Location = new System.Drawing.Point(141, 323);
             this.btnEvents.Margin = new System.Windows.Forms.Padding(2);
             this.btnEvents.Name = "btnEvents";
             this.btnEvents.Size = new System.Drawing.Size(111, 96);
@@ -96,7 +96,7 @@
             this.btnSchedule.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSchedule.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSchedule.BackgroundImage")));
             this.btnSchedule.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnSchedule.Location = new System.Drawing.Point(292, 77);
+            this.btnSchedule.Location = new System.Drawing.Point(392, 77);
             this.btnSchedule.Margin = new System.Windows.Forms.Padding(2);
             this.btnSchedule.Name = "btnSchedule";
             this.btnSchedule.Size = new System.Drawing.Size(111, 96);
@@ -125,10 +125,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 488);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.home);
-            this.MaximumSize = new System.Drawing.Size(600, 488);
-            this.MinimumSize = new System.Drawing.Size(600, 488);
+            this.MaximumSize = new System.Drawing.Size(800, 600);
+            this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "ProjectManager";
             this.Text = "Project Manager";
             this.Load += new System.EventHandler(this.ProjectManager_Load);

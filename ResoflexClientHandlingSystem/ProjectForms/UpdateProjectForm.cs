@@ -74,7 +74,7 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select cat_name from proj_category");
+                MySqlDataReader reader = DBConnection.getData("select sub_cat_name from proj_sub_category");
 
                 while (reader.Read())
                 {
@@ -139,8 +139,8 @@ namespace ResoflexClientHandlingSystem
             {
                 string name = nameTxt.Text;
                 string description = DescripTxt.Text;
-                string catago = CatagoTxt.Text.ToString();
-
+                
+                string catago = catComboBox.Text.ToString();
                 string supportTerms = supTermTxt.Text;
                 string visitTerms = visitTermTxt.Text;
                 string warrentyTerms = warTerTxt.Text;
@@ -160,6 +160,21 @@ namespace ResoflexClientHandlingSystem
                 reader.Close();
 
                 client = new Client(cid);
+
+                try
+                {
+                    MySqlDataReader reader3 = DBConnection.getData("select proj_sub_cat_id from proj_sub_category where sub_cat_name='"+ catComboBox.ToString()+ "'");
+
+                    if (reader.Read())
+                    {
+                        projSubCatID = int.Parse(reader.GetValue(0).ToString());
+
+                    }
+
+                }catch (Exception ex)
+                {
+
+                }
 
                 ResoflexClientHandlingSystem.Role.Project project = new Role.Project(name, description, client, int.Parse(catago), supportTerms, visitTerms, warrentyTerms);
 
@@ -197,7 +212,12 @@ namespace ResoflexClientHandlingSystem
                 }
 
             }
+
+        private void catComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
+    }
 
  
        

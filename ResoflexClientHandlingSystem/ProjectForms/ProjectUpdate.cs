@@ -68,17 +68,18 @@ namespace ResoflexClientHandlingSystem
         private void addBtn_Click(object sender, EventArgs e)
         {
             {
+                string projname = metroComboBox1.Text;
+                DateTime firstTran = firstTraCompDate.Value;
+                DateTime secondTran = secoTraCompDate.Value;
+                DateTime ins = installDate.Value;
+                DateTime warSt = warStarDate.Value;
+                int warPer = Int32.Parse(warrPerTxt.Text);
+
+              
                 try
                 {
-                    string projname = metroComboBox1.Text;
-                    string firstTran = firstTraCompDate.Text;
-                    string secondTran = secoTraCompDate.Text;
-                    string ins = installDate.Text;
-                    string warSt = warStarDate.Text;
-                    string warPer = warrPerTxt.Text;
 
-
-                    ResoflexClientHandlingSystem.Role.Project project = new Role.Project(firstTrainComp, secondTrainComp, install,warDate, warPeriod);
+                    ResoflexClientHandlingSystem.Role.Project project = new Role.Project(projname, firstTran, secondTran, ins, warSt, warPer);
 
                     Database.updateProject(project);
 
@@ -86,7 +87,13 @@ namespace ResoflexClientHandlingSystem
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show(exc.ToString());
+            
+
+                    notifyIcon1.Icon = SystemIcons.Application;
+                    notifyIcon1.BalloonTipText = "Project Updated!";
+                    notifyIcon1.ShowBalloonTip(1000);
+
+
                 }
 
             }

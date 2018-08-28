@@ -25,9 +25,10 @@ namespace ResoflexClientHandlingSystem
 
         private void btnProjects_Click(object sender, EventArgs e)
         {
-            Project1 p1 = new Project1();
+            Project1 frm = new Project1();
+            this.Hide();
+            frm.ShowDialog();
             this.Close();
-            p1.Show();
         }
 
         private void btnSchedule_Click(object sender, EventArgs e)

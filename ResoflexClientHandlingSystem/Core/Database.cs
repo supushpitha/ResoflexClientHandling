@@ -58,8 +58,8 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into user_operations (log_id, operation) values " +
-                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "')");
+                DBConnection.updateDB("insert into user_operations (log_id, operation, id) values " +
+                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "','" + operation.Id + "')");
             }
             catch (Exception ex)
             {
@@ -138,6 +138,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("User Permission can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public static void deleteUser(User user)
         {
             try
@@ -152,7 +153,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
+        
         //added new queries bellow for schedule !!
         //
         //--------------------------------------
@@ -552,7 +553,7 @@ namespace ResoflexClientHandlingSystem.Core
             DBConnection.updateDB("insert into designation(designation) values()");
         }
 
-        public static void saveChangerequest(ProjectRequest req)
+        public static void saveChangeRequest(ProjectRequest req)
         {
             try
             {
@@ -619,6 +620,19 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
+            }
+        }
+        
+        public static void saveClientRequest(ClientRequest req)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into client_request (client_id, request, added_date, importance) " +
+                    "values (" + req.ReqClient.ClientID + ", '" + req.Request + "', '" + req.AddedDate.ToString("yyyy/MM/d HH:mm:ss") + "', " + req.Importance + ")");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

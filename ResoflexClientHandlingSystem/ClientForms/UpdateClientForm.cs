@@ -143,5 +143,10 @@ namespace ResoflexClientHandlingSystem
         {
             updateClientErrorProvider.SetError(emailTxtBox, "");
         }
+
+        private void updateClientCancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

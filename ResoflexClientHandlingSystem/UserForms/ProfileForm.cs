@@ -34,9 +34,11 @@ namespace ResoflexClientHandlingSystem.UserForms
         {
             Logglobals.logout = DateTime.Now;
 
+            Role.UserLog log = new Role.UserLog(Logglobals.id, Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.detail);
+
             try
             {
-                Database.addLog(Userglobals.uid, Logglobals.ip, Logglobals.login.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.logout.ToString("yyyy-MM-dd HH:mm:ss"), Logglobals.detail);
+                Database.updateLog(log);
 
                 Userglobals.uid = 0;
                 Userglobals.uname = "";
@@ -46,6 +48,7 @@ namespace ResoflexClientHandlingSystem.UserForms
                 Logglobals.ip = "";
                 Logglobals.login.ToLocalTime();
                 Logglobals.logout.ToLocalTime();
+                Logglobals.id = 0;
 
                 this.Close();
 
@@ -156,6 +159,7 @@ namespace ResoflexClientHandlingSystem.UserForms
                         MessageBox.Show("Profile updated successfully", "Updating Profile", MessageBoxButtons.OK);
 
                         this.Refresh();
+                        Refresh();
                     }
                 }
                 reader.Close();

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -25,20 +27,41 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
+            
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+
+            }
+            else
+            {
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+            }
 
             setAttendance();
+            
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
 
         private void setAttendance()
         {
-            metroLabel2.Text = "12";
+            //metroLabel2.Text = "12";
         }
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            //Project frm = new Project();
+            Project1 frm = new Project1();
 
-            //frm.Show();
+            frm.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -53,7 +76,9 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
-            
+            resourceForm frm = new resourceForm();
+
+            frm.Show();
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
@@ -87,6 +112,18 @@ namespace ResoflexClientHandlingSystem
             UserLog frm = new UserLog();
 
             frm.Show();
+        }
+
+        private void metroButton7_Click(object sender, EventArgs e)
+        {
+            StaffEvalutionForm sEf = new StaffEvalutionForm();
+
+            sEf.Show();
+        }
+
+        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -40,12 +40,26 @@ namespace ResoflexClientHandlingSystem.Core
         }
 
 
-        public static void addLog(int uid, string ip,string logIDatetime, string logODateTime, string det)
+        public static void addLog(Role.UserLog log)
         {
             try
             {
-                DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, logged_out_dateTime, detail, ip) values " +
-                    "(" + uid + ",'" + logIDatetime + "','" + logODateTime + "','" + det + "', '" + ip + "')");
+                DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, detail, ip) values " +
+                    "(" + log.User.UserId+ ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong!", "Logging in", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateLog(Role.UserLog log)
+        {
+            try
+            {
+                DBConnection.updateDB("update user_log set logged_out_dateTime='" + log.LoggedOutDateTime + "', detail='" + log.Detail + "' where log_id = '" + log.LogId + "';");
+                    
             }
             catch (Exception ex)
             {
@@ -74,7 +88,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
-                    user.Pword + "' where user_id ='" + user.UserId + "';");
+                    user.Pword + "' where user_id = "+ user.UserId + ";");
             }
             catch (Exception)
             {
@@ -119,7 +133,7 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static Boolean deleteSchedule(Schedule schedule)
         {
-
+          
             try
             {
                 DBConnection.updateDB("delete from schedule where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
@@ -133,64 +147,105 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
-
-        //adding service eng
-        public static Boolean addServiceEngineer(Schedule schedule, int staff_id)
+      
+        public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
         {
+            Client client = project.ClientOfProject;
+
             try
             {
-                DBConnection.updateDB("insert into schedule_technicians (proj_id, sch_no, staff_id ) values (" + schedule.ProjectOfSchedule.ProjectID + "," + schedule.ScheduleId + ", " + staff_id + ");");
-
-                return true;
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                        + " values (" + client.ClientID
+                                        + ",'" + project.ProjectName
+                                        + "'," + project.ProjectSubID
+                                        + ",'" + project.Projectdesc
+                                        + "','" + project.WarrantyTerms
+                                        + "','" + project.VisitTerms
+                                        + "','" + project.SupportTerms + "')");
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        //removing service eng
-        public static Boolean deleteServiceEngineer(Schedule schedule, int staff_id)
+        
+        public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
         {
+
+
             try
             {
-                DBConnection.updateDB("delete from schedule_technicians where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and staff_id = " + staff_id + ";");
+                DBConnection.updateDB("insert into proj_category (cat_name) values ('" + projectCat.CategoryName + "')");
 
-                return true;
             }
-            catch (Exception e)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return false;
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        public static Boolean updateSchedule(Schedule schedule)
+
+        /* public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
+         {
+             try
+             {
+                 DBConnection.updateDB("update project set (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                                         + " values (" + project.ClientID
+                                         + ",'" + project.ProjectName
+                                         + "'," + project.Project_subID
+                                         + ",'" + project.ProjectDesc
+                                         + "','" + project.WarrantyTerms
+                                         + "','" + project.VisitTerms
+                                         + "','" + project.SupportTerms + "')");
+             }
+             catch (Exception exc)
+             {
+                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }
+         }*/
+
+        public static void addRecord(Attendance atten)
         {
             try
             {
-                //for now
-                schedule.Vehicle = " ";
-                schedule.Mileage = 0;
-
-                DBConnection.updateDB("update schedule set visit_type_id = " + schedule.Type.EventTypeId + ", to_date_time = '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") +
-                    "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', to_do_list = '" + schedule.TodoList + "', resource = " +
-                    "'" + schedule.Resource + "', check_list = '" + schedule.Checklist + "', travelling_mode = '" + schedule.TravelMode + "'," +
-                    " accommodation = '" + schedule.AccommodationMode + "', meals = '" + schedule.Meals + "', logs = '" + schedule.Logs + "' where proj_id = " 
-                    + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
-
-                return true;
-
+                DBConnection.updateDB("insert into attendance(employee_no, name, in_time, out_time, hours_worked)values('" + atten.EmployeeNo + "','" + atten.Name + "', '" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
             }
-            catch (Exception e)
+            catch (Exception)
             {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Add Schedule", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        public static void addJobPerformance(JobPerformance jobPerformanceObj)
+        {
 
-                return false;
+            try
+            {
+                DBConnection.updateDB("insert into jobperformance(date, emp_no, knowledge, safety, quality, adaptability, productivity, Initiative, total)values('" + jobPerformanceObj.Date + "','" + jobPerformanceObj.EmployeeNo + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "','" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "','" + jobPerformanceObj.Total + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add job performance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addStaff(Staff staff)
+        {
+
+            try
+            {
+                DBConnection.updateDB("insert into staff(first_name, last_name, " +
+                    "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
+                    "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic+ "'," +
+                    "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
+                    "'" + staff.Email+ "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
+                    "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
+            }
+
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

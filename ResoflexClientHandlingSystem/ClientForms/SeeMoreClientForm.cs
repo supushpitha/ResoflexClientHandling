@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -97,7 +98,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("SELECT s.first_name as Tech, p.proj_name as Project_Name, e.from_date_time as From_Date, e.to_date_time as To_Date, et.feedback as Feedback " +
+            MySqlDataReader reader = DBConnection.getData("SELECT s.first_name as Tech, p.proj_name as Project, e.from_date_time as From_Date, e.to_date_time as To_Date, et.feedback as Feedback " +
                 "FROM event_technicians et INNER JOIN event e ON et.event_id=e.event_id AND et.proj_id=e.proj_id INNER JOIN project p ON p.proj_id=e.proj_id " +
                 "INNER JOIN staff s ON s.staff_id=et.staff_id INNER JOIN client c ON c.client_id=p.client_id WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
@@ -110,7 +111,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Client, p.proj_name as Project_Name, t.type as Event_Type, e.from_date_time as " +
+            MySqlDataReader reader = DBConnection.getData("SELECT c.name as Client, p.proj_name as Project, t.type as Type, e.from_date_time as " +
                 "From_Date, e.to_date_time as To_Date FROM event e INNER JOIN project p ON e.proj_id=p.proj_id " +
                 "INNER JOIN visit_type t ON t.visit_type_id=e.visit_type_id INNER JOIN client c ON c.client_id=p.client_id WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
@@ -123,8 +124,8 @@ namespace ResoflexClientHandlingSystem.ClientForms
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project_Name, r.request as Request, " +
-                "r.state as State, r.added_date as Added_Date_Time, r.urgent as Urgent " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, r.request as Request, " +
+                "r.state as State, r.added_date as Added_On, r.urgent as Urgent " +
                 "FROM proj_request r INNER JOIN project p on r.proj_id = p.proj_id INNER JOIN client c on p.client_id = c.client_id " +
                 "WHERE c.name = '" + searchClientTxtBox.Text + "'");
 
@@ -253,6 +254,18 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     row.DefaultCellStyle.SelectionForeColor = Color.Red;
                 }
             }
+        }
+
+        private void SeeMoreClientForm_Shown(object sender, EventArgs e)
+        {
+            searchClientTxtBox.Focus();
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ClientReportForm frm = new ClientReportForm();
+
+            frm.Show();
         }
     }
 }

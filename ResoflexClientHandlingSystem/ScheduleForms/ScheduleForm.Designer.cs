@@ -50,6 +50,7 @@
             // 
             // schHome
             // 
+            this.schHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.schHome.BackColor = System.Drawing.Color.Transparent;
             this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
             this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -63,6 +64,7 @@
             // 
             // schPrjName
             // 
+            this.schPrjName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schPrjName.AutoSize = true;
             this.schPrjName.Location = new System.Drawing.Point(234, 116);
             this.schPrjName.Name = "schPrjName";
@@ -72,6 +74,7 @@
             // 
             // schCltName
             // 
+            this.schCltName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schCltName.AutoSize = true;
             this.schCltName.Location = new System.Drawing.Point(513, 116);
             this.schCltName.Name = "schCltName";
@@ -81,6 +84,7 @@
             // 
             // projectName
             // 
+            this.projectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.projectName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.projectName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             // 
@@ -114,6 +118,7 @@
             // 
             // clientName
             // 
+            this.clientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.clientName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             // 
@@ -148,6 +153,9 @@
             // scheduleGrid
             // 
             this.scheduleGrid.AllowUserToResizeRows = false;
+            this.scheduleGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.scheduleGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.scheduleGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scheduleGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -212,6 +220,7 @@
             // 
             // deleteSchedule
             // 
+            this.deleteSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteSchedule.Location = new System.Drawing.Point(681, 554);
             this.deleteSchedule.Name = "deleteSchedule";
             this.deleteSchedule.Size = new System.Drawing.Size(96, 23);
@@ -222,6 +231,7 @@
             // 
             // updateSchedule
             // 
+            this.updateSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateSchedule.Location = new System.Drawing.Point(532, 554);
             this.updateSchedule.Name = "updateSchedule";
             this.updateSchedule.Size = new System.Drawing.Size(96, 23);
@@ -232,6 +242,7 @@
             // 
             // addSchedule
             // 
+            this.addSchedule.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addSchedule.Location = new System.Drawing.Point(380, 554);
             this.addSchedule.Name = "addSchedule";
             this.addSchedule.Size = new System.Drawing.Size(96, 23);
@@ -242,6 +253,7 @@
             // 
             // addEvent
             // 
+            this.addEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addEvent.Location = new System.Drawing.Point(234, 554);
             this.addEvent.Name = "addEvent";
             this.addEvent.Size = new System.Drawing.Size(96, 23);

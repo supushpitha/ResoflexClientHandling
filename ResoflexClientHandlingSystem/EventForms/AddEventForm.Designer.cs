@@ -44,6 +44,9 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.accomodation = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.eventTask = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
             this.eventsSch = new MetroFramework.Controls.MetroComboBox();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.travelingMode = new MetroFramework.Controls.MetroComboBox();
@@ -52,7 +55,7 @@
             this.checkList = new MetroFramework.Controls.MetroTextBox();
             this.meals = new MetroFramework.Controls.MetroTextBox();
             this.resoBox = new MetroFramework.Controls.MetroTextBox();
-            this.schSendMail = new MetroFramework.Controls.MetroCheckBox();
+            this.evntSendMail = new MetroFramework.Controls.MetroCheckBox();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.eventReso = new MetroFramework.Controls.MetroTextBox();
             this.serviceEngCombo = new MetroFramework.Controls.MetroComboBox();
@@ -85,9 +88,6 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
-            this.eventTask = new MetroFramework.Controls.MetroTextBox();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.clientFeedback)).BeginInit();
@@ -239,7 +239,7 @@
             this.metroPanel1.Controls.Add(this.checkList);
             this.metroPanel1.Controls.Add(this.meals);
             this.metroPanel1.Controls.Add(this.resoBox);
-            this.metroPanel1.Controls.Add(this.schSendMail);
+            this.metroPanel1.Controls.Add(this.evntSendMail);
             this.metroPanel1.Controls.Add(this.metroLabel8);
             this.metroPanel1.Controls.Add(this.eventReso);
             this.metroPanel1.Controls.Add(this.serviceEngCombo);
@@ -283,6 +283,55 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Location = new System.Drawing.Point(615, 487);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(75, 23);
+            this.metroButton4.TabIndex = 91;
+            this.metroButton4.Text = "Add";
+            this.metroButton4.UseSelectable = true;
+            this.metroButton4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addFeedback_MouseClick);
+            // 
+            // eventTask
+            // 
+            // 
+            // 
+            // 
+            this.eventTask.CustomButton.Image = null;
+            this.eventTask.CustomButton.Location = new System.Drawing.Point(172, 1);
+            this.eventTask.CustomButton.Name = "";
+            this.eventTask.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.eventTask.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.eventTask.CustomButton.TabIndex = 1;
+            this.eventTask.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.eventTask.CustomButton.UseSelectable = true;
+            this.eventTask.CustomButton.Visible = false;
+            this.eventTask.Lines = new string[0];
+            this.eventTask.Location = new System.Drawing.Point(385, 484);
+            this.eventTask.MaxLength = 32767;
+            this.eventTask.Name = "eventTask";
+            this.eventTask.PasswordChar = '\0';
+            this.eventTask.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.eventTask.SelectedText = "";
+            this.eventTask.SelectionLength = 0;
+            this.eventTask.SelectionStart = 0;
+            this.eventTask.ShortcutsEnabled = true;
+            this.eventTask.Size = new System.Drawing.Size(200, 29);
+            this.eventTask.TabIndex = 90;
+            this.eventTask.UseSelectable = true;
+            this.eventTask.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.eventTask.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.Location = new System.Drawing.Point(370, 461);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(32, 19);
+            this.metroLabel20.TabIndex = 89;
+            this.metroLabel20.Text = "Task";
             // 
             // eventsSch
             // 
@@ -424,15 +473,15 @@
             this.resoBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.resoBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // schSendMail
+            // evntSendMail
             // 
-            this.schSendMail.AutoSize = true;
-            this.schSendMail.Location = new System.Drawing.Point(229, 365);
-            this.schSendMail.Name = "schSendMail";
-            this.schSendMail.Size = new System.Drawing.Size(26, 15);
-            this.schSendMail.TabIndex = 71;
-            this.schSendMail.Text = " ";
-            this.schSendMail.UseSelectable = true;
+            this.evntSendMail.AutoSize = true;
+            this.evntSendMail.Location = new System.Drawing.Point(229, 365);
+            this.evntSendMail.Name = "evntSendMail";
+            this.evntSendMail.Size = new System.Drawing.Size(26, 15);
+            this.evntSendMail.TabIndex = 71;
+            this.evntSendMail.Text = " ";
+            this.evntSendMail.UseSelectable = true;
             // 
             // metroLabel8
             // 
@@ -792,6 +841,7 @@
             this.addEventReso.TabIndex = 44;
             this.addEventReso.Text = "Add";
             this.addEventReso.UseSelectable = true;
+            this.addEventReso.Click += new System.EventHandler(this.addReso_Click);
             // 
             // addEventEng
             // 
@@ -863,55 +913,6 @@
             this.htmlLabel1.TabIndex = 8;
             this.htmlLabel1.Text = "Event Form";
             // 
-            // metroLabel20
-            // 
-            this.metroLabel20.AutoSize = true;
-            this.metroLabel20.Location = new System.Drawing.Point(370, 461);
-            this.metroLabel20.Name = "metroLabel20";
-            this.metroLabel20.Size = new System.Drawing.Size(32, 19);
-            this.metroLabel20.TabIndex = 89;
-            this.metroLabel20.Text = "Task";
-            // 
-            // eventTask
-            // 
-            // 
-            // 
-            // 
-            this.eventTask.CustomButton.Image = null;
-            this.eventTask.CustomButton.Location = new System.Drawing.Point(172, 1);
-            this.eventTask.CustomButton.Name = "";
-            this.eventTask.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.eventTask.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.eventTask.CustomButton.TabIndex = 1;
-            this.eventTask.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.eventTask.CustomButton.UseSelectable = true;
-            this.eventTask.CustomButton.Visible = false;
-            this.eventTask.Lines = new string[0];
-            this.eventTask.Location = new System.Drawing.Point(385, 484);
-            this.eventTask.MaxLength = 32767;
-            this.eventTask.Name = "eventTask";
-            this.eventTask.PasswordChar = '\0';
-            this.eventTask.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.eventTask.SelectedText = "";
-            this.eventTask.SelectionLength = 0;
-            this.eventTask.SelectionStart = 0;
-            this.eventTask.ShortcutsEnabled = true;
-            this.eventTask.Size = new System.Drawing.Size(200, 29);
-            this.eventTask.TabIndex = 90;
-            this.eventTask.UseSelectable = true;
-            this.eventTask.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.eventTask.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroButton4
-            // 
-            this.metroButton4.Location = new System.Drawing.Point(615, 487);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(75, 23);
-            this.metroButton4.TabIndex = 91;
-            this.metroButton4.Text = "Add";
-            this.metroButton4.UseSelectable = true;
-            this.metroButton4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addFeedback_MouseClick);
-            // 
             // AddEventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -919,6 +920,7 @@
             this.ClientSize = new System.Drawing.Size(767, 600);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.htmlLabel1);
+            this.MaximumSize = new System.Drawing.Size(767, 850);
             this.MinimumSize = new System.Drawing.Size(767, 600);
             this.Name = "AddEventForm";
             this.Style = MetroFramework.MetroColorStyle.Green;
@@ -949,7 +951,7 @@
         private MetroFramework.Controls.MetroTextBox checkList;
         private MetroFramework.Controls.MetroTextBox meals;
         private MetroFramework.Controls.MetroTextBox resoBox;
-        private MetroFramework.Controls.MetroCheckBox schSendMail;
+        private MetroFramework.Controls.MetroCheckBox evntSendMail;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroTextBox eventReso;
         private MetroFramework.Controls.MetroComboBox serviceEngCombo;

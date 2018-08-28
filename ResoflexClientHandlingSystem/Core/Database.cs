@@ -31,7 +31,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values ("+user.StaffId+",'"+user.UName+"','"+user.Pword+"','"+user.Permission+"')");
+                DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values (" + user.StaffId + ",'" + user.UName + "','" + user.Pword + "','" + user.Permission + "')");
             }
             catch (Exception)
             {
@@ -45,7 +45,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into user_log (user_id, logged_in_dateTime, detail, ip) values " +
-                    "(" + log.User.UserId+ ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
+                    "(" + log.User.UserId + ",'" + log.LoggedInDateTime + "','" + log.Detail + "', '" + log.Ip + "')");
             }
             catch (Exception ex)
             {
@@ -54,12 +54,26 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        public static void addOp(Role.UserOperation operation)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into user_operations (log_id, operation) values " +
+                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "')");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                MessageBox.Show("Something went wrong!", "Adding user operations", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void updateLog(Role.UserLog log)
         {
             try
             {
                 DBConnection.updateDB("update user_log set logged_out_dateTime='" + log.LoggedOutDateTime + "', detail='" + log.Detail + "' where log_id = '" + log.LogId + "';");
-                    
+
             }
             catch (Exception ex)
             {
@@ -88,11 +102,54 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set u_name='" + user.UName + "', password='" +
-                    user.Pword + "' where user_id = "+ user.UserId + ";");
+                    user.Pword + "' where user_id = " + user.UserId + ";");
             }
             catch (Exception)
             {
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateUserPassPerm(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set password='" +
+                    user.Pword + "', permission='" + user.Permission + "' where user_id = " + user.UserId + ";");
+
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("User Password can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void updateUserPerm(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set permission'" + user.Permission + "' where user_id = " + user.UserId + ";");
+
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("User Permission can not be updated", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        public static void deleteUser(User user)
+        {
+            try
+            {
+                DBConnection.updateDB("update user set permission='NA' where user_id = " + user.UserId + ";");
+                DBConnection.updateDB("update staff set desig_id = (select desig_id from designation where designation = 'NA')" +
+                    "where staff_id ='" + user.UserId + "';");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

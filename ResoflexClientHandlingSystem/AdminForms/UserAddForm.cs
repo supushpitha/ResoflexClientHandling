@@ -62,7 +62,7 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT user_id as UserID, u_name as Username, permission as Permission FROM user");
+                MySqlDataReader reader = DBConnection.getData("SELECT user_id as UserID, u_name as Username, permission as Permission FROM user where permission <> 'NA'");
 
                 dt.Load(reader);
 
@@ -84,7 +84,7 @@ namespace ResoflexClientHandlingSystem
 
                 while (reader.Read())
                 {
-                    perm.SelectedIndex = perm.FindStringExact(reader.GetValue(0).ToString());
+                    perm.SelectedItem = reader["designation"].ToString();
 
                 }
                 reader.Close();
@@ -106,8 +106,7 @@ namespace ResoflexClientHandlingSystem
         {
             try
             {
-                setPriv(id.Text.ToString());
-                
+                setPriv(id.Text);
 
             }
             catch (Exception ex)
@@ -162,7 +161,9 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("Every detail must be added!", "User adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            MessageBox.Show("User added successfully", "User Adding", MessageBoxButtons.OK);
+            notifySuccessUserAdding.Icon = SystemIcons.Application;
+            notifySuccessUserAdding.BalloonTipText = "User Successfully added!";
+            notifySuccessUserAdding.ShowBalloonTip(1000);
 
             metroGrid1.DataSource = getUserList();
 
@@ -186,18 +187,90 @@ namespace ResoflexClientHandlingSystem
 
                 if (isSuccess)
                 {
-                    MessageBox.Show("Confirmation mail sent");
+                    notifySendSuccess.Icon = SystemIcons.Application;
+                    notifySendSuccess.BalloonTipText = "Email sent successfully!";
+                    notifySendSuccess.ShowBalloonTip(1000);
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong!\nPlease check your internet connetion and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (Exception)
             {
-                MessageBox.Show("Something went wrong!\nPlease check your internet connetion and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+        }
+
+        private void metroGrid1_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DialogResult dr= MessageBox.Show("Delete user?", "Delete Users", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if(dr == DialogResult.Yes)
+            {
+                int userID = int.Parse(metroGrid1.Rows[e.RowIndex].Cells["UserID"].Value.ToString());
+
+                User user = new User(userID);
+
+                try
+                {
+                    Database.deleteUser(user);
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Can not delete user", "Delete Users", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+                notifySuccessUserDeleting.Icon = SystemIcons.Application;
+                notifySuccessUserDeleting.BalloonTipText = "User Successfully deleted!";
+                notifySuccessUserDeleting.ShowBalloonTip(1000);
+
+                metroGrid1.DataSource = getUserList();
+
+            }
+           
+        }
+
+        private void uname_Validated(object sender, EventArgs e)
+        {
+            usernameerrorprovider.SetError(uname, "");
+            usernameerrorprovider.Clear();
+        }
+
+        private void uname_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidUsername(uname.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                uname.Select(0, uname.Text.Length);
+
+                this.usernameerrorprovider.SetError(uname, errorMsg);
+            }
+
+        }
+
+        private void pwd_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidPassword(pwd.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                pwd.Select(0, pwd.Text.Length);
+
+                this.passworderrorprovider.SetError(pwd, errorMsg);
+            }
+        }
+
+        private void pwd_Validated(object sender, EventArgs e)
+        {
+            passworderrorprovider.SetError(pwd, "");
+            passworderrorprovider.Clear();
         }
     }
 }

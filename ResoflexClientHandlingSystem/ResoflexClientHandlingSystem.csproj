@@ -95,6 +95,12 @@
     <Compile Include="AdminForms\UserLogForm.Designer.cs">
       <DependentUpon>UserLogForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\UserUpdateForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\UserUpdateForm.Designer.cs">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="AttendanceForms\ClientRelationsAddEntryForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -408,6 +414,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserLogForm.resx">
       <DependentUpon>UserLogForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\UserUpdateForm.resx">
+      <DependentUpon>UserUpdateForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\ClientRelationsAddEntryForm.resx">
       <DependentUpon>ClientRelationsAddEntryForm.cs</DependentUpon>

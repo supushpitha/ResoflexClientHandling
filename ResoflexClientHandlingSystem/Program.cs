@@ -18,7 +18,7 @@ namespace ResoflexClientHandlingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new RequestForm());
+            Application.Run(new Login());
         }
     }
 }

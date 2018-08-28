@@ -31,6 +31,14 @@ namespace ResoflexClientHandlingSystem.Role
             this.StaffOfRequest = staffOfRequest;
         }
 
+        public ProjectRequest(Project projectOfRequest, string request, bool urgent)
+        {
+            this.ProjectOfRequest = projectOfRequest;
+            this.Request = request;
+            this.AddedDate = DateTime.Now;
+            this.Urgent = urgent;
+        }
+
         public ProjectRequest(Project projectOfRequest, int reqId)
         {
             this.ProjectOfRequest = projectOfRequest;

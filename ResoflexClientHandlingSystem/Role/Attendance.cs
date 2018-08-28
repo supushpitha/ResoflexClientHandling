@@ -8,29 +8,37 @@ namespace ResoflexClientHandlingSystem.Role
 {
     class Attendance
     {
-        private Staff staff;
-        private DateTime date;
-        private DateTime inTime;
-        private DateTime outTime;
+        private int staffAttendance;
+        private int employeeNo;
+        private string name;
+        private string inTime;
+        private string outTime;
         private int hoursWorked;
 
-        public Attendance()
+        //public Attendance(int attendance, int employeeNo, string name, DateTime inTime, DateTime outTime, int hoursWorked)
+        //{
+        //    this.StaffAttendance = attendance;
+        //    this.EmployeeNo = employeeNo;
+        //    this.Name = name;
+        //    this.InTime = inTime;
+        //    this.OutTime = outTime;
+        //    this.HoursWorked = hoursWorked;
+        //}
+
+        public Attendance(int employeeNo, string name, string inTime, string outTime, int hoursWorked)
         {
+            EmployeeNo = employeeNo;
+            Name = name;
+            InTime = inTime;
+            OutTime = outTime;
+            HoursWorked = hoursWorked;
         }
 
-        public Attendance(Staff staff, DateTime date, DateTime inTime, DateTime outTime, int hoursWorked)
-        {
-            this.Staff = staff;
-            this.Date = date;
-            this.InTime = inTime;
-            this.OutTime = outTime;
-            this.HoursWorked = hoursWorked;
-        }
-
-        public DateTime Date { get => date; set => date = value; }
-        public DateTime InTime { get => inTime; set => inTime = value; }
-        public DateTime OutTime { get => outTime; set => outTime = value; }
+        public int StaffAttendance { get => staffAttendance; set => staffAttendance = value; }
+        public int EmployeeNo { get => employeeNo; set => employeeNo = value; }
+        public string Name { get => name; set => name = value; }
+        public string InTime { get => inTime; set => inTime = value; }
+        public string OutTime { get => outTime; set => outTime = value; }
         public int HoursWorked { get => hoursWorked; set => hoursWorked = value; }
-        internal Staff Staff { get => staff; set => staff = value; }
     }
 }

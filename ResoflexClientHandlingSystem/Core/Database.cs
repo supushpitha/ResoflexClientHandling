@@ -58,8 +58,8 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into user_operations (log_id, operation) values " +
-                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "')");
+                DBConnection.updateDB("insert into user_operations (log_id, operation, id) values " +
+                    "(" + operation.LogId.LogId + ",'" + operation.Operation + "','" + operation.Id + "')");
             }
             catch (Exception ex)
             {

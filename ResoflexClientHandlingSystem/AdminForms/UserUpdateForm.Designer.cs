@@ -287,7 +287,7 @@
             this.permComboBox.ItemHeight = 23;
             this.permComboBox.Items.AddRange(new object[] {
             "TCH",
-            "HRM",
+            "HR",
             "ACC",
             "ADM",
             "PM"});

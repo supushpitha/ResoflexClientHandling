@@ -117,7 +117,7 @@ namespace ResoflexClientHandlingSystem.Core
                 DBConnection.updateDB("update user set password='" +
                     user.Pword + "', permission='" + user.Permission + "' where user_id = " + user.UserId + ";");
 
-                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation_name ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
             }
             catch (Exception)
             {
@@ -131,7 +131,7 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 DBConnection.updateDB("update user set permission'" + user.Permission + "' where user_id = " + user.UserId + ";");
 
-                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
+                DBConnection.updateDB("update staff set desig_id=(SELECT desig_id from designation where designation_name ='" + user.Permission + "') where staff_id='" + user.UserId + "';");
             }
             catch (Exception)
             {
@@ -144,7 +144,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update user set permission='NA' where user_id = " + user.UserId + ";");
-                DBConnection.updateDB("update staff set desig_id = (select desig_id from designation where designation = 'NA')" +
+                DBConnection.updateDB("update staff set desig_id = (select desig_id from designation where designation_name = 'NA')" +
                     "where staff_id ='" + user.UserId + "';");
 
             }

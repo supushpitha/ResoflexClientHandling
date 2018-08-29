@@ -365,6 +365,7 @@
             this.MinimumSize = new System.Drawing.Size(600, 488);
             this.Name = "UserUpdateForm";
             this.Text = "Update User";
+          
             this.Load += new System.EventHandler(this.UserUpdateForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorpassword)).EndInit();
             this.ResumeLayout(false);

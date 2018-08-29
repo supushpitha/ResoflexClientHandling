@@ -212,9 +212,8 @@ namespace ResoflexClientHandlingSystem
         private void updateUsers_Click(object sender, EventArgs e)
         {
             UserUpdateForm updateForm = new UserUpdateForm();
-            this.Hide();
             updateForm.ShowDialog();
-            this.Close();
+            
 
         }
 
@@ -227,5 +226,12 @@ namespace ResoflexClientHandlingSystem
             uof.Show();
         }
 
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            Dashboard dsh = new Dashboard();
+            dsh.Show();
+            this.Close();
+            
+        }
     }
 }

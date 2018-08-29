@@ -243,12 +243,27 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
             foreach (DataGridViewRow row in visitedTechOfClientGrid.Rows)
             {
-                if (Convert.ToInt32(row.Cells[4].Value) > 6)
+                //if (Convert.ToInt32(row.Cells[4].Value) > 6)
+                //{
+                //    row.DefaultCellStyle.ForeColor = Color.Green;
+                //    row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                //}
+                //else if (Convert.ToInt32(row.Cells[4].Value) < 4)
+                //{
+                //    row.DefaultCellStyle.ForeColor = Color.Red;
+                //    row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                //}
+
+                //Since cell[4] is a letter A, B, C, D, E or NON
+
+                string grade = row.Cells[4].Value.ToString();
+
+                if (grade.ToUpper().Equals("A") || grade.ToUpper().Equals("B"))
                 {
                     row.DefaultCellStyle.ForeColor = Color.Green;
                     row.DefaultCellStyle.SelectionForeColor = Color.Green;
                 }
-                else if (Convert.ToInt32(row.Cells[4].Value) < 4)
+                else if (grade.ToUpper().Equals("D") || grade.ToUpper().Equals("E"))
                 {
                     row.DefaultCellStyle.ForeColor = Color.Red;
                     row.DefaultCellStyle.SelectionForeColor = Color.Red;

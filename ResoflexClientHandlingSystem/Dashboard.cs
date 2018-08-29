@@ -77,8 +77,9 @@ namespace ResoflexClientHandlingSystem
         private void metroButton4_Click(object sender, EventArgs e)
         {
             resourceForm frm = new resourceForm();
-
-            frm.Show();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
@@ -118,9 +119,10 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-            StaffEvalutionForm sEf = new StaffEvalutionForm();
-
-            sEf.Show();
+            MemberListForm sEf = new MemberListForm();
+            // this.Hide();
+            sEf.ShowDialog();
+            // this.Close();
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)

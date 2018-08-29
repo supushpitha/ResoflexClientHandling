@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(resourceForm));
             this.nameResTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.htmlLabel2 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
@@ -40,12 +41,9 @@
             this.resClearBtn = new MetroFramework.Controls.MetroButton();
             this.resAddBtn = new MetroFramework.Controls.MetroButton();
             this.ResGrid = new MetroFramework.Controls.MetroGrid();
-            this.resID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resQty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateResBtn = new MetroFramework.Controls.MetroButton();
             this.DelResBtn = new MetroFramework.Controls.MetroButton();
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.ResGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -198,6 +196,9 @@
             // ResGrid
             // 
             this.ResGrid.AllowUserToResizeRows = false;
+            this.ResGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.ResGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.ResGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.ResGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -211,11 +212,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.ResGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.ResGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ResGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.resID,
-            this.resName,
-            this.resValue,
-            this.resQty});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -244,28 +240,9 @@
             this.ResGrid.TabIndex = 18;
             this.ResGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
             // 
-            // resID
-            // 
-            this.resID.HeaderText = "ID";
-            this.resID.Name = "resID";
-            // 
-            // resName
-            // 
-            this.resName.HeaderText = "Name";
-            this.resName.Name = "resName";
-            // 
-            // resValue
-            // 
-            this.resValue.HeaderText = "Value";
-            this.resValue.Name = "resValue";
-            // 
-            // resQty
-            // 
-            this.resQty.HeaderText = "Quantity";
-            this.resQty.Name = "resQty";
-            // 
             // UpdateResBtn
             // 
+            this.UpdateResBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UpdateResBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.UpdateResBtn.Location = new System.Drawing.Point(653, 66);
             this.UpdateResBtn.Name = "UpdateResBtn";
@@ -277,6 +254,7 @@
             // 
             // DelResBtn
             // 
+            this.DelResBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DelResBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
             this.DelResBtn.Location = new System.Drawing.Point(488, 66);
             this.DelResBtn.Name = "DelResBtn";
@@ -284,12 +262,28 @@
             this.DelResBtn.TabIndex = 20;
             this.DelResBtn.Text = "Delete";
             this.DelResBtn.UseSelectable = true;
+            this.DelResBtn.Click += new System.EventHandler(this.DelResBtn_Click);
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(384, 7);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 21;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // resourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 454);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.DelResBtn);
             this.Controls.Add(this.UpdateResBtn);
             this.Controls.Add(this.ResGrid);
@@ -302,7 +296,6 @@
             this.Controls.Add(this.nameResTxtBox);
             this.Controls.Add(this.htmlLabel2);
             this.Name = "resourceForm";
-            this.Text = "Add resource";
             this.Load += new System.EventHandler(this.resourceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ResGrid)).EndInit();
             this.ResumeLayout(false);
@@ -322,9 +315,6 @@
         private MetroFramework.Controls.MetroGrid ResGrid;
         private MetroFramework.Controls.MetroButton UpdateResBtn;
         private MetroFramework.Controls.MetroButton DelResBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resValue;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resQty;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

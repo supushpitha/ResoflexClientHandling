@@ -379,7 +379,7 @@
             this.eventSave.TabIndex = 75;
             this.eventSave.Text = "Save";
             this.eventSave.UseSelectable = true;
-            this.eventSave.Click += new System.EventHandler(this.eventSave_Click);
+            this.eventSave.Click += new System.EventHandler(this.validation);
             // 
             // checkList
             // 

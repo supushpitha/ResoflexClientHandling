@@ -23,7 +23,7 @@ namespace ResoflexClientHandlingSystem
         private void Form1_Load(object sender, EventArgs e)
         {
             metroGrid3.DataSource = getStaff();
-            metroGrid2.DataSource = getStaff();
+            staffAttendanceDataGrid.DataSource = staffEvaluationGetAttendace(); ;
             metroGrid4.DataSource = jobPerformanceTop20();
             metroRadioButton1.Checked = true;
             metroRadioButton3.Checked = true;
@@ -40,7 +40,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable jobPerformanceTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(jb.knowledge + jb.Saftey + jb.Quality + jb.Adaptability + jb.Productivity + jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(jb.knowledge + jb.Saftey + jb.Quality + jb.Adaptability + jb.Productivity + jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -48,7 +48,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable jobPerformanceTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.address,sum(jb.knowledge+jb.Saftey+jb.Quality+jb.Adaptability+jb.Productivity+jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.p_address,sum(jb.knowledge+jb.Saftey+jb.Quality+jb.Adaptability+jb.Productivity+jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -56,7 +56,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable clientRelationsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -64,7 +64,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable clientRelationsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.address,sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.p_address,sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -72,7 +72,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable communicationSkillsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -80,7 +80,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable communicationSkillsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -88,7 +88,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable interpersonalSkillsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -96,31 +96,39 @@ namespace ResoflexClientHandlingSystem
         private DataTable interpersonalSkillsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
 
         private DataTable customNumberForJobPerformanceTopEmps()
         {
-            int limit = 10;
+            string limit = "";
             try
             {
-                 limit = Int32.Parse(metroTextBox3.Text);
+                
             }
             catch (Exception) {
-                 limit = 5;
+                 limit = "";
             }
-            DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '"+ limit + "'");
-            table.Load(reader);
-            return table;
+            try
+            {
+                DataTable table = new DataTable();
+                MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '" + limit + "'");
+                table.Load(reader);
+                return table;
+            }
+            catch(Exception ex) {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                DataTable table = new DataTable();
+                return table;
+            }
         }
 
         private DataTable customNumberForClientRelationsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '" + metroTextBox3.Text + "'");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -128,7 +136,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable customNumberForCommunicationSkillsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit'" + metroTextBox3.Text + "'");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -136,7 +144,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable customNumberForInterpersonalSkillsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '" + metroTextBox3.Text + "'");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit ");
             table.Load(reader);
             return table;
         }
@@ -144,11 +152,59 @@ namespace ResoflexClientHandlingSystem
         private DataTable searchEmployees()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT * FROM staff WHERE name LIKE '%"+ metroTextBox2.Text+ "%' OR  employee_no LIKE '%" + metroTextBox2.Text + "%'");
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM attendanceView WHERE FirstName LIKE '%"+searchStaffAttendanceTxtBox.Text+ "%' OR LastName LIKE '%"+searchStaffAttendanceTxtBox.Text+"%' OR  staffId LIKE '%" + searchStaffAttendanceTxtBox.Text + "%'");
             table.Load(reader);
             return table;
             
         }
+
+        private DataTable searchFromStaff()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM staff WHERE first_name LIKE '%" + selectEmployeeTxtbox.Text + "%' OR last_name LIKE '%" + selectEmployeeTxtbox.Text + "%' OR  staff_id LIKE '%" + selectEmployeeTxtbox.Text + "%'");
+            table.Load(reader);
+            return table;
+
+        }
+
+        private DataTable getAttendance()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT staff_id as StaffId,in_time as InTime,out_time as OutTime, total_hours as TotalHours FROM attendance");
+            table.Load(reader);
+            return table;
+
+        }
+
+        private DataTable staffEvaluationGetAttendace()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * from attendanceView");
+            table.Load(reader);
+            return table;
+
+        }
+
+        private DataTable getAttendanceByDate()
+        {
+            DateTime myDateTime = staffDateTime1.Value;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM attendanceview where DATE(InTime) = '" + sqlFormattedDate + "'");
+            table.Load(reader);
+            return table;
+        }
+
+        private DataTable getAttendanceByDate1()
+        {
+            DateTime myDateTime = staffDateTime2.Value;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM attendanceview where DATE(OutTime) = '" + sqlFormattedDate + "'");
+            table.Load(reader);
+            return table;
+        }
+
 
         private void metroTextBox1_Click(object sender, EventArgs e)
         {
@@ -187,8 +243,14 @@ namespace ResoflexClientHandlingSystem
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            
-
+            try
+            {
+                staffAttendanceDataGrid.DataSource = searchEmployees();
+                
+            }
+            catch(Exception ex) {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void textBox1_MouseClick(object sender, MouseEventArgs e)
@@ -199,7 +261,7 @@ namespace ResoflexClientHandlingSystem
         private void metroTextBox2_TextChanged(object sender, EventArgs e)
         {
 
-            metroGrid2.DataSource = searchEmployees();
+            staffAttendanceDataGrid.DataSource = searchEmployees();
         }
 
         private void metroTextBox2_Click(object sender, EventArgs e)
@@ -336,6 +398,26 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             prffrm.ShowDialog();
             this.Close();
+        }
+
+        private void staffDateTime1_ValueChanged(object sender, EventArgs e)
+        {
+            staffAttendanceDataGrid.DataSource = getAttendanceByDate();
+        }
+
+        private void staffDateTime2_ValueChanged(object sender, EventArgs e)
+        {
+            staffAttendanceDataGrid.DataSource = getAttendanceByDate1();
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            staffAttendanceDataGrid.DataSource = staffEvaluationGetAttendace();
+        }
+
+        private void selectEmployeeTxtbox_TextChanged(object sender, EventArgs e)
+        {
+            metroGrid3.DataSource = searchFromStaff();
         }
     }
 }

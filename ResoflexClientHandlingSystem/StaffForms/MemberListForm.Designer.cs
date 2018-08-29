@@ -32,9 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MembersGrid = new MetroFramework.Controls.MetroGrid();
-            this.UpdateMemBtn = new MetroFramework.Controls.MetroButton();
-            this.GotoAddmemBtn = new MetroFramework.Controls.MetroButton();
-            this.DelMemBtn = new MetroFramework.Controls.MetroButton();
             this.staffID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +46,9 @@
             this.linkedIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.basicSal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.UpdateMemBtn = new MetroFramework.Controls.MetroButton();
+            this.GotoAddmemBtn = new MetroFramework.Controls.MetroButton();
+            this.DelMemBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             this.MembersGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -85,7 +85,7 @@
             this.otRate});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -109,37 +109,6 @@
             this.MembersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.MembersGrid.Size = new System.Drawing.Size(694, 309);
             this.MembersGrid.TabIndex = 0;
-            // 
-            // UpdateMemBtn
-            // 
-            this.UpdateMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.UpdateMemBtn.Location = new System.Drawing.Point(604, 54);
-            this.UpdateMemBtn.Name = "UpdateMemBtn";
-            this.UpdateMemBtn.Size = new System.Drawing.Size(138, 35);
-            this.UpdateMemBtn.TabIndex = 1;
-            this.UpdateMemBtn.Text = "Update";
-            this.UpdateMemBtn.UseSelectable = true;
-            // 
-            // GotoAddmemBtn
-            // 
-            this.GotoAddmemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.GotoAddmemBtn.Location = new System.Drawing.Point(258, 54);
-            this.GotoAddmemBtn.Name = "GotoAddmemBtn";
-            this.GotoAddmemBtn.Size = new System.Drawing.Size(163, 35);
-            this.GotoAddmemBtn.TabIndex = 2;
-            this.GotoAddmemBtn.Text = "Add new member";
-            this.GotoAddmemBtn.UseSelectable = true;
-            this.GotoAddmemBtn.Click += new System.EventHandler(this.metroButton1_Click);
-            // 
-            // DelMemBtn
-            // 
-            this.DelMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.DelMemBtn.Location = new System.Drawing.Point(445, 54);
-            this.DelMemBtn.Name = "DelMemBtn";
-            this.DelMemBtn.Size = new System.Drawing.Size(138, 35);
-            this.DelMemBtn.TabIndex = 3;
-            this.DelMemBtn.Text = "Delete";
-            this.DelMemBtn.UseSelectable = true;
             // 
             // staffID
             // 
@@ -211,7 +180,38 @@
             this.otRate.HeaderText = "OT rate";
             this.otRate.Name = "otRate";
             // 
-            // Member_List
+            // UpdateMemBtn
+            // 
+            this.UpdateMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.UpdateMemBtn.Location = new System.Drawing.Point(604, 54);
+            this.UpdateMemBtn.Name = "UpdateMemBtn";
+            this.UpdateMemBtn.Size = new System.Drawing.Size(138, 35);
+            this.UpdateMemBtn.TabIndex = 1;
+            this.UpdateMemBtn.Text = "Update";
+            this.UpdateMemBtn.UseSelectable = true;
+            // 
+            // GotoAddmemBtn
+            // 
+            this.GotoAddmemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.GotoAddmemBtn.Location = new System.Drawing.Point(258, 54);
+            this.GotoAddmemBtn.Name = "GotoAddmemBtn";
+            this.GotoAddmemBtn.Size = new System.Drawing.Size(163, 35);
+            this.GotoAddmemBtn.TabIndex = 2;
+            this.GotoAddmemBtn.Text = "Add new member";
+            this.GotoAddmemBtn.UseSelectable = true;
+            this.GotoAddmemBtn.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
+            // DelMemBtn
+            // 
+            this.DelMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.DelMemBtn.Location = new System.Drawing.Point(445, 54);
+            this.DelMemBtn.Name = "DelMemBtn";
+            this.DelMemBtn.Size = new System.Drawing.Size(138, 35);
+            this.DelMemBtn.TabIndex = 3;
+            this.DelMemBtn.Text = "Delete";
+            this.DelMemBtn.UseSelectable = true;
+            // 
+            // MemberListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,7 +220,7 @@
             this.Controls.Add(this.GotoAddmemBtn);
             this.Controls.Add(this.UpdateMemBtn);
             this.Controls.Add(this.MembersGrid);
-            this.Name = "Member_List";
+            this.Name = "MemberListForm";
             this.Text = "Member List";
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).EndInit();
             this.ResumeLayout(false);

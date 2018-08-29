@@ -10,13 +10,25 @@ namespace ResoflexClientHandlingSystem.Role
     {
         private Event eventOfTechnician;
         private Staff technician;
-        private int feedback;
+        private string feedback;
+        private string task;
 
-        public EventTechnician(Event eventOfTechnician, Staff technician, int feedback)
+        EventTechnician()
         {
-            this.eventOfTechnician = eventOfTechnician;
-            this.technician = technician;
-            this.feedback = feedback;
+
         }
+
+        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string task)
+        {
+            this.EventOfTechnician = eventOfTechnician;
+            this.Technician = technician;
+            this.Feedback = feedback;
+            this.Task = task;
+        }
+
+        public Staff Technician { get => technician; set => technician = value; }
+        public string Feedback { get => feedback; set => feedback = value; }
+        internal Event EventOfTechnician { get => eventOfTechnician; set => eventOfTechnician = value; }
+        public string Task { get => task; set => task = value; }
     }
 }

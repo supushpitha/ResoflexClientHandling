@@ -50,6 +50,9 @@ namespace ResoflexClientHandlingSystem.UserForms
                 Logglobals.logout.ToLocalTime();
                 Logglobals.id = 0;
 
+                Dashboard dash = new Dashboard();
+                this.Hide();
+                dash.ShowDialog();
                 this.Close();
 
             }

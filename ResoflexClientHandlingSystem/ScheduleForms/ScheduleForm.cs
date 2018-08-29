@@ -79,7 +79,12 @@ namespace ResoflexClientHandlingSystem
 
         private void addEvent_Click(object sender, EventArgs e)
         {
-            AddEventForm ef = new AddEventForm();
+            DataGridViewRow row = scheduleGrid.CurrentRow;
+
+            int sch_no = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
+
+            AddEventForm ef = new AddEventForm(sch_no, proj_id);
             ef.ShowDialog();
         }
 
@@ -284,6 +289,11 @@ namespace ResoflexClientHandlingSystem
             reader.Close();
 
             return colString;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            scheduleGrid.DataSource = getSchedules();
         }
     }
 }

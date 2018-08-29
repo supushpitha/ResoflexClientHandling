@@ -624,11 +624,22 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static Boolean deleteEvent()
+        public static Boolean deleteEvent(Event evnt)
         {
             try
             {
-                DBConnection.updateDB("");
+                MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                while (reader.Read())
+                {
+                    DBConnection.updateDB("delete from event_technician_task where event_tech_id = " + reader.GetInt16("event_staff_id") + ";");
+                }
+
+                reader.Close();
+
+                DBConnection.updateDB("delete from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                DBConnection.updateDB("delete from event where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
                 return true;
             }

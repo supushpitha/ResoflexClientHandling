@@ -423,20 +423,19 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addStaff(Staff staff)
         {
-
             try
             {
                 DBConnection.updateDB("insert into staff(first_name, last_name, " +
-                    "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
+                    "nic, p_address, s_address, tel1, tel2, email, facebook, linkedin, basic_salary, ot_rate, desig_id) " +
                     "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic + "'," +
-                    "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
+                    "'" + staff.PAddress + "','" + staff.SAddress + "','" + staff.TelNumber[0] + "'," +
+                    "'" + staff.TelNumber[1] + "'," +
                     "'" + staff.Email + "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
-                    "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
+                    "" + staff.BasicSalary + "," + staff.OtRate + "," + staff.Designation.DesigId + ")");
             }
-
-            catch (Exception)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
       
@@ -558,9 +557,17 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void addDesignation()
+        public static void addDesignation(Designation designation)
         {
-            DBConnection.updateDB("insert into designation(designation) values()");
+            try
+            {
+                DBConnection.updateDB("insert into designation(designation_name) values('" + designation.DesignationName + "')");
+            }
+
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
 
         public static void saveChangeRequest(ProjectRequest req)
@@ -692,6 +699,22 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }*/
+        }
+
+        public static void updateStaff(Staff staff)
+        {
+            try
+            {
+
+                DBConnection.updateDB("update staff set first_name = '" + staff.FirstName + "', last_name = '" + staff.LastName + "', " +
+                    "nic = '" + staff.Nic + "', p_address = '" + staff.PAddress + "', s_address = '" + staff.SAddress + "', tel1 = '" + staff.TelNumber[0] + "'" +
+                    ", tel2 = '" + staff.TelNumber[1] + "', email = '" + staff.Email + "', facebook = '" + staff.Facebook + "', linkedin = '" + staff.LinkedIn + "'" +
+                    ", basic_salary = " + staff.BasicSalary + ", ot_rate = " + staff.OtRate + ", desig_id = " + staff.Designation.DesigId + " where staff_id=" + staff.StaffId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update staff member", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

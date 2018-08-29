@@ -31,30 +31,26 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MemberListForm));
             this.MembersGrid = new MetroFramework.Controls.MetroGrid();
-            this.staffID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lname = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nic = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.desg = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tel2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.facebook = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkedIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.basicSal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.otRate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UpdateMemBtn = new MetroFramework.Controls.MetroButton();
             this.GotoAddmemBtn = new MetroFramework.Controls.MetroButton();
             this.DelMemBtn = new MetroFramework.Controls.MetroButton();
+            this.TotalProjectsTile = new MetroFramework.Controls.MetroTile();
+            this.TotalEventsTile = new MetroFramework.Controls.MetroTile();
+            this.TotalAtteTile = new MetroFramework.Controls.MetroTile();
+            this.StaffEvaBtn = new MetroFramework.Controls.MetroButton();
+            this.RecordAtteBtn = new MetroFramework.Controls.MetroButton();
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // MembersGrid
             // 
             this.MembersGrid.AllowUserToResizeRows = false;
+            this.MembersGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.MembersGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.MembersGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.MembersGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -68,21 +64,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.MembersGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.MembersGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.MembersGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.staffID,
-            this.fname,
-            this.lname,
-            this.nic,
-            this.desg,
-            this.pAddress,
-            this.sAddress,
-            this.tel1,
-            this.tel2,
-            this.email,
-            this.facebook,
-            this.linkedIn,
-            this.basicSal,
-            this.otRate});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -94,7 +75,7 @@
             this.MembersGrid.EnableHeadersVisualStyles = false;
             this.MembersGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.MembersGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.MembersGrid.Location = new System.Drawing.Point(49, 113);
+            this.MembersGrid.Location = new System.Drawing.Point(48, 99);
             this.MembersGrid.Name = "MembersGrid";
             this.MembersGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -107,93 +88,27 @@
             this.MembersGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.MembersGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.MembersGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.MembersGrid.Size = new System.Drawing.Size(694, 309);
+            this.MembersGrid.Size = new System.Drawing.Size(713, 309);
             this.MembersGrid.TabIndex = 0;
-            // 
-            // staffID
-            // 
-            this.staffID.HeaderText = "ID";
-            this.staffID.Name = "staffID";
-            // 
-            // fname
-            // 
-            this.fname.HeaderText = "First Name";
-            this.fname.Name = "fname";
-            // 
-            // lname
-            // 
-            this.lname.HeaderText = "Last Name";
-            this.lname.Name = "lname";
-            // 
-            // nic
-            // 
-            this.nic.HeaderText = "NIC";
-            this.nic.Name = "nic";
-            // 
-            // desg
-            // 
-            this.desg.HeaderText = "Designation";
-            this.desg.Name = "desg";
-            // 
-            // pAddress
-            // 
-            this.pAddress.HeaderText = "Primary Address";
-            this.pAddress.Name = "pAddress";
-            // 
-            // sAddress
-            // 
-            this.sAddress.HeaderText = "Secondary Address";
-            this.sAddress.Name = "sAddress";
-            // 
-            // tel1
-            // 
-            this.tel1.HeaderText = "Tel No 1";
-            this.tel1.Name = "tel1";
-            // 
-            // tel2
-            // 
-            this.tel2.HeaderText = "Tel No 2";
-            this.tel2.Name = "tel2";
-            // 
-            // email
-            // 
-            this.email.HeaderText = "E-mail";
-            this.email.Name = "email";
-            // 
-            // facebook
-            // 
-            this.facebook.HeaderText = "Facebook";
-            this.facebook.Name = "facebook";
-            // 
-            // linkedIn
-            // 
-            this.linkedIn.HeaderText = "LinkedIn";
-            this.linkedIn.Name = "linkedIn";
-            // 
-            // basicSal
-            // 
-            this.basicSal.HeaderText = "Basic salary";
-            this.basicSal.Name = "basicSal";
-            // 
-            // otRate
-            // 
-            this.otRate.HeaderText = "OT rate";
-            this.otRate.Name = "otRate";
+            this.MembersGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.MembersGrid_CellContentClick);
             // 
             // UpdateMemBtn
             // 
+            this.UpdateMemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.UpdateMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.UpdateMemBtn.Location = new System.Drawing.Point(604, 54);
+            this.UpdateMemBtn.Location = new System.Drawing.Point(623, 48);
             this.UpdateMemBtn.Name = "UpdateMemBtn";
             this.UpdateMemBtn.Size = new System.Drawing.Size(138, 35);
             this.UpdateMemBtn.TabIndex = 1;
             this.UpdateMemBtn.Text = "Update";
             this.UpdateMemBtn.UseSelectable = true;
+            this.UpdateMemBtn.Click += new System.EventHandler(this.UpdateMemBtn_Click);
             // 
             // GotoAddmemBtn
             // 
+            this.GotoAddmemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GotoAddmemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.GotoAddmemBtn.Location = new System.Drawing.Point(258, 54);
+            this.GotoAddmemBtn.Location = new System.Drawing.Point(260, 48);
             this.GotoAddmemBtn.Name = "GotoAddmemBtn";
             this.GotoAddmemBtn.Size = new System.Drawing.Size(163, 35);
             this.GotoAddmemBtn.TabIndex = 2;
@@ -203,25 +118,104 @@
             // 
             // DelMemBtn
             // 
+            this.DelMemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DelMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.DelMemBtn.Location = new System.Drawing.Point(445, 54);
+            this.DelMemBtn.Location = new System.Drawing.Point(455, 48);
             this.DelMemBtn.Name = "DelMemBtn";
             this.DelMemBtn.Size = new System.Drawing.Size(138, 35);
             this.DelMemBtn.TabIndex = 3;
             this.DelMemBtn.Text = "Delete";
             this.DelMemBtn.UseSelectable = true;
+            this.DelMemBtn.Click += new System.EventHandler(this.DelMemBtn_Click);
+            // 
+            // TotalProjectsTile
+            // 
+            this.TotalProjectsTile.ActiveControl = null;
+            this.TotalProjectsTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TotalProjectsTile.Location = new System.Drawing.Point(48, 424);
+            this.TotalProjectsTile.Name = "TotalProjectsTile";
+            this.TotalProjectsTile.Size = new System.Drawing.Size(157, 104);
+            this.TotalProjectsTile.TabIndex = 4;
+            this.TotalProjectsTile.Text = "Total Projrects";
+            this.TotalProjectsTile.UseSelectable = true;
+            // 
+            // TotalEventsTile
+            // 
+            this.TotalEventsTile.ActiveControl = null;
+            this.TotalEventsTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TotalEventsTile.Location = new System.Drawing.Point(235, 424);
+            this.TotalEventsTile.Name = "TotalEventsTile";
+            this.TotalEventsTile.Size = new System.Drawing.Size(157, 104);
+            this.TotalEventsTile.TabIndex = 4;
+            this.TotalEventsTile.Text = "Total Events";
+            this.TotalEventsTile.UseSelectable = true;
+            // 
+            // TotalAtteTile
+            // 
+            this.TotalAtteTile.ActiveControl = null;
+            this.TotalAtteTile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TotalAtteTile.Location = new System.Drawing.Point(423, 424);
+            this.TotalAtteTile.Name = "TotalAtteTile";
+            this.TotalAtteTile.Size = new System.Drawing.Size(157, 104);
+            this.TotalAtteTile.TabIndex = 4;
+            this.TotalAtteTile.Text = "Total Attendance";
+            this.TotalAtteTile.UseSelectable = true;
+            // 
+            // StaffEvaBtn
+            // 
+            this.StaffEvaBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.StaffEvaBtn.Location = new System.Drawing.Point(641, 424);
+            this.StaffEvaBtn.Name = "StaffEvaBtn";
+            this.StaffEvaBtn.Size = new System.Drawing.Size(120, 40);
+            this.StaffEvaBtn.TabIndex = 5;
+            this.StaffEvaBtn.Text = "Staff Evalution";
+            this.StaffEvaBtn.UseSelectable = true;
+            this.StaffEvaBtn.Click += new System.EventHandler(this.StaffEvaBtn_Click);
+            // 
+            // RecordAtteBtn
+            // 
+            this.RecordAtteBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.RecordAtteBtn.Location = new System.Drawing.Point(641, 488);
+            this.RecordAtteBtn.Name = "RecordAtteBtn";
+            this.RecordAtteBtn.Size = new System.Drawing.Size(120, 40);
+            this.RecordAtteBtn.TabIndex = 6;
+            this.RecordAtteBtn.Text = "Record Attendance";
+            this.RecordAtteBtn.UseSelectable = true;
+            this.RecordAtteBtn.Click += new System.EventHandler(this.RecordAtteBtn_Click);
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(379, 7);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 22;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // MemberListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(817, 551);
+            this.Controls.Add(this.homeBtn);
+            this.Controls.Add(this.RecordAtteBtn);
+            this.Controls.Add(this.StaffEvaBtn);
+            this.Controls.Add(this.TotalAtteTile);
+            this.Controls.Add(this.TotalEventsTile);
+            this.Controls.Add(this.TotalProjectsTile);
             this.Controls.Add(this.DelMemBtn);
             this.Controls.Add(this.GotoAddmemBtn);
             this.Controls.Add(this.UpdateMemBtn);
             this.Controls.Add(this.MembersGrid);
             this.Name = "MemberListForm";
             this.Text = "Member List";
+            this.Load += new System.EventHandler(this.MemberListForm_Load);
+            this.Shown += new System.EventHandler(this.MemberListForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).EndInit();
             this.ResumeLayout(false);
 
@@ -233,19 +227,11 @@
         private MetroFramework.Controls.MetroButton UpdateMemBtn;
         public MetroFramework.Controls.MetroButton GotoAddmemBtn;
         private MetroFramework.Controls.MetroButton DelMemBtn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn staffID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lname;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nic;
-        private System.Windows.Forms.DataGridViewTextBoxColumn desg;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tel1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tel2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn facebook;
-        private System.Windows.Forms.DataGridViewTextBoxColumn linkedIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn basicSal;
-        private System.Windows.Forms.DataGridViewTextBoxColumn otRate;
+        private MetroFramework.Controls.MetroTile TotalProjectsTile;
+        private MetroFramework.Controls.MetroTile TotalEventsTile;
+        private MetroFramework.Controls.MetroTile TotalAtteTile;
+        private MetroFramework.Controls.MetroButton StaffEvaBtn;
+        private MetroFramework.Controls.MetroButton RecordAtteBtn;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

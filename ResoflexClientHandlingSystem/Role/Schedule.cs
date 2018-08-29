@@ -33,6 +33,11 @@ namespace ResoflexClientHandlingSystem.Role
 
         }
 
+        public Schedule(int sch_no)
+        {
+            this.ScheduleId = sch_no;
+        }
+
         public Schedule(int scheduleId, Project projectOfSchedule, EventType type, ArrayList servEngineer, DateTime from, DateTime to, string vehicle, float mileage, string todoList, string resource, string checklist, string travelMode, string accommodationMode, string meals, string logs)
         {
             this.ScheduleId = scheduleId;

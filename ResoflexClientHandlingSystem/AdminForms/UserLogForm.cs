@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.AdminForms;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
@@ -28,6 +29,9 @@ namespace ResoflexClientHandlingSystem
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
+                addUsers.Visible = false;
+                updateUsers.Visible = false;
+                reportbtn.Visible = false;
 
             }
             else
@@ -36,6 +40,7 @@ namespace ResoflexClientHandlingSystem
                 {
                     addUsers.Visible = false;
                     updateUsers.Visible = false;
+                    reportbtn.Visible = false;
                 }
 
                 profilebtn.Visible = true;
@@ -50,17 +55,13 @@ namespace ResoflexClientHandlingSystem
         private void addUsers_Click(object sender, EventArgs e)
         {
             UserAddForm uaf = new UserAddForm();
-            this.Hide();
-            uaf.ShowDialog();
-            this.Close();
+            uaf.Show();
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
         {
             ProfileForm prffrm = new ProfileForm();
-            this.Hide();
-            prffrm.ShowDialog();
-            this.Close();
+            prffrm.Show();
         }
 
         private DataTable getLogList()
@@ -137,7 +138,7 @@ namespace ResoflexClientHandlingSystem
             DateTime dateTime = dateTimeTo.Value;
 
 
-            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
+            if (dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -178,7 +179,7 @@ namespace ResoflexClientHandlingSystem
             DateTime dateTime = dateTimeTo.Value;
 
 
-            if (dateTime.Equals(dateTimefrom.Value) || dateTime < dateTimefrom.Value)
+            if (dateTime < dateTimefrom.Value)
             {
                 MessageBox.Show("Invalid 'from' date");
             }
@@ -206,6 +207,32 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Invalid data!\n" + exc.StackTrace, "User Log finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void updateUsers_Click(object sender, EventArgs e)
+        {
+            UserUpdateForm updateForm = new UserUpdateForm();
+            updateForm.ShowDialog();
+            
+
+        }
+
+        private void LogGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int logid = Int32.Parse(LogGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            UserOperationsForm uof = new UserOperationsForm(logid);
+
+            uof.Show();
+        }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            Dashboard dsh = new Dashboard();
+            this.Hide();
+            dsh.ShowDialog();
+            this.Close();
+            
         }
     }
 }

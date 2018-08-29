@@ -46,9 +46,9 @@ namespace ResoflexClientHandlingSystem
             try
             {
 
-                MySqlDataReader dataReader1 = DBConnection.getData("SELECT COUNT(user_id) as count,permission, u_name, user_id FROM user WHERE u_name='" + uname + "' and password='" + pwd+"';");
+                MySqlDataReader dataReader1 = DBConnection.getData("SELECT permission, u_name, user_id FROM user WHERE u_name='" + uname + "' and password='" + pwd+"';");
 
-                if (dataReader1.HasRows)
+                if (dataReader1.HasRows == true)
                 {
                     while(dataReader1.Read()){
 
@@ -76,6 +76,7 @@ namespace ResoflexClientHandlingSystem
                     }
                     else
                     {
+                        dataReader1.Close();
                         MessageBox.Show("You are not authorized to log in..");
 
                     }
@@ -83,6 +84,7 @@ namespace ResoflexClientHandlingSystem
                 }
                 else
                 {
+                    dataReader1.Close();
                     MessageBox.Show("Credentials are incorrect");
                 }
             }
@@ -125,7 +127,16 @@ namespace ResoflexClientHandlingSystem
 
         private void Login_Load(object sender, EventArgs e)
         {
-            //unameTextBox.
+            this.ActiveControl = unameTextBox;
+            unameTextBox.Focus();
+        }
+
+        private void pwdTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                login();
+            }
         }
     }
 }

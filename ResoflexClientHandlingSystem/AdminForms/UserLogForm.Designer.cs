@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserLog));
             this.LogGrid = new MetroFramework.Controls.MetroGrid();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -41,7 +42,8 @@
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
             this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimefrom = new System.Windows.Forms.DateTimePicker();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.reportbtn = new MetroFramework.Controls.MetroButton();
+            this.schHome = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.LogGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +62,7 @@
             this.LogGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -69,7 +71,7 @@
             this.LogGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -78,7 +80,7 @@
             this.LogGrid.EnableHeadersVisualStyles = false;
             this.LogGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.LogGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.LogGrid.Location = new System.Drawing.Point(10, 63);
+            this.LogGrid.Location = new System.Drawing.Point(14, 97);
             this.LogGrid.Name = "LogGrid";
             this.LogGrid.ReadOnly = true;
             this.LogGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -94,6 +96,7 @@
             this.LogGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogGrid.Size = new System.Drawing.Size(643, 456);
             this.LogGrid.TabIndex = 0;
+            this.LogGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.LogGrid_RowHeaderMouseClick);
             // 
             // metroLabel1
             // 
@@ -136,30 +139,31 @@
             // addUsers
             // 
             this.addUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.addUsers.Location = new System.Drawing.Point(672, 127);
+            this.addUsers.Location = new System.Drawing.Point(672, 160);
             this.addUsers.Name = "addUsers";
             this.addUsers.Size = new System.Drawing.Size(105, 29);
             this.addUsers.TabIndex = 7;
-            this.addUsers.Text = "Add users";
+            this.addUsers.Text = "Add/Delete users";
             this.addUsers.UseSelectable = true;
             this.addUsers.Click += new System.EventHandler(this.addUsers_Click);
             // 
             // updateUsers
             // 
             this.updateUsers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.updateUsers.Location = new System.Drawing.Point(672, 195);
+            this.updateUsers.Location = new System.Drawing.Point(672, 225);
             this.updateUsers.Name = "updateUsers";
             this.updateUsers.Size = new System.Drawing.Size(105, 29);
             this.updateUsers.TabIndex = 8;
             this.updateUsers.Text = "Update users";
             this.updateUsers.UseSelectable = true;
+            this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
             // 
             // profilebtn
             // 
             this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.profilebtn.Location = new System.Drawing.Point(672, 63);
+            this.profilebtn.Location = new System.Drawing.Point(672, 97);
             this.profilebtn.Name = "profilebtn";
             this.profilebtn.Size = new System.Drawing.Size(105, 29);
             this.profilebtn.TabIndex = 9;
@@ -227,22 +231,38 @@
             this.dateTimefrom.TabIndex = 12;
             this.dateTimefrom.Value = new System.DateTime(2018, 8, 26, 0, 0, 0, 0);
             // 
-            // metroButton1
+            // reportbtn
             // 
-            this.metroButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroButton1.Location = new System.Drawing.Point(672, 262);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(105, 29);
-            this.metroButton1.TabIndex = 13;
-            this.metroButton1.Text = "View Reports";
-            this.metroButton1.UseSelectable = true;
+            this.reportbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reportbtn.Location = new System.Drawing.Point(672, 289);
+            this.reportbtn.Name = "reportbtn";
+            this.reportbtn.Size = new System.Drawing.Size(105, 29);
+            this.reportbtn.TabIndex = 13;
+            this.reportbtn.Text = "View Reports";
+            this.reportbtn.UseSelectable = true;
+            // 
+            // schHome
+            // 
+            this.schHome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.schHome.BackColor = System.Drawing.Color.Transparent;
+            this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
+            this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.schHome.Location = new System.Drawing.Point(357, 52);
+            this.schHome.Margin = new System.Windows.Forms.Padding(2);
+            this.schHome.Name = "schHome";
+            this.schHome.Size = new System.Drawing.Size(30, 24);
+            this.schHome.TabIndex = 14;
+            this.schHome.UseSelectable = true;
+            this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
             // UserLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.schHome);
+            this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.dateTimefrom);
             this.Controls.Add(this.dateTimeTo);
             this.Controls.Add(this.metroTextBox1);
@@ -275,6 +295,7 @@
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
         private System.Windows.Forms.DateTimePicker dateTimeTo;
         private System.Windows.Forms.DateTimePicker dateTimefrom;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton reportbtn;
+        private MetroFramework.Controls.MetroButton schHome;
     }
 }

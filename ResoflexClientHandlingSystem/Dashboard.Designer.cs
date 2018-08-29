@@ -163,7 +163,7 @@
             this.metroButton2.Name = "metroButton2";
             this.metroButton2.Size = new System.Drawing.Size(211, 176);
             this.metroButton2.TabIndex = 17;
-            this.metroButton2.Text = "Projects";
+            this.metroButton2.Text = "Project Manager";
             this.metroButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton2.UseSelectable = true;
             this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);

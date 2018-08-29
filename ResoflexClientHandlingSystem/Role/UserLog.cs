@@ -50,6 +50,11 @@ namespace ResoflexClientHandlingSystem.Role
             this.ip = ip;
         }
 
+        public UserLog(int id)
+        {
+
+            this.LogId = id;        }
+
         public int LogId { get => logId; set => logId = value; }
         public User User { get => user; set => user = value; }
         public string LoggedInDateTime { get => loggedInDateTime; set => loggedInDateTime = value; }

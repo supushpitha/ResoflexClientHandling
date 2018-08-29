@@ -18,7 +18,7 @@ namespace ResoflexClientHandlingSystem
         {
             InitializeComponent();
 
-            eventGrid.DataSource = null;
+            eventGrid.DataSource = getEvents();
 
             //Autocompelete data source
             projectName.AutoCompleteCustomSource = projectNameAutoComplete();
@@ -48,10 +48,11 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("");
+            MySqlDataReader reader = DBConnection.getData("select * from event");
 
             dt.Load(reader);
 
+            reader.Close();
 
             return dt;
         }
@@ -71,6 +72,8 @@ namespace ResoflexClientHandlingSystem
                 colString.Add(Convert.ToString(item[0]));
             }
 
+            reader.Close();
+
             return colString;
         }
 
@@ -88,6 +91,8 @@ namespace ResoflexClientHandlingSystem
             {
                 colString.Add(Convert.ToString(item[0]));
             }
+
+            reader.Close();
 
             return colString;
         }

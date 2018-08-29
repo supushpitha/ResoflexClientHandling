@@ -241,7 +241,8 @@ namespace ResoflexClientHandlingSystem
                                                             " order by s.sch_no, s.proj_id;");
 
             dt.Load(reader);
-        
+
+            reader.Close();
 
             return dt;
         }
@@ -262,6 +263,8 @@ namespace ResoflexClientHandlingSystem
                 colString.Add(Convert.ToString(item[0]));
             }
 
+            reader.Close();
+
             return colString;
         }
 
@@ -279,6 +282,8 @@ namespace ResoflexClientHandlingSystem
             {
                 colString.Add(Convert.ToString(item[0]));
             }
+
+            reader.Close();
 
             return colString;
         }

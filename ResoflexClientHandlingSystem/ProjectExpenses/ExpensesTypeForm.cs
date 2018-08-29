@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.ProjectExpenses.ProjectExpReports;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -34,7 +35,11 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton4_Click(object sender, EventArgs e)
         {
+            string qry = "";
 
+            ProjectExpensesMainReport frm = new ProjectExpensesMainReport(qry);
+
+            frm.Show();
         }
 
         private void metroButton2_Click_1(object sender, EventArgs e)

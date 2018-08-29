@@ -44,6 +44,7 @@
             this.dateTimefrom = new System.Windows.Forms.DateTimePicker();
             this.reportbtn = new MetroFramework.Controls.MetroButton();
             this.schHome = new MetroFramework.Controls.MetroButton();
+            this.shwallbtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.LogGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -256,11 +257,24 @@
             this.schHome.UseSelectable = true;
             this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
+            // shwallbtn
+            // 
+            this.shwallbtn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.shwallbtn.Location = new System.Drawing.Point(672, 524);
+            this.shwallbtn.Name = "shwallbtn";
+            this.shwallbtn.Size = new System.Drawing.Size(105, 29);
+            this.shwallbtn.TabIndex = 15;
+            this.shwallbtn.Text = "Show all";
+            this.shwallbtn.UseSelectable = true;
+            this.shwallbtn.Click += new System.EventHandler(this.shwallbtn_Click);
+            // 
             // UserLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.shwallbtn);
             this.Controls.Add(this.schHome);
             this.Controls.Add(this.reportbtn);
             this.Controls.Add(this.dateTimefrom);
@@ -297,5 +311,6 @@
         private System.Windows.Forms.DateTimePicker dateTimefrom;
         private MetroFramework.Controls.MetroButton reportbtn;
         private MetroFramework.Controls.MetroButton schHome;
+        private MetroFramework.Controls.MetroButton shwallbtn;
     }
 }

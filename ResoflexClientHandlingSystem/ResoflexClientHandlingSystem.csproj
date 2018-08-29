@@ -99,12 +99,6 @@
     <Compile Include="AdminForms\UserAddForm.designer.cs">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminForms\UserLog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminForms\UserLog.Designer.cs">
-      <DependentUpon>UserLog.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminForms\UserLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -495,9 +489,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="AdminForms\UserLog.resx">
-      <DependentUpon>UserLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserLogForm.resx">
       <DependentUpon>UserLogForm.cs</DependentUpon>

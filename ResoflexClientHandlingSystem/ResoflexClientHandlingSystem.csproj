@@ -674,7 +674,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TaskForms\TaskForm.resx">
       <DependentUpon>TaskForm.cs</DependentUpon>
-    <EmbeddedResource>
+    </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </EmbeddedResource>

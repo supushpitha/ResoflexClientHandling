@@ -212,7 +212,7 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addRecord(Attendance atten)
         {
-            MySqlDataReader reader1021 = DBConnection.getData("select * from attendanceview where DATE(in_time) = '" + atten.InTime + "%' and staff_id = '" + atten.EmployeeNo + "'");
+            MySqlDataReader reader1021 = DBConnection.getData("select * from attendanceview where DATE(InTime) = '" + atten.InTime + "%' and StaffID = '" + atten.EmployeeNo + "'");
             
             if (reader1021.HasRows == false)
             {
@@ -338,7 +338,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("insert into interpersonal_skills(staff_id, inter_year, interaction_with_customers, interaction_with_supervisors, interaction_with_clients, motivational_skills, leadership)values('" + interpersonalSkillsObj.StaffId + "','" + interpersonalSkillsObj.InterYear + "', '" + interpersonalSkillsObj.InteractionWithCoworkers + "', '" + interpersonalSkillsObj.InteractionWithSupervisors + "','" + interpersonalSkillsObj.InteractionWithClients + "','" + interpersonalSkillsObj.MotivationalSkills + "','" + interpersonalSkillsObj.Leadership + "')");
+                DBConnection.updateDB("insert into interpersonal_skills(staff_id, inter_year, interaction_with_customers, interaction_with_supervisors, interaction_with_clients, motivational_skills, leadership)values('" + interpersonalSkillsObj.StaffId + "','" + interpersonalSkillsObj.InterYear.ToString("yyyy/M/d") + "', '" + interpersonalSkillsObj.InteractionWithCoworkers + "', '" + interpersonalSkillsObj.InteractionWithSupervisors + "','" + interpersonalSkillsObj.InteractionWithClients + "','" + interpersonalSkillsObj.MotivationalSkills + "','" + interpersonalSkillsObj.Leadership + "')");
             }
             catch (Exception)
             {
@@ -408,7 +408,16 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void updateRecord(Attendance atten)
         {
+            try
+            {
 
+                DBConnection.updateDB("update attendance set out_time = '"+atten.OutTime+"',total_hours = "+atten.HoursWorked+" where staff_id = "+atten.EmployeeNo+ " and in_time = '" + atten.InTime + "'");
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! + "+ex+"", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         public static void addStaff(Staff staff)

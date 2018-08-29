@@ -32,6 +32,7 @@ namespace ResoflexClientHandlingSystem.AttendanceForms
 
         private void InterpersonalSkillAddEntryForm_Load(object sender, EventArgs e)
         {
+            ISupdateBtn.Enabled = false;
             metroGrid1.DataSource = interPersonalSkillsRecords();
         }
 
@@ -50,21 +51,27 @@ namespace ResoflexClientHandlingSystem.AttendanceForms
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            DateTime interYear = interpersonalSkillsDateTime.Value;
-            int staffId = employeeNo;
-            int interactionWithCoworkers = Int32.Parse(interactionWithCustomersTxtbox.Text);
-            int interactionWithSupervisors = Int32.Parse(interactionWithSupervisorsTxtbox.Text);
-            int interactionWithClients = Int32.Parse(interactionWithClientsTxtbox.Text);
-            int motivationalSkills = Int32.Parse(motivationalSkillsTxtbox.Text);
-            int leadership = Int32.Parse(LeadershipTxtbox.Text);
+            try
+            {
+                DateTime interYear = interpersonalSkillsDateTime.Value;
+                int staffId = employeeNo;
+                int interactionWithCoworkers = Int32.Parse(interactionWithCoworkersTxtbox.Text);
+                int interactionWithSupervisors = Int32.Parse(interactionWithSupervisorsTxtbox.Text);
+                int interactionWithClients = Int32.Parse(interactionWithClientsTxtbox.Text);
+                int motivationalSkills = Int32.Parse(motivationalSkillsTxtbox.Text);
+                int leadership = Int32.Parse(LeadershipTxtbox.Text);
 
 
-            int jobPerformanceNo = 0;
+                int jobPerformanceNo = 0;
 
 
-            InterpersonalSkills iPS = new InterpersonalSkills(staffId, interYear, interactionWithCoworkers, interactionWithSupervisors, interactionWithClients, motivationalSkills, leadership);
-
-            Database.addInterpersonalSkills(iPS);
+                InterpersonalSkills iPS = new InterpersonalSkills(staffId, interYear, interactionWithCoworkers, interactionWithSupervisors, interactionWithClients, motivationalSkills, leadership);
+                Database.addInterpersonalSkills(iPS);
+                Notification.showNotification();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Something went wrong! + " + ex + "", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void metroLabel1_Click(object sender, EventArgs e)
@@ -74,29 +81,55 @@ namespace ResoflexClientHandlingSystem.AttendanceForms
 
         private void metroButton2_Click(object sender, EventArgs e)
         {
-            DateTime interYear = interpersonalSkillsDateTime.Value;
-            int staffId = employeeNo;
-            int interactionWithCoworkers = Int32.Parse(interactionWithCustomersTxtbox.Text);
-            int interactionWithSupervisors = Int32.Parse(interactionWithSupervisorsTxtbox.Text);
-            int interactionWithClients = Int32.Parse(interactionWithClientsTxtbox.Text);
-            int motivationalSkills = Int32.Parse(motivationalSkillsTxtbox.Text);
-            int leadership = Int32.Parse(LeadershipTxtbox.Text);
+            try
+            {
+                DateTime interYear = interpersonalSkillsDateTime.Value;
+                int staffId = employeeNo;
+                int interactionWithCoworkers = Int32.Parse(interactionWithCoworkersTxtbox.Text);
+                int interactionWithSupervisors = Int32.Parse(interactionWithSupervisorsTxtbox.Text);
+                int interactionWithClients = Int32.Parse(interactionWithClientsTxtbox.Text);
+                int motivationalSkills = Int32.Parse(motivationalSkillsTxtbox.Text);
+                int leadership = Int32.Parse(LeadershipTxtbox.Text);
 
-            InterpersonalSkills iPS = new InterpersonalSkills(staffId, interYear, interactionWithCoworkers, interactionWithSupervisors, interactionWithClients, motivationalSkills, leadership);
-
-            Database.updateInterpersonalSkills(iPS);
-
+                InterpersonalSkills iPS = new InterpersonalSkills(staffId, interYear, interactionWithCoworkers, interactionWithSupervisors, interactionWithClients, motivationalSkills, leadership);
+                Database.updateInterpersonalSkills(iPS);
+                Notification.showNotification();
+                ISaddBtn.Enabled = true;
+                ISupdateBtn.Enabled = false;
+                interpersonalSkillsDateTime.Enabled = true;
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Something went wrong! + " + ex + "", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void metroGrid1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            metroButton1.Enabled = false;
+            ISaddBtn.Enabled = false;
+            ISupdateBtn.Enabled = true;
+            interpersonalSkillsDateTime.Enabled = false;
             interpersonalSkillsDateTime.Text = metroGrid1.Rows[e.RowIndex].Cells[1].Value.ToString();
-            interactionWithCustomersTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
+            interactionWithCoworkersTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[2].Value.ToString();
             interactionWithSupervisorsTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[3].Value.ToString();
             interactionWithClientsTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[4].Value.ToString();
             motivationalSkillsTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[5].Value.ToString();
             LeadershipTxtbox.Text = metroGrid1.Rows[e.RowIndex].Cells[6].Value.ToString();
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            ISaddBtn.Enabled = true;
+            ISupdateBtn.Enabled = false;
+            interpersonalSkillsDateTime.Enabled = true;
+            interpersonalSkillsDateTime.Text = DateTime.Now.ToString("h:mm:ss tt");
+
+
+            interactionWithCoworkersTxtbox.Text = null;
+            interactionWithSupervisorsTxtbox.Text = null;
+            interactionWithClientsTxtbox.Text = null;
+            motivationalSkillsTxtbox.Text = null;
+            LeadershipTxtbox.Text = null;
+           
         }
     }
 }

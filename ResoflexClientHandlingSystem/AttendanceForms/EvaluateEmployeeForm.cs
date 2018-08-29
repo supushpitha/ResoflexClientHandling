@@ -93,6 +93,7 @@ namespace ResoflexClientHandlingSystem
             double percentileIS = 0;
             //--------------------------------------------------------------------
             projectShortcomingsGrid.DataSource = getProjectShortcomings();
+            projectDataGrid.DataSource = getEventsFeedback();
             //-----------------------------------------------------------------------------------------------------JP-----------------------
             MySqlDataReader reader7 = DBConnection.getData("SELECT SUM(knowledge+Saftey+Quality+Adaptability+Productivity+Initiative) as total from job_performance where staff_id = '" + employeeNo + "'group by staff_id");
             while (reader7.Read()) {
@@ -418,21 +419,59 @@ namespace ResoflexClientHandlingSystem
             //   metroComboBox2.Items.Add(reader11.GetDateTime("year(perf_year)"));
             //}
             //reader11.Close();
-            eventTechnicianTasks.DataSource = getTasks();
+            tasksDataGrid.DataSource = getTasks();
+            gradeFaces();
+            attendanceDataGrid.DataSource = getAttendanceOfEmployee();
+            
         }
         //END OF LOAD FUNCTION
 
         private DataTable getTasks()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT * FROM event_technician_task");
+            MySqlDataReader reader = DBConnection.getData("SELECT ProjectId,EventId,Tasks FROM eventview where StaffId =" + employeeNo + "");
             table.Load(reader);
             return table;
         }
+
+        private DataTable getEventsFeedback()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM eventview WHERE StaffId = "+employeeNo+"");
+            table.Load(reader);
+            return table;
+        }
+
         private DataTable getProjectShortcomings()
         {
             DataTable table = new DataTable();
             MySqlDataReader reader = DBConnection.getData("SELECT * FROM project_shortcomings");
+            table.Load(reader);
+            return table;
+        }
+
+        private DataTable getAttendanceOfEmployee()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + "");
+            table.Load(reader);
+            return table;
+        }
+
+        private DataTable getAttendanceOfEmployeeUsingInTime()
+        {
+            DateTime myDateTime = attendanceOfEmployeeDateTime.Value;
+            string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = "+employeeNo+ " and DATE(InTime) = '"+ sqlFormattedDate + "'");
+            table.Load(reader);
+            return table;
+        }
+
+        private DataTable getAttendanceOfEmployeeUsingOutTime()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + " and DATE(OutTime) = '" + attendanceOfEmployeeDateTime2.Value.ToString("yyyy/M/d") + "'");
             table.Load(reader);
             return table;
         }
@@ -538,14 +577,14 @@ namespace ResoflexClientHandlingSystem
 
         public void executeCircularProgressBarJP()
         {
+            metroLabel32.Text = "";
             finalTotalJP = totalJP2 - totalJP1;
 
             dividedAmountJP = (double)finalTotalJP / totalJP1;
 
             finalPercentageJP = dividedAmountJP * 100;
             long FP = Convert.ToInt64(finalPercentageJP);
-            metroTextBox3.Text = dividedAmountJP.ToString();
-            metroTextBox4.Text = FP.ToString();
+            
 
             if (FP < 0)
             {
@@ -669,6 +708,7 @@ namespace ResoflexClientHandlingSystem
 
         public void executeCircularProgressBarCR()
         {
+            metroLabel34.Text = "";
             Console.Write("\n.........here\n");
 
             finalTotalCR = totalCR2 - totalCR1;
@@ -681,8 +721,7 @@ namespace ResoflexClientHandlingSystem
 
             finalPercentageCR = dividedAmountCR * 100;
             int FP = Convert.ToInt32(finalPercentageCR);
-            metroTextBox3.Text = dividedAmountCR.ToString();
-            metroTextBox4.Text = FP.ToString();
+            
 
             if (FP < 0)
             {
@@ -800,6 +839,7 @@ namespace ResoflexClientHandlingSystem
 
         public void executeCircularProgressBarCS()
         {
+            metroLabel40.Text = "";
             Console.Write("\n.........here\n");
 
             finalTotalCS = totalCS2 - totalCS1;
@@ -812,8 +852,7 @@ namespace ResoflexClientHandlingSystem
 
             finalPercentageCS = dividedAmountCS * 100;
             int FP = Convert.ToInt32(finalPercentageCS);
-            metroTextBox3.Text = dividedAmountCS.ToString();
-            metroTextBox4.Text = FP.ToString();
+            
 
             if (FP < 0)
             {
@@ -931,6 +970,7 @@ namespace ResoflexClientHandlingSystem
 
         public void executeCircularProgressBarIS()
         {
+            metroLabel45.Text = "";
             Console.Write("\n.........here\n");
 
             finalTotalIS = totalIS2 - totalIS1;
@@ -943,8 +983,7 @@ namespace ResoflexClientHandlingSystem
 
             finalPercentageIS = dividedAmountIS * 100;
             int FP = Convert.ToInt32(finalPercentageIS);
-            metroTextBox3.Text = dividedAmountIS.ToString();
-            metroTextBox4.Text = FP.ToString();
+            
 
             if (FP < 0)
             {
@@ -1618,8 +1657,7 @@ namespace ResoflexClientHandlingSystem
 
             finalPercentage = dividedAmount * 100;
             int FP = Convert.ToInt32(finalPercentage);
-            metroTextBox3.Text = dividedAmount.ToString();
-            metroTextBox4.Text = FP.ToString();
+           
 
             if (FP < 0)
             {
@@ -1718,41 +1756,264 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile18_Click(object sender, EventArgs e)
         {
-            int projectId = Int32.Parse(projectIdTxtbox.Text);
-            int eventId = Int32.Parse(EventIdTxtbox.Text);
-            string description = descriptionTxtbox.Text;
+            try
+            {
+                int projectId = Int32.Parse(projectIdTxtbox.Text);
+                int eventId = Int32.Parse(EventIdTxtbox.Text);
+                string description = descriptionTxtbox.Text;
 
-            ProjectShortcomings pSC = new ProjectShortcomings(employeeNo,projectId, eventId, description);
-            Database.addProjectShortcomings(pSC);
+                ProjectShortcomings pSC = new ProjectShortcomings(employeeNo, projectId, eventId, description);
+                Database.addProjectShortcomings(pSC);
+                Notification.showNotification();
+                clearProjectShortcomings();
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show("Something went wrong! +'" + ex + "' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void projectShortcomingsGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
+            metroTile19.Enabled = true;
+            metroTile20.Enabled = true;
             projectIdTxtbox.Text = projectShortcomingsGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
             EventIdTxtbox.Text = projectShortcomingsGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
+
+             metroTile18.Enabled = false;
+             projectIdTxtbox.Enabled = false;
+             EventIdTxtbox.Enabled = false;
+
             descriptionTxtbox.Text = projectShortcomingsGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
 
         }
 
         private void metroTile19_Click(object sender, EventArgs e)
         {
-            int projectId = Int32.Parse(projectIdTxtbox.Text);
-            int eventId = Int32.Parse(EventIdTxtbox.Text);
-            string description = descriptionTxtbox.Text;
+            try
+            {
+                int projectId = Int32.Parse(projectIdTxtbox.Text);
+                int eventId = Int32.Parse(EventIdTxtbox.Text);
+                string description = descriptionTxtbox.Text;
 
-            ProjectShortcomings pSC = new ProjectShortcomings(employeeNo, projectId, eventId, description);
-            Database.updateProjectShortcomings(pSC);
+                projectIdTxtbox.Enabled = true;
+                EventIdTxtbox.Enabled = true;
+                metroTile18.Enabled = true;
 
+                ProjectShortcomings pSC = new ProjectShortcomings(employeeNo, projectId, eventId, description);
+                Database.updateProjectShortcomings(pSC);
+                Notification.showNotification();
+                clearProjectShortcomings();
+            }
+            catch (Exception ex) {
+
+                MessageBox.Show("Something went wrong! +'" + ex + "' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void metroTile20_Click(object sender, EventArgs e)
         {
-            int projectId = Int32.Parse(projectIdTxtbox.Text);
-            int eventId = Int32.Parse(EventIdTxtbox.Text);
-            string description = descriptionTxtbox.Text;
+            try
+            {
+                int projectId = Int32.Parse(projectIdTxtbox.Text);
+                int eventId = Int32.Parse(EventIdTxtbox.Text);
+                string description = descriptionTxtbox.Text;
 
-            ProjectShortcomings pSC = new ProjectShortcomings(employeeNo, projectId, eventId, description);
-            Database.deleteProjectShortcomings(pSC);
+                ProjectShortcomings pSC = new ProjectShortcomings(employeeNo, projectId, eventId, description);
+                Database.deleteProjectShortcomings(pSC);
+                Notification.showNotification();
+                clearProjectShortcomings();
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Something went wrongYAYA! +'" + ex + "' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void metroDateTime1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime eventStateTime = startEventDateTime.Value;
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM eventview WHERE StaffId = " + employeeNo + " and DATE(StartingDate) = '"+eventStateTime.ToString("yyyy/M/d")+"'");
+            table.Load(reader);
+            projectDataGrid.DataSource = table;
+
+        }
+
+        private void deadlineDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime eventDeadline = deadlineDateTime.Value;
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM eventview WHERE StaffId = " + employeeNo + " and DATE(EndingDate) = '" + eventDeadline.ToString("yyyy/M/d") + "'");
+            table.Load(reader);
+            projectDataGrid.DataSource = table;
+        }
+
+        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                MySqlDataReader reader = DBConnection.getData("SELECT  * FROM eventview WHERE StaffId = " + employeeNo + " and projectId = " + Int32.Parse(searchProjectTxtBox.Text) + "");
+                table.Load(reader);
+                projectDataGrid.DataSource = table;
+            }
+            catch (Exception ex) {
+                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void eventTxtbox_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                MySqlDataReader reader = DBConnection.getData("SELECT * FROM eventview WHERE StaffId = " + employeeNo + " and EventId = " + Int32.Parse(eventTxtbox.Text) + "");
+                table.Load(reader);
+                projectDataGrid.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void searchProjectTxtBox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                MySqlDataReader reader = DBConnection.getData("SELECT ProjectId,EventId,Tasks FROM eventview WHERE StaffId = " + employeeNo + " and ProjectId = " + Int32.Parse(searchProjectTxtBox1.Text) + "");
+                table.Load(reader);
+                tasksDataGrid.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void eventTxtbox1_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                DataTable table = new DataTable();
+                MySqlDataReader reader = DBConnection.getData("SELECT ProjectId,EventId,Tasks FROM eventview WHERE StaffId = " + employeeNo + " and EventId = " + Int32.Parse(eventTxtbox1.Text) + "");
+                table.Load(reader);
+                tasksDataGrid.DataSource = table;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void gradeFaces()
+        {
+            MySqlDataReader reader = DBConnection.getData("SELECT TaskFeedback FROM eventview WHERE StaffId = " + employeeNo + "");
+
+            int gradeCounterA = 0;
+            int gradeCounterB = 0;
+            int gradeCounterC = 0;
+            int gradeCounterD = 0;
+            int gradeCounterE = 0;
+
+            while (reader.Read()) {
+               
+              char grade = reader.GetChar("TaskFeedback");
+
+                switch (grade) {
+
+                    case 'A':
+                        gradeCounterA++;
+                        break;
+                    case 'B':
+                        gradeCounterB++;
+                        break;
+                    case 'C':
+                        gradeCounterC++;
+                        break;
+                    case 'D':
+                        gradeCounterD++;
+                        break;
+                    default :
+                        gradeCounterE++;
+                        break;
+
+                }
+
+                gradeATaskLbl.Text = gradeCounterA.ToString();
+                gradeBTaskLbl.Text = gradeCounterB.ToString();
+                gradeCTaskLbl.Text = gradeCounterC.ToString();
+                gradeDTaskLbl.Text = gradeCounterD.ToString();
+                gradeETaskLbl.Text = gradeCounterE.ToString();
+
+            }
+            reader.Close();
+        }
+
+        private void projectShortcomingsGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void metroTile21_Click(object sender, EventArgs e)
+        {
+            //projectIdTxtbox.Enabled = true;
+            //EventIdTxtbox.Enabled = true;
+            //descriptionTxtbox.Text = null;
+            //projectIdTxtbox.Text = null;
+            //EventIdTxtbox.Text= null;
+            //metroTile19.Enabled = false;
+            //metroTile18.Enabled = true;
+            //metroTile20.Enabled = false;
+            clearProjectShortcomings();
+        }
+
+        private void metroDateTime1_ValueChanged_1(object sender, EventArgs e)
+        {
+            attendanceDataGrid.DataSource = getAttendanceOfEmployeeUsingInTime();
+        }
+
+        private void attendanceDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void attendanceOfEmployeeDateTime2_ValueChanged(object sender, EventArgs e)
+        {
+            attendanceDataGrid.DataSource = getAttendanceOfEmployeeUsingOutTime();
+        }
+
+        private void showAllAttendanceTile_Click(object sender, EventArgs e)
+        {
+            attendanceDataGrid.DataSource = getAttendanceOfEmployee();
+        }
+
+        private void shortComingsTimer_Tick(object sender, EventArgs e)
+        {
+            projectShortcomingsGrid.DataSource = getProjectShortcomings();
+        }
+
+        private void metroTabPage4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton5_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void clearProjectShortcomings() {
+
+            projectIdTxtbox.Enabled = true;
+            EventIdTxtbox.Enabled = true;
+            descriptionTxtbox.Text = null;
+            projectIdTxtbox.Text = null;
+            EventIdTxtbox.Text = null;
+            metroTile19.Enabled = false;
+            metroTile18.Enabled = true;
+            metroTile20.Enabled = false;
 
         }
     }

@@ -234,5 +234,10 @@ namespace ResoflexClientHandlingSystem
             this.Close();
             
         }
+
+        private void shwallbtn_Click(object sender, EventArgs e)
+        {
+            LogGrid.DataSource = getLogList();
+        }
     }
 }

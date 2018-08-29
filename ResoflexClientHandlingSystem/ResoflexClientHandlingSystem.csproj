@@ -324,6 +324,11 @@
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
       <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ProjectForms\AddCatagory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -685,6 +690,17 @@
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsc">
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjExpDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xss">
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -702,8 +718,6 @@
   <ItemGroup>
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="TaskForms\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

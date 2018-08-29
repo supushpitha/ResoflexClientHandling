@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ProjExpDataSet" targetNamespace="http://tempuri.org/ProjExpDataSet.xsd" xmlns:mstns="http://tempuri.org/ProjExpDataSet.xsd" xmlns="http://tempuri.org/ProjExpDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ProjExpDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ProjExpDataSet" msprop:Generator_UserDSName="ProjExpDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ProjExp" msprop:Generator_TableClassName="ProjExpDataTable" msprop:Generator_TableVarName="tableProjExp" msprop:Generator_TablePropName="ProjExp" msprop:Generator_RowDeletingName="ProjExpRowDeleting" msprop:Generator_RowChangingName="ProjExpRowChanging" msprop:Generator_RowEvHandlerName="ProjExpRowChangeEventHandler" msprop:Generator_RowDeletedName="ProjExpRowDeleted" msprop:Generator_UserTableName="ProjExp" msprop:Generator_RowChangedName="ProjExpRowChanged" msprop:Generator_RowEvArgName="ProjExpRowChangeEvent" msprop:Generator_RowClassName="ProjExpRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Project_Name" msprop:Generator_ColumnVarNameInTable="columnProject_Name" msprop:Generator_ColumnPropNameInRow="Project_Name" msprop:Generator_ColumnPropNameInTable="Project_NameColumn" msprop:Generator_UserColumnName="Project_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="Client_Name" msprop:Generator_ColumnVarNameInTable="columnClient_Name" msprop:Generator_ColumnPropNameInRow="Client_Name" msprop:Generator_ColumnPropNameInTable="Client_NameColumn" msprop:Generator_UserColumnName="Client_Name" type="xs:string" minOccurs="0" />
+              <xs:element name="No_of_Events" msprop:Generator_ColumnVarNameInTable="columnNo_of_Events" msprop:Generator_ColumnPropNameInRow="No_of_Events" msprop:Generator_ColumnPropNameInTable="No_of_EventsColumn" msprop:Generator_UserColumnName="No_of_Events" type="xs:int" minOccurs="0" />
+              <xs:element name="Expense" msprop:Generator_ColumnVarNameInTable="columnExpense" msprop:Generator_ColumnPropNameInRow="Expense" msprop:Generator_ColumnPropNameInTable="ExpenseColumn" msprop:Generator_UserColumnName="Expense" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

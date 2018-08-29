@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using System;
@@ -22,7 +23,21 @@ namespace ResoflexClientHandlingSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            fillDesigCmbBox();
+        }
 
+        private void fillDesigCmbBox()
+        {
+            MySqlDataReader reader = DBConnection.getData("select * from designation");
+
+            desgCmbBox.Items.Clear();
+
+            while (reader.Read())
+            {
+                desgCmbBox.Items.Add(reader.GetString("designation_name"));
+            }
+
+            reader.Close();
         }
 
         private void htmlLabel1_Click(object sender, EventArgs e)
@@ -68,7 +83,7 @@ namespace ResoflexClientHandlingSystem
 
             Designation desg = new Designation(desgCmbBox.SelectedItem.ToString());
 
-            MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation='"+ desg.DesignationName +"'");
+            MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation_name='"+ desg.DesignationName +"'");
 
             if (reader.Read())
                 desg.DesigId = reader.GetInt32("desig_id");
@@ -89,6 +104,11 @@ namespace ResoflexClientHandlingSystem
 
         }
 
+        private void closeForm()
+        {
+            this.Close();
+        }
+
         void clear ()
         {
             fNameTxtBox.Clear();
@@ -106,7 +126,7 @@ namespace ResoflexClientHandlingSystem
             desgCmbBox.SelectedItem = null;
 
             addNewDesTxtBox.Clear();
-            addDesIdTxtBox.Clear();
+           // addDesIdTxtBox.Clear();
         }
 
       
@@ -136,9 +156,25 @@ namespace ResoflexClientHandlingSystem
         private void addNewDesBtn_Click(object sender, EventArgs e)
         {
             string designation = addNewDesTxtBox.Text;
-            int desigId = Int32.Parse(addDesIdTxtBox.Text.ToString());
+           // int desigId = Int32.Parse(addDesIdTxtBox.Text.ToString());
 
-            Designation des = new Designation(desigId, designation);
+            Designation des = new Designation(designation);
+
+            try
+            {
+
+                Database.addDesignation(des);
+
+                MessageBox.Show("New desigantion added successfully.", "New designation Adding", MessageBoxButtons.OK);
+
+                clear();
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+                MessageBox.Show("Detail must be added!\n" + ex, "New designation adding", MessageBoxButtons.OK);
+            }
         }
 
         private void staffAddBtn_Click(object sender, EventArgs e)
@@ -190,40 +226,36 @@ namespace ResoflexClientHandlingSystem
 
             Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
 
-
             try
             {
+                MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation_name='" + desg.DesignationName + "'");
+
+                while (reader.Read())
+                {
+                    desg.DesigId = reader.GetInt32("desig_id");
+                }
+
+                reader.Close();
+
+                stf.Designation = desg;
+
                 Database.addStaff(stf);
 
-                try
-                {
-                    MySqlDataReader reader = DBConnection.getData("Select desig_id from Designation where designation='" + desg.DesignationName + "'");
+                MessageBox.Show("New member added successfully.", "New member Adding", MessageBoxButtons.OK);
 
-                    while (reader.Read())
-                    {
-                        if (reader.Read())
-                            desg.DesigId = reader.GetInt32("desig_id"); ;
-                    }
-
-                    reader.Close();
-
-                    clear();
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.StackTrace);
-                }
-
-
+                clear();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Every detail must be added!", "New member adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Every detail must be added!\n" + ex, "New member Adding", MessageBoxButtons.OK);
             }
 
-            MessageBox.Show("New member added successfully", "New member Adding", MessageBoxButtons.OK);
+            // metroGrid1.DataSource = getUserList();
 
-           // metroGrid1.DataSource = getUserList();
+            MemberListForm mem = new MemberListForm();
+            mem.Show();
+
+            closeForm();
         }
 
         private void AddMemberTab_Click(object sender, EventArgs e)
@@ -231,6 +263,102 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-     
+        private void desgCmbBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addDesIdTxtBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addNewDesTxtBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void fNameTxtBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addNICtxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg = "";
+
+            if (!Validation.isValidNic(addNICtxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                addNICtxtBox.Select(0, addNICtxtBox.Text.Length);
+
+                this.errorProviderAddStaff.SetError(addNICtxtBox, errorMsg);
+            }
+        }
+
+        private void addNICtxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderAddStaff.SetError(addNICtxtBox, "");
+            errorProviderAddStaff.Clear();
+        }
+
+        private void addNICtxtBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void telMobileTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidPhoneNumber(telMobileTxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                telMobileTxtBox.Select(0, telMobileTxtBox.Text.Length);
+
+                this.errorProviderAddStaff.SetError(telMobileTxtBox, errorMsg);
+            }
+        }
+
+        private void telMobileTxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderAddStaff.SetError(telMobileTxtBox, "");
+            errorProviderAddStaff.Clear();
+        }
+
+        private void telLanTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isValidPhoneNumber(telLanTxtBox.Text, out errorMsg))
+            {
+                e.Cancel = true;
+
+                telLanTxtBox.Select(0, telLanTxtBox.Text.Length);
+
+                this.errorProviderAddStaff.SetError(telLanTxtBox, errorMsg);
+            }
+        }
+
+        private void telLanTxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderAddStaff.SetError(telLanTxtBox, "");
+            errorProviderAddStaff.Clear();
+        }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            this.Hide();
+            dashboard.ShowDialog();
+            this.Close();
+        }
+
+        private void htmlLabel16_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

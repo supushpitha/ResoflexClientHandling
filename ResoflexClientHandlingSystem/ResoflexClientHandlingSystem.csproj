@@ -72,11 +72,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
-    </Reference>
-    <Reference Include="WinFormAnimation">
+    <Reference Include="Tulpep.NotificationWindow">
       <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
     </Reference>
     <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
@@ -213,6 +209,12 @@
     <Compile Include="ProjectExpenses\AddExpensesForm.designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.Designer.cs">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectExpenses\CashIssuingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,11 +245,11 @@
     <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.cs">
+    <Compile Include="ProjectExpenses\IOUListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.designer.cs">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\IOUListForm.designer.cs">
+      <DependentUpon>IOUListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesForm.cs">
       <SubType>Form</SubType>
@@ -414,6 +416,12 @@
     <Compile Include="StaffForms\StaffForm.Designer.cs">
       <DependentUpon>StaffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="StaffForms\UpdateMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffForms\UpdateMemberForm.Designer.cs">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -489,6 +497,9 @@
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\BalanceSheetForm.resx">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\CashIssuingForm.resx">
       <DependentUpon>CashIssuingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -504,8 +515,8 @@
     <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\IOUListForm1.resx">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\IOUListForm.resx">
+      <DependentUpon>IOUListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
@@ -582,6 +593,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

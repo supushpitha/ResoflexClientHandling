@@ -164,10 +164,11 @@ namespace ResoflexClientHandlingSystem.Core
 
             try
             {
-                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, proj_cat_id , description, warranty_terms, visit_terms, support_terms)"
                                         + " values (" + client.ClientID
                                         + ",'" + project.ProjectName
                                         + "'," + project.ProjectSubID
+                                        + "," + project.ProjectCatID
                                         + ",'" + project.Projectdesc
                                         + "','" + project.WarrantyTerms
                                         + "','" + project.VisitTerms
@@ -198,17 +199,17 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
          {
-             try
-             {
-                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate.ToString("yyyy/MM/d")+"', training_comp_first_end_date='"+project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='"+project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='"+project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+            try
+            {
+                DBConnection.updateDB("UPDATE project SET first_init_date ='" + project.FirstInitDate.ToString("yyyy/MM/d") + "', training_comp_first_end_date='" + project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='" + project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='" + project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='" + project.WarrantyPeriod + "' WHERE proj_name='" + project.ProjectName + "';");
 
-                MessageBox.Show("Show");
-             }
-             catch (Exception exc)
-             {
-                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-         }
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         public static void addRecord(Attendance atten)
         {
@@ -422,20 +423,19 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void addStaff(Staff staff)
         {
-
             try
             {
                 DBConnection.updateDB("insert into staff(first_name, last_name, " +
-                    "nic, desig_id, p_address, s_address, tel1, tel2, email, basic_salary, ot_rate) " +
+                    "nic, p_address, s_address, tel1, tel2, email, facebook, linkedin, basic_salary, ot_rate, desig_id) " +
                     "values('" + staff.FirstName + "','" + staff.LastName + "','" + staff.Nic + "'," +
-                    "'" + staff.pAddress + "','" + staff.sAddress + "','" + staff.TelNumber + "'," +
+                    "'" + staff.PAddress + "','" + staff.SAddress + "','" + staff.TelNumber[0] + "'," +
+                    "'" + staff.TelNumber[1] + "'," +
                     "'" + staff.Email + "','" + staff.Facebook + "','" + staff.LinkedIn + "'," +
-                    "'" + staff.BasicSalary + "','" + staff.OtRate + "','" + staff.Designation + "')");
+                    "" + staff.BasicSalary + "," + staff.OtRate + "," + staff.Designation.DesigId + ")");
             }
-
-            catch (Exception)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!", "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
       
@@ -557,9 +557,17 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void addDesignation()
+        public static void addDesignation(Designation designation)
         {
-            DBConnection.updateDB("insert into designation(designation) values()");
+            try
+            {
+                DBConnection.updateDB("insert into designation(designation_name) values('" + designation.DesignationName + "')");
+            }
+
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
         }
 
         public static void saveChangeRequest(ProjectRequest req)
@@ -642,6 +650,70 @@ namespace ResoflexClientHandlingSystem.Core
             catch (Exception exc)
             {
                 MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void AddExpenses(ExpenseDetailEvent addExpense)
+        {
+           /* try
+            {*/
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+                int eti = addExpense.ExpType.ExpTypeId;
+                int ei = addExpense.EventOfExp.EventId;
+                int p = addExpense.ProjectOfEvent.ProjectID;
+                double a = addExpense.Amount;
+                string c = addExpense.Comment;
+                string pt = addExpense.PaymentType;
+
+                DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values" +
+                    " (" + eti + ", " + ei + " , " + p + " , " + a + " ,'" + c + "','" + date + "', '" + pt + "');");
+
+                MessageBox.Show("Expenses successfully added!");
+
+           /* }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+        }
+
+
+        public static void CashIssue(ExpenseDetailSchedule cashIssue)
+        {
+       /*     try
+            {
+*/                string date = DateTime.Now.ToString("yyyy-MM-dd");
+            
+               int e = cashIssue.ScheduleOfExp.ScheduleId;
+                int p = cashIssue.ProjectOfSchedule.ProjectID;
+                double a = cashIssue.Amount;
+                string c = cashIssue.Comment;
+
+                DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
+
+                MessageBox.Show("Expenses successfully added!");
+  /*          }
+          catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }*/
+        }
+
+        public static void updateStaff(Staff staff)
+        {
+            try
+            {
+
+                DBConnection.updateDB("update staff set first_name = '" + staff.FirstName + "', last_name = '" + staff.LastName + "', " +
+                    "nic = '" + staff.Nic + "', p_address = '" + staff.PAddress + "', s_address = '" + staff.SAddress + "', tel1 = '" + staff.TelNumber[0] + "'" +
+                    ", tel2 = '" + staff.TelNumber[1] + "', email = '" + staff.Email + "', facebook = '" + staff.Facebook + "', linkedin = '" + staff.LinkedIn + "'" +
+                    ", basic_salary = " + staff.BasicSalary + ", ot_rate = " + staff.OtRate + ", desig_id = " + staff.Designation.DesigId + " where staff_id=" + staff.StaffId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update staff member", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

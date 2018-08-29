@@ -429,7 +429,7 @@
             this.schSave.TabIndex = 29;
             this.schSave.Text = "Save";
             this.schSave.UseSelectable = true;
-            this.schSave.Click += new System.EventHandler(this.schSave_Click);
+            this.schSave.Click += new System.EventHandler(this.validation);
             // 
             // checkList
             // 
@@ -762,13 +762,13 @@
             // 
             this.htmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(139, 32);
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(158, 34);
             this.htmlLabel1.AutoSize = false;
             this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlLabel1.Location = new System.Drawing.Point(319, 20);
+            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.htmlLabel1.Location = new System.Drawing.Point(308, 20);
             this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
+            this.htmlLabel1.Size = new System.Drawing.Size(160, 34);
             this.htmlLabel1.TabIndex = 2;
             this.htmlLabel1.Text = "Schedule Form";
             // 

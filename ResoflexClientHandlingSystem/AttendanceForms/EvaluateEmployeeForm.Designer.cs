@@ -271,7 +271,7 @@
             this.metroTabControl2.Controls.Add(this.metroTabPage7);
             this.metroTabControl2.Location = new System.Drawing.Point(7, 3);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 1;
             this.metroTabControl2.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl2.TabIndex = 2;
             this.metroTabControl2.UseSelectable = true;
@@ -608,45 +608,40 @@
             this.gradeETaskLbl.AutoSize = true;
             this.gradeETaskLbl.Location = new System.Drawing.Point(714, 314);
             this.gradeETaskLbl.Name = "gradeETaskLbl";
-            this.gradeETaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeETaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeETaskLbl.TabIndex = 50;
-            this.gradeETaskLbl.Text = "6";
             // 
             // gradeDTaskLbl
             // 
             this.gradeDTaskLbl.AutoSize = true;
             this.gradeDTaskLbl.Location = new System.Drawing.Point(714, 257);
             this.gradeDTaskLbl.Name = "gradeDTaskLbl";
-            this.gradeDTaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeDTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeDTaskLbl.TabIndex = 49;
-            this.gradeDTaskLbl.Text = "2";
             // 
             // gradeCTaskLbl
             // 
             this.gradeCTaskLbl.AutoSize = true;
             this.gradeCTaskLbl.Location = new System.Drawing.Point(714, 203);
             this.gradeCTaskLbl.Name = "gradeCTaskLbl";
-            this.gradeCTaskLbl.Size = new System.Drawing.Size(21, 19);
+            this.gradeCTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeCTaskLbl.TabIndex = 48;
-            this.gradeCTaskLbl.Text = "15";
             // 
             // gradeBTaskLbl
             // 
             this.gradeBTaskLbl.AutoSize = true;
             this.gradeBTaskLbl.Location = new System.Drawing.Point(714, 153);
             this.gradeBTaskLbl.Name = "gradeBTaskLbl";
-            this.gradeBTaskLbl.Size = new System.Drawing.Size(23, 19);
+            this.gradeBTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeBTaskLbl.TabIndex = 47;
-            this.gradeBTaskLbl.Text = "30";
             // 
             // gradeATaskLbl
             // 
             this.gradeATaskLbl.AutoSize = true;
             this.gradeATaskLbl.Location = new System.Drawing.Point(714, 100);
             this.gradeATaskLbl.Name = "gradeATaskLbl";
-            this.gradeATaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeATaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeATaskLbl.TabIndex = 46;
-            this.gradeATaskLbl.Text = "6";
             // 
             // metroLink6
             // 
@@ -1087,7 +1082,7 @@
             this.metroTabControl3.Controls.Add(this.metroTabPage11);
             this.metroTabControl3.Location = new System.Drawing.Point(4, 2);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 3;
+            this.metroTabControl3.SelectedIndex = 2;
             this.metroTabControl3.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl3.TabIndex = 5;
             this.metroTabControl3.UseSelectable = true;
@@ -1132,9 +1127,8 @@
             this.metroLabel32.AutoSize = true;
             this.metroLabel32.Location = new System.Drawing.Point(566, 77);
             this.metroLabel32.Name = "metroLabel32";
-            this.metroLabel32.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel32.Size = new System.Drawing.Size(0, 0);
             this.metroLabel32.TabIndex = 31;
-            this.metroLabel32.Text = "metroLabel32";
             // 
             // metroLabel30
             // 
@@ -1455,9 +1449,8 @@
             this.metroLabel34.AutoSize = true;
             this.metroLabel34.Location = new System.Drawing.Point(566, 77);
             this.metroLabel34.Name = "metroLabel34";
-            this.metroLabel34.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel34.Size = new System.Drawing.Size(0, 0);
             this.metroLabel34.TabIndex = 39;
-            this.metroLabel34.Text = "metroLabel34";
             // 
             // metroLabel35
             // 
@@ -1734,9 +1727,8 @@
             this.metroLabel40.AutoSize = true;
             this.metroLabel40.Location = new System.Drawing.Point(566, 77);
             this.metroLabel40.Name = "metroLabel40";
-            this.metroLabel40.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel40.Size = new System.Drawing.Size(0, 0);
             this.metroLabel40.TabIndex = 54;
-            this.metroLabel40.Text = "metroLabel40";
             // 
             // metroLabel41
             // 
@@ -2014,9 +2006,8 @@
             this.metroLabel45.AutoSize = true;
             this.metroLabel45.Location = new System.Drawing.Point(566, 77);
             this.metroLabel45.Name = "metroLabel45";
-            this.metroLabel45.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel45.Size = new System.Drawing.Size(0, 0);
             this.metroLabel45.TabIndex = 69;
-            this.metroLabel45.Text = "metroLabel45";
             // 
             // metroLabel46
             // 
@@ -2298,7 +2289,7 @@
             // attendanceOfEmployeeDateTime2
             // 
             this.attendanceOfEmployeeDateTime2.Location = new System.Drawing.Point(361, 38);
-            this.attendanceOfEmployeeDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.attendanceOfEmployeeDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
             this.attendanceOfEmployeeDateTime2.Name = "attendanceOfEmployeeDateTime2";
             this.attendanceOfEmployeeDateTime2.Size = new System.Drawing.Size(208, 29);
             this.attendanceOfEmployeeDateTime2.TabIndex = 9;
@@ -2307,7 +2298,7 @@
             // attendanceOfEmployeeDateTime
             // 
             this.attendanceOfEmployeeDateTime.Location = new System.Drawing.Point(65, 38);
-            this.attendanceOfEmployeeDateTime.MinimumSize = new System.Drawing.Size(0, 29);
+            this.attendanceOfEmployeeDateTime.MinimumSize = new System.Drawing.Size(4, 29);
             this.attendanceOfEmployeeDateTime.Name = "attendanceOfEmployeeDateTime";
             this.attendanceOfEmployeeDateTime.Size = new System.Drawing.Size(214, 29);
             this.attendanceOfEmployeeDateTime.TabIndex = 8;

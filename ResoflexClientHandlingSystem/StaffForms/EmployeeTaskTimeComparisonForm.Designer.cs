@@ -28,10 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeTaskTimeComparisonForm));
             this.SelectMemComboBox = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
@@ -41,6 +42,7 @@
             this.htmlLabel2 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.htmlLabel4 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.htmlLabel5 = new MetroFramework.Drawing.Html.HtmlLabel();
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.comparisonChart)).BeginInit();
             this.htmlLabel1.SuspendLayout();
             this.htmlLabel2.SuspendLayout();
@@ -84,20 +86,20 @@
             // 
             this.comparisonChart.BackColor = System.Drawing.Color.LightSteelBlue;
             this.comparisonChart.BorderlineColor = System.Drawing.Color.LightSteelBlue;
-            chartArea2.Name = "ChartArea1";
-            this.comparisonChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.comparisonChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.comparisonChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.comparisonChart.Legends.Add(legend1);
             this.comparisonChart.Location = new System.Drawing.Point(80, 158);
             this.comparisonChart.Name = "comparisonChart";
-            series3.ChartArea = "ChartArea1";
-            series3.Legend = "Legend1";
-            series3.Name = "Expected time";
-            series4.ChartArea = "ChartArea1";
-            series4.Legend = "Legend1";
-            series4.Name = "Committed time";
-            this.comparisonChart.Series.Add(series3);
-            this.comparisonChart.Series.Add(series4);
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Expected time";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Committed time";
+            this.comparisonChart.Series.Add(series1);
+            this.comparisonChart.Series.Add(series2);
             this.comparisonChart.Size = new System.Drawing.Size(652, 337);
             this.comparisonChart.TabIndex = 3;
             this.comparisonChart.Text = "Task Chart";
@@ -165,9 +167,24 @@
             this.htmlLabel5.Text = "Event date";
             this.htmlLabel5.Click += new System.EventHandler(this.htmlLabel5_Click);
             // 
+            // homeBtn
+            // 
+            this.homeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(408, 6);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 17;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
             // EmployeeTaskTimeComparisonForm
             // 
             this.ClientSize = new System.Drawing.Size(841, 528);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.htmlLabel5);
             this.Controls.Add(this.htmlLabel4);
             this.Controls.Add(this.htmlLabel2);
@@ -200,5 +217,6 @@
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel2;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel4;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel5;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

@@ -250,9 +250,15 @@ namespace ResoflexClientHandlingSystem
            
         }
 
+      
+
         private void projectGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress();
+
+
+            int proid = Int32.Parse(projectGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress(proid);
             frm.ShowDialog();
         }
 
@@ -266,6 +272,20 @@ namespace ResoflexClientHandlingSystem
         {
             ProjectForms.Maintenance frm = new ProjectForms.Maintenance();
             frm.ShowDialog();
+        }
+
+
+        private void closeForm()
+        {
+            this.closeForm();
+        }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            
+            Dashboard frm = new Dashboard();
+            frm.ShowDialog();
+            
         }
 
         private void reqBtn_Click(object sender, EventArgs e)

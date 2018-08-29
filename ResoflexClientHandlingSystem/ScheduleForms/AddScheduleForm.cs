@@ -243,8 +243,44 @@ namespace ResoflexClientHandlingSystem
             resoBox.AppendText(Environment.NewLine);
         }
 
+        public void validation(object sender, EventArgs e)
+        {
+            DateTime to = Convert.ToDateTime(schEndDate.Text.ToString() + " " + schEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(schStartDate.Text.ToString() + " " + schStartTime.Text.ToString());
+
+            if (!Validation.isEmpty(todoList.Text))
+            {
+                if (!Validation.isEmpty(meals.Text))
+                {
+                    if (!Validation.isDataTableEmpty(engGrid))
+                    {
+                        if (Validation.isFuture(to) && Validation.isFuture(from))
+                        {
+                            saveSchedule();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Selected dates are invalid!", "Error");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service engineers should be assigned!", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Meal field cannot be empty!", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todo list field cannot be empty!", "Error");
+            }
+        }
+
         //adding a new schedule
-        private void schSave_Click(object sender, EventArgs e)
+        private void saveSchedule()
         {
             Schedule schedule = new Schedule();
 

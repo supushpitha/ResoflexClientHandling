@@ -10,11 +10,14 @@ namespace ResoflexClientHandlingSystem.Role
     class Notification
     {
         public static void showNotification() {
+            
             PopupNotifier popup = new PopupNotifier();
             popup.Image = Properties.Resources.info2;
             popup.TitleText = "Notification";
             popup.ContentText = "Operation Successful";
             popup.Popup();
+
+
         }
     }
 }

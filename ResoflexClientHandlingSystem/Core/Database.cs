@@ -644,5 +644,53 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void AddExpenses(ExpenseDetailEvent addExpense)
+        {
+            try
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+                int eti = addExpense.ExpType.ExpTypeId;
+                int ei = addExpense.EventOfExp.EventId;
+                int p = addExpense.ProjectOfEvent.ProjectID;
+                double a = addExpense.Amount;
+                string c = addExpense.Comment;
+                string pt = addExpense.PaymentType;
+
+                DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values" +
+                    " (" + eti + ", " + ei + " , " + p + " , " + a + " ,'" + c + "','" + date + "', '" + pt + "');");
+
+                MessageBox.Show("Expenses successfully added!");
+
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        public static void CashIssue(ExpenseDetailSchedule cashIssue)
+        {
+            try
+            {
+                string date = DateTime.Now.ToString("yyyy-MM-dd");
+
+                int e = cashIssue.ScheduleOfExp.ScheduleId;
+                int p = cashIssue.ProjectOfSchedule.ProjectID;
+                double a = cashIssue.Amount;
+                string c = cashIssue.Comment;
+
+                DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
+
+                MessageBox.Show("Expenses successfully added!");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

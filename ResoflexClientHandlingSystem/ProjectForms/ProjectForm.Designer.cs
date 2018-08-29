@@ -349,6 +349,7 @@
             this.reqBtn.UseCustomBackColor = true;
             this.reqBtn.UseCustomForeColor = true;
             this.reqBtn.UseSelectable = true;
+            this.reqBtn.Click += new System.EventHandler(this.reqBtn_Click);
             // 
             // schHome
             // 

@@ -12,6 +12,7 @@ namespace ResoflexClientHandlingSystem.Role
         private string projectName;
         private string projectdesc;
         private Client clientOfProject;
+        private int projectCatID;
         private int projectSubID;
         private DateTime firstInitDate;
         private DateTime tEndDate1;
@@ -22,12 +23,13 @@ namespace ResoflexClientHandlingSystem.Role
         private string warrantyTerms;
         private string visitTerms;
 
-        public Project(int projectID, string projectName, string projectdesc, Client ClientOfProject, int projectSubID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
+        public Project(int projectID, string projectName, string projectdesc, Client ClientOfProject, int projectSubID, int projectCatID, DateTime firstInitDate, DateTime tEndDate1, DateTime tEndDate2, DateTime warrantyStart, int warrantyPeriod, string supportTerms, string warrantyTerms, string visitTerms)
         {
             this.ProjectID = projectID;
             this.ProjectName = projectName;
             this.Projectdesc = projectdesc;
             this.ClientOfProject = ClientOfProject;
+            this.ProjectCatID = projectCatID;
             this.ProjectSubID = projectSubID;
             this.FirstInitDate = firstInitDate;
             this.TEndDate1 = tEndDate1;
@@ -39,11 +41,12 @@ namespace ResoflexClientHandlingSystem.Role
             this.VisitTerms = visitTerms;
         }
 
-        public Project(string projectName, string projectdesc, Client ClientOfProject, int projectSubID, string supportTerms, string warrantyTerms, string visitTerms)
+        public Project(string projectName, string projectdesc, Client ClientOfProject, int projectSubID, int projectCatID, string supportTerms, string warrantyTerms, string visitTerms)
         {
             this.ProjectName = projectName;
             this.Projectdesc = projectdesc;
             this.ClientOfProject = ClientOfProject;
+            this.ProjectCatID = projectCatID;
             this.ProjectSubID = projectSubID;
             this.SupportTerms = supportTerms;
             this.WarrantyTerms = warrantyTerms;
@@ -87,5 +90,6 @@ namespace ResoflexClientHandlingSystem.Role
         public string SupportTerms { get => supportTerms; set => supportTerms = value; }
         public string WarrantyTerms { get => warrantyTerms; set => warrantyTerms = value; }
         public string VisitTerms { get => visitTerms; set => visitTerms = value; }
+        public int ProjectCatID { get => projectCatID; set => projectCatID = value; }
     }
 }

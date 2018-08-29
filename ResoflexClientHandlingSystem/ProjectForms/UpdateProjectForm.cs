@@ -21,6 +21,7 @@ namespace ResoflexClientHandlingSystem
         string name;
         string desc;
         int projSubCatID;
+        int projectCatID;
         int clientID;
         DateTime install;
         DateTime firstTrainComp;
@@ -32,14 +33,14 @@ namespace ResoflexClientHandlingSystem
         string visitTerms;
         string warrTerms;
 
-        public UpdateProjectForm( string name, string desc, int projSubCatID, int clientID, string supTerms, string visitTerms, string warrTerms)
+        public UpdateProjectForm( string name, string desc, int projSubCatID, int projCatID, int clientID, string supTerms, string visitTerms, string warrTerms)
         {
             
             this.name = name;
             this.desc = desc;
             this.projSubCatID = projSubCatID;
             this.clientID = clientID;
-            
+            this.projectCatID = projectCatID;
             this.supTerms = supTerms;
             this.visitTerms = visitTerms;
             this.warrTerms = warrTerms;
@@ -91,7 +92,7 @@ namespace ResoflexClientHandlingSystem
 
             nameTxt.Text = name;
             DescripTxt.Text = desc;
-            CatagoTxt.Text = "" +projSubCatID;
+            catComboBox.Text = "" +projSubCatID;
             supTermTxt.Text = supTerms;
             visitTermTxt.Text = visitTerms;
             warTerTxt.Text = warrTerms;
@@ -123,7 +124,7 @@ namespace ResoflexClientHandlingSystem
                 }
                 else
                 {
-                    MessageBox.Show("Something went wrong. Please check your Internet connection");
+                    MessageBox.Show(" Email not Sended. Please check your Internet connection");
                 }
             }
             catch (Exception)
@@ -163,20 +164,23 @@ namespace ResoflexClientHandlingSystem
 
                 try
                 {
-                    MySqlDataReader reader3 = DBConnection.getData("select proj_sub_cat_id from proj_sub_category where sub_cat_name='"+ catComboBox.ToString()+ "'");
+                    MySqlDataReader reader3 = DBConnection.getData("select proj_sub_cat_id, proj_cat_id from proj_sub_category where sub_cat_name='"+ catComboBox.SelectedItem.ToString()+ "'");
 
-                    if (reader.Read())
+                    if (reader3.Read())
                     {
-                        projSubCatID = int.Parse(reader.GetValue(0).ToString());
+                        projSubCatID = Int32.Parse(reader3.GetValue(0).ToString());
+                        projectCatID = Int32.Parse(reader3.GetValue(1).ToString());
+
 
                     }
+                    reader3.Close();
 
                 }catch (Exception ex)
                 {
 
                 }
 
-                ResoflexClientHandlingSystem.Role.Project project = new Role.Project(name, description, client, int.Parse(catago), supportTerms, visitTerms, warrentyTerms);
+                ResoflexClientHandlingSystem.Role.Project project = new Role.Project(name, description, client, projSubCatID, projectCatID, supportTerms, visitTerms, warrentyTerms);
 
                 Database.addProject(project);
 

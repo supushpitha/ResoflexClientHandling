@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Project1));
             this.addProjectBtn = new MetroFramework.Controls.MetroButton();
             this.updateProjectBtn = new MetroFramework.Controls.MetroButton();
             this.progressBtn = new MetroFramework.Controls.MetroButton();
@@ -49,6 +50,7 @@
             this.maintenanceBtn = new MetroFramework.Controls.MetroButton();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
             this.reqBtn = new MetroFramework.Controls.MetroButton();
+            this.schHome = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.projectGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -347,13 +349,26 @@
             this.reqBtn.UseCustomBackColor = true;
             this.reqBtn.UseCustomForeColor = true;
             this.reqBtn.UseSelectable = true;
-            this.reqBtn.Click += new System.EventHandler(this.reqBtn_Click);
+            // 
+            // schHome
+            // 
+            this.schHome.BackColor = System.Drawing.Color.Transparent;
+            this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
+            this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.schHome.Location = new System.Drawing.Point(639, 36);
+            this.schHome.Margin = new System.Windows.Forms.Padding(2);
+            this.schHome.Name = "schHome";
+            this.schHome.Size = new System.Drawing.Size(34, 29);
+            this.schHome.TabIndex = 30;
+            this.schHome.UseSelectable = true;
+            this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
             // Project1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.schHome);
             this.Controls.Add(this.reqBtn);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.maintenanceBtn);
@@ -404,5 +419,6 @@
         private MetroFramework.Controls.MetroButton maintenanceBtn;
         private MetroFramework.Controls.MetroButton profilebtn;
         private MetroFramework.Controls.MetroButton reqBtn;
+        private MetroFramework.Controls.MetroButton schHome;
     }
 }

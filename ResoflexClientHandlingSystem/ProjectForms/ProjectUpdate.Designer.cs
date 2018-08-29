@@ -43,6 +43,8 @@
             this.warrPerTxt = new MetroFramework.Controls.MetroTextBox();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.errorP1 = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorP1)).BeginInit();
             this.SuspendLayout();
             // 
             // secoTraCompDate
@@ -53,6 +55,7 @@
             this.secoTraCompDate.Name = "secoTraCompDate";
             this.secoTraCompDate.Size = new System.Drawing.Size(202, 29);
             this.secoTraCompDate.TabIndex = 46;
+            this.secoTraCompDate.ValueChanged += new System.EventHandler(this.secoTraCompDate_ValueChanged);
             // 
             // firstTraCompDate
             // 
@@ -62,6 +65,7 @@
             this.firstTraCompDate.Name = "firstTraCompDate";
             this.firstTraCompDate.Size = new System.Drawing.Size(202, 29);
             this.firstTraCompDate.TabIndex = 45;
+            this.firstTraCompDate.ValueChanged += new System.EventHandler(this.firstTraCompDate_ValueChanged);
             // 
             // installDate
             // 
@@ -136,6 +140,7 @@
             this.warStarDate.Name = "warStarDate";
             this.warStarDate.Size = new System.Drawing.Size(202, 29);
             this.warStarDate.TabIndex = 50;
+            this.warStarDate.ValueChanged += new System.EventHandler(this.warStarDate_ValueChanged);
             // 
             // metroLabel10
             // 
@@ -208,6 +213,10 @@
             this.notifyIcon1.Text = "notifyIcon1";
             this.notifyIcon1.Visible = true;
             // 
+            // errorP1
+            // 
+            this.errorP1.ContainerControl = this;
+            // 
             // ProjectUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,6 +241,7 @@
             this.Style = MetroFramework.MetroColorStyle.Orange;
             this.Text = "Update Project ";
             this.Load += new System.EventHandler(this.ProjectUpdate_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorP1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,5 +262,6 @@
         private MetroFramework.Controls.MetroTextBox warrPerTxt;
         private MetroFramework.Controls.MetroComboBox metroComboBox1;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.ErrorProvider errorP1;
     }
 }

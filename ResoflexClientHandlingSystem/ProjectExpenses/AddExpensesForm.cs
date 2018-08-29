@@ -14,7 +14,6 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-
     public partial class AddExpensesForm : MetroFramework.Forms.MetroForm
     {
         ExpenseType expType;
@@ -22,35 +21,58 @@ namespace ResoflexClientHandlingSystem
         Project projectOfEvent;
         double amount;
         string comment;
+        int pid, eid;
 
         public AddExpensesForm()
         {
             InitializeComponent();
 
             fillExpensesTypeCmbBox();
+
+
         }
 
         public AddExpensesForm(int proj_id, int event_id)
         {
             InitializeComponent();
 
-            //eventID.Text = eventID.ToString();
-            
+            //eventID.Text = event_id.ToString();
+
+            MySqlDataReader reader = DBConnection.getData("select proj_name from project where proj_id = " + proj_id + " ;");
+
+            reader.Read();
+
+            projectID.Text = reader.GetString("proj_name");
+
+            reader.Close();
+
+            pid = proj_id;
+            eid = event_id;
+
             fillExpensesTypeCmbBox();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
         {
-            ExpenseDetailEvent ede = new ExpenseDetailEvent();
-            ede.PaymentType = paymentType.Text.ToString();
-            ede.ProjectOfEvent = new Project(int.Parse(projectID.Text.ToString()));
-            ede.EventOfExp = new Event(int.Parse(eventID.Text.ToString()));
-            ede.ExpType = new ExpenseType(int.Parse(expenseType.SelectedValue.ToString()));
-            ede.Comment = details.Text.ToString();
-            ede.Amount = double.Parse(totalAmount.Text.ToString());
 
-            Database.AddExpenses(ede);
+            if (Validation.isNumber(totalAmount.Text))
+            {
+                ExpenseDetailEvent ede = new ExpenseDetailEvent();
+                ede.PaymentType = paymentType.Text.ToString();
+                ede.ProjectOfEvent = new Project(pid);
+                ede.EventOfExp = new Event(eid);
+                ede.ExpType = new ExpenseType(int.Parse(expenseType.SelectedValue.ToString()));
+                ede.Comment = details.Text.ToString();
 
+                ede.Amount = double.Parse(totalAmount.Text.ToString());
+
+                Database.AddExpenses(ede);
+            }
+
+            else
+            {
+                MessageBox.Show("Invalid Number");
+            }
         }
 
         private void CategorySetupForm_Load(object sender, EventArgs e)

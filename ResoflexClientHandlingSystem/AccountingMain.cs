@@ -41,5 +41,12 @@ namespace ResoflexClientHandlingSystem
             prffrm.ShowDialog();
             this.Close();
         }
+
+        private void Project_Click(object sender, EventArgs e)
+        {
+            ExpensesTypeForm frm = new ExpensesTypeForm();
+
+            frm.Show();
+        }
     }
 }

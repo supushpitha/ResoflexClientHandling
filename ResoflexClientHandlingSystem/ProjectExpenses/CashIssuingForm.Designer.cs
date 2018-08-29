@@ -33,20 +33,18 @@
             this.confirmBtn = new MetroFramework.Controls.MetroButton();
             this.amountTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.cashDateTimeTxtBox = new MetroFramework.Controls.MetroDateTime();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.projectIdBox = new MetroFramework.Controls.MetroTextBox();
-            this.scheduleId = new MetroFramework.Controls.MetroTextBox();
             this.details = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.iouIdBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.scheduleId = new MetroFramework.Controls.MetroTextBox();
+            this.projectIdBox = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(86, 296);
+            this.metroLabel5.Location = new System.Drawing.Point(80, 255);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(75, 19);
             this.metroLabel5.TabIndex = 4;
@@ -55,7 +53,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(86, 336);
+            this.metroLabel6.Location = new System.Drawing.Point(80, 336);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(60, 19);
             this.metroLabel6.TabIndex = 5;
@@ -86,7 +84,7 @@
             this.amountTxtBox.CustomButton.UseSelectable = true;
             this.amountTxtBox.CustomButton.Visible = false;
             this.amountTxtBox.Lines = new string[0];
-            this.amountTxtBox.Location = new System.Drawing.Point(203, 336);
+            this.amountTxtBox.Location = new System.Drawing.Point(242, 332);
             this.amountTxtBox.MaxLength = 32767;
             this.amountTxtBox.Name = "amountTxtBox";
             this.amountTxtBox.PasswordChar = '\0';
@@ -103,98 +101,20 @@
             // 
             // cashDateTimeTxtBox
             // 
-            this.cashDateTimeTxtBox.Location = new System.Drawing.Point(203, 277);
+            this.cashDateTimeTxtBox.Location = new System.Drawing.Point(242, 255);
             this.cashDateTimeTxtBox.MinimumSize = new System.Drawing.Size(0, 29);
             this.cashDateTimeTxtBox.Name = "cashDateTimeTxtBox";
             this.cashDateTimeTxtBox.Size = new System.Drawing.Size(200, 29);
             this.cashDateTimeTxtBox.TabIndex = 12;
             // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(86, 102);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(48, 19);
-            this.metroLabel1.TabIndex = 13;
-            this.metroLabel1.Text = "IOU ID";
-            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(86, 152);
+            this.metroLabel2.Location = new System.Drawing.Point(80, 111);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(90, 19);
             this.metroLabel2.TabIndex = 15;
-            this.metroLabel2.Text = "Project ID";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(86, 193);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(77, 19);
-            this.metroLabel3.TabIndex = 16;
-            this.metroLabel3.Text = "Schedule ID";
-            // 
-            // projectIdBox
-            // 
-            // 
-            // 
-            // 
-            this.projectIdBox.CustomButton.Image = null;
-            this.projectIdBox.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.projectIdBox.CustomButton.Name = "";
-            this.projectIdBox.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.projectIdBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.projectIdBox.CustomButton.TabIndex = 1;
-            this.projectIdBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.projectIdBox.CustomButton.UseSelectable = true;
-            this.projectIdBox.CustomButton.Visible = false;
-            this.projectIdBox.Lines = new string[0];
-            this.projectIdBox.Location = new System.Drawing.Point(213, 152);
-            this.projectIdBox.MaxLength = 32767;
-            this.projectIdBox.Name = "projectIdBox";
-            this.projectIdBox.PasswordChar = '\0';
-            this.projectIdBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.projectIdBox.SelectedText = "";
-            this.projectIdBox.SelectionLength = 0;
-            this.projectIdBox.SelectionStart = 0;
-            this.projectIdBox.ShortcutsEnabled = true;
-            this.projectIdBox.Size = new System.Drawing.Size(75, 23);
-            this.projectIdBox.TabIndex = 17;
-            this.projectIdBox.UseSelectable = true;
-            this.projectIdBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.projectIdBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // scheduleId
-            // 
-            // 
-            // 
-            // 
-            this.scheduleId.CustomButton.Image = null;
-            this.scheduleId.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.scheduleId.CustomButton.Name = "";
-            this.scheduleId.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.scheduleId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.scheduleId.CustomButton.TabIndex = 1;
-            this.scheduleId.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.scheduleId.CustomButton.UseSelectable = true;
-            this.scheduleId.CustomButton.Visible = false;
-            this.scheduleId.Lines = new string[0];
-            this.scheduleId.Location = new System.Drawing.Point(213, 193);
-            this.scheduleId.MaxLength = 32767;
-            this.scheduleId.Name = "scheduleId";
-            this.scheduleId.PasswordChar = '\0';
-            this.scheduleId.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.scheduleId.SelectedText = "";
-            this.scheduleId.SelectionLength = 0;
-            this.scheduleId.SelectionStart = 0;
-            this.scheduleId.ShortcutsEnabled = true;
-            this.scheduleId.Size = new System.Drawing.Size(75, 23);
-            this.scheduleId.TabIndex = 18;
-            this.scheduleId.UseSelectable = true;
-            this.scheduleId.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.scheduleId.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroLabel2.Text = "Project Name";
             // 
             // details
             // 
@@ -211,7 +131,7 @@
             this.details.CustomButton.UseSelectable = true;
             this.details.CustomButton.Visible = false;
             this.details.Lines = new string[0];
-            this.details.Location = new System.Drawing.Point(213, 234);
+            this.details.Location = new System.Drawing.Point(242, 175);
             this.details.MaxLength = 32767;
             this.details.Name = "details";
             this.details.PasswordChar = '\0';
@@ -229,55 +149,72 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(86, 238);
+            this.metroLabel4.Location = new System.Drawing.Point(80, 175);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(42, 19);
             this.metroLabel4.TabIndex = 20;
             this.metroLabel4.Text = "Detail";
             // 
-            // iouIdBox
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(80, 146);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(72, 19);
+            this.metroLabel1.TabIndex = 21;
+            this.metroLabel1.Text = "ScheduleId";
+            // 
+            // scheduleId
             // 
             // 
             // 
             // 
-            this.iouIdBox.CustomButton.Image = null;
-            this.iouIdBox.CustomButton.Location = new System.Drawing.Point(53, 1);
-            this.iouIdBox.CustomButton.Name = "";
-            this.iouIdBox.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.iouIdBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.iouIdBox.CustomButton.TabIndex = 1;
-            this.iouIdBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.iouIdBox.CustomButton.UseSelectable = true;
-            this.iouIdBox.CustomButton.Visible = false;
-            this.iouIdBox.Lines = new string[0];
-            this.iouIdBox.Location = new System.Drawing.Point(203, 98);
-            this.iouIdBox.MaxLength = 32767;
-            this.iouIdBox.Name = "iouIdBox";
-            this.iouIdBox.PasswordChar = '\0';
-            this.iouIdBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.iouIdBox.SelectedText = "";
-            this.iouIdBox.SelectionLength = 0;
-            this.iouIdBox.SelectionStart = 0;
-            this.iouIdBox.ShortcutsEnabled = true;
-            this.iouIdBox.Size = new System.Drawing.Size(75, 23);
-            this.iouIdBox.TabIndex = 21;
-            this.iouIdBox.UseSelectable = true;
-            this.iouIdBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.iouIdBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.scheduleId.CustomButton.Image = null;
+            this.scheduleId.CustomButton.Location = new System.Drawing.Point(53, 1);
+            this.scheduleId.CustomButton.Name = "";
+            this.scheduleId.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.scheduleId.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.scheduleId.CustomButton.TabIndex = 1;
+            this.scheduleId.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.scheduleId.CustomButton.UseSelectable = true;
+            this.scheduleId.CustomButton.Visible = false;
+            this.scheduleId.Lines = new string[0];
+            this.scheduleId.Location = new System.Drawing.Point(242, 146);
+            this.scheduleId.MaxLength = 32767;
+            this.scheduleId.Name = "scheduleId";
+            this.scheduleId.PasswordChar = '\0';
+            this.scheduleId.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.scheduleId.SelectedText = "";
+            this.scheduleId.SelectionLength = 0;
+            this.scheduleId.SelectionStart = 0;
+            this.scheduleId.ShortcutsEnabled = true;
+            this.scheduleId.Size = new System.Drawing.Size(75, 23);
+            this.scheduleId.TabIndex = 22;
+            this.scheduleId.UseSelectable = true;
+            this.scheduleId.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.scheduleId.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // projectIdBox
+            // 
+            this.projectIdBox.FormattingEnabled = true;
+            this.projectIdBox.ItemHeight = 23;
+            this.projectIdBox.Location = new System.Drawing.Point(242, 111);
+            this.projectIdBox.Name = "projectIdBox";
+            this.projectIdBox.Size = new System.Drawing.Size(121, 29);
+            this.projectIdBox.TabIndex = 23;
+            this.projectIdBox.UseSelectable = true;
             // 
             // CashIssuingForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 488);
-            this.Controls.Add(this.iouIdBox);
+            this.Controls.Add(this.projectIdBox);
+            this.Controls.Add(this.scheduleId);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.details);
-            this.Controls.Add(this.scheduleId);
-            this.Controls.Add(this.projectIdBox);
-            this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.cashDateTimeTxtBox);
             this.Controls.Add(this.amountTxtBox);
             this.Controls.Add(this.confirmBtn);
@@ -297,13 +234,11 @@
         private MetroFramework.Controls.MetroButton confirmBtn;
         private MetroFramework.Controls.MetroTextBox amountTxtBox;
         private MetroFramework.Controls.MetroDateTime cashDateTimeTxtBox;
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox projectIdBox;
-        private MetroFramework.Controls.MetroTextBox scheduleId;
         private MetroFramework.Controls.MetroTextBox details;
         private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroTextBox iouIdBox;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTextBox scheduleId;
+        private MetroFramework.Controls.MetroComboBox projectIdBox;
     }
 }

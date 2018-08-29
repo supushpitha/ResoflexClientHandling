@@ -31,9 +31,7 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.totalAmount = new MetroFramework.Controls.MetroTextBox();
             this.btnOk = new MetroFramework.Controls.MetroButton();
-            this.eventID = new MetroFramework.Controls.MetroTextBox();
             this.details = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.paymentType = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.expDate = new MetroFramework.Controls.MetroDateTime();
@@ -97,38 +95,6 @@
             this.btnOk.UseSelectable = true;
             this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
             // 
-            // eventID
-            // 
-            this.eventID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            // 
-            // 
-            // 
-            this.eventID.CustomButton.Image = null;
-            this.eventID.CustomButton.Location = new System.Drawing.Point(97, 1);
-            this.eventID.CustomButton.Name = "";
-            this.eventID.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.eventID.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.eventID.CustomButton.TabIndex = 1;
-            this.eventID.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.eventID.CustomButton.UseSelectable = true;
-            this.eventID.CustomButton.Visible = false;
-            this.eventID.Lines = new string[0];
-            this.eventID.Location = new System.Drawing.Point(294, 132);
-            this.eventID.MaxLength = 32767;
-            this.eventID.Name = "eventID";
-            this.eventID.PasswordChar = '\0';
-            this.eventID.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.eventID.SelectedText = "";
-            this.eventID.SelectionLength = 0;
-            this.eventID.SelectionStart = 0;
-            this.eventID.ShortcutsEnabled = true;
-            this.eventID.Size = new System.Drawing.Size(119, 23);
-            this.eventID.TabIndex = 13;
-            this.eventID.UseCustomBackColor = true;
-            this.eventID.UseSelectable = true;
-            this.eventID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.eventID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // details
             // 
             this.details.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -162,17 +128,6 @@
             this.details.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.details.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.metroLabel2.Location = new System.Drawing.Point(105, 136);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(56, 19);
-            this.metroLabel2.TabIndex = 17;
-            this.metroLabel2.Text = "Event ID";
-            this.metroLabel2.UseCustomBackColor = true;
-            // 
             // paymentType
             // 
             this.paymentType.BackColor = System.Drawing.SystemColors.MenuBar;
@@ -181,7 +136,7 @@
             this.paymentType.Items.AddRange(new object[] {
             "Direct",
             "IOU"});
-            this.paymentType.Location = new System.Drawing.Point(294, 81);
+            this.paymentType.Location = new System.Drawing.Point(294, 93);
             this.paymentType.Name = "paymentType";
             this.paymentType.Size = new System.Drawing.Size(121, 29);
             this.paymentType.TabIndex = 20;
@@ -192,7 +147,7 @@
             // 
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.metroLabel1.Location = new System.Drawing.Point(105, 81);
+            this.metroLabel1.Location = new System.Drawing.Point(105, 93);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(90, 19);
             this.metroLabel1.TabIndex = 22;
@@ -220,7 +175,7 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.metroLabel6.Location = new System.Drawing.Point(105, 232);
+            this.metroLabel6.Location = new System.Drawing.Point(105, 218);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(92, 19);
             this.metroLabel6.TabIndex = 25;
@@ -241,7 +196,7 @@
             this.expenseType.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.expenseType.FormattingEnabled = true;
             this.expenseType.ItemHeight = 23;
-            this.expenseType.Location = new System.Drawing.Point(294, 222);
+            this.expenseType.Location = new System.Drawing.Point(294, 208);
             this.expenseType.Name = "expenseType";
             this.expenseType.Size = new System.Drawing.Size(121, 29);
             this.expenseType.TabIndex = 27;
@@ -252,11 +207,11 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.metroLabel7.Location = new System.Drawing.Point(105, 175);
+            this.metroLabel7.Location = new System.Drawing.Point(105, 161);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(90, 19);
             this.metroLabel7.TabIndex = 28;
-            this.metroLabel7.Text = "Project ID";
+            this.metroLabel7.Text = "Project Name";
             this.metroLabel7.UseCustomBackColor = true;
             // 
             // metroLabel8
@@ -269,7 +224,6 @@
             // 
             // projectID
             // 
-            this.projectID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             // 
             // 
             // 
@@ -283,7 +237,7 @@
             this.projectID.CustomButton.UseSelectable = true;
             this.projectID.CustomButton.Visible = false;
             this.projectID.Lines = new string[0];
-            this.projectID.Location = new System.Drawing.Point(294, 171);
+            this.projectID.Location = new System.Drawing.Point(294, 161);
             this.projectID.MaxLength = 32767;
             this.projectID.Name = "projectID";
             this.projectID.PasswordChar = '\0';
@@ -294,7 +248,6 @@
             this.projectID.ShortcutsEnabled = true;
             this.projectID.Size = new System.Drawing.Size(119, 23);
             this.projectID.TabIndex = 30;
-            this.projectID.UseCustomBackColor = true;
             this.projectID.UseSelectable = true;
             this.projectID.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.projectID.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
@@ -314,9 +267,7 @@
             this.Controls.Add(this.expDate);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.paymentType);
-            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.details);
-            this.Controls.Add(this.eventID);
             this.Controls.Add(this.btnOk);
             this.Controls.Add(this.totalAmount);
             this.Controls.Add(this.metroLabel4);
@@ -333,9 +284,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroTextBox totalAmount;
         private MetroFramework.Controls.MetroButton btnOk;
-        private MetroFramework.Controls.MetroTextBox eventID;
         private MetroFramework.Controls.MetroTextBox details;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroComboBox paymentType;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroDateTime expDate;

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using System;
@@ -27,7 +28,17 @@ namespace ResoflexClientHandlingSystem
         public CashIssuingForm()
         {
             InitializeComponent();
-            iouIdDisplay();
+            // iouIdDisplay();
+
+            MySqlDataReader reader = DBConnection.getData("select proj_name, proj_id from project");
+            DataTable dt = new DataTable();
+
+            dt.Load(reader);
+
+            projectIdBox.DataSource = dt;
+            projectIdBox.ValueMember = "proj_id";
+            projectIdBox.DisplayMember = "proj_name";
+
 
         }
 
@@ -35,7 +46,7 @@ namespace ResoflexClientHandlingSystem
         public CashIssuingForm(Project projectOfIou, Schedule scheduleOfIou)
         {
             InitializeComponent();
-            iouIdDisplay();
+           // iouIdDisplay();
 
 
         }
@@ -55,28 +66,44 @@ namespace ResoflexClientHandlingSystem
             ExpenseDetailSchedule ed = new ExpenseDetailSchedule();
 
 
-            ed.ScheduleOfExp = new Schedule(int.Parse(scheduleId.Text.ToString()));
-            ed.ProjectOfSchedule = new Project(int.Parse(projectIdBox.Text.ToString()));
-            ed.Amount = float.Parse(amountTxtBox.Text);
-            ed.Comment = details.Text.ToString();
+           ed.ScheduleOfExp = new Schedule(int.Parse(scheduleId.Text.ToString()));
+            ed.ProjectOfSchedule = new Project(int.Parse(projectIdBox.SelectedValue.ToString()));
+
+            if (Validation.isNumber(amountTxtBox.Text))
+            {
+                ed.Amount = float.Parse(amountTxtBox.Text);
+                ed.Comment = details.Text.ToString();
 
 
-            Database.CashIssue(ed);
+                Database.CashIssue(ed);
+            }
+            else
+            {
+                MessageBox.Show("Invalid Number");
+            }
+
+          
 
 
 
     }
 
-        public void iouIdDisplay()
+   /*     public void iouIdDisplay()
         {
             MySqlDataReader r = DBConnection.getData("select iou_id from iou order by iou_id desc ");
-            r.Read();
-            iouIdBox.Text = (r.GetInt16("iou_id") + 1).ToString();
+            if(r.Read())
+            {
+                //iouIdBox.Text = (r.GetInt16("iou_id") + 1).ToString();
+                r.Close();
+            }
+            else
+            {
+                //iouIdBox.Text = 1.ToString();
+                r.Close();
+            }
+            
 
-
-            r.Close();
-
-        }
+        }*/
 
 
         /* private void staffNameComboBox_SelectedIndexChanged(object sender, EventArgs e)

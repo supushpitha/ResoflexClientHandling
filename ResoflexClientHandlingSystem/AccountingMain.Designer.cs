@@ -66,6 +66,7 @@
             this.Project.TabIndex = 21;
             this.Project.Text = "Project";
             this.Project.UseSelectable = true;
+            this.Project.Click += new System.EventHandler(this.Project_Click);
             // 
             // metroTile2
             // 
@@ -120,7 +121,7 @@
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.Location = new System.Drawing.Point(411, 331);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(143, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(137, 19);
             this.metroLabel1.TabIndex = 26;
             this.metroLabel1.Text = "Total Project Expenses";
             // 

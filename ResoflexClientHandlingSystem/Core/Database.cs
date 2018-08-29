@@ -647,8 +647,8 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void AddExpenses(ExpenseDetailEvent addExpense)
         {
-            try
-            {
+           /* try
+            {*/
                 string date = DateTime.Now.ToString("yyyy-MM-dd");
 
                 int eti = addExpense.ExpType.ExpTypeId;
@@ -663,22 +663,22 @@ namespace ResoflexClientHandlingSystem.Core
 
                 MessageBox.Show("Expenses successfully added!");
 
-            }
+           /* }
             catch (Exception)
             {
 
                 MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
 
 
         public static void CashIssue(ExpenseDetailSchedule cashIssue)
         {
-            try
+       /*     try
             {
-                string date = DateTime.Now.ToString("yyyy-MM-dd");
-
-                int e = cashIssue.ScheduleOfExp.ScheduleId;
+*/                string date = DateTime.Now.ToString("yyyy-MM-dd");
+            
+               int e = cashIssue.ScheduleOfExp.ScheduleId;
                 int p = cashIssue.ProjectOfSchedule.ProjectID;
                 double a = cashIssue.Amount;
                 string c = cashIssue.Comment;
@@ -686,11 +686,11 @@ namespace ResoflexClientHandlingSystem.Core
                 DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
 
                 MessageBox.Show("Expenses successfully added!");
-            }
-            catch (Exception)
+  /*          }
+          catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            }*/
         }
     }
 }

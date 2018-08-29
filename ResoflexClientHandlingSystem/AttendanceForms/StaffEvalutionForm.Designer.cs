@@ -43,23 +43,22 @@
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.selectEmployeeTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
             this.metroGrid3 = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage2 = new MetroFramework.Controls.MetroTabPage();
-            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.metroDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.staffDateTime2 = new MetroFramework.Controls.MetroDateTime();
+            this.staffDateTime1 = new MetroFramework.Controls.MetroDateTime();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.searchStaffAttendanceTxtBox = new System.Windows.Forms.TextBox();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroGrid2 = new MetroFramework.Controls.MetroGrid();
+            this.staffAttendanceDataGrid = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage3 = new MetroFramework.Controls.MetroTabPage();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox3 = new MetroFramework.Controls.MetroTextBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.metroRadioButton6 = new MetroFramework.Controls.MetroRadioButton();
             this.metroRadioButton5 = new MetroFramework.Controls.MetroRadioButton();
@@ -69,11 +68,12 @@
             this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
             this.metroGrid4 = new MetroFramework.Controls.MetroGrid();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
+            this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
             this.metroTabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffAttendanceDataGrid)).BeginInit();
             this.metroTabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.metroTabPage4.SuspendLayout();
@@ -97,7 +97,7 @@
             // metroTabPage1
             // 
             this.metroTabPage1.Controls.Add(this.metroButton1);
-            this.metroTabPage1.Controls.Add(this.metroTextBox1);
+            this.metroTabPage1.Controls.Add(this.selectEmployeeTxtbox);
             this.metroTabPage1.Controls.Add(this.metroLabel2);
             this.metroTabPage1.Controls.Add(this.metroLabel1);
             this.metroTabPage1.Controls.Add(this.metroTile3);
@@ -124,36 +124,37 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // metroTextBox1
+            // selectEmployeeTxtbox
             // 
             // 
             // 
             // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(123, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(611, 20);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(145, 23);
-            this.metroTextBox1.TabIndex = 8;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.metroTextBox1.Click += new System.EventHandler(this.metroTextBox1_Click);
+            this.selectEmployeeTxtbox.CustomButton.Image = null;
+            this.selectEmployeeTxtbox.CustomButton.Location = new System.Drawing.Point(123, 1);
+            this.selectEmployeeTxtbox.CustomButton.Name = "";
+            this.selectEmployeeTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.selectEmployeeTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.selectEmployeeTxtbox.CustomButton.TabIndex = 1;
+            this.selectEmployeeTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.selectEmployeeTxtbox.CustomButton.UseSelectable = true;
+            this.selectEmployeeTxtbox.CustomButton.Visible = false;
+            this.selectEmployeeTxtbox.Lines = new string[0];
+            this.selectEmployeeTxtbox.Location = new System.Drawing.Point(611, 20);
+            this.selectEmployeeTxtbox.MaxLength = 32767;
+            this.selectEmployeeTxtbox.Name = "selectEmployeeTxtbox";
+            this.selectEmployeeTxtbox.PasswordChar = '\0';
+            this.selectEmployeeTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.selectEmployeeTxtbox.SelectedText = "";
+            this.selectEmployeeTxtbox.SelectionLength = 0;
+            this.selectEmployeeTxtbox.SelectionStart = 0;
+            this.selectEmployeeTxtbox.ShortcutsEnabled = true;
+            this.selectEmployeeTxtbox.Size = new System.Drawing.Size(145, 23);
+            this.selectEmployeeTxtbox.TabIndex = 8;
+            this.selectEmployeeTxtbox.UseSelectable = true;
+            this.selectEmployeeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.selectEmployeeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.selectEmployeeTxtbox.TextChanged += new System.EventHandler(this.selectEmployeeTxtbox_TextChanged);
+            this.selectEmployeeTxtbox.Click += new System.EventHandler(this.metroTextBox1_Click);
             // 
             // metroLabel2
             // 
@@ -187,7 +188,8 @@
             // metroGrid3
             // 
             this.metroGrid3.AllowUserToResizeRows = false;
-            this.metroGrid3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.metroGrid3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.metroGrid3.BackgroundColor = System.Drawing.Color.White;
             this.metroGrid3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid3.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid3.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -231,11 +233,13 @@
             // 
             // metroTabPage2
             // 
-            this.metroTabPage2.Controls.Add(this.metroTextBox2);
-            this.metroTabPage2.Controls.Add(this.textBox1);
-            this.metroTabPage2.Controls.Add(this.metroDateTime1);
+            this.metroTabPage2.Controls.Add(this.metroButton5);
+            this.metroTabPage2.Controls.Add(this.staffDateTime2);
+            this.metroTabPage2.Controls.Add(this.staffDateTime1);
+            this.metroTabPage2.Controls.Add(this.metroLabel3);
+            this.metroTabPage2.Controls.Add(this.searchStaffAttendanceTxtBox);
             this.metroTabPage2.Controls.Add(this.metroTile2);
-            this.metroTabPage2.Controls.Add(this.metroGrid2);
+            this.metroTabPage2.Controls.Add(this.staffAttendanceDataGrid);
             this.metroTabPage2.HorizontalScrollbarBarColor = true;
             this.metroTabPage2.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage2.HorizontalScrollbarSize = 10;
@@ -249,55 +253,41 @@
             this.metroTabPage2.VerticalScrollbarSize = 10;
             this.metroTabPage2.Click += new System.EventHandler(this.metroTabPage2_Click);
             // 
-            // metroTextBox2
+            // staffDateTime2
             // 
+            this.staffDateTime2.Location = new System.Drawing.Point(451, 11);
+            this.staffDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.staffDateTime2.Name = "staffDateTime2";
+            this.staffDateTime2.Size = new System.Drawing.Size(206, 29);
+            this.staffDateTime2.TabIndex = 10;
+            this.staffDateTime2.ValueChanged += new System.EventHandler(this.staffDateTime2_ValueChanged);
             // 
+            // staffDateTime1
             // 
+            this.staffDateTime1.Location = new System.Drawing.Point(226, 12);
+            this.staffDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
+            this.staffDateTime1.Name = "staffDateTime1";
+            this.staffDateTime1.Size = new System.Drawing.Size(209, 29);
+            this.staffDateTime1.TabIndex = 9;
+            this.staffDateTime1.ValueChanged += new System.EventHandler(this.staffDateTime1_ValueChanged);
             // 
-            this.metroTextBox2.CustomButton.Image = null;
-            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(97, 1);
-            this.metroTextBox2.CustomButton.Name = "";
-            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox2.CustomButton.TabIndex = 1;
-            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox2.CustomButton.UseSelectable = true;
-            this.metroTextBox2.CustomButton.Visible = false;
-            this.metroTextBox2.Lines = new string[0];
-            this.metroTextBox2.Location = new System.Drawing.Point(507, 21);
-            this.metroTextBox2.MaxLength = 32767;
-            this.metroTextBox2.Name = "metroTextBox2";
-            this.metroTextBox2.PasswordChar = '\0';
-            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox2.SelectedText = "";
-            this.metroTextBox2.SelectionLength = 0;
-            this.metroTextBox2.SelectionStart = 0;
-            this.metroTextBox2.ShortcutsEnabled = true;
-            this.metroTextBox2.Size = new System.Drawing.Size(119, 23);
-            this.metroTextBox2.TabIndex = 8;
-            this.metroTextBox2.UseSelectable = true;
-            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.metroTextBox2.TextChanged += new System.EventHandler(this.metroTextBox2_TextChanged);
-            this.metroTextBox2.Click += new System.EventHandler(this.metroTextBox2_Click);
+            // metroLabel3
             // 
-            // textBox1
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 21);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel3.TabIndex = 8;
+            this.metroLabel3.Text = "Staff Id";
             // 
-            this.textBox1.Location = new System.Drawing.Point(263, 21);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(152, 20);
-            this.textBox1.TabIndex = 7;
-            this.textBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // searchStaffAttendanceTxtBox
             // 
-            // metroDateTime1
-            // 
-            this.metroDateTime1.Location = new System.Drawing.Point(2, 12);
-            this.metroDateTime1.MinimumSize = new System.Drawing.Size(4, 29);
-            this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(200, 29);
-            this.metroDateTime1.TabIndex = 6;
-            this.metroDateTime1.ValueChanged += new System.EventHandler(this.metroDateTime1_ValueChanged);
+            this.searchStaffAttendanceTxtBox.Location = new System.Drawing.Point(59, 21);
+            this.searchStaffAttendanceTxtBox.Name = "searchStaffAttendanceTxtBox";
+            this.searchStaffAttendanceTxtBox.Size = new System.Drawing.Size(152, 20);
+            this.searchStaffAttendanceTxtBox.TabIndex = 7;
+            this.searchStaffAttendanceTxtBox.MouseClick += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseClick);
+            this.searchStaffAttendanceTxtBox.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // metroTile2
             // 
@@ -310,13 +300,14 @@
             this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.metroTile2.UseSelectable = true;
             // 
-            // metroGrid2
+            // staffAttendanceDataGrid
             // 
-            this.metroGrid2.AllowUserToResizeRows = false;
-            this.metroGrid2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.metroGrid2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.metroGrid2.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.metroGrid2.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.staffAttendanceDataGrid.AllowUserToResizeRows = false;
+            this.staffAttendanceDataGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.staffAttendanceDataGrid.BackgroundColor = System.Drawing.Color.White;
+            this.staffAttendanceDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.staffAttendanceDataGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.staffAttendanceDataGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle16.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle16.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -324,8 +315,8 @@
             dataGridViewCellStyle16.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle16.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle16.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
-            this.metroGrid2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.staffAttendanceDataGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle16;
+            this.staffAttendanceDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle17.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -333,13 +324,13 @@
             dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid2.DefaultCellStyle = dataGridViewCellStyle17;
-            this.metroGrid2.EnableHeadersVisualStyles = false;
-            this.metroGrid2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.metroGrid2.GridColor = System.Drawing.Color.White;
-            this.metroGrid2.Location = new System.Drawing.Point(2, 58);
-            this.metroGrid2.Name = "metroGrid2";
-            this.metroGrid2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.staffAttendanceDataGrid.DefaultCellStyle = dataGridViewCellStyle17;
+            this.staffAttendanceDataGrid.EnableHeadersVisualStyles = false;
+            this.staffAttendanceDataGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.staffAttendanceDataGrid.GridColor = System.Drawing.Color.White;
+            this.staffAttendanceDataGrid.Location = new System.Drawing.Point(2, 58);
+            this.staffAttendanceDataGrid.Name = "staffAttendanceDataGrid";
+            this.staffAttendanceDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle18.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -347,12 +338,12 @@
             dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid2.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
-            this.metroGrid2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.metroGrid2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.metroGrid2.Size = new System.Drawing.Size(756, 352);
-            this.metroGrid2.TabIndex = 4;
-            this.metroGrid2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellContentClick);
+            this.staffAttendanceDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
+            this.staffAttendanceDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.staffAttendanceDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.staffAttendanceDataGrid.Size = new System.Drawing.Size(756, 352);
+            this.staffAttendanceDataGrid.TabIndex = 4;
+            this.staffAttendanceDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid2_CellContentClick);
             // 
             // metroTabPage3
             // 
@@ -426,8 +417,6 @@
             // 
             // metroTabPage4
             // 
-            this.metroTabPage4.Controls.Add(this.metroButton2);
-            this.metroTabPage4.Controls.Add(this.metroTextBox3);
             this.metroTabPage4.Controls.Add(this.metroPanel1);
             this.metroTabPage4.Controls.Add(this.metroRadioButton2);
             this.metroTabPage4.Controls.Add(this.metroRadioButton1);
@@ -444,46 +433,6 @@
             this.metroTabPage4.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage4.VerticalScrollbarSize = 10;
             this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(577, 152);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(90, 23);
-            this.metroButton2.TabIndex = 19;
-            this.metroButton2.Text = "View";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
-            // 
-            // metroTextBox3
-            // 
-            // 
-            // 
-            // 
-            this.metroTextBox3.CustomButton.Image = null;
-            this.metroTextBox3.CustomButton.Location = new System.Drawing.Point(68, 1);
-            this.metroTextBox3.CustomButton.Name = "";
-            this.metroTextBox3.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.metroTextBox3.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox3.CustomButton.TabIndex = 1;
-            this.metroTextBox3.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox3.CustomButton.UseSelectable = true;
-            this.metroTextBox3.CustomButton.Visible = false;
-            this.metroTextBox3.Lines = new string[0];
-            this.metroTextBox3.Location = new System.Drawing.Point(577, 123);
-            this.metroTextBox3.MaxLength = 32767;
-            this.metroTextBox3.Name = "metroTextBox3";
-            this.metroTextBox3.PasswordChar = '\0';
-            this.metroTextBox3.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox3.SelectedText = "";
-            this.metroTextBox3.SelectionLength = 0;
-            this.metroTextBox3.SelectionStart = 0;
-            this.metroTextBox3.ShortcutsEnabled = true;
-            this.metroTextBox3.Size = new System.Drawing.Size(90, 23);
-            this.metroTextBox3.TabIndex = 18;
-            this.metroTextBox3.UseSelectable = true;
-            this.metroTextBox3.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox3.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // metroPanel1
             // 
@@ -571,7 +520,8 @@
             // metroGrid4
             // 
             this.metroGrid4.AllowUserToResizeRows = false;
-            this.metroGrid4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.metroGrid4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.metroGrid4.BackgroundColor = System.Drawing.Color.White;
             this.metroGrid4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid4.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -624,6 +574,16 @@
             this.profilebtn.UseSelectable = true;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
+            // metroButton5
+            // 
+            this.metroButton5.Location = new System.Drawing.Point(663, 17);
+            this.metroButton5.Name = "metroButton5";
+            this.metroButton5.Size = new System.Drawing.Size(75, 23);
+            this.metroButton5.TabIndex = 13;
+            this.metroButton5.Text = "All";
+            this.metroButton5.UseSelectable = true;
+            this.metroButton5.Click += new System.EventHandler(this.metroButton5_Click);
+            // 
             // StaffEvalutionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -640,7 +600,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).EndInit();
             this.metroTabPage2.ResumeLayout(false);
             this.metroTabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.metroGrid2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.staffAttendanceDataGrid)).EndInit();
             this.metroTabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.metroTabPage4.ResumeLayout(false);
@@ -659,17 +619,14 @@
         private MetroFramework.Controls.MetroTabPage metroTabPage2;
         private MetroFramework.Controls.MetroTabPage metroTabPage3;
         private MetroFramework.Controls.MetroGrid metroGrid1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroTextBox selectEmployeeTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroGrid metroGrid3;
-        private MetroFramework.Controls.MetroDateTime metroDateTime1;
         private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroGrid metroGrid2;
+        private MetroFramework.Controls.MetroGrid staffAttendanceDataGrid;
         private MetroFramework.Controls.MetroTile metroTile1;
-        private System.Windows.Forms.TextBox textBox1;
-        private MetroFramework.Controls.MetroTextBox metroTextBox2;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroTabPage metroTabPage4;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
@@ -680,9 +637,12 @@
         private MetroFramework.Controls.MetroRadioButton metroRadioButton5;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroTextBox metroTextBox3;
         private MetroFramework.Controls.MetroButton profilebtn;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private System.Windows.Forms.TextBox searchStaffAttendanceTxtBox;
+        private MetroFramework.Controls.MetroDateTime staffDateTime1;
+        private MetroFramework.Controls.MetroDateTime staffDateTime2;
+        private MetroFramework.Controls.MetroButton metroButton5;
     }
 }
 

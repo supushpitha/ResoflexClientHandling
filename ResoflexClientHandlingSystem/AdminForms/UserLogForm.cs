@@ -227,5 +227,12 @@ namespace ResoflexClientHandlingSystem
             uof.Show();
         }
 
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            Dashboard dsh = new Dashboard();
+            dsh.Show();
+            this.Close();
+            
+        }
     }
 }

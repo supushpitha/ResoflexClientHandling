@@ -76,6 +76,7 @@ namespace ResoflexClientHandlingSystem
                     }
                     else
                     {
+                        dataReader1.Close();
                         MessageBox.Show("You are not authorized to log in..");
 
                     }
@@ -83,6 +84,7 @@ namespace ResoflexClientHandlingSystem
                 }
                 else
                 {
+                    dataReader1.Close();
                     MessageBox.Show("Credentials are incorrect");
                 }
             }

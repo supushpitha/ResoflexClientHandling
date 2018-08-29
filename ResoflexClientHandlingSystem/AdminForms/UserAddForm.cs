@@ -51,6 +51,10 @@ namespace ResoflexClientHandlingSystem
 
             add.Visible = false;
             clr.Visible = false;
+
+            metroGrid1.Enabled = false;
+            label2.Visible = false;
+
         }
 
         private void label1_Click(object sender, EventArgs e)

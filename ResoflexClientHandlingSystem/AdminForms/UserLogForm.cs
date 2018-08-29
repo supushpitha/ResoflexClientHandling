@@ -61,7 +61,9 @@ namespace ResoflexClientHandlingSystem
         private void profilebtn_Click(object sender, EventArgs e)
         {
             ProfileForm prffrm = new ProfileForm();
-            prffrm.Show();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
 
         private DataTable getLogList()

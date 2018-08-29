@@ -154,6 +154,10 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
         
+        //added new queries bellow for schedule !!
+        //
+        //--------------------------------------
+
         public static void addProject(ResoflexClientHandlingSystem.Role.Project project)
         {
             Client client = project.ClientOfProject;
@@ -430,15 +434,10 @@ namespace ResoflexClientHandlingSystem.Core
         public static Boolean addSchedule(Schedule schedule)
         {
             try
-            {
-                //for now
-                schedule.Vehicle = " ";
-                schedule.Mileage = 0;
-
-                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, vehicle_details, mileage, to_date_time, " +
-                    "from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
-                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.Vehicle + "'," +
-                    "" + schedule.Mileage + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
+            { 
+                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, to_date_time, from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
+                    "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" +
+                    schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
                     "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
                     " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
 
@@ -515,9 +514,6 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                //for now
-                schedule.Vehicle = " ";
-                schedule.Mileage = 0;
 
                 DBConnection.updateDB("update schedule set visit_type_id = " + schedule.Type.EventTypeId + ", to_date_time = '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") +
                     "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', to_do_list = '" + schedule.TodoList + "', resource = " +
@@ -557,12 +553,82 @@ namespace ResoflexClientHandlingSystem.Core
             DBConnection.updateDB("insert into designation(designation) values()");
         }
 
-        public static void saveChangerequest(ProjectRequest req)
+        public static void saveChangeRequest(ProjectRequest req)
         {
             try
             {
                 DBConnection.updateDB("insert into proj_request (proj_id, request, added_date, urgent) " +
                     "values (" + req.ProjectOfRequest.ProjectID + ", '" + req.Request + "', '" + req.AddedDate.ToString("yyyy/MM/d HH:mm:ss") + "', " + req.Urgent + ")");
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static Boolean addEvent(Event evnt)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into event (proj_id, visit_type_id, to_date_time, from_date_time, sch_no, feedback, Other, to_do_list, resource, check_list, travelling_mode, accommodation_mode, meals) " +
+                    " values (" + evnt.EventProject.ProjectID + ", " + evnt.Type.EventTypeId + ", '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") +
+                    "', " + evnt.ScheduleId.ScheduleId + ", '" + evnt.Feedback + "', '" + evnt.Other + "', '" + evnt.TodoList + "', '" + evnt.Resource + "', '" + evnt.Checklist + "', '" + evnt.TravelMode +"', '" +
+                    evnt.AccommodationMode + "', '" + evnt.Meals + "' )");
+
+                foreach (var ary in evnt.ServEngineer)
+                {
+                    EventTechnician et = (EventTechnician)ary;
+
+                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, feedback, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
+                        ", '" + et.Feedback + "', " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
+
+                    MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
+                        " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                    if (reader.Read())
+                    {
+                        int esi = reader.GetInt16("event_staff_id");
+                        reader.Close();
+
+                        DBConnection.updateDB("insert into event_technician_task (event_tech_id, task) values (" + esi + ", '" + et.Task + "');");
+                    }
+
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Add Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static Boolean deleteEvent()
+        {
+            try
+            {
+                DBConnection.updateDB("");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+        
+        public static void saveClientRequest(ClientRequest req)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into client_request (client_id, request, added_date, importance) " +
+                    "values (" + req.ReqClient.ClientID + ", '" + req.Request + "', '" + req.AddedDate.ToString("yyyy/MM/d HH:mm:ss") + "', " + req.Importance + ")");
             }
             catch (Exception exc)
             {

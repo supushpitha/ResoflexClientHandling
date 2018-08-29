@@ -25,7 +25,7 @@ namespace ResoflexClientHandlingSystem
         private void Form1_Load(object sender, EventArgs e)
         {
             clientGrid.DataSource = getClients();
-            findNonProfitClients();
+            //findNonProfitClients();
 
             clientGrid.Columns[0].Visible = false;
             clientGrid.Columns[6].DefaultCellStyle.ForeColor = Color.SteelBlue;
@@ -52,7 +52,7 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void findNonProfitClients()
-        {
+        {/*
             foreach (DataGridViewRow row in clientGrid.Rows)
             {
                 int clientId = Int32.Parse(row.Cells[0].Value.ToString());
@@ -90,7 +90,7 @@ namespace ResoflexClientHandlingSystem
                     row.DefaultCellStyle.ForeColor = Color.Red;
                     row.DefaultCellStyle.SelectionForeColor = Color.Red;
                 }
-            }
+            }*/
         }
 
         private void fillTiles(int clientId)

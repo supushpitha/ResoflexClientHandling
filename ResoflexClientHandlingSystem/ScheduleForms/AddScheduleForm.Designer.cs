@@ -590,6 +590,8 @@
             this.addEng.TabIndex = 19;
             this.addEng.Text = "Add";
             this.addEng.UseSelectable = true;
+            this.addEng.Click += new System.EventHandler(this.addEng_Click);
+            this.addEng.MouseClick += new System.Windows.Forms.MouseEventHandler(this.addEng_Click);
             // 
             // serviceEngCombo
             // 
@@ -777,6 +779,8 @@
             this.ClientSize = new System.Drawing.Size(767, 600);
             this.Controls.Add(this.htmlLabel1);
             this.Controls.Add(this.metroPanel1);
+            this.MaximumSize = new System.Drawing.Size(767, 800);
+            this.MinimumSize = new System.Drawing.Size(767, 600);
             this.Name = "AddScheduleForm";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Load += new System.EventHandler(this.AddScheduleForm_Load);

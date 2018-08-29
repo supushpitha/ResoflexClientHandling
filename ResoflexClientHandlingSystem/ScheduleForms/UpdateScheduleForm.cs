@@ -258,7 +258,33 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
-        private void schUpdate_Click(object sender, EventArgs e)
+        public void validation(object sender, EventArgs e)
+        {
+            if (!Validation.isEmpty(todoList.Text))
+            {
+                if (!Validation.isEmpty(meals.Text))
+                {
+                    if (!Validation.isDataTableEmpty(engGrid))
+                    {
+                            scheduleUpdate();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service engineers should be assigned!", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Meal field cannot be empty!", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todo list field cannot be empty!", "Error");
+            }
+        }
+
+        private void scheduleUpdate()
         {
             Schedule schedule = new Schedule();
 

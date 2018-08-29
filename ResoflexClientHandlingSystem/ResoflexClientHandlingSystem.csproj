@@ -210,6 +210,12 @@
     <Compile Include="ProjectExpenses\AddExpensesForm.designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.Designer.cs">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectExpenses\CashIssuingForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -240,11 +246,11 @@
     <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.cs">
+    <Compile Include="ProjectExpenses\IOUListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.designer.cs">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\IOUListForm.designer.cs">
+      <DependentUpon>IOUListForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesForm.cs">
       <SubType>Form</SubType>
@@ -486,6 +492,9 @@
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\BalanceSheetForm.resx">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\CashIssuingForm.resx">
       <DependentUpon>CashIssuingForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -501,8 +510,8 @@
     <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\IOUListForm1.resx">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\IOUListForm.resx">
+      <DependentUpon>IOUListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>

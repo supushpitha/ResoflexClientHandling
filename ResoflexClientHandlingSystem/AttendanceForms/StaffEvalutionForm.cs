@@ -40,7 +40,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable jobPerformanceTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(jb.knowledge + jb.Saftey + jb.Quality + jb.Adaptability + jb.Productivity + jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(jb.knowledge + jb.Saftey + jb.Quality + jb.Adaptability + jb.Productivity + jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -48,7 +48,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable jobPerformanceTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.address,sum(jb.knowledge+jb.Saftey+jb.Quality+jb.Adaptability+jb.Productivity+jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.p_address,sum(jb.knowledge+jb.Saftey+jb.Quality+jb.Adaptability+jb.Productivity+jb.Initiative) as total from staff as s Inner join job_performance as jb on s.staff_id = jb.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -56,7 +56,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable clientRelationsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -64,7 +64,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable clientRelationsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.address,sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id,s.first_name,s.last_name,s.tel1,s.tel2,s.email,s.p_address,sum(cr.telephone_skills + cr.problem_resolution + cr.salesmanship + cr.pro_activeness + cr.politeness) as total from staff as s Inner join client_relations as cr on s.staff_id = cr.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -72,7 +72,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable communicationSkillsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -80,7 +80,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable communicationSkillsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(cs.influence + cs.presentation + cs.relationship + cs.listening + cs.negotiation) as total from staff as s Inner join communication_skills as cs on s.staff_id = cs.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -88,7 +88,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable interpersonalSkillsTop20()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -96,7 +96,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable interpersonalSkillsTop50()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 3");
             table.Load(reader);
             return table;
         }
@@ -114,7 +114,7 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 DataTable table = new DataTable();
-                MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '" + limit + "'");
+                MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit '" + limit + "'");
                 table.Load(reader);
                 return table;
             }
@@ -128,7 +128,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable customNumberForClientRelationsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -136,7 +136,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable customNumberForCommunicationSkillsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit 2");
             table.Load(reader);
             return table;
         }
@@ -144,7 +144,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable customNumberForInterpersonalSkillsTopEmps()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit ");
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, s.tel1, s.tel2, s.email, s.p_address, sum(ins.interaction_with_customers + ins.interaction_with_supervisors + ins.interaction_with_clients + ins.motivational_skills + ins.leadership) as total from staff as s Inner join interpersonal_skills as ins on s.staff_id = ins.staff_id group by staff_id order by total desc limit ");
             table.Load(reader);
             return table;
         }

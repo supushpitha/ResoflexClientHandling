@@ -66,5 +66,37 @@ namespace ResoflexClientHandlingSystem.Common
         {
             return (date > DateTime.Now);
         }
+
+        public static bool isValidPassword(string pass, out string errorMsg)
+        {
+            if ((pass.Length >= 6))
+            {
+                errorMsg = "";
+
+                return true;
+            }
+            else
+            {
+                errorMsg = "Password is not valid!";
+
+                return false;
+            }
+        }
+
+        public static bool isValidUsername(string uname, out string errorMsg)
+        {
+            if ((uname.Length >= 6))
+            {
+                errorMsg = "";
+
+                return true;
+            }
+            else
+            {
+                errorMsg = "Username is not valid!";
+
+                return false;
+            }
+        }
     }
 }

@@ -32,16 +32,15 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.LogGrid = new MetroFramework.Controls.MetroGrid();
+            this.frmComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.userComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.toComboBox = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.addUsers = new MetroFramework.Controls.MetroButton();
             this.updateUsers = new MetroFramework.Controls.MetroButton();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
-            this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
-            this.dateTimeTo = new System.Windows.Forms.DateTimePicker();
-            this.dateTimefrom = new System.Windows.Forms.DateTimePicker();
-            this.reportbtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.LogGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,7 +59,7 @@
             this.LogGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -69,7 +68,7 @@
             this.LogGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -94,41 +93,68 @@
             this.LogGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogGrid.Size = new System.Drawing.Size(643, 456);
             this.LogGrid.TabIndex = 0;
-            this.LogGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.LogGrid_RowHeaderMouseClick);
+            // 
+            // frmComboBox
+            // 
+            this.frmComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.frmComboBox.FormattingEnabled = true;
+            this.frmComboBox.ItemHeight = 23;
+            this.frmComboBox.Location = new System.Drawing.Point(111, 559);
+            this.frmComboBox.Name = "frmComboBox";
+            this.frmComboBox.Size = new System.Drawing.Size(121, 29);
+            this.frmComboBox.TabIndex = 1;
+            this.frmComboBox.UseSelectable = true;
+            // 
+            // userComboBox
+            // 
+            this.userComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.userComboBox.FormattingEnabled = true;
+            this.userComboBox.ItemHeight = 23;
+            this.userComboBox.Location = new System.Drawing.Point(551, 559);
+            this.userComboBox.Name = "userComboBox";
+            this.userComboBox.Size = new System.Drawing.Size(121, 29);
+            this.userComboBox.TabIndex = 2;
+            this.userComboBox.UseSelectable = true;
+            // 
+            // toComboBox
+            // 
+            this.toComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.toComboBox.FormattingEnabled = true;
+            this.toComboBox.ItemHeight = 23;
+            this.toComboBox.Location = new System.Drawing.Point(330, 559);
+            this.toComboBox.Name = "toComboBox";
+            this.toComboBox.Size = new System.Drawing.Size(121, 29);
+            this.toComboBox.TabIndex = 3;
+            this.toComboBox.UseSelectable = true;
             // 
             // metroLabel1
             // 
-            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel1.AutoSize = true;
             this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel1.Location = new System.Drawing.Point(311, 559);
+            this.metroLabel1.Location = new System.Drawing.Point(296, 559);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(28, 25);
             this.metroLabel1.TabIndex = 4;
             this.metroLabel1.Text = "To";
-            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // metroLabel2
             // 
-            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel2.AutoSize = true;
             this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel2.Location = new System.Drawing.Point(579, 559);
+            this.metroLabel2.Location = new System.Drawing.Point(499, 559);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(46, 25);
             this.metroLabel2.TabIndex = 5;
             this.metroLabel2.Text = "User";
-            this.metroLabel2.Click += new System.EventHandler(this.metroLabel2_Click);
             // 
             // metroLabel3
             // 
-            this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.metroLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 559);
+            this.metroLabel3.Location = new System.Drawing.Point(54, 559);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(51, 25);
             this.metroLabel3.TabIndex = 6;
@@ -154,7 +180,6 @@
             this.updateUsers.TabIndex = 8;
             this.updateUsers.Text = "Update users";
             this.updateUsers.UseSelectable = true;
-            this.updateUsers.Click += new System.EventHandler(this.updateUsers_Click);
             // 
             // profilebtn
             // 
@@ -169,91 +194,20 @@
             this.profilebtn.UseSelectable = true;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
-            // metroTextBox1
-            // 
-            this.metroTextBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            // 
-            // 
-            // 
-            this.metroTextBox1.CustomButton.Image = null;
-            this.metroTextBox1.CustomButton.Location = new System.Drawing.Point(118, 1);
-            this.metroTextBox1.CustomButton.Name = "";
-            this.metroTextBox1.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.metroTextBox1.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.metroTextBox1.CustomButton.TabIndex = 1;
-            this.metroTextBox1.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.metroTextBox1.CustomButton.UseSelectable = true;
-            this.metroTextBox1.CustomButton.Visible = false;
-            this.metroTextBox1.FontSize = MetroFramework.MetroTextBoxSize.Tall;
-            this.metroTextBox1.Lines = new string[0];
-            this.metroTextBox1.Location = new System.Drawing.Point(631, 559);
-            this.metroTextBox1.MaxLength = 32767;
-            this.metroTextBox1.Name = "metroTextBox1";
-            this.metroTextBox1.PasswordChar = '\0';
-            this.metroTextBox1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.metroTextBox1.SelectedText = "";
-            this.metroTextBox1.SelectionLength = 0;
-            this.metroTextBox1.SelectionStart = 0;
-            this.metroTextBox1.ShortcutsEnabled = true;
-            this.metroTextBox1.Size = new System.Drawing.Size(146, 29);
-            this.metroTextBox1.TabIndex = 10;
-            this.metroTextBox1.UseSelectable = true;
-            this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.metroTextBox1.TextChanged += new System.EventHandler(this.metroTextBox1_TextChanged);
-            this.metroTextBox1.Click += new System.EventHandler(this.metroTextBox1_Click);
-            // 
-            // dateTimeTo
-            // 
-            this.dateTimeTo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimeTo.CustomFormat = "yyyy/MM/dd ";
-            this.dateTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimeTo.Location = new System.Drawing.Point(345, 564);
-            this.dateTimeTo.Name = "dateTimeTo";
-            this.dateTimeTo.ShowUpDown = true;
-            this.dateTimeTo.Size = new System.Drawing.Size(200, 20);
-            this.dateTimeTo.TabIndex = 11;
-            this.dateTimeTo.Value = new System.DateTime(2018, 8, 26, 0, 0, 0, 0);
-            this.dateTimeTo.ValueChanged += new System.EventHandler(this.dateTimeTo_ValueChanged_1);
-            // 
-            // dateTimefrom
-            // 
-            this.dateTimefrom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.dateTimefrom.CustomFormat = "yyyy/MM/dd ";
-            this.dateTimefrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimefrom.Location = new System.Drawing.Point(80, 564);
-            this.dateTimefrom.Name = "dateTimefrom";
-            this.dateTimefrom.ShowUpDown = true;
-            this.dateTimefrom.Size = new System.Drawing.Size(200, 20);
-            this.dateTimefrom.TabIndex = 12;
-            this.dateTimefrom.Value = new System.DateTime(2018, 8, 26, 0, 0, 0, 0);
-            // 
-            // reportbtn
-            // 
-            this.reportbtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.reportbtn.Location = new System.Drawing.Point(672, 262);
-            this.reportbtn.Name = "reportbtn";
-            this.reportbtn.Size = new System.Drawing.Size(105, 29);
-            this.reportbtn.TabIndex = 13;
-            this.reportbtn.Text = "View Reports";
-            this.reportbtn.UseSelectable = true;
-            // 
             // UserLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.reportbtn);
-            this.Controls.Add(this.dateTimefrom);
-            this.Controls.Add(this.dateTimeTo);
-            this.Controls.Add(this.metroTextBox1);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.updateUsers);
             this.Controls.Add(this.addUsers);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.toComboBox);
+            this.Controls.Add(this.userComboBox);
+            this.Controls.Add(this.frmComboBox);
             this.Controls.Add(this.LogGrid);
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "UserLog";
@@ -268,15 +222,14 @@
         #endregion
 
         private MetroFramework.Controls.MetroGrid LogGrid;
+        private MetroFramework.Controls.MetroComboBox frmComboBox;
+        private MetroFramework.Controls.MetroComboBox userComboBox;
+        private MetroFramework.Controls.MetroComboBox toComboBox;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroButton addUsers;
         private MetroFramework.Controls.MetroButton updateUsers;
         private MetroFramework.Controls.MetroButton profilebtn;
-        private MetroFramework.Controls.MetroTextBox metroTextBox1;
-        private System.Windows.Forms.DateTimePicker dateTimeTo;
-        private System.Windows.Forms.DateTimePicker dateTimefrom;
-        private MetroFramework.Controls.MetroButton reportbtn;
     }
 }

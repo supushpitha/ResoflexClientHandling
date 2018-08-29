@@ -30,7 +30,8 @@ namespace ResoflexClientHandlingSystem.Role
         private string pword;
         private string permission;
 
-        public User(int userId, string uName, string pword, string permission) : base (userId)
+
+        public User(int userId, string uName, string pword, string permission) : base(userId)
         {
             this.UName = uName;
             this.Pword = pword;
@@ -60,9 +61,31 @@ namespace ResoflexClientHandlingSystem.Role
 
         public User(int userId)
         {
-            this.userId = userId;
-            
+            this.UserId = userId;
+
         }
+
+        public User(int userId, string perm) : this(userId)
+        {
+            this.UserId = userId;
+            this.Permission = perm;
+        }
+
+        public User(string uname, string pass, string perm, int userId) : this(userId)
+        {
+            this.UserId = userId;
+            this.Permission = perm;
+            this.Pword = pass;
+        }
+
+        public User(int userId, string uName, string pword, string fname, string lname, string permission) : base(userId, fname, lname)
+        {
+            this.UName = uName;
+            this.Pword = pword;
+            this.Permission = permission;
+        }
+
+
 
         public int UserId { get => userId; set => userId = value; }
         public string UName { get => uName; set => uName = value; }

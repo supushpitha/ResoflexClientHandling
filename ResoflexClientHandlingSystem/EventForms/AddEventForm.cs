@@ -159,7 +159,7 @@ namespace ResoflexClientHandlingSystem
             serviceEngFeed.DisplayMember = "fullname";
         }
 
-        public AddEventForm(int sch_no)
+        public AddEventForm(int sch_no, int proj_id)
         {
             InitializeComponent();
 
@@ -206,6 +206,10 @@ namespace ResoflexClientHandlingSystem
             serviceEngFeed.DataSource = engGrid;
             serviceEngFeed.ValueMember = "staff_id";
             serviceEngFeed.DisplayMember = "fullname";
+
+            projectName.SelectedValue = proj_id;
+            eventsSch.SelectedValue = sch_no;
+            
         }
 
         private void AddEventForm_Load(object sender, EventArgs e)

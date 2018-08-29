@@ -285,5 +285,10 @@ namespace ResoflexClientHandlingSystem
 
             return colString;
         }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            scheduleGrid.DataSource = getSchedules();
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.TaskForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,7 +48,9 @@ namespace ResoflexClientHandlingSystem
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
-
+            TaskForm tf = new TaskForm();
+            this.Close();
+            tf.Show();
         }
     }
 }

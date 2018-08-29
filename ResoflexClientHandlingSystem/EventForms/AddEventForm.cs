@@ -279,6 +279,32 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+        public void validation(object sender, EventArgs e)
+        {
+            if (!Validation.isEmpty(todoList.Text))
+            {
+                if (!Validation.isEmpty(meals.Text))
+                {
+                    if (!Validation.isDataTableEmpty(engGrid))
+                    {
+                        addEvent();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service engineers should be assigned!", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Meal field cannot be empty!", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todo list field cannot be empty!", "Error");
+            }
+        }
+
         //adding details to feedback grid
         private void addFeedback_MouseClick(object sender, MouseEventArgs e)
         {
@@ -294,7 +320,7 @@ namespace ResoflexClientHandlingSystem
             eventTask.Text = "";
         }
 
-        private void eventSave_Click(object sender, EventArgs e)
+        private void addEvent()
         {
             Event evnt = new Event();
 

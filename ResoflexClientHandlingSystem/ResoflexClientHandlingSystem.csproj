@@ -35,9 +35,14 @@
     <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="eCryptography">
       <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -62,6 +67,8 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -274,6 +281,18 @@
     </Compile>
     <Compile Include="OfficeExpenses\Salary.Designer.cs">
       <DependentUpon>Salary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
+      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\AddCatagory.cs">
       <SubType>Form</SubType>
@@ -530,6 +549,13 @@
     <EmbeddedResource Include="OfficeExpenses\Salary.resx">
       <DependentUpon>Salary.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
+      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
     </EmbeddedResource>
@@ -617,6 +643,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

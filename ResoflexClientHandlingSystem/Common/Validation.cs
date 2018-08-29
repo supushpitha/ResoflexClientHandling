@@ -109,5 +109,37 @@ namespace ResoflexClientHandlingSystem.Common
         {
             return (dt.Rows.Count <= 0);
         }
+
+        public static bool isValidNic(string nic, out string errorMsg)
+        {
+            errorMsg = "";
+
+            if (nic.Length == 0)
+            {
+                errorMsg = "NIC number is required!";
+
+                return false;
+            }
+
+            if (nic.Length > 10)
+            {
+                errorMsg = "NIC number is invalid!";
+
+                return false;
+            }
+
+            if (nic.IndexOf('v') == 9)
+            {
+                errorMsg = "";
+
+                return true;
+            }
+            else
+            {
+                errorMsg = "NIC number is invalid!";
+
+                return false;
+            }
+        }
     }
 }

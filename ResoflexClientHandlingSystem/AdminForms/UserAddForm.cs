@@ -51,6 +51,10 @@ namespace ResoflexClientHandlingSystem
 
             add.Visible = false;
             clr.Visible = false;
+
+            metroGrid1.Enabled = false;
+            label2.Visible = false;
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -110,11 +114,11 @@ namespace ResoflexClientHandlingSystem
         {
             try
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT designation from designation where desig_id =(select desig_id from staff where staff_id=" + uid + ")");
+                MySqlDataReader reader = DBConnection.getData("SELECT designation_name from designation where desig_id =(select desig_id from staff where staff_id=" + uid + ")");
 
                 while (reader.Read())
                 {
-                    perm.SelectedItem = reader["designation"].ToString();
+                    perm.SelectedItem = reader["designation_name"].ToString();
 
                 }
                 reader.Close();

@@ -13,14 +13,26 @@ namespace ResoflexClientHandlingSystem.Role
         private Project projectOfEvent;
         private double amount;
         private string comment;
+        private string paymentType;
+
+        public ExpenseDetailEvent()
+        {
+        }
 
         public ExpenseDetailEvent(ExpenseType expType, Event eventOfExp, Project projectOfEvent, double amount, string comment)
         {
-            this.expType = expType;
-            this.eventOfExp = eventOfExp;
-            this.projectOfEvent = projectOfEvent;
-            this.amount = amount;
-            this.comment = comment;
+            this.ExpType = expType;
+            this.EventOfExp = eventOfExp;
+            this.ProjectOfEvent = projectOfEvent;
+            this.Amount = amount;
+            this.Comment = comment;
         }
+
+        public Project ProjectOfEvent { get => projectOfEvent; set => projectOfEvent = value; }
+        public double Amount { get => amount; set => amount = value; }
+        public string Comment { get => comment; set => comment = value; }
+        public string PaymentType { get => paymentType; set => paymentType = value; }
+        internal ExpenseType ExpType { get => expType; set => expType = value; }
+        internal Event EventOfExp { get => eventOfExp; set => eventOfExp = value; }
     }
 }

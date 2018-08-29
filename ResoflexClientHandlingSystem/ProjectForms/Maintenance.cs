@@ -21,11 +21,22 @@ namespace ResoflexClientHandlingSystem.ProjectForms
 
         private void Maintenance_Load(object sender, EventArgs e)
         {
-            maintGrid.DataSource = getmain();
-            chart1.Series["Salary"].Points.AddXY("Cow", 1000);
-            chart1.Series["Salary"].Points.AddXY("Dog", 1076);
-            chart1.Series["Salary"].Points.AddXY("Cat", 1800);
-            chart1.Series["Salary"].Points.AddXY("Rat", 1100);
+           /* {
+                this.chart1.Series["Grading"].Points.Clear();
+                this.chart1.Series["Grading"].Points.Clear();
+
+                MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM job_performance WHERE year(perf_year) = " + Int32.Parse(metroComboBox1.SelectedItem.ToString()) + " and staff_id = " + employeeNo + ";");
+                while (reader3.Read())
+                {
+                    this.chart1.Series["Grading"].Points.AddXY("knowledge", reader3.GetInt32("knowledge"));
+                    this.chart1.Series["Grading"].Points.AddXY("Safety", reader3.GetInt32("saftey"));
+                    this.chart1.Series["Grading"].Points.AddXY("Quality", reader3.GetInt32("quality"));
+                    this.chart1.Series["Grading"].Points.AddXY("Adaptability", reader3.GetInt32("adaptability"));
+                    this.chart1.Series["Grading"].Points.AddXY("Productivity", reader3.GetInt32("productivity"));
+                    this.chart1.Series["Grading"].Points.AddXY("Initiative", reader3.GetInt32("Initiative"));
+                }
+                reader3.Close();
+            }*/
         }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Attendance
+    public class Attendance
     {
         private int staffAttendance;
         private int employeeNo;
@@ -32,6 +32,23 @@ namespace ResoflexClientHandlingSystem.Role
             InTime = inTime;
             OutTime = outTime;
             HoursWorked = hoursWorked;
+        }
+
+        public Attendance()
+        {
+        }
+
+        public Attendance(int hw)
+        {
+            HoursWorked = hw;
+        }
+
+        public Attendance(Staff staff, string inTime, string outTime, int hoursWorked)
+        {
+            this.EmployeeNo = staff.StaffId;
+            this.InTime = inTime;
+            this.OutTime = outTime;
+            this.HoursWorked = hoursWorked;
         }
 
         public int StaffAttendance { get => staffAttendance; set => staffAttendance = value; }

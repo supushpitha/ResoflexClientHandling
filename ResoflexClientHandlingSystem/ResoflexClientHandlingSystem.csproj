@@ -319,15 +319,15 @@
       <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.cs">
-      <SubType>Component</SubType>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.designer.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
       <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\AddCatagory.cs">

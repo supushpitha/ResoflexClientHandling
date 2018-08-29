@@ -143,7 +143,7 @@
             this.addUsers.Name = "addUsers";
             this.addUsers.Size = new System.Drawing.Size(105, 29);
             this.addUsers.TabIndex = 7;
-            this.addUsers.Text = "Add users";
+            this.addUsers.Text = "Add/Delete users";
             this.addUsers.UseSelectable = true;
             this.addUsers.Click += new System.EventHandler(this.addUsers_Click);
             // 

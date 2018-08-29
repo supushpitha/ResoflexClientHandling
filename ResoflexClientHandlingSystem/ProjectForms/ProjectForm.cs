@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
-using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -250,9 +249,15 @@ namespace ResoflexClientHandlingSystem
            
         }
 
+      
+
         private void projectGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress();
+
+
+            int proid = Int32.Parse(projectGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress(proid);
             frm.ShowDialog();
         }
 
@@ -268,13 +273,18 @@ namespace ResoflexClientHandlingSystem
             frm.ShowDialog();
         }
 
-        private void reqBtn_Click(object sender, EventArgs e)
+
+        private void closeForm()
         {
-            string projectName = projectGrid.CurrentRow.Cells[1].Value.ToString();
+            this.closeForm();
+        }
 
-            RequestForm frm = new RequestForm(projectName);
-
-            frm.Show();
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            
+            Dashboard frm = new Dashboard();
+            frm.ShowDialog();
+            
         }
 
 

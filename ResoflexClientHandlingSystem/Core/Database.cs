@@ -164,10 +164,11 @@ namespace ResoflexClientHandlingSystem.Core
 
             try
             {
-                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, description, warranty_terms, visit_terms, support_terms)"
+                DBConnection.updateDB("insert into project (client_id, proj_name, proj_sub_cat_id, proj_cat_id , description, warranty_terms, visit_terms, support_terms)"
                                         + " values (" + client.ClientID
                                         + ",'" + project.ProjectName
                                         + "'," + project.ProjectSubID
+                                        + "," + project.ProjectCatID
                                         + ",'" + project.Projectdesc
                                         + "','" + project.WarrantyTerms
                                         + "','" + project.VisitTerms
@@ -198,17 +199,17 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
          {
-             try
-             {
-                DBConnection.updateDB("UPDATE project SET first_init_date ='"+project.FirstInitDate.ToString("yyyy/MM/d")+"', training_comp_first_end_date='"+project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='"+project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='"+project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='"+project.WarrantyPeriod+"' WHERE proj_name='"+project.ProjectName+"';");
+            try
+            {
+                DBConnection.updateDB("UPDATE project SET first_init_date ='" + project.FirstInitDate.ToString("yyyy/MM/d") + "', training_comp_first_end_date='" + project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='" + project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='" + project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='" + project.WarrantyPeriod + "' WHERE proj_name='" + project.ProjectName + "';");
 
-                MessageBox.Show("Show");
-             }
-             catch (Exception exc)
-             {
-                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }
-         }
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
 
         public static void addRecord(Attendance atten)
         {

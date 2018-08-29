@@ -400,7 +400,7 @@ namespace ResoflexClientHandlingSystem
             reader.Close();
 
             AddExpensesForm add = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id);
-
+            
             add.Show();
         }
     }

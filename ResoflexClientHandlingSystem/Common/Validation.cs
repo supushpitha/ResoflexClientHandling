@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -97,6 +98,16 @@ namespace ResoflexClientHandlingSystem.Common
 
                 return false;
             }
+        }
+
+        public static Boolean isEmpty(string value)
+        {
+            return string.IsNullOrEmpty(value);
+        }
+
+        public static Boolean isDataTableEmpty(DataTable dt)
+        {
+            return (dt.Rows.Count <= 0);
         }
     }
 }

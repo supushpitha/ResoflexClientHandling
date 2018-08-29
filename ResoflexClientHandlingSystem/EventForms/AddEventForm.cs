@@ -383,5 +383,12 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            AddExpensesForm add = new AddExpensesForm();
+
+            add.Show();
+        }
     }
 }

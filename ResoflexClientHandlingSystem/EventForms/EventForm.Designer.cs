@@ -49,6 +49,7 @@
             // 
             // addEvent
             // 
+            this.addEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addEvent.Location = new System.Drawing.Point(681, 554);
             this.addEvent.Name = "addEvent";
             this.addEvent.Size = new System.Drawing.Size(96, 23);
@@ -59,6 +60,7 @@
             // 
             // updateEvent
             // 
+            this.updateEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateEvent.Location = new System.Drawing.Point(463, 554);
             this.updateEvent.Name = "updateEvent";
             this.updateEvent.Size = new System.Drawing.Size(90, 23);
@@ -68,6 +70,7 @@
             // 
             // deleteEvent
             // 
+            this.deleteEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteEvent.Location = new System.Drawing.Point(234, 554);
             this.deleteEvent.Name = "deleteEvent";
             this.deleteEvent.Size = new System.Drawing.Size(96, 23);
@@ -78,6 +81,9 @@
             // eventGrid
             // 
             this.eventGrid.AllowUserToResizeRows = false;
+            this.eventGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.eventGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.eventGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -120,6 +126,7 @@
             // 
             // clientName
             // 
+            this.clientName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.clientName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.clientName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             // 
@@ -149,9 +156,11 @@
             this.clientName.UseSelectable = true;
             this.clientName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.clientName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.clientName.TextChanged += new System.EventHandler(this.searchScheduleByClientName_TextChanged);
             // 
             // projectName
             // 
+            this.projectName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.projectName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.projectName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             // 
@@ -181,9 +190,11 @@
             this.projectName.UseSelectable = true;
             this.projectName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.projectName.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.projectName.TextChanged += new System.EventHandler(this.searchScheduleByProjectName_TextChanged);
             // 
             // schCltName
             // 
+            this.schCltName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schCltName.AutoSize = true;
             this.schCltName.Location = new System.Drawing.Point(516, 116);
             this.schCltName.Name = "schCltName";
@@ -193,6 +204,7 @@
             // 
             // schPrjName
             // 
+            this.schPrjName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schPrjName.AutoSize = true;
             this.schPrjName.Location = new System.Drawing.Point(234, 116);
             this.schPrjName.Name = "schPrjName";
@@ -202,6 +214,7 @@
             // 
             // schHome
             // 
+            this.schHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.schHome.BackColor = System.Drawing.Color.Transparent;
             this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
             this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

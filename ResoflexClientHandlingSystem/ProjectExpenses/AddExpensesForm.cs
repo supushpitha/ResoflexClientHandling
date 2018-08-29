@@ -17,6 +17,15 @@ namespace ResoflexClientHandlingSystem
             InitializeComponent();
         }
 
+        public AddExpensesForm(int proj_id, int event_id)
+        {
+            InitializeComponent();
+
+            //eventID.Text = event_id.ToString();
+
+            //fillExpensesTypeCmbBox();
+        }
+
         private void CategorySetupForm_Load(object sender, EventArgs e)
         {
 

@@ -210,6 +210,54 @@
     <Compile Include="EventForms\UpdateEventForm.Designer.cs">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OfficeExpensesForm\CashPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\CashPaymentForm.Designer.cs">
+      <DependentUpon>CashPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IouBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IouBalanceForm.Designer.cs">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IOUForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IOUForm.Designer.cs">
+      <DependentUpon>IOUForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\officeInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\officeInterfaceForm.Designer.cs">
+      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\officeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\officeReportForm.Designer.cs">
+      <DependentUpon>officeReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\PaidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\PaidForm.Designer.cs">
+      <DependentUpon>PaidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\SalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\SalaryForm.Designer.cs">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.Designer.cs">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,18 +330,6 @@
     <Compile Include="OfficeExpenses\Salary.Designer.cs">
       <DependentUpon>Salary.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProjectForms\AddCatagory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -354,6 +390,7 @@
     <Compile Include="Role\InterpersonalSkills.cs" />
     <Compile Include="Role\JobPerformance.cs" />
     <Compile Include="Role\Notification.cs" />
+    <Compile Include="Role\OfficeIou.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
     <Compile Include="Role\ProjectShortcomings.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
@@ -513,6 +550,30 @@
     <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\CashPaymentForm.resx">
+      <DependentUpon>CashPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\IouBalanceForm.resx">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\IOUForm.resx">
+      <DependentUpon>IOUForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\officeInterfaceForm.resx">
+      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\officeReportForm.resx">
+      <DependentUpon>officeReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\PaidForm.resx">
+      <DependentUpon>PaidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\SalaryForm.resx">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\UpdateSalaryForm.resx">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -548,13 +609,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpenses\Salary.resx">
       <DependentUpon>Salary.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>

@@ -716,5 +716,108 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong! '" + ex + "'", "Update staff member", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void saveOfficeExpenses(Role.OfficeExpenses exp)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into exp (staff_id, date, category,amount)" +
+                                    +exp.StaffIssued.StaffId + "', '" + exp.Date + "', " +
+                                      "'" + exp.Category + "', '" + exp.Amount + "')");
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Add client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void addOfficeExp(Role.OfficeExpenses exp)
+        {
+
+            // try
+            // {
+            String date = DateTime.Now.ToString("yyyy-MM-dd");
+
+            String type = exp.ExpType;
+            int exid = exp.OffExpenseId;
+            int staff = exp.StaffIssued.StaffId;
+            String cat = exp.Category;
+            double am = exp.Amount;
+
+
+            DBConnection.updateDB("Insert into office_expenses (type, staff_id, date, Category, amount) values" + "('" + type + "' , " + staff + " , '" + date + "' , '" + cat + "' , " + am + ");");
+
+            MessageBox.Show("Successfully added");
+
+            /*    }
+
+                catch (Exception)
+                {
+                    MessageBox.Show("Something went wrong!","Add Expenses",MessageBoxButtons.OK,MessageBoxIcon.Error);
+
+                }*/
+        }
+
+        public static void addIou(OfficeIou i)
+        {
+
+            //try
+            //{
+            String date = DateTime.Now.ToString("yyyy-mm-dd");
+
+            int iou = i.IouNo;
+            String name = i.Name;
+            String comment = i.Comment;
+            double am = i.Amount;
+
+
+            DBConnection.updateDB("Insert into iou_office(Name,date,Comment,Amount)values" + "('" + name + "' , '" + date + "', '" + comment + "' , " + am + ");");
+            MessageBox.Show("Successfully added");
+
+        }
+
+        //  catch (Exception)
+        //{
+        //MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+        //}
+
+
+        /*public static void updateOfficeExpense(OfficeExpenses exp)
+        {
+            try
+            {
+                DBConnection.updateDB("update client set name='" ( staff_id, date, category, amount)" +
+                                      " values (" + exp.StaffIssued.StaffId + "', '" + exp.Date + "', " +
+                                      "'" + exp.Category + "', '" + exp.Amount + "')");
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        */
+        public static void addSalary(Role.Salary s)
+        {
+
+            //try
+            //{            
+
+
+            DBConnection.updateDB("Insert into Salary(staff_id, basic_sal_amount, rate, hours, allowance, gross_sal, etf_epf_amount, net_sal) " +
+                "values" + "( " + s.Empid + " , " + s.BasicSalAmount + ", " + s.Rate + " , " + s.Hours.HoursWorked + ", " + s.Allowance + ", " + s.Gross + ", " + s.EtfEpf + ", " + s.Net + " );");
+            MessageBox.Show("Successfully added");
+
+
+        }
+
+
+        public static void updateSalary(Role.Salary s)
+        {
+            DBConnection.updateDB("Update Salary set basic_sal_amount = " + s.BasicSalAmount + ", rate = " + s.Rate + ", hours = " + s.Hours.HoursWorked + ", allowance = " + s.Allowance + ", gross_sal = " + s.Gross + ", etf_epf_amount = " + s.EtfEpf + ", net_sal = " + s.Net + " " +
+                 " where staff_id = " + s.Empid + "");
+            MessageBox.Show("Successfully added");
+        }
     }
 }

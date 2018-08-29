@@ -229,7 +229,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                     ProjectRequest req = new ProjectRequest(new Project(projId), request, urgent);
 
-                    Database.saveChangerequest(req);
+                    Database.saveChangeRequest(req);
 
                     changeReqGrid.DataSource = getChangeRequests();
 
@@ -244,6 +244,54 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 catch (Exception exc)
                 {
                     MessageBox.Show("Something went wrong!\n" + exc, "Save Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void addNewClientReqBtn_Click(object sender, EventArgs e)
+        {
+            string clientName = addClientReqClientNameCmbBox.SelectedItem.ToString();
+
+            if (addClientReqTxtBox.Text == null || addClientReqTxtBox.Text == "")
+            {
+                MessageBox.Show("There must be a request!", "Save Client Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                addReqTxtBox.Focus();
+            }
+            else
+            {
+                string request = addClientReqTxtBox.Text;
+                bool urgent = addClientReqImportCheckBox.Checked;
+                int clientId = 0;
+
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("Select * from client where name='" + clientName + "'");
+
+                    while (reader.Read())
+                    {
+                        clientId = reader.GetInt32("client_id");
+                    }
+
+                    reader.Close();
+                    
+                    ClientRequest req = new ClientRequest(new Client(clientId), request, urgent);
+
+                    Database.saveClientRequest(req);
+
+                    clientReqGrid.DataSource = getClientRequests();
+
+                    addReqNotify.Icon = SystemIcons.Application;
+                    addReqNotify.BalloonTipText = "Client Request Successfully added!";
+                    addReqNotify.ShowBalloonTip(1000);
+
+                    addClientReqClientNameCmbBox.SelectedIndex = 0;
+                    addClientReqImportCheckBox.Checked = false;
+                    addClientReqTxtBox.Text = "";
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Something went wrong!\n" + exc, "Save Client Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

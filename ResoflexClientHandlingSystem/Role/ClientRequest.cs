@@ -11,6 +11,7 @@ namespace ResoflexClientHandlingSystem.Role
         private Client reqClient;
         private int reqId;
         private string request;
+        private DateTime addedDate;
         private bool importance;
         
         public ClientRequest(Client reqClient, int reqId, string request, bool importance)
@@ -18,6 +19,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.ReqClient = reqClient;
             this.ReqId = reqId;
             this.Request = request;
+            this.AddedDate = DateTime.Now;
             this.Importance = importance;
         }
 
@@ -25,6 +27,7 @@ namespace ResoflexClientHandlingSystem.Role
         {
             this.ReqClient = reqClient;
             this.Request = request;
+            this.AddedDate = DateTime.Now;
             this.Importance = importance;
         }
 
@@ -32,5 +35,6 @@ namespace ResoflexClientHandlingSystem.Role
         public int ReqId { get => reqId; set => reqId = value; }
         public string Request { get => request; set => request = value; }
         public bool Importance { get => importance; set => importance = value; }
+        public DateTime AddedDate { get => addedDate; set => addedDate = value; }
     }
 }

@@ -40,6 +40,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffEvalutionForm));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.metroTabPage1 = new MetroFramework.Controls.MetroTabPage();
             this.selectEmployeeTxtbox = new MetroFramework.Controls.MetroTextBox();
@@ -68,6 +69,7 @@
             this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
             this.metroGrid4 = new MetroFramework.Controls.MetroGrid();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid3)).BeginInit();
@@ -572,11 +574,25 @@
             this.profilebtn.UseSelectable = true;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
+            // homeBtn
+            // 
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(360, 12);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 16;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
             // StaffEvalutionForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "StaffEvalutionForm";
@@ -630,6 +646,7 @@
         private MetroFramework.Controls.MetroDateTime staffDateTime1;
         private MetroFramework.Controls.MetroDateTime staffDateTime2;
         private MetroFramework.Controls.MetroButton metroButton5;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }
 

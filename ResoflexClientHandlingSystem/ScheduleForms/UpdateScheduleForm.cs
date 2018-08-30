@@ -66,7 +66,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
             clientName.Read();
 
-            MessageBox.Show(clientName.GetString("client_id") + proj_id);
+            //MessageBox.Show(clientName.GetString("client_id") + proj_id);
 
             projectName.SelectedValue = proj_id;
             schClientName.SelectedValue = clientName.GetString("client_id");
@@ -316,6 +316,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
                 //sending mails
                 if (schSendMail.Checked)
                 {
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Sending Email!";
+                    notifyIconSch.ShowBalloonTip(1000);
+
                     foreach (var ary in schedule.ServEngineer)
                     {
                         Staff s = (Staff)ary;
@@ -332,6 +336,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
                         reader.Close();
                     }
+
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Email(s) Sent!";
+                    notifyIconSch.ShowBalloonTip(1000);
                 }
 
                 MessageBox.Show("Schedule Successfully Updated !");

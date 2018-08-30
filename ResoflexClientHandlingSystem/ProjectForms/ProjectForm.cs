@@ -103,7 +103,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_id as ID,p.proj_name as Project_Name,p.description as Description ,c.name as Client,a.sub_cat_name as Category from project p, client c, proj_sub_category a where p.client_id=c.client_id and p.proj_sub_cat_id=a.proj_sub_cat_id group by p.proj_id desc");
+            MySqlDataReader reader = DBConnection.getData("select p.proj_id as ID,p.proj_name as Project_Name,p.description as Description ,c.name as Client,a.sub_cat_name as Category from project p, client c, proj_sub_category a where p.client_id=c.client_id and p.proj_sub_cat_id=a.proj_sub_cat_id and p.proj_cat_id=a.proj_cat_id group by p.proj_id desc");
 
             table.Load(reader);
 

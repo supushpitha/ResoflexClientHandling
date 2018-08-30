@@ -112,7 +112,7 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
 
         private void view_Click(object sender, EventArgs e)
         {
-            officeReportForm re = new officeReportForm();
+            OfficeReportForm re = new OfficeReportForm();
             re.Show();
         }
     }

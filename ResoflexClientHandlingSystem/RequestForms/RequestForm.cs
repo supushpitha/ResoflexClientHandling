@@ -295,5 +295,49 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
             }
         }
+
+        private void addReqTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (addReqTxtBox.Text.Equals(""))
+            {
+                e.Cancel = true;
+
+                errorMsg = "There must be a request!";
+
+                addReqTxtBox.Select(0, addReqTxtBox.Text.Length);
+
+                this.errorProviderReq.SetError(addReqTxtBox, errorMsg);
+            }
+        }
+
+        private void addReqTxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderReq.SetError(addReqTxtBox, "");
+            errorProviderReq.Clear();
+        }
+
+        private void addClientReqTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (addClientReqTxtBox.Text.Equals(""))
+            {
+                e.Cancel = true;
+
+                errorMsg = "There must be a request!";
+
+                addClientReqTxtBox.Select(0, addClientReqTxtBox.Text.Length);
+
+                this.errorProviderReq.SetError(addClientReqTxtBox, errorMsg);
+            }
+        }
+
+        private void addClientReqTxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderReq.SetError(addClientReqTxtBox, "");
+            errorProviderReq.Clear();
+        }
     }
 }

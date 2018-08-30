@@ -159,6 +159,7 @@
             this.hours.MaxLength = 32767;
             this.hours.Name = "hours";
             this.hours.PasswordChar = '\0';
+            this.hours.ReadOnly = true;
             this.hours.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.hours.SelectedText = "";
             this.hours.SelectionLength = 0;
@@ -189,6 +190,7 @@
             this.rate.MaxLength = 32767;
             this.rate.Name = "rate";
             this.rate.PasswordChar = '\0';
+            this.rate.ReadOnly = true;
             this.rate.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.rate.SelectedText = "";
             this.rate.SelectionLength = 0;
@@ -219,6 +221,7 @@
             this.basicsal.MaxLength = 32767;
             this.basicsal.Name = "basicsal";
             this.basicsal.PasswordChar = '\0';
+            this.basicsal.ReadOnly = true;
             this.basicsal.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.basicsal.SelectedText = "";
             this.basicsal.SelectionLength = 0;

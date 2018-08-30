@@ -228,17 +228,17 @@
     <Compile Include="OfficeExpensesForm\IOUForm.Designer.cs">
       <DependentUpon>IOUForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\officeInterfaceForm.cs">
+    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\officeInterfaceForm.Designer.cs">
-      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.Designer.cs">
+      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\officeReportForm.cs">
+    <Compile Include="OfficeExpensesForm\OfficeReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\officeReportForm.Designer.cs">
-      <DependentUpon>officeReportForm.cs</DependentUpon>
+    <Compile Include="OfficeExpensesForm\OfficeReportForm.Designer.cs">
+      <DependentUpon>OfficeReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="OfficeExpensesForm\PaidForm.cs">
       <SubType>Form</SubType>
@@ -564,11 +564,11 @@
     <EmbeddedResource Include="OfficeExpensesForm\IOUForm.resx">
       <DependentUpon>IOUForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\officeInterfaceForm.resx">
-      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeInterfaceForm.resx">
+      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\officeReportForm.resx">
-      <DependentUpon>officeReportForm.cs</DependentUpon>
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeReportForm.resx">
+      <DependentUpon>OfficeReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpensesForm\PaidForm.resx">
       <DependentUpon>PaidForm.cs</DependentUpon>

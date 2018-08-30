@@ -1,6 +1,6 @@
 ﻿namespace ResoflexClientHandlingSystem.OfficeExpensesForm
 {
-    partial class officeReportForm
+    partial class OfficeReportForm
     {
         /// <summary>
         /// Required designer variable.

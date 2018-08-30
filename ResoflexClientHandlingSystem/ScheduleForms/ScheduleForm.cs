@@ -200,7 +200,7 @@ namespace ResoflexClientHandlingSystem
                     staff.FirstName = reader2.GetString("first_name");
                     staff.LastName = reader2.GetString("last_name");
 
-                    MessageBox.Show(int.Parse(reader2.GetString("staff_id")) + reader2.GetString("first_name") + reader2.GetString("last_name"));
+                    //MessageBox.Show(int.Parse(reader2.GetString("staff_id")) + reader2.GetString("first_name") + reader2.GetString("last_name"));
 
                     serviceEng.Add(staff);
                 }

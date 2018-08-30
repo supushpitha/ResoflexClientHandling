@@ -30,7 +30,7 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
 
         private DataTable getSalary()
         {
-            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name as Employee, l.basic_sal_amount as Basic, l.rate as Rate, l.allowance as Allowance, " +
+            MySqlDataReader reader = DBConnection.getData("select s.staff_id, s.first_name as Employee, l.basic_sal_amount as Basic, l.rate as Rate, l.allowance as Allowance, l.net_sal," +
                 "l.etf_epf_amount as ETF_EPF " +
                 "from salary l inner join staff s on l.staff_id=s.staff_id");
 
@@ -109,6 +109,11 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
         private void salaryGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void refreshBtn_Click(object sender, EventArgs e)
+        {
+            salaryGrid.DataSource = getSalary();
         }
     }
 }

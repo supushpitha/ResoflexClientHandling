@@ -83,7 +83,7 @@ namespace ResoflexClientHandlingSystem
             edEvent.Load(rdr);
 
             rdr.Close();
-
+            double tot = 0;
 
             foreach (DataRow item1 in inTable.Rows)
             {
@@ -101,6 +101,7 @@ namespace ResoflexClientHandlingSystem
                         row["Out_Date"] = item2["dateOfExp"];
                         row["Out_PaymentType"] = item2["paymentType"];
                         row["Out_Amount"] = item2["amount"];
+                        tot += double.Parse(item2["amount"].ToString());
                         bSheet.Rows.Add(row);
                         row = bSheet.NewRow();
                     }
@@ -108,6 +109,8 @@ namespace ResoflexClientHandlingSystem
                     {
                         bSheet.Rows.Add(row);
                         row = bSheet.NewRow();
+                        row["Out_Amount"] = tot;
+                        bSheet.Rows.Add(row);
                         break;
                     }
                 }

@@ -26,11 +26,8 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            
             StaffForm frm = new StaffForm();
-            this.Hide();
             frm.ShowDialog();
-            this.Close();
         }
 
         private void MembersGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -89,9 +86,7 @@ namespace ResoflexClientHandlingSystem
             float ot = float.Parse (MembersGrid.CurrentRow.Cells[13].Value.ToString());
 
             StaffForms.UpdateMemberForm up = new StaffForms.UpdateMemberForm(staffId, fn, ln, nic, pa, sa, tel1, tel2, email, fb, link, bsal, ot, desig);
-            this.Hide();
             up.ShowDialog();
-            this.Close();
         }
 
         private void StaffEvaBtn_Click(object sender, EventArgs e)
@@ -99,9 +94,9 @@ namespace ResoflexClientHandlingSystem
             //StaffEvalutionForm
 
             StaffEvalutionForm stEva = new StaffEvalutionForm();
-            stEva.Show();
-
-            closeForm();
+            this.Hide();
+            stEva.ShowDialog();
+            this.Close();
         }
 
         private void RecordAtteBtn_Click(object sender, EventArgs e)
@@ -109,9 +104,9 @@ namespace ResoflexClientHandlingSystem
             //RecordAttendanceForm
 
             RecordAttendanceForm reAtt = new RecordAttendanceForm();
-            reAtt.Show();
-
-            closeForm();
+            this.Hide();
+            reAtt.ShowDialog();
+            this.Close();
         }
 
         private void homeBtn_Click(object sender, EventArgs e)

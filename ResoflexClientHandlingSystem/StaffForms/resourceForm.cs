@@ -64,6 +64,7 @@ namespace ResoflexClientHandlingSystem
             {
 
                 Core.Database.addResource(reso);
+                loadResourceToGrid();
 
                 try
                 {

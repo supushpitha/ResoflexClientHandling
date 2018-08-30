@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -78,6 +79,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
+            this.notifyIconSch = new System.Windows.Forms.NotifyIcon(this.components);
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).BeginInit();
@@ -772,6 +774,11 @@
             this.htmlLabel1.TabIndex = 2;
             this.htmlLabel1.Text = "Schedule Form";
             // 
+            // notifyIconSch
+            // 
+            this.notifyIconSch.Text = "notifyIcon1";
+            this.notifyIconSch.Visible = true;
+            // 
             // AddScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -838,5 +845,6 @@
         private System.Windows.Forms.DateTimePicker schStartTime;
         private MetroFramework.Controls.MetroButton removeSerEng;
         private MetroFramework.Controls.MetroGrid serviceEngGrid;
+        private System.Windows.Forms.NotifyIcon notifyIconSch;
     }
 }

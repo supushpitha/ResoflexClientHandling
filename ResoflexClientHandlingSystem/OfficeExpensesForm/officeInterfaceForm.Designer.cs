@@ -1,6 +1,6 @@
 ﻿namespace ResoflexClientHandlingSystem.OfficeExpenses
 {
-    partial class addexpenses
+    partial class OfficeInterfaceForm
     {
         /// <summary>
         /// Required designer variable.
@@ -65,6 +65,7 @@
             // metroGrid1
             // 
             this.metroGrid1.AllowUserToResizeRows = false;
+            this.metroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.metroGrid1.BackgroundColor = System.Drawing.Color.Silver;
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -116,7 +117,7 @@
             this.iouB.UseCustomBackColor = true;
             this.iouB.UseSelectable = true;
             // 
-            // addexpenses
+            // OfficeInterfaceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -125,7 +126,7 @@
             this.Controls.Add(this.metroGrid1);
             this.Controls.Add(this.metroButton3);
             this.Controls.Add(this.metroButton2);
-            this.Name = "addexpenses";
+            this.Name = "OfficeInterfaceForm";
             this.Text = "Office Expense";
             this.Load += new System.EventHandler(this.addexpenses_Load);
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();

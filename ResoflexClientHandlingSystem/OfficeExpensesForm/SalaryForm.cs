@@ -14,9 +14,9 @@ using ResoflexClientHandlingSystem.OfficeExpenses;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class Salary : MetroFramework.Forms.MetroForm
+    public partial class SalaryForm : MetroFramework.Forms.MetroForm
     {
-        public Salary()
+        public SalaryForm()
         {
             InitializeComponent();
 

@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.iou = new MetroFramework.Controls.MetroTextBox();
             this.Date = new MetroFramework.Controls.MetroDateTime();
             this.add = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
@@ -40,16 +38,6 @@
             this.amt = new MetroFramework.Controls.MetroTextBox();
             this.staffNameBox = new MetroFramework.Controls.MetroComboBox();
             this.SuspendLayout();
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(42, 60);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(54, 19);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "IOU No";
-            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // metroLabel2
             // 
@@ -68,36 +56,6 @@
             this.metroLabel3.Size = new System.Drawing.Size(36, 19);
             this.metroLabel3.TabIndex = 2;
             this.metroLabel3.Text = "Date";
-            // 
-            // iou
-            // 
-            // 
-            // 
-            // 
-            this.iou.CustomButton.Image = null;
-            this.iou.CustomButton.Location = new System.Drawing.Point(208, 1);
-            this.iou.CustomButton.Name = "";
-            this.iou.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.iou.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.iou.CustomButton.TabIndex = 1;
-            this.iou.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.iou.CustomButton.UseSelectable = true;
-            this.iou.CustomButton.Visible = false;
-            this.iou.Lines = new string[0];
-            this.iou.Location = new System.Drawing.Point(154, 60);
-            this.iou.MaxLength = 32767;
-            this.iou.Name = "iou";
-            this.iou.PasswordChar = '\0';
-            this.iou.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.iou.SelectedText = "";
-            this.iou.SelectionLength = 0;
-            this.iou.SelectionStart = 0;
-            this.iou.ShortcutsEnabled = true;
-            this.iou.Size = new System.Drawing.Size(230, 23);
-            this.iou.TabIndex = 3;
-            this.iou.UseSelectable = true;
-            this.iou.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.iou.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // Date
             // 
@@ -219,10 +177,8 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.add);
             this.Controls.Add(this.Date);
-            this.Controls.Add(this.iou);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
-            this.Controls.Add(this.metroLabel1);
             this.Name = "IOUForm";
             this.Text = "IOUForm";
             this.Load += new System.EventHandler(this.IOUForm_Load);
@@ -232,11 +188,8 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox iou;
         private MetroFramework.Controls.MetroDateTime Date;
         private MetroFramework.Controls.MetroButton add;
         private MetroFramework.Controls.MetroLabel metroLabel4;

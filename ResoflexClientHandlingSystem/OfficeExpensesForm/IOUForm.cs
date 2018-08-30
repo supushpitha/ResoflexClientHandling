@@ -41,18 +41,18 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
 
         public void iouMethod()
         {
-            MySqlDataReader r = DBConnection.getData("select iou_id from iou_office");
-            if (r.Read())
-            {
-                iou.Text = (r.GetInt16("iou_id") + 1).ToString();
+            //MySqlDataReader r = DBConnection.getData("select iou_id from iou_office");
+            //if (r.Read())
+            //{
+            //    iou.Text = (r.GetInt16("iou_id") + 1).ToString();
 
                 
-            }
-            else
-            {
-                iou.Text = "1";
-            }
-            r.Close();
+            //}
+            //else
+            //{
+            //    //iou.Text = "1";
+            //}
+            //r.Close();
         }
 
         private void IOUForm_Load(object sender, EventArgs e)
@@ -100,7 +100,7 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
             OfficeIou i = new OfficeIou();
 
             //i.IouNo = int.Parse(iou.Text.ToString());
-            i.Name = staffNameBox.Text.ToString();
+            i.ToStaff = new Staff(Int32.Parse(staffNameBox.SelectedValue.ToString()));
             
 
             

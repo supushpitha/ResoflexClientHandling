@@ -252,10 +252,10 @@ namespace ResoflexClientHandlingSystem
 
             // metroGrid1.DataSource = getUserList();
 
-            MemberListForm mem = new MemberListForm();
-            mem.Show();
+            //MemberListForm mem = new MemberListForm();
+            //mem.Show();
 
-            closeForm();
+            //closeForm();
         }
 
         private void AddMemberTab_Click(object sender, EventArgs e)

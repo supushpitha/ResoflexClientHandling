@@ -30,7 +30,7 @@ namespace ResoflexClientHandlingSystem.ProjectForms
 
         private void ProjectProgress_Load(object sender, EventArgs e)
         {
-            MessageBox.Show(""+proid);
+            //MessageBox.Show(""+proid);
 
             try
             {
@@ -52,7 +52,7 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
 
@@ -68,12 +68,12 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_cat_id=s.proj_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
 
                 while (reader.Read())
                 {
@@ -107,7 +107,7 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
 
@@ -215,7 +215,7 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
         }
@@ -234,12 +234,12 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_cat_id=s.proj_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
 
                 while (reader.Read())
                 {

@@ -34,8 +34,6 @@
             this.category = new MetroFramework.Controls.MetroTextBox();
             this.inAmount = new MetroFramework.Controls.MetroTextBox();
             this.datetime = new MetroFramework.Controls.MetroDateTime();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.expid = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.addBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -139,45 +137,6 @@
             this.datetime.Size = new System.Drawing.Size(200, 29);
             this.datetime.TabIndex = 13;
             // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(77, 138);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(71, 19);
-            this.metroLabel3.TabIndex = 14;
-            this.metroLabel3.Text = "Expense id";
-            // 
-            // expid
-            // 
-            // 
-            // 
-            // 
-            this.expid.CustomButton.Image = null;
-            this.expid.CustomButton.Location = new System.Drawing.Point(178, 1);
-            this.expid.CustomButton.Name = "";
-            this.expid.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.expid.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.expid.CustomButton.TabIndex = 1;
-            this.expid.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.expid.CustomButton.UseSelectable = true;
-            this.expid.CustomButton.Visible = false;
-            this.expid.Lines = new string[0];
-            this.expid.Location = new System.Drawing.Point(204, 134);
-            this.expid.MaxLength = 32767;
-            this.expid.Name = "expid";
-            this.expid.PasswordChar = '\0';
-            this.expid.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.expid.SelectedText = "";
-            this.expid.SelectionLength = 0;
-            this.expid.SelectionStart = 0;
-            this.expid.ShortcutsEnabled = true;
-            this.expid.Size = new System.Drawing.Size(200, 23);
-            this.expid.TabIndex = 15;
-            this.expid.UseSelectable = true;
-            this.expid.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.expid.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
@@ -202,7 +161,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(77, 100);
+            this.metroLabel5.Location = new System.Drawing.Point(77, 141);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(36, 19);
             this.metroLabel5.TabIndex = 18;
@@ -215,7 +174,7 @@
             this.type.Items.AddRange(new object[] {
             "IOU",
             "Direct"});
-            this.type.Location = new System.Drawing.Point(204, 90);
+            this.type.Location = new System.Drawing.Point(204, 131);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(200, 29);
             this.type.TabIndex = 19;
@@ -254,8 +213,6 @@
             this.Controls.Add(this.type);
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.expid);
-            this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.datetime);
             this.Controls.Add(this.inAmount);
             this.Controls.Add(this.category);
@@ -278,8 +235,6 @@
         private MetroFramework.Controls.MetroTextBox category;
         private MetroFramework.Controls.MetroTextBox inAmount;
         private MetroFramework.Controls.MetroDateTime datetime;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroTextBox expid;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroButton addBtn;
         private MetroFramework.Controls.MetroLabel metroLabel5;

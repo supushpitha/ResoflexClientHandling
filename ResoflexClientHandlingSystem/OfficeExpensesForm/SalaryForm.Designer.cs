@@ -1,6 +1,6 @@
 ﻿namespace ResoflexClientHandlingSystem
 {
-    partial class Salary
+    partial class SalaryForm
     {
         /// <summary>
         /// Required designer variable.

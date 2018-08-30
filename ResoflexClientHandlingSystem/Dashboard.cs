@@ -120,9 +120,9 @@ namespace ResoflexClientHandlingSystem
         private void metroButton7_Click(object sender, EventArgs e)
         {
             MemberListForm sEf = new MemberListForm();
-            // this.Hide();
+            this.Hide();
             sEf.ShowDialog();
-            // this.Close();
+            this.Close();
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)

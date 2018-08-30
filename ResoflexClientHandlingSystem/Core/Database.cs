@@ -383,7 +383,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("update project_shortcomings set description = '" + projectShortcomings.Description + "',proj_id = '" + projectShortcomings.ProjectId + "',event_id = '" + projectShortcomings.EventId + "' where staff_id = '" + projectShortcomings.StaffId + "'");
+                DBConnection.updateDB("update project_shortcomings set description = '" + projectShortcomings.Description + "' where staff_id = '" + projectShortcomings.StaffId + "' and proj_id = '" + projectShortcomings.ProjectId + "' and event_id = '" + projectShortcomings.EventId + "'");
             }
             catch (Exception ex)
             {
@@ -398,7 +398,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("delete from project_shortcomings where staff_id = '" + projectShortcomings.StaffId + "'");
+                DBConnection.updateDB("delete from project_shortcomings where staff_id = '" + projectShortcomings.StaffId + "' and proj_id = '" + projectShortcomings.ProjectId + "' and event_id = '" + projectShortcomings.EventId + "'");
             }
             catch (Exception ex)
             {
@@ -756,7 +756,7 @@ namespace ResoflexClientHandlingSystem.Core
             double am = exp.Amount;
 
 
-            DBConnection.updateDB("Insert into office_expenses (type, staff_id, date, Category, amount) values" + "('" + type + "' , " + staff + " , '" + date + "' , '" + cat + "' , " + am + ");");
+            DBConnection.updateDB("Insert into office_expenses (type, staff_id, date, Category, amount) values('" + type + "' , " + staff + " , '" + date + "' , '" + cat + "' , " + am + ");");
 
             MessageBox.Show("Successfully added");
 
@@ -774,15 +774,14 @@ namespace ResoflexClientHandlingSystem.Core
 
             //try
             //{
-            String date = DateTime.Now.ToString("yyyy-mm-dd");
 
             int iou = i.IouNo;
-            String name = i.Name;
+            int staffId = i.ToStaff.StaffId;
             String comment = i.Comment;
             double am = i.Amount;
 
 
-            DBConnection.updateDB("Insert into iou_office(Name,date,Comment,Amount)values" + "('" + name + "' , '" + date + "', '" + comment + "' , " + am + ");");
+            DBConnection.updateDB("Insert into iou_office(staff_id,date,Comment,Amount)values(" + staffId + " , '" + DateTime.Now.ToString("yyyy/MM/d") + "', '" + comment + "' , " + am + ");");
             MessageBox.Show("Successfully added");
 
         }

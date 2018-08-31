@@ -177,7 +177,6 @@ namespace ResoflexClientHandlingSystem
             this.noOfProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.noOfProjTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.noOfProjTile.UseCustomBackColor = true;
             this.noOfProjTile.UseSelectable = true;
             // 
             // noOfVisitsTile
@@ -191,7 +190,6 @@ namespace ResoflexClientHandlingSystem
             this.noOfVisitsTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfVisitsTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.noOfVisitsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.noOfVisitsTile.UseCustomBackColor = true;
             this.noOfVisitsTile.UseSelectable = true;
             // 
             // totalExpTile
@@ -205,7 +203,6 @@ namespace ResoflexClientHandlingSystem
             this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.totalExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.totalExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.totalExpTile.UseCustomBackColor = true;
             this.totalExpTile.UseSelectable = true;
             // 
             // metroLabel1

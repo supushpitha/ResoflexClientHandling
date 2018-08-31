@@ -10,24 +10,14 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class IOUListForm1 : MetroFramework.Forms.MetroForm
+    public partial class IOUDetailsForm : MetroFramework.Forms.MetroForm
     {
-        public IOUListForm1()
+        public IOUDetailsForm()
         {
             InitializeComponent();
         }
 
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroTile1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void IOUListForm1_Load(object sender, EventArgs e)
+        private void IOUDetailsForm_Load(object sender, EventArgs e)
         {
 
         }

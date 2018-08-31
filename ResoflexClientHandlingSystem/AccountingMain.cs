@@ -45,7 +45,7 @@ namespace ResoflexClientHandlingSystem
 
         private void Project_Click(object sender, EventArgs e)
         {
-            ExpensesTypeForm frm = new ExpensesTypeForm();
+            ProjectExpensesMainForm frm = new ProjectExpensesMainForm();
 
             frm.Show();
         }

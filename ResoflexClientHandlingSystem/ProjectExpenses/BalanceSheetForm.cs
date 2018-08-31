@@ -15,70 +15,70 @@ namespace ResoflexClientHandlingSystem
 { 
     public partial class BalanceSheetForm : MetroFramework.Forms.MetroForm
     {
-        DataTable bSheet = new DataTable();
+        //DataTable bSheet = new DataTable();
 
         public BalanceSheetForm()
         {
             InitializeComponent();
             
-            bSheet.Columns.Add("In_Date",typeof(DateTime));
-            bSheet.Columns.Add("In_Amount", typeof(double));
-            bSheet.Columns.Add("Out_Type", typeof(string));
-            bSheet.Columns.Add("Out_Date", typeof(DateTime));
-            bSheet.Columns.Add("Out_PaymentType", typeof(string));
-            bSheet.Columns.Add("Out_Amount", typeof(double));
+            //bSheet.Columns.Add("In_Date",typeof(DateTime));
+            //bSheet.Columns.Add("In_Amount", typeof(double));
+            //bSheet.Columns.Add("Out_Type", typeof(string));
+            //bSheet.Columns.Add("Out_Date", typeof(DateTime));
+            //bSheet.Columns.Add("Out_PaymentType", typeof(string));
+            //bSheet.Columns.Add("Out_Amount", typeof(double));
         }
 
         public void getGridData(object sender, EventArgs e)
         {
             
-            MySqlDataReader reader = DBConnection.getData("select in_date, amount from project_exp_in_amount");
+            //MySqlDataReader reader = DBConnection.getData("select in_date, amount from project_exp_in_amount");
 
-            DataTable inTable = new DataTable();
-            inTable.Load(reader);
+            //DataTable inTable = new DataTable();
+            //inTable.Load(reader);
 
-            reader.Close();
+            //reader.Close();
 
-            MySqlDataReader rdr = DBConnection.getData("select e.type, ede.dateOfExp, ede.paymentType, ede.amount from exp_detail_event ede, expense_type e where ede.exp_type_id = e.exp_type_id order by ede.dateOfExp;");
+            //MySqlDataReader rdr = DBConnection.getData("select e.type, ede.dateOfExp, ede.paymentType, ede.amount from exp_detail_event ede, expense_type e where ede.exp_type_id = e.exp_type_id order by ede.dateOfExp;");
 
-            DataTable edEvent = new DataTable();
-            edEvent.Load(rdr);
+            //DataTable edEvent = new DataTable();
+            //edEvent.Load(rdr);
 
-            rdr.Close();
-            double tot = 0;
+            //rdr.Close();
+            //double tot = 0;
 
-            foreach (DataRow item1 in inTable.Rows)
-            {
-                DataRow row;
+            //foreach (DataRow item1 in inTable.Rows)
+            //{
+            //    DataRow row;
 
-                row = bSheet.NewRow();
-                row["In_Date"] = item1["in_date"];
-                row["In_Amount"] = item1["amount"];
+            //    row = bSheet.NewRow();
+            //    row["In_Date"] = item1["in_date"];
+            //    row["In_Amount"] = item1["amount"];
                 
-                foreach (DataRow item2 in edEvent.Rows)
-                {
-                    if(item1["in_date"].ToString().Equals(item2["dateOfExp"].ToString()))
-                    {
-                        row["Out_Type"] = item2["type"];
-                        row["Out_Date"] = item2["dateOfExp"];
-                        row["Out_PaymentType"] = item2["paymentType"];
-                        row["Out_Amount"] = item2["amount"];
-                        tot += double.Parse(item2["amount"].ToString());
-                        bSheet.Rows.Add(row);
-                        row = bSheet.NewRow();
-                    }
-                    else
-                    {
-                        bSheet.Rows.Add(row);
-                        row = bSheet.NewRow();
-                        row["Out_Amount"] = tot;
-                        bSheet.Rows.Add(row);
-                        break;
-                    }
-                }
-            }
+            //    foreach (DataRow item2 in edEvent.Rows)
+            //    {
+            //        if(item1["in_date"].ToString().Equals(item2["dateOfExp"].ToString()))
+            //        {
+            //            row["Out_Type"] = item2["type"];
+            //            row["Out_Date"] = item2["dateOfExp"];
+            //            row["Out_PaymentType"] = item2["paymentType"];
+            //            row["Out_Amount"] = item2["amount"];
+            //            tot += double.Parse(item2["amount"].ToString());
+            //            bSheet.Rows.Add(row);
+            //            row = bSheet.NewRow();
+            //        }
+            //        else
+            //        {
+            //            bSheet.Rows.Add(row);
+            //            row = bSheet.NewRow();
+            //            row["Out_Amount"] = tot;
+            //            bSheet.Rows.Add(row);
+            //            break;
+            //        }
+            //    }
+            //}
             
-            exp_grid_box.DataSource = bSheet;
+            //exp_grid_box.DataSource = bSheet;
         }
 
         private void BalanceSheetForm_Load(object sender, EventArgs e)

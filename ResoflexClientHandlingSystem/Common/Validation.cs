@@ -63,6 +63,20 @@ namespace ResoflexClientHandlingSystem.Common
             return (Regex.IsMatch(text, "^[0-9 ]+$"));
         }
 
+        public static bool isDouble(string text)
+        {
+            double result;
+
+            if (double.TryParse(text, out result))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static bool isFuture(DateTime date)
         {
             return (date > DateTime.Now);

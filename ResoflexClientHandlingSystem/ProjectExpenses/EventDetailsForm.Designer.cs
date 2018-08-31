@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.exp_grid_box = new MetroFramework.Controls.MetroGrid();
+            this.eventExpGrid = new MetroFramework.Controls.MetroGrid();
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
@@ -54,7 +54,7 @@
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroTile7 = new MetroFramework.Controls.MetroTile();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
-            ((System.ComponentModel.ISupportInitialize)(this.exp_grid_box)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventExpGrid)).BeginInit();
             this.metroTile1.SuspendLayout();
             this.metroTile2.SuspendLayout();
             this.metroTile3.SuspendLayout();
@@ -64,13 +64,13 @@
             this.metroTile7.SuspendLayout();
             this.SuspendLayout();
             // 
-            // exp_grid_box
+            // eventExpGrid
             // 
-            this.exp_grid_box.AllowUserToResizeRows = false;
-            this.exp_grid_box.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.exp_grid_box.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.exp_grid_box.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.exp_grid_box.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.eventExpGrid.AllowUserToResizeRows = false;
+            this.eventExpGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.eventExpGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.eventExpGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.eventExpGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -78,7 +78,7 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.exp_grid_box.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.eventExpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -86,13 +86,13 @@
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.exp_grid_box.DefaultCellStyle = dataGridViewCellStyle2;
-            this.exp_grid_box.EnableHeadersVisualStyles = false;
-            this.exp_grid_box.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.exp_grid_box.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.exp_grid_box.Location = new System.Drawing.Point(23, 300);
-            this.exp_grid_box.Name = "exp_grid_box";
-            this.exp_grid_box.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.eventExpGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            this.eventExpGrid.EnableHeadersVisualStyles = false;
+            this.eventExpGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.eventExpGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.eventExpGrid.Location = new System.Drawing.Point(23, 300);
+            this.eventExpGrid.Name = "eventExpGrid";
+            this.eventExpGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -100,11 +100,11 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.exp_grid_box.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.exp_grid_box.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.exp_grid_box.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.exp_grid_box.Size = new System.Drawing.Size(777, 377);
-            this.exp_grid_box.TabIndex = 2;
+            this.eventExpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.eventExpGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.eventExpGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.eventExpGrid.Size = new System.Drawing.Size(777, 377);
+            this.eventExpGrid.TabIndex = 2;
             // 
             // metroTile1
             // 
@@ -367,12 +367,12 @@
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.metroTile2);
             this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.exp_grid_box);
+            this.Controls.Add(this.eventExpGrid);
             this.MinimumSize = new System.Drawing.Size(1080, 700);
             this.Name = "EventDetailsForm";
             this.Text = "Event Expenses";
             this.Load += new System.EventHandler(this.EventDetailsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.exp_grid_box)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.eventExpGrid)).EndInit();
             this.metroTile1.ResumeLayout(false);
             this.metroTile1.PerformLayout();
             this.metroTile2.ResumeLayout(false);
@@ -393,7 +393,7 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroGrid exp_grid_box;
+        private MetroFramework.Controls.MetroGrid eventExpGrid;
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;

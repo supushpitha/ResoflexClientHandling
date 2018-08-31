@@ -26,7 +26,7 @@ namespace ResoflexClientHandlingSystem
 
         private void btnProjects_Click(object sender, EventArgs e)
         {
-            Project1 frm = new Project1();
+            ProjectForm frm = new ProjectForm();
             this.Hide();
             frm.ShowDialog();
             this.Close();

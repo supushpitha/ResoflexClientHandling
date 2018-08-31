@@ -16,9 +16,17 @@ namespace ResoflexClientHandlingSystem.ClientForms
 {
     public partial class SeeMoreClientForm : MetroFramework.Forms.MetroForm
     {
+        string clientName = "";
+
         public SeeMoreClientForm()
         {
             InitializeComponent();
+        }
+
+        public SeeMoreClientForm(string clientName)
+        {
+            InitializeComponent();
+            this.clientName = clientName;
         }
 
         private void SeeMoreClientForm_Load(object sender, EventArgs e)
@@ -34,6 +42,9 @@ namespace ResoflexClientHandlingSystem.ClientForms
             fillTiles();
 
             projectOfClientGrid.Columns[0].Visible = false;
+
+            if (clientName != "")
+                searchClientTxtBox.Text = clientName;
             /*
             foreach (DataGridViewRow row in requestOfClientGrid.Rows)
             {

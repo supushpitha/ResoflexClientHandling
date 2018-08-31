@@ -19,10 +19,7 @@ namespace ResoflexClientHandlingSystem
         public BalanceSheetForm()
         {
             InitializeComponent();
-
-           // projectNameDisplay();
-            //eventDisplay();
-
+            
             bSheet.Columns.Add("In_Date",typeof(DateTime));
             bSheet.Columns.Add("In_Amount", typeof(double));
             bSheet.Columns.Add("Out_Type", typeof(string));
@@ -30,42 +27,6 @@ namespace ResoflexClientHandlingSystem
             bSheet.Columns.Add("Out_PaymentType", typeof(string));
             bSheet.Columns.Add("Out_Amount", typeof(double));
         }
-
-        private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        /*
-        public void projectNameDisplay()
-        {
-            MySqlDataReader reader = DBConnection.getData("select proj_id,proj_name from project");
-
-            DataTable dt = new DataTable();
-
-            dt.Load(reader);
-
-            projectName.DataSource = dt;
-            projectName.ValueMember = "proj_id";
-            projectName.DisplayMember = "proj_name";
-
-            reader.Close();
-
-        }
-
-        public void eventDisplay()
-        {
-            MySqlDataReader r = DBConnection.getData("select event_id from event");
-            DataTable d = new DataTable();
-
-            d.Load(r);
-
-            eventBox.DataSource = d;
-            eventBox.ValueMember = "event_id";
-            eventBox.DisplayMember = "event_id";
-
-            r.Close();
-
-        }*/
 
         public void getGridData(object sender, EventArgs e)
         {
@@ -114,11 +75,8 @@ namespace ResoflexClientHandlingSystem
                         break;
                     }
                 }
-
-                
             }
             
-
             exp_grid_box.DataSource = bSheet;
         }
 

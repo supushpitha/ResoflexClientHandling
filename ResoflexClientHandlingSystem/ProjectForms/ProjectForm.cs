@@ -14,16 +14,16 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class Project1 : MetroFramework.Forms.MetroForm
+    public partial class ProjectForm : MetroFramework.Forms.MetroForm
     {
         string clientName = "";
 
-        public Project1()
+        public ProjectForm()
         {
             InitializeComponent();
         }
 
-        public Project1(string clientName)
+        public ProjectForm(string clientName)
         {
             InitializeComponent();
 

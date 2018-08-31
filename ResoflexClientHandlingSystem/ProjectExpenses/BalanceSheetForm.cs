@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ResoflexClientHandlingSystem.Common;
 
 namespace ResoflexClientHandlingSystem
 { 
@@ -83,6 +84,28 @@ namespace ResoflexClientHandlingSystem
         private void BalanceSheetForm_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void headInTxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg;
+
+            if (!Validation.isDouble(headInTxtBox.Text))
+            {
+                e.Cancel = true;
+
+                errorMsg = "In value must be a number!";
+
+                headInTxtBox.Select(0, headInTxtBox.Text.Length);
+
+                this.errorProviderBalance.SetError(headInTxtBox, errorMsg);
+            }
+        }
+
+        private void headInTxtBox_Validated(object sender, EventArgs e)
+        {
+            errorProviderBalance.SetError(headInTxtBox, "");
+            errorProviderBalance.Clear();
         }
 
         /*private void projectName_SelectedIndexChanged(object sender, EventArgs e)

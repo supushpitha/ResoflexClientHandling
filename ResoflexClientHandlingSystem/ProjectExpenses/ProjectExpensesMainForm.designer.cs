@@ -28,89 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
-            this.metroButton5 = new MetroFramework.Controls.MetroButton();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.viewEventBtn = new MetroFramework.Controls.MetroButton();
+            this.viewIouBtn = new MetroFramework.Controls.MetroButton();
+            this.getReportBtn = new MetroFramework.Controls.MetroButton();
+            this.viewBalanceBtn = new MetroFramework.Controls.MetroButton();
+            this.projExpMonthTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.balTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.MaxSpentEventTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.monthCompProgressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile1.SuspendLayout();
-            this.metroTile2.SuspendLayout();
-            this.metroTile3.SuspendLayout();
+            this.projExpMonthTile.SuspendLayout();
+            this.balTile.SuspendLayout();
+            this.MaxSpentEventTile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
-            // metroButton2
+            // viewEventBtn
             // 
-            this.metroButton2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton2.Location = new System.Drawing.Point(821, 435);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(246, 45);
-            this.metroButton2.TabIndex = 9;
-            this.metroButton2.Text = "View Event Expenses";
-            this.metroButton2.UseCustomBackColor = true;
-            this.metroButton2.UseSelectable = true;
+            this.viewEventBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.viewEventBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.viewEventBtn.Location = new System.Drawing.Point(821, 435);
+            this.viewEventBtn.Name = "viewEventBtn";
+            this.viewEventBtn.Size = new System.Drawing.Size(246, 45);
+            this.viewEventBtn.TabIndex = 9;
+            this.viewEventBtn.Text = "View Event Expenses";
+            this.viewEventBtn.UseCustomBackColor = true;
+            this.viewEventBtn.UseSelectable = true;
+            this.viewEventBtn.Click += new System.EventHandler(this.viewEventBtn_Click);
             // 
-            // metroButton4
+            // viewIouBtn
             // 
-            this.metroButton4.BackColor = System.Drawing.Color.DodgerBlue;
-            this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton4.Location = new System.Drawing.Point(821, 500);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(246, 45);
-            this.metroButton4.TabIndex = 11;
-            this.metroButton4.Text = "View IOU Expenses";
-            this.metroButton4.UseCustomBackColor = true;
-            this.metroButton4.UseSelectable = true;
-            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            this.viewIouBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.viewIouBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.viewIouBtn.Location = new System.Drawing.Point(821, 500);
+            this.viewIouBtn.Name = "viewIouBtn";
+            this.viewIouBtn.Size = new System.Drawing.Size(246, 45);
+            this.viewIouBtn.TabIndex = 11;
+            this.viewIouBtn.Text = "View IOU Expenses";
+            this.viewIouBtn.UseCustomBackColor = true;
+            this.viewIouBtn.UseSelectable = true;
+            this.viewIouBtn.Click += new System.EventHandler(this.viewIouBtn_Click);
             // 
-            // metroButton1
+            // getReportBtn
             // 
-            this.metroButton1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton1.Location = new System.Drawing.Point(821, 565);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(246, 45);
-            this.metroButton1.TabIndex = 14;
-            this.metroButton1.Text = "Get Reports";
-            this.metroButton1.UseCustomBackColor = true;
-            this.metroButton1.UseSelectable = true;
+            this.getReportBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.getReportBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.getReportBtn.Location = new System.Drawing.Point(821, 565);
+            this.getReportBtn.Name = "getReportBtn";
+            this.getReportBtn.Size = new System.Drawing.Size(246, 45);
+            this.getReportBtn.TabIndex = 14;
+            this.getReportBtn.Text = "Get Reports";
+            this.getReportBtn.UseCustomBackColor = true;
+            this.getReportBtn.UseSelectable = true;
+            this.getReportBtn.Click += new System.EventHandler(this.getReportBtn_Click);
             // 
-            // metroButton5
+            // viewBalanceBtn
             // 
-            this.metroButton5.BackColor = System.Drawing.Color.DodgerBlue;
-            this.metroButton5.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.metroButton5.Location = new System.Drawing.Point(821, 630);
-            this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(246, 45);
-            this.metroButton5.TabIndex = 15;
-            this.metroButton5.Text = "Balance";
-            this.metroButton5.UseCustomBackColor = true;
-            this.metroButton5.UseSelectable = true;
+            this.viewBalanceBtn.BackColor = System.Drawing.Color.DodgerBlue;
+            this.viewBalanceBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.viewBalanceBtn.Location = new System.Drawing.Point(821, 630);
+            this.viewBalanceBtn.Name = "viewBalanceBtn";
+            this.viewBalanceBtn.Size = new System.Drawing.Size(246, 45);
+            this.viewBalanceBtn.TabIndex = 15;
+            this.viewBalanceBtn.Text = "Balance";
+            this.viewBalanceBtn.UseCustomBackColor = true;
+            this.viewBalanceBtn.UseSelectable = true;
+            this.viewBalanceBtn.Click += new System.EventHandler(this.viewBalanceBtn_Click);
             // 
-            // metroTile1
+            // projExpMonthTile
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Controls.Add(this.metroLabel1);
-            this.metroTile1.Location = new System.Drawing.Point(24, 75);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(212, 127);
-            this.metroTile1.TabIndex = 16;
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile1.UseSelectable = true;
+            this.projExpMonthTile.ActiveControl = null;
+            this.projExpMonthTile.Controls.Add(this.metroLabel1);
+            this.projExpMonthTile.Location = new System.Drawing.Point(24, 75);
+            this.projExpMonthTile.Name = "projExpMonthTile";
+            this.projExpMonthTile.Size = new System.Drawing.Size(212, 127);
+            this.projExpMonthTile.TabIndex = 16;
+            this.projExpMonthTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.projExpMonthTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.projExpMonthTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.projExpMonthTile.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -118,22 +121,22 @@
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
             this.metroLabel1.Location = new System.Drawing.Point(4, 105);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(190, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(172, 19);
             this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Total Expenses for this Month";
+            this.metroLabel1.Text = "Project Exp. for this Month";
             // 
-            // metroTile2
+            // balTile
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Controls.Add(this.metroLabel2);
-            this.metroTile2.Location = new System.Drawing.Point(296, 75);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(212, 127);
-            this.metroTile2.TabIndex = 17;
-            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile2.UseSelectable = true;
+            this.balTile.ActiveControl = null;
+            this.balTile.Controls.Add(this.metroLabel2);
+            this.balTile.Location = new System.Drawing.Point(296, 75);
+            this.balTile.Name = "balTile";
+            this.balTile.Size = new System.Drawing.Size(212, 127);
+            this.balTile.TabIndex = 17;
+            this.balTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.balTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.balTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.balTile.UseSelectable = true;
             // 
             // metroLabel2
             // 
@@ -145,18 +148,18 @@
             this.metroLabel2.TabIndex = 1;
             this.metroLabel2.Text = "Balance";
             // 
-            // metroTile3
+            // MaxSpentEventTile
             // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.Controls.Add(this.metroLabel3);
-            this.metroTile3.Location = new System.Drawing.Point(568, 75);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(212, 127);
-            this.metroTile3.TabIndex = 18;
-            this.metroTile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile3.UseSelectable = true;
+            this.MaxSpentEventTile.ActiveControl = null;
+            this.MaxSpentEventTile.Controls.Add(this.metroLabel3);
+            this.MaxSpentEventTile.Location = new System.Drawing.Point(568, 75);
+            this.MaxSpentEventTile.Name = "MaxSpentEventTile";
+            this.MaxSpentEventTile.Size = new System.Drawing.Size(212, 127);
+            this.MaxSpentEventTile.TabIndex = 18;
+            this.MaxSpentEventTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.MaxSpentEventTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.MaxSpentEventTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.MaxSpentEventTile.UseSelectable = true;
             // 
             // metroLabel3
             // 
@@ -170,17 +173,17 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(24, 280);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(756, 394);
             this.chart1.TabIndex = 19;
             this.chart1.Text = "chart1";
@@ -216,23 +219,24 @@
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.monthCompProgressSpinner);
             this.Controls.Add(this.chart1);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
-            this.Controls.Add(this.metroButton5);
-            this.Controls.Add(this.metroButton1);
-            this.Controls.Add(this.metroButton4);
-            this.Controls.Add(this.metroButton2);
+            this.Controls.Add(this.MaxSpentEventTile);
+            this.Controls.Add(this.balTile);
+            this.Controls.Add(this.projExpMonthTile);
+            this.Controls.Add(this.viewBalanceBtn);
+            this.Controls.Add(this.getReportBtn);
+            this.Controls.Add(this.viewIouBtn);
+            this.Controls.Add(this.viewEventBtn);
             this.MinimumSize = new System.Drawing.Size(1080, 700);
             this.Name = "ProjectExpensesMainForm";
             this.Text = "Project Expenses";
-            this.Load += new System.EventHandler(this.ExpensesTypeForm_Load);
-            this.metroTile1.ResumeLayout(false);
-            this.metroTile1.PerformLayout();
-            this.metroTile2.ResumeLayout(false);
-            this.metroTile2.PerformLayout();
-            this.metroTile3.ResumeLayout(false);
-            this.metroTile3.PerformLayout();
+            this.Load += new System.EventHandler(this.ProjectExpensesMainForm_Load);
+            this.Shown += new System.EventHandler(this.ProjectExpensesMainForm_Shown);
+            this.projExpMonthTile.ResumeLayout(false);
+            this.projExpMonthTile.PerformLayout();
+            this.balTile.ResumeLayout(false);
+            this.balTile.PerformLayout();
+            this.MaxSpentEventTile.ResumeLayout(false);
+            this.MaxSpentEventTile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -240,13 +244,13 @@
         }
 
         #endregion
-        private MetroFramework.Controls.MetroButton metroButton2;
-        private MetroFramework.Controls.MetroButton metroButton4;
-        private MetroFramework.Controls.MetroButton metroButton1;
-        private MetroFramework.Controls.MetroButton metroButton5;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroButton viewEventBtn;
+        private MetroFramework.Controls.MetroButton viewIouBtn;
+        private MetroFramework.Controls.MetroButton getReportBtn;
+        private MetroFramework.Controls.MetroButton viewBalanceBtn;
+        private MetroFramework.Controls.MetroTile projExpMonthTile;
+        private MetroFramework.Controls.MetroTile balTile;
+        private MetroFramework.Controls.MetroTile MaxSpentEventTile;
         private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;

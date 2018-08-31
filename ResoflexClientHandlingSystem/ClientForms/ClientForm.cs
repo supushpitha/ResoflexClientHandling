@@ -205,6 +205,9 @@ namespace ResoflexClientHandlingSystem
                         table.Load(reader);
 
                         clientGrid.DataSource = table;
+
+                        if (clientGrid.Rows.Count > 0)
+                            fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
                     }
                     else
                     {

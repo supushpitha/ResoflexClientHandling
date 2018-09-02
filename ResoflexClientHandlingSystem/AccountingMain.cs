@@ -46,8 +46,9 @@ namespace ResoflexClientHandlingSystem
         private void Project_Click(object sender, EventArgs e)
         {
             ProjectExpensesMainForm frm = new ProjectExpensesMainForm();
-
-            frm.Show();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
 
         private void metroTile3_Click(object sender, EventArgs e)

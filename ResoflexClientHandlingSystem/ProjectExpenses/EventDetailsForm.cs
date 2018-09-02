@@ -49,20 +49,38 @@ namespace ResoflexClientHandlingSystem
             totalExpProjTile.Text = "Rs.0.00";
             noTechTile.Text = "0";
 
-            MySqlDataReader reader = DBConnection.getData("");
+            MySqlDataReader reader = DBConnection.getData("select MAX(amount) as max, SUM(amount) as sum from exp_detail_event where " +
+                                                          "proj_id=" + projId + " group by proj_id;");
 
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    
+                    maxExpProjTile.Text = "Rs." + reader.GetDouble(0);
+                    totalExpProjTile.Text = "Rs." + reader.GetDouble(1);
                 }
             }
             else
             {
-                mealExpTile.Text = "Rs.0.00";
-                accTile.Text = "Rs.0.00";
-                travelExpTile.Text = "Rs.0.00";
+                maxExpProjTile.Text = "Rs.0.00";
+                totalExpProjTile.Text = "Rs.0.00";
+            }
+
+            reader.Close();
+
+            reader = DBConnection.getData("SELECT IFNULL(COUNT(staff_id), 0) as no FROM event_technicians WHERE proj_id=" + projId + " AND event_id=" + eventId + " GROUP BY " +
+                "proj_id, event_id;");
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    noTechTile.Text = "" + reader.GetInt16(0);
+                }
+            }
+            else
+            {
+                noTechTile.Text = "0";
             }
 
             reader.Close();
@@ -71,14 +89,25 @@ namespace ResoflexClientHandlingSystem
         private DataTable getEventExp()
         {
             DataTable table = new DataTable();
+            MySqlDataReader reader = null;
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, " +
-                "v.from_date_time as From_Date, v.to_date_time as To_Date, v.travelling_mode as Travel, " +
-                "v.accommodation_mode as Accom, v.meals as Meals, SUM(e.amount) as Expense from exp_detail_event e INNER JOIN event v " +
-                "ON e.event_id=v.event_id AND e.proj_id=v.proj_id LEFT JOIN project p ON v.proj_id=p.proj_id INNER JOIN client c " +
-                "ON p.client_id=c.client_id GROUP BY e.proj_id, e.event_id;");
+            try
+            {
+                reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                    "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                    "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY v.proj_id, v.event_id;");
 
-            table.Load(reader);
+                table.Load(reader);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Error!\n" + exc, "Event Expenses getter", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                if (reader != null)
+                    if (!reader.IsClosed)
+                        reader.Close();
+            }
 
             return table;
         }

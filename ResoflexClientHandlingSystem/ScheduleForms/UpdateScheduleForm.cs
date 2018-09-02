@@ -66,7 +66,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
             clientName.Read();
 
-            MessageBox.Show(clientName.GetString("client_id") + proj_id);
+            //MessageBox.Show(clientName.GetString("client_id") + proj_id);
 
             projectName.SelectedValue = proj_id;
             schClientName.SelectedValue = clientName.GetString("client_id");
@@ -258,7 +258,33 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
-        private void schUpdate_Click(object sender, EventArgs e)
+        public void validation(object sender, EventArgs e)
+        {
+            if (!Validation.isEmpty(todoList.Text))
+            {
+                if (!Validation.isEmpty(meals.Text))
+                {
+                    if (!Validation.isDataTableEmpty(engGrid))
+                    {
+                            scheduleUpdate();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service engineers should be assigned!", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Meal field cannot be empty!", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todo list field cannot be empty!", "Error");
+            }
+        }
+
+        private void scheduleUpdate()
         {
             Schedule schedule = new Schedule();
 
@@ -290,6 +316,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
                 //sending mails
                 if (schSendMail.Checked)
                 {
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Sending Email!";
+                    notifyIconSch.ShowBalloonTip(1000);
+
                     foreach (var ary in schedule.ServEngineer)
                     {
                         Staff s = (Staff)ary;
@@ -306,6 +336,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
                         reader.Close();
                     }
+
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Email(s) Sent!";
+                    notifyIconSch.ShowBalloonTip(1000);
                 }
 
                 MessageBox.Show("Schedule Successfully Updated !");

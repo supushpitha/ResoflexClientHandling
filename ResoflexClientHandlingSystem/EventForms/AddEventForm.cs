@@ -159,7 +159,7 @@ namespace ResoflexClientHandlingSystem
             serviceEngFeed.DisplayMember = "fullname";
         }
 
-        public AddEventForm(int sch_no)
+        public AddEventForm(int sch_no, int proj_id)
         {
             InitializeComponent();
 
@@ -206,6 +206,10 @@ namespace ResoflexClientHandlingSystem
             serviceEngFeed.DataSource = engGrid;
             serviceEngFeed.ValueMember = "staff_id";
             serviceEngFeed.DisplayMember = "fullname";
+
+            projectName.SelectedValue = proj_id;
+            eventsSch.SelectedValue = sch_no;
+            
         }
 
         private void AddEventForm_Load(object sender, EventArgs e)
@@ -279,6 +283,32 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+        public void validation(object sender, EventArgs e)
+        {
+            if (!Validation.isEmpty(todoList.Text))
+            {
+                if (!Validation.isEmpty(meals.Text))
+                {
+                    if (!Validation.isDataTableEmpty(engGrid))
+                    {
+                        addEvent();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Service engineers should be assigned!", "Error");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Meal field cannot be empty!", "Error");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Todo list field cannot be empty!", "Error");
+            }
+        }
+
         //adding details to feedback grid
         private void addFeedback_MouseClick(object sender, MouseEventArgs e)
         {
@@ -294,7 +324,7 @@ namespace ResoflexClientHandlingSystem
             eventTask.Text = "";
         }
 
-        private void eventSave_Click(object sender, EventArgs e)
+        private void addEvent()
         {
             Event evnt = new Event();
 
@@ -382,6 +412,26 @@ namespace ResoflexClientHandlingSystem
         private void serviceEngGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
 
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
+
+            if (reader.Read())
+            {
+                event_id = reader.GetInt16("event_id") + 1;
+            }
+            else
+            {
+                event_id = 1;
+            }
+
+            reader.Close();
+
+            AddExpensesForm add = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id);
+            
+            add.Show();
         }
     }
 }

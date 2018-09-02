@@ -35,9 +35,14 @@
     <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="eCryptography">
       <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
     </Reference>
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
     </Reference>
@@ -62,6 +67,8 @@
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -72,8 +79,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
-    <Reference Include="Tulpep.NotificationWindow, Version=1.1.25.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Tulpep.NotificationWindow">
       <HintPath>..\packages\Tulpep.NotificationWindow.1.1.25\lib\net40\Tulpep.NotificationWindow.dll</HintPath>
     </Reference>
     <Reference Include="WinFormAnimation, Version=1.5.6298.3372, Culture=neutral, processorArchitecture=MSIL">
@@ -204,11 +210,65 @@
     <Compile Include="EventForms\UpdateEventForm.Designer.cs">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="OfficeExpensesForm\CashPaymentForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\CashPaymentForm.Designer.cs">
+      <DependentUpon>CashPaymentForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IouBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IouBalanceForm.Designer.cs">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IOUForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\IOUForm.Designer.cs">
+      <DependentUpon>IOUForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.Designer.cs">
+      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeReportForm.Designer.cs">
+      <DependentUpon>OfficeReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\PaidForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\PaidForm.Designer.cs">
+      <DependentUpon>PaidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\SalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\SalaryForm.Designer.cs">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.Designer.cs">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.designer.cs">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\BalanceSheetForm.Designer.cs">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\CashIssuingForm.cs">
       <SubType>Form</SubType>
@@ -228,11 +288,11 @@
     <Compile Include="ProjectExpenses\ExpensesAnalysisForm.designer.cs">
       <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ExpensesTypeForm.cs">
+    <Compile Include="ProjectExpenses\ProjectExpensesMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ExpensesTypeForm.designer.cs">
-      <DependentUpon>ExpensesTypeForm.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\ProjectExpensesMainForm.designer.cs">
+      <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\GenarateReportForm.cs">
       <SubType>Form</SubType>
@@ -240,35 +300,28 @@
     <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.cs">
+    <Compile Include="ProjectExpenses\IOUDetailsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\IOUListForm1.designer.cs">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\IOUDetailsForm.designer.cs">
+      <DependentUpon>IOUDetailsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpensesForm.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpensesForm.designer.cs">
-      <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
+      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpenses\OfficeExpensesForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OfficeExpenses\OfficeExpensesForm.Designer.cs">
-      <DependentUpon>OfficeExpensesForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OfficeExpenses\Paid.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OfficeExpenses\Paid.Designer.cs">
-      <DependentUpon>Paid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="OfficeExpenses\Salary.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OfficeExpenses\Salary.Designer.cs">
-      <DependentUpon>Salary.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\AddCatagory.cs">
       <SubType>Form</SubType>
@@ -330,6 +383,7 @@
     <Compile Include="Role\InterpersonalSkills.cs" />
     <Compile Include="Role\JobPerformance.cs" />
     <Compile Include="Role\Notification.cs" />
+    <Compile Include="Role\OfficeIou.cs" />
     <Compile Include="Role\ProjectRequest.cs" />
     <Compile Include="Role\ProjectShortcomings.cs" />
     <Compile Include="Role\ProjectSubCategory.cs" />
@@ -411,6 +465,18 @@
     <Compile Include="StaffForms\StaffForm.Designer.cs">
       <DependentUpon>StaffForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TaskForms\TaskForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TaskForms\TaskForm.Designer.cs">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="StaffForms\UpdateMemberForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StaffForms\UpdateMemberForm.Designer.cs">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -483,8 +549,35 @@
     <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\CashPaymentForm.resx">
+      <DependentUpon>CashPaymentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\IouBalanceForm.resx">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\IOUForm.resx">
+      <DependentUpon>IOUForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeInterfaceForm.resx">
+      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeReportForm.resx">
+      <DependentUpon>OfficeReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\PaidForm.resx">
+      <DependentUpon>PaidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\SalaryForm.resx">
+      <DependentUpon>SalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\UpdateSalaryForm.resx">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\BalanceSheetForm.resx">
+      <DependentUpon>BalanceSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\CashIssuingForm.resx">
       <DependentUpon>CashIssuingForm.cs</DependentUpon>
@@ -495,26 +588,21 @@
     <EmbeddedResource Include="ProjectExpenses\ExpensesAnalysisForm.resx">
       <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ExpensesTypeForm.resx">
-      <DependentUpon>ExpensesTypeForm.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpensesMainForm.resx">
+      <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\IOUListForm1.resx">
-      <DependentUpon>IOUListForm1.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\IOUDetailsForm.resx">
+      <DependentUpon>IOUDetailsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpensesForm.resx">
-      <DependentUpon>ProjectExpensesForm.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpenses\OfficeExpensesForm.resx">
-      <DependentUpon>OfficeExpensesForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpenses\Paid.resx">
-      <DependentUpon>Paid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpenses\Salary.resx">
-      <DependentUpon>Salary.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
+      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
@@ -580,6 +668,12 @@
     <EmbeddedResource Include="StaffForms\StaffForm.resx">
       <DependentUpon>StaffForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TaskForms\TaskForm.resx">
+      <DependentUpon>TaskForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
+      <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -587,6 +681,17 @@
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsc">
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjExpDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xss">
+      <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -599,6 +704,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

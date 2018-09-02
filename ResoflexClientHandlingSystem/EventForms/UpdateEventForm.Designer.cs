@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
@@ -48,12 +48,10 @@
             this.addEventEng = new MetroFramework.Controls.MetroButton();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.schClientName = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
-            this.schCancel = new MetroFramework.Controls.MetroButton();
-            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
+            this.schEndTime = new System.Windows.Forms.DateTimePicker();
+            this.schStartTime = new System.Windows.Forms.DateTimePicker();
+            this.schEndDate = new System.Windows.Forms.DateTimePicker();
+            this.schStartDate = new System.Windows.Forms.DateTimePicker();
             this.removeSerEng = new MetroFramework.Controls.MetroButton();
             this.serviceEngGrid = new MetroFramework.Controls.MetroGrid();
             this.scheduleType = new MetroFramework.Controls.MetroComboBox();
@@ -81,10 +79,12 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel19 = new MetroFramework.Controls.MetroLabel();
-            this.schEndTime = new System.Windows.Forms.DateTimePicker();
-            this.schStartTime = new System.Windows.Forms.DateTimePicker();
-            this.schEndDate = new System.Windows.Forms.DateTimePicker();
-            this.schStartDate = new System.Windows.Forms.DateTimePicker();
+            this.schClientName = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel14 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.schCancel = new MetroFramework.Controls.MetroButton();
+            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
@@ -230,37 +230,37 @@
             this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle20;
             this.metroGrid1.EnableHeadersVisualStyles = false;
             this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.metroGrid1.Location = new System.Drawing.Point(385, 236);
             this.metroGrid1.Name = "metroGrid1";
             this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(313, 193);
@@ -277,7 +277,7 @@
             // 
             // addEventEng
             // 
-            this.addEventEng.Location = new System.Drawing.Point(299, 220);
+            this.addEventEng.Location = new System.Drawing.Point(299, 217);
             this.addEventEng.Name = "addEventEng";
             this.addEventEng.Size = new System.Drawing.Size(39, 23);
             this.addEventEng.TabIndex = 42;
@@ -359,64 +359,43 @@
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
-            // schClientName
+            // schEndTime
             // 
-            this.schClientName.FormattingEnabled = true;
-            this.schClientName.ItemHeight = 23;
-            this.schClientName.Location = new System.Drawing.Point(499, 12);
-            this.schClientName.Name = "schClientName";
-            this.schClientName.Size = new System.Drawing.Size(200, 29);
-            this.schClientName.TabIndex = 37;
-            this.schClientName.UseSelectable = true;
+            this.schEndTime.CustomFormat = "HH:mm:ss";
+            this.schEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.schEndTime.Location = new System.Drawing.Point(603, 92);
+            this.schEndTime.Name = "schEndTime";
+            this.schEndTime.ShowUpDown = true;
+            this.schEndTime.Size = new System.Drawing.Size(95, 20);
+            this.schEndTime.TabIndex = 86;
             // 
-            // metroLabel14
+            // schStartTime
             // 
-            this.metroLabel14.AutoSize = true;
-            this.metroLabel14.Location = new System.Drawing.Point(370, 91);
-            this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(121, 19);
-            this.metroLabel14.TabIndex = 35;
-            this.metroLabel14.Text = "End Date and Time";
+            this.schStartTime.CustomFormat = "HH:mm:ss";
+            this.schStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.schStartTime.Location = new System.Drawing.Point(603, 55);
+            this.schStartTime.Name = "schStartTime";
+            this.schStartTime.ShowUpDown = true;
+            this.schStartTime.Size = new System.Drawing.Size(95, 20);
+            this.schStartTime.TabIndex = 85;
             // 
-            // metroLabel13
+            // schEndDate
             // 
-            this.metroLabel13.AutoSize = true;
-            this.metroLabel13.Location = new System.Drawing.Point(370, 55);
-            this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(127, 19);
-            this.metroLabel13.TabIndex = 34;
-            this.metroLabel13.Text = "Start Date and Time";
+            this.schEndDate.CustomFormat = "yyyy-MM-dd";
+            this.schEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.schEndDate.Location = new System.Drawing.Point(499, 92);
+            this.schEndDate.Name = "schEndDate";
+            this.schEndDate.Size = new System.Drawing.Size(99, 20);
+            this.schEndDate.TabIndex = 84;
             // 
-            // metroLabel12
+            // schStartDate
             // 
-            this.metroLabel12.AutoSize = true;
-            this.metroLabel12.Location = new System.Drawing.Point(370, 19);
-            this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(82, 19);
-            this.metroLabel12.TabIndex = 33;
-            this.metroLabel12.Text = "Client Name";
-            // 
-            // schCancel
-            // 
-            this.schCancel.Location = new System.Drawing.Point(624, 742);
-            this.schCancel.Name = "schCancel";
-            this.schCancel.Size = new System.Drawing.Size(75, 23);
-            this.schCancel.TabIndex = 32;
-            this.schCancel.Text = "Cancel";
-            this.schCancel.UseSelectable = true;
-            // 
-            // htmlLabel1
-            // 
-            this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(114, 32);
-            this.htmlLabel1.AutoSize = false;
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlLabel1.Location = new System.Drawing.Point(320, 20);
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
-            this.htmlLabel1.TabIndex = 6;
-            this.htmlLabel1.Text = "Event Form";
+            this.schStartDate.CustomFormat = "yyyy-MM-dd";
+            this.schStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.schStartDate.Location = new System.Drawing.Point(499, 55);
+            this.schStartDate.Name = "schStartDate";
+            this.schStartDate.Size = new System.Drawing.Size(99, 20);
+            this.schStartDate.TabIndex = 83;
             // 
             // removeSerEng
             // 
@@ -434,37 +413,37 @@
             this.serviceEngGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.serviceEngGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.serviceEngGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.serviceEngGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.serviceEngGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.serviceEngGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.serviceEngGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.serviceEngGrid.DefaultCellStyle = dataGridViewCellStyle23;
             this.serviceEngGrid.EnableHeadersVisualStyles = false;
             this.serviceEngGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.serviceEngGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.serviceEngGrid.Location = new System.Drawing.Point(139, 249);
             this.serviceEngGrid.Name = "serviceEngGrid";
             this.serviceEngGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.serviceEngGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.serviceEngGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.serviceEngGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.serviceEngGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.serviceEngGrid.Size = new System.Drawing.Size(199, 103);
@@ -831,43 +810,64 @@
             this.metroLabel19.TabIndex = 56;
             this.metroLabel19.Text = "Project Name";
             // 
-            // schEndTime
+            // schClientName
             // 
-            this.schEndTime.CustomFormat = "HH:mm:ss";
-            this.schEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schEndTime.Location = new System.Drawing.Point(603, 92);
-            this.schEndTime.Name = "schEndTime";
-            this.schEndTime.ShowUpDown = true;
-            this.schEndTime.Size = new System.Drawing.Size(95, 20);
-            this.schEndTime.TabIndex = 86;
+            this.schClientName.FormattingEnabled = true;
+            this.schClientName.ItemHeight = 23;
+            this.schClientName.Location = new System.Drawing.Point(499, 12);
+            this.schClientName.Name = "schClientName";
+            this.schClientName.Size = new System.Drawing.Size(200, 29);
+            this.schClientName.TabIndex = 37;
+            this.schClientName.UseSelectable = true;
             // 
-            // schStartTime
+            // metroLabel14
             // 
-            this.schStartTime.CustomFormat = "HH:mm:ss";
-            this.schStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schStartTime.Location = new System.Drawing.Point(603, 55);
-            this.schStartTime.Name = "schStartTime";
-            this.schStartTime.ShowUpDown = true;
-            this.schStartTime.Size = new System.Drawing.Size(95, 20);
-            this.schStartTime.TabIndex = 85;
+            this.metroLabel14.AutoSize = true;
+            this.metroLabel14.Location = new System.Drawing.Point(370, 91);
+            this.metroLabel14.Name = "metroLabel14";
+            this.metroLabel14.Size = new System.Drawing.Size(121, 19);
+            this.metroLabel14.TabIndex = 35;
+            this.metroLabel14.Text = "End Date and Time";
             // 
-            // schEndDate
+            // metroLabel13
             // 
-            this.schEndDate.CustomFormat = "yyyy-MM-dd";
-            this.schEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schEndDate.Location = new System.Drawing.Point(499, 92);
-            this.schEndDate.Name = "schEndDate";
-            this.schEndDate.Size = new System.Drawing.Size(99, 20);
-            this.schEndDate.TabIndex = 84;
+            this.metroLabel13.AutoSize = true;
+            this.metroLabel13.Location = new System.Drawing.Point(370, 55);
+            this.metroLabel13.Name = "metroLabel13";
+            this.metroLabel13.Size = new System.Drawing.Size(127, 19);
+            this.metroLabel13.TabIndex = 34;
+            this.metroLabel13.Text = "Start Date and Time";
             // 
-            // schStartDate
+            // metroLabel12
             // 
-            this.schStartDate.CustomFormat = "yyyy-MM-dd";
-            this.schStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schStartDate.Location = new System.Drawing.Point(499, 55);
-            this.schStartDate.Name = "schStartDate";
-            this.schStartDate.Size = new System.Drawing.Size(99, 20);
-            this.schStartDate.TabIndex = 83;
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(370, 19);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(82, 19);
+            this.metroLabel12.TabIndex = 33;
+            this.metroLabel12.Text = "Client Name";
+            // 
+            // schCancel
+            // 
+            this.schCancel.Location = new System.Drawing.Point(624, 742);
+            this.schCancel.Name = "schCancel";
+            this.schCancel.Size = new System.Drawing.Size(75, 23);
+            this.schCancel.TabIndex = 32;
+            this.schCancel.Text = "Cancel";
+            this.schCancel.UseSelectable = true;
+            // 
+            // htmlLabel1
+            // 
+            this.htmlLabel1.AutoScroll = true;
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(123, 34);
+            this.htmlLabel1.AutoSize = false;
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.htmlLabel1.Location = new System.Drawing.Point(320, 20);
+            this.htmlLabel1.Name = "htmlLabel1";
+            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
+            this.htmlLabel1.TabIndex = 6;
+            this.htmlLabel1.Text = "Event Form";
             // 
             // UpdateEventForm
             // 

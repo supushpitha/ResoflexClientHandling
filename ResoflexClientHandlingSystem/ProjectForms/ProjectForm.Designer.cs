@@ -1,6 +1,6 @@
 ﻿namespace ResoflexClientHandlingSystem
 {
-    partial class Project1
+    partial class ProjectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Project1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
             this.addProjectBtn = new MetroFramework.Controls.MetroButton();
             this.updateProjectBtn = new MetroFramework.Controls.MetroButton();
             this.progressBtn = new MetroFramework.Controls.MetroButton();
@@ -349,6 +349,7 @@
             this.reqBtn.UseCustomBackColor = true;
             this.reqBtn.UseCustomForeColor = true;
             this.reqBtn.UseSelectable = true;
+            this.reqBtn.Click += new System.EventHandler(this.reqBtn_Click);
             // 
             // schHome
             // 

@@ -379,7 +379,7 @@
             this.eventSave.TabIndex = 75;
             this.eventSave.Text = "Save";
             this.eventSave.UseSelectable = true;
-            this.eventSave.Click += new System.EventHandler(this.eventSave_Click);
+            this.eventSave.Click += new System.EventHandler(this.validation);
             // 
             // checkList
             // 
@@ -674,6 +674,7 @@
             this.metroButton1.TabIndex = 54;
             this.metroButton1.Text = "Add Expenses";
             this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // feedback
             // 
@@ -903,10 +904,10 @@
             // 
             this.htmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(114, 32);
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(123, 34);
             this.htmlLabel1.AutoSize = false;
             this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.htmlLabel1.Location = new System.Drawing.Point(320, 20);
             this.htmlLabel1.Name = "htmlLabel1";
             this.htmlLabel1.Size = new System.Drawing.Size(139, 34);

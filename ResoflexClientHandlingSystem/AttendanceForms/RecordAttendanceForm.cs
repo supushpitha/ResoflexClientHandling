@@ -391,5 +391,13 @@ namespace ResoflexClientHandlingSystem
             staffDataGrid.Enabled = true;
 
         }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            this.Hide();
+            dashboard.ShowDialog();
+            this.Close();
+        }
     }
 }

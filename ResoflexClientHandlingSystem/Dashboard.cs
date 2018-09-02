@@ -59,7 +59,7 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            Project1 frm = new Project1();
+            ProjectForm frm = new ProjectForm();
 
             frm.Show();
         }
@@ -77,8 +77,9 @@ namespace ResoflexClientHandlingSystem
         private void metroButton4_Click(object sender, EventArgs e)
         {
             resourceForm frm = new resourceForm();
-
-            frm.Show();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
 
         private void metroButton5_Click(object sender, EventArgs e)
@@ -87,6 +88,8 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             frm.ShowDialog();
             this.Close();
+
+            //frm.Show();
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -97,13 +100,13 @@ namespace ResoflexClientHandlingSystem
         private void metroButton2_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
-
+           
             pm.Show();
         }
 
         private void metroButton3_Click_1(object sender, EventArgs e)
         {
-            OfficeExpensesForm frm = new OfficeExpensesForm();
+            AccountingMain frm = new AccountingMain();
 
             frm.Show();
         }
@@ -118,9 +121,10 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton7_Click(object sender, EventArgs e)
         {
-            StaffEvalutionForm sEf = new StaffEvalutionForm();
-
-            sEf.Show();
+            MemberListForm sEf = new MemberListForm();
+            this.Hide();
+            sEf.ShowDialog();
+            this.Close();
         }
 
         private void metroPanel1_Paint(object sender, PaintEventArgs e)

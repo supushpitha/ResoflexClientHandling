@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffForm));
             this.metroTabControl1 = new MetroFramework.Controls.MetroTabControl();
             this.AddMemberTab = new MetroFramework.Controls.MetroTabPage();
@@ -64,10 +65,10 @@
             this.htmlLabel16 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.clearNewDesBtn = new MetroFramework.Controls.MetroButton();
             this.addNewDesBtn = new MetroFramework.Controls.MetroButton();
-            this.htmlLabel15 = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.addDesIdTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.htmlLabel14 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.addNewDesTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.errorProviderAddStaff = new System.Windows.Forms.ErrorProvider(this.components);
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.AddMemberTab.SuspendLayout();
             this.htmlLabel2.SuspendLayout();
@@ -81,17 +82,20 @@
             this.htmlLabel8.SuspendLayout();
             this.AddDesignationTab.SuspendLayout();
             this.htmlLabel16.SuspendLayout();
-            this.htmlLabel15.SuspendLayout();
             this.htmlLabel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddStaff)).BeginInit();
             this.SuspendLayout();
             // 
             // metroTabControl1
             // 
+            this.metroTabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.metroTabControl1.Controls.Add(this.AddMemberTab);
             this.metroTabControl1.Controls.Add(this.AddDesignationTab);
             this.metroTabControl1.Location = new System.Drawing.Point(11, 50);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(771, 453);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -133,6 +137,7 @@
             // 
             // htmlLabel2
             // 
+            this.htmlLabel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel2.AutoScroll = true;
             this.htmlLabel2.AutoScrollMinSize = new System.Drawing.Size(63, 23);
             this.htmlLabel2.AutoSize = false;
@@ -146,6 +151,7 @@
             // 
             // fNameTxtBox
             // 
+            this.fNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -173,9 +179,11 @@
             this.fNameTxtBox.UseSelectable = true;
             this.fNameTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.fNameTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.fNameTxtBox.Click += new System.EventHandler(this.fNameTxtBox_Click);
             // 
             // htmlLabel12
             // 
+            this.htmlLabel12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel12.AutoScroll = true;
             this.htmlLabel12.AutoScrollMinSize = new System.Drawing.Size(73, 23);
             this.htmlLabel12.AutoSize = false;
@@ -189,6 +197,7 @@
             // 
             // basicSalTxtBox
             // 
+            this.basicSalTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -219,6 +228,7 @@
             // 
             // htmlLabel11
             // 
+            this.htmlLabel11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel11.AutoScroll = true;
             this.htmlLabel11.AutoScrollMinSize = new System.Drawing.Size(52, 23);
             this.htmlLabel11.AutoSize = false;
@@ -232,6 +242,7 @@
             // 
             // otRateTxtBox
             // 
+            this.otRateTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -262,6 +273,7 @@
             // 
             // htmlLabel5
             // 
+            this.htmlLabel5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel5.AutoScroll = true;
             this.htmlLabel5.AutoScrollMinSize = new System.Drawing.Size(52, 23);
             this.htmlLabel5.AutoSize = false;
@@ -275,6 +287,7 @@
             // 
             // linkedTxtBox
             // 
+            this.linkedTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -305,6 +318,7 @@
             // 
             // lNameTxtBox
             // 
+            this.lNameTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -335,6 +349,7 @@
             // 
             // htmlLabel4
             // 
+            this.htmlLabel4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel4.AutoScroll = true;
             this.htmlLabel4.AutoScrollMinSize = new System.Drawing.Size(59, 23);
             this.htmlLabel4.AutoSize = false;
@@ -348,6 +363,7 @@
             // 
             // fbTxtBox
             // 
+            this.fbTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -378,6 +394,7 @@
             // 
             // telMobileTxtBox
             // 
+            this.telMobileTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -405,9 +422,12 @@
             this.telMobileTxtBox.UseSelectable = true;
             this.telMobileTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.telMobileTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.telMobileTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.telMobileTxtBox_Validating);
+            this.telMobileTxtBox.Validated += new System.EventHandler(this.telMobileTxtBox_Validated);
             // 
             // htmlLabel10
             // 
+            this.htmlLabel10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel10.AutoScroll = true;
             this.htmlLabel10.AutoScrollMinSize = new System.Drawing.Size(65, 23);
             this.htmlLabel10.AutoSize = false;
@@ -421,6 +441,7 @@
             // 
             // telLanTxtBox
             // 
+            this.telLanTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -448,9 +469,12 @@
             this.telLanTxtBox.UseSelectable = true;
             this.telLanTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.telLanTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.telLanTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.telLanTxtBox_Validating);
+            this.telLanTxtBox.Validated += new System.EventHandler(this.telLanTxtBox_Validated);
             // 
             // htmlLabel7
             // 
+            this.htmlLabel7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel7.AutoScroll = true;
             this.htmlLabel7.AutoScrollMinSize = new System.Drawing.Size(48, 23);
             this.htmlLabel7.AutoSize = false;
@@ -464,6 +488,7 @@
             // 
             // emailTxtBox
             // 
+            this.emailTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -494,6 +519,7 @@
             // 
             // sAddTxtBox
             // 
+            this.sAddTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -524,6 +550,7 @@
             // 
             // htmlLabel6
             // 
+            this.htmlLabel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel6.AutoScroll = true;
             this.htmlLabel6.AutoScrollMinSize = new System.Drawing.Size(69, 23);
             this.htmlLabel6.AutoSize = false;
@@ -537,21 +564,19 @@
             // 
             // desgCmbBox
             // 
+            this.desgCmbBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.desgCmbBox.FormattingEnabled = true;
             this.desgCmbBox.ItemHeight = 23;
-            this.desgCmbBox.Items.AddRange(new object[] {
-            "Accountant",
-            "Manager",
-            "HR",
-            "Technician"});
             this.desgCmbBox.Location = new System.Drawing.Point(161, 1);
             this.desgCmbBox.Name = "desgCmbBox";
             this.desgCmbBox.Size = new System.Drawing.Size(180, 29);
             this.desgCmbBox.TabIndex = 0;
             this.desgCmbBox.UseSelectable = true;
+            this.desgCmbBox.SelectedIndexChanged += new System.EventHandler(this.desgCmbBox_SelectedIndexChanged);
             // 
             // htmlLabel9
             // 
+            this.htmlLabel9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel9.AutoScroll = true;
             this.htmlLabel9.AutoScrollMinSize = new System.Drawing.Size(107, 23);
             this.htmlLabel9.AutoSize = false;
@@ -564,6 +589,7 @@
             // 
             // htmlLabel8
             // 
+            this.htmlLabel8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.htmlLabel8.AutoScroll = true;
             this.htmlLabel8.AutoScrollMinSize = new System.Drawing.Size(10, 0);
             this.htmlLabel8.AutoSize = false;
@@ -576,6 +602,7 @@
             // 
             // metroLink2
             // 
+            this.metroLink2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.metroLink2.BackColor = System.Drawing.Color.White;
             this.metroLink2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroLink2.BackgroundImage")));
             this.metroLink2.Location = new System.Drawing.Point(13, 13);
@@ -586,6 +613,7 @@
             // 
             // pAddTxtBox
             // 
+            this.pAddTxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -616,6 +644,7 @@
             // 
             // staffAddBtn
             // 
+            this.staffAddBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.staffAddBtn.Location = new System.Drawing.Point(441, 323);
             this.staffAddBtn.Name = "staffAddBtn";
             this.staffAddBtn.Size = new System.Drawing.Size(106, 42);
@@ -626,6 +655,7 @@
             // 
             // addNICtxtBox
             // 
+            this.addNICtxtBox.Anchor = System.Windows.Forms.AnchorStyles.Top;
             // 
             // 
             // 
@@ -653,9 +683,13 @@
             this.addNICtxtBox.UseSelectable = true;
             this.addNICtxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.addNICtxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.addNICtxtBox.Click += new System.EventHandler(this.addNICtxtBox_Click);
+            this.addNICtxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.addNICtxtBox_Validating);
+            this.addNICtxtBox.Validated += new System.EventHandler(this.addNICtxtBox_Validated);
             // 
             // htmlLabel1
             // 
+            this.htmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel1.AutoScroll = true;
             this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(61, 23);
             this.htmlLabel1.AutoSize = false;
@@ -668,6 +702,7 @@
             // 
             // staffClearBtn
             // 
+            this.staffClearBtn.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.staffClearBtn.Location = new System.Drawing.Point(585, 323);
             this.staffClearBtn.Name = "staffClearBtn";
             this.staffClearBtn.Size = new System.Drawing.Size(106, 42);
@@ -678,6 +713,7 @@
             // 
             // htmlLabel3
             // 
+            this.htmlLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel3.AutoScroll = true;
             this.htmlLabel3.AutoScrollMinSize = new System.Drawing.Size(93, 23);
             this.htmlLabel3.AutoSize = false;
@@ -690,6 +726,7 @@
             // 
             // htmlLabel13
             // 
+            this.htmlLabel13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.htmlLabel13.AutoScroll = true;
             this.htmlLabel13.AutoScrollMinSize = new System.Drawing.Size(29, 23);
             this.htmlLabel13.AutoSize = false;
@@ -723,16 +760,16 @@
             this.htmlLabel16.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.htmlLabel16.Controls.Add(this.clearNewDesBtn);
             this.htmlLabel16.Controls.Add(this.addNewDesBtn);
-            this.htmlLabel16.Controls.Add(this.htmlLabel15);
             this.htmlLabel16.Controls.Add(this.htmlLabel14);
             this.htmlLabel16.Location = new System.Drawing.Point(142, 104);
             this.htmlLabel16.Name = "htmlLabel16";
             this.htmlLabel16.Size = new System.Drawing.Size(451, 213);
             this.htmlLabel16.TabIndex = 2;
+            this.htmlLabel16.Click += new System.EventHandler(this.htmlLabel16_Click);
             // 
             // clearNewDesBtn
             // 
-            this.clearNewDesBtn.Location = new System.Drawing.Point(252, 162);
+            this.clearNewDesBtn.Location = new System.Drawing.Point(252, 140);
             this.clearNewDesBtn.Name = "clearNewDesBtn";
             this.clearNewDesBtn.Size = new System.Drawing.Size(104, 33);
             this.clearNewDesBtn.TabIndex = 4;
@@ -742,56 +779,13 @@
             // 
             // addNewDesBtn
             // 
-            this.addNewDesBtn.Location = new System.Drawing.Point(99, 162);
+            this.addNewDesBtn.Location = new System.Drawing.Point(99, 140);
             this.addNewDesBtn.Name = "addNewDesBtn";
             this.addNewDesBtn.Size = new System.Drawing.Size(104, 33);
             this.addNewDesBtn.TabIndex = 3;
             this.addNewDesBtn.Text = "Add";
             this.addNewDesBtn.UseSelectable = true;
             this.addNewDesBtn.Click += new System.EventHandler(this.addNewDesBtn_Click);
-            // 
-            // htmlLabel15
-            // 
-            this.htmlLabel15.AutoScroll = true;
-            this.htmlLabel15.AutoScrollMinSize = new System.Drawing.Size(21, 23);
-            this.htmlLabel15.AutoSize = false;
-            this.htmlLabel15.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.htmlLabel15.Controls.Add(this.addDesIdTxtBox);
-            this.htmlLabel15.Location = new System.Drawing.Point(67, 97);
-            this.htmlLabel15.Name = "htmlLabel15";
-            this.htmlLabel15.Size = new System.Drawing.Size(313, 41);
-            this.htmlLabel15.TabIndex = 3;
-            this.htmlLabel15.Text = "ID";
-            // 
-            // addDesIdTxtBox
-            // 
-            // 
-            // 
-            // 
-            this.addDesIdTxtBox.CustomButton.Image = null;
-            this.addDesIdTxtBox.CustomButton.Location = new System.Drawing.Point(187, 2);
-            this.addDesIdTxtBox.CustomButton.Name = "";
-            this.addDesIdTxtBox.CustomButton.Size = new System.Drawing.Size(31, 31);
-            this.addDesIdTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.addDesIdTxtBox.CustomButton.TabIndex = 1;
-            this.addDesIdTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.addDesIdTxtBox.CustomButton.UseSelectable = true;
-            this.addDesIdTxtBox.CustomButton.Visible = false;
-            this.addDesIdTxtBox.Lines = new string[0];
-            this.addDesIdTxtBox.Location = new System.Drawing.Point(92, 2);
-            this.addDesIdTxtBox.MaxLength = 32767;
-            this.addDesIdTxtBox.Name = "addDesIdTxtBox";
-            this.addDesIdTxtBox.PasswordChar = '\0';
-            this.addDesIdTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.addDesIdTxtBox.SelectedText = "";
-            this.addDesIdTxtBox.SelectionLength = 0;
-            this.addDesIdTxtBox.SelectionStart = 0;
-            this.addDesIdTxtBox.ShortcutsEnabled = true;
-            this.addDesIdTxtBox.Size = new System.Drawing.Size(221, 36);
-            this.addDesIdTxtBox.TabIndex = 5;
-            this.addDesIdTxtBox.UseSelectable = true;
-            this.addDesIdTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.addDesIdTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // htmlLabel14
             // 
@@ -800,9 +794,9 @@
             this.htmlLabel14.AutoSize = false;
             this.htmlLabel14.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.htmlLabel14.Controls.Add(this.addNewDesTxtBox);
-            this.htmlLabel14.Location = new System.Drawing.Point(67, 30);
+            this.htmlLabel14.Location = new System.Drawing.Point(78, 66);
             this.htmlLabel14.Name = "htmlLabel14";
-            this.htmlLabel14.Size = new System.Drawing.Size(313, 41);
+            this.htmlLabel14.Size = new System.Drawing.Size(291, 47);
             this.htmlLabel14.TabIndex = 2;
             this.htmlLabel14.Text = "Name";
             // 
@@ -821,7 +815,7 @@
             this.addNewDesTxtBox.CustomButton.UseSelectable = true;
             this.addNewDesTxtBox.CustomButton.Visible = false;
             this.addNewDesTxtBox.Lines = new string[0];
-            this.addNewDesTxtBox.Location = new System.Drawing.Point(92, 0);
+            this.addNewDesTxtBox.Location = new System.Drawing.Point(61, 0);
             this.addNewDesTxtBox.MaxLength = 32767;
             this.addNewDesTxtBox.Name = "addNewDesTxtBox";
             this.addNewDesTxtBox.PasswordChar = '\0';
@@ -835,12 +829,32 @@
             this.addNewDesTxtBox.UseSelectable = true;
             this.addNewDesTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.addNewDesTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.addNewDesTxtBox.Click += new System.EventHandler(this.addNewDesTxtBox_Click);
+            // 
+            // errorProviderAddStaff
+            // 
+            this.errorProviderAddStaff.ContainerControl = this;
+            // 
+            // homeBtn
+            // 
+            this.homeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(392, 8);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 16;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 512);
+            this.ClientSize = new System.Drawing.Size(815, 538);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "StaffForm";
             this.Text = "Add Member";
@@ -858,8 +872,8 @@
             this.htmlLabel8.ResumeLayout(false);
             this.AddDesignationTab.ResumeLayout(false);
             this.htmlLabel16.ResumeLayout(false);
-            this.htmlLabel15.ResumeLayout(false);
             this.htmlLabel14.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderAddStaff)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -899,11 +913,11 @@
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel3;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel13;
         private MetroFramework.Controls.MetroTextBox addNewDesTxtBox;
-        private MetroFramework.Controls.MetroTextBox addDesIdTxtBox;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel16;
         private MetroFramework.Controls.MetroButton clearNewDesBtn;
         private MetroFramework.Controls.MetroButton addNewDesBtn;
-        private MetroFramework.Drawing.Html.HtmlLabel htmlLabel15;
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel14;
+        private System.Windows.Forms.ErrorProvider errorProviderAddStaff;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

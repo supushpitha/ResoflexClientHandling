@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Core;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +17,11 @@ namespace ResoflexClientHandlingSystem
         public EventDetailsForm()
         {
             InitializeComponent();
+        }
+
+        private void EventDetailsForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -32,13 +32,13 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.eventExpGrid = new MetroFramework.Controls.MetroGrid();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.otherExpTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.accTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.mealExpTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile4 = new MetroFramework.Controls.MetroTile();
+            this.travelExpTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.byProjectCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.byClientCmbBox = new MetroFramework.Controls.MetroComboBox();
@@ -48,32 +48,35 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel6 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile5 = new MetroFramework.Controls.MetroTile();
+            this.maxExpProjTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile6 = new MetroFramework.Controls.MetroTile();
+            this.totalExpProjTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
-            this.metroTile7 = new MetroFramework.Controls.MetroTile();
+            this.noTechTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.eventExpGrid)).BeginInit();
-            this.metroTile1.SuspendLayout();
-            this.metroTile2.SuspendLayout();
-            this.metroTile3.SuspendLayout();
-            this.metroTile4.SuspendLayout();
-            this.metroTile5.SuspendLayout();
-            this.metroTile6.SuspendLayout();
-            this.metroTile7.SuspendLayout();
+            this.otherExpTile.SuspendLayout();
+            this.accTile.SuspendLayout();
+            this.mealExpTile.SuspendLayout();
+            this.travelExpTile.SuspendLayout();
+            this.maxExpProjTile.SuspendLayout();
+            this.totalExpProjTile.SuspendLayout();
+            this.noTechTile.SuspendLayout();
             this.SuspendLayout();
             // 
             // eventExpGrid
             // 
+            this.eventExpGrid.AllowUserToAddRows = false;
+            this.eventExpGrid.AllowUserToDeleteRows = false;
             this.eventExpGrid.AllowUserToResizeRows = false;
+            this.eventExpGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.eventExpGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.eventExpGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventExpGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.eventExpGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -81,7 +84,7 @@
             this.eventExpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -92,6 +95,7 @@
             this.eventExpGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.eventExpGrid.Location = new System.Drawing.Point(23, 300);
             this.eventExpGrid.Name = "eventExpGrid";
+            this.eventExpGrid.ReadOnly = true;
             this.eventExpGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -105,19 +109,20 @@
             this.eventExpGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.eventExpGrid.Size = new System.Drawing.Size(777, 377);
             this.eventExpGrid.TabIndex = 2;
+            this.eventExpGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventExpGrid_CellClick);
             // 
-            // metroTile1
+            // otherExpTile
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Controls.Add(this.metroLabel1);
-            this.metroTile1.Location = new System.Drawing.Point(806, 617);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(251, 59);
-            this.metroTile1.TabIndex = 3;
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile1.UseSelectable = true;
+            this.otherExpTile.ActiveControl = null;
+            this.otherExpTile.Controls.Add(this.metroLabel1);
+            this.otherExpTile.Location = new System.Drawing.Point(806, 617);
+            this.otherExpTile.Name = "otherExpTile";
+            this.otherExpTile.Size = new System.Drawing.Size(251, 59);
+            this.otherExpTile.TabIndex = 3;
+            this.otherExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.otherExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.otherExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.otherExpTile.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -129,18 +134,18 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Other Expenses";
             // 
-            // metroTile2
+            // accTile
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Controls.Add(this.metroLabel2);
-            this.metroTile2.Location = new System.Drawing.Point(806, 552);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(251, 59);
-            this.metroTile2.TabIndex = 4;
-            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile2.UseSelectable = true;
+            this.accTile.ActiveControl = null;
+            this.accTile.Controls.Add(this.metroLabel2);
+            this.accTile.Location = new System.Drawing.Point(806, 552);
+            this.accTile.Name = "accTile";
+            this.accTile.Size = new System.Drawing.Size(251, 59);
+            this.accTile.TabIndex = 4;
+            this.accTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.accTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.accTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.accTile.UseSelectable = true;
             // 
             // metroLabel2
             // 
@@ -152,18 +157,18 @@
             this.metroLabel2.TabIndex = 1;
             this.metroLabel2.Text = "Accomm. Expenses";
             // 
-            // metroTile3
+            // mealExpTile
             // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.Controls.Add(this.metroLabel3);
-            this.metroTile3.Location = new System.Drawing.Point(806, 487);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(251, 59);
-            this.metroTile3.TabIndex = 5;
-            this.metroTile3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile3.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile3.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile3.UseSelectable = true;
+            this.mealExpTile.ActiveControl = null;
+            this.mealExpTile.Controls.Add(this.metroLabel3);
+            this.mealExpTile.Location = new System.Drawing.Point(806, 487);
+            this.mealExpTile.Name = "mealExpTile";
+            this.mealExpTile.Size = new System.Drawing.Size(251, 59);
+            this.mealExpTile.TabIndex = 5;
+            this.mealExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.mealExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.mealExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.mealExpTile.UseSelectable = true;
             // 
             // metroLabel3
             // 
@@ -175,18 +180,18 @@
             this.metroLabel3.TabIndex = 1;
             this.metroLabel3.Text = "Meals Expenses";
             // 
-            // metroTile4
+            // travelExpTile
             // 
-            this.metroTile4.ActiveControl = null;
-            this.metroTile4.Controls.Add(this.metroLabel4);
-            this.metroTile4.Location = new System.Drawing.Point(806, 422);
-            this.metroTile4.Name = "metroTile4";
-            this.metroTile4.Size = new System.Drawing.Size(251, 59);
-            this.metroTile4.TabIndex = 6;
-            this.metroTile4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile4.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile4.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile4.UseSelectable = true;
+            this.travelExpTile.ActiveControl = null;
+            this.travelExpTile.Controls.Add(this.metroLabel4);
+            this.travelExpTile.Location = new System.Drawing.Point(806, 422);
+            this.travelExpTile.Name = "travelExpTile";
+            this.travelExpTile.Size = new System.Drawing.Size(251, 59);
+            this.travelExpTile.TabIndex = 6;
+            this.travelExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.travelExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.travelExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.travelExpTile.UseSelectable = true;
             // 
             // metroLabel4
             // 
@@ -278,18 +283,18 @@
             this.metroLabel7.TabIndex = 14;
             this.metroLabel7.Text = "By Expense Type";
             // 
-            // metroTile5
+            // maxExpProjTile
             // 
-            this.metroTile5.ActiveControl = null;
-            this.metroTile5.Controls.Add(this.metroLabel8);
-            this.metroTile5.Location = new System.Drawing.Point(24, 64);
-            this.metroTile5.Name = "metroTile5";
-            this.metroTile5.Size = new System.Drawing.Size(226, 89);
-            this.metroTile5.TabIndex = 15;
-            this.metroTile5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile5.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile5.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile5.UseSelectable = true;
+            this.maxExpProjTile.ActiveControl = null;
+            this.maxExpProjTile.Controls.Add(this.metroLabel8);
+            this.maxExpProjTile.Location = new System.Drawing.Point(24, 64);
+            this.maxExpProjTile.Name = "maxExpProjTile";
+            this.maxExpProjTile.Size = new System.Drawing.Size(226, 89);
+            this.maxExpProjTile.TabIndex = 15;
+            this.maxExpProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.maxExpProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.maxExpProjTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.maxExpProjTile.UseSelectable = true;
             // 
             // metroLabel8
             // 
@@ -301,18 +306,18 @@
             this.metroLabel8.TabIndex = 0;
             this.metroLabel8.Text = "Max Exp of Project";
             // 
-            // metroTile6
+            // totalExpProjTile
             // 
-            this.metroTile6.ActiveControl = null;
-            this.metroTile6.Controls.Add(this.metroLabel9);
-            this.metroTile6.Location = new System.Drawing.Point(257, 64);
-            this.metroTile6.Name = "metroTile6";
-            this.metroTile6.Size = new System.Drawing.Size(226, 89);
-            this.metroTile6.TabIndex = 16;
-            this.metroTile6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile6.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile6.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile6.UseSelectable = true;
+            this.totalExpProjTile.ActiveControl = null;
+            this.totalExpProjTile.Controls.Add(this.metroLabel9);
+            this.totalExpProjTile.Location = new System.Drawing.Point(257, 64);
+            this.totalExpProjTile.Name = "totalExpProjTile";
+            this.totalExpProjTile.Size = new System.Drawing.Size(226, 89);
+            this.totalExpProjTile.TabIndex = 16;
+            this.totalExpProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalExpProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.totalExpProjTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.totalExpProjTile.UseSelectable = true;
             // 
             // metroLabel9
             // 
@@ -324,18 +329,18 @@
             this.metroLabel9.TabIndex = 1;
             this.metroLabel9.Text = "Total Exp of Project";
             // 
-            // metroTile7
+            // noTechTile
             // 
-            this.metroTile7.ActiveControl = null;
-            this.metroTile7.Controls.Add(this.metroLabel10);
-            this.metroTile7.Location = new System.Drawing.Point(490, 64);
-            this.metroTile7.Name = "metroTile7";
-            this.metroTile7.Size = new System.Drawing.Size(226, 89);
-            this.metroTile7.TabIndex = 17;
-            this.metroTile7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile7.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile7.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile7.UseSelectable = true;
+            this.noTechTile.ActiveControl = null;
+            this.noTechTile.Controls.Add(this.metroLabel10);
+            this.noTechTile.Location = new System.Drawing.Point(490, 64);
+            this.noTechTile.Name = "noTechTile";
+            this.noTechTile.Size = new System.Drawing.Size(226, 89);
+            this.noTechTile.TabIndex = 17;
+            this.noTechTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.noTechTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.noTechTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.noTechTile.UseSelectable = true;
             // 
             // metroLabel10
             // 
@@ -352,9 +357,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 700);
-            this.Controls.Add(this.metroTile7);
-            this.Controls.Add(this.metroTile6);
-            this.Controls.Add(this.metroTile5);
+            this.Controls.Add(this.noTechTile);
+            this.Controls.Add(this.totalExpProjTile);
+            this.Controls.Add(this.maxExpProjTile);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.metroLabel6);
             this.Controls.Add(this.metroLabel5);
@@ -363,30 +368,31 @@
             this.Controls.Add(this.byExpTypeCmbBox);
             this.Controls.Add(this.byClientCmbBox);
             this.Controls.Add(this.byProjectCmbBox);
-            this.Controls.Add(this.metroTile4);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.travelExpTile);
+            this.Controls.Add(this.mealExpTile);
+            this.Controls.Add(this.accTile);
+            this.Controls.Add(this.otherExpTile);
             this.Controls.Add(this.eventExpGrid);
             this.MinimumSize = new System.Drawing.Size(1080, 700);
             this.Name = "EventDetailsForm";
             this.Text = "Event Expenses";
             this.Load += new System.EventHandler(this.EventDetailsForm_Load);
+            this.Shown += new System.EventHandler(this.EventDetailsForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.eventExpGrid)).EndInit();
-            this.metroTile1.ResumeLayout(false);
-            this.metroTile1.PerformLayout();
-            this.metroTile2.ResumeLayout(false);
-            this.metroTile2.PerformLayout();
-            this.metroTile3.ResumeLayout(false);
-            this.metroTile3.PerformLayout();
-            this.metroTile4.ResumeLayout(false);
-            this.metroTile4.PerformLayout();
-            this.metroTile5.ResumeLayout(false);
-            this.metroTile5.PerformLayout();
-            this.metroTile6.ResumeLayout(false);
-            this.metroTile6.PerformLayout();
-            this.metroTile7.ResumeLayout(false);
-            this.metroTile7.PerformLayout();
+            this.otherExpTile.ResumeLayout(false);
+            this.otherExpTile.PerformLayout();
+            this.accTile.ResumeLayout(false);
+            this.accTile.PerformLayout();
+            this.mealExpTile.ResumeLayout(false);
+            this.mealExpTile.PerformLayout();
+            this.travelExpTile.ResumeLayout(false);
+            this.travelExpTile.PerformLayout();
+            this.maxExpProjTile.ResumeLayout(false);
+            this.maxExpProjTile.PerformLayout();
+            this.totalExpProjTile.ResumeLayout(false);
+            this.totalExpProjTile.PerformLayout();
+            this.noTechTile.ResumeLayout(false);
+            this.noTechTile.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -394,10 +400,10 @@
 
         #endregion
         private MetroFramework.Controls.MetroGrid eventExpGrid;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile3;
-        private MetroFramework.Controls.MetroTile metroTile4;
+        private MetroFramework.Controls.MetroTile otherExpTile;
+        private MetroFramework.Controls.MetroTile accTile;
+        private MetroFramework.Controls.MetroTile mealExpTile;
+        private MetroFramework.Controls.MetroTile travelExpTile;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
@@ -410,9 +416,9 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroLabel metroLabel6;
         private MetroFramework.Controls.MetroLabel metroLabel7;
-        private MetroFramework.Controls.MetroTile metroTile5;
-        private MetroFramework.Controls.MetroTile metroTile6;
-        private MetroFramework.Controls.MetroTile metroTile7;
+        private MetroFramework.Controls.MetroTile maxExpProjTile;
+        private MetroFramework.Controls.MetroTile totalExpProjTile;
+        private MetroFramework.Controls.MetroTile noTechTile;
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel10;

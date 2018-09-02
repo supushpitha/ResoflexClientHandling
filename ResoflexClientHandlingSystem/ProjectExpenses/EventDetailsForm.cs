@@ -49,20 +49,22 @@ namespace ResoflexClientHandlingSystem
             totalExpProjTile.Text = "Rs.0.00";
             noTechTile.Text = "0";
 
-            MySqlDataReader reader = DBConnection.getData("");
+            MySqlDataReader reader = DBConnection.getData("select MAX(amount) as max, SUM(amount) as sum from exp_detail_event where " +
+                                                          "proj_id=" + projId + " group by proj_id;");
 
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    
+                    maxExpProjTile.Text = "Rs." + reader.GetDouble(0);
+                    totalExpProjTile.Text = "Rs." + reader.GetDouble(1);
                 }
             }
             else
             {
-                mealExpTile.Text = "Rs.0.00";
-                accTile.Text = "Rs.0.00";
-                travelExpTile.Text = "Rs.0.00";
+                maxExpProjTile.Text = "Rs.0.00";
+                totalExpProjTile.Text = "Rs.0.00";
+                noTechTile.Text = "0";
             }
 
             reader.Close();

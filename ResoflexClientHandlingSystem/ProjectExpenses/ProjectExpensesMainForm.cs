@@ -153,6 +153,7 @@ namespace ResoflexClientHandlingSystem
         private void ProjectExpensesMainForm_Shown(object sender, EventArgs e)
         {
             fillTiles();
+            chart1.Focus();
         }
 
         private void fillTiles()

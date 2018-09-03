@@ -271,7 +271,7 @@
             this.metroTabControl2.Controls.Add(this.metroTabPage7);
             this.metroTabControl2.Location = new System.Drawing.Point(7, 3);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 0;
+            this.metroTabControl2.SelectedIndex = 2;
             this.metroTabControl2.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl2.TabIndex = 2;
             this.metroTabControl2.UseSelectable = true;
@@ -2298,7 +2298,7 @@
             // attendanceOfEmployeeDateTime2
             // 
             this.attendanceOfEmployeeDateTime2.Location = new System.Drawing.Point(361, 38);
-            this.attendanceOfEmployeeDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
+            this.attendanceOfEmployeeDateTime2.MinimumSize = new System.Drawing.Size(4, 29);
             this.attendanceOfEmployeeDateTime2.Name = "attendanceOfEmployeeDateTime2";
             this.attendanceOfEmployeeDateTime2.Size = new System.Drawing.Size(208, 29);
             this.attendanceOfEmployeeDateTime2.TabIndex = 9;
@@ -2307,7 +2307,7 @@
             // attendanceOfEmployeeDateTime
             // 
             this.attendanceOfEmployeeDateTime.Location = new System.Drawing.Point(65, 38);
-            this.attendanceOfEmployeeDateTime.MinimumSize = new System.Drawing.Size(0, 29);
+            this.attendanceOfEmployeeDateTime.MinimumSize = new System.Drawing.Size(4, 29);
             this.attendanceOfEmployeeDateTime.Name = "attendanceOfEmployeeDateTime";
             this.attendanceOfEmployeeDateTime.Size = new System.Drawing.Size(214, 29);
             this.attendanceOfEmployeeDateTime.TabIndex = 8;

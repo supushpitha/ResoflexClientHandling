@@ -382,7 +382,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("update project_shortcomings set description = '" + projectShortcomings.Description + "',proj_id = '" + projectShortcomings.ProjectId + "',event_id = '" + projectShortcomings.EventId + "' where staff_id = '" + projectShortcomings.StaffId + "'");
+                DBConnection.updateDB("update project_shortcomings set description = '" + projectShortcomings.Description + "' where staff_id = '" + projectShortcomings.StaffId + "' and proj_id = '" + projectShortcomings.ProjectId + "' and event_id = '" + projectShortcomings.EventId + "'");
             }
             catch (Exception ex)
             {
@@ -397,7 +397,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("delete from project_shortcomings where staff_id = '" + projectShortcomings.StaffId + "'");
+                DBConnection.updateDB("delete from project_shortcomings where staff_id = '" + projectShortcomings.StaffId + "' and proj_id = '" + projectShortcomings.ProjectId + "' and event_id = '" + projectShortcomings.EventId + "'");
             }
             catch (Exception ex)
             {

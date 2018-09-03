@@ -38,6 +38,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RecordAttendanceForm));
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.employeeNumberTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
@@ -66,6 +67,7 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.checkPresenceTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.todaysAttendanceTimer = new System.Windows.Forms.Timer(this.components);
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.todaysAttendanceDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pastAttendanceDataGrid)).BeginInit();
@@ -336,7 +338,7 @@
             // 
             this.metroDateTime3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.metroDateTime3.Location = new System.Drawing.Point(603, 472);
-            this.metroDateTime3.MinimumSize = new System.Drawing.Size(4, 29);
+            this.metroDateTime3.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime3.Name = "metroDateTime3";
             this.metroDateTime3.Size = new System.Drawing.Size(183, 29);
             this.metroDateTime3.TabIndex = 20;
@@ -575,11 +577,25 @@
             this.todaysAttendanceTimer.Interval = 2000;
             this.todaysAttendanceTimer.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // homeBtn
+            // 
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(363, 12);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 36;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
             // RecordAttendanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.checkPresenceTxtbox);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroLabel9);
@@ -647,5 +663,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroTextBox checkPresenceTxtbox;
         private System.Windows.Forms.Timer todaysAttendanceTimer;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

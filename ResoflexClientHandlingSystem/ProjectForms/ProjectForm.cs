@@ -14,16 +14,16 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class Project1 : MetroFramework.Forms.MetroForm
+    public partial class ProjectForm : MetroFramework.Forms.MetroForm
     {
         string clientName = "";
 
-        public Project1()
+        public ProjectForm()
         {
             InitializeComponent();
         }
 
-        public Project1(string clientName)
+        public ProjectForm(string clientName)
         {
             InitializeComponent();
 
@@ -103,7 +103,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_id as ID,p.proj_name as Project_Name,p.description as Description ,c.name as Client,a.sub_cat_name as Category from project p, client c, proj_sub_category a where p.client_id=c.client_id and p.proj_sub_cat_id=a.proj_sub_cat_id group by p.proj_id desc");
+            MySqlDataReader reader = DBConnection.getData("select p.proj_id as ID,p.proj_name as Project_Name,p.description as Description ,c.name as Client,a.sub_cat_name as Category from project p, client c, proj_sub_category a where p.client_id=c.client_id and p.proj_sub_cat_id=a.proj_sub_cat_id and p.proj_cat_id=a.proj_cat_id group by p.proj_id desc");
 
             table.Load(reader);
 
@@ -250,9 +250,15 @@ namespace ResoflexClientHandlingSystem
            
         }
 
+      
+
         private void projectGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress();
+
+
+            int proid = Int32.Parse(projectGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+
+            ProjectForms.ProjectProgress frm = new ProjectForms.ProjectProgress(proid);
             frm.ShowDialog();
         }
 
@@ -266,6 +272,20 @@ namespace ResoflexClientHandlingSystem
         {
             ProjectForms.Maintenance frm = new ProjectForms.Maintenance();
             frm.ShowDialog();
+        }
+
+
+        private void closeForm()
+        {
+            this.closeForm();
+        }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            
+            Dashboard frm = new Dashboard();
+            frm.ShowDialog();
+            
         }
 
         private void reqBtn_Click(object sender, EventArgs e)

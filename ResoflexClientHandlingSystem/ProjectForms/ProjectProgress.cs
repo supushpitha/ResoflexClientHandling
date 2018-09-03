@@ -14,13 +14,24 @@ namespace ResoflexClientHandlingSystem.ProjectForms
 {
     public partial class ProjectProgress : MetroFramework.Forms.MetroForm
     {
+        private int proid;
+
         public ProjectProgress()
         {
             InitializeComponent();
         }
 
+        public ProjectProgress(int proid)
+        {
+            this.proid = proid;
+            InitializeComponent();
+            
+        }
+
         private void ProjectProgress_Load(object sender, EventArgs e)
         {
+            //MessageBox.Show(""+proid);
+
             try
             {
                 MySqlDataReader reader = DBConnection.getData("select proj_name from project");
@@ -30,13 +41,182 @@ namespace ResoflexClientHandlingSystem.ProjectForms
                     selectProjectCombo.Items.Add(reader.GetValue(0).ToString());
                 }
                 reader.Close();
+
+                reader = DBConnection.getData("select proj_name from project where proj_id="+proid+"");
+
+                while (reader.Read())
+                {
+                    selectProjectCombo.SelectedItem = reader["proj_name"].ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select c.name from client c, project p where p.client_id=c.client_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox1.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_cat_id=s.proj_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox2.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
 
-            
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.warranty_period, p.warranty_start_date as Starts  from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox4.Text = reader.GetString(0);
+                    metroTextBox6.Text = reader.GetDateTime("Starts").ToString("yyyy/MM/d");
+
+
+                    DateTime wsd = Convert.ToDateTime(metroTextBox6.Text);
+                    int months = Int32.Parse(metroTextBox4.Text);
+
+                    DateTime wld = wsd.AddMonths(months);
+
+                    metroTextBox7.Text = wld.ToString();
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select count(p.proj_id) from schedule s, project p where s.proj_id=p.proj_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox5.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.description from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox8.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.first_init_date from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox11.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.training_comp_second_end_date from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox13.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.training_comp_first_end_date from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox12.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.visit_terms from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox9.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.warranty_terms from project p where p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    metroTextBox10.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
 
         }
 
@@ -54,12 +234,12 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine(ex);
             }
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
+                MySqlDataReader reader = DBConnection.getData("select s.sub_cat_name from proj_sub_category s, project p where p.proj_sub_cat_id=s.proj_sub_cat_id and p.proj_cat_id=s.proj_cat_id and p.proj_name='" + selectProjectCombo.SelectedItem.ToString() + "';");
 
                 while (reader.Read())
                 {

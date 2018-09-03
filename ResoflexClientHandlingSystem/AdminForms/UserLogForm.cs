@@ -61,7 +61,9 @@ namespace ResoflexClientHandlingSystem
         private void profilebtn_Click(object sender, EventArgs e)
         {
             ProfileForm prffrm = new ProfileForm();
-            prffrm.Show();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
 
         private DataTable getLogList()
@@ -229,9 +231,15 @@ namespace ResoflexClientHandlingSystem
         private void schHome_Click(object sender, EventArgs e)
         {
             Dashboard dsh = new Dashboard();
-            dsh.Show();
+            this.Hide();
+            dsh.ShowDialog();
             this.Close();
             
+        }
+
+        private void shwallbtn_Click(object sender, EventArgs e)
+        {
+            LogGrid.DataSource = getLogList();
         }
     }
 }

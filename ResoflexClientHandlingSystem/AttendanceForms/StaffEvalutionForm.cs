@@ -419,5 +419,13 @@ namespace ResoflexClientHandlingSystem
         {
             metroGrid3.DataSource = searchFromStaff();
         }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            this.Hide();
+            dashboard.ShowDialog();
+            this.Close();
+        }
     }
 }

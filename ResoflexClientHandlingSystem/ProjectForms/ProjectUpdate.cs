@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MetroFramework.Controls;
 using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 
@@ -83,19 +84,55 @@ namespace ResoflexClientHandlingSystem
 
                     Database.updateProject(project);
 
-
-                }
-                catch (Exception exc)
-                {
-            
-
+                    MessageBox.Show("Project Updated Successfully!");
                     notifyIcon1.Icon = SystemIcons.Application;
                     notifyIcon1.BalloonTipText = "Project Updated!";
                     notifyIcon1.ShowBalloonTip(1000);
 
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Error, Project not Updated!");
+
 
                 }
 
+            }
+        }
+
+        private void warStarDate_ValueChanged(object sender, EventArgs e)
+        {
+
+
+           
+            DateTime warSt = warStarDate.Value;
+
+            if (!Validation.isFuture(warSt))
+            {
+                MessageBox.Show("Invalid Date");
+            }
+           
+        }
+
+        private void firstTraCompDate_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime firstTran = firstTraCompDate.Value;
+
+            if (Validation.isFuture(firstTran))
+            {
+                MessageBox.Show("Invalid Date");
+            }
+        }
+
+        private void secoTraCompDate_ValueChanged(object sender, EventArgs e)
+        {
+
+            DateTime secondTran = secoTraCompDate.Value;
+
+            if (Validation.isFuture(secondTran))
+            {
+                MessageBox.Show("Invalid Date");
             }
         }
     }

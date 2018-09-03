@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScheduleForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.schHome = new MetroFramework.Controls.MetroButton();
             this.schPrjName = new MetroFramework.Controls.MetroLabel();
             this.schCltName = new MetroFramework.Controls.MetroLabel();
@@ -45,6 +45,7 @@
             this.addSchedule = new MetroFramework.Controls.MetroButton();
             this.addEvent = new MetroFramework.Controls.MetroButton();
             this.metroTile3 = new MetroFramework.Controls.MetroTile();
+            this.btnRefresh = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,7 +67,7 @@
             // 
             this.schPrjName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schPrjName.AutoSize = true;
-            this.schPrjName.Location = new System.Drawing.Point(234, 116);
+            this.schPrjName.Location = new System.Drawing.Point(294, 116);
             this.schPrjName.Name = "schPrjName";
             this.schPrjName.Size = new System.Drawing.Size(90, 19);
             this.schPrjName.TabIndex = 4;
@@ -76,7 +77,7 @@
             // 
             this.schCltName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schCltName.AutoSize = true;
-            this.schCltName.Location = new System.Drawing.Point(513, 116);
+            this.schCltName.Location = new System.Drawing.Point(543, 116);
             this.schCltName.Name = "schCltName";
             this.schCltName.Size = new System.Drawing.Size(82, 19);
             this.schCltName.TabIndex = 5;
@@ -91,7 +92,7 @@
             // 
             // 
             this.projectName.CustomButton.Image = null;
-            this.projectName.CustomButton.Location = new System.Drawing.Point(151, 1);
+            this.projectName.CustomButton.Location = new System.Drawing.Point(124, 1);
             this.projectName.CustomButton.Name = "";
             this.projectName.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.projectName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -100,7 +101,7 @@
             this.projectName.CustomButton.UseSelectable = true;
             this.projectName.CustomButton.Visible = false;
             this.projectName.Lines = new string[0];
-            this.projectName.Location = new System.Drawing.Point(330, 116);
+            this.projectName.Location = new System.Drawing.Point(390, 116);
             this.projectName.MaxLength = 32767;
             this.projectName.Name = "projectName";
             this.projectName.PasswordChar = '\0';
@@ -109,7 +110,7 @@
             this.projectName.SelectionLength = 0;
             this.projectName.SelectionStart = 0;
             this.projectName.ShortcutsEnabled = true;
-            this.projectName.Size = new System.Drawing.Size(173, 23);
+            this.projectName.Size = new System.Drawing.Size(146, 23);
             this.projectName.TabIndex = 6;
             this.projectName.UseSelectable = true;
             this.projectName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -125,7 +126,7 @@
             // 
             // 
             this.clientName.CustomButton.Image = null;
-            this.clientName.CustomButton.Location = new System.Drawing.Point(154, 1);
+            this.clientName.CustomButton.Location = new System.Drawing.Point(127, 1);
             this.clientName.CustomButton.Name = "";
             this.clientName.CustomButton.Size = new System.Drawing.Size(21, 21);
             this.clientName.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
@@ -134,7 +135,7 @@
             this.clientName.CustomButton.UseSelectable = true;
             this.clientName.CustomButton.Visible = false;
             this.clientName.Lines = new string[0];
-            this.clientName.Location = new System.Drawing.Point(601, 116);
+            this.clientName.Location = new System.Drawing.Point(628, 116);
             this.clientName.MaxLength = 32767;
             this.clientName.Name = "clientName";
             this.clientName.PasswordChar = '\0';
@@ -143,7 +144,7 @@
             this.clientName.SelectionLength = 0;
             this.clientName.SelectionStart = 0;
             this.clientName.ShortcutsEnabled = true;
-            this.clientName.Size = new System.Drawing.Size(176, 23);
+            this.clientName.Size = new System.Drawing.Size(149, 23);
             this.clientName.TabIndex = 7;
             this.clientName.UseSelectable = true;
             this.clientName.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -160,23 +161,23 @@
             this.scheduleGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.scheduleGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.scheduleGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.scheduleGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.scheduleGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.scheduleGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.scheduleGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.scheduleGrid.DefaultCellStyle = dataGridViewCellStyle8;
             this.scheduleGrid.EnableHeadersVisualStyles = false;
             this.scheduleGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.scheduleGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -184,14 +185,14 @@
             this.scheduleGrid.Name = "scheduleGrid";
             this.scheduleGrid.ReadOnly = true;
             this.scheduleGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.scheduleGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.scheduleGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.scheduleGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.scheduleGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.scheduleGrid.Size = new System.Drawing.Size(543, 374);
@@ -272,11 +273,22 @@
             this.metroTile3.Text = "Incomplete Schedules";
             this.metroTile3.UseSelectable = true;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(234, 116);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(54, 23);
+            this.btnRefresh.TabIndex = 17;
+            this.btnRefresh.Text = "Refresh";
+            this.btnRefresh.UseSelectable = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.metroTile3);
             this.Controls.Add(this.addEvent);
             this.Controls.Add(this.addSchedule);
@@ -315,5 +327,6 @@
         private MetroFramework.Controls.MetroButton addSchedule;
         private MetroFramework.Controls.MetroButton addEvent;
         private MetroFramework.Controls.MetroTile metroTile3;
+        private MetroFramework.Controls.MetroButton btnRefresh;
     }
 }

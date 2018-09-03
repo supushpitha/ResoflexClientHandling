@@ -79,7 +79,12 @@ namespace ResoflexClientHandlingSystem
 
         private void addEvent_Click(object sender, EventArgs e)
         {
-            AddEventForm ef = new AddEventForm();
+            DataGridViewRow row = scheduleGrid.CurrentRow;
+
+            int sch_no = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
+
+            AddEventForm ef = new AddEventForm(sch_no, proj_id);
             ef.ShowDialog();
         }
 
@@ -95,7 +100,7 @@ namespace ResoflexClientHandlingSystem
 
             string projName = projectName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
                          " from schedule s, project p, visit_type vt " +
                          " where(s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.proj_name like '%" + projName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -131,7 +136,7 @@ namespace ResoflexClientHandlingSystem
 
             string cName = clientName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs" +
                          " from schedule s, project p, visit_type vt, client c " +
                          " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%"+ cName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -176,8 +181,6 @@ namespace ResoflexClientHandlingSystem
                 sch.Type = new EventType(int.Parse(reader1.GetString("visit_type_id")));
                 sch.From = reader1.GetDateTime("from_date_time");
                 sch.To = reader1.GetDateTime("to_date_time");
-                sch.Vehicle = reader1.GetString("vehicle_details");
-                sch.Mileage = reader1.GetFloat("mileage");
                 sch.TodoList = reader1.GetString("to_do_list");
                 sch.Resource = reader1.GetString("resource");
                 sch.Checklist = reader1.GetString("check_list");
@@ -197,7 +200,7 @@ namespace ResoflexClientHandlingSystem
                     staff.FirstName = reader2.GetString("first_name");
                     staff.LastName = reader2.GetString("last_name");
 
-                    MessageBox.Show(int.Parse(reader2.GetString("staff_id")) + reader2.GetString("first_name") + reader2.GetString("last_name"));
+                    //MessageBox.Show(int.Parse(reader2.GetString("staff_id")) + reader2.GetString("first_name") + reader2.GetString("last_name"));
 
                     serviceEng.Add(staff);
                 }
@@ -235,13 +238,14 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals " +
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
                                                             "from schedule s, project p, visit_type vt " +
                                                             "where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) " +
                                                             " order by s.sch_no, s.proj_id;");
 
             dt.Load(reader);
-        
+
+            reader.Close();
 
             return dt;
         }
@@ -262,6 +266,8 @@ namespace ResoflexClientHandlingSystem
                 colString.Add(Convert.ToString(item[0]));
             }
 
+            reader.Close();
+
             return colString;
         }
 
@@ -280,7 +286,14 @@ namespace ResoflexClientHandlingSystem
                 colString.Add(Convert.ToString(item[0]));
             }
 
+            reader.Close();
+
             return colString;
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            scheduleGrid.DataSource = getSchedules();
         }
     }
 }

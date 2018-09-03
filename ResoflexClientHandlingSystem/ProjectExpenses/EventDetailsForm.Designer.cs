@@ -252,6 +252,7 @@
             this.showAllBtn.TabIndex = 11;
             this.showAllBtn.Text = "Show All";
             this.showAllBtn.UseSelectable = true;
+            this.showAllBtn.Click += new System.EventHandler(this.showAllBtn_Click);
             // 
             // metroLabel5
             // 

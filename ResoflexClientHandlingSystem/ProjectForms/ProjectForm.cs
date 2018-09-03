@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ResoflexClientHandlingSystem.Properties;
 
 
 namespace ResoflexClientHandlingSystem
@@ -33,9 +34,10 @@ namespace ResoflexClientHandlingSystem
         private void Project1_Load(object sender, EventArgs e)
         {
             projectGrid.DataSource = getProjects();
-            projIdTile.BackColor = Color.LightSkyBlue;
-            totExpenceTile.BackColor = Color.LightGreen;
-            warrantyTile.BackColor = Color.LightCoral;
+            projIdTile.BackColor = Color.DeepSkyBlue;
+            fillCountTile();
+            totExpenceTile.BackColor = Color.DeepSkyBlue;
+            warrantyTile.BackColor = Color.DeepSkyBlue;
 
             if (clientName != "")
                 searchProjectTxtBox.Text = clientName;
@@ -46,7 +48,7 @@ namespace ResoflexClientHandlingSystem
 
         //tile
 
-        private void fillTiles(int projectID)
+        private void fillCountTile()
         {
             try
             {
@@ -58,8 +60,21 @@ namespace ResoflexClientHandlingSystem
                 }
 
                 reader.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
 
-                reader = DBConnection.getData("select warranty_start_date from project where proj_id=" + projectID);
+
+            }
+
+        private void fillTiles(int projectID)
+        {
+            try
+            {
+                 
+                MySqlDataReader reader = DBConnection.getData("select DATE_FORMAT(warranty_start_date, '%y-%m-%d') from project where proj_id = " + projectID);
 
                 while (reader.Read())
                 {
@@ -103,7 +118,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_id as ID,p.proj_name as Project_Name,p.description as Description ,c.name as Client,a.sub_cat_name as Category from project p, client c, proj_sub_category a where p.client_id=c.client_id and p.proj_sub_cat_id=a.proj_sub_cat_id and p.proj_cat_id=a.proj_cat_id group by p.proj_id desc");
+            MySqlDataReader reader = DBConnection.getData("select p.proj_id, p.proj_name as Project_Name,p.description as Description, c.name as Client_Name from project p, client c where p.client_id=c.client_id group by p.proj_id desc");
 
             table.Load(reader);
 
@@ -297,6 +312,19 @@ namespace ResoflexClientHandlingSystem
             frm.Show();
         }
 
+        private void metroTrackBar1_Scroll(object sender, ScrollEventArgs e)
+        {
+
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+           /* metroTextBox1.Text = Convert.ToString(metroTrackBar1.Value);
+            int color = Convert.ToInt32(metroTextBox1.Text);
+
+            projectGrid.BackgroundColor = Color.FromArgb(color);*/
+        }
+        
 
 
 

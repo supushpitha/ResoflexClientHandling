@@ -90,9 +90,6 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.projectDataGrid = new MetroFramework.Controls.MetroGrid();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
             this.searchProjectTxtBox1 = new MetroFramework.Controls.MetroTextBox();
             this.EventId = new MetroFramework.Controls.MetroLabel();
@@ -291,9 +288,6 @@
             this.metroTabPage5.Controls.Add(this.metroLabel10);
             this.metroTabPage5.Controls.Add(this.metroLabel5);
             this.metroTabPage5.Controls.Add(this.projectDataGrid);
-            this.metroTabPage5.Controls.Add(this.metroLabel4);
-            this.metroTabPage5.Controls.Add(this.metroLabel3);
-            this.metroTabPage5.Controls.Add(this.metroLabel2);
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
@@ -504,33 +498,6 @@
             this.projectDataGrid.Size = new System.Drawing.Size(702, 311);
             this.projectDataGrid.TabIndex = 12;
             // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(370, 391);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(99, 19);
-            this.metroLabel4.TabIndex = 11;
-            this.metroLabel4.Text = "Total Project 53";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(179, 391);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(80, 19);
-            this.metroLabel3.TabIndex = 10;
-            this.metroLabel3.Text = "Individual 15";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 391);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(58, 19);
-            this.metroLabel2.TabIndex = 9;
-            this.metroLabel2.Text = "Team 38";
-            // 
             // metroTabPage6
             // 
             this.metroTabPage6.Controls.Add(this.searchProjectTxtBox1);
@@ -608,45 +575,40 @@
             this.gradeETaskLbl.AutoSize = true;
             this.gradeETaskLbl.Location = new System.Drawing.Point(714, 314);
             this.gradeETaskLbl.Name = "gradeETaskLbl";
-            this.gradeETaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeETaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeETaskLbl.TabIndex = 50;
-            this.gradeETaskLbl.Text = "6";
             // 
             // gradeDTaskLbl
             // 
             this.gradeDTaskLbl.AutoSize = true;
             this.gradeDTaskLbl.Location = new System.Drawing.Point(714, 257);
             this.gradeDTaskLbl.Name = "gradeDTaskLbl";
-            this.gradeDTaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeDTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeDTaskLbl.TabIndex = 49;
-            this.gradeDTaskLbl.Text = "2";
             // 
             // gradeCTaskLbl
             // 
             this.gradeCTaskLbl.AutoSize = true;
             this.gradeCTaskLbl.Location = new System.Drawing.Point(714, 203);
             this.gradeCTaskLbl.Name = "gradeCTaskLbl";
-            this.gradeCTaskLbl.Size = new System.Drawing.Size(21, 19);
+            this.gradeCTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeCTaskLbl.TabIndex = 48;
-            this.gradeCTaskLbl.Text = "15";
             // 
             // gradeBTaskLbl
             // 
             this.gradeBTaskLbl.AutoSize = true;
             this.gradeBTaskLbl.Location = new System.Drawing.Point(714, 153);
             this.gradeBTaskLbl.Name = "gradeBTaskLbl";
-            this.gradeBTaskLbl.Size = new System.Drawing.Size(23, 19);
+            this.gradeBTaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeBTaskLbl.TabIndex = 47;
-            this.gradeBTaskLbl.Text = "30";
             // 
             // gradeATaskLbl
             // 
             this.gradeATaskLbl.AutoSize = true;
             this.gradeATaskLbl.Location = new System.Drawing.Point(714, 100);
             this.gradeATaskLbl.Name = "gradeATaskLbl";
-            this.gradeATaskLbl.Size = new System.Drawing.Size(16, 19);
+            this.gradeATaskLbl.Size = new System.Drawing.Size(0, 0);
             this.gradeATaskLbl.TabIndex = 46;
-            this.gradeATaskLbl.Text = "6";
             // 
             // metroLink6
             // 
@@ -1087,7 +1049,7 @@
             this.metroTabControl3.Controls.Add(this.metroTabPage11);
             this.metroTabControl3.Location = new System.Drawing.Point(4, 2);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 3;
+            this.metroTabControl3.SelectedIndex = 2;
             this.metroTabControl3.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl3.TabIndex = 5;
             this.metroTabControl3.UseSelectable = true;
@@ -1132,9 +1094,8 @@
             this.metroLabel32.AutoSize = true;
             this.metroLabel32.Location = new System.Drawing.Point(566, 77);
             this.metroLabel32.Name = "metroLabel32";
-            this.metroLabel32.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel32.Size = new System.Drawing.Size(0, 0);
             this.metroLabel32.TabIndex = 31;
-            this.metroLabel32.Text = "metroLabel32";
             // 
             // metroLabel30
             // 
@@ -1455,9 +1416,8 @@
             this.metroLabel34.AutoSize = true;
             this.metroLabel34.Location = new System.Drawing.Point(566, 77);
             this.metroLabel34.Name = "metroLabel34";
-            this.metroLabel34.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel34.Size = new System.Drawing.Size(0, 0);
             this.metroLabel34.TabIndex = 39;
-            this.metroLabel34.Text = "metroLabel34";
             // 
             // metroLabel35
             // 
@@ -1734,9 +1694,8 @@
             this.metroLabel40.AutoSize = true;
             this.metroLabel40.Location = new System.Drawing.Point(566, 77);
             this.metroLabel40.Name = "metroLabel40";
-            this.metroLabel40.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel40.Size = new System.Drawing.Size(0, 0);
             this.metroLabel40.TabIndex = 54;
-            this.metroLabel40.Text = "metroLabel40";
             // 
             // metroLabel41
             // 
@@ -2014,9 +1973,8 @@
             this.metroLabel45.AutoSize = true;
             this.metroLabel45.Location = new System.Drawing.Point(566, 77);
             this.metroLabel45.Name = "metroLabel45";
-            this.metroLabel45.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel45.Size = new System.Drawing.Size(0, 0);
             this.metroLabel45.TabIndex = 69;
-            this.metroLabel45.Text = "metroLabel45";
             // 
             // metroLabel46
             // 
@@ -2458,9 +2416,6 @@
         private MetroFramework.Controls.MetroDateTime startEventDateTime;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroGrid projectDataGrid;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTextBox eventTxtbox1;

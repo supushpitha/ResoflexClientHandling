@@ -10,19 +10,14 @@ using System.Windows.Forms;
 
 namespace ResoflexClientHandlingSystem
 {
-    public partial class ProjectExpensesForm : MetroFramework.Forms.MetroForm
+    public partial class IOUDetailsForm : MetroFramework.Forms.MetroForm
     {
-        public ProjectExpensesForm()
+        public IOUDetailsForm()
         {
             InitializeComponent();
         }
 
-        private void metroTextBox3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroDateTime1_ValueChanged(object sender, EventArgs e)
+        private void IOUDetailsForm_Load(object sender, EventArgs e)
         {
 
         }

@@ -47,13 +47,13 @@ namespace ResoflexClientHandlingSystem.AdminForms
         {
             try
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT s.first_name, s.last_name, d.designation FROM staff s, designation d where s.staff_id =(SELECT user_id from user where u_name='" + unameComboBox.SelectedValue.ToString() + "') and " +
+                MySqlDataReader reader = DBConnection.getData("SELECT s.first_name, s.last_name, d.designation_name FROM staff s, designation d where s.staff_id =(SELECT user_id from user where u_name='" + unameComboBox.SelectedValue.ToString() + "') and " +
                         "s.desig_id = d.desig_id;");
 
                 while (reader.Read())
                 {
                     Linkname.Text = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
-                    permComboBox.SelectedItem = reader["designation"].ToString();
+                    permComboBox.SelectedItem = reader["designation_name"].ToString();
                 }
                 reader.Close();
 
@@ -210,5 +210,7 @@ namespace ResoflexClientHandlingSystem.AdminForms
             errorpassword.SetError(passTxtBox, "");
             errorpassword.Clear();
         }
+
+        
     }
 }

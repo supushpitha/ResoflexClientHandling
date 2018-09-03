@@ -65,26 +65,34 @@ namespace ResoflexClientHandlingSystem.UserForms
 
         private void ProfileForm_Load(object sender, EventArgs e)
         {
-            try
+            if (Userglobals.uname == "")
             {
-                MySqlDataReader reader = DBConnection.getData("SELECT s.first_name, s.last_name, u.u_name FROM staff s, user u where user_id='"+Userglobals.uid.ToString()+"' and s.staff_id = u.user_id;");
+                metroButton1.Visible = false;
+                metroButton2.Visible = false;
+            }
+            else
+            {
 
-                while (reader.Read())
+                try
                 {
-                    metroLink1.Text= (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
-                    txtUname.Text = reader.GetValue(2).ToString();               
+                    MySqlDataReader reader = DBConnection.getData("SELECT s.first_name, s.last_name, u.u_name FROM staff s, user u where user_id='" + Userglobals.uid.ToString() + "' and s.staff_id = u.user_id;");
 
+                    while (reader.Read())
+                    {
+                        metroLink1.Text = (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                        txtUname.Text = reader.GetValue(2).ToString();
+
+                    }
+                    reader.Close();
                 }
-                reader.Close();
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);
+                }
 
-            
-        }
 
+            }
+        }    
 
         public void onClick()
         {
@@ -179,6 +187,6 @@ namespace ResoflexClientHandlingSystem.UserForms
         private void metroLink5_Click(object sender, EventArgs e)
         {
 
-        }
+        }     
     }
 }

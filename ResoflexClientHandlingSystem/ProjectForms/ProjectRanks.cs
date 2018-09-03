@@ -34,7 +34,7 @@ namespace ResoflexClientHandlingSystem
             catGrid.Columns[0].Visible = false;
             catGrid.ClearSelection();
             
-            projectExGrid.Rows[4].Cells[0].Selected = true;
+            //projectExGrid.Rows[4].Cells[0].Selected = true;
 
 
         }

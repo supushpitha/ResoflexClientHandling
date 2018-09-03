@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -54,7 +55,6 @@
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.schCancel = new MetroFramework.Controls.MetroButton();
             this.schReset = new MetroFramework.Controls.MetroButton();
-            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.schUpdate = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.checkList = new MetroFramework.Controls.MetroTextBox();
@@ -78,6 +78,8 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
+            this.notifyIconSch = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -361,19 +363,6 @@
             this.schReset.Text = "Clear";
             this.schReset.UseSelectable = true;
             // 
-            // htmlLabel1
-            // 
-            this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(139, 32);
-            this.htmlLabel1.AutoSize = false;
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Modern No. 20", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlLabel1.Location = new System.Drawing.Point(319, 20);
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(139, 34);
-            this.htmlLabel1.TabIndex = 4;
-            this.htmlLabel1.Text = "Schedule Form";
-            // 
             // schUpdate
             // 
             this.schUpdate.Location = new System.Drawing.Point(5, 742);
@@ -382,7 +371,7 @@
             this.schUpdate.TabIndex = 29;
             this.schUpdate.Text = "Update";
             this.schUpdate.UseSelectable = true;
-            this.schUpdate.Click += new System.EventHandler(this.schUpdate_Click);
+            this.schUpdate.Click += new System.EventHandler(this.validation);
             // 
             // metroPanel1
             // 
@@ -767,6 +756,25 @@
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Project Name";
             // 
+            // htmlLabel1
+            // 
+            this.htmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.htmlLabel1.AutoScroll = true;
+            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(158, 34);
+            this.htmlLabel1.AutoSize = false;
+            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
+            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.htmlLabel1.Location = new System.Drawing.Point(308, 20);
+            this.htmlLabel1.Name = "htmlLabel1";
+            this.htmlLabel1.Size = new System.Drawing.Size(160, 34);
+            this.htmlLabel1.TabIndex = 4;
+            this.htmlLabel1.Text = "Schedule Form";
+            // 
+            // notifyIconSch
+            // 
+            this.notifyIconSch.Text = "notifyIcon1";
+            this.notifyIconSch.Visible = true;
+            // 
             // UpdateScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -807,7 +815,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroButton schCancel;
         private MetroFramework.Controls.MetroButton schReset;
-        private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
         private MetroFramework.Controls.MetroButton schUpdate;
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox checkList;
@@ -831,5 +838,7 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
+        private System.Windows.Forms.NotifyIcon notifyIconSch;
     }
 }

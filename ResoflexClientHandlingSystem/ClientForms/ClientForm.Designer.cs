@@ -74,7 +74,7 @@ namespace ResoflexClientHandlingSystem
             this.clientGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -177,7 +177,6 @@ namespace ResoflexClientHandlingSystem
             this.noOfProjTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfProjTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.noOfProjTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.noOfProjTile.UseCustomBackColor = true;
             this.noOfProjTile.UseSelectable = true;
             // 
             // noOfVisitsTile
@@ -191,7 +190,6 @@ namespace ResoflexClientHandlingSystem
             this.noOfVisitsTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.noOfVisitsTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.noOfVisitsTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.noOfVisitsTile.UseCustomBackColor = true;
             this.noOfVisitsTile.UseSelectable = true;
             // 
             // totalExpTile
@@ -205,7 +203,6 @@ namespace ResoflexClientHandlingSystem
             this.totalExpTile.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.totalExpTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.totalExpTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.totalExpTile.UseCustomBackColor = true;
             this.totalExpTile.UseSelectable = true;
             // 
             // metroLabel1
@@ -337,6 +334,7 @@ namespace ResoflexClientHandlingSystem
             this.Text = "Client";
             this.MinimumSizeChanged += new System.EventHandler(this.ClientForm_MinimumSizeChanged);
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.Shown += new System.EventHandler(this.ClientForm_Shown);
             this.SizeChanged += new System.EventHandler(this.ClientForm_SizeChanged);
             ((System.ComponentModel.ISupportInitialize)(this.clientGrid)).EndInit();
             this.ResumeLayout(false);

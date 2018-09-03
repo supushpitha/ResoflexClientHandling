@@ -148,7 +148,7 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-
+        
         private void metroTextBox1_TextChanged(object sender, EventArgs e)
         {
           //  metroGrid1.DataSource = searchEmployees();

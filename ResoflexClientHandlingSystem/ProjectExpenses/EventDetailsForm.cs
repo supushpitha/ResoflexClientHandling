@@ -21,7 +21,41 @@ namespace ResoflexClientHandlingSystem
 
         private void EventDetailsForm_Load(object sender, EventArgs e)
         {
+            fillCmbBoxes();
+        }
 
+        private void fillCmbBoxes()
+        {
+            DataTable tableProject = new DataTable();
+
+            // Project cmb box
+            MySqlDataReader readerProject = DBConnection.getData("select proj_id, proj_name from project");
+            
+            tableProject.Load(readerProject);
+
+            byProjectCmbBox.DataSource = tableProject;
+            byProjectCmbBox.ValueMember = "proj_id";
+            byProjectCmbBox.DisplayMember = "proj_name";
+
+            MySqlDataReader readerClient = DBConnection.getData("select client_id, name from client");
+
+            DataTable tableClient = new DataTable();
+
+            tableClient.Load(readerClient);
+
+            byClientCmbBox.DataSource = tableClient;
+            byClientCmbBox.ValueMember = "client_id";
+            byClientCmbBox.DisplayMember = "name";
+
+            MySqlDataReader readerExpType = DBConnection.getData("select exp_type_id, type from expense_type");
+
+            DataTable tableExpType = new DataTable();
+
+            tableExpType.Load(readerExpType);
+
+            byExpTypeCmbBox.DataSource = tableExpType;
+            byExpTypeCmbBox.ValueMember = "exp_type_id";
+            byExpTypeCmbBox.DisplayMember = "type";
         }
 
         private void EventDetailsForm_Shown(object sender, EventArgs e)
@@ -35,15 +69,14 @@ namespace ResoflexClientHandlingSystem
             if (eventExpGrid.Rows.Count >= 1)
             {
                 int projId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                int clientId = Int32.Parse(eventExpGrid.Rows[0].Cells[1].Value.ToString());
                 int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
 
                 fillExpTypeTiles(projId, eventId);
-                fillBriefDetailTiles(projId, eventId, clientId);
+                fillBriefDetailTiles(projId, eventId);
             }
         }
 
-        private void fillBriefDetailTiles(int projId, int eventId, int clientId)
+        private void fillBriefDetailTiles(int projId, int eventId)
         {
             maxExpProjTile.Text = "Rs.0.00";
             totalExpProjTile.Text = "Rs.0.00";
@@ -158,11 +191,24 @@ namespace ResoflexClientHandlingSystem
             if (dgv.CurrentRow.Selected)
             {
                 int projId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
-                int clientId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
                 int eventId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
 
                 fillExpTypeTiles(projId, eventId);
-                fillBriefDetailTiles(projId, eventId, clientId);
+                fillBriefDetailTiles(projId, eventId);
+            }
+        }
+
+        private void showAllBtn_Click(object sender, EventArgs e)
+        {
+            eventExpGrid.DataSource = getEventExp();
+
+            if (eventExpGrid.Rows.Count >= 1)
+            {
+                int projId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
+                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
+
+                fillExpTypeTiles(projId, eventId);
+                fillBriefDetailTiles(projId, eventId);
             }
         }
     }

@@ -90,9 +90,6 @@
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.projectDataGrid = new MetroFramework.Controls.MetroGrid();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroTabPage6 = new MetroFramework.Controls.MetroTabPage();
             this.searchProjectTxtBox1 = new MetroFramework.Controls.MetroTextBox();
             this.EventId = new MetroFramework.Controls.MetroLabel();
@@ -271,7 +268,7 @@
             this.metroTabControl2.Controls.Add(this.metroTabPage7);
             this.metroTabControl2.Location = new System.Drawing.Point(7, 3);
             this.metroTabControl2.Name = "metroTabControl2";
-            this.metroTabControl2.SelectedIndex = 1;
+            this.metroTabControl2.SelectedIndex = 2;
             this.metroTabControl2.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl2.TabIndex = 2;
             this.metroTabControl2.UseSelectable = true;
@@ -291,9 +288,6 @@
             this.metroTabPage5.Controls.Add(this.metroLabel10);
             this.metroTabPage5.Controls.Add(this.metroLabel5);
             this.metroTabPage5.Controls.Add(this.projectDataGrid);
-            this.metroTabPage5.Controls.Add(this.metroLabel4);
-            this.metroTabPage5.Controls.Add(this.metroLabel3);
-            this.metroTabPage5.Controls.Add(this.metroLabel2);
             this.metroTabPage5.HorizontalScrollbarBarColor = true;
             this.metroTabPage5.HorizontalScrollbarHighlightOnWheel = false;
             this.metroTabPage5.HorizontalScrollbarSize = 10;
@@ -503,33 +497,6 @@
             this.projectDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.projectDataGrid.Size = new System.Drawing.Size(702, 311);
             this.projectDataGrid.TabIndex = 12;
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(370, 391);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(99, 19);
-            this.metroLabel4.TabIndex = 11;
-            this.metroLabel4.Text = "Total Project 53";
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(179, 391);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(80, 19);
-            this.metroLabel3.TabIndex = 10;
-            this.metroLabel3.Text = "Individual 15";
-            // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 391);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(58, 19);
-            this.metroLabel2.TabIndex = 9;
-            this.metroLabel2.Text = "Team 38";
             // 
             // metroTabPage6
             // 
@@ -2449,9 +2416,6 @@
         private MetroFramework.Controls.MetroDateTime startEventDateTime;
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroGrid projectDataGrid;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroTile metroTile3;
         private MetroFramework.Controls.MetroTextBox eventTxtbox1;

@@ -25,7 +25,7 @@ namespace ResoflexClientHandlingSystem
             MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
 
             DataTable dt1 = new DataTable();
-            DataTable dt2 = new DataTable(); 
+            DataTable dt2 = new DataTable();
 
             dt1.Load(reader);
 
@@ -173,6 +173,11 @@ namespace ResoflexClientHandlingSystem
 
             prevSchedulesGrid.DataSource = getPrevSchedules(proj_id);
 
+            MySqlDataReader r = DBConnection.getData("select client_id from project where proj_id = " + proj_id + ";");
+            r.Read();
+            client_id = r.GetInt16("client_id");
+            r.Close();
+
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p " +
                                                             "where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id) order by sch_no DESC limit 0, 1;");
 
@@ -183,6 +188,11 @@ namespace ResoflexClientHandlingSystem
                 client_id = reader.GetInt16("client_id");
 
                 schNo.Text = sn.ToString();
+                schClientName.SelectedValue = client_id;
+            }
+            else
+            {
+                schNo.Text = 1.ToString();
                 schClientName.SelectedValue = client_id;
             }
 
@@ -311,6 +321,10 @@ namespace ResoflexClientHandlingSystem
                 //sending mails
                 if (schSendMail.Checked)
                 {
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Sending Email!";
+                    notifyIconSch.ShowBalloonTip(1000);
+
                     foreach (var ary in schedule.ServEngineer)
                     {
                         Staff s = (Staff)ary;
@@ -327,6 +341,10 @@ namespace ResoflexClientHandlingSystem
 
                         reader.Close();
                     }
+
+                    notifyIconSch.Icon = SystemIcons.Application;
+                    notifyIconSch.BalloonTipText = "Email(s) Sent!";
+                    notifyIconSch.ShowBalloonTip(1000);
                 }
 
                 MessageBox.Show("Schedule Successfully Added !");

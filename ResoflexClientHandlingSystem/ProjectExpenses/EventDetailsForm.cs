@@ -60,6 +60,11 @@ namespace ResoflexClientHandlingSystem
 
         private void EventDetailsForm_Shown(object sender, EventArgs e)
         {
+            verticalLineLbl.AutoSize = false;
+            verticalLineLbl.Width = 2;
+            verticalLineLbl.Height = 255;
+            verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
             eventExpGrid.DataSource = getEventExp();
 
             eventExpGrid.Columns[0].Visible = false;

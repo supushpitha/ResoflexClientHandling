@@ -27,8 +27,7 @@ namespace ResoflexClientHandlingSystem
         private void fillCmbBoxes()
         {
             DataTable tableProject = new DataTable();
-
-            // Project cmb box
+            
             MySqlDataReader readerProject = DBConnection.getData("select proj_id, proj_name from project");
             
             tableProject.Load(readerProject);

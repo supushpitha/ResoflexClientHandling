@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.eventExpGrid = new MetroFramework.Controls.MetroGrid();
             this.otherExpTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
@@ -54,6 +54,7 @@
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.noTechTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
+            this.verticalLineLbl = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.eventExpGrid)).BeginInit();
             this.otherExpTile.SuspendLayout();
             this.accTile.SuspendLayout();
@@ -74,40 +75,40 @@
             this.eventExpGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventExpGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.eventExpGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventExpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.eventExpGrid.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventExpGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.eventExpGrid.DefaultCellStyle = dataGridViewCellStyle2;
             this.eventExpGrid.EnableHeadersVisualStyles = false;
             this.eventExpGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.eventExpGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.eventExpGrid.Location = new System.Drawing.Point(23, 300);
+            this.eventExpGrid.Location = new System.Drawing.Point(23, 340);
             this.eventExpGrid.Name = "eventExpGrid";
             this.eventExpGrid.ReadOnly = true;
             this.eventExpGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventExpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventExpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.eventExpGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.eventExpGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.eventExpGrid.Size = new System.Drawing.Size(777, 377);
+            this.eventExpGrid.Size = new System.Drawing.Size(1034, 337);
             this.eventExpGrid.TabIndex = 2;
             this.eventExpGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventExpGrid_CellClick);
             // 
@@ -115,7 +116,7 @@
             // 
             this.otherExpTile.ActiveControl = null;
             this.otherExpTile.Controls.Add(this.metroLabel1);
-            this.otherExpTile.Location = new System.Drawing.Point(806, 617);
+            this.otherExpTile.Location = new System.Drawing.Point(806, 259);
             this.otherExpTile.Name = "otherExpTile";
             this.otherExpTile.Size = new System.Drawing.Size(251, 59);
             this.otherExpTile.TabIndex = 3;
@@ -127,10 +128,10 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.Location = new System.Drawing.Point(5, 40);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(104, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(111, 19);
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Other Expenses";
             // 
@@ -138,7 +139,7 @@
             // 
             this.accTile.ActiveControl = null;
             this.accTile.Controls.Add(this.metroLabel2);
-            this.accTile.Location = new System.Drawing.Point(806, 552);
+            this.accTile.Location = new System.Drawing.Point(806, 194);
             this.accTile.Name = "accTile";
             this.accTile.Size = new System.Drawing.Size(251, 59);
             this.accTile.TabIndex = 4;
@@ -150,10 +151,10 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.Location = new System.Drawing.Point(4, 40);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(124, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(136, 19);
             this.metroLabel2.TabIndex = 1;
             this.metroLabel2.Text = "Accomm. Expenses";
             // 
@@ -161,7 +162,7 @@
             // 
             this.mealExpTile.ActiveControl = null;
             this.mealExpTile.Controls.Add(this.metroLabel3);
-            this.mealExpTile.Location = new System.Drawing.Point(806, 487);
+            this.mealExpTile.Location = new System.Drawing.Point(806, 129);
             this.mealExpTile.Name = "mealExpTile";
             this.mealExpTile.Size = new System.Drawing.Size(251, 59);
             this.mealExpTile.TabIndex = 5;
@@ -173,10 +174,10 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.Location = new System.Drawing.Point(4, 40);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(104, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(112, 19);
             this.metroLabel3.TabIndex = 1;
             this.metroLabel3.Text = "Meals Expenses";
             // 
@@ -184,7 +185,7 @@
             // 
             this.travelExpTile.ActiveControl = null;
             this.travelExpTile.Controls.Add(this.metroLabel4);
-            this.travelExpTile.Location = new System.Drawing.Point(806, 422);
+            this.travelExpTile.Location = new System.Drawing.Point(806, 64);
             this.travelExpTile.Name = "travelExpTile";
             this.travelExpTile.Size = new System.Drawing.Size(251, 59);
             this.travelExpTile.TabIndex = 6;
@@ -196,10 +197,10 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.Location = new System.Drawing.Point(4, 40);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(103, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(114, 19);
             this.metroLabel4.TabIndex = 1;
             this.metroLabel4.Text = "Travel Expenses";
             // 
@@ -207,7 +208,7 @@
             // 
             this.byProjectCmbBox.FormattingEnabled = true;
             this.byProjectCmbBox.ItemHeight = 23;
-            this.byProjectCmbBox.Location = new System.Drawing.Point(23, 215);
+            this.byProjectCmbBox.Location = new System.Drawing.Point(23, 253);
             this.byProjectCmbBox.Name = "byProjectCmbBox";
             this.byProjectCmbBox.PromptText = "Projects";
             this.byProjectCmbBox.Size = new System.Drawing.Size(227, 29);
@@ -219,7 +220,7 @@
             // 
             this.byClientCmbBox.FormattingEnabled = true;
             this.byClientCmbBox.ItemHeight = 23;
-            this.byClientCmbBox.Location = new System.Drawing.Point(256, 215);
+            this.byClientCmbBox.Location = new System.Drawing.Point(256, 253);
             this.byClientCmbBox.Name = "byClientCmbBox";
             this.byClientCmbBox.PromptText = "Clients";
             this.byClientCmbBox.Size = new System.Drawing.Size(227, 29);
@@ -231,7 +232,7 @@
             // 
             this.byExpTypeCmbBox.FormattingEnabled = true;
             this.byExpTypeCmbBox.ItemHeight = 23;
-            this.byExpTypeCmbBox.Location = new System.Drawing.Point(489, 215);
+            this.byExpTypeCmbBox.Location = new System.Drawing.Point(489, 253);
             this.byExpTypeCmbBox.Name = "byExpTypeCmbBox";
             this.byExpTypeCmbBox.PromptText = "Expense Types";
             this.byExpTypeCmbBox.Size = new System.Drawing.Size(227, 29);
@@ -241,7 +242,7 @@
             // 
             // byDatePicker
             // 
-            this.byDatePicker.Location = new System.Drawing.Point(489, 251);
+            this.byDatePicker.Location = new System.Drawing.Point(489, 289);
             this.byDatePicker.MinimumSize = new System.Drawing.Size(0, 29);
             this.byDatePicker.Name = "byDatePicker";
             this.byDatePicker.Size = new System.Drawing.Size(227, 29);
@@ -250,7 +251,7 @@
             // 
             // showAllBtn
             // 
-            this.showAllBtn.Location = new System.Drawing.Point(24, 271);
+            this.showAllBtn.Location = new System.Drawing.Point(23, 311);
             this.showAllBtn.Name = "showAllBtn";
             this.showAllBtn.Size = new System.Drawing.Size(85, 23);
             this.showAllBtn.TabIndex = 11;
@@ -262,7 +263,7 @@
             // 
             this.metroLabel5.AutoSize = true;
             this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel5.Location = new System.Drawing.Point(24, 190);
+            this.metroLabel5.Location = new System.Drawing.Point(24, 228);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(70, 19);
             this.metroLabel5.TabIndex = 12;
@@ -272,7 +273,7 @@
             // 
             this.metroLabel6.AutoSize = true;
             this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel6.Location = new System.Drawing.Point(256, 190);
+            this.metroLabel6.Location = new System.Drawing.Point(256, 228);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(63, 19);
             this.metroLabel6.TabIndex = 13;
@@ -282,7 +283,7 @@
             // 
             this.metroLabel7.AutoSize = true;
             this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Regular;
-            this.metroLabel7.Location = new System.Drawing.Point(489, 190);
+            this.metroLabel7.Location = new System.Drawing.Point(489, 228);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(109, 19);
             this.metroLabel7.TabIndex = 14;
@@ -304,10 +305,10 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel8.Location = new System.Drawing.Point(4, 67);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(136, 19);
             this.metroLabel8.TabIndex = 0;
             this.metroLabel8.Text = "Max Exp of Project";
             // 
@@ -327,10 +328,10 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel9.Location = new System.Drawing.Point(3, 67);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(125, 19);
+            this.metroLabel9.Size = new System.Drawing.Size(140, 19);
             this.metroLabel9.TabIndex = 1;
             this.metroLabel9.Text = "Total Exp of Project";
             // 
@@ -350,18 +351,27 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel10.Location = new System.Drawing.Point(3, 67);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(115, 19);
+            this.metroLabel10.Size = new System.Drawing.Size(126, 19);
             this.metroLabel10.TabIndex = 1;
             this.metroLabel10.Text = "No of Technicians";
+            // 
+            // verticalLineLbl
+            // 
+            this.verticalLineLbl.AutoSize = true;
+            this.verticalLineLbl.Location = new System.Drawing.Point(755, 64);
+            this.verticalLineLbl.Name = "verticalLineLbl";
+            this.verticalLineLbl.Size = new System.Drawing.Size(0, 0);
+            this.verticalLineLbl.TabIndex = 18;
             // 
             // EventDetailsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.Controls.Add(this.verticalLineLbl);
             this.Controls.Add(this.noTechTile);
             this.Controls.Add(this.totalExpProjTile);
             this.Controls.Add(this.maxExpProjTile);
@@ -427,5 +437,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel10;
+        private MetroFramework.Controls.MetroLabel verticalLineLbl;
     }
 }

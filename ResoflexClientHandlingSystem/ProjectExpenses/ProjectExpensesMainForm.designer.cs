@@ -28,9 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectExpensesMainForm));
             this.viewEventBtn = new MetroFramework.Controls.MetroButton();
             this.viewIouBtn = new MetroFramework.Controls.MetroButton();
             this.getReportBtn = new MetroFramework.Controls.MetroButton();
@@ -45,6 +46,7 @@
             this.monthCompProgressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.progLbl = new MetroFramework.Controls.MetroLabel();
+            this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.projExpMonthTile.SuspendLayout();
             this.balTile.SuspendLayout();
             this.MaxSpentEventTile.SuspendLayout();
@@ -177,17 +179,17 @@
             // 
             // chart1
             // 
-            chartArea2.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chart1.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart1.Legends.Add(legend1);
             this.chart1.Location = new System.Drawing.Point(24, 280);
             this.chart1.Name = "chart1";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "EventExpenseSeries";
-            this.chart1.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "EventExpenseSeries";
+            this.chart1.Series.Add(series1);
             this.chart1.Size = new System.Drawing.Size(756, 394);
             this.chart1.TabIndex = 19;
             this.chart1.Text = "chart1";
@@ -227,11 +229,25 @@
             this.progLbl.TabIndex = 22;
             this.progLbl.Text = "75%";
             // 
+            // homeBtn
+            // 
+            this.homeBtn.BackColor = System.Drawing.Color.Transparent;
+            this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
+            this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.homeBtn.Location = new System.Drawing.Point(478, 12);
+            this.homeBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.homeBtn.Name = "homeBtn";
+            this.homeBtn.Size = new System.Drawing.Size(30, 24);
+            this.homeBtn.TabIndex = 23;
+            this.homeBtn.UseSelectable = true;
+            this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
+            // 
             // ProjectExpensesMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.progLbl);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.monthCompProgressSpinner);
@@ -275,5 +291,6 @@
         private MetroFramework.Controls.MetroProgressSpinner monthCompProgressSpinner;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel progLbl;
+        private MetroFramework.Controls.MetroButton homeBtn;
     }
 }

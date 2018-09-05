@@ -296,6 +296,7 @@ namespace ResoflexClientHandlingSystem
             // 
             // homeBtn
             // 
+            this.homeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.homeBtn.BackColor = System.Drawing.Color.Transparent;
             this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
             this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;

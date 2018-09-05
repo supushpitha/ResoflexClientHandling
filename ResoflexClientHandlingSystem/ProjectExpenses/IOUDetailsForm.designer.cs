@@ -224,6 +224,7 @@
             this.Name = "IOUDetailsForm";
             this.Text = "IOU Expenses";
             this.Load += new System.EventHandler(this.IOUDetailsForm_Load);
+            this.Shown += new System.EventHandler(this.IOUDetailsForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.iouGrid)).EndInit();
             this.realExpTile.ResumeLayout(false);
             this.realExpTile.PerformLayout();

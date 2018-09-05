@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -18,6 +19,11 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void IOUDetailsForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void IOUDetailsForm_Shown(object sender, EventArgs e)
         {
 
         }

@@ -25,7 +25,7 @@ namespace ResoflexClientHandlingSystem
             MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
 
             DataTable dt1 = new DataTable();
-            DataTable dt2 = new DataTable(); 
+            DataTable dt2 = new DataTable();
 
             dt1.Load(reader);
 

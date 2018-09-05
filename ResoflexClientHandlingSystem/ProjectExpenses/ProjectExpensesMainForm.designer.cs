@@ -44,6 +44,7 @@
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.monthCompProgressSpinner = new MetroFramework.Controls.MetroProgressSpinner();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
+            this.progLbl = new MetroFramework.Controls.MetroLabel();
             this.projExpMonthTile.SuspendLayout();
             this.balTile.SuspendLayout();
             this.MaxSpentEventTile.SuspendLayout();
@@ -118,12 +119,13 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.Location = new System.Drawing.Point(4, 105);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(172, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(165, 19);
             this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Project Exp. for this Month";
+            this.metroLabel1.Text = "Proj. Exp. of this Month";
             // 
             // balTile
             // 
@@ -141,10 +143,11 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel2.BackColor = System.Drawing.Color.Transparent;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.Location = new System.Drawing.Point(3, 105);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(55, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(61, 19);
             this.metroLabel2.TabIndex = 1;
             this.metroLabel2.Text = "Balance";
             // 
@@ -164,10 +167,11 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.BackColor = System.Drawing.Color.Transparent;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.Location = new System.Drawing.Point(3, 105);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(112, 19);
+            this.metroLabel3.Size = new System.Drawing.Size(120, 19);
             this.metroLabel3.TabIndex = 1;
             this.metroLabel3.Text = "Max Spent Event";
             // 
@@ -182,7 +186,7 @@
             series2.ChartArea = "ChartArea1";
             series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series2.Legend = "Legend1";
-            series2.Name = "Series1";
+            series2.Name = "EventExpenseSeries";
             this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(756, 394);
             this.chart1.TabIndex = 19;
@@ -194,6 +198,7 @@
             this.monthCompProgressSpinner.Maximum = 100;
             this.monthCompProgressSpinner.Name = "monthCompProgressSpinner";
             this.monthCompProgressSpinner.Size = new System.Drawing.Size(175, 175);
+            this.monthCompProgressSpinner.Spinning = false;
             this.monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Green;
             this.monthCompProgressSpinner.TabIndex = 20;
             this.monthCompProgressSpinner.UseSelectable = true;
@@ -208,14 +213,26 @@
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(177, 19);
             this.metroLabel4.TabIndex = 21;
-            this.metroLabel4.Text = "This Month vs Last Month";
+            this.metroLabel4.Text = "Last Month vs This Month";
             this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // progLbl
+            // 
+            this.progLbl.AutoSize = true;
+            this.progLbl.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.progLbl.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.progLbl.Location = new System.Drawing.Point(957, 151);
+            this.progLbl.Name = "progLbl";
+            this.progLbl.Size = new System.Drawing.Size(48, 25);
+            this.progLbl.TabIndex = 22;
+            this.progLbl.Text = "75%";
             // 
             // ProjectExpensesMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.Controls.Add(this.progLbl);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.monthCompProgressSpinner);
             this.Controls.Add(this.chart1);
@@ -257,5 +274,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroProgressSpinner monthCompProgressSpinner;
         private MetroFramework.Controls.MetroLabel metroLabel4;
+        private MetroFramework.Controls.MetroLabel progLbl;
     }
 }

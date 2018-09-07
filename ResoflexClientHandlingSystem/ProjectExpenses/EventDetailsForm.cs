@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.ProjectExpenses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -1221,6 +1222,23 @@ namespace ResoflexClientHandlingSystem
                         }
                     }
                 }
+            }
+        }
+
+        private void eventExpGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv.CurrentRow.Selected)
+            {
+                int projId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int eventId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                string project = eventExpGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string client = eventExpGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                EventExpSeeMoreForm frm = new EventExpSeeMoreForm(projId, eventId, project, client);
+
+                frm.ShowDialog();
             }
         }
     }

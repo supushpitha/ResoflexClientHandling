@@ -36,6 +36,29 @@ namespace ResoflexClientHandlingSystem
 
             byProjectCmbBox.SelectedItem = null;
             byStaffCmbBox.SelectedItem = null;
+
+            if (iouGrid.Rows.Count >= 1)
+            {
+                int projId = Int32.Parse(iouGrid.Rows[0].Cells[1].Value.ToString());
+                int schId = Int32.Parse(iouGrid.Rows[0].Cells[2].Value.ToString());
+                double realExp = Double.Parse(iouGrid.Rows[0].Cells[11].Value.ToString());
+
+                fillTiles(projId, schId, realExp);
+            }
+        }
+
+        private void fillTiles(int projId, int scheduleId, double realExp)
+        {
+            realExpTile.Text = "Rs." + realExp;
+
+            MySqlDataReader reader = DBConnection.getData("select IFNULL(count(staff_id), 0) from schedule_technicians where sch_no=" + scheduleId + " and proj_id=" + projId);
+
+            while (reader.Read())
+            {
+                noTechTile.Text = "" + reader.GetInt16(0);
+            }
+
+            reader.Close();
         }
 
         private DataTable getIou()
@@ -146,6 +169,20 @@ namespace ResoflexClientHandlingSystem
             byStaffCmbBox.DataSource = tableClient;
             byStaffCmbBox.ValueMember = "staff_id";
             byStaffCmbBox.DisplayMember = "first_name";
+        }
+
+        private void iouGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv.CurrentRow.Selected)
+            {
+                int projId = Int32.Parse(iouGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+                int schId = Int32.Parse(iouGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                double realExp = Double.Parse(iouGrid.Rows[e.RowIndex].Cells[11].Value.ToString());
+
+                fillTiles(projId, schId, realExp);
+            }
         }
     }
 }

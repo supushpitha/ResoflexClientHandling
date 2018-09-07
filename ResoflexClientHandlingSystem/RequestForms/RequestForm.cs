@@ -212,6 +212,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         {
             if (searchClientNameCmbBox.SelectedItem != null)
             {
+                clientAllRadioBtn.Checked = true;
                 clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
             }
         }
@@ -571,6 +572,64 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 changeReqGrid.DataSource = table;
+            }
+        }
+
+        private void importanceRadioBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (importanceRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = searchClientNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    string clientName = tmpName.ToString();
+
+                    qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+                            "ON cr.client_id=c.client_id WHERE cr.importance=1 and c.name='" + clientName + "' order by cr.importance desc;";
+                }
+                else
+                {
+                    qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+                            "ON cr.client_id=c.client_id WHERE cr.importance=1 order by cr.importance desc limit 10;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                clientReqGrid.DataSource = table;
+            }
+        }
+
+        private void clientAllRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (clientAllRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = searchClientNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    string clientName = tmpName.ToString();
+
+                    qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+                            "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "' order by cr.importance desc;";
+                }
+                else
+                {
+                    qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
+                            "ON cr.client_id=c.client_id order by cr.importance desc limit 10;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                clientReqGrid.DataSource = table;
             }
         }
     }

@@ -16,6 +16,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
     public partial class RequestForm : MetroFramework.Forms.MetroForm
     {
         private string projName = "";
+        private string clientName = "";
+        private int clientId = 0;
 
         public RequestForm()
         {
@@ -29,15 +31,34 @@ namespace ResoflexClientHandlingSystem.RequestForms
             this.projName = projectName;
         }
 
+        public RequestForm(string clientName, int clientId)
+        {
+            InitializeComponent();
+
+            this.clientName = clientName;
+            this.clientId = clientId;
+        }
+
         private void RequestForm_Load(object sender, EventArgs e)
         {
             clientReqGrid.DataSource = getClientRequests();
+            fillClientCmbBoxes();
+            fillProjectCmbBox();
             
             if (!projName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
                 changeReqGrid.DataSource = getChangeRequestsByProject(projName);
+            }
+            else if (!clientName.Equals(""))
+            {
+                searchTypeCmbBox.SelectedIndex = 1;
+                SearchNameCmbBox.SelectedItem = clientName;
+                changeReqGrid.DataSource = getChangeRequestsByClient(clientName);
+
+                searchClientNameCmbBox.SelectedItem = clientName;
+                clientReqGrid.DataSource = getClientRequestsByClient(clientName);
             }
             else
             {
@@ -57,7 +78,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 while (reader.Read())
                 {
-                    addChangeReqProjCmbBox.Items.Add(reader.GetString("name"));
+                    addChangeReqProjCmbBox.Items.Add(reader.GetString(0));
                 }
             }
 
@@ -68,12 +89,15 @@ namespace ResoflexClientHandlingSystem.RequestForms
         {
             MySqlDataReader reader = DBConnection.getData("SELECT name as name FROM client");
 
+            searchClientNameCmbBox.Items.Clear();
+            addClientReqClientNameCmbBox.Items.Clear();
+
             if (reader.HasRows)
             {
                 while (reader.Read())
                 {
-                    searchClientNameCmbBox.Items.Add(reader.GetString("name"));
-                    addClientReqClientNameCmbBox.Items.Add(reader.GetString("name"));
+                    searchClientNameCmbBox.Items.Add(reader.GetString(0));
+                    addClientReqClientNameCmbBox.Items.Add(reader.GetString(0));
                 }
             }
 
@@ -183,7 +207,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 {
                     while (reader.Read())
                     {
-                        SearchNameCmbBox.Items.Add(reader.GetString("name"));
+                        SearchNameCmbBox.Items.Add(reader.GetString(0));
                     }
                 }
 
@@ -366,8 +390,18 @@ namespace ResoflexClientHandlingSystem.RequestForms
             fillClientCmbBoxes();
             fillProjectCmbBox();
 
-            allRadioBtn.Checked = true;
-            //clientAllRadioBtn.Checked = true;
+            if (!projName.Equals(""))
+            {
+                allRadioBtn.Checked = true;
+            }
+            else if (!clientName.Equals(""))
+            {
+                clientAllRadioBtn.Checked = true;
+            }
+            else
+            {
+                allRadioBtn.Checked = true;
+            }
         }
 
         private void metroRadioButton2_MouseClick(object sender, MouseEventArgs e)

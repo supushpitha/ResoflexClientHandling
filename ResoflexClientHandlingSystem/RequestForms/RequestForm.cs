@@ -366,7 +366,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             fillProjectCmbBox();
 
             allRadioBtn.Checked = true;
-            clientAllRadioBtn.Checked = true;
+            //clientAllRadioBtn.Checked = true;
         }
 
         private void metroRadioButton2_MouseClick(object sender, MouseEventArgs e)

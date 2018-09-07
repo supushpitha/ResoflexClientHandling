@@ -32,17 +32,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private void RequestForm_Load(object sender, EventArgs e)
         {
             clientReqGrid.DataSource = getClientRequests();
-
-            searchTypeCmbBox.SelectedIndex = 0;
-
+            
             if (!projName.Equals(""))
             {
+                searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
                 changeReqGrid.DataSource = getChangeRequestsByProject(projName);
             }
             else
             {
                 changeReqGrid.DataSource = getChangeRequests();
+
+                searchTypeCmbBox.SelectedItem = null;
+                SearchNameCmbBox.SelectedItem = null;
+                searchClientNameCmbBox.SelectedItem = null;
             }
         }
 
@@ -115,8 +118,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequests()
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
-                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;");
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                "r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev FROM proj_request r INNER JOIN project p ON " +
+                "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;");
             
             DataTable table = new DataTable();
 
@@ -139,58 +143,77 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void SearchNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string type = searchTypeCmbBox.SelectedItem.ToString();
+            if ((searchTypeCmbBox.SelectedItem != null) && (SearchNameCmbBox.SelectedItem != null))
+            {
+                string type = searchTypeCmbBox.SelectedItem.ToString();
+                allRadioBtn.Checked = true;
 
-            if (type.Equals("Client"))
-            {
-                changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
-            }
-            else if (type.Equals("Project"))
-            {
-                changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
+                if (type.Equals("Client"))
+                {
+                    changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
+                }
+                else if (type.Equals("Project"))
+                {
+                    changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
+                }
             }
         }
 
         private void searchTypeCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string type = searchTypeCmbBox.SelectedItem.ToString();
-            MySqlDataReader reader = null;
+            Object tmp = searchTypeCmbBox.SelectedItem;
 
-            if (type.Equals("Client"))
+            if (tmp != null)
             {
-                reader = DBConnection.getData("SELECT name as name FROM client");
-            }
-            else if (type.Equals("Project"))
-            {
-                reader = DBConnection.getData("SELECT proj_name as name FROM project");
-            }
+                string type = tmp.ToString();
+                MySqlDataReader reader = null;
 
-            SearchNameCmbBox.Items.Clear();
-
-            if (reader.HasRows)
-            {
-                while (reader.Read())
+                if (type.Equals("Client"))
                 {
-                    SearchNameCmbBox.Items.Add(reader.GetString("name"));
+                    reader = DBConnection.getData("SELECT name as name FROM client");
                 }
-            }
+                else if (type.Equals("Project"))
+                {
+                    reader = DBConnection.getData("SELECT proj_name as name FROM project");
+                }
 
-            reader.Close();
+                SearchNameCmbBox.Items.Clear();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        SearchNameCmbBox.Items.Add(reader.GetString("name"));
+                    }
+                }
+
+                reader.Close();
+            }
         }
 
         private void showAllProjReqBtn_Click(object sender, EventArgs e)
         {
             changeReqGrid.DataSource = getChangeRequests();
+            allRadioBtn.Checked = true;
+
+            searchTypeCmbBox.SelectedItem = null;
+            SearchNameCmbBox.SelectedItem = null;
         }
 
         private void showAllClientReqBtn_Click(object sender, EventArgs e)
         {
             clientReqGrid.DataSource = getClientRequests();
+            clientAllRadioBtn.Checked = true;
+
+            searchClientNameCmbBox.SelectedItem = null;
         }
 
         private void searchClientNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
+            if (searchClientNameCmbBox.SelectedItem != null)
+            {
+                clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
+            }
         }
 
         private void addNewChangeReqBtn_Click(object sender, EventArgs e)
@@ -341,6 +364,214 @@ namespace ResoflexClientHandlingSystem.RequestForms
             verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             fillClientCmbBoxes();
             fillProjectCmbBox();
+
+            allRadioBtn.Checked = true;
+            clientAllRadioBtn.Checked = true;
+        }
+
+        private void metroRadioButton2_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (onGoingRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = SearchNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    Object tmpType = searchTypeCmbBox.SelectedItem;
+
+                    if (tmpType != null)
+                    {
+                        if (tmpType.ToString().Equals("Client"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
+                        "r.ended_dateTime is null and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                        else if (tmpType.ToString().Equals("Project"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
+                        "r.ended_dateTime is null and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                    }
+                    else
+                    {
+                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
+                        "r.ended_dateTime is null and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') order by r.state asc, r.urgent desc;";
+                    }
+                }
+                else
+                {
+                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
+                        "r.ended_dateTime is null order by r.state asc, r.urgent desc;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                changeReqGrid.DataSource = table;
+            }
+        }
+
+        private void allRadioBtn_CheckedChanged(object sender, EventArgs e)
+        {
+            if (allRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = SearchNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    Object tmpType = searchTypeCmbBox.SelectedItem;
+
+                    if (tmpType != null)
+                    {
+                        if (tmpType.ToString().Equals("Client"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where c.name='" + tmpName.ToString() + "' " +
+                        "order by r.state asc, r.urgent desc;";
+                        }
+                        else if (tmpType.ToString().Equals("Project"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where p.proj_name='" + tmpName.ToString() + "' " +
+                        "order by r.state asc, r.urgent desc;";
+                        }
+                    }
+                    else
+                    {
+                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
+                        "order by r.state asc, r.urgent desc;";
+                    }
+                }
+                else
+                {
+                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                changeReqGrid.DataSource = table;
+            }
+        }
+
+        private void urgentRadioBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (urgentRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = SearchNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    Object tmpType = searchTypeCmbBox.SelectedItem;
+
+                    if (tmpType != null)
+                    {
+                        if (tmpType.ToString().Equals("Client"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                        else if (tmpType.ToString().Equals("Project"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                    }
+                    else
+                    {
+                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
+                        "order by r.state asc, r.urgent desc;";
+                    }
+                }
+                else
+                {
+                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 order by r.state asc, r.urgent desc;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                changeReqGrid.DataSource = table;
+            }
+        }
+
+        private void completeRadioBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (completeRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = SearchNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    Object tmpType = searchTypeCmbBox.SelectedItem;
+
+                    if (tmpType != null)
+                    {
+                        if (tmpType.ToString().Equals("Client"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                        else if (tmpType.ToString().Equals("Project"))
+                        {
+                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                    }
+                    else
+                    {
+                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
+                        "order by r.state asc, r.urgent desc;";
+                    }
+                }
+                else
+                {
+                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 order by r.state asc, r.urgent desc;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                changeReqGrid.DataSource = table;
+            }
         }
     }
 }

@@ -31,13 +31,6 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
-            verticalLineLbl.AutoSize = false;
-            verticalLineLbl.Width = 2;
-            verticalLineLbl.Height = 900;
-            verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            fillClientCmbBoxes();
-            fillProjectCmbBox();
-            
             clientReqGrid.DataSource = getClientRequests();
 
             searchTypeCmbBox.SelectedIndex = 0;
@@ -87,7 +80,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private DataTable getClientRequests()
         {
             MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
-                "ON cr.client_id=c.client_id;");
+                "ON cr.client_id=c.client_id order by cr.importance desc limit 10;");
             
             DataTable table = new DataTable();
 
@@ -99,7 +92,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private DataTable getClientRequestsByClient(string clientName)
         {
             MySqlDataReader reader = DBConnection.getData("SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
-                "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "'");
+                "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "' order by cr.importance desc");
 
             DataTable table = new DataTable();
 
@@ -111,7 +104,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private DataTable getChangeRequestsByClient(string clientName)
         {
             MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
-                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE c.name='" + clientName + "';");
+                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE c.name='" + clientName + "' order by r.state asc, r.urgent desc;");
 
             DataTable table = new DataTable();
 
@@ -123,7 +116,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private DataTable getChangeRequests()
         {
             MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
-                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id;");
+                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;");
             
             DataTable table = new DataTable();
 
@@ -135,7 +128,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private DataTable getChangeRequestsByProject(string project)
         {
             MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
-                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE p.proj_name='" + project + "';");
+                "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE p.proj_name='" + project + "' order by r.state asc, r.urgent desc;");
 
             DataTable table = new DataTable();
 
@@ -338,6 +331,16 @@ namespace ResoflexClientHandlingSystem.RequestForms
         {
             errorProviderReq.SetError(addClientReqTxtBox, "");
             errorProviderReq.Clear();
+        }
+
+        private void RequestForm_Shown(object sender, EventArgs e)
+        {
+            verticalLineLbl.AutoSize = false;
+            verticalLineLbl.Width = 2;
+            verticalLineLbl.Height = 890;
+            verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            fillClientCmbBoxes();
+            fillProjectCmbBox();
         }
     }
 }

@@ -120,5 +120,20 @@ namespace ResoflexClientHandlingSystem
             dashboard.ShowDialog();
             this.Close();
         }
+
+        private DataTable searchFromResource()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM resource WHERE name LIKE '%"
+                + selectResourceTxtbox.Text + "%'");
+            table.Load(reader);
+            return table;
+
+        }
+
+        private void selectResourceTxtbox_TextChanged(object sender, EventArgs e)
+        {
+            ResGrid.DataSource = searchFromResource();
+        }
     }
 }

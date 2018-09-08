@@ -121,5 +121,23 @@ namespace ResoflexClientHandlingSystem
             dashboard.ShowDialog();
             this.Close();
         }
+
+        private DataTable searchFromStaff()
+        {
+            DataTable table = new DataTable();
+            MySqlDataReader reader = DBConnection.getData("SELECT * FROM staff WHERE first_name LIKE '%" 
+                + selectMemberTxtbox.Text + "%' OR last_name LIKE '%"
+                + selectMemberTxtbox.Text + "%' OR nic LIKE '%"
+                + selectMemberTxtbox.Text + "%' OR  staff_id LIKE '%" 
+                + selectMemberTxtbox.Text + "%'");
+            table.Load(reader);
+            return table;
+
+        }
+
+        private void selectEmployeeTxtbox_TextChanged(object sender, EventArgs e)
+        {
+            MembersGrid.DataSource = searchFromStaff();
+        }
     }
 }

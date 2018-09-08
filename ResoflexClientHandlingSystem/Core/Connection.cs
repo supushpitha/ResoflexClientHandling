@@ -73,29 +73,34 @@ namespace ResoflexClientHandlingSystem.Core
                 new MySqlCommand(qry, getConnection()).ExecuteNonQuery();
             }
         }
-        /*
-        public static void backupDB()
-        {
-            try
-            {
-                string file = "C:/Users/Geeth Sandaru/Downloads/Backup.sql";
 
-                if (conn != null)
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
-                        {
-                            cmd.Connection = getConnection();
-                            mb.ExportToFile(file);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
+        internal static MySqlDataReader getData(object p)
+        {
+            throw new NotImplementedException();
+        }
+        /*
+public static void backupDB()
+{
+   try
+   {
+       string file = "C:/Users/Geeth Sandaru/Downloads/Backup.sql";
+
+       if (conn != null)
+       {
+           using (MySqlCommand cmd = new MySqlCommand())
+           {
+               using (MySqlBackup mb = new MySqlBackup(cmd))
+               {
+                   cmd.Connection = getConnection();
+                   mb.ExportToFile(file);
+               }
+           }
+       }
+   }
+   catch (Exception ex)
+   {
+       MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+   }
+}*/
     }
 }

@@ -49,16 +49,16 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
-                changeReqGrid.DataSource = getChangeRequestsByProject(projName);
+                changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
             }
             else if (!clientName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 1;
                 SearchNameCmbBox.SelectedItem = clientName;
-                changeReqGrid.DataSource = getChangeRequestsByClient(clientName);
+                changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
 
                 searchClientNameCmbBox.SelectedItem = clientName;
-                clientReqGrid.DataSource = getClientRequestsByClient(clientName);
+                clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
             }
             else
             {
@@ -217,19 +217,19 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void showAllProjReqBtn_Click(object sender, EventArgs e)
         {
-            changeReqGrid.DataSource = getChangeRequests();
-            allRadioBtn.Checked = true;
-
             searchTypeCmbBox.SelectedItem = null;
             SearchNameCmbBox.SelectedItem = null;
+
+            changeReqGrid.DataSource = getChangeRequests();
+            allRadioBtn.Checked = true;
         }
 
         private void showAllClientReqBtn_Click(object sender, EventArgs e)
         {
+            searchClientNameCmbBox.SelectedItem = null;
+
             clientReqGrid.DataSource = getClientRequests();
             clientAllRadioBtn.Checked = true;
-
-            searchClientNameCmbBox.SelectedItem = null;
         }
 
         private void searchClientNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -651,6 +651,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                     qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
                             "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "' order by cr.importance desc;";
+                    
                 }
                 else
                 {

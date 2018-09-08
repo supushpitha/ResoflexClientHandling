@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
@@ -343,6 +344,18 @@ namespace ResoflexClientHandlingSystem
                 fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
 
             searchClientTxtBox.Focus();
+        }
+
+        private void reqBtn_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = clientGrid.CurrentRow;
+
+            int id = Int32.Parse(row.Cells[0].Value.ToString());
+            string name = row.Cells[1].Value.ToString();
+
+            RequestForm frm = new RequestForm(name, id);
+
+            frm.Show();
         }
     }
 }

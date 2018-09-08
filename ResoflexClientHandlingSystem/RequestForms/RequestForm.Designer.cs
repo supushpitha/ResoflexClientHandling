@@ -44,15 +44,15 @@
             this.searchTypeCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.SearchNameCmbBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton4 = new MetroFramework.Controls.MetroRadioButton();
+            this.allRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.onGoingRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.urgentRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.completeRadioBtn = new MetroFramework.Controls.MetroRadioButton();
             this.showAllProjReqBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.searchClientNameCmbBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroRadioButton5 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton6 = new MetroFramework.Controls.MetroRadioButton();
+            this.importanceRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.clientAllRadioBtn = new MetroFramework.Controls.MetroRadioButton();
             this.showAllClientReqBtn = new MetroFramework.Controls.MetroButton();
             this.addChangeReqProjCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -236,6 +236,7 @@
             "Client"});
             this.searchTypeCmbBox.Location = new System.Drawing.Point(109, 383);
             this.searchTypeCmbBox.Name = "searchTypeCmbBox";
+            this.searchTypeCmbBox.PromptText = "Project/Client";
             this.searchTypeCmbBox.Size = new System.Drawing.Size(297, 29);
             this.searchTypeCmbBox.TabIndex = 6;
             this.searchTypeCmbBox.UseSelectable = true;
@@ -257,50 +258,55 @@
             this.SearchNameCmbBox.ItemHeight = 23;
             this.SearchNameCmbBox.Location = new System.Drawing.Point(412, 383);
             this.SearchNameCmbBox.Name = "SearchNameCmbBox";
+            this.SearchNameCmbBox.PromptText = "Project/Client Name";
             this.SearchNameCmbBox.Size = new System.Drawing.Size(372, 29);
             this.SearchNameCmbBox.TabIndex = 8;
             this.SearchNameCmbBox.UseSelectable = true;
             this.SearchNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.SearchNameCmbBox_SelectedIndexChanged);
             // 
-            // metroRadioButton1
+            // allRadioBtn
             // 
-            this.metroRadioButton1.AutoSize = true;
-            this.metroRadioButton1.Location = new System.Drawing.Point(208, 463);
-            this.metroRadioButton1.Name = "metroRadioButton1";
-            this.metroRadioButton1.Size = new System.Drawing.Size(37, 15);
-            this.metroRadioButton1.TabIndex = 9;
-            this.metroRadioButton1.Text = "All";
-            this.metroRadioButton1.UseSelectable = true;
+            this.allRadioBtn.AutoSize = true;
+            this.allRadioBtn.Location = new System.Drawing.Point(208, 463);
+            this.allRadioBtn.Name = "allRadioBtn";
+            this.allRadioBtn.Size = new System.Drawing.Size(37, 15);
+            this.allRadioBtn.TabIndex = 9;
+            this.allRadioBtn.Text = "All";
+            this.allRadioBtn.UseSelectable = true;
+            this.allRadioBtn.CheckedChanged += new System.EventHandler(this.allRadioBtn_CheckedChanged);
             // 
-            // metroRadioButton2
+            // onGoingRadioBtn
             // 
-            this.metroRadioButton2.AutoSize = true;
-            this.metroRadioButton2.Location = new System.Drawing.Point(264, 463);
-            this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(76, 15);
-            this.metroRadioButton2.TabIndex = 10;
-            this.metroRadioButton2.Text = "On-Going";
-            this.metroRadioButton2.UseSelectable = true;
+            this.onGoingRadioBtn.AutoSize = true;
+            this.onGoingRadioBtn.Location = new System.Drawing.Point(264, 463);
+            this.onGoingRadioBtn.Name = "onGoingRadioBtn";
+            this.onGoingRadioBtn.Size = new System.Drawing.Size(76, 15);
+            this.onGoingRadioBtn.TabIndex = 10;
+            this.onGoingRadioBtn.Text = "On-Going";
+            this.onGoingRadioBtn.UseSelectable = true;
+            this.onGoingRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.metroRadioButton2_MouseClick);
             // 
-            // metroRadioButton3
+            // urgentRadioBtn
             // 
-            this.metroRadioButton3.AutoSize = true;
-            this.metroRadioButton3.Location = new System.Drawing.Point(357, 465);
-            this.metroRadioButton3.Name = "metroRadioButton3";
-            this.metroRadioButton3.Size = new System.Drawing.Size(59, 15);
-            this.metroRadioButton3.TabIndex = 11;
-            this.metroRadioButton3.Text = "Urgent";
-            this.metroRadioButton3.UseSelectable = true;
+            this.urgentRadioBtn.AutoSize = true;
+            this.urgentRadioBtn.Location = new System.Drawing.Point(357, 465);
+            this.urgentRadioBtn.Name = "urgentRadioBtn";
+            this.urgentRadioBtn.Size = new System.Drawing.Size(59, 15);
+            this.urgentRadioBtn.TabIndex = 11;
+            this.urgentRadioBtn.Text = "Urgent";
+            this.urgentRadioBtn.UseSelectable = true;
+            this.urgentRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.urgentRadioBtn_MouseClick);
             // 
-            // metroRadioButton4
+            // completeRadioBtn
             // 
-            this.metroRadioButton4.AutoSize = true;
-            this.metroRadioButton4.Location = new System.Drawing.Point(444, 465);
-            this.metroRadioButton4.Name = "metroRadioButton4";
-            this.metroRadioButton4.Size = new System.Drawing.Size(82, 15);
-            this.metroRadioButton4.TabIndex = 12;
-            this.metroRadioButton4.Text = "Completed";
-            this.metroRadioButton4.UseSelectable = true;
+            this.completeRadioBtn.AutoSize = true;
+            this.completeRadioBtn.Location = new System.Drawing.Point(444, 465);
+            this.completeRadioBtn.Name = "completeRadioBtn";
+            this.completeRadioBtn.Size = new System.Drawing.Size(82, 15);
+            this.completeRadioBtn.TabIndex = 12;
+            this.completeRadioBtn.Text = "Completed";
+            this.completeRadioBtn.UseSelectable = true;
+            this.completeRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.completeRadioBtn_MouseClick);
             // 
             // showAllProjReqBtn
             // 
@@ -330,32 +336,35 @@
             this.searchClientNameCmbBox.ItemHeight = 23;
             this.searchClientNameCmbBox.Location = new System.Drawing.Point(958, 383);
             this.searchClientNameCmbBox.Name = "searchClientNameCmbBox";
+            this.searchClientNameCmbBox.PromptText = "Client Name";
             this.searchClientNameCmbBox.Size = new System.Drawing.Size(284, 29);
             this.searchClientNameCmbBox.TabIndex = 15;
             this.searchClientNameCmbBox.UseSelectable = true;
             this.searchClientNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.searchClientNameCmbBox_SelectedIndexChanged);
             // 
-            // metroRadioButton5
+            // importanceRadioBtn
             // 
-            this.metroRadioButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroRadioButton5.AutoSize = true;
-            this.metroRadioButton5.Location = new System.Drawing.Point(1166, 463);
-            this.metroRadioButton5.Name = "metroRadioButton5";
-            this.metroRadioButton5.Size = new System.Drawing.Size(76, 15);
-            this.metroRadioButton5.TabIndex = 17;
-            this.metroRadioButton5.Text = "Important";
-            this.metroRadioButton5.UseSelectable = true;
+            this.importanceRadioBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.importanceRadioBtn.AutoSize = true;
+            this.importanceRadioBtn.Location = new System.Drawing.Point(1166, 463);
+            this.importanceRadioBtn.Name = "importanceRadioBtn";
+            this.importanceRadioBtn.Size = new System.Drawing.Size(76, 15);
+            this.importanceRadioBtn.TabIndex = 17;
+            this.importanceRadioBtn.Text = "Important";
+            this.importanceRadioBtn.UseSelectable = true;
+            this.importanceRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.importanceRadioBtn_MouseClick);
             // 
-            // metroRadioButton6
+            // clientAllRadioBtn
             // 
-            this.metroRadioButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroRadioButton6.AutoSize = true;
-            this.metroRadioButton6.Location = new System.Drawing.Point(1110, 463);
-            this.metroRadioButton6.Name = "metroRadioButton6";
-            this.metroRadioButton6.Size = new System.Drawing.Size(37, 15);
-            this.metroRadioButton6.TabIndex = 16;
-            this.metroRadioButton6.Text = "All";
-            this.metroRadioButton6.UseSelectable = true;
+            this.clientAllRadioBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.clientAllRadioBtn.AutoSize = true;
+            this.clientAllRadioBtn.Location = new System.Drawing.Point(1110, 463);
+            this.clientAllRadioBtn.Name = "clientAllRadioBtn";
+            this.clientAllRadioBtn.Size = new System.Drawing.Size(37, 15);
+            this.clientAllRadioBtn.TabIndex = 16;
+            this.clientAllRadioBtn.Text = "All";
+            this.clientAllRadioBtn.UseSelectable = true;
+            this.clientAllRadioBtn.CheckedChanged += new System.EventHandler(this.clientAllRadioBtn_CheckedChanged);
             // 
             // showAllClientReqBtn
             // 
@@ -575,15 +584,15 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.addChangeReqProjCmbBox);
             this.Controls.Add(this.showAllClientReqBtn);
-            this.Controls.Add(this.metroRadioButton5);
-            this.Controls.Add(this.metroRadioButton6);
+            this.Controls.Add(this.importanceRadioBtn);
+            this.Controls.Add(this.clientAllRadioBtn);
             this.Controls.Add(this.searchClientNameCmbBox);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.showAllProjReqBtn);
-            this.Controls.Add(this.metroRadioButton4);
-            this.Controls.Add(this.metroRadioButton3);
-            this.Controls.Add(this.metroRadioButton2);
-            this.Controls.Add(this.metroRadioButton1);
+            this.Controls.Add(this.completeRadioBtn);
+            this.Controls.Add(this.urgentRadioBtn);
+            this.Controls.Add(this.onGoingRadioBtn);
+            this.Controls.Add(this.allRadioBtn);
             this.Controls.Add(this.SearchNameCmbBox);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.searchTypeCmbBox);
@@ -598,6 +607,7 @@
             this.Name = "RequestForm";
             this.Text = "Requests";
             this.Load += new System.EventHandler(this.RequestForm_Load);
+            this.Shown += new System.EventHandler(this.RequestForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).EndInit();
@@ -617,15 +627,15 @@
         private MetroFramework.Controls.MetroComboBox searchTypeCmbBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox SearchNameCmbBox;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
+        private MetroFramework.Controls.MetroRadioButton allRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton onGoingRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton urgentRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton completeRadioBtn;
         private MetroFramework.Controls.MetroButton showAllProjReqBtn;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox searchClientNameCmbBox;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton5;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton6;
+        private MetroFramework.Controls.MetroRadioButton importanceRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton clientAllRadioBtn;
         private MetroFramework.Controls.MetroButton showAllClientReqBtn;
         private MetroFramework.Controls.MetroComboBox addChangeReqProjCmbBox;
         private MetroFramework.Controls.MetroLabel metroLabel5;

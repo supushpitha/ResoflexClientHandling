@@ -33,8 +33,8 @@ namespace ResoflexClientHandlingSystem
             catGrid.DataSource = getCats();
             catGrid.Columns[0].Visible = false;
             catGrid.ClearSelection();
-            
-            projectExGrid.Rows[4].Cells[0].Selected = true;
+
+            //projectExGrid.Rows[4].Cells[0].Selected = true;
 
 
         }
@@ -46,20 +46,20 @@ namespace ResoflexClientHandlingSystem
         private DataTable getProjects()
         {
             DataTable table = new DataTable();
-            
+
 
             MySqlDataReader reader = DBConnection.getData("select p.proj_id, c.name as Client, p.proj_name as Project ,e.amount as Amount from project p, exp_detail_event e, client c where p.proj_id=e.proj_id and p.client_id=c.client_id order by e.amount DESC");
 
             table.Load(reader);
             projectExGrid.ClearSelection();
-            
+
             return table;
 
 
         }
 
 
-    private DataTable getVisits()
+        private DataTable getVisits()
         {
             DataTable table = new DataTable();
 
@@ -87,7 +87,7 @@ namespace ResoflexClientHandlingSystem
             DataTable table = new DataTable();
 
             MySqlDataReader reader = DBConnection.getData("select p.proj_id, p.proj_name as Project, c.name as Client, p.warranty_start_date as Warranty_Start, p.warranty_period as Months from project p, client c where p.client_id = c.client_id and p.warranty_period is not null ");
-            
+
             table.Load(reader);
             visitGrid.ClearSelection();
             return table;
@@ -95,7 +95,19 @@ namespace ResoflexClientHandlingSystem
 
 
 
+        private void checklimit()
+        {
+            int limit= Convert.ToInt32(metroTextBox1.Text);
+            for (int i = 0; i < projectExGrid.Rows.Count; i++)
+            {
+                int val = Int32.Parse(projectExGrid.Rows[i].Cells[3].Value.ToString());
+                if (val >= limit)
+                {
+                    projectExGrid.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
+                }
 
+            }
+        }
 
 
         private void addProjectBtn_Click(object sender, EventArgs e)
@@ -126,21 +138,16 @@ namespace ResoflexClientHandlingSystem
 
         private void projectExGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
+            
+
             projectExGrid.ClearSelection();
-            for (int i = 0; i < projectExGrid.Rows.Count; i++)
-            {
-                int val = Int32.Parse(projectExGrid.Rows[i].Cells[3].Value.ToString());
-                if (val >= 7000)
-                {
-                    projectExGrid.Rows[i].DefaultCellStyle.BackColor = Color.LightSalmon;
-                }
-                
-            }
+            checklimit();
+            
         }
 
 
 
-       
+
 
         private void visitGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -158,14 +165,14 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-      private void warGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void warGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             projectExGrid.ClearSelection();
             foreach (DataGridViewRow row in warGrid.Rows)
             {
                 DateTime exDate = Convert.ToDateTime(row.Cells[3].Value);
-                
-                if (DateTime.Now >  exDate)
+
+                if (DateTime.Now > exDate)
                 {
                     row.DefaultCellStyle.BackColor = Color.LightSalmon;
                 }
@@ -179,6 +186,23 @@ namespace ResoflexClientHandlingSystem
         private void projectExGrid_SelectionChanged(Object sender, EventArgs e)
         {
             projectExGrid.ClearSelection();
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void metroTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            checklimit();
+        }
+
+        private void metroLabel4_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

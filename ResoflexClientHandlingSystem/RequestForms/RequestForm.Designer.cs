@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle28 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
             this.newReqTile = new MetroFramework.Controls.MetroTile();
             this.verticalLineLbl = new MetroFramework.Controls.MetroLabel();
             this.changeReqGrid = new MetroFramework.Controls.MetroGrid();
@@ -44,15 +44,15 @@
             this.searchTypeCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.SearchNameCmbBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton3 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton4 = new MetroFramework.Controls.MetroRadioButton();
+            this.allRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.onGoingRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.urgentRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.completeRadioBtn = new MetroFramework.Controls.MetroRadioButton();
             this.showAllProjReqBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.searchClientNameCmbBox = new MetroFramework.Controls.MetroComboBox();
-            this.metroRadioButton5 = new MetroFramework.Controls.MetroRadioButton();
-            this.metroRadioButton6 = new MetroFramework.Controls.MetroRadioButton();
+            this.importanceRadioBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.clientAllRadioBtn = new MetroFramework.Controls.MetroRadioButton();
             this.showAllClientReqBtn = new MetroFramework.Controls.MetroButton();
             this.addChangeReqProjCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -67,8 +67,10 @@
             this.metroLabel8 = new MetroFramework.Controls.MetroLabel();
             this.addClientReqClientNameCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.addReqNotify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.errorProviderReq = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).BeginInit();
             this.SuspendLayout();
             // 
             // newReqTile
@@ -111,23 +113,23 @@
             this.changeReqGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.changeReqGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.changeReqGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle19.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.changeReqGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
+            dataGridViewCellStyle25.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle25.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.changeReqGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle25;
             this.changeReqGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle20.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.changeReqGrid.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle26.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle26.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle26.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.changeReqGrid.DefaultCellStyle = dataGridViewCellStyle26;
             this.changeReqGrid.EnableHeadersVisualStyles = false;
             this.changeReqGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.changeReqGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -135,14 +137,14 @@
             this.changeReqGrid.Name = "changeReqGrid";
             this.changeReqGrid.ReadOnly = true;
             this.changeReqGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
-            dataGridViewCellStyle21.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
-            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.changeReqGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
+            dataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle27.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(170)))), ((int)(((byte)(173)))));
+            dataGridViewCellStyle27.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle27.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(201)))), ((int)(((byte)(206)))));
+            dataGridViewCellStyle27.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle27.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.changeReqGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             this.changeReqGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.changeReqGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.changeReqGrid.Size = new System.Drawing.Size(760, 326);
@@ -162,23 +164,23 @@
             this.clientReqGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.clientReqGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.clientReqGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientReqGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            dataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle28.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle28.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle28.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle28.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientReqGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle28;
             this.clientReqGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.clientReqGrid.DefaultCellStyle = dataGridViewCellStyle23;
+            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle29.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.clientReqGrid.DefaultCellStyle = dataGridViewCellStyle29;
             this.clientReqGrid.EnableHeadersVisualStyles = false;
             this.clientReqGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.clientReqGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -186,14 +188,14 @@
             this.clientReqGrid.Name = "clientReqGrid";
             this.clientReqGrid.ReadOnly = true;
             this.clientReqGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.clientReqGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle30.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(188)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle30.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(165)))), ((int)(((byte)(219)))), ((int)(((byte)(0)))));
+            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.clientReqGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle30;
             this.clientReqGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.clientReqGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.clientReqGrid.Size = new System.Drawing.Size(760, 326);
@@ -234,6 +236,7 @@
             "Client"});
             this.searchTypeCmbBox.Location = new System.Drawing.Point(109, 383);
             this.searchTypeCmbBox.Name = "searchTypeCmbBox";
+            this.searchTypeCmbBox.PromptText = "Project/Client";
             this.searchTypeCmbBox.Size = new System.Drawing.Size(297, 29);
             this.searchTypeCmbBox.TabIndex = 6;
             this.searchTypeCmbBox.UseSelectable = true;
@@ -255,50 +258,55 @@
             this.SearchNameCmbBox.ItemHeight = 23;
             this.SearchNameCmbBox.Location = new System.Drawing.Point(412, 383);
             this.SearchNameCmbBox.Name = "SearchNameCmbBox";
+            this.SearchNameCmbBox.PromptText = "Project/Client Name";
             this.SearchNameCmbBox.Size = new System.Drawing.Size(372, 29);
             this.SearchNameCmbBox.TabIndex = 8;
             this.SearchNameCmbBox.UseSelectable = true;
             this.SearchNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.SearchNameCmbBox_SelectedIndexChanged);
             // 
-            // metroRadioButton1
+            // allRadioBtn
             // 
-            this.metroRadioButton1.AutoSize = true;
-            this.metroRadioButton1.Location = new System.Drawing.Point(208, 463);
-            this.metroRadioButton1.Name = "metroRadioButton1";
-            this.metroRadioButton1.Size = new System.Drawing.Size(37, 15);
-            this.metroRadioButton1.TabIndex = 9;
-            this.metroRadioButton1.Text = "All";
-            this.metroRadioButton1.UseSelectable = true;
+            this.allRadioBtn.AutoSize = true;
+            this.allRadioBtn.Location = new System.Drawing.Point(208, 463);
+            this.allRadioBtn.Name = "allRadioBtn";
+            this.allRadioBtn.Size = new System.Drawing.Size(37, 15);
+            this.allRadioBtn.TabIndex = 9;
+            this.allRadioBtn.Text = "All";
+            this.allRadioBtn.UseSelectable = true;
+            this.allRadioBtn.CheckedChanged += new System.EventHandler(this.allRadioBtn_CheckedChanged);
             // 
-            // metroRadioButton2
+            // onGoingRadioBtn
             // 
-            this.metroRadioButton2.AutoSize = true;
-            this.metroRadioButton2.Location = new System.Drawing.Point(264, 463);
-            this.metroRadioButton2.Name = "metroRadioButton2";
-            this.metroRadioButton2.Size = new System.Drawing.Size(76, 15);
-            this.metroRadioButton2.TabIndex = 10;
-            this.metroRadioButton2.Text = "On-Going";
-            this.metroRadioButton2.UseSelectable = true;
+            this.onGoingRadioBtn.AutoSize = true;
+            this.onGoingRadioBtn.Location = new System.Drawing.Point(264, 463);
+            this.onGoingRadioBtn.Name = "onGoingRadioBtn";
+            this.onGoingRadioBtn.Size = new System.Drawing.Size(76, 15);
+            this.onGoingRadioBtn.TabIndex = 10;
+            this.onGoingRadioBtn.Text = "On-Going";
+            this.onGoingRadioBtn.UseSelectable = true;
+            this.onGoingRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.metroRadioButton2_MouseClick);
             // 
-            // metroRadioButton3
+            // urgentRadioBtn
             // 
-            this.metroRadioButton3.AutoSize = true;
-            this.metroRadioButton3.Location = new System.Drawing.Point(357, 465);
-            this.metroRadioButton3.Name = "metroRadioButton3";
-            this.metroRadioButton3.Size = new System.Drawing.Size(59, 15);
-            this.metroRadioButton3.TabIndex = 11;
-            this.metroRadioButton3.Text = "Urgent";
-            this.metroRadioButton3.UseSelectable = true;
+            this.urgentRadioBtn.AutoSize = true;
+            this.urgentRadioBtn.Location = new System.Drawing.Point(357, 465);
+            this.urgentRadioBtn.Name = "urgentRadioBtn";
+            this.urgentRadioBtn.Size = new System.Drawing.Size(59, 15);
+            this.urgentRadioBtn.TabIndex = 11;
+            this.urgentRadioBtn.Text = "Urgent";
+            this.urgentRadioBtn.UseSelectable = true;
+            this.urgentRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.urgentRadioBtn_MouseClick);
             // 
-            // metroRadioButton4
+            // completeRadioBtn
             // 
-            this.metroRadioButton4.AutoSize = true;
-            this.metroRadioButton4.Location = new System.Drawing.Point(444, 465);
-            this.metroRadioButton4.Name = "metroRadioButton4";
-            this.metroRadioButton4.Size = new System.Drawing.Size(82, 15);
-            this.metroRadioButton4.TabIndex = 12;
-            this.metroRadioButton4.Text = "Completed";
-            this.metroRadioButton4.UseSelectable = true;
+            this.completeRadioBtn.AutoSize = true;
+            this.completeRadioBtn.Location = new System.Drawing.Point(444, 465);
+            this.completeRadioBtn.Name = "completeRadioBtn";
+            this.completeRadioBtn.Size = new System.Drawing.Size(82, 15);
+            this.completeRadioBtn.TabIndex = 12;
+            this.completeRadioBtn.Text = "Completed";
+            this.completeRadioBtn.UseSelectable = true;
+            this.completeRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.completeRadioBtn_MouseClick);
             // 
             // showAllProjReqBtn
             // 
@@ -328,32 +336,35 @@
             this.searchClientNameCmbBox.ItemHeight = 23;
             this.searchClientNameCmbBox.Location = new System.Drawing.Point(958, 383);
             this.searchClientNameCmbBox.Name = "searchClientNameCmbBox";
+            this.searchClientNameCmbBox.PromptText = "Client Name";
             this.searchClientNameCmbBox.Size = new System.Drawing.Size(284, 29);
             this.searchClientNameCmbBox.TabIndex = 15;
             this.searchClientNameCmbBox.UseSelectable = true;
             this.searchClientNameCmbBox.SelectedIndexChanged += new System.EventHandler(this.searchClientNameCmbBox_SelectedIndexChanged);
             // 
-            // metroRadioButton5
+            // importanceRadioBtn
             // 
-            this.metroRadioButton5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroRadioButton5.AutoSize = true;
-            this.metroRadioButton5.Location = new System.Drawing.Point(1166, 463);
-            this.metroRadioButton5.Name = "metroRadioButton5";
-            this.metroRadioButton5.Size = new System.Drawing.Size(76, 15);
-            this.metroRadioButton5.TabIndex = 17;
-            this.metroRadioButton5.Text = "Important";
-            this.metroRadioButton5.UseSelectable = true;
+            this.importanceRadioBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.importanceRadioBtn.AutoSize = true;
+            this.importanceRadioBtn.Location = new System.Drawing.Point(1166, 463);
+            this.importanceRadioBtn.Name = "importanceRadioBtn";
+            this.importanceRadioBtn.Size = new System.Drawing.Size(76, 15);
+            this.importanceRadioBtn.TabIndex = 17;
+            this.importanceRadioBtn.Text = "Important";
+            this.importanceRadioBtn.UseSelectable = true;
+            this.importanceRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.importanceRadioBtn_MouseClick);
             // 
-            // metroRadioButton6
+            // clientAllRadioBtn
             // 
-            this.metroRadioButton6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.metroRadioButton6.AutoSize = true;
-            this.metroRadioButton6.Location = new System.Drawing.Point(1110, 463);
-            this.metroRadioButton6.Name = "metroRadioButton6";
-            this.metroRadioButton6.Size = new System.Drawing.Size(37, 15);
-            this.metroRadioButton6.TabIndex = 16;
-            this.metroRadioButton6.Text = "All";
-            this.metroRadioButton6.UseSelectable = true;
+            this.clientAllRadioBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.clientAllRadioBtn.AutoSize = true;
+            this.clientAllRadioBtn.Location = new System.Drawing.Point(1110, 463);
+            this.clientAllRadioBtn.Name = "clientAllRadioBtn";
+            this.clientAllRadioBtn.Size = new System.Drawing.Size(37, 15);
+            this.clientAllRadioBtn.TabIndex = 16;
+            this.clientAllRadioBtn.Text = "All";
+            this.clientAllRadioBtn.UseSelectable = true;
+            this.clientAllRadioBtn.CheckedChanged += new System.EventHandler(this.clientAllRadioBtn_CheckedChanged);
             // 
             // showAllClientReqBtn
             // 
@@ -416,6 +427,8 @@
             this.addReqTxtBox.UseSelectable = true;
             this.addReqTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.addReqTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.addReqTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.addReqTxtBox_Validating);
+            this.addReqTxtBox.Validated += new System.EventHandler(this.addReqTxtBox_Validated);
             // 
             // metroLabel6
             // 
@@ -519,6 +532,8 @@
             this.addClientReqTxtBox.UseSelectable = true;
             this.addClientReqTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.addClientReqTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.addClientReqTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.addClientReqTxtBox_Validating);
+            this.addClientReqTxtBox.Validated += new System.EventHandler(this.addClientReqTxtBox_Validated);
             // 
             // metroLabel8
             // 
@@ -547,6 +562,10 @@
             this.addReqNotify.Text = "Request Added Successfully!";
             this.addReqNotify.Visible = true;
             // 
+            // errorProviderReq
+            // 
+            this.errorProviderReq.ContainerControl = this;
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -565,15 +584,15 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.addChangeReqProjCmbBox);
             this.Controls.Add(this.showAllClientReqBtn);
-            this.Controls.Add(this.metroRadioButton5);
-            this.Controls.Add(this.metroRadioButton6);
+            this.Controls.Add(this.importanceRadioBtn);
+            this.Controls.Add(this.clientAllRadioBtn);
             this.Controls.Add(this.searchClientNameCmbBox);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.showAllProjReqBtn);
-            this.Controls.Add(this.metroRadioButton4);
-            this.Controls.Add(this.metroRadioButton3);
-            this.Controls.Add(this.metroRadioButton2);
-            this.Controls.Add(this.metroRadioButton1);
+            this.Controls.Add(this.completeRadioBtn);
+            this.Controls.Add(this.urgentRadioBtn);
+            this.Controls.Add(this.onGoingRadioBtn);
+            this.Controls.Add(this.allRadioBtn);
             this.Controls.Add(this.SearchNameCmbBox);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.searchTypeCmbBox);
@@ -588,8 +607,10 @@
             this.Name = "RequestForm";
             this.Text = "Requests";
             this.Load += new System.EventHandler(this.RequestForm_Load);
+            this.Shown += new System.EventHandler(this.RequestForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -606,15 +627,15 @@
         private MetroFramework.Controls.MetroComboBox searchTypeCmbBox;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroComboBox SearchNameCmbBox;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton3;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton4;
+        private MetroFramework.Controls.MetroRadioButton allRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton onGoingRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton urgentRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton completeRadioBtn;
         private MetroFramework.Controls.MetroButton showAllProjReqBtn;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroComboBox searchClientNameCmbBox;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton5;
-        private MetroFramework.Controls.MetroRadioButton metroRadioButton6;
+        private MetroFramework.Controls.MetroRadioButton importanceRadioBtn;
+        private MetroFramework.Controls.MetroRadioButton clientAllRadioBtn;
         private MetroFramework.Controls.MetroButton showAllClientReqBtn;
         private MetroFramework.Controls.MetroComboBox addChangeReqProjCmbBox;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -629,5 +650,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel8;
         private MetroFramework.Controls.MetroComboBox addClientReqClientNameCmbBox;
         private System.Windows.Forms.NotifyIcon addReqNotify;
+        private System.Windows.Forms.ErrorProvider errorProviderReq;
     }
 }

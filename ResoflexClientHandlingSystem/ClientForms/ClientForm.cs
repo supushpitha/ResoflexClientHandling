@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
@@ -37,10 +38,12 @@ namespace ResoflexClientHandlingSystem
             if (Userglobals.uname == "")
             {
                 profileBtn.Visible = false;
+                addNewClientBtn.Visible = false;
+                updateClientBtn.Visible = false;
             }
             else
             {
-                if (Userglobals.priv != "ADM")
+                if (!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
                 {
                     addNewClientBtn.Visible = false;
                     updateClientBtn.Visible = false;
@@ -49,6 +52,8 @@ namespace ResoflexClientHandlingSystem
                 profileBtn.Visible = true;
                 profileBtn.Text = Userglobals.uname;
             }
+
+            
         }
 
         private void findNonProfitClients()
@@ -136,7 +141,7 @@ namespace ResoflexClientHandlingSystem
             DataTable table = new DataTable();
 
             MySqlDataReader reader = DBConnection.getData("select client_id, name as Name, address as Address, " +
-                "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email from client");
+                "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email from client order by client_id DESC limit 50");
 
             table.Load(reader);
 
@@ -171,7 +176,7 @@ namespace ResoflexClientHandlingSystem
 
             reader.Close();
 
-            Project1 frm = new Project1(clientName);
+            ProjectForm frm = new ProjectForm(clientName);
             
             frm.Show();
         }
@@ -181,29 +186,39 @@ namespace ResoflexClientHandlingSystem
             string qry = "";
             string clientNameTxt = searchClientTxtBox.Text;
 
-            qry = "SELECT client_id, name as Name, address as Address, " +
+            if (clientNameTxt.Equals(""))
+            {
+                clientGrid.DataSource = getClients();
+            }
+            else
+            {
+                qry = "SELECT client_id, name as Name, address as Address, " +
                 "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email FROM client WHERE name LIKE '%" + clientNameTxt + "%'";
 
-            try
-            {
-                MySqlDataReader reader = DBConnection.getData(qry);
-
-                if (reader.HasRows)
+                try
                 {
-                    System.Data.DataTable table = new System.Data.DataTable();
+                    MySqlDataReader reader = DBConnection.getData(qry);
 
-                    table.Load(reader);
+                    if (reader.HasRows)
+                    {
+                        System.Data.DataTable table = new System.Data.DataTable();
 
-                    clientGrid.DataSource = table;
+                        table.Load(reader);
+
+                        clientGrid.DataSource = table;
+
+                        if (clientGrid.Rows.Count > 0)
+                            fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
+                    }
+                    else
+                    {
+                        reader.Close();
+                    }
                 }
-                else
+                catch (Exception exc)
                 {
-                    reader.Close();
+                    MessageBox.Show("Invalid data!\n" + exc.StackTrace, "Client finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            }
-            catch (Exception exc)
-            {
-                MessageBox.Show("Invalid data!\n" + exc.StackTrace, "Client finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -212,6 +227,9 @@ namespace ResoflexClientHandlingSystem
             searchClientTxtBox.Text = "";
 
             clientGrid.DataSource = getClients();
+
+            if (clientGrid.Rows.Count > 0)
+                fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
         }
 
         private void clientGrid_RowHeaderMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -299,7 +317,7 @@ namespace ResoflexClientHandlingSystem
 
         private void ShowMoreBtn_Click(object sender, EventArgs e)
         {
-            SeeMoreClientForm frm = new SeeMoreClientForm();
+            SeeMoreClientForm frm = new SeeMoreClientForm(clientGrid.CurrentRow.Cells[1].Value.ToString());
 
             frm.Show();
         }
@@ -318,6 +336,26 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             dashboard.ShowDialog();
             this.Close();
+        }
+
+        private void ClientForm_Shown(object sender, EventArgs e)
+        {
+            if (clientGrid.Rows.Count > 0)
+                fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
+
+            searchClientTxtBox.Focus();
+        }
+
+        private void reqBtn_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = clientGrid.CurrentRow;
+
+            int id = Int32.Parse(row.Cells[0].Value.ToString());
+            string name = row.Cells[1].Value.ToString();
+
+            RequestForm frm = new RequestForm(name, id);
+
+            frm.Show();
         }
     }
 }

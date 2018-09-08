@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -173,6 +174,38 @@ namespace ResoflexClientHandlingSystem
 
                 throw;
             }
+        }
+
+        //deleting event
+        private void deleteEvent_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = eventGrid.CurrentRow;
+
+            int event_id = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
+            int sch_no = int.Parse(row.Cells[3].Value.ToString());
+
+            Event evnt = new Event();
+
+            evnt.EventId = event_id;
+            evnt.EventProject = new Project(proj_id);
+            evnt.ScheduleId = new Schedule(sch_no);
+
+            if (Database.deleteEvent(evnt))
+            {
+                MessageBox.Show("Event Successfully Deleted!");
+
+                eventGrid.DataSource = getEvents();
+            }
+            else
+            {
+                MessageBox.Show("Something Went Wrong!");
+            }
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            eventGrid.DataSource = getEvents();
         }
     }
 }

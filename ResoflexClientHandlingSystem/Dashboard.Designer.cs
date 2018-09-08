@@ -148,7 +148,7 @@
             this.metroButton3.Name = "metroButton3";
             this.metroButton3.Size = new System.Drawing.Size(211, 176);
             this.metroButton3.TabIndex = 18;
-            this.metroButton3.Text = "Accountanting";
+            this.metroButton3.Text = "Accounting";
             this.metroButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton3.UseSelectable = true;
             this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click_1);

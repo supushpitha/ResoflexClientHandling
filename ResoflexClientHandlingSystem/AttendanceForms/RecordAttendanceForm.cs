@@ -148,7 +148,7 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-
+        
         private void metroTextBox1_TextChanged(object sender, EventArgs e)
         {
           //  metroGrid1.DataSource = searchEmployees();
@@ -390,6 +390,14 @@ namespace ResoflexClientHandlingSystem
             metroTile1.Enabled = true;
             staffDataGrid.Enabled = true;
 
+        }
+
+        private void homeBtn_Click(object sender, EventArgs e)
+        {
+            Dashboard dashboard = new Dashboard();
+            this.Hide();
+            dashboard.ShowDialog();
+            this.Close();
         }
     }
 }

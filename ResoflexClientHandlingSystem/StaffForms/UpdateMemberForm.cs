@@ -90,11 +90,6 @@ namespace ResoflexClientHandlingSystem.StaffForms
             {
                 MessageBox.Show("Every detail must be there!", "Member Updating", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            MemberListForm mem = new MemberListForm();
-            mem.Show();
-
-            closeForm();
         }
 
         private void closeForm()

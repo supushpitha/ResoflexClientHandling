@@ -1,6 +1,6 @@
 ﻿namespace ResoflexClientHandlingSystem
 {
-    partial class Project1
+    partial class ProjectForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Project1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProjectForm));
             this.addProjectBtn = new MetroFramework.Controls.MetroButton();
             this.updateProjectBtn = new MetroFramework.Controls.MetroButton();
             this.progressBtn = new MetroFramework.Controls.MetroButton();
@@ -92,8 +92,8 @@
             // 
             // incomeBtn
             // 
-            this.incomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
-            this.incomeBtn.Location = new System.Drawing.Point(350, 275);
+            this.incomeBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.incomeBtn.Location = new System.Drawing.Point(349, 283);
             this.incomeBtn.Margin = new System.Windows.Forms.Padding(2);
             this.incomeBtn.Name = "incomeBtn";
             this.incomeBtn.Size = new System.Drawing.Size(65, 24);
@@ -122,7 +122,7 @@
             this.searchProjectTxtBox.CustomButton.Visible = false;
             this.searchProjectTxtBox.FontSize = MetroFramework.MetroTextBoxSize.Medium;
             this.searchProjectTxtBox.Lines = new string[0];
-            this.searchProjectTxtBox.Location = new System.Drawing.Point(35, 275);
+            this.searchProjectTxtBox.Location = new System.Drawing.Point(34, 283);
             this.searchProjectTxtBox.Margin = new System.Windows.Forms.Padding(2);
             this.searchProjectTxtBox.MaxLength = 32767;
             this.searchProjectTxtBox.Multiline = true;
@@ -144,7 +144,7 @@
             // 
             // searchBtn
             // 
-            this.searchBtn.Location = new System.Drawing.Point(248, 275);
+            this.searchBtn.Location = new System.Drawing.Point(247, 283);
             this.searchBtn.Margin = new System.Windows.Forms.Padding(2);
             this.searchBtn.Name = "searchBtn";
             this.searchBtn.Size = new System.Drawing.Size(89, 24);
@@ -162,7 +162,10 @@
             this.projIdTile.Name = "projIdTile";
             this.projIdTile.Size = new System.Drawing.Size(95, 91);
             this.projIdTile.TabIndex = 7;
+            this.projIdTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.projIdTile.TileImageAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.projIdTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.projIdTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.projIdTile.UseCustomBackColor = true;
             this.projIdTile.UseSelectable = true;
             this.projIdTile.Click += new System.EventHandler(this.projIdTile_Click);
@@ -177,6 +180,9 @@
             this.totExpenceTile.Name = "totExpenceTile";
             this.totExpenceTile.Size = new System.Drawing.Size(161, 91);
             this.totExpenceTile.TabIndex = 8;
+            this.totExpenceTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totExpenceTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.totExpenceTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.totExpenceTile.UseCustomBackColor = true;
             this.totExpenceTile.UseSelectable = true;
             // 
@@ -191,6 +197,9 @@
             this.warrantyTile.Name = "warrantyTile";
             this.warrantyTile.Size = new System.Drawing.Size(95, 91);
             this.warrantyTile.TabIndex = 9;
+            this.warrantyTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.warrantyTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.warrantyTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.warrantyTile.UseCustomBackColor = true;
             this.warrantyTile.UseSelectable = true;
             // 
@@ -208,19 +217,19 @@
             this.projectGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.projectGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.projectGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.projectGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.projectGrid.DefaultCellStyle = dataGridViewCellStyle2;
@@ -233,10 +242,10 @@
             this.projectGrid.ReadOnly = true;
             this.projectGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(196)))), ((int)(((byte)(37)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(201)))), ((int)(((byte)(57)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.projectGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
@@ -244,7 +253,7 @@
             this.projectGrid.RowTemplate.Height = 24;
             this.projectGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.projectGrid.Size = new System.Drawing.Size(766, 252);
-            this.projectGrid.Style = MetroFramework.MetroColorStyle.Yellow;
+            this.projectGrid.Style = MetroFramework.MetroColorStyle.Blue;
             this.projectGrid.TabIndex = 10;
             this.projectGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.projectGrid_CellContentClick);
             this.projectGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.projectGrid_RowHeaderMouseClick);
@@ -286,8 +295,8 @@
             // 
             // metroButton1
             // 
-            this.metroButton1.ForeColor = System.Drawing.Color.OrangeRed;
-            this.metroButton1.Location = new System.Drawing.Point(425, 275);
+            this.metroButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.metroButton1.Location = new System.Drawing.Point(424, 283);
             this.metroButton1.Margin = new System.Windows.Forms.Padding(2);
             this.metroButton1.Name = "metroButton1";
             this.metroButton1.Size = new System.Drawing.Size(88, 24);
@@ -339,8 +348,8 @@
             // 
             // reqBtn
             // 
-            this.reqBtn.ForeColor = System.Drawing.Color.Sienna;
-            this.reqBtn.Location = new System.Drawing.Point(522, 275);
+            this.reqBtn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.reqBtn.Location = new System.Drawing.Point(521, 283);
             this.reqBtn.Margin = new System.Windows.Forms.Padding(2);
             this.reqBtn.Name = "reqBtn";
             this.reqBtn.Size = new System.Drawing.Size(71, 24);
@@ -356,15 +365,15 @@
             this.schHome.BackColor = System.Drawing.Color.Transparent;
             this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
             this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.schHome.Location = new System.Drawing.Point(639, 36);
+            this.schHome.Location = new System.Drawing.Point(644, 36);
             this.schHome.Margin = new System.Windows.Forms.Padding(2);
             this.schHome.Name = "schHome";
-            this.schHome.Size = new System.Drawing.Size(34, 29);
+            this.schHome.Size = new System.Drawing.Size(29, 29);
             this.schHome.TabIndex = 30;
             this.schHome.UseSelectable = true;
             this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
-            // Project1
+            // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -389,7 +398,7 @@
             this.Controls.Add(this.updateProjectBtn);
             this.Controls.Add(this.addProjectBtn);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "Project1";
+            this.Name = "ProjectForm";
             this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
             this.Style = MetroFramework.MetroColorStyle.Red;
             this.Text = "Project";

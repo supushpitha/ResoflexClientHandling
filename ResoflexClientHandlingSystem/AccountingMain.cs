@@ -1,4 +1,5 @@
-﻿using ResoflexClientHandlingSystem.Role;
+﻿using ResoflexClientHandlingSystem.OfficeExpenses;
+using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
@@ -44,7 +45,22 @@ namespace ResoflexClientHandlingSystem
 
         private void Project_Click(object sender, EventArgs e)
         {
-            ExpensesTypeForm frm = new ExpensesTypeForm();
+            ProjectExpensesMainForm frm = new ProjectExpensesMainForm();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
+        }
+
+        private void metroTile3_Click(object sender, EventArgs e)
+        {
+            SalaryForm frm = new SalaryForm();
+
+            frm.Show();
+        }
+
+        private void metroTile2_Click(object sender, EventArgs e)
+        {
+            OfficeInterfaceForm frm = new OfficeInterfaceForm();
 
             frm.Show();
         }

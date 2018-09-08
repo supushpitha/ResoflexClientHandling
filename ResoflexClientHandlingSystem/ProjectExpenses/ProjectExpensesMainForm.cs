@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.ProjectExpenses.ProjectExpReports;
 using System;
@@ -15,7 +16,7 @@ namespace ResoflexClientHandlingSystem
 
         private void ProjectExpensesMainForm_Load(object sender, EventArgs e)
         {
-            monthCompProgressSpinner.Value = 75;
+            //monthCompProgressSpinner.Value = 75;
             createChart();
             spinProgress();
         }
@@ -30,15 +31,18 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    if ((reader.GetDateTime(0).Year == DateTime.Now.Year) && (reader.GetDateTime(0).Month == DateTime.Now.Month))
+                    while (reader.Read())
                     {
-                        thisMonthExp = reader.GetDouble(1);
-                    }
-                    else if ((reader.GetDateTime(0).Year == DateTime.Now.Year) && (reader.GetDateTime(0).Month == DateTime.Now.Month - 1))
-                    {
-                        lastMonthExp = reader.GetDouble(1);
+                        if ((reader.GetDateTime(0).Year == DateTime.Now.Year) && (reader.GetDateTime(0).Month == DateTime.Now.Month))
+                        {
+                            thisMonthExp = reader.GetDouble(1);
+                        }
+                        else if ((reader.GetDateTime(0).Year == DateTime.Now.Year) && (reader.GetDateTime(0).Month == DateTime.Now.Month - 1))
+                        {
+                            lastMonthExp = reader.GetDouble(1);
+                        }
                     }
                 }
 
@@ -75,9 +79,12 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    series.Points.AddXY(getMonthName(reader.GetInt16(0)), reader.GetDouble(1));
+                    while (reader.Read())
+                    {
+                        series.Points.AddXY(getMonthName(reader.GetInt16(0)), reader.GetDouble(1));
+                    }
                 }
 
                 reader.Close();
@@ -160,7 +167,7 @@ namespace ResoflexClientHandlingSystem
         {
             // Filling the Project Exp. of this Month Tile
             MySqlDataReader reader = DBConnection.getData("select IFNULL(SUM(amount), 0) from exp_detail_event WHERE Year(dateOfExp)=" + DateTime.Now.Year + " AND " +
-                "MONTH(dateOfExp)=" + 8/*DateTime.Now.Month*/);
+                "MONTH(dateOfExp)=" + DateTime.Now.Month);
 
             while (reader.Read())
             {

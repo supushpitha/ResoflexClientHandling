@@ -44,6 +44,8 @@
             this.UpdateResBtn = new MetroFramework.Controls.MetroButton();
             this.DelResBtn = new MetroFramework.Controls.MetroButton();
             this.homeBtn = new MetroFramework.Controls.MetroButton();
+            this.selectResourceTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.ResGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -256,7 +258,7 @@
             // 
             this.DelResBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DelResBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.DelResBtn.Location = new System.Drawing.Point(488, 66);
+            this.DelResBtn.Location = new System.Drawing.Point(518, 66);
             this.DelResBtn.Name = "DelResBtn";
             this.DelResBtn.Size = new System.Drawing.Size(120, 26);
             this.DelResBtn.TabIndex = 20;
@@ -278,11 +280,53 @@
             this.homeBtn.UseSelectable = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
+            // selectResourceTxtbox
+            // 
+            // 
+            // 
+            // 
+            this.selectResourceTxtbox.CustomButton.Image = null;
+            this.selectResourceTxtbox.CustomButton.Location = new System.Drawing.Point(93, 1);
+            this.selectResourceTxtbox.CustomButton.Name = "";
+            this.selectResourceTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.selectResourceTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.selectResourceTxtbox.CustomButton.TabIndex = 1;
+            this.selectResourceTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.selectResourceTxtbox.CustomButton.UseSelectable = true;
+            this.selectResourceTxtbox.CustomButton.Visible = false;
+            this.selectResourceTxtbox.Lines = new string[0];
+            this.selectResourceTxtbox.Location = new System.Drawing.Point(388, 69);
+            this.selectResourceTxtbox.MaxLength = 32767;
+            this.selectResourceTxtbox.Name = "selectResourceTxtbox";
+            this.selectResourceTxtbox.PasswordChar = '\0';
+            this.selectResourceTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.selectResourceTxtbox.SelectedText = "";
+            this.selectResourceTxtbox.SelectionLength = 0;
+            this.selectResourceTxtbox.SelectionStart = 0;
+            this.selectResourceTxtbox.ShortcutsEnabled = true;
+            this.selectResourceTxtbox.Size = new System.Drawing.Size(115, 23);
+            this.selectResourceTxtbox.TabIndex = 26;
+            this.selectResourceTxtbox.UseSelectable = true;
+            this.selectResourceTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.selectResourceTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.selectResourceTxtbox.TextChanged += new System.EventHandler(this.selectResourceTxtbox_TextChanged);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(334, 73);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel2.TabIndex = 25;
+            this.metroLabel2.Text = "Search";
+            // 
             // resourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 454);
+            this.Controls.Add(this.selectResourceTxtbox);
+            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.DelResBtn);
             this.Controls.Add(this.UpdateResBtn);
@@ -299,6 +343,7 @@
             this.Load += new System.EventHandler(this.resourceForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ResGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -316,5 +361,7 @@
         private MetroFramework.Controls.MetroButton UpdateResBtn;
         private MetroFramework.Controls.MetroButton DelResBtn;
         private MetroFramework.Controls.MetroButton homeBtn;
+        private MetroFramework.Controls.MetroTextBox selectResourceTxtbox;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

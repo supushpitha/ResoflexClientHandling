@@ -1,4 +1,6 @@
-﻿using ResoflexClientHandlingSystem.Role;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
@@ -27,7 +29,9 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-            
+           
+
+
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
@@ -41,7 +45,39 @@ namespace ResoflexClientHandlingSystem
             }
 
             setAttendance();
-            
+
+
+            //notifications
+
+            try
+            {
+                if (Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                {
+                    MySqlDataReader reader = DBConnection.getData("select count(noti_ID) from notification where admin_view=0");
+
+                    while (reader.Read())
+                    {
+                        metroButton8.Text = (reader.GetValue(0).ToString());
+                    }
+                    reader.Close();
+                }
+                else
+                {
+                    MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id="+Userglobals.uid+"");
+
+                    while (reader2.Read())
+                    {
+                        metroButton8.Text = (reader2.GetValue(0).ToString());
+                    }
+                    reader2.Close();
+                }
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
@@ -100,8 +136,9 @@ namespace ResoflexClientHandlingSystem
         private void metroButton2_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
-           
-            pm.Show();
+            this.Hide();
+            pm.ShowDialog();
+            this.Close();
         }
 
         private void metroButton3_Click_1(object sender, EventArgs e)
@@ -131,6 +168,13 @@ namespace ResoflexClientHandlingSystem
         private void metroPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void metroButton6_Click(object sender, EventArgs e)
+        {
+
+            UserForms.Notification frm = new UserForms.Notification();
+            frm.ShowDialog();
         }
     }
 }

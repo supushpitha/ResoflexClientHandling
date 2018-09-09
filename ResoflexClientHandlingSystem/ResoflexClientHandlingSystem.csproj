@@ -352,6 +352,12 @@
     <Compile Include="ProjectForms\AddCatagory.designer.cs">
       <DependentUpon>AddCatagory.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectForms\GetPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\GetPermission.Designer.cs">
+      <DependentUpon>GetPermission.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProjectForms\Maintenance.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -415,6 +421,7 @@
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
     <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserNotification.cs" />
     <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
@@ -505,6 +512,12 @@
     </Compile>
     <Compile Include="UserForms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\ProfileForm.cs">
       <SubType>Form</SubType>
@@ -633,6 +646,9 @@
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\GetPermission.resx">
+      <DependentUpon>GetPermission.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\Maintenance.resx">
       <DependentUpon>Maintenance.cs</DependentUpon>
     </EmbeddedResource>
@@ -702,6 +718,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>

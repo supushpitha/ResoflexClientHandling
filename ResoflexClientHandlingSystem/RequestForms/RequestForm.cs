@@ -49,16 +49,16 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
-                changeReqGrid.DataSource = getChangeRequestsByProject(projName);
+                changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
             }
             else if (!clientName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 1;
                 SearchNameCmbBox.SelectedItem = clientName;
-                changeReqGrid.DataSource = getChangeRequestsByClient(clientName);
+                changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
 
                 searchClientNameCmbBox.SelectedItem = clientName;
-                clientReqGrid.DataSource = getClientRequestsByClient(clientName);
+                clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
             }
             else
             {
@@ -68,6 +68,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 SearchNameCmbBox.SelectedItem = null;
                 searchClientNameCmbBox.SelectedItem = null;
             }
+
+            changeReqGrid.Columns[0].Visible = false;
+            changeReqGrid.Columns[1].Visible = false;
         }
 
         private void fillProjectCmbBox()
@@ -130,7 +133,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequestsByClient(string clientName)
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
                 "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE c.name='" + clientName + "' order by r.state asc, r.urgent desc;");
 
             DataTable table = new DataTable();
@@ -142,7 +145,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequests()
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                 "r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev FROM proj_request r INNER JOIN project p ON " +
                 "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;");
             
@@ -155,7 +158,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private DataTable getChangeRequestsByProject(string project)
         {
-            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev " +
                 "FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id WHERE p.proj_name='" + project + "' order by r.state asc, r.urgent desc;");
 
             DataTable table = new DataTable();
@@ -180,6 +183,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 {
                     changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
                 }
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
             }
         }
 
@@ -217,19 +223,22 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void showAllProjReqBtn_Click(object sender, EventArgs e)
         {
+            searchTypeCmbBox.SelectedItem = null;
+            SearchNameCmbBox.SelectedItem = null;
+
             changeReqGrid.DataSource = getChangeRequests();
             allRadioBtn.Checked = true;
 
-            searchTypeCmbBox.SelectedItem = null;
-            SearchNameCmbBox.SelectedItem = null;
+            changeReqGrid.Columns[0].Visible = false;
+            changeReqGrid.Columns[1].Visible = false;
         }
 
         private void showAllClientReqBtn_Click(object sender, EventArgs e)
         {
+            searchClientNameCmbBox.SelectedItem = null;
+
             clientReqGrid.DataSource = getClientRequests();
             clientAllRadioBtn.Checked = true;
-
-            searchClientNameCmbBox.SelectedItem = null;
         }
 
         private void searchClientNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -273,6 +282,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     Database.saveChangeRequest(req);
 
                     changeReqGrid.DataSource = getChangeRequests();
+
+                    changeReqGrid.Columns[0].Visible = false;
+                    changeReqGrid.Columns[1].Visible = false;
 
                     addReqNotify.Icon = SystemIcons.Application;
                     addReqNotify.BalloonTipText = "Change Request Successfully added!";
@@ -419,14 +431,14 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     {
                         if (tmpType.ToString().Equals("Client"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
                         "r.ended_dateTime is null and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
                         }
                         else if (tmpType.ToString().Equals("Project"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
                         "r.ended_dateTime is null and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
@@ -434,7 +446,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     }
                     else
                     {
-                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
                         "r.ended_dateTime is null and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') order by r.state asc, r.urgent desc;";
@@ -442,7 +454,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                    qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.started_dateTime is not null and " +
                         "r.ended_dateTime is null order by r.state asc, r.urgent desc;";
@@ -454,6 +466,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 changeReqGrid.DataSource = table;
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
             }
         }
 
@@ -472,14 +487,14 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     {
                         if (tmpType.ToString().Equals("Client"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where c.name='" + tmpName.ToString() + "' " +
                         "order by r.state asc, r.urgent desc;";
                         }
                         else if (tmpType.ToString().Equals("Project"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where p.proj_name='" + tmpName.ToString() + "' " +
                         "order by r.state asc, r.urgent desc;";
@@ -487,7 +502,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     }
                     else
                     {
-                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
                         "order by r.state asc, r.urgent desc;";
@@ -495,7 +510,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                    qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id order by r.state asc, r.urgent desc limit 10;";
                 }
@@ -506,6 +521,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 changeReqGrid.DataSource = table;
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
             }
         }
 
@@ -524,20 +542,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     {
                         if (tmpType.ToString().Equals("Client"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
                         }
                         else if (tmpType.ToString().Equals("Project"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
                         }
                     }
                     else
                     {
-                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
                         "order by r.state asc, r.urgent desc;";
@@ -545,7 +563,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                    qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.urgent=1 order by r.state asc, r.urgent desc;";
                 }
@@ -556,6 +574,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 changeReqGrid.DataSource = table;
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
             }
         }
 
@@ -574,20 +595,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     {
                         if (tmpType.ToString().Equals("Client"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
                         }
                         else if (tmpType.ToString().Equals("Project"))
                         {
-                            qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
                         }
                     }
                     else
                     {
-                        qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
                         "order by r.state asc, r.urgent desc;";
@@ -595,7 +616,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    qry = "SELECT p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                    qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
                         "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
                         "r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id where r.state=1 order by r.state asc, r.urgent desc;";
                 }
@@ -606,6 +627,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 changeReqGrid.DataSource = table;
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
             }
         }
 
@@ -651,6 +675,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                     qry = "SELECT c.name as Name, cr.request as Request, cr.importance as Importance FROM client_request cr INNER JOIN client c " +
                             "ON cr.client_id=c.client_id WHERE c.name='" + clientName + "' order by cr.importance desc;";
+                    
                 }
                 else
                 {
@@ -664,6 +689,94 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 clientReqGrid.DataSource = table;
+            }
+        }
+
+        private void changeReqGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv.CurrentRow.Selected)
+            {
+                if (Userglobals.uname.Equals(""))
+                {
+                    MessageBox.Show("You must Login first!", "Develop change requests", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else
+                {
+                    if (Userglobals.uid > 0)
+                    {
+                        int uid = Userglobals.uid;
+                        Object startedDT = changeReqGrid.Rows[e.RowIndex].Cells[7].Value;
+                        Object endedDT = changeReqGrid.Rows[e.RowIndex].Cells[8].Value;
+                        DateTime dt;
+                        int projId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        int reqId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+
+                        if (!DateTime.TryParse(startedDT.ToString(), out dt))
+                        {
+                            DialogResult result = MessageBox.Show("Start coding this change request NOW?\n" + uid, "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            switch (result)
+                            {
+                                case DialogResult.Yes:
+
+                                    ProjectRequest startReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+                                    Database.startCodingChangeRequest(startReq);
+
+                                    changeReqGrid.DataSource = getChangeRequests();
+
+                                    changeReqGrid.Columns[0].Visible = false;
+                                    changeReqGrid.Columns[1].Visible = false;
+
+                                    addReqNotify.Icon = SystemIcons.Application;
+                                    addReqNotify.BalloonTipText = "Change Request Development Started!";
+                                    addReqNotify.ShowBalloonTip(1000);
+
+                                    break;
+
+                                case DialogResult.No:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else if (!DateTime.TryParse(endedDT.ToString(), out dt))
+                        {
+                            DialogResult result = MessageBox.Show("End coding this change request NOW?\n" + uid, "End Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            switch (result)
+                            {
+                                case DialogResult.Yes:
+
+                                    ProjectRequest endReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+                                    Database.endCodingChangeRequest(endReq);
+
+                                    changeReqGrid.DataSource = getChangeRequests();
+
+                                    changeReqGrid.Columns[0].Visible = false;
+                                    changeReqGrid.Columns[1].Visible = false;
+
+                                    addReqNotify.Icon = SystemIcons.Application;
+                                    addReqNotify.BalloonTipText = "Change Request Development Ended!";
+                                    addReqNotify.ShowBalloonTip(1000);
+
+                                    break;
+
+                                case DialogResult.No:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("This Change Request is already Developed!\n" + uid, "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        }
+                    }
+                }
             }
         }
     }

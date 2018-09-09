@@ -829,5 +829,59 @@ namespace ResoflexClientHandlingSystem.Core
                  " where staff_id = " + s.Empid + "");
             MessageBox.Show("Successfully added");
         }
+
+        public static void startCodingChangeRequest(ProjectRequest req)
+        {
+            int projId = req.ProjectOfRequest.ProjectID;
+            int reqId = req.ReqId;
+            int uid = req.StaffOfRequest.StaffId;
+
+            try
+            {
+                DBConnection.updateDB("update proj_request set started_dateTime='" + DateTime.Now.ToString("yyyy/MM/d HH:mm:ss") + "', staff_id=" + uid + " where proj_id=" + projId + " and req_id=" + reqId);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!", "Start coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void endCodingChangeRequest(ProjectRequest req)
+        {
+            int projId = req.ProjectOfRequest.ProjectID;
+            int reqId = req.ReqId;
+            int uid = req.StaffOfRequest.StaffId;
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select staff_id from proj_request where proj_id=" + projId + " and req_id=" + reqId);
+
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        if (uid == reader.GetInt32(0))
+                        {
+                            reader.Close();
+
+                            DBConnection.updateDB("update proj_request set ended_dateTime='" + DateTime.Now.ToString("yyyy/MM/d HH:mm:ss") + "', state=1 where staff_id=" + uid + " and proj_id=" + projId + " and req_id=" + reqId);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Started developer should End the development!", "Develop Change Request", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        }
+                    }
+                }
+
+                if (!reader.IsClosed)
+                {
+                    reader.Close();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!", "End coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

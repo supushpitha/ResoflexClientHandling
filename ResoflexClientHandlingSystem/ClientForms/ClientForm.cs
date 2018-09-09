@@ -35,7 +35,7 @@ namespace ResoflexClientHandlingSystem
             totalExpTile.BackColor = Color.LightSalmon;
             gridViewUsageLbl.ForeColor = Color.Red;
 
-            if (Userglobals.uname == "")
+            if (Userglobals.uname.Equals(""))
             {
                 profileBtn.Visible = false;
                 addNewClientBtn.Visible = false;
@@ -43,7 +43,7 @@ namespace ResoflexClientHandlingSystem
             }
             else
             {
-                if (!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                if ((!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin")) && (!Userglobals.priv.ToLower().Equals("tch") && !Userglobals.priv.ToLower().Equals("technician")))
                 {
                     addNewClientBtn.Visible = false;
                     updateClientBtn.Visible = false;

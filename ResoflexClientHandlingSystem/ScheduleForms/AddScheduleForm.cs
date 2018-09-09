@@ -222,7 +222,78 @@ namespace ResoflexClientHandlingSystem
             row = engGrid.NewRow();
             row["staff_id"] = serviceEngCombo.SelectedValue;
             row["fullname"] = serviceEngCombo.Text.ToString();
-            engGrid.Rows.Add(row);
+
+            MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
+
+            int count = 0;
+            double grade = 0;
+
+            while (reader.Read())
+            {
+                string value = reader.GetString("feedback");
+
+                switch (value)
+                {
+                    case "A":
+                        {
+                            grade += 5;
+                            count++;
+                            break;
+                        }
+
+                    case "B":
+                        {
+                            grade += 4;
+                            count++;
+                            break;
+                        }
+
+                    case "C":
+                        {
+                            grade += 3;
+                            count++;
+                            break;
+                        }
+
+                    case "D":
+                        {
+                            grade += 2;
+                            count++;
+                            break;
+                        }
+
+                    case "E":
+                        {
+                            grade += 1;
+                            count++;
+                            break;
+                        }
+
+                    case "None":
+                        {
+                            grade += 0;
+                            break;
+                        }
+                        
+                    default : break;
+                }
+            }
+
+            reader.Close();
+
+            if(grade/count < 2 && grade/count > 0)
+            {
+                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure wyou want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if(res== DialogResult.Yes)
+                {
+                    engGrid.Rows.Add(row);
+                }
+            }
+            else
+            {
+                engGrid.Rows.Add(row);
+            }
             
         }
 
@@ -365,9 +436,5 @@ namespace ResoflexClientHandlingSystem
 
         }
 
-        private void addEng_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -16,7 +16,6 @@ namespace ResoflexClientHandlingSystem
 
         private void ProjectExpensesMainForm_Load(object sender, EventArgs e)
         {
-            //monthCompProgressSpinner.Value = 75;
             createChart();
             spinProgress();
         }

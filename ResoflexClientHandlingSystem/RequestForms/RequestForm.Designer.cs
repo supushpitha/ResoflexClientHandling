@@ -68,6 +68,7 @@
             this.addClientReqClientNameCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.addReqNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.errorProviderReq = new System.Windows.Forms.ErrorProvider(this.components);
+            this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).BeginInit();
@@ -152,6 +153,7 @@
             this.changeReqGrid.TabIndex = 2;
             this.changeReqGrid.UseCustomBackColor = true;
             this.changeReqGrid.UseStyleColors = true;
+            this.changeReqGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.changeReqGrid_RowHeaderMouseClick);
             // 
             // clientReqGrid
             // 
@@ -566,11 +568,24 @@
             // 
             this.errorProviderReq.ContainerControl = this;
             // 
+            // metroLabel9
+            // 
+            this.metroLabel9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.metroLabel9.AutoSize = true;
+            this.metroLabel9.Location = new System.Drawing.Point(24, 813);
+            this.metroLabel9.Name = "metroLabel9";
+            this.metroLabel9.Size = new System.Drawing.Size(504, 19);
+            this.metroLabel9.Style = MetroFramework.MetroColorStyle.Purple;
+            this.metroLabel9.TabIndex = 31;
+            this.metroLabel9.Text = "To Start/End Developing Change Requests, Click The Row Header of Related Request";
+            this.metroLabel9.UseStyleColors = true;
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1675, 833);
+            this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.addNewClientReqBtn);
             this.Controls.Add(this.addClientReqImportCheckBox);
             this.Controls.Add(this.metroLabel7);
@@ -651,5 +666,6 @@
         private MetroFramework.Controls.MetroComboBox addClientReqClientNameCmbBox;
         private System.Windows.Forms.NotifyIcon addReqNotify;
         private System.Windows.Forms.ErrorProvider errorProviderReq;
+        private MetroFramework.Controls.MetroLabel metroLabel9;
     }
 }

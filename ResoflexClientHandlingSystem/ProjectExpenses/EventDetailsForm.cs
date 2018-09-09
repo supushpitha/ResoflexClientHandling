@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.ProjectExpenses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -27,8 +28,7 @@ namespace ResoflexClientHandlingSystem
         private void fillCmbBoxes()
         {
             DataTable tableProject = new DataTable();
-
-            // Project cmb box
+            
             MySqlDataReader readerProject = DBConnection.getData("select proj_id, proj_name from project");
             
             tableProject.Load(readerProject);
@@ -60,6 +60,11 @@ namespace ResoflexClientHandlingSystem
 
         private void EventDetailsForm_Shown(object sender, EventArgs e)
         {
+            verticalLineLbl.AutoSize = false;
+            verticalLineLbl.Width = 2;
+            verticalLineLbl.Height = 255;
+            verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+
             eventExpGrid.DataSource = getEventExp();
 
             eventExpGrid.Columns[0].Visible = false;
@@ -222,12 +227,12 @@ namespace ResoflexClientHandlingSystem
             byProjectCmbBox.SelectedItem = null;
             byClientCmbBox.SelectedItem = null;
             byExpTypeCmbBox.SelectedItem = null;
-            //byDatePicker.Value = DateTime.Today;
         }
 
         private void byProjectCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Object tmpProj = byProjectCmbBox.SelectedValue;
+            string qry = "";
 
             if (tmpProj != null)
             {
@@ -238,37 +243,11 @@ namespace ResoflexClientHandlingSystem
                     int projId = Int32.Parse(tmpProj.ToString());
                     int typeId = Int32.Parse(tmpType.ToString());
 
-                    MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                    "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                    "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                    "v.proj_id, v.event_id;");
-
-                    if (reader.HasRows)
-                    {
-                        DataTable table = new DataTable();
-
-                        table.Load(reader);
-                        eventExpGrid.DataSource = table;
-
-                        eventExpGrid.Columns[0].Visible = false;
-                        eventExpGrid.Columns[1].Visible = false;
-                        eventExpGrid.Columns[2].Visible = false;
-
-                        if (eventExpGrid.Rows.Count >= 1)
-                        {
-                            int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                            int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                            fillExpTypeTiles(projectId, eventId);
-                            fillBriefDetailTiles(projectId, eventId);
-                        }
-                    }
-                    else
-                    {
-                        reader.Close();
-                        eventExpGrid.DataSource = null;
-                    }
+                    qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                 }
                 else
                 {
@@ -278,37 +257,19 @@ namespace ResoflexClientHandlingSystem
                     {
                         int projId = result;
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                                "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                                "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                                "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
+                                "v.proj_id, v.event_id;";
+                    }
+                    else
+                    {
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
             }
@@ -325,73 +286,21 @@ namespace ResoflexClientHandlingSystem
                         int clientId = Int32.Parse(tmpClient.ToString());
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
                         int clientId = Int32.Parse(tmpClient.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id) t;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
+                            "v.proj_id, v.event_id) t;";
                     }
                 }
                 else
@@ -402,79 +311,56 @@ namespace ResoflexClientHandlingSystem
                     {
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
                                                                         "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
                                                                         "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
                                                                         "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                                                                        "v.proj_id, v.event_id;";
                     }
                     else
                     {
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
+            }
+
+            MySqlDataReader reader = DBConnection.getData(qry);
+
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+                eventExpGrid.DataSource = table;
+
+                eventExpGrid.Columns[0].Visible = false;
+                eventExpGrid.Columns[1].Visible = false;
+                eventExpGrid.Columns[2].Visible = false;
+
+                if (eventExpGrid.Rows.Count >= 1)
+                {
+                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
+                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
+
+                    fillExpTypeTiles(projectId, eventId);
+                    fillBriefDetailTiles(projectId, eventId);
+                }
+            }
+            else
+            {
+                reader.Close();
+                eventExpGrid.DataSource = null;
             }
         }
 
         private void byClientCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Object tmpProj = byProjectCmbBox.SelectedValue;
+            string qry = "";
 
             if (tmpProj != null)
             {
@@ -485,73 +371,21 @@ namespace ResoflexClientHandlingSystem
                     int projId = Int32.Parse(tmpProj.ToString());
                     int typeId = Int32.Parse(tmpType.ToString());
 
-                    MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                    "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                    "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                    "v.proj_id, v.event_id;");
-
-                    if (reader.HasRows)
-                    {
-                        DataTable table = new DataTable();
-
-                        table.Load(reader);
-                        eventExpGrid.DataSource = table;
-
-                        eventExpGrid.Columns[0].Visible = false;
-                        eventExpGrid.Columns[1].Visible = false;
-                        eventExpGrid.Columns[2].Visible = false;
-
-                        if (eventExpGrid.Rows.Count >= 1)
-                        {
-                            int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                            int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                            fillExpTypeTiles(projectId, eventId);
-                            fillBriefDetailTiles(projectId, eventId);
-                        }
-                    }
-                    else
-                    {
-                        reader.Close();
-                        eventExpGrid.DataSource = null;
-                    }
+                    qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                        "v.proj_id, v.event_id;";
                 }
                 else
                 {
                     int projId = Int32.Parse(tmpProj.ToString());
 
-                    MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                    "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                    "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
-                                                                    "v.proj_id, v.event_id;");
-
-                    if (reader.HasRows)
-                    {
-                        DataTable table = new DataTable();
-
-                        table.Load(reader);
-                        eventExpGrid.DataSource = table;
-
-                        eventExpGrid.Columns[0].Visible = false;
-                        eventExpGrid.Columns[1].Visible = false;
-                        eventExpGrid.Columns[2].Visible = false;
-
-                        if (eventExpGrid.Rows.Count >= 1)
-                        {
-                            int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                            int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                            fillExpTypeTiles(projectId, eventId);
-                            fillBriefDetailTiles(projectId, eventId);
-                        }
-                    }
-                    else
-                    {
-                        reader.Close();
-                        eventExpGrid.DataSource = null;
-                    }
+                    qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
+                        "v.proj_id, v.event_id;";
                 }
             }
             else
@@ -567,37 +401,11 @@ namespace ResoflexClientHandlingSystem
                         int clientId = Int32.Parse(tmpClient.ToString());
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
@@ -607,37 +415,19 @@ namespace ResoflexClientHandlingSystem
                         {
                             int clientId = result;
 
-                            MySqlDataReader reader = DBConnection.getData("select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
-                                                                            "v.proj_id, v.event_id) t;");
-
-                            if (reader.HasRows)
-                            {
-                                DataTable table = new DataTable();
-
-                                table.Load(reader);
-                                eventExpGrid.DataSource = table;
-
-                                eventExpGrid.Columns[0].Visible = false;
-                                eventExpGrid.Columns[1].Visible = false;
-                                eventExpGrid.Columns[2].Visible = false;
-
-                                if (eventExpGrid.Rows.Count >= 1)
-                                {
-                                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                    fillExpTypeTiles(projectId, eventId);
-                                    fillBriefDetailTiles(projectId, eventId);
-                                }
-                            }
-                            else
-                            {
-                                reader.Close();
-                                eventExpGrid.DataSource = null;
-                            }
+                            qry = "select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                                "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                                "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                                "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
+                                "v.proj_id, v.event_id) t;";
+                        }
+                        else
+                        {
+                            qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                         }
                     }
                 }
@@ -649,79 +439,56 @@ namespace ResoflexClientHandlingSystem
                     {
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
+            }
+
+            MySqlDataReader reader = DBConnection.getData(qry);
+
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+                eventExpGrid.DataSource = table;
+
+                eventExpGrid.Columns[0].Visible = false;
+                eventExpGrid.Columns[1].Visible = false;
+                eventExpGrid.Columns[2].Visible = false;
+
+                if (eventExpGrid.Rows.Count >= 1)
+                {
+                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
+                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
+
+                    fillExpTypeTiles(projectId, eventId);
+                    fillBriefDetailTiles(projectId, eventId);
+                }
+            }
+            else
+            {
+                reader.Close();
+                eventExpGrid.DataSource = null;
             }
         }
 
         private void byExpTypeCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             Object tmpProj = byProjectCmbBox.SelectedValue;
+            string qry = "";
 
             if (tmpProj != null)
             {
@@ -737,74 +504,30 @@ namespace ResoflexClientHandlingSystem
                     {
                         int typeId = result;
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
+                    }
+                    else
+                    {
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
                 else
                 {
                     int projId = Int32.Parse(tmpProj.ToString());
 
-                    MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                    "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                    "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
-                                                                    "v.proj_id, v.event_id;");
-
-                    if (reader.HasRows)
-                    {
-                        DataTable table = new DataTable();
-
-                        table.Load(reader);
-                        eventExpGrid.DataSource = table;
-
-                        eventExpGrid.Columns[0].Visible = false;
-                        eventExpGrid.Columns[1].Visible = false;
-                        eventExpGrid.Columns[2].Visible = false;
-
-                        if (eventExpGrid.Rows.Count >= 1)
-                        {
-                            int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                            int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                            fillExpTypeTiles(projectId, eventId);
-                            fillBriefDetailTiles(projectId, eventId);
-                        }
-                    }
-                    else
-                    {
-                        reader.Close();
-                        eventExpGrid.DataSource = null;
-                    }
+                    qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " GROUP BY " +
+                        "v.proj_id, v.event_id;";
                 }
             }
             else
@@ -820,73 +543,21 @@ namespace ResoflexClientHandlingSystem
                         int clientId = Int32.Parse(tmpClient.ToString());
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
                         int clientId = Int32.Parse(tmpClient.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
                 else
@@ -901,74 +572,58 @@ namespace ResoflexClientHandlingSystem
                         {
                             int typeId = result;
 
-                            MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " GROUP BY " +
-                                                                            "v.proj_id, v.event_id;");
-
-                            if (reader.HasRows)
-                            {
-                                DataTable table = new DataTable();
-
-                                table.Load(reader);
-                                eventExpGrid.DataSource = table;
-
-                                eventExpGrid.Columns[0].Visible = false;
-                                eventExpGrid.Columns[1].Visible = false;
-                                eventExpGrid.Columns[2].Visible = false;
-
-                                if (eventExpGrid.Rows.Count >= 1)
-                                {
-                                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                    fillExpTypeTiles(projectId, eventId);
-                                    fillBriefDetailTiles(projectId, eventId);
-                                }
-                            }
-                            else
-                            {
-                                reader.Close();
-                                eventExpGrid.DataSource = null;
-                            }
+                            qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                                "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                                "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                                "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " GROUP BY " +
+                                "v.proj_id, v.event_id;";
+                        }
+                        else
+                        {
+                            qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                         }
                     }
                     else
                     {
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
+            }
+
+            MySqlDataReader reader = DBConnection.getData(qry);
+
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+                eventExpGrid.DataSource = table;
+
+                eventExpGrid.Columns[0].Visible = false;
+                eventExpGrid.Columns[1].Visible = false;
+                eventExpGrid.Columns[2].Visible = false;
+
+                if (eventExpGrid.Rows.Count >= 1)
+                {
+                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
+                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
+
+                    fillExpTypeTiles(projectId, eventId);
+                    fillBriefDetailTiles(projectId, eventId);
+                }
+            }
+            else
+            {
+                reader.Close();
+                eventExpGrid.DataSource = null;
             }
         }
 
@@ -976,6 +631,7 @@ namespace ResoflexClientHandlingSystem
         {
             Object tmpProj = byProjectCmbBox.SelectedValue;
             DateTime date = byDatePicker.Value;
+            string qry = "";
 
             if (tmpProj != null)
             {
@@ -986,37 +642,11 @@ namespace ResoflexClientHandlingSystem
                     int projId = Int32.Parse(tmpProj.ToString());
                     int typeId = Int32.Parse(tmpType.ToString());
 
-                    MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                    "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                    "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                    "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                    "v.proj_id, v.event_id;");
-
-                    if (reader.HasRows)
-                    {
-                        DataTable table = new DataTable();
-
-                        table.Load(reader);
-                        eventExpGrid.DataSource = table;
-
-                        eventExpGrid.Columns[0].Visible = false;
-                        eventExpGrid.Columns[1].Visible = false;
-                        eventExpGrid.Columns[2].Visible = false;
-
-                        if (eventExpGrid.Rows.Count >= 1)
-                        {
-                            int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                            int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                            fillExpTypeTiles(projectId, eventId);
-                            fillBriefDetailTiles(projectId, eventId);
-                        }
-                    }
-                    else
-                    {
-                        reader.Close();
-                        eventExpGrid.DataSource = null;
-                    }
+                    qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                        "v.proj_id, v.event_id;";
                 }
                 else
                 {
@@ -1026,37 +656,19 @@ namespace ResoflexClientHandlingSystem
                     {
                         int projId = result;
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE v.proj_id=" + projId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                            "v.proj_id, v.event_id;";
+                    }
+                    else
+                    {
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, v.travelling_mode as Travel, v.accommodation_mode as Accom, v.meals as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
             }
@@ -1073,73 +685,21 @@ namespace ResoflexClientHandlingSystem
                         int clientId = Int32.Parse(tmpClient.ToString());
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
                         int clientId = Int32.Parse(tmpClient.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                        "v.proj_id, v.event_id) t;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "select * from (SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE c.client_id=" + clientId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                            "v.proj_id, v.event_id) t;";
                     }
                 }
                 else
@@ -1150,73 +710,66 @@ namespace ResoflexClientHandlingSystem
                     {
                         int typeId = Int32.Parse(tmpType.ToString());
 
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.exp_type_id=" + typeId + " AND e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                     else
                     {
-                        MySqlDataReader reader = DBConnection.getData("SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
-                                                                        "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
-                                                                        "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
-                                                                        "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
-                                                                        "v.proj_id, v.event_id;");
-
-                        if (reader.HasRows)
-                        {
-                            DataTable table = new DataTable();
-
-                            table.Load(reader);
-                            eventExpGrid.DataSource = table;
-
-                            eventExpGrid.Columns[0].Visible = false;
-                            eventExpGrid.Columns[1].Visible = false;
-                            eventExpGrid.Columns[2].Visible = false;
-
-                            if (eventExpGrid.Rows.Count >= 1)
-                            {
-                                int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
-                                int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
-
-                                fillExpTypeTiles(projectId, eventId);
-                                fillBriefDetailTiles(projectId, eventId);
-                            }
-                        }
-                        else
-                        {
-                            reader.Close();
-                            eventExpGrid.DataSource = null;
-                        }
+                        qry = "SELECT v.proj_id, c.client_id, v.event_id, p.proj_name as Project, c.name as Client, v.from_date_time as From_Date, " +
+                            "v.to_date_time as To_Date, IFNULL(v.travelling_mode, '') as Travel, IFNULL(v.accommodation_mode, '') as Accom, IFNULL(v.meals, '') as Meals, IFNULL(SUM(e.amount), 0) as Expense " +
+                            "FROM project p RIGHT JOIN event v ON p.proj_id=v.proj_id LEFT JOIN client c ON c.client_id=p.client_id LEFT JOIN exp_detail_event e ON " +
+                            "e.event_id=v.event_id AND e.proj_id=v.proj_id WHERE e.dateOfExp='" + date.ToString("yyyy/MM/d") + "' GROUP BY " +
+                            "v.proj_id, v.event_id;";
                     }
                 }
+            }
+
+            MySqlDataReader reader = DBConnection.getData(qry);
+
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+                eventExpGrid.DataSource = table;
+
+                eventExpGrid.Columns[0].Visible = false;
+                eventExpGrid.Columns[1].Visible = false;
+                eventExpGrid.Columns[2].Visible = false;
+
+                if (eventExpGrid.Rows.Count >= 1)
+                {
+                    int projectId = Int32.Parse(eventExpGrid.Rows[0].Cells[0].Value.ToString());
+                    int eventId = Int32.Parse(eventExpGrid.Rows[0].Cells[2].Value.ToString());
+
+                    fillExpTypeTiles(projectId, eventId);
+                    fillBriefDetailTiles(projectId, eventId);
+                }
+            }
+            else
+            {
+                reader.Close();
+                eventExpGrid.DataSource = null;
+            }
+        }
+
+        private void eventExpGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv.CurrentRow.Selected)
+            {
+                int projId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                int eventId = Int32.Parse(eventExpGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                string project = eventExpGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string client = eventExpGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                EventExpSeeMoreForm frm = new EventExpSeeMoreForm(projId, eventId, project, client);
+
+                frm.ShowDialog();
             }
         }
     }

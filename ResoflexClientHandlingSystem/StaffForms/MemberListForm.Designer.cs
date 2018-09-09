@@ -42,6 +42,8 @@
             this.StaffEvaBtn = new MetroFramework.Controls.MetroButton();
             this.RecordAtteBtn = new MetroFramework.Controls.MetroButton();
             this.homeBtn = new MetroFramework.Controls.MetroButton();
+            this.selectMemberTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,7 +110,7 @@
             // 
             this.GotoAddmemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.GotoAddmemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.GotoAddmemBtn.Location = new System.Drawing.Point(260, 48);
+            this.GotoAddmemBtn.Location = new System.Drawing.Point(276, 48);
             this.GotoAddmemBtn.Name = "GotoAddmemBtn";
             this.GotoAddmemBtn.Size = new System.Drawing.Size(163, 35);
             this.GotoAddmemBtn.TabIndex = 2;
@@ -120,7 +122,7 @@
             // 
             this.DelMemBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.DelMemBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.DelMemBtn.Location = new System.Drawing.Point(455, 48);
+            this.DelMemBtn.Location = new System.Drawing.Point(463, 48);
             this.DelMemBtn.Name = "DelMemBtn";
             this.DelMemBtn.Size = new System.Drawing.Size(138, 35);
             this.DelMemBtn.TabIndex = 3;
@@ -197,11 +199,53 @@
             this.homeBtn.UseSelectable = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
+            // selectMemberTxtbox
+            // 
+            // 
+            // 
+            // 
+            this.selectMemberTxtbox.CustomButton.Image = null;
+            this.selectMemberTxtbox.CustomButton.Location = new System.Drawing.Point(123, 1);
+            this.selectMemberTxtbox.CustomButton.Name = "";
+            this.selectMemberTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.selectMemberTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.selectMemberTxtbox.CustomButton.TabIndex = 1;
+            this.selectMemberTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.selectMemberTxtbox.CustomButton.UseSelectable = true;
+            this.selectMemberTxtbox.CustomButton.Visible = false;
+            this.selectMemberTxtbox.Lines = new string[0];
+            this.selectMemberTxtbox.Location = new System.Drawing.Point(101, 60);
+            this.selectMemberTxtbox.MaxLength = 32767;
+            this.selectMemberTxtbox.Name = "selectMemberTxtbox";
+            this.selectMemberTxtbox.PasswordChar = '\0';
+            this.selectMemberTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.selectMemberTxtbox.SelectedText = "";
+            this.selectMemberTxtbox.SelectionLength = 0;
+            this.selectMemberTxtbox.SelectionStart = 0;
+            this.selectMemberTxtbox.ShortcutsEnabled = true;
+            this.selectMemberTxtbox.Size = new System.Drawing.Size(145, 23);
+            this.selectMemberTxtbox.TabIndex = 24;
+            this.selectMemberTxtbox.UseSelectable = true;
+            this.selectMemberTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.selectMemberTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.selectMemberTxtbox.TextChanged += new System.EventHandler(this.selectEmployeeTxtbox_TextChanged);
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(47, 64);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(48, 19);
+            this.metroLabel2.TabIndex = 23;
+            this.metroLabel2.Text = "Search";
+            // 
             // MemberListForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(817, 551);
+            this.Controls.Add(this.selectMemberTxtbox);
+            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.RecordAtteBtn);
             this.Controls.Add(this.StaffEvaBtn);
@@ -218,6 +262,7 @@
             this.Shown += new System.EventHandler(this.MemberListForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.MembersGrid)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -233,5 +278,7 @@
         private MetroFramework.Controls.MetroButton StaffEvaBtn;
         private MetroFramework.Controls.MetroButton RecordAtteBtn;
         private MetroFramework.Controls.MetroButton homeBtn;
+        private MetroFramework.Controls.MetroTextBox selectMemberTxtbox;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

@@ -68,6 +68,8 @@ namespace ResoflexClientHandlingSystem
         {
             AddScheduleForm asf = new AddScheduleForm();
             asf.ShowDialog();
+
+            scheduleGrid.DataSource = getSchedules();
         }
 
         private void schHome_Click(object sender, EventArgs e)
@@ -230,7 +232,9 @@ namespace ResoflexClientHandlingSystem
 
             UpdateScheduleForm usf = new UpdateScheduleForm(s);
 
-            usf.Show();
+            usf.ShowDialog();
+
+            scheduleGrid.DataSource = getSchedules();
         }
 
         //Data for grid

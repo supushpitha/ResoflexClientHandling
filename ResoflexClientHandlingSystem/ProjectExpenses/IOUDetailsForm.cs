@@ -22,7 +22,7 @@ namespace ResoflexClientHandlingSystem
 
         private void IOUDetailsForm_Load(object sender, EventArgs e)
         {
-            fillCmbBoxes();
+            fillCmbBox();
         }
 
         private void IOUDetailsForm_Shown(object sender, EventArgs e)
@@ -35,7 +35,29 @@ namespace ResoflexClientHandlingSystem
             iouGrid.Columns[3].Visible = false;
 
             byProjectCmbBox.SelectedItem = null;
-            byStaffCmbBox.SelectedItem = null;
+
+            if (iouGrid.Rows.Count >= 1)
+            {
+                int projId = Int32.Parse(iouGrid.Rows[0].Cells[1].Value.ToString());
+                int schId = Int32.Parse(iouGrid.Rows[0].Cells[2].Value.ToString());
+                double realExp = Double.Parse(iouGrid.Rows[0].Cells[11].Value.ToString());
+
+                fillTiles(projId, schId, realExp);
+            }
+        }
+
+        private void fillTiles(int projId, int scheduleId, double realExp)
+        {
+            realExpTile.Text = "Rs." + realExp;
+
+            MySqlDataReader reader = DBConnection.getData("select IFNULL(count(staff_id), 0) from schedule_technicians where sch_no=" + scheduleId + " and proj_id=" + projId);
+
+            while (reader.Read())
+            {
+                noTechTile.Text = "" + reader.GetInt16(0);
+            }
+
+            reader.Close();
         }
 
         private DataTable getIou()
@@ -65,9 +87,8 @@ namespace ResoflexClientHandlingSystem
             return table;
         }
 
-        private void fillCmbBoxes()
+        private void fillCmbBox()
         {
-            byStaffCmbBox.Items.Clear();
             byProjectCmbBox.Items.Clear();
 
             DataTable tableProject = new DataTable();
@@ -79,73 +100,180 @@ namespace ResoflexClientHandlingSystem
             byProjectCmbBox.DataSource = tableProject;
             byProjectCmbBox.ValueMember = "proj_id";
             byProjectCmbBox.DisplayMember = "proj_name";
-
-            //byProjectCmbBox.SelectedItem = null;
-
-            Object tmp = byProjectCmbBox.SelectedValue;
-            string qry = "";
-
-            if (tmp == null)
-            {
-                qry = "select staff_id, first_name from staff";
-            }
-            else
-            {
-                qry = "select s.staff_id as staff_id, s.first_name as first_name from staff s inner join schedule_technicians t on s.staff_id=t.staff_id where t.proj_id=" + Int32.Parse(tmp.ToString());
-            }
-
-            MySqlDataReader readerClient = DBConnection.getData(qry);
-
-            DataTable tableClient = new DataTable();
-
-            tableClient.Load(readerClient);
-
-            byStaffCmbBox.DataSource = tableClient;
-            byStaffCmbBox.ValueMember = "staff_id";
-            byStaffCmbBox.DisplayMember = "first_name";
         }
 
         private void byProjectCmbBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fillTechnicianCmbBox();
-            byStaffCmbBox.SelectedItem = null;
-
-
-        }
-
-        private void fillTechnicianCmbBox()
-        {
-            Object tmp = byProjectCmbBox.SelectedValue;
+            Object tmpProj = byProjectCmbBox.SelectedValue;
             string qry = "";
 
-            if (tmp == null)
-            {
-                qry = "select staff_id, first_name from staff";
-            }
-            else
+            if (tmpProj != null)
             {
                 int result = 0;
 
-                if (Int32.TryParse(tmp.ToString(), out result))
+                if (Int32.TryParse(tmpProj.ToString(), out result))
                 {
                     int projId = result;
-                    qry = "select s.staff_id as staff_id, s.first_name as first_name from staff s inner join schedule_technicians t on s.staff_id=t.staff_id where t.proj_id=" + projId;
+
+                    qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id where i.proj_id=" + projId + " group by i.proj_id, " +
+                    "i.sch_no, x.proj_id, x.event_id;";
                 }
                 else
                 {
-                    qry = "select staff_id, first_name from staff";
+                    qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id group by i.proj_id, i.sch_no, x.proj_id, x.event_id;";
                 }
             }
+            else
+            {
+                qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id group by i.proj_id, i.sch_no, x.proj_id, x.event_id;";
+            }
 
-            MySqlDataReader readerClient = DBConnection.getData(qry);
+            MySqlDataReader reader = DBConnection.getData(qry);
 
-            DataTable tableClient = new DataTable();
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
 
-            tableClient.Load(readerClient);
+                table.Load(reader);
+                iouGrid.DataSource = table;
 
-            byStaffCmbBox.DataSource = tableClient;
-            byStaffCmbBox.ValueMember = "staff_id";
-            byStaffCmbBox.DisplayMember = "first_name";
+                iouGrid.Columns[0].Visible = false;
+                iouGrid.Columns[1].Visible = false;
+                iouGrid.Columns[2].Visible = false;
+                iouGrid.Columns[3].Visible = false;
+
+                if (iouGrid.Rows.Count >= 1)
+                {
+                    int projId = Int32.Parse(iouGrid.Rows[0].Cells[1].Value.ToString());
+                    int schId = Int32.Parse(iouGrid.Rows[0].Cells[2].Value.ToString());
+                    double realExp = Double.Parse(iouGrid.Rows[0].Cells[11].Value.ToString());
+
+                    fillTiles(projId, schId, realExp);
+                }
+            }
+            else
+            {
+                reader.Close();
+                iouGrid.DataSource = null;
+            }
+        }
+        
+        private void iouGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DataGridView dgv = sender as DataGridView;
+
+            if (dgv.CurrentRow.Selected)
+            {
+                int projId = Int32.Parse(iouGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+                int schId = Int32.Parse(iouGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                double realExp = Double.Parse(iouGrid.Rows[e.RowIndex].Cells[11].Value.ToString());
+
+                fillTiles(projId, schId, realExp);
+            }
+        }
+
+        private void showAllBtn_Click(object sender, EventArgs e)
+        {
+            iouGrid.DataSource = getIou();
+
+            iouGrid.Columns[0].Visible = false;
+            iouGrid.Columns[1].Visible = false;
+            iouGrid.Columns[2].Visible = false;
+            iouGrid.Columns[3].Visible = false;
+
+            byProjectCmbBox.SelectedItem = null;
+
+            if (iouGrid.Rows.Count >= 1)
+            {
+                int projId = Int32.Parse(iouGrid.Rows[0].Cells[1].Value.ToString());
+                int schId = Int32.Parse(iouGrid.Rows[0].Cells[2].Value.ToString());
+                double realExp = Double.Parse(iouGrid.Rows[0].Cells[11].Value.ToString());
+
+                fillTiles(projId, schId, realExp);
+            }
+        }
+
+        private void byDatePicker_ValueChanged(object sender, EventArgs e)
+        {
+            Object tmpProj = byProjectCmbBox.SelectedValue;
+            DateTime date = byDatePicker.Value;
+            string qry = "";
+
+            if (tmpProj != null)
+            {
+                int result = 0;
+
+                if (Int32.TryParse(tmpProj.ToString(), out result))
+                {
+                    int projId = result;
+
+                    qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id where i.proj_id=" + projId + " and i.date='" + date.ToString("yyyy/MM/d") + "' " +
+                    "group by i.proj_id, i.sch_no, x.proj_id, x.event_id;";
+                }
+                else
+                {
+                    qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id where i.date='" + date.ToString("yyyy/MM/d") + "' " +
+                    "group by i.proj_id, i.sch_no, x.proj_id, x.event_id;";
+                }
+            }
+            else
+            {
+                qry = "select i.iou_id, i.proj_id, i.sch_no, IFNULL(e.event_id, 0)as event_id, p.proj_name as Project, s.from_date_time as Sch_From, " +
+                    "s.to_date_time as Sch_To, IFNULL(e.from_date_time, '') as Event_From, IFNULL(e.to_date_time, '') as Event_To, v.type as Schedule_Type, IFNULL(SUM(i.amount), 0) as IOU_Exp, " +
+                    "IFNULL(SUM(x.amount), 0) as Real_Exp from iou i left join schedule s on i.proj_id=s.proj_id and i.sch_no=s.sch_no left join project p on " +
+                    "i.proj_id=p.proj_id left join event e on e.sch_no=i.sch_no and e.proj_id=i.proj_id left join exp_detail_event x on x.proj_id=e.proj_id and " +
+                    "x.event_id=e.event_id inner join visit_type v on v.visit_type_id=s.visit_type_id where i.date='" + date.ToString("yyyy/MM/d") + "'" +
+                    " group by i.proj_id, i.sch_no, x.proj_id, x.event_id;";
+            }
+
+            MySqlDataReader reader = DBConnection.getData(qry);
+
+            if (reader.HasRows)
+            {
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+                iouGrid.DataSource = table;
+
+                iouGrid.Columns[0].Visible = false;
+                iouGrid.Columns[1].Visible = false;
+                iouGrid.Columns[2].Visible = false;
+                iouGrid.Columns[3].Visible = false;
+
+                if (iouGrid.Rows.Count >= 1)
+                {
+                    int projId = Int32.Parse(iouGrid.Rows[0].Cells[1].Value.ToString());
+                    int schId = Int32.Parse(iouGrid.Rows[0].Cells[2].Value.ToString());
+                    double realExp = Double.Parse(iouGrid.Rows[0].Cells[11].Value.ToString());
+
+                    fillTiles(projId, schId, realExp);
+                }
+            }
+            else
+            {
+                reader.Close();
+                iouGrid.DataSource = null;
+            }
         }
     }
 }

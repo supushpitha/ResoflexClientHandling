@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
@@ -34,7 +35,7 @@ namespace ResoflexClientHandlingSystem
             totalExpTile.BackColor = Color.LightSalmon;
             gridViewUsageLbl.ForeColor = Color.Red;
 
-            if (Userglobals.uname == "")
+            if (Userglobals.uname.Equals(""))
             {
                 profileBtn.Visible = false;
                 addNewClientBtn.Visible = false;
@@ -42,7 +43,7 @@ namespace ResoflexClientHandlingSystem
             }
             else
             {
-                if (!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                if ((!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin")) && (!Userglobals.priv.ToLower().Equals("tch") && !Userglobals.priv.ToLower().Equals("technician")))
                 {
                     addNewClientBtn.Visible = false;
                     updateClientBtn.Visible = false;
@@ -343,6 +344,18 @@ namespace ResoflexClientHandlingSystem
                 fillTiles(Int32.Parse(clientGrid.Rows[0].Cells[0].Value.ToString()));
 
             searchClientTxtBox.Focus();
+        }
+
+        private void reqBtn_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = clientGrid.CurrentRow;
+
+            int id = Int32.Parse(row.Cells[0].Value.ToString());
+            string name = row.Cells[1].Value.ToString();
+
+            RequestForm frm = new RequestForm(name, id);
+
+            frm.Show();
         }
     }
 }

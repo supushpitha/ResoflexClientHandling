@@ -111,6 +111,7 @@
             this.eventExpGrid.Size = new System.Drawing.Size(1034, 337);
             this.eventExpGrid.TabIndex = 2;
             this.eventExpGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventExpGrid_CellClick);
+            this.eventExpGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.eventExpGrid_RowHeaderMouseClick);
             // 
             // otherExpTile
             // 

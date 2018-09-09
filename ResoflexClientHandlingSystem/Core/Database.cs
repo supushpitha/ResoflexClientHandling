@@ -109,7 +109,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Update User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         public static void updateUserPassPerm(User user)
         {
             try
@@ -153,7 +153,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("", "Delete User", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         //added new queries bellow for schedule !!
         //
         //--------------------------------------
@@ -180,7 +180,7 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        
+
         public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
         {
 
@@ -198,7 +198,7 @@ namespace ResoflexClientHandlingSystem.Core
 
 
         public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
-         {
+        {
             try
             {
                 DBConnection.updateDB("UPDATE project SET first_init_date ='" + project.FirstInitDate.ToString("yyyy/MM/d") + "', training_comp_first_end_date='" + project.TEndDate1.ToString("yyyy/MM/d") + "', training_comp_second_end_date='" + project.TEndDate2.ToString("yyyy/MM/dd") + "', warranty_start_date='" + project.WarrantyStart.ToString("yyyy/MM/dd") + "', warranty_period='" + project.WarrantyPeriod + "' WHERE proj_name='" + project.ProjectName + "';");
@@ -214,19 +214,19 @@ namespace ResoflexClientHandlingSystem.Core
         public static void addRecord(Attendance atten)
         {
             MySqlDataReader reader1021 = DBConnection.getData("select * from attendanceview where DATE(InTime) = '" + atten.InTime + "%' and StaffID = '" + atten.EmployeeNo + "'");
-            
+
             if (reader1021.HasRows == false)
             {
                 reader1021.Close();
                 //  try
                 // {
                 DBConnection.updateDB("insert into attendance(staff_id, in_time, out_time, total_hours)values('" + atten.EmployeeNo + "','" + atten.InTime + "', '" + atten.OutTime + "','" + atten.HoursWorked + "')");
-                
+
                 // }
                 // catch (Exception)
                 //  {
                 // MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                
+
                 // }
             }
             else
@@ -412,12 +412,12 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
 
-                DBConnection.updateDB("update attendance set out_time = '"+atten.OutTime+"',total_hours = "+atten.HoursWorked+" where staff_id = "+atten.EmployeeNo+ " and in_time = '" + atten.InTime + "'");
-                
+                DBConnection.updateDB("update attendance set out_time = '" + atten.OutTime + "',total_hours = " + atten.HoursWorked + " where staff_id = " + atten.EmployeeNo + " and in_time = '" + atten.InTime + "'");
+
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Something went wrong! + "+ex+"", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong! + " + ex + "", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -438,12 +438,12 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + exc, "Add Staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-      
+
         //Adding a new schedule
         public static Boolean addSchedule(Schedule schedule)
         {
             try
-            { 
+            {
                 DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, to_date_time, from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
                     "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" +
                     schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
@@ -541,7 +541,7 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
-        
+
         public static void addResource(Resource resource)
         {
             try
@@ -589,7 +589,7 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 DBConnection.updateDB("insert into event (proj_id, visit_type_id, to_date_time, from_date_time, sch_no, feedback, Other, to_do_list, resource, check_list, travelling_mode, accommodation_mode, meals) " +
                     " values (" + evnt.EventProject.ProjectID + ", " + evnt.Type.EventTypeId + ", '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") +
-                    "', " + evnt.ScheduleId.ScheduleId + ", '" + evnt.Feedback + "', '" + evnt.Other + "', '" + evnt.TodoList + "', '" + evnt.Resource + "', '" + evnt.Checklist + "', '" + evnt.TravelMode +"', '" +
+                    "', " + evnt.ScheduleId.ScheduleId + ", '" + evnt.Feedback + "', '" + evnt.Other + "', '" + evnt.TodoList + "', '" + evnt.Resource + "', '" + evnt.Checklist + "', '" + evnt.TravelMode + "', '" +
                     evnt.AccommodationMode + "', '" + evnt.Meals + "' )");
 
                 foreach (var ary in evnt.ServEngineer)
@@ -650,7 +650,7 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
-        
+
         public static void saveClientRequest(ClientRequest req)
         {
             try
@@ -666,50 +666,51 @@ namespace ResoflexClientHandlingSystem.Core
 
         public static void AddExpenses(ExpenseDetailEvent addExpense)
         {
-           /* try
-            {*/
-                string date = DateTime.Now.ToString("yyyy-MM-dd");
+            /* try
+             {*/
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
 
-                int eti = addExpense.ExpType.ExpTypeId;
-                int ei = addExpense.EventOfExp.EventId;
-                int p = addExpense.ProjectOfEvent.ProjectID;
-                double a = addExpense.Amount;
-                string c = addExpense.Comment;
-                string pt = addExpense.PaymentType;
+            int eti = addExpense.ExpType.ExpTypeId;
+            int ei = addExpense.EventOfExp.EventId;
+            int p = addExpense.ProjectOfEvent.ProjectID;
+            double a = addExpense.Amount;
+            string c = addExpense.Comment;
+            string pt = addExpense.PaymentType;
 
-                DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values" +
-                    " (" + eti + ", " + ei + " , " + p + " , " + a + " ,'" + c + "','" + date + "', '" + pt + "');");
+            DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values" +
+                " (" + eti + ", " + ei + " , " + p + " , " + a + " ,'" + c + "','" + date + "', '" + pt + "');");
 
-                MessageBox.Show("Expenses successfully added!");
+            MessageBox.Show("Expenses successfully added!");
 
-           /* }
-            catch (Exception)
-            {
+            /* }
+             catch (Exception)
+             {
 
-                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+                 MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+             }*/
         }
 
 
         public static void CashIssue(ExpenseDetailSchedule cashIssue)
         {
-       /*     try
-            {
-*/                string date = DateTime.Now.ToString("yyyy-MM-dd");
-            
-               int e = cashIssue.ScheduleOfExp.ScheduleId;
-                int p = cashIssue.ProjectOfSchedule.ProjectID;
-                double a = cashIssue.Amount;
-                string c = cashIssue.Comment;
+            /*     try
+                 {
+     */
+            string date = DateTime.Now.ToString("yyyy-MM-dd");
 
-                DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
+            int e = cashIssue.ScheduleOfExp.ScheduleId;
+            int p = cashIssue.ProjectOfSchedule.ProjectID;
+            double a = cashIssue.Amount;
+            string c = cashIssue.Comment;
 
-                MessageBox.Show("Expenses successfully added!");
-  /*          }
-          catch (Exception)
-            {
-                MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }*/
+            DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
+
+            MessageBox.Show("Expenses successfully added!");
+            /*          }
+                    catch (Exception)
+                      {
+                          MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                      }*/
         }
 
         public static void updateStaff(Staff staff)
@@ -839,25 +840,25 @@ namespace ResoflexClientHandlingSystem.Core
 
                 foreach (var item in evnt.ServEngineer)
                 {
-                    EventTechnician et = (EventTechnician) item;
+                    EventTechnician et = (EventTechnician)item;
 
                     DBConnection.updateDB("update event_technicians set event_id = " + evnt.EventId + ", staff_id = " + et.Technician.StaffId + ", feedback = '" + et.Feedback + "', proj_id = " + evnt.EventProject.ProjectID + ", sch_no = " + evnt.ScheduleId.ScheduleId + " where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + "; ");
 
                     MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
-                    
-                    if(reader.Read())
+
+                    if (reader.Read())
                     {
                         int esi = reader.GetInt16("event_staff_id");
                         reader.Close();
 
                         DBConnection.updateDB("update event_technician_task set task = '" + et.Task + "' where event_tech_id = " + esi + ";");
-                        
+
                     }
                     else
                     {
                         reader.Close();
                     }
-                    
+
                 }
 
                 return true;
@@ -871,7 +872,7 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
-  
+
         public static void startCodingChangeRequest(ProjectRequest req)
         {
             int projId = req.ProjectOfRequest.ProjectID;
@@ -925,4 +926,5 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "End coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+    }
 }

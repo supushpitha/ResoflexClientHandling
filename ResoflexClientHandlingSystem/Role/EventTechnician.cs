@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class EventTechnician
+    public class EventTechnician
     {
         private Event eventOfTechnician;
         private Staff technician;
         private string feedback;
         private string task;
 
-        EventTechnician()
+        public EventTechnician()
         {
 
         }

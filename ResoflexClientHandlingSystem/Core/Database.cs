@@ -829,5 +829,47 @@ namespace ResoflexClientHandlingSystem.Core
                  " where staff_id = " + s.Empid + "");
             MessageBox.Show("Successfully added");
         }
+
+        //update event
+        public static Boolean updateEvent(Event evnt)
+        {
+            try
+            {
+                DBConnection.updateDB("update event set visit_type_id = " + evnt.Type.EventTypeId + " , to_date_time = '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "' , from_date_time = '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") + "' , sch_no = " + evnt.ScheduleId.ScheduleId + " , feedback = '" + evnt.Feedback + "' , Other = '" + evnt.Other + "' , to_do_list = '" + evnt.TodoList + "' , resource = '" + evnt.Resource + "' , check_list = '" + evnt.Checklist + "', travelling_mode = '" + evnt.TravelMode + "' , accommodation_mode = '" + evnt.AccommodationMode + "', meals = '" + evnt.Meals + "' where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                foreach (var item in evnt.ServEngineer)
+                {
+                    EventTechnician et = (EventTechnician) item;
+
+                    DBConnection.updateDB("update event_technicians set event_id = " + evnt.EventId + ", staff_id = " + et.Technician.StaffId + ", feedback = '" + et.Feedback + "', proj_id = " + evnt.EventProject.ProjectID + ", sch_no = " + evnt.ScheduleId.ScheduleId + " where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + "; ");
+
+                    MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+                    
+                    if(reader.Read())
+                    {
+                        int esi = reader.GetInt16("event_staff_id");
+                        reader.Close();
+
+                        DBConnection.updateDB("update event_technician_task set task = '" + et.Task + "' where event_tech_id = " + esi + ";");
+                        
+                    }
+                    else
+                    {
+                        reader.Close();
+                    }
+                    
+                }
+
+                return true;
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Update Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
     }
 }

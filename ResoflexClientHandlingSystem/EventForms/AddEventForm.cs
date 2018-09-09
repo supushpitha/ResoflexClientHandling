@@ -240,16 +240,25 @@ namespace ResoflexClientHandlingSystem
 
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id);");
 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
+            if (reader.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
 
-            eventsSch.DataSource = dt;
-            eventsSch.ValueMember = "sch_no";
-            eventsSch.DisplayMember = "sch_no";
+                eventsSch.DataSource = dt;
+                eventsSch.ValueMember = "sch_no";
+                eventsSch.DisplayMember = "sch_no";
 
-            DataRow row = dt.Rows[0];
+                DataRow row = dt.Rows[0];
 
-            eventClientName.SelectedValue = row["client_id"];
+                eventClientName.SelectedValue = row["client_id"];
+            }
+            else
+            {
+                eventClientName.SelectedValue = 1;
+            }
+
+            
 
             reader.Close();
         }

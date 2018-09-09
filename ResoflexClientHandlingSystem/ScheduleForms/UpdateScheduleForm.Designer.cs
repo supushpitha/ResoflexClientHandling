@@ -55,9 +55,11 @@
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.schCancel = new MetroFramework.Controls.MetroButton();
             this.schReset = new MetroFramework.Controls.MetroButton();
-            this.schUpdate = new MetroFramework.Controls.MetroButton();
-            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.schSave = new MetroFramework.Controls.MetroButton();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.checkList = new MetroFramework.Controls.MetroTextBox();
+            this.notifyIconSch = new System.Windows.Forms.NotifyIcon(this.components);
+            this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
             this.meals = new MetroFramework.Controls.MetroTextBox();
             this.resoBox = new MetroFramework.Controls.MetroTextBox();
             this.schSendMail = new MetroFramework.Controls.MetroCheckBox();
@@ -78,8 +80,6 @@
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
-            this.notifyIconSch = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).BeginInit();
             this.metroPanel1.SuspendLayout();
@@ -87,9 +87,9 @@
             // 
             // removeSerEng
             // 
-            this.removeSerEng.Location = new System.Drawing.Point(261, 358);
+            this.removeSerEng.Location = new System.Drawing.Point(270, 358);
             this.removeSerEng.Name = "removeSerEng";
-            this.removeSerEng.Size = new System.Drawing.Size(78, 23);
+            this.removeSerEng.Size = new System.Drawing.Size(69, 23);
             this.removeSerEng.TabIndex = 52;
             this.removeSerEng.Text = "Remove";
             this.removeSerEng.UseSelectable = true;
@@ -97,14 +97,17 @@
             // 
             // serviceEngGrid
             // 
+            this.serviceEngGrid.AllowUserToAddRows = false;
+            this.serviceEngGrid.AllowUserToDeleteRows = false;
             this.serviceEngGrid.AllowUserToResizeRows = false;
-            this.serviceEngGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.serviceEngGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.serviceEngGrid.BackgroundColor = System.Drawing.Color.White;
             this.serviceEngGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.serviceEngGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.serviceEngGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -113,7 +116,7 @@
             this.serviceEngGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -134,6 +137,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.serviceEngGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.serviceEngGrid.RowHeadersWidth = 20;
             this.serviceEngGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.serviceEngGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.serviceEngGrid.Size = new System.Drawing.Size(199, 103);
@@ -143,7 +147,7 @@
             // 
             this.schEndTime.CustomFormat = "HH:mm:ss";
             this.schEndTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schEndTime.Location = new System.Drawing.Point(604, 98);
+            this.schEndTime.Location = new System.Drawing.Point(613, 98);
             this.schEndTime.Name = "schEndTime";
             this.schEndTime.ShowUpDown = true;
             this.schEndTime.Size = new System.Drawing.Size(95, 20);
@@ -153,7 +157,7 @@
             // 
             this.schStartTime.CustomFormat = "HH:mm:ss";
             this.schStartTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schStartTime.Location = new System.Drawing.Point(604, 58);
+            this.schStartTime.Location = new System.Drawing.Point(613, 58);
             this.schStartTime.Name = "schStartTime";
             this.schStartTime.ShowUpDown = true;
             this.schStartTime.Size = new System.Drawing.Size(95, 20);
@@ -163,7 +167,7 @@
             // 
             this.schEndDate.CustomFormat = "yyyy-MM-dd";
             this.schEndDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schEndDate.Location = new System.Drawing.Point(499, 99);
+            this.schEndDate.Location = new System.Drawing.Point(508, 99);
             this.schEndDate.Name = "schEndDate";
             this.schEndDate.Size = new System.Drawing.Size(99, 20);
             this.schEndDate.TabIndex = 48;
@@ -172,7 +176,7 @@
             // 
             this.schStartDate.CustomFormat = "yyyy-MM-dd";
             this.schStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.schStartDate.Location = new System.Drawing.Point(499, 58);
+            this.schStartDate.Location = new System.Drawing.Point(508, 58);
             this.schStartDate.Name = "schStartDate";
             this.schStartDate.Size = new System.Drawing.Size(99, 20);
             this.schStartDate.TabIndex = 47;
@@ -190,9 +194,10 @@
             // metroLabel17
             // 
             this.metroLabel17.AutoSize = true;
+            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel17.Location = new System.Drawing.Point(3, 85);
             this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(92, 19);
+            this.metroLabel17.Size = new System.Drawing.Size(105, 19);
             this.metroLabel17.TabIndex = 45;
             this.metroLabel17.Text = "Schedule Type";
             // 
@@ -200,9 +205,9 @@
             // 
             this.accomodation.FormattingEnabled = true;
             this.accomodation.ItemHeight = 23;
-            this.accomodation.Location = new System.Drawing.Point(139, 560);
+            this.accomodation.Location = new System.Drawing.Point(508, 177);
             this.accomodation.Name = "accomodation";
-            this.accomodation.Size = new System.Drawing.Size(199, 29);
+            this.accomodation.Size = new System.Drawing.Size(200, 29);
             this.accomodation.TabIndex = 44;
             this.accomodation.UseSelectable = true;
             // 
@@ -210,22 +215,25 @@
             // 
             this.travelingMode.FormattingEnabled = true;
             this.travelingMode.ItemHeight = 23;
-            this.travelingMode.Location = new System.Drawing.Point(139, 525);
+            this.travelingMode.Location = new System.Drawing.Point(508, 138);
             this.travelingMode.Name = "travelingMode";
-            this.travelingMode.Size = new System.Drawing.Size(199, 29);
+            this.travelingMode.Size = new System.Drawing.Size(200, 29);
             this.travelingMode.TabIndex = 43;
             this.travelingMode.UseSelectable = true;
             // 
             // prevSchedulesGrid
             // 
+            this.prevSchedulesGrid.AllowUserToAddRows = false;
+            this.prevSchedulesGrid.AllowUserToDeleteRows = false;
             this.prevSchedulesGrid.AllowUserToResizeRows = false;
-            this.prevSchedulesGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.prevSchedulesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.prevSchedulesGrid.BackgroundColor = System.Drawing.Color.White;
             this.prevSchedulesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.prevSchedulesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.prevSchedulesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -234,7 +242,7 @@
             this.prevSchedulesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -243,8 +251,9 @@
             this.prevSchedulesGrid.EnableHeadersVisualStyles = false;
             this.prevSchedulesGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.prevSchedulesGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.prevSchedulesGrid.Location = new System.Drawing.Point(366, 277);
+            this.prevSchedulesGrid.Location = new System.Drawing.Point(736, 49);
             this.prevSchedulesGrid.Name = "prevSchedulesGrid";
+            this.prevSchedulesGrid.ReadOnly = true;
             this.prevSchedulesGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
@@ -254,17 +263,19 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.prevSchedulesGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.prevSchedulesGrid.RowHeadersWidth = 20;
             this.prevSchedulesGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.prevSchedulesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.prevSchedulesGrid.Size = new System.Drawing.Size(333, 439);
+            this.prevSchedulesGrid.Size = new System.Drawing.Size(333, 463);
             this.prevSchedulesGrid.TabIndex = 42;
             // 
             // metroLabel16
             // 
             this.metroLabel16.AutoSize = true;
-            this.metroLabel16.Location = new System.Drawing.Point(366, 242);
+            this.metroLabel16.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel16.Location = new System.Drawing.Point(736, 19);
             this.metroLabel16.Name = "metroLabel16";
-            this.metroLabel16.Size = new System.Drawing.Size(119, 19);
+            this.metroLabel16.Size = new System.Drawing.Size(137, 19);
             this.metroLabel16.TabIndex = 41;
             this.metroLabel16.Text = "Previous Schedules";
             // 
@@ -283,7 +294,7 @@
             this.schLogs.CustomButton.UseSelectable = true;
             this.schLogs.CustomButton.Visible = false;
             this.schLogs.Lines = new string[0];
-            this.schLogs.Location = new System.Drawing.Point(499, 136);
+            this.schLogs.Location = new System.Drawing.Point(508, 355);
             this.schLogs.MaxLength = 32767;
             this.schLogs.Multiline = true;
             this.schLogs.Name = "schLogs";
@@ -303,7 +314,7 @@
             // 
             this.schClientName.FormattingEnabled = true;
             this.schClientName.ItemHeight = 23;
-            this.schClientName.Location = new System.Drawing.Point(499, 12);
+            this.schClientName.Location = new System.Drawing.Point(508, 12);
             this.schClientName.Name = "schClientName";
             this.schClientName.Size = new System.Drawing.Size(200, 29);
             this.schClientName.TabIndex = 37;
@@ -312,42 +323,46 @@
             // metroLabel15
             // 
             this.metroLabel15.AutoSize = true;
-            this.metroLabel15.Location = new System.Drawing.Point(366, 136);
+            this.metroLabel15.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel15.Location = new System.Drawing.Point(367, 355);
             this.metroLabel15.Name = "metroLabel15";
-            this.metroLabel15.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel15.Size = new System.Drawing.Size(40, 19);
             this.metroLabel15.TabIndex = 36;
             this.metroLabel15.Text = "Logs";
             // 
             // metroLabel14
             // 
             this.metroLabel14.AutoSize = true;
+            this.metroLabel14.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel14.Location = new System.Drawing.Point(366, 99);
             this.metroLabel14.Name = "metroLabel14";
-            this.metroLabel14.Size = new System.Drawing.Size(121, 19);
+            this.metroLabel14.Size = new System.Drawing.Size(134, 19);
             this.metroLabel14.TabIndex = 35;
             this.metroLabel14.Text = "End Date and Time";
             // 
             // metroLabel13
             // 
             this.metroLabel13.AutoSize = true;
+            this.metroLabel13.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel13.Location = new System.Drawing.Point(366, 59);
             this.metroLabel13.Name = "metroLabel13";
-            this.metroLabel13.Size = new System.Drawing.Size(127, 19);
+            this.metroLabel13.Size = new System.Drawing.Size(142, 19);
             this.metroLabel13.TabIndex = 34;
             this.metroLabel13.Text = "Start Date and Time";
             // 
             // metroLabel12
             // 
             this.metroLabel12.AutoSize = true;
+            this.metroLabel12.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel12.Location = new System.Drawing.Point(366, 19);
             this.metroLabel12.Name = "metroLabel12";
-            this.metroLabel12.Size = new System.Drawing.Size(82, 19);
+            this.metroLabel12.Size = new System.Drawing.Size(91, 19);
             this.metroLabel12.TabIndex = 33;
             this.metroLabel12.Text = "Client Name";
             // 
             // schCancel
             // 
-            this.schCancel.Location = new System.Drawing.Point(584, 742);
+            this.schCancel.Location = new System.Drawing.Point(963, 544);
             this.schCancel.Name = "schCancel";
             this.schCancel.Size = new System.Drawing.Size(115, 23);
             this.schCancel.TabIndex = 32;
@@ -356,22 +371,70 @@
             // 
             // schReset
             // 
-            this.schReset.Location = new System.Drawing.Point(230, 742);
+            this.schReset.Location = new System.Drawing.Point(230, 547);
             this.schReset.Name = "schReset";
             this.schReset.Size = new System.Drawing.Size(115, 23);
             this.schReset.TabIndex = 30;
             this.schReset.Text = "Clear";
             this.schReset.UseSelectable = true;
             // 
-            // schUpdate
+            // schSave
             // 
-            this.schUpdate.Location = new System.Drawing.Point(5, 742);
-            this.schUpdate.Name = "schUpdate";
-            this.schUpdate.Size = new System.Drawing.Size(115, 23);
-            this.schUpdate.TabIndex = 29;
-            this.schUpdate.Text = "Update";
-            this.schUpdate.UseSelectable = true;
-            this.schUpdate.Click += new System.EventHandler(this.validation);
+            this.schSave.Location = new System.Drawing.Point(5, 547);
+            this.schSave.Name = "schSave";
+            this.schSave.Size = new System.Drawing.Size(115, 23);
+            this.schSave.TabIndex = 29;
+            this.schSave.Text = "Save";
+            this.schSave.UseSelectable = true;
+            this.schSave.Click += new System.EventHandler(this.validation);
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(486, 18);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(156, 25);
+            this.metroLabel3.TabIndex = 5;
+            this.metroLabel3.Text = "Update Schedule";
+            // 
+            // checkList
+            // 
+            // 
+            // 
+            // 
+            this.checkList.CustomButton.Image = null;
+            this.checkList.CustomButton.Location = new System.Drawing.Point(116, 2);
+            this.checkList.CustomButton.Name = "";
+            this.checkList.CustomButton.Size = new System.Drawing.Size(81, 81);
+            this.checkList.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.checkList.CustomButton.TabIndex = 1;
+            this.checkList.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.checkList.CustomButton.UseSelectable = true;
+            this.checkList.CustomButton.Visible = false;
+            this.checkList.Lines = new string[0];
+            this.checkList.Location = new System.Drawing.Point(508, 253);
+            this.checkList.MaxLength = 32767;
+            this.checkList.Multiline = true;
+            this.checkList.Name = "checkList";
+            this.checkList.PasswordChar = '\0';
+            this.checkList.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.checkList.SelectedText = "";
+            this.checkList.SelectionLength = 0;
+            this.checkList.SelectionStart = 0;
+            this.checkList.ShortcutsEnabled = true;
+            this.checkList.Size = new System.Drawing.Size(200, 86);
+            this.checkList.TabIndex = 28;
+            this.checkList.UseSelectable = true;
+            this.checkList.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.checkList.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // notifyIconSch
+            // 
+            this.notifyIconSch.Text = "notifyIcon1";
+            this.notifyIconSch.Visible = true;
             // 
             // metroPanel1
             // 
@@ -396,7 +459,7 @@
             this.metroPanel1.Controls.Add(this.metroLabel12);
             this.metroPanel1.Controls.Add(this.schCancel);
             this.metroPanel1.Controls.Add(this.schReset);
-            this.metroPanel1.Controls.Add(this.schUpdate);
+            this.metroPanel1.Controls.Add(this.schSave);
             this.metroPanel1.Controls.Add(this.checkList);
             this.metroPanel1.Controls.Add(this.meals);
             this.metroPanel1.Controls.Add(this.resoBox);
@@ -425,43 +488,12 @@
             this.metroPanel1.HorizontalScrollbarSize = 10;
             this.metroPanel1.Location = new System.Drawing.Point(20, 60);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(727, 520);
-            this.metroPanel1.TabIndex = 3;
+            this.metroPanel1.Size = new System.Drawing.Size(1080, 570);
+            this.metroPanel1.TabIndex = 4;
             this.metroPanel1.VerticalScrollbar = true;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
-            // 
-            // checkList
-            // 
-            // 
-            // 
-            // 
-            this.checkList.CustomButton.Image = null;
-            this.checkList.CustomButton.Location = new System.Drawing.Point(116, 2);
-            this.checkList.CustomButton.Name = "";
-            this.checkList.CustomButton.Size = new System.Drawing.Size(81, 81);
-            this.checkList.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.checkList.CustomButton.TabIndex = 1;
-            this.checkList.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.checkList.CustomButton.UseSelectable = true;
-            this.checkList.CustomButton.Visible = false;
-            this.checkList.Lines = new string[0];
-            this.checkList.Location = new System.Drawing.Point(139, 630);
-            this.checkList.MaxLength = 32767;
-            this.checkList.Multiline = true;
-            this.checkList.Name = "checkList";
-            this.checkList.PasswordChar = '\0';
-            this.checkList.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.checkList.SelectedText = "";
-            this.checkList.SelectionLength = 0;
-            this.checkList.SelectionStart = 0;
-            this.checkList.ShortcutsEnabled = true;
-            this.checkList.Size = new System.Drawing.Size(200, 86);
-            this.checkList.TabIndex = 28;
-            this.checkList.UseSelectable = true;
-            this.checkList.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.checkList.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
             // meals
             // 
@@ -478,7 +510,7 @@
             this.meals.CustomButton.UseSelectable = true;
             this.meals.CustomButton.Visible = false;
             this.meals.Lines = new string[0];
-            this.meals.Location = new System.Drawing.Point(139, 596);
+            this.meals.Location = new System.Drawing.Point(508, 218);
             this.meals.MaxLength = 32767;
             this.meals.Name = "meals";
             this.meals.PasswordChar = '\0';
@@ -527,7 +559,7 @@
             // schSendMail
             // 
             this.schSendMail.AutoSize = true;
-            this.schSendMail.Location = new System.Drawing.Point(229, 365);
+            this.schSendMail.Location = new System.Drawing.Point(239, 365);
             this.schSendMail.Name = "schSendMail";
             this.schSendMail.Size = new System.Drawing.Size(26, 15);
             this.schSendMail.TabIndex = 22;
@@ -537,9 +569,10 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(3, 527);
+            this.metroLabel8.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel8.Location = new System.Drawing.Point(366, 138);
             this.metroLabel8.Name = "metroLabel8";
-            this.metroLabel8.Size = new System.Drawing.Size(99, 19);
+            this.metroLabel8.Size = new System.Drawing.Size(114, 19);
             this.metroLabel8.TabIndex = 9;
             this.metroLabel8.Text = "Traveling Mode";
             // 
@@ -551,7 +584,6 @@
             this.addReso.TabIndex = 21;
             this.addReso.Text = "Add";
             this.addReso.UseSelectable = true;
-            this.addReso.Click += new System.EventHandler(this.addReso_Click);
             // 
             // schReso
             // 
@@ -678,118 +710,111 @@
             // metroLabel11
             // 
             this.metroLabel11.AutoSize = true;
-            this.metroLabel11.Location = new System.Drawing.Point(4, 630);
+            this.metroLabel11.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel11.Location = new System.Drawing.Point(367, 253);
             this.metroLabel11.Name = "metroLabel11";
-            this.metroLabel11.Size = new System.Drawing.Size(66, 19);
+            this.metroLabel11.Size = new System.Drawing.Size(75, 19);
             this.metroLabel11.TabIndex = 12;
             this.metroLabel11.Text = "Check List";
             // 
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(3, 596);
+            this.metroLabel10.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel10.Location = new System.Drawing.Point(366, 218);
             this.metroLabel10.Name = "metroLabel10";
-            this.metroLabel10.Size = new System.Drawing.Size(43, 19);
+            this.metroLabel10.Size = new System.Drawing.Size(48, 19);
             this.metroLabel10.TabIndex = 11;
             this.metroLabel10.Text = "Meals";
             // 
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(3, 562);
+            this.metroLabel9.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel9.Location = new System.Drawing.Point(366, 180);
             this.metroLabel9.Name = "metroLabel9";
-            this.metroLabel9.Size = new System.Drawing.Size(95, 19);
+            this.metroLabel9.Size = new System.Drawing.Size(107, 19);
             this.metroLabel9.TabIndex = 10;
             this.metroLabel9.Text = "Accomodation";
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel7.Location = new System.Drawing.Point(3, 397);
             this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(67, 19);
+            this.metroLabel7.Size = new System.Drawing.Size(76, 19);
             this.metroLabel7.TabIndex = 8;
             this.metroLabel7.Text = "Resources";
             // 
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
+            this.metroLabel6.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel6.Location = new System.Drawing.Point(139, 362);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(85, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(95, 19);
             this.metroLabel6.TabIndex = 7;
             this.metroLabel6.Text = "Send e-mails";
             // 
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
+            this.metroLabel5.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel5.Location = new System.Drawing.Point(3, 214);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(106, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(121, 19);
             this.metroLabel5.TabIndex = 6;
             this.metroLabel5.Text = "Service Engineer";
             // 
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
+            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.Location = new System.Drawing.Point(3, 119);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(60, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(69, 19);
             this.metroLabel4.TabIndex = 5;
             this.metroLabel4.Text = "Todo List";
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
+            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel2.Location = new System.Drawing.Point(3, 52);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(73, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(81, 19);
             this.metroLabel2.TabIndex = 3;
             this.metroLabel2.Text = "Schedule #";
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.Location = new System.Drawing.Point(3, 19);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(90, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(101, 19);
             this.metroLabel1.TabIndex = 2;
             this.metroLabel1.Text = "Project Name";
-            // 
-            // htmlLabel1
-            // 
-            this.htmlLabel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.htmlLabel1.AutoScroll = true;
-            this.htmlLabel1.AutoScrollMinSize = new System.Drawing.Size(158, 34);
-            this.htmlLabel1.AutoSize = false;
-            this.htmlLabel1.BackColor = System.Drawing.SystemColors.Window;
-            this.htmlLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.htmlLabel1.Location = new System.Drawing.Point(308, 20);
-            this.htmlLabel1.Name = "htmlLabel1";
-            this.htmlLabel1.Size = new System.Drawing.Size(160, 34);
-            this.htmlLabel1.TabIndex = 4;
-            this.htmlLabel1.Text = "Schedule Form";
-            // 
-            // notifyIconSch
-            // 
-            this.notifyIconSch.Text = "notifyIcon1";
-            this.notifyIconSch.Visible = true;
             // 
             // UpdateScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(767, 600);
-            this.Controls.Add(this.htmlLabel1);
+            this.ClientSize = new System.Drawing.Size(1120, 650);
+            this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroPanel1);
-            this.MaximumSize = new System.Drawing.Size(767, 800);
-            this.MinimumSize = new System.Drawing.Size(767, 600);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1120, 650);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1120, 650);
             this.Name = "UpdateScheduleForm";
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.prevSchedulesGrid)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -815,9 +840,11 @@
         private MetroFramework.Controls.MetroLabel metroLabel12;
         private MetroFramework.Controls.MetroButton schCancel;
         private MetroFramework.Controls.MetroButton schReset;
-        private MetroFramework.Controls.MetroButton schUpdate;
-        private MetroFramework.Controls.MetroPanel metroPanel1;
+        private MetroFramework.Controls.MetroButton schSave;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroTextBox checkList;
+        private System.Windows.Forms.NotifyIcon notifyIconSch;
+        private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroTextBox meals;
         private MetroFramework.Controls.MetroTextBox resoBox;
         private MetroFramework.Controls.MetroCheckBox schSendMail;
@@ -838,7 +865,5 @@
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Drawing.Html.HtmlLabel htmlLabel1;
-        private System.Windows.Forms.NotifyIcon notifyIconSch;
     }
 }

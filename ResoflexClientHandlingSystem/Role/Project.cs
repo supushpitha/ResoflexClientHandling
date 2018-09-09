@@ -91,5 +91,11 @@ namespace ResoflexClientHandlingSystem.Role
         public string WarrantyTerms { get => warrantyTerms; set => warrantyTerms = value; }
         public string VisitTerms { get => visitTerms; set => visitTerms = value; }
         public int ProjectCatID { get => projectCatID; set => projectCatID = value; }
+
+        public Project(int projectID, int clientID)
+        {
+            this.ProjectID = projectID;
+            this.ClientOfProject = new Client(clientID);
+        }
     }
 }

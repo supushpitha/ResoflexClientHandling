@@ -987,5 +987,28 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "End coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void markSeenReq(List<Int32> projIds, List<Int32> reqIds, int uid)
+        {
+            if ((projIds.Count > 0) && (reqIds.Count > 0) && uid > 0)
+            {
+                for (int i = 0; i < projIds.Count; i++)
+                {
+                    int projId = projIds[i];
+                    int reqId = reqIds[i];
+
+                    try
+                    {
+                        DBConnection.updateDB("insert into proj_req_seen (proj_id, req_id, staff_id) values " +
+                                                "(" + projId + ", " + reqId + ", " + uid + ");");
+
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Something went wrong! " + projIds.Count + ", " + uid + " \n" + exc, "Marking seen requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

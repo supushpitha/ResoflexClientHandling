@@ -20,33 +20,21 @@ namespace ResoflexClientHandlingSystem
         {
             InitializeComponent();
         }
-
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-           
-
 
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
-
             }
             else
             {
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;
-
             }
-
-            setAttendance();
-
-
+            
             //notifications
 
             try
@@ -71,13 +59,11 @@ namespace ResoflexClientHandlingSystem
                     }
                     reader2.Close();
                 }
-
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
             }
-
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
@@ -87,29 +73,14 @@ namespace ResoflexClientHandlingSystem
             prffrm.ShowDialog();
             this.Close();
         }
-
-        private void setAttendance()
-        {
-            //metroLabel2.Text = "12";
-        }
-
+        
         private void metroTile2_Click(object sender, EventArgs e)
         {
             ProjectForm frm = new ProjectForm();
 
             frm.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void metroButton4_Click(object sender, EventArgs e)
         {
             resourceForm frm = new resourceForm();
@@ -124,15 +95,8 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             frm.ShowDialog();
             this.Close();
-
-            //frm.Show();
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void metroButton2_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
@@ -164,15 +128,9 @@ namespace ResoflexClientHandlingSystem
             sEf.ShowDialog();
             this.Close();
         }
-
-        private void metroPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
+        
         private void metroButton6_Click(object sender, EventArgs e)
         {
-
             UserForms.Notification frm = new UserForms.Notification();
             frm.ShowDialog();
         }

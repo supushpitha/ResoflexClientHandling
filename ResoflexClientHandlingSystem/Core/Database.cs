@@ -33,9 +33,9 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 DBConnection.updateDB("insert into user (user_id, u_name, password, permission) values (" + user.StaffId + ",'" + user.UName + "','" + user.Pword + "','" + user.Permission + "')");
             }
-            catch (Exception)
+            catch (Exception exp)
             {
-                MessageBox.Show("Something went wrong!", "Add User", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(exp.ToString());
             }
         }
 
@@ -556,6 +556,67 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Add Resource", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+        //Requesting admin permission
+
+        public static void addNotification(UserNotification notification)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into notification(user_id, function_id, statues) " +
+                    "values('" + notification.UserID + "', '" + notification.FuctionID + "'," + notification.Statues + ")");
+            }
+
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        //Granting permission
+        public static void grantPermission(UserNotification notifi)
+        {
+            try
+            {
+                DBConnection.updateDB("UPDATE notification SET statues ="+notifi.Statues+" WHERE user_id= " + notifi.UserID + "");
+            }
+
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        //mark all notifications as readed - USER
+        public static void markReaded(UserNotification notifi)
+        {
+            try
+            {
+                DBConnection.updateDB("UPDATE notification SET view =" + notifi.View + " WHERE user_id= " + notifi.UserID + "");
+                
+            }
+
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
+        //mark all notifications as readed - ADMIN
+        public static void markReadedAdmin(UserNotification notifi)
+        {
+            try
+            {
+                DBConnection.updateDB("UPDATE notification SET admin_view =" + notifi.Admin_view + " WHERE noti_ID= " + notifi.NotificationID + "");
+            }
+
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
+
 
         public static void addDesignation(Designation designation)
         {

@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ResoflexClientHandlingSystem.Properties;
-
+using ResoflexClientHandlingSystem.Role;
 
 namespace ResoflexClientHandlingSystem
 {
@@ -39,10 +39,47 @@ namespace ResoflexClientHandlingSystem
             totExpenceTile.BackColor = Color.DeepSkyBlue;
             warrantyTile.BackColor = Color.DeepSkyBlue;
 
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select statues from notification where user_id="+Userglobals.uid+"");
+
+                while (reader.Read())
+                {
+                    metroTextBox1.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
             if (clientName != "")
                 searchProjectTxtBox.Text = clientName;
 
             projectGrid.Columns[0].Visible = true;
+
+
+            if (Userglobals.uname == "")
+            {
+                addProjectBtn.Visible = false;
+                updateProjectBtn.Visible = false;
+                
+            }
+            else
+            {
+                if (!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                {
+                    addProjectBtn.Visible = false;
+                    updateProjectBtn.Visible = false;
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+            }
+
+
         }
 
 
@@ -305,11 +342,40 @@ namespace ResoflexClientHandlingSystem
 
         private void reqBtn_Click(object sender, EventArgs e)
         {
-            string projectName = projectGrid.CurrentRow.Cells[1].Value.ToString();
+            //MySqlDataReader reader = DBConnection.getData("select  statues from notification where user_id="+Userglobals.uid+"");
 
-            RequestForm frm = new RequestForm(projectName);
+                //if (reader.Read())
+                //{
+                    //bool per = reader.GetBoolean(0);
 
-            frm.Show();
+                    if (Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                    {
+
+                        string projectName = projectGrid.CurrentRow.Cells[1].Value.ToString();
+
+                        RequestForm frm = new RequestForm(projectName);
+
+                        frm.Show();
+                    }
+                 // else if (per == true)
+                   // {
+                  //      string projectName = projectGrid.CurrentRow.Cells[1].Value.ToString();
+                  //      reader.Close();
+                  //      RequestForm frm = new RequestForm(projectName);
+
+                   //     frm.Show();
+                  //  }
+                    else
+                    {
+                        ProjectForms.GetPermission frm = new ProjectForms.GetPermission();
+                   //     reader.Close();
+                        frm.ShowDialog();
+
+
+
+                    }
+              // }
+              // reader.Close();
         }
 
         private void metroTrackBar1_Scroll(object sender, ScrollEventArgs e)

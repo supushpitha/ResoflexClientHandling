@@ -41,28 +41,28 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
-            clientReqGrid.DataSource = getClientRequests();
             fillClientCmbBoxes();
             fillProjectCmbBox();
-            
+
             if (!projName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
-                changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
+
+                clientReqGrid.DataSource = getClientRequests();
+                searchClientNameCmbBox.SelectedItem = null;
             }
             else if (!clientName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 1;
                 SearchNameCmbBox.SelectedItem = clientName;
-                changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
 
                 searchClientNameCmbBox.SelectedItem = clientName;
-                clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
             }
             else
             {
                 changeReqGrid.DataSource = getChangeRequests();
+                clientReqGrid.DataSource = getClientRequests();
 
                 searchTypeCmbBox.SelectedItem = null;
                 SearchNameCmbBox.SelectedItem = null;
@@ -72,7 +72,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             changeReqGrid.Columns[0].Visible = false;
             changeReqGrid.Columns[1].Visible = false;
         }
-
+        
         private void fillProjectCmbBox()
         {
             MySqlDataReader reader = DBConnection.getData("SELECT proj_name as name FROM project");

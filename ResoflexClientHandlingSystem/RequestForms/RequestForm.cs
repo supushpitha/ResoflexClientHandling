@@ -41,28 +41,28 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
-            clientReqGrid.DataSource = getClientRequests();
             fillClientCmbBoxes();
             fillProjectCmbBox();
-            
+
             if (!projName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 0;
                 SearchNameCmbBox.SelectedItem = projName;
-                changeReqGrid.DataSource = getChangeRequestsByProject(SearchNameCmbBox.SelectedItem.ToString());
+
+                clientReqGrid.DataSource = getClientRequests();
+                searchClientNameCmbBox.SelectedItem = null;
             }
             else if (!clientName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 1;
                 SearchNameCmbBox.SelectedItem = clientName;
-                changeReqGrid.DataSource = getChangeRequestsByClient(SearchNameCmbBox.SelectedItem.ToString());
 
                 searchClientNameCmbBox.SelectedItem = clientName;
-                clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
             }
             else
             {
                 changeReqGrid.DataSource = getChangeRequests();
+                clientReqGrid.DataSource = getClientRequests();
 
                 searchTypeCmbBox.SelectedItem = null;
                 SearchNameCmbBox.SelectedItem = null;
@@ -72,7 +72,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             changeReqGrid.Columns[0].Visible = false;
             changeReqGrid.Columns[1].Visible = false;
         }
-
+        
         private void fillProjectCmbBox()
         {
             MySqlDataReader reader = DBConnection.getData("SELECT proj_name as name FROM project");
@@ -186,6 +186,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
             }
         }
 
@@ -231,6 +232,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
             changeReqGrid.Columns[0].Visible = false;
             changeReqGrid.Columns[1].Visible = false;
+            changeGridRowColors("Change");
         }
 
         private void showAllClientReqBtn_Click(object sender, EventArgs e)
@@ -239,6 +241,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
             clientReqGrid.DataSource = getClientRequests();
             clientAllRadioBtn.Checked = true;
+
+            changeGridRowColors("Client");
         }
 
         private void searchClientNameCmbBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -247,6 +251,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 clientAllRadioBtn.Checked = true;
                 clientReqGrid.DataSource = getClientRequestsByClient(searchClientNameCmbBox.SelectedItem.ToString());
+
+                changeGridRowColors("Client");
             }
         }
 
@@ -285,6 +291,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                     changeReqGrid.Columns[0].Visible = false;
                     changeReqGrid.Columns[1].Visible = false;
+                    changeGridRowColors("Change");
 
                     addReqNotify.Icon = SystemIcons.Application;
                     addReqNotify.BalloonTipText = "Change Request Successfully added!";
@@ -333,6 +340,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     Database.saveClientRequest(req);
 
                     clientReqGrid.DataSource = getClientRequests();
+
+                    changeGridRowColors("Client");
 
                     addReqNotify.Icon = SystemIcons.Application;
                     addReqNotify.BalloonTipText = "Client Request Successfully added!";
@@ -414,6 +423,40 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 allRadioBtn.Checked = true;
             }
+
+            changeGridRowColors("Change");
+            changeGridRowColors("Client");
+        }
+
+        public void changeGridRowColors(string gridName)
+        {
+            if (gridName.Equals("Change"))
+            {
+                foreach (DataGridViewRow row in changeReqGrid.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[5].Value))
+                    {
+                        row.DefaultCellStyle.ForeColor = Color.Green;
+                        row.DefaultCellStyle.SelectionForeColor = Color.Green;
+                    }
+                    else if (Convert.ToBoolean(row.Cells[9].Value))
+                    {
+                        row.DefaultCellStyle.ForeColor = Color.Red;
+                        row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                    }
+                }
+            }
+            else if (gridName.Equals("Client"))
+            {
+                foreach (DataGridViewRow row in clientReqGrid.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells[2].Value))
+                    {
+                        row.DefaultCellStyle.ForeColor = Color.Red;
+                        row.DefaultCellStyle.SelectionForeColor = Color.Red;
+                    }
+                }
+            }
         }
 
         private void metroRadioButton2_MouseClick(object sender, MouseEventArgs e)
@@ -469,6 +512,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
             }
         }
 
@@ -524,6 +568,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
             }
         }
 
@@ -577,6 +622,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
             }
         }
 
@@ -630,6 +676,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
             }
         }
 
@@ -659,6 +706,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 clientReqGrid.DataSource = table;
+
+                changeGridRowColors("Client");
             }
         }
 
@@ -689,6 +738,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 table.Load(reader);
 
                 clientReqGrid.DataSource = table;
+
+                changeGridRowColors("Client");
             }
         }
 
@@ -758,6 +809,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                                     changeReqGrid.Columns[0].Visible = false;
                                     changeReqGrid.Columns[1].Visible = false;
+                                    changeGridRowColors("Change");
 
                                     addReqNotify.Icon = SystemIcons.Application;
                                     addReqNotify.BalloonTipText = "Change Request Development Ended!";

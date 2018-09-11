@@ -18,6 +18,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private string projName = "";
         private string clientName = "";
         private int clientId = 0;
+        private int oldCount = 0;
+        private List<Int32> projIds = new List<int>();
+        private List<Int32> reqIds = new List<int>();
 
         public RequestForm()
         {
@@ -187,6 +190,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
                 changeGridRowColors("Change");
+                markSeen();
             }
         }
 
@@ -233,6 +237,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             changeReqGrid.Columns[0].Visible = false;
             changeReqGrid.Columns[1].Visible = false;
             changeGridRowColors("Change");
+            markSeen();
         }
 
         private void showAllClientReqBtn_Click(object sender, EventArgs e)
@@ -292,6 +297,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     changeReqGrid.Columns[0].Visible = false;
                     changeReqGrid.Columns[1].Visible = false;
                     changeGridRowColors("Change");
+                    markSeen();
 
                     addReqNotify.Icon = SystemIcons.Application;
                     addReqNotify.BalloonTipText = "Change Request Successfully added!";
@@ -426,6 +432,53 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
             changeGridRowColors("Change");
             changeGridRowColors("Client");
+            markSeen();
+        }
+
+        private void markSeen()
+        {
+            if (!Userglobals.uname.Equals(""))
+            {
+                if ((projIds.Count == 0) && (reqIds.Count == 0))
+                {
+                    MySqlDataReader reader = DBConnection.getData("select proj_id, req_id from proj_req_seen where staff_id=" + Userglobals.uid);
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            projIds.Add(reader.GetInt32(0));
+                            reqIds.Add(reader.GetInt32(1));
+
+                            oldCount++;
+                        }
+                    }
+
+                    reader.Close();
+                }
+
+                foreach (DataGridViewRow row in changeReqGrid.Rows)
+                {
+                    int projId = Int32.Parse(row.Cells[0].Value.ToString());
+                    int reqId = Int32.Parse(row.Cells[1].Value.ToString());
+                    bool exists = false;
+
+                    for (int i = 0; i < projIds.Count; i++)
+                    {
+                        if ((projIds[i] == projId) && (reqIds[i] == reqId))
+                        {
+                            exists = true;
+                            break;
+                        }
+                    }
+
+                    if (!exists)
+                    {
+                        projIds.Add(projId);
+                        reqIds.Add(reqId);
+                    }
+                }
+            }
         }
 
         public void changeGridRowColors(string gridName)
@@ -513,6 +566,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
                 changeGridRowColors("Change");
+                markSeen();
             }
         }
 
@@ -569,6 +623,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
                 changeGridRowColors("Change");
+                markSeen();
             }
         }
 
@@ -623,6 +678,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
                 changeGridRowColors("Change");
+                markSeen();
             }
         }
 
@@ -677,6 +733,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 changeReqGrid.Columns[0].Visible = false;
                 changeReqGrid.Columns[1].Visible = false;
                 changeGridRowColors("Change");
+                markSeen();
             }
         }
 
@@ -780,6 +837,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                                     changeReqGrid.Columns[0].Visible = false;
                                     changeReqGrid.Columns[1].Visible = false;
+                                    markSeen();
 
                                     addReqNotify.Icon = SystemIcons.Application;
                                     addReqNotify.BalloonTipText = "Change Request Development Started!";
@@ -810,6 +868,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                                     changeReqGrid.Columns[0].Visible = false;
                                     changeReqGrid.Columns[1].Visible = false;
                                     changeGridRowColors("Change");
+                                    markSeen();
 
                                     addReqNotify.Icon = SystemIcons.Application;
                                     addReqNotify.BalloonTipText = "Change Request Development Ended!";
@@ -829,6 +888,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
                         }
                     }
                 }
+            }
+        }
+
+        private void RequestForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if ((projIds.Count > 0) && (projIds.Count == reqIds.Count) && Userglobals.uid > 0)
+            {
+                if (oldCount != 0)
+                {
+                    projIds.RemoveRange(0, oldCount);
+                    reqIds.RemoveRange(0, oldCount);
+                }
+
+                Database.markSeenReq(projIds, reqIds, Userglobals.uid);
             }
         }
     }

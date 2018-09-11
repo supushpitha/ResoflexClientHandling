@@ -621,6 +621,7 @@
             this.MinimumSize = new System.Drawing.Size(1675, 833);
             this.Name = "RequestForm";
             this.Text = "Requests";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.RequestForm_FormClosing);
             this.Load += new System.EventHandler(this.RequestForm_Load);
             this.Shown += new System.EventHandler(this.RequestForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).EndInit();

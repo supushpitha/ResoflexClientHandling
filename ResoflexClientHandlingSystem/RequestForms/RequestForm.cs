@@ -433,6 +433,57 @@ namespace ResoflexClientHandlingSystem.RequestForms
             changeGridRowColors("Change");
             changeGridRowColors("Client");
             markSeen();
+
+            checkNewChangeRequests();
+        }
+
+        private void checkNewChangeRequests()
+        {
+            if (!Userglobals.uname.Equals(""))
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.proj_id, p.req_id from proj_request p where row(p.proj_id, p.req_id) not in " +
+                                                                                    "(select s.proj_id, s.req_id from proj_req_seen s where s.staff_id=" + Userglobals.uid + ")");
+
+                if (!reader.HasRows)
+                {
+                    newReqTile.Visible = false;
+                }
+                else
+                {
+                    int existingCount = 0;
+                    int realCount = 0;
+
+                    while (reader.Read())
+                    {
+                        realCount++;
+                        int pId = reader.GetInt32(0);
+                        int rId = reader.GetInt32(1);
+
+                        foreach (DataGridViewRow row in changeReqGrid.Rows)
+                        {
+                            int projId = Int32.Parse(row.Cells[0].Value.ToString());
+                            int reqId = Int32.Parse(row.Cells[1].Value.ToString());
+
+                            if ((projId == pId) && (reqId == rId))
+                            {
+                                existingCount++;
+                                break;
+                            }
+                        }
+                    }
+
+                    if (realCount == existingCount)
+                    {
+                        newReqTile.Visible = false;
+                    }
+                }
+
+                reader.Close();
+            }
+            else
+            {
+                newReqTile.Visible = false;
+            }
         }
 
         private void markSeen()
@@ -903,6 +954,41 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                 Database.markSeenReq(projIds, reqIds, Userglobals.uid);
             }
+        }
+
+        private void newReqTile_Click(object sender, EventArgs e)
+        {
+            if ((projIds.Count > 0) && (projIds.Count == reqIds.Count) && Userglobals.uid > 0)
+            {
+                if (oldCount != 0)
+                {
+                    projIds.RemoveRange(0, oldCount);
+                    reqIds.RemoveRange(0, oldCount);
+
+                    oldCount = 0;
+                }
+
+                Database.markSeenReq(projIds, reqIds, Userglobals.uid);
+
+                projIds.RemoveRange(0, projIds.Count);
+                reqIds.RemoveRange(0, reqIds.Count);
+            }
+
+            MySqlDataReader reader = DBConnection.getData("SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, r.started_dateTime as Started, " +
+                "r.ended_dateTime as Ended, r.urgent as Urgent, s.first_name as Dev FROM proj_request r INNER JOIN project p ON r.proj_id=p.proj_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON " +
+                "r.staff_id=s.staff_id where row(r.proj_id, r.req_id) not in (select s.proj_id, s.req_id from proj_req_seen s where s.staff_id=" + Userglobals.uid + ") order by r.state asc, r.urgent desc;");
+
+            DataTable table = new DataTable();
+
+            table.Load(reader);
+
+            changeReqGrid.DataSource = table;
+
+            changeReqGrid.Columns[0].Visible = false;
+            changeReqGrid.Columns[1].Visible = false;
+            changeGridRowColors("Change");
+            newReqTile.Visible = false;
+            markSeen();
         }
     }
 }

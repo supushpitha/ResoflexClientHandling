@@ -17,7 +17,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into client (name, address, phone_mobile, phone_office, fax, email)" +
-                                      " values ('" + client.FirstName + " " + client.LastName + "', '" + client.Address + "', " +
+                                      " values ('" + client.FirstName + "" + client.LastName + "', '" + client.Address + "', " +
                                       "'" + client.PhoneNo[0] + "', '" + client.PhoneNo[1] + "', '" + client.Fax + "', " +
                                       "'" + client.Email + "')");
             }
@@ -86,7 +86,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("update client set name='" + client.FirstName + " " + client.LastName + "', " +
+                DBConnection.updateDB("update client set name='" + client.FirstName + "" + client.LastName + "', " +
                                       "address='" + client.Address + "', phone_mobile='" + client.PhoneNo[0] + "', " +
                                       "phone_office='" + client.PhoneNo[1] + "', fax='" + client.Fax + "', email='" + client.Email + "' " +
                                       "where client_id=" + client.ClientID);

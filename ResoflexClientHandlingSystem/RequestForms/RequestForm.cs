@@ -44,8 +44,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
-            fillClientCmbBoxes();
-            fillProjectCmbBox();
+            //fillClientCmbBoxes();
+            //fillProjectCmbBox();
 
             if (!projName.Equals(""))
             {

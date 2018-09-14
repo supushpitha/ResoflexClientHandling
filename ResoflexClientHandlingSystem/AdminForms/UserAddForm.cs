@@ -75,6 +75,8 @@ namespace ResoflexClientHandlingSystem
                 while (reader.Read())
                 {
                     metroComboBox1.Items.Add(reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                    char [] fnamearr = reader.GetValue(0).ToString().ToCharArray(); 
+                    uname.Text = fnamearr[0] + reader.GetValue(1).ToString() ;
                     id.Text = (reader.GetValue(2).ToString());
 
                 }

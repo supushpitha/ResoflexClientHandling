@@ -39,6 +39,7 @@
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
+            this.login = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -197,11 +198,24 @@
             this.profilebtn.UseSelectable = true;
             this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
+            // login
+            // 
+            this.login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.login.Location = new System.Drawing.Point(562, 26);
+            this.login.Name = "login";
+            this.login.Size = new System.Drawing.Size(112, 26);
+            this.login.TabIndex = 20;
+            this.login.Text = "Login";
+            this.login.UseSelectable = true;
+            this.login.Click += new System.EventHandler(this.login_Click);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.login);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroButton6);
@@ -229,5 +243,6 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroButton metroButton5;
         private MetroFramework.Controls.MetroButton profilebtn;
+        private MetroFramework.Controls.MetroButton login;
     }
 }

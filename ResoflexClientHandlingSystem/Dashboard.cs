@@ -32,11 +32,13 @@ namespace ResoflexClientHandlingSystem
             {
                 profilebtn.Visible = false;
 
+
             }
             else
             {
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;
+                login.Visible = false;
 
             }
 
@@ -131,6 +133,14 @@ namespace ResoflexClientHandlingSystem
         private void metroPanel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login linfrm = new Login();
+            linfrm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -491,6 +491,12 @@
     <Compile Include="StaffForms\UpdateMemberForm.Designer.cs">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -690,6 +696,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

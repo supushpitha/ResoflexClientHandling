@@ -950,11 +950,12 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void endCodingChangeRequest(ProjectRequest req)
+        public static bool endCodingChangeRequest(ProjectRequest req)
         {
             int projId = req.ProjectOfRequest.ProjectID;
             int reqId = req.ReqId;
             int uid = req.StaffOfRequest.StaffId;
+            bool status = false;
 
             try
             {
@@ -969,6 +970,8 @@ namespace ResoflexClientHandlingSystem.Core
                             reader.Close();
 
                             DBConnection.updateDB("update proj_request set ended_dateTime='" + DateTime.Now.ToString("yyyy/MM/d HH:mm:ss") + "', state=1 where staff_id=" + uid + " and proj_id=" + projId + " and req_id=" + reqId);
+
+                            status = true;
                         }
                         else
                         {
@@ -986,6 +989,8 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MessageBox.Show("Something went wrong!", "End coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            return status;
         }
 
         public static void markSeenReq(List<Int32> projIds, List<Int32> reqIds, int uid)

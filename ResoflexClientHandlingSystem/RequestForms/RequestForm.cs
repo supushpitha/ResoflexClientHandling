@@ -874,6 +874,8 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                         if (!DateTime.TryParse(startedDT.ToString(), out dt))
                         {
+                            //bool status = getReqStatus(e);
+
                             DialogResult result = MessageBox.Show("Start coding this change request NOW?\n" + uid, "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                             switch (result)
@@ -912,18 +914,28 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                                     ProjectRequest endReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
 
-                                    Database.endCodingChangeRequest(endReq);
+                                    if (Database.endCodingChangeRequest(endReq))
+                                    {
+                                        changeReqGrid.DataSource = getChangeRequests();
 
-                                    changeReqGrid.DataSource = getChangeRequests();
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        changeGridRowColors("Change");
+                                        markSeen();
 
-                                    changeReqGrid.Columns[0].Visible = false;
-                                    changeReqGrid.Columns[1].Visible = false;
-                                    changeGridRowColors("Change");
-                                    markSeen();
+                                        addReqNotify.Icon = SystemIcons.Application;
+                                        addReqNotify.BalloonTipText = "Change Request Development Ended!";
+                                        addReqNotify.ShowBalloonTip(1000);
+                                    }
+                                    else
+                                    {
+                                        changeReqGrid.DataSource = getChangeRequests();
 
-                                    addReqNotify.Icon = SystemIcons.Application;
-                                    addReqNotify.BalloonTipText = "Change Request Development Ended!";
-                                    addReqNotify.ShowBalloonTip(1000);
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        changeGridRowColors("Change");
+                                        markSeen();
+                                    }
 
                                     break;
 
@@ -940,6 +952,13 @@ namespace ResoflexClientHandlingSystem.RequestForms
                     }
                 }
             }
+        }
+
+        private bool getReqStatus(DataGridViewCellMouseEventArgs e)
+        {
+            //MySqlDataReader reader = DBConnection.getData("select ");
+
+            return true;
         }
 
         private void RequestForm_FormClosing(object sender, FormClosingEventArgs e)

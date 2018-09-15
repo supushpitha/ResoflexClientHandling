@@ -564,13 +564,13 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into notification(user_id, function_id, statues) " +
-                    "values('" + notification.UserID + "', '" + notification.FuctionID + "'," + notification.Statues + ")");
+                DBConnection.updateDB("insert into notification(user_id, function_id, statues, main_id, sub_id) " +
+                    "values(" + notification.UserId + ", " + notification.FuctionId + ", " + notification.Status + ", " + notification.MainId + ", " + notification.SubId + ")");
             }
 
             catch (Exception exp)
             {
-                MessageBox.Show(exp.ToString());
+                MessageBox.Show("Something went wrong!\n" + exp, "Saving Request permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -579,44 +579,13 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("UPDATE notification SET statues ="+notifi.Statues+" WHERE user_id= " + notifi.UserID + "");
+                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
             }
-
             catch (Exception exp)
             {
                 MessageBox.Show(exp.ToString());
             }
         }
-
-        //mark all notifications as readed - USER
-        public static void markReaded(UserNotification notifi)
-        {
-            try
-            {
-                DBConnection.updateDB("UPDATE notification SET view =" + notifi.View + " WHERE user_id= " + notifi.UserID + "");
-                
-            }
-
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.ToString());
-            }
-        }
-
-        //mark all notifications as readed - ADMIN
-        public static void markReadedAdmin(UserNotification notifi)
-        {
-            try
-            {
-                DBConnection.updateDB("UPDATE notification SET admin_view =" + notifi.Admin_view + " WHERE noti_ID= " + notifi.NotificationID + "");
-            }
-
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.ToString());
-            }
-        }
-
 
         public static void addDesignation(Designation designation)
         {

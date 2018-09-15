@@ -308,10 +308,10 @@
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.designer.cs">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\IOUDetailsForm.cs">
@@ -325,12 +325,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -621,7 +615,7 @@
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesMainForm.resx">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\IOUDetailsForm.resx">
@@ -630,9 +624,6 @@
     <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>

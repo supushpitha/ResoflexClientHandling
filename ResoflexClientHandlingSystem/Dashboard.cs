@@ -49,7 +49,7 @@ namespace ResoflexClientHandlingSystem
                     }
                     reader.Close();
                 }
-                else
+                else if (!Userglobals.uname.Equals(""))
                 {
                     MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id="+Userglobals.uid+"");
 
@@ -58,6 +58,11 @@ namespace ResoflexClientHandlingSystem
                         metroButton8.Text = (reader2.GetValue(0).ToString());
                     }
                     reader2.Close();
+                }
+                else
+                {
+                    metroButton6.Visible = false;
+                    metroButton8.Visible = false;
                 }
             }
             catch (Exception ex)

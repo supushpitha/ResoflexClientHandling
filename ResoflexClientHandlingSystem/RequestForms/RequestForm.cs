@@ -874,34 +874,71 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                         if (!DateTime.TryParse(startedDT.ToString(), out dt))
                         {
-                            //bool status = getReqStatus(e);
+                            bool requested, adminView, status;
 
-                            DialogResult result = MessageBox.Show("Start coding this change request NOW?\n" + uid, "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            status = getReqStatus(projId, reqId, out adminView, out requested);
 
-                            switch (result)
+                            if (!requested)
                             {
-                                case DialogResult.Yes:
+                                DialogResult r = MessageBox.Show("You need permission to start this change request development!\nRequest Permission?", "Request Permission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                                    ProjectRequest startReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+                                switch (r)
+                                {
+                                    case DialogResult.Yes:
 
-                                    Database.startCodingChangeRequest(startReq);
+                                        UserNotification notification = new UserNotification(uid, 1, false, projId, reqId);
 
-                                    changeReqGrid.DataSource = getChangeRequests();
+                                        Database.addNotification(notification);
 
-                                    changeReqGrid.Columns[0].Visible = false;
-                                    changeReqGrid.Columns[1].Visible = false;
-                                    markSeen();
+                                        addReqNotify.Icon = SystemIcons.Application;
+                                        addReqNotify.BalloonTipText = "Your request successfully sent!";
+                                        addReqNotify.ShowBalloonTip(500);
 
-                                    addReqNotify.Icon = SystemIcons.Application;
-                                    addReqNotify.BalloonTipText = "Change Request Development Started!";
-                                    addReqNotify.ShowBalloonTip(1000);
+                                        break;
 
-                                    break;
+                                    case DialogResult.No:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else if (!adminView)
+                            {
+                                MessageBox.Show("Your request is still pending!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (!status)
+                            {
+                                MessageBox.Show("Your request has been declined!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                DialogResult result = MessageBox.Show("Start coding this change request NOW?\n" + uid, "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                                case DialogResult.No:
-                                    break;
-                                default:
-                                    break;
+                                switch (result)
+                                {
+                                    case DialogResult.Yes:
+
+                                        ProjectRequest startReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+                                        Database.startCodingChangeRequest(startReq);
+
+                                        changeReqGrid.DataSource = getChangeRequests();
+
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        markSeen();
+
+                                        addReqNotify.Icon = SystemIcons.Application;
+                                        addReqNotify.BalloonTipText = "Change Request Development Started!";
+                                        addReqNotify.ShowBalloonTip(1000);
+
+                                        break;
+
+                                    case DialogResult.No:
+                                        break;
+                                    default:
+                                        break;
+                                }
                             }
                         }
                         else if (!DateTime.TryParse(endedDT.ToString(), out dt))
@@ -954,11 +991,31 @@ namespace ResoflexClientHandlingSystem.RequestForms
             }
         }
 
-        private bool getReqStatus(DataGridViewCellMouseEventArgs e)
+        private bool getReqStatus(int projId, int reqId, out bool adminView, out bool requested)
         {
-            //MySqlDataReader reader = DBConnection.getData("select ");
+            bool status = false;
+            adminView = false;
 
-            return true;
+            MySqlDataReader reader = DBConnection.getData("select statues, admin_view from notification where main_id=" + projId + " and sub_id=" + reqId);
+
+            if (reader.HasRows)
+            {
+                requested = true;
+
+                while (reader.Read())
+                {
+                    status = reader.GetBoolean(0);
+                    adminView = reader.GetBoolean(1);
+                }
+            }
+            else
+            {
+                requested = false;
+            }
+
+            reader.Close();
+
+            return status;
         }
 
         private void RequestForm_FormClosing(object sender, FormClosingEventArgs e)

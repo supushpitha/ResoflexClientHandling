@@ -24,7 +24,7 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-
+            
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
@@ -33,6 +33,7 @@ namespace ResoflexClientHandlingSystem
             {
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;
+                login.Visible = false;
             }
             
             //notifications
@@ -49,7 +50,7 @@ namespace ResoflexClientHandlingSystem
                     }
                     reader.Close();
                 }
-                else
+                else if (!Userglobals.uname.Equals(""))
                 {
                     MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id="+Userglobals.uid+"");
 
@@ -58,6 +59,11 @@ namespace ResoflexClientHandlingSystem
                         metroButton8.Text = (reader2.GetValue(0).ToString());
                     }
                     reader2.Close();
+                }
+                else
+                {
+                    metroButton6.Visible = false;
+                    metroButton8.Visible = false;
                 }
             }
             catch (Exception ex)
@@ -133,6 +139,14 @@ namespace ResoflexClientHandlingSystem
         {
             UserForms.Notification frm = new UserForms.Notification();
             frm.ShowDialog();
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login linfrm = new Login();
+            linfrm.ShowDialog();
+            this.Close();
         }
     }
 }

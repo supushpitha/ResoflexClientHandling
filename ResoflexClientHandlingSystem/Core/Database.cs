@@ -17,7 +17,7 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("insert into client (name, address, phone_mobile, phone_office, fax, email)" +
-                                      " values ('" + client.FirstName + " " + client.LastName + "', '" + client.Address + "', " +
+                                      " values ('" + client.FirstName + "" + client.LastName + "', '" + client.Address + "', " +
                                       "'" + client.PhoneNo[0] + "', '" + client.PhoneNo[1] + "', '" + client.Fax + "', " +
                                       "'" + client.Email + "')");
             }
@@ -86,7 +86,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("update client set name='" + client.FirstName + " " + client.LastName + "', " +
+                DBConnection.updateDB("update client set name='" + client.FirstName + "" + client.LastName + "', " +
                                       "address='" + client.Address + "', phone_mobile='" + client.PhoneNo[0] + "', " +
                                       "phone_office='" + client.PhoneNo[1] + "', fax='" + client.Fax + "', email='" + client.Email + "' " +
                                       "where client_id=" + client.ClientID);
@@ -564,13 +564,13 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into notification(user_id, function_id, statues) " +
-                    "values('" + notification.UserID + "', '" + notification.FuctionID + "'," + notification.Statues + ")");
+                DBConnection.updateDB("insert into notification(user_id, function_id, statues, main_id, sub_id) " +
+                    "values(" + notification.UserId + ", " + notification.FuctionId + ", " + notification.Status + ", " + notification.MainId + ", " + notification.SubId + ")");
             }
 
             catch (Exception exp)
             {
-                MessageBox.Show(exp.ToString());
+                MessageBox.Show("Something went wrong!\n" + exp, "Saving Request permissions", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -579,44 +579,13 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("UPDATE notification SET statues ="+notifi.Statues+" WHERE user_id= " + notifi.UserID + "");
+                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
             }
-
             catch (Exception exp)
             {
                 MessageBox.Show(exp.ToString());
             }
         }
-
-        //mark all notifications as readed - USER
-        public static void markReaded(UserNotification notifi)
-        {
-            try
-            {
-                DBConnection.updateDB("UPDATE notification SET view =" + notifi.View + " WHERE user_id= " + notifi.UserID + "");
-                
-            }
-
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.ToString());
-            }
-        }
-
-        //mark all notifications as readed - ADMIN
-        public static void markReadedAdmin(UserNotification notifi)
-        {
-            try
-            {
-                DBConnection.updateDB("UPDATE notification SET admin_view =" + notifi.Admin_view + " WHERE noti_ID= " + notifi.NotificationID + "");
-            }
-
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.ToString());
-            }
-        }
-
 
         public static void addDesignation(Designation designation)
         {
@@ -950,11 +919,12 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void endCodingChangeRequest(ProjectRequest req)
+        public static bool endCodingChangeRequest(ProjectRequest req)
         {
             int projId = req.ProjectOfRequest.ProjectID;
             int reqId = req.ReqId;
             int uid = req.StaffOfRequest.StaffId;
+            bool status = false;
 
             try
             {
@@ -969,6 +939,8 @@ namespace ResoflexClientHandlingSystem.Core
                             reader.Close();
 
                             DBConnection.updateDB("update proj_request set ended_dateTime='" + DateTime.Now.ToString("yyyy/MM/d HH:mm:ss") + "', state=1 where staff_id=" + uid + " and proj_id=" + projId + " and req_id=" + reqId);
+
+                            status = true;
                         }
                         else
                         {
@@ -985,6 +957,31 @@ namespace ResoflexClientHandlingSystem.Core
             catch (Exception exc)
             {
                 MessageBox.Show("Something went wrong!", "End coding change requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return status;
+        }
+
+        public static void markSeenReq(List<Int32> projIds, List<Int32> reqIds, int uid)
+        {
+            if ((projIds.Count > 0) && (reqIds.Count > 0) && uid > 0)
+            {
+                for (int i = 0; i < projIds.Count; i++)
+                {
+                    int projId = projIds[i];
+                    int reqId = reqIds[i];
+
+                    try
+                    {
+                        DBConnection.updateDB("insert into proj_req_seen (proj_id, req_id, staff_id) values " +
+                                                "(" + projId + ", " + reqId + ", " + uid + ");");
+
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Something went wrong! " + projIds.Count + ", " + uid + " \n" + exc, "Marking seen requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
         }
     }

@@ -243,7 +243,7 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception )
             {
                 MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

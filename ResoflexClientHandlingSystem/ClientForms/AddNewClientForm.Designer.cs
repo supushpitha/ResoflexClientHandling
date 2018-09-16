@@ -152,6 +152,7 @@
             this.clientNameTxtBox.UseSelectable = true;
             this.clientNameTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.clientNameTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.clientNameTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clientNameTxtBox_KeyDown);
             this.clientNameTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.clientNameTxtBox_Validating);
             // 
             // clientAddressTxtBox
@@ -186,6 +187,7 @@
             this.clientAddressTxtBox.UseSelectable = true;
             this.clientAddressTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.clientAddressTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.clientAddressTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.clientAddressTxtBox_KeyDown);
             // 
             // mobilePhoneTxtBox
             // 
@@ -219,6 +221,7 @@
             this.mobilePhoneTxtBox.UseSelectable = true;
             this.mobilePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.mobilePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.mobilePhoneTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mobilePhoneTxtBox_KeyDown);
             this.mobilePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.mobilePhoneTxtBox_Validating);
             this.mobilePhoneTxtBox.Validated += new System.EventHandler(this.mobilePhoneTxtBox_Validated);
             // 
@@ -254,6 +257,7 @@
             this.officePhoneTxtBox.UseSelectable = true;
             this.officePhoneTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.officePhoneTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.officePhoneTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.officePhoneTxtBox_KeyDown);
             this.officePhoneTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.officePhoneTxtBox_Validating);
             this.officePhoneTxtBox.Validated += new System.EventHandler(this.officePhoneTxtBox_Validated);
             // 
@@ -289,6 +293,7 @@
             this.faxTxtBox.UseSelectable = true;
             this.faxTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.faxTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.faxTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.faxTxtBox_KeyDown);
             // 
             // emailTxtBox
             // 
@@ -322,6 +327,7 @@
             this.emailTxtBox.UseSelectable = true;
             this.emailTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.emailTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.emailTxtBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.emailTxtBox_KeyDown);
             this.emailTxtBox.Validating += new System.ComponentModel.CancelEventHandler(this.emailTxtBox_Validating);
             this.emailTxtBox.Validated += new System.EventHandler(this.emailTxtBox_Validated);
             // 

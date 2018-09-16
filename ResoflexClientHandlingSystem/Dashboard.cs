@@ -33,6 +33,7 @@ namespace ResoflexClientHandlingSystem
             {
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;
+                login.Visible = false;
             }
             
             //notifications
@@ -138,6 +139,14 @@ namespace ResoflexClientHandlingSystem
         {
             UserForms.Notification frm = new UserForms.Notification();
             frm.ShowDialog();
+        }
+
+        private void login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login linfrm = new Login();
+            linfrm.ShowDialog();
+            this.Close();
         }
     }
 }

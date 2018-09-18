@@ -326,6 +326,18 @@
       <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileReportTestOne.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileTestTwoReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -630,6 +642,14 @@
     <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\MonthlyProjectExpReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileReportTestOne.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileTestTwoReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>

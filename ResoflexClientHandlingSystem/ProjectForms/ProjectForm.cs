@@ -356,10 +356,10 @@ namespace ResoflexClientHandlingSystem
 
         private void schHome_Click(object sender, EventArgs e)
         {
-            
             Dashboard frm = new Dashboard();
+            this.Hide();
             frm.ShowDialog();
-            
+            this.Close();
         }
 
         private void reqBtn_Click(object sender, EventArgs e)

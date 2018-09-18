@@ -33,6 +33,28 @@ namespace ResoflexClientHandlingSystem
 
         private void Project1_Load(object sender, EventArgs e)
         {
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+                addProjectBtn.Visible = false;
+                updateProjectBtn.Visible = false;
+                metroButton1.Visible = false;
+
+            }
+            else
+            {
+                if (Userglobals.priv != "PM")
+                {
+                    addProjectBtn.Visible = false;
+                    updateProjectBtn.Visible = false;
+                    metroButton1.Visible = false;
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+
+            }
             projectGrid.DataSource = getProjects();
             projIdTile.BackColor = Color.DeepSkyBlue;
             fillCountTile();

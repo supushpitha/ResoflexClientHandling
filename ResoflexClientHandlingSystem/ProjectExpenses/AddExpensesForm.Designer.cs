@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -68,7 +69,9 @@
             this.submitExpBtn = new MetroFramework.Controls.MetroButton();
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.totalExpLbl = new MetroFramework.Controls.MetroLabel();
+            this.addEventExpErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.eventExpensesGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addEventExpErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // metroLabel1
@@ -422,7 +425,7 @@
             this.commentTxtBox.Multiline = true;
             this.commentTxtBox.Name = "commentTxtBox";
             this.commentTxtBox.PasswordChar = '\0';
-            this.commentTxtBox.PromptText = "Add extra detail";
+            this.commentTxtBox.PromptText = "Add extra detail (optional)";
             this.commentTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.commentTxtBox.SelectedText = "";
             this.commentTxtBox.SelectionLength = 0;
@@ -431,7 +434,7 @@
             this.commentTxtBox.Size = new System.Drawing.Size(200, 47);
             this.commentTxtBox.TabIndex = 31;
             this.commentTxtBox.UseSelectable = true;
-            this.commentTxtBox.WaterMark = "Add extra detail";
+            this.commentTxtBox.WaterMark = "Add extra detail (optional)";
             this.commentTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.commentTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
@@ -451,13 +454,13 @@
             this.eventExpensesGrid.AllowUserToDeleteRows = false;
             this.eventExpensesGrid.AllowUserToResizeRows = false;
             this.eventExpensesGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.eventExpensesGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.eventExpensesGrid.BackgroundColor = System.Drawing.Color.White;
             this.eventExpensesGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventExpensesGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.eventExpensesGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -466,7 +469,7 @@
             this.eventExpensesGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
@@ -491,6 +494,7 @@
             this.eventExpensesGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.eventExpensesGrid.Size = new System.Drawing.Size(613, 227);
             this.eventExpensesGrid.TabIndex = 34;
+            this.eventExpensesGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventExpensesGrid_CellClick);
             // 
             // submitExpBtn
             // 
@@ -519,9 +523,13 @@
             this.totalExpLbl.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.totalExpLbl.Location = new System.Drawing.Point(586, 507);
             this.totalExpLbl.Name = "totalExpLbl";
-            this.totalExpLbl.Size = new System.Drawing.Size(84, 19);
+            this.totalExpLbl.Size = new System.Drawing.Size(60, 19);
             this.totalExpLbl.TabIndex = 37;
-            this.totalExpLbl.Text = "Rs. 2200.00";
+            this.totalExpLbl.Text = "Rs. 0.00";
+            // 
+            // addEventExpErrorProvider
+            // 
+            this.addEventExpErrorProvider.ContainerControl = this;
             // 
             // AddExpensesForm
             // 
@@ -570,6 +578,7 @@
             this.Load += new System.EventHandler(this.AddExpensesForm_Load);
             this.Shown += new System.EventHandler(this.AddExpensesForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.eventExpensesGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.addEventExpErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,5 +623,6 @@
         private MetroFramework.Controls.MetroButton submitExpBtn;
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel totalExpLbl;
+        private System.Windows.Forms.ErrorProvider addEventExpErrorProvider;
     }
 }

@@ -35,7 +35,7 @@ namespace ResoflexClientHandlingSystem
             this.travelling = "testing travel";
             this.accom = "testing accomm";
             this.meal = "testing meal";
-            this.from = DateTime.Today;
+            this.from = DateTime.Today.AddDays(-3);
             this.to = DateTime.Today;
         }
         
@@ -87,14 +87,14 @@ namespace ResoflexClientHandlingSystem
             mealLbl.Text = meal;
 
             fillCalculatableLables();
-            fillDataGrid("testType", "IOU", 1220.00, DateTime.Today, "commentTest");
 
+            eventExpensesGrid.DataSource = dt;
             iouRadioBtn.Checked = true;
         }
 
         private void fillDataGrid(string expType, string iouDirect, double amount, DateTime date, string comment)
         {
-            dt.Rows.Add(expType, iouDirect, amount, date, comment);
+            dt.Rows.Add(expType, iouDirect, amount, date.ToShortDateString(), comment);
 
             eventExpensesGrid.DataSource = dt;
 
@@ -186,6 +186,11 @@ namespace ResoflexClientHandlingSystem
             }
         }
 
+        private void eventExpensesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
         private void fillExpTypeCmbBox()
         {
             try
@@ -207,29 +212,108 @@ namespace ResoflexClientHandlingSystem
 
         private void amountTxtBox_Validating(object sender, CancelEventArgs e)
         {
+            string errorMsg;
 
+            if (!Validation.isDouble(amountTxtBox.Text))
+            {
+                e.Cancel = true;
+                errorMsg = "Invalid amount!";
+
+                amountTxtBox.Select(0, amountTxtBox.Text.Length);
+
+                this.addEventExpErrorProvider.SetError(amountTxtBox, errorMsg);
+            }
         }
 
         private void amountTxtBox_Validated(object sender, EventArgs e)
         {
-
+            addEventExpErrorProvider.SetError(amountTxtBox, "");
+            addEventExpErrorProvider.Clear();
         }
 
         private void datePicker_Validating(object sender, CancelEventArgs e)
         {
+            string errorMsg;
+            DateTime testingDate = datePicker.Value;
 
+            if ((testingDate < from) || (testingDate > to))
+            {
+                e.Cancel = true;
+                errorMsg = "Invalid Date!";
+                
+                this.addEventExpErrorProvider.SetError(datePicker, errorMsg);
+            }
         }
 
         private void datePicker_Validated(object sender, EventArgs e)
         {
-
+            addEventExpErrorProvider.SetError(datePicker, "");
+            addEventExpErrorProvider.Clear();
         }
 
         private void addExpBtn_Click(object sender, EventArgs e)
         {
+            string expType = "";
+            string comment = "";
+            double amount;
 
+            if (expTypeCmbBox.SelectedItem != null)
+            {
+                expType = expTypeCmbBox.GetItemText(expTypeCmbBox.SelectedItem);
 
-            fillDataGrid("testType", "IOU", 1220.00, DateTime.Today, "commentTest");
+                if (Double.TryParse(amountTxtBox.Text, out amount))
+                {
+                    if (iouRadioBtn.Checked)
+                    {
+                        double totIou = amount;
+
+                        foreach (DataGridViewRow row in eventExpensesGrid.Rows)
+                        {
+                            if (row.Cells[1].Value.ToString().Equals("IOU"))
+                                totIou += Double.Parse(row.Cells[2].Value.ToString());
+                        }
+
+                        if (givenAmount < totIou)
+                        {
+                            MessageBox.Show("IOU total amount can't exceed the given amount above!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                        else
+                        {
+                            DateTime expDate = datePicker.Value;
+                            bool iou = iouRadioBtn.Checked;
+                            bool direct = directRadioBtn.Checked;
+
+                            if (!commentTxtBox.Text.Equals("") && (commentTxtBox.Text != null))
+                            {
+                                comment = commentTxtBox.Text;
+                            }
+
+                            fillDataGrid(expType, "IOU", amount, expDate, comment);
+                        }
+                    }
+                    else
+                    {
+                        DateTime expDate = datePicker.Value;
+                        bool iou = iouRadioBtn.Checked;
+                        bool direct = directRadioBtn.Checked;
+
+                        if (!commentTxtBox.Text.Equals("") && (commentTxtBox.Text != null))
+                        {
+                            comment = commentTxtBox.Text;
+                        }
+
+                        fillDataGrid(expType, "Direct", amount, expDate, comment);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter the amount!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please choose the expense type!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void submitExpBtn_Click(object sender, EventArgs e)

@@ -296,12 +296,6 @@
     <Compile Include="ProjectExpenses\EventExpSeeMoreForm.Designer.cs">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.designer.cs">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -626,9 +620,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\EventExpSeeMoreForm.resx">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ExpensesAnalysisForm.resx">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesMainForm.resx">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>

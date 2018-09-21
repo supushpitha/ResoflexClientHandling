@@ -70,6 +70,7 @@
             this.metroLabel15 = new MetroFramework.Controls.MetroLabel();
             this.totalExpLbl = new MetroFramework.Controls.MetroLabel();
             this.addEventExpErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.eventExpensesGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.addEventExpErrorProvider)).BeginInit();
             this.SuspendLayout();
@@ -531,6 +532,11 @@
             // 
             this.addEventExpErrorProvider.ContainerControl = this;
             // 
+            // notifyIcon
+            // 
+            this.notifyIcon.Text = "notifyIcon";
+            this.notifyIcon.Visible = true;
+            // 
             // AddExpensesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -573,6 +579,8 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
+            this.MaximumSize = new System.Drawing.Size(1080, 572);
+            this.MinimumSize = new System.Drawing.Size(1080, 572);
             this.Name = "AddExpensesForm";
             this.Text = "Add Event Expense";
             this.Load += new System.EventHandler(this.AddExpensesForm_Load);
@@ -624,5 +632,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel15;
         private MetroFramework.Controls.MetroLabel totalExpLbl;
         private System.Windows.Forms.ErrorProvider addEventExpErrorProvider;
+        private System.Windows.Forms.NotifyIcon notifyIcon;
     }
 }

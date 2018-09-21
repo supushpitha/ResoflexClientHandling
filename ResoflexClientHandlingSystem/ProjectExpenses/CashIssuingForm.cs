@@ -63,24 +63,24 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            ExpenseDetailSchedule ed = new ExpenseDetailSchedule();
+           // ExpenseDetailSchedule ed = new ExpenseDetailSchedule();
 
 
-           ed.ScheduleOfExp = new Schedule(int.Parse(scheduleId.Text.ToString()));
-            ed.ProjectOfSchedule = new Project(int.Parse(projectIdBox.SelectedValue.ToString()));
+           //ed.ScheduleOfExp = new Schedule(int.Parse(scheduleId.Text.ToString()));
+           // ed.ProjectOfSchedule = new Project(int.Parse(projectIdBox.SelectedValue.ToString()));
 
-            if (Validation.isNumber(amountTxtBox.Text))
-            {
-                ed.Amount = float.Parse(amountTxtBox.Text);
-                ed.Comment = details.Text.ToString();
+           // if (Validation.isNumber(amountTxtBox.Text))
+           // {
+           //     ed.Amount = float.Parse(amountTxtBox.Text);
+           //     ed.Comment = details.Text.ToString();
 
 
-                Database.CashIssue(ed);
-            }
-            else
-            {
-                MessageBox.Show("Invalid Number");
-            }
+           //     Database.CashIssue(ed);
+           // }
+           // else
+           // {
+           //     MessageBox.Show("Invalid Number");
+           // }
 
           
 

@@ -94,18 +94,37 @@ namespace ResoflexClientHandlingSystem
 
         private void fillDataGrid(string expType, string iouDirect, double amount, DateTime date, string comment)
         {
-            dt.Rows.Add(expType, iouDirect, amount, date.ToShortDateString(), comment);
-
-            eventExpensesGrid.DataSource = dt;
-
-            double tot = 0.0;
+            bool duplicate = false;
 
             foreach (DataGridViewRow row in eventExpensesGrid.Rows)
             {
-                tot += Double.Parse(row.Cells[2].Value.ToString());
+                if (expType.Equals(row.Cells[0].Value.ToString()))
+                    if (iouDirect.Equals(row.Cells[1].Value.ToString()))
+                        if (Convert.ToDateTime(row.Cells[3].Value.ToString()).ToString("yyyy/MM/d").Equals(date.ToString("yyyy/MM/d")))
+                        {
+                            duplicate = true;
+
+                            MessageBox.Show("Duplicate Data cannot be added!", "Add Expense", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                            break;
+                        }
             }
 
-            totalExpLbl.Text = "Rs. " + tot;
+            if (!duplicate)
+            {
+                dt.Rows.Add(expType, iouDirect, amount, date.ToShortDateString(), comment);
+
+                eventExpensesGrid.DataSource = dt;
+
+                double tot = 0.0;
+
+                foreach (DataGridViewRow row in eventExpensesGrid.Rows)
+                {
+                    tot += Double.Parse(row.Cells[2].Value.ToString());
+                }
+
+                totalExpLbl.Text = "Rs. " + tot;
+            }
         }
 
         private void fillCalculatableLables()
@@ -188,7 +207,39 @@ namespace ResoflexClientHandlingSystem
 
         private void eventExpensesGrid_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            DataGridView dgv = sender as DataGridView;
 
+            if (dgv.CurrentRow.Selected)
+            {
+                string expType = eventExpensesGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                double amount = Double.Parse(eventExpensesGrid.Rows[e.RowIndex].Cells[2].Value.ToString());
+                DateTime date = Convert.ToDateTime(eventExpensesGrid.Rows[e.RowIndex].Cells[3].Value.ToString());
+                String iouDir = eventExpensesGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string comment = eventExpensesGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                expTypeCmbBox.SelectedText = expType;
+                amountTxtBox.Text = "" + amount;
+                datePicker.Value = date;
+                commentTxtBox.Text = comment;
+
+                if (iouDir.Equals("Direct"))
+                    directRadioBtn.Checked = true;
+                else
+                    iouRadioBtn.Checked = true;
+
+                dt.Rows.RemoveAt(e.RowIndex);
+
+                eventExpensesGrid.DataSource = dt;
+
+                double tot = 0.0;
+
+                foreach (DataGridViewRow row in eventExpensesGrid.Rows)
+                {
+                    tot += Double.Parse(row.Cells[2].Value.ToString());
+                }
+
+                totalExpLbl.Text = "Rs. " + tot;
+            }
         }
 
         private void fillExpTypeCmbBox()
@@ -318,7 +369,54 @@ namespace ResoflexClientHandlingSystem
 
         private void submitExpBtn_Click(object sender, EventArgs e)
         {
+            ExpenseDetailEvent exp = null;
 
+            foreach (DataGridViewRow row in eventExpensesGrid.Rows)
+            {
+                int expTypeId = 0;
+                string expType = row.Cells[0].Value.ToString();
+                double amount = Double.Parse(row.Cells[2].Value.ToString());
+                DateTime date = Convert.ToDateTime(row.Cells[3].Value.ToString());
+                String iouDir = row.Cells[1].Value.ToString();
+                string comment = row.Cells[4].Value.ToString();
+
+                DataTable tmp = (DataTable)expTypeCmbBox.DataSource;
+                
+                foreach (DataRow r in tmp.Rows)
+                {
+                    if (r[1].ToString() == expType)
+                        expTypeId = Int32.Parse(r[0].ToString());
+                }
+
+                exp = new ExpenseDetailEvent(new ExpenseType(expTypeId), new Event(eventId), new Project(projId), amount, date, comment, iouDir);
+
+                Database.addEventExpense(exp);
+            }
+
+
+
+            notifyIcon.Icon = SystemIcons.Application;
+            notifyIcon.BalloonTipText = "Event Expenses Successfully added!";
+            notifyIcon.ShowBalloonTip(200);
+
+            expTypeCmbBox.SelectedIndex = 0;
+            amountTxtBox.Text = "";
+            datePicker.Value = DateTime.Today;
+            commentTxtBox.Text = "";
+
+            iouRadioBtn.Checked = true;
+
+            dt.Rows.Clear();
+            eventExpensesGrid.DataSource = dt;
+
+            double tot = 0.0;
+
+            foreach (DataGridViewRow row in eventExpensesGrid.Rows)
+            {
+                tot += Double.Parse(row.Cells[2].Value.ToString());
+            }
+
+            totalExpLbl.Text = "Rs. " + tot;
         }
     }
 }

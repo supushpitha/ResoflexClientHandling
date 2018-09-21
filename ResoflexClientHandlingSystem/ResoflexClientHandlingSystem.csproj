@@ -32,31 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
+    <Reference Include="CircularProgressBar, Version=2.6.6823.24527, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.6.6823.24527\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="eCryptography">
       <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\FlashControlV71.dll</HintPath>
+      <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\FlashControlV71.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -73,6 +60,10 @@
     <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.11\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -81,6 +72,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing.Design" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Speech" />
     <Reference Include="System.Transactions" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
@@ -211,6 +203,7 @@
       <DependentUpon>UpdateClientForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Common\Internet.cs" />
+    <Compile Include="Common\Speech.cs" />
     <Compile Include="Common\Validation.cs" />
     <Compile Include="Core\Database.cs" />
     <Compile Include="EventForms\AddEventForm.cs">
@@ -303,22 +296,16 @@
     <Compile Include="ProjectExpenses\EventExpSeeMoreForm.Designer.cs">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.designer.cs">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.designer.cs">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\IOUDetailsForm.cs">
@@ -333,11 +320,17 @@
       <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileReportTestOne.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileTestTwoReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -349,6 +342,12 @@
     </Compile>
     <Compile Include="ProjectForms\AddCatagory.designer.cs">
       <DependentUpon>AddCatagory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectForms\GetPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\GetPermission.Designer.cs">
+      <DependentUpon>GetPermission.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\Maintenance.cs">
       <SubType>Form</SubType>
@@ -413,6 +412,7 @@
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
     <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserNotification.cs" />
     <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
@@ -498,11 +498,23 @@
     <Compile Include="StaffForms\UpdateMemberForm.Designer.cs">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\ProfileForm.cs">
       <SubType>Form</SubType>
@@ -609,13 +621,10 @@
     <EmbeddedResource Include="ProjectExpenses\EventExpSeeMoreForm.resx">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ExpensesAnalysisForm.resx">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesMainForm.resx">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\IOUDetailsForm.resx">
@@ -625,11 +634,19 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileReportTestOne.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileTestTwoReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\GetPermission.resx">
+      <DependentUpon>GetPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\Maintenance.resx">
       <DependentUpon>Maintenance.cs</DependentUpon>
@@ -698,8 +715,14 @@
     <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>

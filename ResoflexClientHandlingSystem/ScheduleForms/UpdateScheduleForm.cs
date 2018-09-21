@@ -100,8 +100,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             travelingMode.Text = this.schedule.TravelMode.ToString();
             meals.Text = this.schedule.Meals.ToString();
             checkList.Text = this.schedule.Checklist.ToString();
-            schStartDate.Value = this.schedule.To;
-            schEndDate.Value = this.schedule.From;
+            schStartDate.Value = this.schedule.From;
+            schStartTime.Value = this.schedule.From;
+            schEndDate.Value = this.schedule.To;
+            schEndTime.Value = this.schedule.To;
             schLogs.Text = this.schedule.Logs;
 
             clientName.Close();
@@ -215,20 +217,95 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
         {
             int staff_id = int.Parse(serviceEngCombo.SelectedValue.ToString());
 
-            //checking and updating grid
-            if (Database.addServiceEngineer(schedule, staff_id))
+            DataRow row;
+            row = engGrid.NewRow();
+            row["staff_id"] = staff_id;
+            row["fullname"] = serviceEngCombo.SelectedItem.ToString();
+
+            MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
+
+            int count = 0;
+            double grade = 0;
+
+            while (reader.Read())
             {
-                DataRow row;
+                string value = reader.GetString("feedback");
 
-                row = engGrid.NewRow();
-                row["staff_id"] = staff_id;
-                row["fullname"] = serviceEngCombo.SelectedItem.ToString();
-                engGrid.Rows.Add(row);
+                switch (value)
+                {
+                    case "A":
+                        {
+                            grade += 5;
+                            count++;
+                            break;
+                        }
 
-                MessageBox.Show("Service Engineer assigned");
+                    case "B":
+                        {
+                            grade += 4;
+                            count++;
+                            break;
+                        }
+
+                    case "C":
+                        {
+                            grade += 3;
+                            count++;
+                            break;
+                        }
+
+                    case "D":
+                        {
+                            grade += 2;
+                            count++;
+                            break;
+                        }
+
+                    case "E":
+                        {
+                            grade += 1;
+                            count++;
+                            break;
+                        }
+
+                    case "None":
+                        {
+                            grade += 0;
+                            break;
+                        }
+
+                    default: break;
+                }
             }
 
+            reader.Close();
 
+            if (grade / count < 2 && grade / count > 0)
+            {
+                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure wyou want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                if (res == DialogResult.Yes)
+                {
+                    //checking and updating grid
+                    if (Database.addServiceEngineer(schedule, staff_id))
+                    {
+                        engGrid.Rows.Add(row);
+
+                        MessageBox.Show("Service Engineer assigned");
+                    }
+                }
+            }
+            else
+            {
+                //checking and updating grid
+                if (Database.addServiceEngineer(schedule, staff_id))
+                {
+                    engGrid.Rows.Add(row);
+
+                    MessageBox.Show("Service Engineer assigned");
+                }
+            }
+            
         }
 
         //deleteing eng

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ResoflexClientHandlingSystem.Role
 {
-    class Event
+    public class Event
     {
         private int eventId;
         private Schedule scheduleId;

@@ -58,7 +58,8 @@ namespace ResoflexClientHandlingSystem
                         if (!reader.IsClosed)
                             reader.Close();
 
-                    MonthlyProjectExpReport rpt = new MonthlyProjectExpReport();
+                    //MonthlyProjectExpReport rpt = new MonthlyProjectExpReport();
+                    ProjectProfileTestTwoReport rpt = new ProjectProfileTestTwoReport();
 
                     rpt.Database.Tables["ProjExp"].SetDataSource(table);
 

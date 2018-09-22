@@ -50,7 +50,7 @@
             this.metroTile1 = new MetroFramework.Controls.MetroTile();
             this.metroTile2 = new MetroFramework.Controls.MetroTile();
             this.todaysAttendanceDataGrid = new MetroFramework.Controls.MetroGrid();
-            this.totalHoursTxtbox = new MetroFramework.Controls.MetroTextBox();
+            this.EffectiveHoursTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
             this.metroDateTime2 = new MetroFramework.Controls.MetroDateTime();
             this.metroDateTime3 = new MetroFramework.Controls.MetroDateTime();
@@ -68,6 +68,10 @@
             this.checkPresenceTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.todaysAttendanceTimer = new System.Windows.Forms.Timer(this.components);
             this.homeBtn = new MetroFramework.Controls.MetroButton();
+            this.metroLabel11 = new MetroFramework.Controls.MetroLabel();
+            this.TotalHoursTxtBox = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
+            this.metroTextBox2 = new MetroFramework.Controls.MetroTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.todaysAttendanceDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.staffDataGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pastAttendanceDataGrid)).BeginInit();
@@ -76,7 +80,7 @@
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(469, 354);
+            this.metroLabel1.Location = new System.Drawing.Point(469, 296);
             this.metroLabel1.Name = "metroLabel1";
             this.metroLabel1.Size = new System.Drawing.Size(89, 19);
             this.metroLabel1.TabIndex = 1;
@@ -97,7 +101,7 @@
             this.employeeNumberTxtbox.CustomButton.UseSelectable = true;
             this.employeeNumberTxtbox.CustomButton.Visible = false;
             this.employeeNumberTxtbox.Lines = new string[0];
-            this.employeeNumberTxtbox.Location = new System.Drawing.Point(603, 350);
+            this.employeeNumberTxtbox.Location = new System.Drawing.Point(603, 292);
             this.employeeNumberTxtbox.MaxLength = 32767;
             this.employeeNumberTxtbox.Name = "employeeNumberTxtbox";
             this.employeeNumberTxtbox.PasswordChar = '\0';
@@ -117,7 +121,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(469, 383);
+            this.metroLabel2.Location = new System.Drawing.Point(469, 325);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(73, 19);
             this.metroLabel2.TabIndex = 3;
@@ -126,7 +130,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(471, 446);
+            this.metroLabel3.Location = new System.Drawing.Point(473, 388);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(19, 19);
             this.metroLabel3.TabIndex = 4;
@@ -135,7 +139,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(469, 480);
+            this.metroLabel4.Location = new System.Drawing.Point(471, 422);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(31, 19);
             this.metroLabel4.TabIndex = 5;
@@ -145,11 +149,11 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(471, 511);
+            this.metroLabel6.Location = new System.Drawing.Point(473, 482);
             this.metroLabel6.Name = "metroLabel6";
-            this.metroLabel6.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel6.Size = new System.Drawing.Size(95, 19);
             this.metroLabel6.TabIndex = 7;
-            this.metroLabel6.Text = "Total Hours";
+            this.metroLabel6.Text = "Effective Hours";
             // 
             // firstNameTxtbox
             // 
@@ -166,7 +170,7 @@
             this.firstNameTxtbox.CustomButton.UseSelectable = true;
             this.firstNameTxtbox.CustomButton.Visible = false;
             this.firstNameTxtbox.Lines = new string[0];
-            this.firstNameTxtbox.Location = new System.Drawing.Point(603, 379);
+            this.firstNameTxtbox.Location = new System.Drawing.Point(603, 321);
             this.firstNameTxtbox.MaxLength = 32767;
             this.firstNameTxtbox.Name = "firstNameTxtbox";
             this.firstNameTxtbox.PasswordChar = '\0';
@@ -198,7 +202,7 @@
             this.lastNameTxtbox.CustomButton.UseSelectable = true;
             this.lastNameTxtbox.CustomButton.Visible = false;
             this.lastNameTxtbox.Lines = new string[0];
-            this.lastNameTxtbox.Location = new System.Drawing.Point(603, 408);
+            this.lastNameTxtbox.Location = new System.Drawing.Point(603, 350);
             this.lastNameTxtbox.MaxLength = 32767;
             this.lastNameTxtbox.Name = "lastNameTxtbox";
             this.lastNameTxtbox.PasswordChar = '\0';
@@ -266,7 +270,7 @@
             this.todaysAttendanceDataGrid.EnableHeadersVisualStyles = false;
             this.todaysAttendanceDataGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.todaysAttendanceDataGrid.GridColor = System.Drawing.Color.White;
-            this.todaysAttendanceDataGrid.Location = new System.Drawing.Point(469, 105);
+            this.todaysAttendanceDataGrid.Location = new System.Drawing.Point(469, 82);
             this.todaysAttendanceDataGrid.Name = "todaysAttendanceDataGrid";
             this.todaysAttendanceDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -279,46 +283,49 @@
             this.todaysAttendanceDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.todaysAttendanceDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.todaysAttendanceDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.todaysAttendanceDataGrid.Size = new System.Drawing.Size(317, 214);
+            this.todaysAttendanceDataGrid.Size = new System.Drawing.Size(317, 206);
             this.todaysAttendanceDataGrid.TabIndex = 16;
             this.todaysAttendanceDataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellContentClick);
             this.todaysAttendanceDataGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid1_RowHeaderMouseClick);
             // 
-            // totalHoursTxtbox
+            // EffectiveHoursTxtbox
             // 
             // 
             // 
             // 
-            this.totalHoursTxtbox.CustomButton.Image = null;
-            this.totalHoursTxtbox.CustomButton.Location = new System.Drawing.Point(161, 1);
-            this.totalHoursTxtbox.CustomButton.Name = "";
-            this.totalHoursTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
-            this.totalHoursTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.totalHoursTxtbox.CustomButton.TabIndex = 1;
-            this.totalHoursTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.totalHoursTxtbox.CustomButton.UseSelectable = true;
-            this.totalHoursTxtbox.CustomButton.Visible = false;
-            this.totalHoursTxtbox.Lines = new string[0];
-            this.totalHoursTxtbox.Location = new System.Drawing.Point(603, 507);
-            this.totalHoursTxtbox.MaxLength = 32767;
-            this.totalHoursTxtbox.Name = "totalHoursTxtbox";
-            this.totalHoursTxtbox.PasswordChar = '\0';
-            this.totalHoursTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.totalHoursTxtbox.SelectedText = "";
-            this.totalHoursTxtbox.SelectionLength = 0;
-            this.totalHoursTxtbox.SelectionStart = 0;
-            this.totalHoursTxtbox.ShortcutsEnabled = true;
-            this.totalHoursTxtbox.Size = new System.Drawing.Size(183, 23);
-            this.totalHoursTxtbox.TabIndex = 18;
-            this.totalHoursTxtbox.UseSelectable = true;
-            this.totalHoursTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.totalHoursTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            this.totalHoursTxtbox.TextChanged += new System.EventHandler(this.metroTextBox7_TextChanged);
+            this.EffectiveHoursTxtbox.CustomButton.Image = null;
+            this.EffectiveHoursTxtbox.CustomButton.Location = new System.Drawing.Point(161, 1);
+            this.EffectiveHoursTxtbox.CustomButton.Name = "";
+            this.EffectiveHoursTxtbox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.EffectiveHoursTxtbox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.EffectiveHoursTxtbox.CustomButton.TabIndex = 1;
+            this.EffectiveHoursTxtbox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.EffectiveHoursTxtbox.CustomButton.UseSelectable = true;
+            this.EffectiveHoursTxtbox.CustomButton.Visible = false;
+            this.EffectiveHoursTxtbox.Lines = new string[0];
+            this.EffectiveHoursTxtbox.Location = new System.Drawing.Point(605, 478);
+            this.EffectiveHoursTxtbox.MaxLength = 32767;
+            this.EffectiveHoursTxtbox.Name = "EffectiveHoursTxtbox";
+            this.EffectiveHoursTxtbox.PasswordChar = '\0';
+            this.EffectiveHoursTxtbox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.EffectiveHoursTxtbox.SelectedText = "";
+            this.EffectiveHoursTxtbox.SelectionLength = 0;
+            this.EffectiveHoursTxtbox.SelectionStart = 0;
+            this.EffectiveHoursTxtbox.ShortcutsEnabled = true;
+            this.EffectiveHoursTxtbox.Size = new System.Drawing.Size(183, 23);
+            this.EffectiveHoursTxtbox.TabIndex = 18;
+            this.EffectiveHoursTxtbox.UseSelectable = true;
+            this.EffectiveHoursTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.EffectiveHoursTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.EffectiveHoursTxtbox.TextChanged += new System.EventHandler(this.metroTextBox7_TextChanged);
+            this.EffectiveHoursTxtbox.Click += new System.EventHandler(this.EffectiveHoursTxtbox_Click);
+            this.EffectiveHoursTxtbox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EffectiveHoursTxtbox_KeyDown);
+            this.EffectiveHoursTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.EffectiveHoursTxtbox_KeyPress);
             // 
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(469, 412);
+            this.metroLabel7.Location = new System.Drawing.Point(469, 354);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(71, 19);
             this.metroLabel7.TabIndex = 17;
@@ -328,25 +335,28 @@
             // 
             this.metroDateTime2.CustomFormat = "";
             this.metroDateTime2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime2.Location = new System.Drawing.Point(603, 437);
+            this.metroDateTime2.Location = new System.Drawing.Point(605, 379);
             this.metroDateTime2.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime2.Name = "metroDateTime2";
             this.metroDateTime2.Size = new System.Drawing.Size(183, 29);
             this.metroDateTime2.TabIndex = 19;
+            this.metroDateTime2.ValueChanged += new System.EventHandler(this.metroDateTime2_ValueChanged);
+            this.metroDateTime2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroDateTime2_KeyPress);
             // 
             // metroDateTime3
             // 
             this.metroDateTime3.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.metroDateTime3.Location = new System.Drawing.Point(603, 472);
+            this.metroDateTime3.Location = new System.Drawing.Point(605, 414);
             this.metroDateTime3.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime3.Name = "metroDateTime3";
             this.metroDateTime3.Size = new System.Drawing.Size(183, 29);
             this.metroDateTime3.TabIndex = 20;
+            this.metroDateTime3.ValueChanged += new System.EventHandler(this.metroDateTime3_ValueChanged);
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker1.Location = new System.Drawing.Point(512, 446);
+            this.dateTimePicker1.Location = new System.Drawing.Point(514, 388);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.ShowUpDown = true;
             this.dateTimePicker1.Size = new System.Drawing.Size(89, 20);
@@ -356,11 +366,12 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePicker2.Location = new System.Drawing.Point(512, 481);
+            this.dateTimePicker2.Location = new System.Drawing.Point(514, 423);
             this.dateTimePicker2.Name = "dateTimePicker2";
             this.dateTimePicker2.ShowUpDown = true;
             this.dateTimePicker2.Size = new System.Drawing.Size(89, 20);
             this.dateTimePicker2.TabIndex = 24;
+            this.dateTimePicker2.ValueChanged += new System.EventHandler(this.dateTimePicker2_ValueChanged);
             // 
             // staffDataGrid
             // 
@@ -390,7 +401,7 @@
             this.staffDataGrid.EnableHeadersVisualStyles = false;
             this.staffDataGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.staffDataGrid.GridColor = System.Drawing.Color.White;
-            this.staffDataGrid.Location = new System.Drawing.Point(12, 105);
+            this.staffDataGrid.Location = new System.Drawing.Point(12, 85);
             this.staffDataGrid.Name = "staffDataGrid";
             this.staffDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -403,7 +414,7 @@
             this.staffDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.staffDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.staffDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.staffDataGrid.Size = new System.Drawing.Size(446, 214);
+            this.staffDataGrid.Size = new System.Drawing.Size(446, 203);
             this.staffDataGrid.TabIndex = 25;
             this.staffDataGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid2_RowHeaderMouseClick);
             // 
@@ -422,7 +433,7 @@
             this.searchEmployeeTxtbox.CustomButton.UseSelectable = true;
             this.searchEmployeeTxtbox.CustomButton.Visible = false;
             this.searchEmployeeTxtbox.Lines = new string[0];
-            this.searchEmployeeTxtbox.Location = new System.Drawing.Point(66, 76);
+            this.searchEmployeeTxtbox.Location = new System.Drawing.Point(66, 56);
             this.searchEmployeeTxtbox.MaxLength = 32767;
             this.searchEmployeeTxtbox.Name = "searchEmployeeTxtbox";
             this.searchEmployeeTxtbox.PasswordChar = '\0';
@@ -441,7 +452,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(12, 80);
+            this.metroLabel8.Location = new System.Drawing.Point(12, 60);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(48, 19);
             this.metroLabel8.TabIndex = 27;
@@ -450,7 +461,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(473, 80);
+            this.metroLabel5.Location = new System.Drawing.Point(473, 60);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(118, 19);
             this.metroLabel5.TabIndex = 29;
@@ -458,10 +469,10 @@
             // 
             // metroDateTime1
             // 
-            this.metroDateTime1.Location = new System.Drawing.Point(171, 322);
+            this.metroDateTime1.Location = new System.Drawing.Point(182, 296);
             this.metroDateTime1.MinimumSize = new System.Drawing.Size(0, 29);
             this.metroDateTime1.Name = "metroDateTime1";
-            this.metroDateTime1.Size = new System.Drawing.Size(211, 29);
+            this.metroDateTime1.Size = new System.Drawing.Size(223, 29);
             this.metroDateTime1.TabIndex = 30;
             this.metroDateTime1.ValueChanged += new System.EventHandler(this.metroDateTime1_ValueChanged);
             // 
@@ -505,7 +516,7 @@
             this.pastAttendanceDataGrid.EnableHeadersVisualStyles = false;
             this.pastAttendanceDataGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.pastAttendanceDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pastAttendanceDataGrid.Location = new System.Drawing.Point(12, 354);
+            this.pastAttendanceDataGrid.Location = new System.Drawing.Point(12, 331);
             this.pastAttendanceDataGrid.Name = "pastAttendanceDataGrid";
             this.pastAttendanceDataGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -518,14 +529,14 @@
             this.pastAttendanceDataGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.pastAttendanceDataGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.pastAttendanceDataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.pastAttendanceDataGrid.Size = new System.Drawing.Size(446, 223);
+            this.pastAttendanceDataGrid.Size = new System.Drawing.Size(446, 199);
             this.pastAttendanceDataGrid.TabIndex = 32;
             this.pastAttendanceDataGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.pastAttendanceDataGrid_RowHeaderMouseClick);
             // 
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(12, 332);
+            this.metroLabel9.Location = new System.Drawing.Point(23, 306);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(153, 19);
             this.metroLabel9.TabIndex = 33;
@@ -534,7 +545,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(597, 80);
+            this.metroLabel10.Location = new System.Drawing.Point(597, 60);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(48, 19);
             this.metroLabel10.TabIndex = 34;
@@ -555,7 +566,7 @@
             this.checkPresenceTxtbox.CustomButton.UseSelectable = true;
             this.checkPresenceTxtbox.CustomButton.Visible = false;
             this.checkPresenceTxtbox.Lines = new string[0];
-            this.checkPresenceTxtbox.Location = new System.Drawing.Point(645, 73);
+            this.checkPresenceTxtbox.Location = new System.Drawing.Point(645, 53);
             this.checkPresenceTxtbox.MaxLength = 32767;
             this.checkPresenceTxtbox.Name = "checkPresenceTxtbox";
             this.checkPresenceTxtbox.PasswordChar = '\0';
@@ -590,11 +601,94 @@
             this.homeBtn.UseSelectable = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
+            // metroLabel11
+            // 
+            this.metroLabel11.AutoSize = true;
+            this.metroLabel11.Location = new System.Drawing.Point(471, 453);
+            this.metroLabel11.Name = "metroLabel11";
+            this.metroLabel11.Size = new System.Drawing.Size(74, 19);
+            this.metroLabel11.TabIndex = 38;
+            this.metroLabel11.Text = "Total Hours";
+            // 
+            // TotalHoursTxtBox
+            // 
+            // 
+            // 
+            // 
+            this.TotalHoursTxtBox.CustomButton.Image = null;
+            this.TotalHoursTxtBox.CustomButton.Location = new System.Drawing.Point(161, 1);
+            this.TotalHoursTxtBox.CustomButton.Name = "";
+            this.TotalHoursTxtBox.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.TotalHoursTxtBox.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.TotalHoursTxtBox.CustomButton.TabIndex = 1;
+            this.TotalHoursTxtBox.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.TotalHoursTxtBox.CustomButton.UseSelectable = true;
+            this.TotalHoursTxtBox.CustomButton.Visible = false;
+            this.TotalHoursTxtBox.Lines = new string[0];
+            this.TotalHoursTxtBox.Location = new System.Drawing.Point(605, 449);
+            this.TotalHoursTxtBox.MaxLength = 32767;
+            this.TotalHoursTxtBox.Name = "TotalHoursTxtBox";
+            this.TotalHoursTxtBox.PasswordChar = '\0';
+            this.TotalHoursTxtBox.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.TotalHoursTxtBox.SelectedText = "";
+            this.TotalHoursTxtBox.SelectionLength = 0;
+            this.TotalHoursTxtBox.SelectionStart = 0;
+            this.TotalHoursTxtBox.ShortcutsEnabled = true;
+            this.TotalHoursTxtBox.Size = new System.Drawing.Size(183, 23);
+            this.TotalHoursTxtBox.TabIndex = 37;
+            this.TotalHoursTxtBox.UseSelectable = true;
+            this.TotalHoursTxtBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.TotalHoursTxtBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel12
+            // 
+            this.metroLabel12.AutoSize = true;
+            this.metroLabel12.Location = new System.Drawing.Point(471, 511);
+            this.metroLabel12.Name = "metroLabel12";
+            this.metroLabel12.Size = new System.Drawing.Size(133, 19);
+            this.metroLabel12.TabIndex = 40;
+            this.metroLabel12.Text = "None-Effective Hours";
+            // 
+            // metroTextBox2
+            // 
+            // 
+            // 
+            // 
+            this.metroTextBox2.CustomButton.Image = null;
+            this.metroTextBox2.CustomButton.Location = new System.Drawing.Point(161, 1);
+            this.metroTextBox2.CustomButton.Name = "";
+            this.metroTextBox2.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.metroTextBox2.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.metroTextBox2.CustomButton.TabIndex = 1;
+            this.metroTextBox2.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.metroTextBox2.CustomButton.UseSelectable = true;
+            this.metroTextBox2.CustomButton.Visible = false;
+            this.metroTextBox2.Lines = new string[0];
+            this.metroTextBox2.Location = new System.Drawing.Point(605, 507);
+            this.metroTextBox2.MaxLength = 32767;
+            this.metroTextBox2.Name = "metroTextBox2";
+            this.metroTextBox2.PasswordChar = '\0';
+            this.metroTextBox2.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.metroTextBox2.SelectedText = "";
+            this.metroTextBox2.SelectionLength = 0;
+            this.metroTextBox2.SelectionStart = 0;
+            this.metroTextBox2.ShortcutsEnabled = true;
+            this.metroTextBox2.Size = new System.Drawing.Size(183, 23);
+            this.metroTextBox2.TabIndex = 39;
+            this.metroTextBox2.UseSelectable = true;
+            this.metroTextBox2.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.metroTextBox2.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.metroTextBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.metroTextBox2_KeyPress);
+            // 
             // RecordAttendanceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.metroLabel12);
+            this.Controls.Add(this.metroTextBox2);
+            this.Controls.Add(this.metroLabel11);
+            this.Controls.Add(this.TotalHoursTxtBox);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.checkPresenceTxtbox);
             this.Controls.Add(this.metroLabel10);
@@ -610,7 +704,7 @@
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.metroDateTime3);
             this.Controls.Add(this.metroDateTime2);
-            this.Controls.Add(this.totalHoursTxtbox);
+            this.Controls.Add(this.EffectiveHoursTxtbox);
             this.Controls.Add(this.metroLabel7);
             this.Controls.Add(this.todaysAttendanceDataGrid);
             this.Controls.Add(this.metroTile2);
@@ -646,7 +740,7 @@
         private MetroFramework.Controls.MetroTile metroTile1;
         private MetroFramework.Controls.MetroTile metroTile2;
         private MetroFramework.Controls.MetroGrid todaysAttendanceDataGrid;
-        private MetroFramework.Controls.MetroTextBox totalHoursTxtbox;
+        private MetroFramework.Controls.MetroTextBox EffectiveHoursTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel7;
         private MetroFramework.Controls.MetroDateTime metroDateTime2;
         private MetroFramework.Controls.MetroDateTime metroDateTime3;
@@ -664,5 +758,9 @@
         private MetroFramework.Controls.MetroTextBox checkPresenceTxtbox;
         private System.Windows.Forms.Timer todaysAttendanceTimer;
         private MetroFramework.Controls.MetroButton homeBtn;
+        private MetroFramework.Controls.MetroLabel metroLabel11;
+        private MetroFramework.Controls.MetroTextBox TotalHoursTxtBox;
+        private MetroFramework.Controls.MetroLabel metroLabel12;
+        private MetroFramework.Controls.MetroTextBox metroTextBox2;
     }
 }

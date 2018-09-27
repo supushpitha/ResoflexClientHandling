@@ -144,7 +144,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             serviceEngCombo.DisplayMember = "fullname";
 
             //to resolve startup bug
-            projectNameChange();
+            projectNameChange(evnt.EventProject.ProjectID);
 
             //eng grid columns
             engGrid.Columns.Add("staff_id", typeof(int));
@@ -207,12 +207,22 @@ namespace ResoflexClientHandlingSystem.EventForms
         //when project name combox box is changed
         public void onProjectNameChange(object sender, EventArgs e)
         {
-            projectNameChange();
+            projectNameChange(0);
         }
 
-        public void projectNameChange()
+        public void projectNameChange(int pid)
         {
-            int proj_id = int.Parse(projectName.SelectedValue.ToString());
+            int proj_id;
+
+            if (pid == 0) {
+                
+                proj_id = int.Parse(projectName.SelectedValue.ToString());
+            }
+            else
+            {
+                proj_id = pid;
+            }
+
             int client_id;
 
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id);");

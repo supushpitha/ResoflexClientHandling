@@ -29,6 +29,9 @@ namespace ResoflexClientHandlingSystem
             //Autocompelete data source
             projectName.AutoCompleteCustomSource = projectNameAutoComplete();
             clientName.AutoCompleteCustomSource = clientNameAutoComplete();
+
+            totalEventsTile();
+            incompleteScheduleTile();
         }
 
         private void EventForm_Load(object sender, EventArgs e)
@@ -63,6 +66,9 @@ namespace ResoflexClientHandlingSystem
             dt.Load(reader);
 
             reader.Close();
+
+            totalEventsTile();
+            incompleteScheduleTile();
 
             return dt;
         }
@@ -122,21 +128,11 @@ namespace ResoflexClientHandlingSystem
             {   
                 MySqlDataReader reader = DBConnection.getData(sql);
 
-                if (reader.HasRows)
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                eventGrid.DataSource = dt;
 
-                    eventGrid.DataSource = dt;
-
-                    reader.Close();
-                }
-                else
-                {
-                    //scheduleGrid.DataSource = null;
-
-                    reader.Close();
-                }
+                reader.Close();
             }
             catch (Exception)
             {
@@ -160,21 +156,11 @@ namespace ResoflexClientHandlingSystem
             {
                 MySqlDataReader reader = DBConnection.getData(sql);
 
-                if (reader.HasRows)
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                eventGrid.DataSource = dt;
 
-                    eventGrid.DataSource = dt;
-
-                    reader.Close();
-                }
-                else
-                {
-                    //scheduleGrid.DataSource = null;
-
-                    reader.Close();
-                }
+                reader.Close();
             }
             catch (Exception)
             {
@@ -198,15 +184,20 @@ namespace ResoflexClientHandlingSystem
             evnt.EventProject = new Project(proj_id);
             evnt.ScheduleId = new Schedule(sch_no);
 
-            if (Database.deleteEvent(evnt))
-            {
-                MessageBox.Show("Event Successfully Deleted!");
+            DialogResult res = MessageBox.Show("Are you sure you want delete this schedule?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                eventGrid.DataSource = getEvents();
-            }
-            else
+            if (res == DialogResult.Yes)
             {
-                MessageBox.Show("Something Went Wrong!");
+                if (Database.deleteEvent(evnt))
+                {
+                    MessageBox.Show("Event Successfully Deleted!");
+
+                    eventGrid.DataSource = getEvents();
+                }
+                else
+                {
+                    MessageBox.Show("Something Went Wrong!");
+                }
             }
         }
 
@@ -290,6 +281,39 @@ namespace ResoflexClientHandlingSystem
 
 
             return evnt;
+        }
+
+        //data for tiles
+        public void totalEventsTile()
+        {
+            MySqlDataReader reader = DBConnection.getData("select count(*) as count from event;");
+
+            if (reader.Read())
+            {
+                totalEvents.Text = reader.GetInt16("count").ToString();
+            }
+            else
+            {
+                totalEvents.Text = 0.ToString();
+            }
+
+            reader.Close();
+        }
+
+        public void incompleteScheduleTile()
+        {
+            int count = 0;
+
+            MySqlDataReader reader = DBConnection.getData("select count(*) as count from event where to_date_time > NOW()");
+
+            if (reader.Read())
+            {
+                count = reader.GetInt16("count");
+            }
+
+            reader.Close();
+
+            incompleteEvents.Text = count.ToString();
         }
     }
 }

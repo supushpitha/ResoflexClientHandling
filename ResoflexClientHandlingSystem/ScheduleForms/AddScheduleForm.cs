@@ -283,7 +283,7 @@ namespace ResoflexClientHandlingSystem
 
             if(grade/count < 2 && grade/count > 0)
             {
-                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure wyou want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure you want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if(res== DialogResult.Yes)
                 {
@@ -422,6 +422,27 @@ namespace ResoflexClientHandlingSystem
                 this.Close();
             }
             
+        }
+
+        //validation
+        private void addNICtxtBox_Validating(object sender, CancelEventArgs e)
+        {
+            string errorMsg = "This field cannot be empty";
+
+            if (Validation.isEmpty(todoList.Text))
+            {
+                e.Cancel = true;
+
+                todoList.Select(0, schLogs.Text.Length);
+
+                this.addScheduleValidation.SetError(todoList, errorMsg);
+            }
+        }
+
+        private void addNICtxtBox_Validated(object sender, EventArgs e)
+        {
+            addScheduleValidation.SetError(todoList, "");
+            addScheduleValidation.Clear();
         }
 
         //closing form

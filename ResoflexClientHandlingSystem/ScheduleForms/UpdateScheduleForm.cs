@@ -282,7 +282,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
             if (grade / count < 2 && grade / count > 0)
             {
-                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure wyou want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure you want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                 if (res == DialogResult.Yes)
                 {

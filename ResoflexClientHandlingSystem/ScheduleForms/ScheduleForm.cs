@@ -30,6 +30,10 @@ namespace ResoflexClientHandlingSystem
             //autocomplete data source
             projectName.AutoCompleteCustomSource = projectNameAutoComplete();
             clientName.AutoCompleteCustomSource = clientNameAutoComplete();
+
+            //tiles initilization
+            totalScheduleTile();
+            incompleteScheduleTile();
         }
 
         private void ScheduleForm_Load(object sender, EventArgs e)
@@ -46,15 +50,20 @@ namespace ResoflexClientHandlingSystem
             schedule.ScheduleId = int.Parse(dr.Cells[0].Value.ToString());
             schedule.ProjectOfSchedule = new Project(int.Parse(dr.Cells[1].Value.ToString()));
 
-            if (Database.deleteSchedule(schedule))
-            {
-                MessageBox.Show("Schedule Successfully Deleted\n", "Schedule Deleted", MessageBoxButtons.OK);
+            DialogResult res = MessageBox.Show("Are you sure you want delete this schedule?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
-                scheduleGrid.DataSource = getSchedules();
-            }
-            else
+            if (res == DialogResult.Yes)
             {
-                MessageBox.Show("Something went wrong!\n", "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (Database.deleteSchedule(schedule))
+                {
+                    MessageBox.Show("Schedule Successfully Deleted\n", "Schedule Deleted", MessageBoxButtons.OK);
+
+                    scheduleGrid.DataSource = getSchedules();
+                }
+                else
+                {
+                    MessageBox.Show("Something went wrong!\n", "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -111,19 +120,11 @@ namespace ResoflexClientHandlingSystem
             {
                 MySqlDataReader reader = DBConnection.getData(sql);
 
-                if (reader.HasRows)
-                {
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                scheduleGrid.DataSource = dt;
 
-                    scheduleGrid.DataSource = dt;
-                }
-                else
-                {
-                    //scheduleGrid.DataSource = null;
-
-                    reader.Close();
-                }
+                reader.Close();
             }
             catch (Exception)
             {
@@ -140,26 +141,18 @@ namespace ResoflexClientHandlingSystem
 
             string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs" +
                          " from schedule s, project p, visit_type vt, client c " +
-                         " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%"+ cName + "%') " +
+                         " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%" + cName + "%') " +
                          " order by s.sch_no, s.proj_id;";
 
             try
             {
                 MySqlDataReader reader = DBConnection.getData(sql);
 
-                if (reader.HasRows)
-                { 
-                    DataTable dt = new DataTable();
-                    dt.Load(reader);
+                DataTable dt = new DataTable();
+                dt.Load(reader);
+                scheduleGrid.DataSource = dt;
 
-                    scheduleGrid.DataSource = dt;
-                }
-                else
-                {
-                    //scheduleGrid.DataSource = null;
-
-                    reader.Close();
-                }
+                reader.Close();
             }
             catch (Exception)
             {
@@ -201,9 +194,7 @@ namespace ResoflexClientHandlingSystem
                     staff.StaffId = int.Parse(reader2.GetString("staff_id"));
                     staff.FirstName = reader2.GetString("first_name");
                     staff.LastName = reader2.GetString("last_name");
-
-                    //MessageBox.Show(int.Parse(reader2.GetString("staff_id")) + reader2.GetString("first_name") + reader2.GetString("last_name"));
-
+                    
                     serviceEng.Add(staff);
                 }
 
@@ -238,7 +229,7 @@ namespace ResoflexClientHandlingSystem
         }
 
         //Data for grid
-        private static DataTable getSchedules()
+        private DataTable getSchedules()
         {
             DataTable dt = new DataTable();
 
@@ -250,6 +241,9 @@ namespace ResoflexClientHandlingSystem
             dt.Load(reader);
 
             reader.Close();
+
+            totalScheduleTile();
+            incompleteScheduleTile();
 
             return dt;
         }
@@ -298,6 +292,48 @@ namespace ResoflexClientHandlingSystem
         private void btnRefresh_Click(object sender, EventArgs e)
         {
             scheduleGrid.DataSource = getSchedules();
+        }
+
+        //data for tiles
+        public void totalScheduleTile()
+        {
+            MySqlDataReader reader = DBConnection.getData("select count(*) as count from schedule;");
+
+            if (reader.Read())
+            {
+                totalScheduels.Text = reader.GetInt16("count").ToString();
+            }
+            else
+            {
+                totalScheduels.Text = 0.ToString();
+            }
+
+            reader.Close();
+        }
+
+        public void incompleteScheduleTile()
+        {
+            int count = 0;
+
+            MySqlDataReader reader = DBConnection.getData("select count(*) as count from schedule s, event e where s.sch_no = e.sch_no and s.proj_id = e.proj_id and e.to_date_time > NOW()");
+
+            if (reader.Read())
+            {
+                count = reader.GetInt16("count");   
+            }
+            
+            reader.Close();
+
+            MySqlDataReader reader1 = DBConnection.getData("select count(*) as count from schedule s, event e where s.sch_no != e.sch_no or s.proj_id != e.proj_id");
+
+            if (reader1.Read())
+            {
+                count += reader1.GetInt16("count");
+            }
+            
+            reader1.Close();
+
+            incompleteSchedules.Text = count.ToString();
         }
     }
 }

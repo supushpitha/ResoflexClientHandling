@@ -425,22 +425,18 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
+            //MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
 
-            if (reader.Read())
-            {
-                event_id = reader.GetInt16("event_id") + 1;
-            }
-            else
-            {
-                event_id = 1;
-            }
+            //if (reader.Read())
+            //{
+            //    event_id = reader.GetInt16("event_id");
 
-            reader.Close();
+            //    reader.Close();
 
-            AddExpensesForm add = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id);
-            
-            add.Show();
+            //    AddExpensesForm addExpFrm = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id, int.Parse(eventsSch.SelectedValue.ToString()));
+
+            //    addExpFrm.Show();
+            //}
         }
     }
 }

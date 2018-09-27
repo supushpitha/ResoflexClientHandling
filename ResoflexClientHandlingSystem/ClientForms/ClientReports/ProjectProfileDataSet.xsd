@@ -45,6 +45,10 @@
               <xs:element name="Feedback" msprop:Generator_ColumnVarNameInTable="columnFeedback" msprop:Generator_ColumnPropNameInRow="Feedback" msprop:Generator_ColumnPropNameInTable="FeedbackColumn" msprop:Generator_UserColumnName="Feedback" type="xs:string" minOccurs="0" />
               <xs:element name="Project_ID" msprop:Generator_ColumnVarNameInTable="columnProject_ID" msprop:Generator_ColumnPropNameInRow="Project_ID" msprop:Generator_ColumnPropNameInTable="Project_IDColumn" msprop:Generator_UserColumnName="Project_ID" type="xs:int" minOccurs="0" />
               <xs:element name="Event_ID" msprop:Generator_ColumnVarNameInTable="columnEvent_ID" msprop:Generator_ColumnPropNameInRow="Event_ID" msprop:Generator_ColumnPropNameInTable="Event_IDColumn" msprop:Generator_UserColumnName="Event_ID" type="xs:int" minOccurs="0" />
+              <xs:element name="Project" msprop:Generator_ColumnVarNameInTable="columnProject" msprop:Generator_ColumnPropNameInRow="Project" msprop:Generator_ColumnPropNameInTable="ProjectColumn" msprop:Generator_UserColumnName="Project" type="xs:string" minOccurs="0" />
+              <xs:element name="Event_Started" msprop:Generator_ColumnVarNameInTable="columnEvent_Started" msprop:Generator_ColumnPropNameInRow="Event_Started" msprop:Generator_ColumnPropNameInTable="Event_StartedColumn" msprop:Generator_UserColumnName="Event_Started" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Event_Ended" msprop:Generator_ColumnVarNameInTable="columnEvent_Ended" msprop:Generator_ColumnPropNameInRow="Event_Ended" msprop:Generator_ColumnPropNameInTable="Event_EndedColumn" msprop:Generator_UserColumnName="Event_Ended" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Event_Type" msprop:Generator_ColumnVarNameInTable="columnEvent_Type" msprop:Generator_ColumnPropNameInRow="Event_Type" msprop:Generator_ColumnPropNameInTable="Event_TypeColumn" msprop:Generator_UserColumnName="Event_Type" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

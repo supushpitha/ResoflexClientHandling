@@ -47,6 +47,7 @@ namespace ResoflexClientHandlingSystem
             this.ShowMoreBtn = new MetroFramework.Controls.MetroButton();
             this.profileBtn = new MetroFramework.Controls.MetroButton();
             this.homeBtn = new MetroFramework.Controls.MetroButton();
+            this.reqBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.clientGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -296,7 +297,7 @@ namespace ResoflexClientHandlingSystem
             // 
             // homeBtn
             // 
-            this.homeBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.homeBtn.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.homeBtn.BackColor = System.Drawing.Color.Transparent;
             this.homeBtn.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("homeBtn.BackgroundImage")));
             this.homeBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -308,11 +309,25 @@ namespace ResoflexClientHandlingSystem
             this.homeBtn.UseSelectable = true;
             this.homeBtn.Click += new System.EventHandler(this.home_Click);
             // 
+            // reqBtn
+            // 
+            this.reqBtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.reqBtn.Location = new System.Drawing.Point(488, 190);
+            this.reqBtn.Name = "reqBtn";
+            this.reqBtn.Size = new System.Drawing.Size(95, 24);
+            this.reqBtn.Style = MetroFramework.MetroColorStyle.Blue;
+            this.reqBtn.TabIndex = 16;
+            this.reqBtn.Text = "Requests";
+            this.reqBtn.UseSelectable = true;
+            this.reqBtn.UseStyleColors = true;
+            this.reqBtn.Click += new System.EventHandler(this.reqBtn_Click);
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.reqBtn);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.profileBtn);
             this.Controls.Add(this.ShowMoreBtn);
@@ -360,6 +375,7 @@ namespace ResoflexClientHandlingSystem
         private MetroFramework.Controls.MetroButton ShowMoreBtn;
         private MetroFramework.Controls.MetroButton profileBtn;
         private MetroFramework.Controls.MetroButton homeBtn;
+        private MetroFramework.Controls.MetroButton reqBtn;
     }
 }
 

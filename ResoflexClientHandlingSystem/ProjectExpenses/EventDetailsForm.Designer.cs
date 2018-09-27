@@ -111,6 +111,7 @@
             this.eventExpGrid.Size = new System.Drawing.Size(1034, 337);
             this.eventExpGrid.TabIndex = 2;
             this.eventExpGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.eventExpGrid_CellClick);
+            this.eventExpGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.eventExpGrid_RowHeaderMouseClick);
             // 
             // otherExpTile
             // 
@@ -206,7 +207,9 @@
             // 
             // byProjectCmbBox
             // 
+            this.byProjectCmbBox.DropDownHeight = 120;
             this.byProjectCmbBox.FormattingEnabled = true;
+            this.byProjectCmbBox.IntegralHeight = false;
             this.byProjectCmbBox.ItemHeight = 23;
             this.byProjectCmbBox.Location = new System.Drawing.Point(23, 253);
             this.byProjectCmbBox.Name = "byProjectCmbBox";
@@ -218,7 +221,9 @@
             // 
             // byClientCmbBox
             // 
+            this.byClientCmbBox.DropDownHeight = 120;
             this.byClientCmbBox.FormattingEnabled = true;
+            this.byClientCmbBox.IntegralHeight = false;
             this.byClientCmbBox.ItemHeight = 23;
             this.byClientCmbBox.Location = new System.Drawing.Point(256, 253);
             this.byClientCmbBox.Name = "byClientCmbBox";
@@ -230,7 +235,9 @@
             // 
             // byExpTypeCmbBox
             // 
+            this.byExpTypeCmbBox.DropDownHeight = 120;
             this.byExpTypeCmbBox.FormattingEnabled = true;
+            this.byExpTypeCmbBox.IntegralHeight = false;
             this.byExpTypeCmbBox.ItemHeight = 23;
             this.byExpTypeCmbBox.Location = new System.Drawing.Point(489, 253);
             this.byExpTypeCmbBox.Name = "byExpTypeCmbBox";

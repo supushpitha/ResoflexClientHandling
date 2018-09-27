@@ -12,17 +12,28 @@ namespace ResoflexClientHandlingSystem.Role
         private Project projectOfIou;
         private Schedule scheduleOfIou;
         private DateTime date;
-        private float amount;
+        private double amount;
         private string detail;
 
-        public Iou(int iouID, Project projectOfIou, Schedule scheduleOfIou, DateTime date, float amount, string detail)
+        public Iou()
         {
-            this.iouID = iouID;
-            this.projectOfIou = projectOfIou;
-            this.scheduleOfIou = scheduleOfIou;
-            this.date = date;
-            this.amount = amount;
-            this.detail = detail;
         }
+
+        public Iou(int iouID, Project projectOfIou, Schedule scheduleOfIou, DateTime date, double amount, string detail)
+        {
+            IouID = iouID;
+            ProjectOfIou = projectOfIou;
+            ScheduleOfIou = scheduleOfIou;
+            Date = date;
+            Amount = amount;
+            Detail = detail;
+        }
+
+        public int IouID { get => iouID; set => iouID = value; }
+        public Project ProjectOfIou { get => projectOfIou; set => projectOfIou = value; }
+        public Schedule ScheduleOfIou { get => scheduleOfIou; set => scheduleOfIou = value; }
+        public DateTime Date { get => date; set => date = value; }
+        public double Amount { get => amount; set => amount = value; }
+        public string Detail { get => detail; set => detail = value; }
     }
 }

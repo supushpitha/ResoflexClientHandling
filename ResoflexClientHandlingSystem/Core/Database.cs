@@ -1089,5 +1089,19 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + exc, "Add Event Expense", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        public static void IssueCash(Iou iou)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into iou (proj_id, sch_no, date, amount, detail) values (" + iou.ProjectOfIou.ProjectID + ", " + iou.ScheduleOfIou.ScheduleId + ", " +
+                    "'" + iou.Date.ToString("yyyy/MM/d") + "', " + iou.Amount + ", '" + iou.Detail + "');");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Cash Issueing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

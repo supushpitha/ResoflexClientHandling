@@ -90,6 +90,8 @@ namespace ResoflexClientHandlingSystem.ClientForms
             eventTable.Columns.Add("Event_Ended", typeof(DateTime));
             eventTable.Columns.Add("Event_Type", typeof(string));
 
+            technicianTable.Columns.Add("Project_ID", typeof(Int32));
+            technicianTable.Columns.Add("Event_ID", typeof(Int32));
             technicianTable.Columns.Add("Staff_ID", typeof(Int32));
             technicianTable.Columns.Add("Technician", typeof(string));
             technicianTable.Columns.Add("Feedback", typeof(string));
@@ -117,13 +119,14 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
                                 int eventId = eventReader.GetInt32(1);
 
-                                techReader = DBConnection.getDataViaThirdConnection("");
+                                techReader = DBConnection.getDataViaThirdConnection("SELECT t.proj_id, t.event_id, t.staff_id, s.first_name, t.feedback FROM event_technicians t " +
+                                    "INNER JOIN staff s on t.staff_id=s.staff_id WHERE t.proj_id=" + projectId + " AND t.event_id=" + eventId + ";");
 
                                 if (techReader.HasRows)
                                 {
                                     while (techReader.Read())
                                     {
-                                        technicianTable.Rows.Add(techReader.GetInt32(0), techReader.GetString(1), techReader.GetString(2));
+                                        technicianTable.Rows.Add(techReader.GetInt32(0), techReader.GetInt32(1), techReader.GetInt32(2), techReader.GetString(3), techReader.GetString(4));
                                     }
                                 }
 

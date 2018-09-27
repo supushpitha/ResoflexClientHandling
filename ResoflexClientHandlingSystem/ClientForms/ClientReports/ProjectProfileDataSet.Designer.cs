@@ -1003,6 +1003,10 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             private global::System.Data.DataColumn columnFeedback;
             
+            private global::System.Data.DataColumn columnProject_ID;
+            
+            private global::System.Data.DataColumn columnEvent_ID;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public technicianDataSetDataTable() {
@@ -1062,6 +1066,22 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Project_IDColumn {
+                get {
+                    return this.columnProject_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Event_IDColumn {
+                get {
+                    return this.columnEvent_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1097,12 +1117,14 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public technicianDataSetRow AddtechnicianDataSetRow(int Staff_ID, string Technician, string Feedback) {
+            public technicianDataSetRow AddtechnicianDataSetRow(int Staff_ID, string Technician, string Feedback, int Project_ID, int Event_ID) {
                 technicianDataSetRow rowtechnicianDataSetRow = ((technicianDataSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Staff_ID,
                         Technician,
-                        Feedback};
+                        Feedback,
+                        Project_ID,
+                        Event_ID};
                 rowtechnicianDataSetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtechnicianDataSetRow);
                 return rowtechnicianDataSetRow;
@@ -1128,6 +1150,8 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 this.columnStaff_ID = base.Columns["Staff_ID"];
                 this.columnTechnician = base.Columns["Technician"];
                 this.columnFeedback = base.Columns["Feedback"];
+                this.columnProject_ID = base.Columns["Project_ID"];
+                this.columnEvent_ID = base.Columns["Event_ID"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1139,6 +1163,10 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 base.Columns.Add(this.columnTechnician);
                 this.columnFeedback = new global::System.Data.DataColumn("Feedback", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFeedback);
+                this.columnProject_ID = new global::System.Data.DataColumn("Project_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProject_ID);
+                this.columnEvent_ID = new global::System.Data.DataColumn("Event_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent_ID);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1724,6 +1752,38 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Project_ID {
+                get {
+                    try {
+                        return ((int)(this[this.tabletechnicianDataSet.Project_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Project_ID\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Project_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public int Event_ID {
+                get {
+                    try {
+                        return ((int)(this[this.tabletechnicianDataSet.Event_IDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Event_ID\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Event_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsStaff_IDNull() {
                 return this.IsNull(this.tabletechnicianDataSet.Staff_IDColumn);
             }
@@ -1756,6 +1816,30 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFeedbackNull() {
                 this[this.tabletechnicianDataSet.FeedbackColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProject_IDNull() {
+                return this.IsNull(this.tabletechnicianDataSet.Project_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProject_IDNull() {
+                this[this.tabletechnicianDataSet.Project_IDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEvent_IDNull() {
+                return this.IsNull(this.tabletechnicianDataSet.Event_IDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEvent_IDNull() {
+                this[this.tabletechnicianDataSet.Event_IDColumn] = global::System.Convert.DBNull;
             }
         }
         

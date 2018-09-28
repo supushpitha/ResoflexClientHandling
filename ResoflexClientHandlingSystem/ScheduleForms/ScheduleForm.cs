@@ -2,6 +2,7 @@
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.ScheduleForms;
+using ResoflexClientHandlingSystem.ScheduleForms.Reports;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -84,8 +85,9 @@ namespace ResoflexClientHandlingSystem
         private void schHome_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
+            this.Hide();
+            pm.ShowDialog();
             this.Close();
-            pm.Show();
         }
 
         private void addEvent_Click(object sender, EventArgs e)
@@ -111,7 +113,7 @@ namespace ResoflexClientHandlingSystem
 
             string projName = projectName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
                          " from schedule s, project p, visit_type vt " +
                          " where(s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.proj_name like '%" + projName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -139,7 +141,7 @@ namespace ResoflexClientHandlingSystem
 
             string cName = clientName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs" +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs" +
                          " from schedule s, project p, visit_type vt, client c " +
                          " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%" + cName + "%') " +
                          " order by s.sch_no, s.proj_id;";
@@ -166,6 +168,7 @@ namespace ResoflexClientHandlingSystem
         {
             Schedule sch = new Schedule();
             ArrayList serviceEng = new ArrayList();
+            ArrayList resoArray = new ArrayList();
 
             MySqlDataReader reader1 = DBConnection.getData("select * from schedule where sch_no =" + schNo + " and proj_id = " + proj_id + ";");
 
@@ -202,6 +205,22 @@ namespace ResoflexClientHandlingSystem
 
                 reader2.Close();
 
+                MySqlDataReader reader3 = DBConnection.getData("select sr.resource_id, sr.qty, r.name from schedule_resources sr, resource r where ( sr.sch_no =" + schNo + " and sr.proj_id = " + proj_id + ") and (sr.resource_id = r.resource_id);");
+
+                while (reader3.Read())
+                {
+                    Resource reso = new Resource();
+                    reso.ResourceId = int.Parse(reader3.GetString("resource_id"));
+                    reso.Name = reader3.GetString("name");
+                    reso.TotalQty = int.Parse(reader3.GetString("qty"));
+
+                    resoArray.Add(reso);
+                }
+
+                sch.ResoArray = resoArray;
+
+                reader3.Close();
+
             }
             else
             {
@@ -233,7 +252,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.resource as Resources, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
                                                             "from schedule s, project p, visit_type vt " +
                                                             "where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) " +
                                                             " order by s.sch_no, s.proj_id;");
@@ -334,6 +353,17 @@ namespace ResoflexClientHandlingSystem
             reader1.Close();
 
             incompleteSchedules.Text = count.ToString();
+        }
+
+        private void reports_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = scheduleGrid.CurrentRow;
+
+            int sch_no = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
+
+            ScheduleReportsForm srf = new ScheduleReportsForm(proj_id, sch_no);
+            srf.ShowDialog();
         }
     }
 }

@@ -39,15 +39,15 @@
             this.clientName = new MetroFramework.Controls.MetroTextBox();
             this.scheduleGrid = new MetroFramework.Controls.MetroGrid();
             this.totalScheduels = new MetroFramework.Controls.MetroTile();
-            this.dailySchedules = new MetroFramework.Controls.MetroTile();
             this.deleteSchedule = new MetroFramework.Controls.MetroButton();
             this.updateSchedule = new MetroFramework.Controls.MetroButton();
             this.addSchedule = new MetroFramework.Controls.MetroButton();
             this.addEvent = new MetroFramework.Controls.MetroButton();
             this.incompleteSchedules = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.reports = new MetroFramework.Controls.MetroButton();
+            this.btnIou = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.scheduleGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,7 +209,7 @@
             // totalScheduels
             // 
             this.totalScheduels.ActiveControl = null;
-            this.totalScheduels.Location = new System.Drawing.Point(23, 412);
+            this.totalScheduels.Location = new System.Drawing.Point(23, 307);
             this.totalScheduels.Name = "totalScheduels";
             this.totalScheduels.Size = new System.Drawing.Size(187, 87);
             this.totalScheduels.TabIndex = 9;
@@ -218,18 +218,6 @@
             this.totalScheduels.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
             this.totalScheduels.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.totalScheduels.UseSelectable = true;
-            // 
-            // dailySchedules
-            // 
-            this.dailySchedules.ActiveControl = null;
-            this.dailySchedules.Location = new System.Drawing.Point(23, 294);
-            this.dailySchedules.Name = "dailySchedules";
-            this.dailySchedules.Size = new System.Drawing.Size(187, 87);
-            this.dailySchedules.TabIndex = 10;
-            this.dailySchedules.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.dailySchedules.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.dailySchedules.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.dailySchedules.UseSelectable = true;
             // 
             // deleteSchedule
             // 
@@ -249,7 +237,7 @@
             this.updateSchedule.Name = "updateSchedule";
             this.updateSchedule.Size = new System.Drawing.Size(96, 23);
             this.updateSchedule.TabIndex = 12;
-            this.updateSchedule.Text = "Update Schedule";
+            this.updateSchedule.Text = "View Schedule";
             this.updateSchedule.UseSelectable = true;
             this.updateSchedule.Click += new System.EventHandler(this.updateSchedule_OnClick);
             // 
@@ -297,40 +285,49 @@
             this.metroLabel1.TabIndex = 17;
             this.metroLabel1.Text = "Incomplete Schedules";
             // 
-            // metroLabel2
-            // 
-            this.metroLabel2.AutoSize = true;
-            this.metroLabel2.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel2.Location = new System.Drawing.Point(23, 272);
-            this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(113, 19);
-            this.metroLabel2.TabIndex = 18;
-            this.metroLabel2.Text = "Daily Schedules";
-            // 
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 390);
+            this.metroLabel3.Location = new System.Drawing.Point(23, 285);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(112, 19);
             this.metroLabel3.TabIndex = 19;
             this.metroLabel3.Text = "Total Schedules";
+            // 
+            // reports
+            // 
+            this.reports.Location = new System.Drawing.Point(62, 420);
+            this.reports.Name = "reports";
+            this.reports.Size = new System.Drawing.Size(102, 37);
+            this.reports.TabIndex = 20;
+            this.reports.Text = "Schedule Report";
+            this.reports.UseSelectable = true;
+            this.reports.Click += new System.EventHandler(this.reports_Click);
+            // 
+            // btnIou
+            // 
+            this.btnIou.Location = new System.Drawing.Point(62, 486);
+            this.btnIou.Name = "btnIou";
+            this.btnIou.Size = new System.Drawing.Size(102, 37);
+            this.btnIou.TabIndex = 21;
+            this.btnIou.Text = "Add IOU";
+            this.btnIou.UseSelectable = true;
             // 
             // ScheduleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.btnIou);
+            this.Controls.Add(this.reports);
             this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.incompleteSchedules);
             this.Controls.Add(this.addEvent);
             this.Controls.Add(this.addSchedule);
             this.Controls.Add(this.updateSchedule);
             this.Controls.Add(this.deleteSchedule);
-            this.Controls.Add(this.dailySchedules);
             this.Controls.Add(this.totalScheduels);
             this.Controls.Add(this.scheduleGrid);
             this.Controls.Add(this.clientName);
@@ -357,14 +354,14 @@
         private MetroFramework.Controls.MetroTextBox clientName;
         private MetroFramework.Controls.MetroGrid scheduleGrid;
         private MetroFramework.Controls.MetroTile totalScheduels;
-        private MetroFramework.Controls.MetroTile dailySchedules;
         private MetroFramework.Controls.MetroButton deleteSchedule;
         private MetroFramework.Controls.MetroButton updateSchedule;
         private MetroFramework.Controls.MetroButton addSchedule;
         private MetroFramework.Controls.MetroButton addEvent;
         private MetroFramework.Controls.MetroTile incompleteSchedules;
         private MetroFramework.Controls.MetroLabel metroLabel1;
-        private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroButton reports;
+        private MetroFramework.Controls.MetroButton btnIou;
     }
 }

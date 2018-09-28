@@ -19,7 +19,9 @@ namespace ResoflexClientHandlingSystem.EventForms
     {
         private DataTable engGrid = new DataTable();
         private DataTable feedbackGrid = new DataTable();
+        private DataTable resoTbl = new DataTable();
         int eventID;
+        private Event et;
 
         //service engineer datasource
         public DataTable serviceEngDataSource()
@@ -110,6 +112,18 @@ namespace ResoflexClientHandlingSystem.EventForms
             return dt;
         }
 
+        public DataTable eventResourcesSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select resource_id, name from resource ");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
         public UpdateEventForm()
         {
             InitializeComponent();
@@ -118,6 +132,8 @@ namespace ResoflexClientHandlingSystem.EventForms
         public UpdateEventForm(Event evnt)
         {
             InitializeComponent();
+
+            et = evnt;
 
             projectName.DataSource = projectDataSource();
             projectName.ValueMember = "proj_id";
@@ -143,6 +159,10 @@ namespace ResoflexClientHandlingSystem.EventForms
             serviceEngCombo.ValueMember = "staff_id";
             serviceEngCombo.DisplayMember = "fullname";
 
+            eventResoCombo.DataSource = eventResourcesSource();
+            eventResoCombo.ValueMember = "resource_id";
+            eventResoCombo.DisplayMember = "name";
+
             //to resolve startup bug
             projectNameChange(evnt.EventProject.ProjectID);
 
@@ -155,6 +175,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
+            feedbackGrid.Columns.Add("time", typeof(double));
 
             serviceEngGrid.DataSource = engGrid;
             clientFeedback.DataSource = feedbackGrid;
@@ -168,7 +189,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             eventsSch.SelectedValue = evnt.ScheduleId.ScheduleId;
             scheduleType.SelectedValue = evnt.Type.EventTypeId;
             todoList.Text = evnt.TodoList;
-            resoBox.Text = evnt.Resource;
+            //resoBox.Text = evnt.Resource;
             eventStartDate.Value = evnt.From;
             eventStartTime.Value = evnt.From;
             eventEndDate.Value = evnt.To;
@@ -202,6 +223,29 @@ namespace ResoflexClientHandlingSystem.EventForms
                 frow["task"] = et.Task;
                 feedbackGrid.Rows.Add(frow);
             }
+
+            //Getting all the resources
+            ArrayList reso = evnt.ResoArray;
+
+            resoTbl.Columns.Add("resource_id", typeof(int));
+            resoTbl.Columns.Add("name", typeof(string));
+            resoTbl.Columns.Add("qty", typeof(int));
+            resoTbl.PrimaryKey = new DataColumn[] { resoTbl.Columns["resource_id"] };
+
+            foreach (var item in reso)
+            {
+                DataRow row;
+                Resource r = (Resource)item;
+
+                row = resoTbl.NewRow();
+                row["resource_id"] = r.ResourceId;
+                row["name"] = r.Name;
+                row["qty"] = r.TotalQty;
+
+                resoTbl.Rows.Add(row);
+            }
+
+            resoGrid.DataSource = resoTbl;
         }
 
         //when project name combox box is changed
@@ -249,8 +293,25 @@ namespace ResoflexClientHandlingSystem.EventForms
             row = engGrid.NewRow();
             row["staff_id"] = serviceEngCombo.SelectedValue;
             row["fullname"] = serviceEngCombo.Text.ToString();
-            engGrid.Rows.Add(row);
 
+            bool contain = false;
+
+            foreach (DataGridViewRow item in serviceEngGrid.Rows)
+            {
+                if ((int)row["staff_id"] == (int)item.Cells[0].Value)
+                {
+                    contain = true;
+                }
+            }
+
+            if (!contain)
+            {
+                engGrid.Rows.Add(row);
+            }
+            else
+            {
+                MessageBox.Show("This service engineer is already added!");
+            }
         }
 
         //removing service engineers
@@ -272,11 +333,82 @@ namespace ResoflexClientHandlingSystem.EventForms
 
         private void addReso_Click(object sender, EventArgs e)
         {
-            string resources = eventReso.Text.ToString();
-            eventReso.Text = "";
+            DataRow row;
 
-            resoBox.AppendText(resources + " ");
-            resoBox.AppendText(Environment.NewLine);
+            row = resoTbl.NewRow();
+            row["resource_id"] = eventResoCombo.SelectedValue;
+            row["name"] = eventResoCombo.Text.ToString();
+
+            bool contain = false;
+
+            if (Validation.isNumber(resoQty.Text.ToString()))
+            {
+                foreach (DataGridViewRow item in resoGrid.Rows)
+                {
+                    if ((int)row["resource_id"] == (int)item.Cells[0].Value)
+                    {
+                        int i = (int)item.Cells[2].Value;
+                        item.Cells[2].Value = i + int.Parse(resoQty.Text);
+                        contain = true;
+
+                        Resource r = new Resource();
+                        r.ResourceId = (int)eventResoCombo.SelectedValue;
+                        r.TotalQty = i + int.Parse(resoQty.Text);
+
+                        if (Database.updateEventResource(et, r))
+                        {
+
+                            MessageBox.Show("Resource quantity updated !");
+                        }
+                    }
+                }
+
+                if (!contain)
+                {
+                    Resource r = new Resource();
+                    r.ResourceId = (int)eventResoCombo.SelectedValue;
+                    r.TotalQty = int.Parse(resoQty.Text);
+
+                    if (Database.addEventResource(et, r))
+                    {
+
+                        MessageBox.Show("Resource added !");
+                    }
+
+                    row["qty"] = int.Parse(resoQty.Text);
+                    resoTbl.Rows.Add(row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a numeric value");
+            }
+        }
+
+        //remove reso
+        private void removeResource_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = resoGrid.CurrentRow;
+
+            int reso_id = int.Parse(row.Cells[0].Value.ToString());
+
+            if (Database.removeEventResource(et, reso_id))
+            {
+                for (int i = resoTbl.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow r = resoTbl.Rows[i];
+                    DataGridViewRow gr = resoGrid.CurrentRow;
+
+                    if (r["resource_id"].ToString().Equals(gr.Cells[0].Value.ToString()))
+                    {
+                        resoTbl.Rows[i].Delete();
+
+                        break;
+                    }
+                }
+
+                MessageBox.Show("Resource removed !");
+            }
         }
 
         public void validation(object sender, EventArgs e)
@@ -315,10 +447,10 @@ namespace ResoflexClientHandlingSystem.EventForms
             evnt.Type = new EventType(int.Parse(scheduleType.SelectedValue.ToString()));
             evnt.From = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
             evnt.To = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
-            evnt.Feedback = feedback.Text;
+            evnt.Feedback = overFeedback.Text;
             evnt.Other = other.Text;
             evnt.TodoList = todoList.Text;
-            evnt.Resource = resoBox.Text;
+            //evnt.Resource = resoBox.Text;
             evnt.Checklist = checkList.Text;
             evnt.TravelMode = travelingMode.Text;
             evnt.AccommodationMode = accomodation.Text;
@@ -386,9 +518,19 @@ namespace ResoflexClientHandlingSystem.EventForms
             row["fullname"] = serviceEngFeed.Text.ToString();
             row["feedback"] = feedback.Text.ToString();
             row["task"] = eventTask.Text.ToString();
-            feedbackGrid.Rows.Add(row);
+
+            if (Validation.isDouble(time.Text.ToString()))
+            {
+                row["time"] = double.Parse(time.Text.ToString());
+                feedbackGrid.Rows.Add(row);
+            }
+            else
+            {
+                MessageBox.Show("Enter a numeric value");
+            }
 
             eventTask.Text = "";
+            time.Text = "";
         }
     }
 }

@@ -42,8 +42,9 @@ namespace ResoflexClientHandlingSystem
         private void schHome_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
+            this.Hide();
+            pm.ShowDialog();
             this.Close();
-            pm.Show();
         }
 
         private void addEvent_Click(object sender, EventArgs e)
@@ -58,7 +59,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.resource as Resources, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
+            MySqlDataReader reader = DBConnection.getData("select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) " +
                 "order by e.event_id, e.proj_id;");
@@ -119,7 +120,7 @@ namespace ResoflexClientHandlingSystem
 
             string projName = projectName.Text.ToString();
 
-            string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.resource as Resources, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
+            string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (p.proj_name like '%" + projName + "%') " +
                 "order by e.event_id, e.proj_id;";
@@ -147,7 +148,7 @@ namespace ResoflexClientHandlingSystem
 
             string cName = clientName.Text.ToString();
 
-            string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.resource as Resources, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
+            string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%" + cName + "%') " +
                 "order by e.event_id, e.proj_id;";
@@ -239,7 +240,7 @@ namespace ResoflexClientHandlingSystem
                     evnt.Feedback = reader.GetString("feedback");
                     evnt.Other = reader.GetString("other");
                     evnt.TodoList = reader.GetString("to_do_list");
-                    evnt.Resource = reader.GetString("resource");
+                    //evnt.Resource = reader.GetString("resource");
                     evnt.Checklist = reader.GetString("check_list");
                     evnt.TravelMode = reader.GetString("travelling_mode");
                     evnt.AccommodationMode = reader.GetString("accommodation_mode");
@@ -267,6 +268,25 @@ namespace ResoflexClientHandlingSystem
                     evnt.ServEngineer = serEng;
 
                     reader1.Close();
+
+                    ArrayList resoArray = new ArrayList();
+
+                    MySqlDataReader reader3 = DBConnection.getData("select sr.resource_id, sr.qty, r.name from event_resources sr, resource r where (sr.event_id = " + event_id + " and sr.sch_no =" + sch_no + " and sr.proj_id = " + proj_id + ") and (sr.resource_id = r.resource_id);");
+
+                    while (reader3.Read())
+                    {
+                        Resource reso = new Resource();
+                        reso.ResourceId = int.Parse(reader3.GetString("resource_id"));
+                        reso.Name = reader3.GetString("name");
+                        reso.TotalQty = int.Parse(reader3.GetString("qty"));
+
+                        resoArray.Add(reso);
+                    }
+
+                    evnt.ResoArray = resoArray;
+
+                    reader3.Close();
+
                 }
                 else
                 {

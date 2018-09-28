@@ -517,6 +517,13 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public projectDataSetRow FindByProject_ID(int Project_ID) {
+                return ((projectDataSetRow)(this.Rows.Find(new object[] {
+                            Project_ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 projectDataSetDataTable cln = ((projectDataSetDataTable)(base.Clone()));
                 cln.InitVars();
@@ -561,6 +568,10 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 base.Columns.Add(this.columnProject_ID);
                 this.columnCategory = new global::System.Data.DataColumn("Category", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategory);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("projectDataSetKey1", new global::System.Data.DataColumn[] {
+                                this.columnProject_ID}, true));
+                this.columnProject_ID.AllowDBNull = false;
+                this.columnProject_ID.Unique = true;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -829,6 +840,14 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public eventDataSetRow FindByProject_IDEvent_ID(int Project_ID, int Event_ID) {
+                return ((eventDataSetRow)(this.Rows.Find(new object[] {
+                            Project_ID,
+                            Event_ID})));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public override global::System.Data.DataTable Clone() {
                 eventDataSetDataTable cln = ((eventDataSetDataTable)(base.Clone()));
                 cln.InitVars();
@@ -864,6 +883,11 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 base.Columns.Add(this.columnProject_ID);
                 this.columnEvent_ID = new global::System.Data.DataColumn("Event_ID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEvent_ID);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("eventDataSetKey1", new global::System.Data.DataColumn[] {
+                                this.columnProject_ID,
+                                this.columnEvent_ID}, true));
+                this.columnProject_ID.AllowDBNull = false;
+                this.columnEvent_ID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1003,6 +1027,18 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             private global::System.Data.DataColumn columnFeedback;
             
+            private global::System.Data.DataColumn columnProject_ID;
+            
+            private global::System.Data.DataColumn columnEvent_ID;
+            
+            private global::System.Data.DataColumn columnProject;
+            
+            private global::System.Data.DataColumn columnEvent_Started;
+            
+            private global::System.Data.DataColumn columnEvent_Ended;
+            
+            private global::System.Data.DataColumn columnEvent_Type;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public technicianDataSetDataTable() {
@@ -1062,6 +1098,54 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Project_IDColumn {
+                get {
+                    return this.columnProject_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Event_IDColumn {
+                get {
+                    return this.columnEvent_ID;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn ProjectColumn {
+                get {
+                    return this.columnProject;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Event_StartedColumn {
+                get {
+                    return this.columnEvent_Started;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Event_EndedColumn {
+                get {
+                    return this.columnEvent_Ended;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn Event_TypeColumn {
+                get {
+                    return this.columnEvent_Type;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1097,15 +1181,30 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public technicianDataSetRow AddtechnicianDataSetRow(int Staff_ID, string Technician, string Feedback) {
+            public technicianDataSetRow AddtechnicianDataSetRow(int Staff_ID, string Technician, string Feedback, int Project_ID, int Event_ID, string Project, System.DateTime Event_Started, System.DateTime Event_Ended, string Event_Type) {
                 technicianDataSetRow rowtechnicianDataSetRow = ((technicianDataSetRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Staff_ID,
                         Technician,
-                        Feedback};
+                        Feedback,
+                        Project_ID,
+                        Event_ID,
+                        Project,
+                        Event_Started,
+                        Event_Ended,
+                        Event_Type};
                 rowtechnicianDataSetRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowtechnicianDataSetRow);
                 return rowtechnicianDataSetRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public technicianDataSetRow FindByStaff_IDProject_IDEvent_ID(int Staff_ID, int Project_ID, int Event_ID) {
+                return ((technicianDataSetRow)(this.Rows.Find(new object[] {
+                            Staff_ID,
+                            Project_ID,
+                            Event_ID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1128,6 +1227,12 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 this.columnStaff_ID = base.Columns["Staff_ID"];
                 this.columnTechnician = base.Columns["Technician"];
                 this.columnFeedback = base.Columns["Feedback"];
+                this.columnProject_ID = base.Columns["Project_ID"];
+                this.columnEvent_ID = base.Columns["Event_ID"];
+                this.columnProject = base.Columns["Project"];
+                this.columnEvent_Started = base.Columns["Event_Started"];
+                this.columnEvent_Ended = base.Columns["Event_Ended"];
+                this.columnEvent_Type = base.Columns["Event_Type"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1139,6 +1244,25 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
                 base.Columns.Add(this.columnTechnician);
                 this.columnFeedback = new global::System.Data.DataColumn("Feedback", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFeedback);
+                this.columnProject_ID = new global::System.Data.DataColumn("Project_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProject_ID);
+                this.columnEvent_ID = new global::System.Data.DataColumn("Event_ID", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent_ID);
+                this.columnProject = new global::System.Data.DataColumn("Project", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProject);
+                this.columnEvent_Started = new global::System.Data.DataColumn("Event_Started", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent_Started);
+                this.columnEvent_Ended = new global::System.Data.DataColumn("Event_Ended", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent_Ended);
+                this.columnEvent_Type = new global::System.Data.DataColumn("Event_Type", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEvent_Type);
+                this.Constraints.Add(new global::System.Data.UniqueConstraint("technicianDataSetKey1", new global::System.Data.DataColumn[] {
+                                this.columnStaff_ID,
+                                this.columnProject_ID,
+                                this.columnEvent_ID}, true));
+                this.columnStaff_ID.AllowDBNull = false;
+                this.columnProject_ID.AllowDBNull = false;
+                this.columnEvent_ID.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1380,12 +1504,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Project_ID {
                 get {
-                    try {
-                        return ((int)(this[this.tableprojectDataSet.Project_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Project_ID\' in table \'projectDataSet\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableprojectDataSet.Project_IDColumn]));
                 }
                 set {
                     this[this.tableprojectDataSet.Project_IDColumn] = value;
@@ -1482,18 +1601,6 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsProject_IDNull() {
-                return this.IsNull(this.tableprojectDataSet.Project_IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetProject_IDNull() {
-                this[this.tableprojectDataSet.Project_IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsCategoryNull() {
                 return this.IsNull(this.tableprojectDataSet.CategoryColumn);
             }
@@ -1571,12 +1678,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Project_ID {
                 get {
-                    try {
-                        return ((int)(this[this.tableeventDataSet.Project_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Project_ID\' in table \'eventDataSet\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableeventDataSet.Project_IDColumn]));
                 }
                 set {
                     this[this.tableeventDataSet.Project_IDColumn] = value;
@@ -1587,12 +1689,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Event_ID {
                 get {
-                    try {
-                        return ((int)(this[this.tableeventDataSet.Event_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Event_ID\' in table \'eventDataSet\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tableeventDataSet.Event_IDColumn]));
                 }
                 set {
                     this[this.tableeventDataSet.Event_IDColumn] = value;
@@ -1634,30 +1731,6 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             public void SetEvent_TypeNull() {
                 this[this.tableeventDataSet.Event_TypeColumn] = global::System.Convert.DBNull;
             }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsProject_IDNull() {
-                return this.IsNull(this.tableeventDataSet.Project_IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetProject_IDNull() {
-                this[this.tableeventDataSet.Project_IDColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsEvent_IDNull() {
-                return this.IsNull(this.tableeventDataSet.Event_IDColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetEvent_IDNull() {
-                this[this.tableeventDataSet.Event_IDColumn] = global::System.Convert.DBNull;
-            }
         }
         
         /// <summary>
@@ -1678,12 +1751,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public int Staff_ID {
                 get {
-                    try {
-                        return ((int)(this[this.tabletechnicianDataSet.Staff_IDColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Staff_ID\' in table \'technicianDataSet\' is DBNull.", e);
-                    }
+                    return ((int)(this[this.tabletechnicianDataSet.Staff_IDColumn]));
                 }
                 set {
                     this[this.tabletechnicianDataSet.Staff_IDColumn] = value;
@@ -1724,14 +1792,88 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsStaff_IDNull() {
-                return this.IsNull(this.tabletechnicianDataSet.Staff_IDColumn);
+            public int Project_ID {
+                get {
+                    return ((int)(this[this.tabletechnicianDataSet.Project_IDColumn]));
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Project_IDColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetStaff_IDNull() {
-                this[this.tabletechnicianDataSet.Staff_IDColumn] = global::System.Convert.DBNull;
+            public int Event_ID {
+                get {
+                    return ((int)(this[this.tabletechnicianDataSet.Event_IDColumn]));
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Event_IDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Project {
+                get {
+                    try {
+                        return ((string)(this[this.tabletechnicianDataSet.ProjectColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Project\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.ProjectColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Event_Started {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabletechnicianDataSet.Event_StartedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Event_Started\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Event_StartedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Event_Ended {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tabletechnicianDataSet.Event_EndedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Event_Ended\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Event_EndedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string Event_Type {
+                get {
+                    try {
+                        return ((string)(this[this.tabletechnicianDataSet.Event_TypeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Event_Type\' in table \'technicianDataSet\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabletechnicianDataSet.Event_TypeColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1756,6 +1898,54 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetFeedbackNull() {
                 this[this.tabletechnicianDataSet.FeedbackColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsProjectNull() {
+                return this.IsNull(this.tabletechnicianDataSet.ProjectColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetProjectNull() {
+                this[this.tabletechnicianDataSet.ProjectColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEvent_StartedNull() {
+                return this.IsNull(this.tabletechnicianDataSet.Event_StartedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEvent_StartedNull() {
+                this[this.tabletechnicianDataSet.Event_StartedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEvent_EndedNull() {
+                return this.IsNull(this.tabletechnicianDataSet.Event_EndedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEvent_EndedNull() {
+                this[this.tabletechnicianDataSet.Event_EndedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsEvent_TypeNull() {
+                return this.IsNull(this.tabletechnicianDataSet.Event_TypeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetEvent_TypeNull() {
+                this[this.tabletechnicianDataSet.Event_TypeColumn] = global::System.Convert.DBNull;
             }
         }
         

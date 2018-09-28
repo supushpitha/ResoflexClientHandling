@@ -13,7 +13,6 @@ namespace ResoflexClientHandlingSystem.Core
         private static string connString = string.Format("Server=localhost; database=resoflexClientHandlingSystem; UID=root; password=; SSLMode=none");
         private static MySqlConnection conn = new MySqlConnection(connString);
         private static MySqlConnection tmpConn = null;
-        private static MySqlConnection thirdConn = null;
 
         private DBConnection() { }
 
@@ -47,42 +46,18 @@ namespace ResoflexClientHandlingSystem.Core
 
             return tmpConn;
         }
-
-        private static MySqlConnection getThirdConnection()
-        {
-            if (thirdConn == null)
-            {
-                thirdConn = new MySqlConnection(connString);
-            }
-
-            if (thirdConn.State.ToString().Equals("Closed") || thirdConn.State.ToString().Equals("closed"))
-                thirdConn.Open();
-
-            return thirdConn;
-        }
-
+        
         public static MySqlDataReader getDataViaTmpConnection(string qry)
         {
             return new MySqlCommand(qry, getTmpConnection()).ExecuteReader();
         }
-
-        public static MySqlDataReader getDataViaThirdConnection(string qry)
-        {
-            return new MySqlCommand(qry, getThirdConnection()).ExecuteReader();
-        }
-
+        
         public static void closeTmpConnection()
         {
             if (tmpConn.State.ToString().Equals("Open") || tmpConn.State.ToString().Equals("open"))
                 tmpConn.Close();
         }
-
-        public static void closeThirdConnection()
-        {
-            if (thirdConn.State.ToString().Equals("Open") || thirdConn.State.ToString().Equals("open"))
-                thirdConn.Close();
-        }
-
+        
         public static MySqlDataReader getData(string qry)
         {
             if (conn != null)

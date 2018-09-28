@@ -60,7 +60,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
             string qry = "SELECT p.proj_id, p.proj_name, c.sub_cat_name, date(p.first_init_date), IFNULL(date(p.training_comp_first_end_date), '') as ftd, IFNULL(date(p.training_comp_second_end_date), '') as std, IFNULL(date(p.warranty_start_date), '') as wsd," +
                 " IFNULL(date(DATE_ADD(p.warranty_start_date, INTERVAL p.warranty_period MONTH)), '') as wed FROM project p LEFT JOIN proj_sub_category c ON " +
-                "p.proj_sub_cat_id=c.proj_sub_cat_id AND p.proj_cat_id=c.proj_cat_id where p.client_id=" + clientId + " GROUP BY p.proj_id;";
+                "p.proj_sub_cat_id=c.proj_sub_cat_id AND p.proj_cat_id=c.proj_cat_id where p.client_id=" + clientId + " GROUP BY p.proj_id ORDER BY p.proj_id;";
 
             generateReport(qry);
         }
@@ -113,36 +113,30 @@ namespace ResoflexClientHandlingSystem.ClientForms
                         int projectId = projectReader.GetInt32(0);
 
                         eventReader = DBConnection.getDataViaTmpConnection("SELECT e.proj_id, e.event_id, date(e.from_date_time), date(e.to_date_time), v.type FROM event e INNER JOIN visit_type v on e.visit_type_id=v.visit_type_id " +
-                            "WHERE e.proj_id=" + projectId + ";");
+                            "WHERE e.proj_id=" + projectId + " ORDER BY e.proj_id, e.event_id;");
 
                         if (eventReader.HasRows)
                         {
                             while (eventReader.Read())
                             {
                                 eventTable.Rows.Add(eventReader.GetInt32(0), eventReader.GetInt32(1), eventReader.GetDateTime(2), eventReader.GetDateTime(3), eventReader.GetString(4));
-
-                                int eventId = eventReader.GetInt32(1);
-
-                                techReader = DBConnection.getDataViaThirdConnection("SELECT t.proj_id, t.event_id, p.proj_name, date(e.from_date_time), date(e.to_date_time), t.staff_id, " +
-                                    "s.first_name, t.feedback, v.type FROM event_technicians t LEFT JOIN staff s on t.staff_id=s.staff_id INNER JOIN project p ON t.proj_id=p.proj_id " +
-                                    "INNER JOIN event e ON t.event_id=e.event_id AND t.proj_id=e.proj_id INNER JOIN visit_type v ON e.visit_type_id=v.visit_type_id " +
-                                    "WHERE t.proj_id=" + projectId + " AND t.event_id=" + eventId + " GROUP " +
-                                    "BY t.proj_id, t.event_id, t.staff_id;");
-
-                                if (techReader.HasRows)
-                                {
-                                    while (techReader.Read())
-                                    {
-                                        technicianTable.Rows.Add(techReader.GetInt32(0), techReader.GetInt32(1), techReader.GetString(2), techReader.GetDateTime(3), techReader.GetDateTime(4), techReader.GetInt32(5), techReader.GetString(6), techReader.GetString(7), techReader.GetString(8));
-                                    }
-                                }
-
-                                techReader.Close();
-                                DBConnection.closeThirdConnection();
                             }
                         }
 
                         eventReader.Close();
+                        DBConnection.closeTmpConnection();
+
+                        techReader = DBConnection.getDataViaTmpConnection("SELECT t.proj_id, t.event_id, p.proj_name, date(e.from_date_time), date(e.to_date_time), t.staff_id, s.first_name, t.feedback, v.type FROM project p INNER JOIN event e ON p.proj_id=e.proj_id INNER JOIN visit_type v ON e.visit_type_id=v.visit_type_id INNER JOIN event_technicians t ON e.proj_id=t.proj_id AND e.event_id=t.event_id INNER JOIN staff s ON t.staff_id=s.staff_id WHERE p.proj_id=" + projectId + ";");
+
+                        if (techReader.HasRows)
+                        {
+                            while (techReader.Read())
+                            {
+                                technicianTable.Rows.Add(techReader.GetInt32(0), techReader.GetInt32(1), techReader.GetString(2), techReader.GetDateTime(3), techReader.GetDateTime(4), techReader.GetInt32(5), techReader.GetString(6), techReader.GetString(7), techReader.GetString(8));
+                            }
+                        }
+
+                        techReader.Close();
                         DBConnection.closeTmpConnection();
                     }
 
@@ -156,16 +150,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
                         if (!techReader.IsClosed)
                             techReader.Close();
 
-                    ProjectProfileReport rpt = new ProjectProfileReport();
-
-                    rpt.Database.Tables["projectDataSet"].SetDataSource(projectTable);
-                    rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
-                    rpt.Database.Tables["technicianDataSet"].SetDataSource(eventTable);
-
-                    clientReportViewer.ReportSource = null;
-                    clientReportViewer.ReportSource = rpt;
-
-                    //ProjectProfileSubReport rpt = new ProjectProfileSubReport();
+                    //ProjectProfileReport rpt = new ProjectProfileReport();
 
                     //rpt.Database.Tables["projectDataSet"].SetDataSource(projectTable);
                     //rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
@@ -173,6 +158,15 @@ namespace ResoflexClientHandlingSystem.ClientForms
 
                     //clientReportViewer.ReportSource = null;
                     //clientReportViewer.ReportSource = rpt;
+
+                    ProjectProfileSubReport rpt = new ProjectProfileSubReport();
+
+                    //rpt.Database.Tables["projectDataSet"].SetDataSource(projectTable);
+                    //rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
+                    rpt.Database.Tables["technicianDataSet"].SetDataSource(eventTable);
+
+                    clientReportViewer.ReportSource = null;
+                    clientReportViewer.ReportSource = rpt;
                 }
                 else
                 {

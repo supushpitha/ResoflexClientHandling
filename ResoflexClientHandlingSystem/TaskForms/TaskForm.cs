@@ -27,8 +27,9 @@ namespace ResoflexClientHandlingSystem.TaskForms
         private void schHome_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
+            this.Hide();
+            pm.ShowDialog();
             this.Close();
-            pm.Show();
         }
 
         private static DataTable getTasks()

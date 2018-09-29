@@ -229,6 +229,18 @@
     <Compile Include="EventForms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventForms\EventReports\EventReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventReportForm.Designer.cs">
+      <DependentUpon>EventReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventReports\OtherReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\OtherReports.Designer.cs">
+      <DependentUpon>OtherReports.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventForms\UpdateEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -467,6 +479,26 @@
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
+    <Compile Include="ScheduleForms\Reports\ScheduleDataset.cs">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReportsForm.Designer.cs">
+      <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScheduleForms\ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -604,6 +636,9 @@
     <EmbeddedResource Include="EventForms\AddEventForm.resx">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\EventReportForm.resx">
+      <DependentUpon>EventReportForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -716,6 +751,13 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReportsForm.resx">
+      <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -784,6 +826,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xsc">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScheduleDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xss">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="OfficeDataSet" targetNamespace="http://tempuri.org/OfficeDataSet.xsd" xmlns:mstns="http://tempuri.org/OfficeDataSet.xsd" xmlns="http://tempuri.org/OfficeDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="OfficeDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="OfficeDataSet" msprop:Generator_UserDSName="OfficeDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="OffDirect" msprop:Generator_TableClassName="OffDirectDataTable" msprop:Generator_TableVarName="tableOffDirect" msprop:Generator_TablePropName="OffDirect" msprop:Generator_RowDeletingName="OffDirectRowDeleting" msprop:Generator_RowChangingName="OffDirectRowChanging" msprop:Generator_RowEvHandlerName="OffDirectRowChangeEventHandler" msprop:Generator_RowDeletedName="OffDirectRowDeleted" msprop:Generator_UserTableName="OffDirect" msprop:Generator_RowChangedName="OffDirectRowChanged" msprop:Generator_RowEvArgName="OffDirectRowChangeEvent" msprop:Generator_RowClassName="OffDirectRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="date" msprop:Generator_ColumnVarNameInTable="columndate" msprop:Generator_ColumnPropNameInRow="date" msprop:Generator_ColumnPropNameInTable="dateColumn" msprop:Generator_UserColumnName="date" type="xs:string" minOccurs="0" />
+              <xs:element name="first_name" msprop:Generator_ColumnVarNameInTable="columnfirst_name" msprop:Generator_ColumnPropNameInRow="first_name" msprop:Generator_ColumnPropNameInTable="first_nameColumn" msprop:Generator_UserColumnName="first_name" type="xs:string" minOccurs="0" />
+              <xs:element name="Category" msprop:Generator_ColumnVarNameInTable="columnCategory" msprop:Generator_ColumnPropNameInRow="Category" msprop:Generator_ColumnPropNameInTable="CategoryColumn" msprop:Generator_UserColumnName="Category" type="xs:string" minOccurs="0" />
+              <xs:element name="amount" msprop:Generator_ColumnVarNameInTable="columnamount" msprop:Generator_ColumnPropNameInRow="amount" msprop:Generator_ColumnPropNameInTable="amountColumn" msprop:Generator_UserColumnName="amount" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

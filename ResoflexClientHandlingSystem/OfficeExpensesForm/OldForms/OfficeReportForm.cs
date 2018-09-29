@@ -16,6 +16,7 @@ namespace ResoflexClientHandlingSystem.OfficeExpensesForm
 {
     public partial class OfficeReportForm : MetroFramework.Forms.MetroForm
     {
+    
         public OfficeReportForm()
         {
             InitializeComponent();

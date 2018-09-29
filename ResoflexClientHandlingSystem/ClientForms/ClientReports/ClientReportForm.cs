@@ -160,6 +160,13 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     //rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
                     rpt.Database.Tables["technicianDataSet"].SetDataSource(technicianTable);
 
+                    DataTable tmp = new DataTable();
+
+                    tmp.Columns.Add("ClientName", typeof(string));
+                    tmp.Rows.Add(clientCmbBox.GetItemText(clientCmbBox.SelectedItem));
+
+                    rpt.Database.Tables["Client"].SetDataSource(tmp);
+
                     clientReportViewer.ReportSource = null;
                     clientReportViewer.ReportSource = rpt;
 

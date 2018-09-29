@@ -218,5 +218,54 @@ namespace ResoflexClientHandlingSystem
             */
             this.Close();
         }
+
+        private void clientNameTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                clientAddressTxtBox.Focus();
+            }
+        }
+
+        private void clientAddressTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                mobilePhoneTxtBox.Focus();
+            }
+        }
+
+        private void mobilePhoneTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                officePhoneTxtBox.Focus();
+            }
+        }
+
+        private void officePhoneTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                faxTxtBox.Focus();
+            }
+        }
+
+        private void faxTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Tab)
+            {
+                emailTxtBox.Focus();
+            }
+        }
+
+        private void emailTxtBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                clientNameTxtBox.Focus();
+                addNewClientBtn.PerformClick();
+            }
+        }
     }
 }

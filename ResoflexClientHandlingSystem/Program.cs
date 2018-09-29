@@ -15,11 +15,10 @@ namespace ResoflexClientHandlingSystem
         /// </summary>
         [STAThread]
         static void Main()
-        {
+       {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Dashboard());
+            Application.Run(new Login());
         }
     }
 }
-111111

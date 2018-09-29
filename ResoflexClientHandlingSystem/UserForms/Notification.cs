@@ -105,6 +105,10 @@ namespace ResoflexClientHandlingSystem.UserForms
                 metroGrid1.Columns[0].Visible = false;
                 metroGrid1.Columns[7].Visible = false;
                 changeGridRowColors();
+
+                Dashboard db = new Dashboard();
+
+                db.notify();
             }
             catch (Exception exp)
             {

@@ -48,8 +48,7 @@
             // 
             this.dateTimeLbl.AutoSize = true;
             this.dateTimeLbl.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.dateTimeLbl.Location = new System.Drawing.Point(218, 25);
-            this.dateTimeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dateTimeLbl.Location = new System.Drawing.Point(291, 31);
             this.dateTimeLbl.Name = "dateTimeLbl";
             this.dateTimeLbl.Size = new System.Drawing.Size(0, 0);
             this.dateTimeLbl.TabIndex = 16;
@@ -67,15 +66,15 @@
             this.metroPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.metroPanel1.HorizontalScrollbarBarColor = true;
             this.metroPanel1.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.HorizontalScrollbarSize = 8;
-            this.metroPanel1.Location = new System.Drawing.Point(15, 60);
-            this.metroPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.metroPanel1.HorizontalScrollbarSize = 10;
+            this.metroPanel1.Location = new System.Drawing.Point(20, 74);
+            this.metroPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroPanel1.Name = "metroPanel1";
-            this.metroPanel1.Size = new System.Drawing.Size(770, 524);
+            this.metroPanel1.Size = new System.Drawing.Size(1027, 644);
             this.metroPanel1.TabIndex = 18;
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel1.VerticalScrollbarSize = 8;
+            this.metroPanel1.VerticalScrollbarSize = 11;
             // 
             // metroButton5
             // 
@@ -84,10 +83,10 @@
             this.metroButton5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton5.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton5.Location = new System.Drawing.Point(280, 26);
-            this.metroButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton5.Location = new System.Drawing.Point(373, 32);
+            this.metroButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton5.Name = "metroButton5";
-            this.metroButton5.Size = new System.Drawing.Size(211, 176);
+            this.metroButton5.Size = new System.Drawing.Size(281, 217);
             this.metroButton5.TabIndex = 21;
             this.metroButton5.Text = "Clients";
             this.metroButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -101,10 +100,10 @@
             this.metroButton4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton4.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton4.Location = new System.Drawing.Point(280, 307);
-            this.metroButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton4.Location = new System.Drawing.Point(373, 377);
+            this.metroButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(211, 176);
+            this.metroButton4.Size = new System.Drawing.Size(281, 217);
             this.metroButton4.TabIndex = 20;
             this.metroButton4.Text = "Resources";
             this.metroButton4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -118,10 +117,10 @@
             this.metroButton7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton7.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton7.Location = new System.Drawing.Point(2, 307);
-            this.metroButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton7.Location = new System.Drawing.Point(3, 377);
+            this.metroButton7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton7.Name = "metroButton7";
-            this.metroButton7.Size = new System.Drawing.Size(211, 176);
+            this.metroButton7.Size = new System.Drawing.Size(281, 217);
             this.metroButton7.TabIndex = 19;
             this.metroButton7.Text = "Staff";
             this.metroButton7.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -135,10 +134,10 @@
             this.metroButton3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton3.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton3.Location = new System.Drawing.Point(557, 26);
-            this.metroButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton3.Location = new System.Drawing.Point(743, 32);
+            this.metroButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton3.Name = "metroButton3";
-            this.metroButton3.Size = new System.Drawing.Size(211, 176);
+            this.metroButton3.Size = new System.Drawing.Size(281, 217);
             this.metroButton3.TabIndex = 18;
             this.metroButton3.Text = "Accounting";
             this.metroButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -151,10 +150,10 @@
             this.metroButton2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton2.Location = new System.Drawing.Point(2, 26);
-            this.metroButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton2.Location = new System.Drawing.Point(3, 32);
+            this.metroButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(211, 176);
+            this.metroButton2.Size = new System.Drawing.Size(281, 217);
             this.metroButton2.TabIndex = 17;
             this.metroButton2.Text = "Project Manager";
             this.metroButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -168,10 +167,10 @@
             this.metroButton1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.metroButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Tall;
-            this.metroButton1.Location = new System.Drawing.Point(557, 307);
-            this.metroButton1.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton1.Location = new System.Drawing.Point(743, 377);
+            this.metroButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(211, 176);
+            this.metroButton1.Size = new System.Drawing.Size(281, 217);
             this.metroButton1.TabIndex = 16;
             this.metroButton1.Text = "Users";
             this.metroButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -183,9 +182,10 @@
             this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
-            this.profilebtn.Location = new System.Drawing.Point(680, 26);
+            this.profilebtn.Location = new System.Drawing.Point(907, 32);
+            this.profilebtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.profilebtn.Name = "profilebtn";
-            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.Size = new System.Drawing.Size(140, 36);
             this.profilebtn.TabIndex = 19;
             this.profilebtn.UseCustomBackColor = true;
             this.profilebtn.UseSelectable = true;
@@ -195,21 +195,24 @@
             // 
             this.login.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.login.Location = new System.Drawing.Point(562, 26);
+            this.login.Location = new System.Drawing.Point(749, 32);
+            this.login.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.login.Name = "login";
-            this.login.Size = new System.Drawing.Size(112, 26);
+            this.login.Size = new System.Drawing.Size(149, 32);
             this.login.TabIndex = 20;
             this.login.Text = "Login";
             this.login.UseSelectable = true;
             this.login.Click += new System.EventHandler(this.login_Click);
+            // 
             // metroButton8
             // 
             this.metroButton8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(62)))), ((int)(((byte)(62)))));
             this.metroButton8.FontSize = MetroFramework.MetroButtonSize.Tall;
             this.metroButton8.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton8.Location = new System.Drawing.Point(502, 36);
+            this.metroButton8.Location = new System.Drawing.Point(669, 44);
+            this.metroButton8.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.metroButton8.Name = "metroButton8";
-            this.metroButton8.Size = new System.Drawing.Size(19, 20);
+            this.metroButton8.Size = new System.Drawing.Size(25, 25);
             this.metroButton8.TabIndex = 20;
             this.metroButton8.Text = "2";
             this.metroButton8.UseCustomBackColor = true;
@@ -222,10 +225,10 @@
             this.metroButton6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("metroButton6.BackgroundImage")));
             this.metroButton6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.metroButton6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.metroButton6.Location = new System.Drawing.Point(473, 19);
-            this.metroButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton6.Location = new System.Drawing.Point(631, 23);
+            this.metroButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.metroButton6.Name = "metroButton6";
-            this.metroButton6.Size = new System.Drawing.Size(33, 32);
+            this.metroButton6.Size = new System.Drawing.Size(44, 39);
             this.metroButton6.TabIndex = 17;
             this.metroButton6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.metroButton6.UseCustomBackColor = true;
@@ -235,21 +238,22 @@
             // 
             // Dashboard
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1067, 738);
             this.Controls.Add(this.login);
             this.Controls.Add(this.metroButton8);
             this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.metroPanel1);
             this.Controls.Add(this.metroButton6);
             this.Controls.Add(this.dateTimeLbl);
-            this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(800, 600);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.MinimumSize = new System.Drawing.Size(1067, 738);
             this.Name = "Dashboard";
-            this.Padding = new System.Windows.Forms.Padding(15, 60, 15, 16);
+            this.Padding = new System.Windows.Forms.Padding(20, 74, 20, 20);
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.Dashboard_Load);
+            this.Shown += new System.EventHandler(this.Dashboard_Shown);
             this.metroPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

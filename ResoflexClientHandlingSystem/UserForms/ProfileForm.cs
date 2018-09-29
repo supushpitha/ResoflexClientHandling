@@ -79,7 +79,7 @@ namespace ResoflexClientHandlingSystem.UserForms
 
                     while (reader.Read())
                     {
-                        metroLink1.Text = (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                        metroLabel1.Text = (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
                         txtUname.Text = reader.GetValue(2).ToString();
 
                     }

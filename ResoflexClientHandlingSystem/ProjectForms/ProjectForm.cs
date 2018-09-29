@@ -255,6 +255,7 @@ namespace ResoflexClientHandlingSystem
                     table1.Load(reader);
 
                     projectGrid.DataSource = table1;
+                    reader.Close();
                 }
                 else
                 {

@@ -1,4 +1,5 @@
-﻿using ResoflexClientHandlingSystem.Common;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using System;
@@ -16,9 +17,47 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class AddNewClientForm : MetroFramework.Forms.MetroForm
     {
+        private string clientname;
+        private string address;
+        private string phone_mob;
+        private string phone_office;
+        private string fax;
+        private string email;
+
         public AddNewClientForm()
         {
             InitializeComponent();
+        }
+
+        public AddNewClientForm(string name, string address, string phone_mob, string phone_office, string fax, string email)
+        {
+            this.clientname = name;
+            this.address = address;
+            this.phone_mob = phone_mob;
+            this.phone_office = phone_office;
+            this.fax = fax;
+            this.email = email;
+
+            clientNameTxtBox.ReadOnly = true;
+            clientNameTxtBox.Text = clientname;
+
+            clientAddressTxtBox.ReadOnly = true;
+            clientAddressTxtBox.Text = address;
+
+            mobilePhoneTxtBox.ReadOnly = true;
+            mobilePhoneTxtBox.Text = phone_mob;
+
+            officePhoneTxtBox.ReadOnly = true;
+            officePhoneTxtBox.Text = phone_office;
+
+            faxTxtBox.ReadOnly = true;
+            faxTxtBox.Text = fax;
+
+            emailTxtBox.ReadOnly = true;
+            emailTxtBox.Text = email;
+
+            addNewClientBtn.Visible = false;
+            addNewClientCancelBtn.Visible = false;
         }
 
         private void metroButton1_Click(object sender, EventArgs e)
@@ -43,12 +82,34 @@ namespace ResoflexClientHandlingSystem
                 notifySuccessClientAdding.BalloonTipText = "Client Successfully added!";
                 notifySuccessClientAdding.ShowBalloonTip(1000);
 
+
                 clearTxtBoxes();
+                int id = 0;
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("SELECT client_id FROM client where email ='" + email + "';");
+                    
+                    while (reader.Read())
+                    {
+                        id = int.Parse(reader["client_id"].ToString());
+
+                    }
+                    reader.Close();
+                    UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new Client", id);
+                    Database.addOp(operation);
+                }
+                catch(Exception ex)
+                {
+                    Console.WriteLine(ex.StackTrace);   
+                }
+
             }
             catch (Exception)
             {
                 MessageBox.Show("Every detail must be added!", "Client Adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            
         }
 
         private void clearTxtBoxes()

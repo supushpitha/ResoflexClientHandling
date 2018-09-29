@@ -45,7 +45,6 @@
             this.schHome = new MetroFramework.Controls.MetroButton();
             this.shwallbtn = new MetroFramework.Controls.MetroButton();
             this.LogGrid = new MetroFramework.Controls.MetroGrid();
-            this.report1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.LogGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -269,23 +268,14 @@
             this.LogGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.LogGrid.Size = new System.Drawing.Size(653, 477);
             this.LogGrid.TabIndex = 16;
+            this.LogGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.LogGrid_CellContentClick);
             this.LogGrid.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.LogGrid_RowHeaderMouseClick);
-            // 
-            // report1
-            // 
-            this.report1.Location = new System.Drawing.Point(672, 334);
-            this.report1.Name = "report1";
-            this.report1.Size = new System.Drawing.Size(127, 30);
-            this.report1.TabIndex = 17;
-            this.report1.Text = "Total logged hours ";
-            this.report1.UseSelectable = true;
             // 
             // UserLog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.report1);
             this.Controls.Add(this.LogGrid);
             this.Controls.Add(this.shwallbtn);
             this.Controls.Add(this.schHome);
@@ -323,6 +313,5 @@
         private MetroFramework.Controls.MetroButton schHome;
         private MetroFramework.Controls.MetroButton shwallbtn;
         private MetroFramework.Controls.MetroGrid LogGrid;
-        private MetroFramework.Controls.MetroButton report1;
     }
 }

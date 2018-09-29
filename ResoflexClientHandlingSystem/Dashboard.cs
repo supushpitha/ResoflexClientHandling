@@ -27,7 +27,7 @@ namespace ResoflexClientHandlingSystem
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-            
+           
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;

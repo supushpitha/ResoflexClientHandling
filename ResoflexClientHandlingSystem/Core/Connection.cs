@@ -10,7 +10,7 @@ namespace ResoflexClientHandlingSystem.Core
 {
     class DBConnection
     {
-        private static string connString = string.Format("Server=localhost; database=resoflexclienthandlingsystem; UID=root; password=; SSLMode=none");
+        private static string connString = string.Format("Server=localhost; database=resoflexClientHandlingSystem; UID=root; password=; SSLMode=none");
         private static MySqlConnection conn = new MySqlConnection(connString);
         private static MySqlConnection tmpConn = null;
 
@@ -46,12 +46,12 @@ namespace ResoflexClientHandlingSystem.Core
 
             return tmpConn;
         }
-
+        
         public static MySqlDataReader getDataViaTmpConnection(string qry)
         {
             return new MySqlCommand(qry, getTmpConnection()).ExecuteReader();
         }
-
+        
         public static void closeTmpConnection()
         {
             if (tmpConn.State.ToString().Equals("Open") || tmpConn.State.ToString().Equals("open"))

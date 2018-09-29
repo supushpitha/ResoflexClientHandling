@@ -35,22 +35,25 @@ namespace ResoflexClientHandlingSystem
         private void btnSchedule_Click(object sender, EventArgs e)
         {
             ScheduleForm sf = new ScheduleForm();
+            this.Hide();
+            sf.ShowDialog();
             this.Close();
-            sf.Show();
         }
 
         private void btnEvents_Click(object sender, EventArgs e)
         {
             EventForm ef = new EventForm();
+            this.Hide();
+            ef.ShowDialog();
             this.Close();
-            ef.Show();
         }
 
         private void btnTasks_Click(object sender, EventArgs e)
         {
             TaskForm tf = new TaskForm();
+            this.Hide();
+            tf.ShowDialog();
             this.Close();
-            tf.Show();
         }
     }
 }

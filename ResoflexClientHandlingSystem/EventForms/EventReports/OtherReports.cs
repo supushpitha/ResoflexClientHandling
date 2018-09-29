@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ResoflexClientHandlingSystem
+namespace ResoflexClientHandlingSystem.EventForms.EventReports
 {
-    public partial class ExpensesAnalysisForm : MetroFramework.Forms.MetroForm
+    public partial class OtherReports : MetroFramework.Forms.MetroForm
     {
-        public ExpensesAnalysisForm()
+        public OtherReports()
         {
             InitializeComponent();
-        }
-
-        private void metroGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }

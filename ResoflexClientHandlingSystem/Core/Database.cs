@@ -237,17 +237,39 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void addJobPerformance(JobPerformance jobPerformanceObj)
+        public static string addJobPerformance(JobPerformance jobPerformanceObj)
         {
             try
             {
-                DBConnection.updateDB("insert into job_performance(staff_id, perf_year, knowledge, saftey, quality, adaptability, productivity, Initiative)values" +
-                    "('" + jobPerformanceObj.StaffId + "','" + jobPerformanceObj.PerfYear.ToString("yyyy/M/d") + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "'," +
-                    "'" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "')");
+                int x = existsRecordsJP(jobPerformanceObj);
+
+                if(x == 1)
+                {
+                    DialogResult res = MessageBox.Show("There exists a record for the specified date, would you like to update it", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+
+                        Database.updateJobPerformance(jobPerformanceObj);
+                        return "Record Updated!";
+                    }
+                    if (res == DialogResult.Cancel)
+                    {
+                        return "Operation Cancelled";
+                    }
+                }
+
+                if (x == 0) {
+                    DBConnection.updateDB("insert into job_performance(staff_id, perf_year, knowledge, saftey, quality, adaptability, productivity, Initiative)values" +
+                        "('" + jobPerformanceObj.StaffId + "','" + jobPerformanceObj.PerfYear.ToString("yyyy/M/d") + "', '" + jobPerformanceObj.Knowledge + "', '" + jobPerformanceObj.Safety + "'," +
+                        "'" + jobPerformanceObj.Quality + "','" + jobPerformanceObj.Adaptability + "','" + jobPerformanceObj.Productivity + "','" + jobPerformanceObj.Initiative + "')");
+                    return "Record added!";
+                }
+                return "";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrong!'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
             }
         }
 
@@ -269,17 +291,36 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void addClientRelations(ClientRelations clientRelationsObj)
+        public static string addClientRelations(ClientRelations clientRelationsObj)
         {
 
             try
             {
 
-                DBConnection.updateDB("insert into client_relations(staff_id, rel_year, telephone_skills, problem_resolution, salesmanship, pro_activeness, politeness)values('" + clientRelationsObj.StaffId + "','" + clientRelationsObj.RelYear.ToString("yyyy/M/d") + "', '" + clientRelationsObj.TelephoneSkills + "', '" + clientRelationsObj.ProblemResolution + "','" + clientRelationsObj.Salesmanship + "','" + clientRelationsObj.ProActiveness + "','" + clientRelationsObj.Politeness + "')");
+            int x = existsRecordsCR(clientRelationsObj);
+            if (x == 1) {
+                DialogResult res = MessageBox.Show("There exists a record for the specified date, would you like to update it", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (res == DialogResult.OK)
+                {
+
+                    Database.updateClientRelations(clientRelationsObj);
+                    return "Record Updated!";
+                }
+                if (res == DialogResult.Cancel)
+                {
+                    return "Operation Cancelled";
+                }
+            }
+                if (x == 0) {
+                    DBConnection.updateDB("insert into client_relations(staff_id, rel_year, telephone_skills, problem_resolution, salesmanship, pro_activeness, politeness)values('" + clientRelationsObj.StaffId + "','" + clientRelationsObj.RelYear.ToString("yyyy/M/d") + "', '" + clientRelationsObj.TelephoneSkills + "', '" + clientRelationsObj.ProblemResolution + "','" + clientRelationsObj.Salesmanship + "','" + clientRelationsObj.ProActiveness + "','" + clientRelationsObj.Politeness + "')");
+                    return "New Record Added!";
+                }
+                return "";
             }
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
             }
 
         }
@@ -302,19 +343,93 @@ namespace ResoflexClientHandlingSystem.Core
 
         }
 
-        public static void addCommunicationSkills(CommunicationSkills communicationSkillsObj)
+        public static string addCommunicationSkills(CommunicationSkills communicationSkillsObj)
         {
-
+            
             try
             {
-
-                DBConnection.updateDB("insert into communication_skills(staff_id, comm_year, influence, presentation, relationship, listening, negotiation)values('" + communicationSkillsObj.StaffId + "','" + communicationSkillsObj.CommYear + "', '" + communicationSkillsObj.Influence + "', '" + communicationSkillsObj.Presentation + "','" + communicationSkillsObj.Relationships + "','" + communicationSkillsObj.Listening + "','" + communicationSkillsObj.Negotiation + "')");
+                
+                int x = existsRecordsCS(communicationSkillsObj);
+               
+                if (x == 1) {                
+                    DialogResult res = MessageBox.Show("There exists a record for the specified date, would you like to update it", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+                       
+                        Database.updateCommunicationSkills(communicationSkillsObj);
+                        return "Record Updated!";
+                    }
+                    if (res == DialogResult.Cancel)
+                    {
+                        return "Operation Cancelled";
+                    }
+                    
+                 }
+               
+                if (x == 0)
+                {
+                    DBConnection.updateDB("insert into communication_skills(staff_id, comm_year, influence, presentation, relationship, listening, negotiation)values('" + communicationSkillsObj.StaffId + "','" + communicationSkillsObj.CommYear.ToString("y/M/d") + "', '" + communicationSkillsObj.Influence + "', '" + communicationSkillsObj.Presentation + "','" + communicationSkillsObj.Relationships + "','" + communicationSkillsObj.Listening + "','" + communicationSkillsObj.Negotiation + "')");
+                    return "Record added!";
+                }
+                return "";
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Something went wrongYAYA! +'" + ex + "' ", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
             }
 
+        }
+
+        public static int existsRecordsCS(CommunicationSkills communicationSkillsObj) {
+            MySqlDataReader reader = DBConnection.getData("select * from communication_skills where staff_id = " + communicationSkillsObj.StaffId + " and comm_year = '" + communicationSkillsObj.CommYear.ToString("y/M/d") + "'");
+            if (reader.HasRows)
+            {
+                reader.Close();
+                return 1;
+               
+            }
+            reader.Close();
+            return 0;
+        }
+
+        public static int existsRecordsJP(JobPerformance jobPerformanceObj)
+        {
+            MySqlDataReader reader = DBConnection.getData("select * from job_performance where staff_id = " + jobPerformanceObj.StaffId + " and perf_year = '" + jobPerformanceObj.PerfYear.ToString("y/M/d") + "'");
+            if (reader.HasRows)
+            {
+                reader.Close();
+                return 1;
+
+            }
+            reader.Close();
+            return 0;
+        }
+
+        public static int existsRecordsCR(ClientRelations clientRelations)
+        {
+            MySqlDataReader reader = DBConnection.getData("select * from client_relations where staff_id = " + clientRelations.StaffId + " and rel_year = '" + clientRelations.RelYear.ToString("y/M/d") + "'");
+            if (reader.HasRows)
+            {
+                reader.Close();
+                return 1;
+
+            }
+            reader.Close();
+            return 0;
+        }
+
+        public static int existsRecordsIS(InterpersonalSkills interpersonalSkills)
+        {
+            MySqlDataReader reader = DBConnection.getData("select * from interpersonal_skills where staff_id = " + interpersonalSkills.StaffId + " and inter_year = '" + interpersonalSkills.InterYear.ToString("y/M/d") + "'");
+            if (reader.HasRows)
+            {
+                reader.Close();
+                return 1;
+
+            }
+            reader.Close();
+            return 0;
         }
 
         public static void updateCommunicationSkills(CommunicationSkills communicationSkillsObj)//This update works
@@ -324,6 +439,7 @@ namespace ResoflexClientHandlingSystem.Core
             {
 
                 DBConnection.updateDB("update communication_skills set influence = '" + communicationSkillsObj.Influence + "', presentation = '" + communicationSkillsObj.Presentation + "', relationship = '" + communicationSkillsObj.Relationships + "' , listening = '" + communicationSkillsObj.Listening + "', negotiation = '" + communicationSkillsObj.Negotiation + "' where comm_year = '" + communicationSkillsObj.CommYear.ToString("yyyy/M/d") + "'");
+
             }
             catch (Exception ex)
             {
@@ -333,17 +449,40 @@ namespace ResoflexClientHandlingSystem.Core
         }
 
 
-        public static void addInterpersonalSkills(InterpersonalSkills interpersonalSkillsObj)
+        public static string addInterpersonalSkills(InterpersonalSkills interpersonalSkillsObj)
         {
 
             try
             {
+                int x = existsRecordsIS(interpersonalSkillsObj);
 
-                DBConnection.updateDB("insert into interpersonal_skills(staff_id, inter_year, interaction_with_customers, interaction_with_supervisors, interaction_with_clients, motivational_skills, leadership)values('" + interpersonalSkillsObj.StaffId + "','" + interpersonalSkillsObj.InterYear.ToString("yyyy/M/d") + "', '" + interpersonalSkillsObj.InteractionWithCoworkers + "', '" + interpersonalSkillsObj.InteractionWithSupervisors + "','" + interpersonalSkillsObj.InteractionWithClients + "','" + interpersonalSkillsObj.MotivationalSkills + "','" + interpersonalSkillsObj.Leadership + "')");
+                if (x == 1) {
+
+                    DialogResult res = MessageBox.Show("There exists a record for the specified date, would you like to update it", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                    if (res == DialogResult.OK)
+                    {
+
+                        Database.updateInterpersonalSkills(interpersonalSkillsObj);
+                        return "Record Updated!";
+                    }
+                    if (res == DialogResult.Cancel)
+                    {
+                        return "Operation Cancelled";
+                    }
+
+                }
+
+                if (x == 0) {
+                    DBConnection.updateDB("insert into interpersonal_skills(staff_id, inter_year, interaction_with_customers, interaction_with_supervisors, interaction_with_clients, motivational_skills, leadership)values('" + interpersonalSkillsObj.StaffId + "','" + interpersonalSkillsObj.InterYear.ToString("yyyy/M/d") + "', '" + interpersonalSkillsObj.InteractionWithCoworkers + "', '" + interpersonalSkillsObj.InteractionWithSupervisors + "','" + interpersonalSkillsObj.InteractionWithClients + "','" + interpersonalSkillsObj.MotivationalSkills + "','" + interpersonalSkillsObj.Leadership + "')");
+                    return "Record added!";
+                }
+                return "";
+                
             }
             catch (Exception)
             {
                 MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return "";
             }
         }
 
@@ -457,6 +596,13 @@ namespace ResoflexClientHandlingSystem.Core
                     DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
                 }
 
+                foreach (var ary in schedule.ResoArray)
+                {
+                    Resource r = (Resource)ary;
+
+                    DBConnection.updateDB("insert into schedule_resources(sch_no, proj_id, resource_id, qty) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", " + r.ResourceId + ", " + r.TotalQty + ")");
+                }
+
                 return true;
 
             }
@@ -515,6 +661,54 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                return false;
+            }
+        }
+
+        //update reso
+        public static Boolean updateSchResource(Schedule schedule, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("update schedule_resources set qty = " + reso.TotalQty + " where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and resource_id = " + reso.ResourceId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //add reso
+        public static Boolean addSchResource(Schedule schedule, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into schedule_resources(sch_no, proj_id, resource_id, qty) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", " + reso.ResourceId + ", " + reso.TotalQty + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //remove reso (update)
+        public static Boolean removeSchResource(Schedule schedule, int reso_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from schedule_resources where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and resource_id = " + reso_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -642,6 +836,13 @@ namespace ResoflexClientHandlingSystem.Core
 
                 }
 
+                foreach (var ary in evnt.ResoArray)
+                {
+                    Resource r = (Resource)ary;
+
+                    DBConnection.updateDB("insert into event_resources(event_id, sch_no, proj_id, resource_id, qty) values (" + evnt.EventId + "," + evnt.ScheduleId.ScheduleId + ", " + evnt.EventProject.ProjectID + ", " + r.ResourceId + ", " + r.TotalQty + ")");
+                }
+
                 return true;
 
             }
@@ -693,56 +894,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!\n" + exc, "Add Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        public static void AddExpenses(ExpenseDetailEvent addExpense)
-        {
-            /* try
-             {*/
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-
-            int eti = addExpense.ExpType.ExpTypeId;
-            int ei = addExpense.EventOfExp.EventId;
-            int p = addExpense.ProjectOfEvent.ProjectID;
-            double a = addExpense.Amount;
-            string c = addExpense.Comment;
-            string pt = addExpense.PaymentType;
-
-            DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values" +
-                " (" + eti + ", " + ei + " , " + p + " , " + a + " ,'" + c + "','" + date + "', '" + pt + "');");
-
-            MessageBox.Show("Expenses successfully added!");
-
-            /* }
-             catch (Exception)
-             {
-
-                 MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-             }*/
-        }
-
-
-        public static void CashIssue(ExpenseDetailSchedule cashIssue)
-        {
-            /*     try
-                 {
-     */
-            string date = DateTime.Now.ToString("yyyy-MM-dd");
-
-            int e = cashIssue.ScheduleOfExp.ScheduleId;
-            int p = cashIssue.ProjectOfSchedule.ProjectID;
-            double a = cashIssue.Amount;
-            string c = cashIssue.Comment;
-
-            DBConnection.updateDB("insert into iou ( proj_id, sch_no , date,amount , detail) values" + "(" + e + " , " + p + " ,'" + date + "', " + a + " , '" + c + "');");
-
-            MessageBox.Show("Expenses successfully added!");
-            /*          }
-                    catch (Exception)
-                      {
-                          MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                      }*/
-        }
-
+        
         public static void updateStaff(Staff staff)
         {
             try
@@ -982,6 +1134,83 @@ namespace ResoflexClientHandlingSystem.Core
                         MessageBox.Show("Something went wrong! " + projIds.Count + ", " + uid + " \n" + exc, "Marking seen requests", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
+            }
+        }
+
+        public static void addEventExpense(ExpenseDetailEvent exp)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into exp_detail_event (exp_type_id, event_id, proj_id, amount, comment, dateOfExp, paymentType) values " +
+                                        "(" + exp.ExpType.ExpTypeId + ", " + exp.EventOfExp.EventId + ", " + exp.ProjectOfEvent.ProjectID + ", " + exp.Amount + ", " +
+                                        "'" + exp.Comment + "', '" + exp.DateOfExp.ToString("yyyy/MM/d") + "', '" + exp.PaymentType + "');");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Add Event Expense", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void IssueCash(Iou iou)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into iou (proj_id, sch_no, date, amount, detail) values (" + iou.ProjectOfIou.ProjectID + ", " + iou.ScheduleOfIou.ScheduleId + ", " +
+                    "'" + iou.Date.ToString("yyyy/MM/d") + "', " + iou.Amount + ", '" + iou.Detail + "');");
+
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("Something went wrong!\n" + exc, "Cash Issueing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        //update event reso
+        public static Boolean updateEventResource(Event evnt, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("update event_resources set qty = " + reso.TotalQty + " where proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + " and resource_id = " + reso.ResourceId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //add evnt reso
+        public static Boolean addEventResource(Event evnt, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into event_resources(event_id, sch_no, proj_id, resource_id, qty) values (" + evnt.EventId + "," + evnt.ScheduleId.ScheduleId + ", " + evnt.EventProject.ProjectID + ", " + reso.ResourceId + ", " + reso.TotalQty + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //remove event reso (update)
+        public static Boolean removeEventResource(Event evnt, int reso_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from event_resources where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + " and resource_id = " + reso_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

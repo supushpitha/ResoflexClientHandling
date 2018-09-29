@@ -1,6 +1,6 @@
-﻿namespace ResoflexClientHandlingSystem
+﻿namespace ResoflexClientHandlingSystem.ScheduleForms.Reports
 {
-    partial class GenarateReportForm
+    partial class ScheduleReportsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,34 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.crystalReportViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
             this.SuspendLayout();
             // 
-            // metroButton1
+            // crystalReportViewer
             // 
-            this.metroButton1.Location = new System.Drawing.Point(248, 244);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(184, 23);
-            this.metroButton1.TabIndex = 0;
-            this.metroButton1.Text = "Tmp Btn to test reprt";
-            this.metroButton1.UseSelectable = true;
-            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            this.crystalReportViewer.ActiveViewIndex = -1;
+            this.crystalReportViewer.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.crystalReportViewer.Cursor = System.Windows.Forms.Cursors.Default;
+            this.crystalReportViewer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.crystalReportViewer.Location = new System.Drawing.Point(20, 60);
+            this.crystalReportViewer.Name = "crystalReportViewer";
+            this.crystalReportViewer.Size = new System.Drawing.Size(760, 520);
+            this.crystalReportViewer.TabIndex = 0;
             // 
-            // GenarateReportForm
+            // ScheduleReportsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.metroButton1);
-            this.Name = "GenarateReportForm";
-            this.Text = "Get Reports";
-            this.Load += new System.EventHandler(this.GenarateReportForm_Load);
+            this.Controls.Add(this.crystalReportViewer);
+            this.Name = "ScheduleReportsForm";
+            this.Text = "Schedule Report";
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private CrystalDecisions.Windows.Forms.CrystalReportViewer crystalReportViewer;
     }
 }

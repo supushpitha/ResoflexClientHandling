@@ -9,89 +9,69 @@ namespace ResoflexClientHandlingSystem.Role
 {
     public class UserNotification
     {
-        private int notificationID;
-        private DateTime date;
-        private int userID;
+        private int notiId;
+        private DateTime notiDate;
+        private int userId;
         private int view;
-        private int admin_view;
-        private int fuctionID;
-        private bool statues;
-        private string userID1;
-        private string functionID;
-       
+        private int adminView;
+        private int fuctionId;
+        private bool status;
+        private int mainId;
+        private int subId;
 
         public UserNotification()
         {
+
         }
 
-        public UserNotification(int notificationID, DateTime date, int userID, int fuctionID, bool statues, int view)
+        public UserNotification(int notiId, bool status)
         {
-            this.notificationID = notificationID;
-            this.date = date;
-            this.userID = userID;
-            this.fuctionID = fuctionID;
-            this.statues = statues;
-            
+            NotiId = notiId;
+            Status = status;
         }
 
-        public UserNotification(int view, int userID)
+        public UserNotification(int notiId, DateTime notiDate, int userId, int view, int adminView, int fuctionId, bool status, int mainId, int subId)
         {
-
-            this.userID = userID;
-            
-            this.view = view;
+            NotiId = notiId;
+            NotiDate = notiDate;
+            UserId = userId;
+            View = view;
+            AdminView = adminView;
+            FuctionId = fuctionId;
+            Status = status;
+            MainId = mainId;
+            SubId = subId;
         }
 
-        public UserNotification(int userID, int fuctionID, bool statues)
+        public UserNotification(int userId, int fuctionId, bool status, int mainId, int subId)
         {
-            
-            this.userID = userID;
-            this.fuctionID = fuctionID;
-            this.statues = statues;
+            UserId = userId;
+            FuctionId = fuctionId;
+            Status = status;
+            MainId = mainId;
+            SubId = subId;
         }
-
-        public UserNotification(int notificationID, int admin_view, int view)
+        
+        public UserNotification(DateTime notiDate, int userId, int view, int adminView, int fuctionId, bool status, int mainId, int subId)
         {
-
-            this.notificationID=notificationID;
-            this.admin_view = admin_view;
-            this.view = view;
-            
+            NotiDate = notiDate;
+            UserId = userId;
+            View = view;
+            AdminView = adminView;
+            FuctionId = fuctionId;
+            Status = status;
+            MainId = mainId;
+            SubId = subId;
         }
 
-        public UserNotification(int userID, int fuctionID, string functionID)
-        {
-
-            this.userID = userID;
-            this.fuctionID = fuctionID;
-            this.functionID = functionID;
-            
-        }
-
-        public UserNotification(int userID, bool statues)
-        {
-
-            this.userID = userID;
-            this.statues = statues;
-
-        }
-
-
-
-        public UserNotification(string userID1, string functionID, bool statues)
-        {
-            this.userID1 = userID1;
-            this.functionID = functionID;
-            this.statues = statues;
-        }
-
-        public int NotificationID { get => notificationID; set => notificationID = value; }
-        public DateTime Date { get => date; set => date = value; }
-        public int UserID { get => userID; set => userID = value; }
-        public int FuctionID { get => fuctionID; set => fuctionID = value; }
-        public bool Statues { get => statues; set => statues = value; }
+        public int NotiId { get => notiId; set => notiId = value; }
+        public DateTime NotiDate { get => notiDate; set => notiDate = value; }
+        public int UserId { get => userId; set => userId = value; }
         public int View { get => view; set => view = value; }
-
-        public int Admin_view { get => admin_view; set => admin_view = value; }
+        public int AdminView { get => adminView; set => adminView = value; }
+        public int FuctionId { get => fuctionId; set => fuctionId = value; }
+        public bool Status { get => status; set => status = value; }
+        public int MainId { get => mainId; set => mainId = value; }
+        public int SubId { get => subId; set => subId = value; }
     }
 }

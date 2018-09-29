@@ -32,26 +32,26 @@ namespace ResoflexClientHandlingSystem.ProjectForms
         private void metroButton1_Click(object sender, EventArgs e)
         {
             
-            try
-            {
-                int userID = Int32.Parse(metroTextBox1.Text);
-                int functionID =Int32.Parse( metroTextBox3.Text);
-                bool statues = checkBox1.Checked;
+            //try
+            //{
+            //    int userID = Int32.Parse(metroTextBox1.Text);
+            //    int functionID =Int32.Parse( metroTextBox3.Text);
+            //    bool statues = checkBox1.Checked;
 
 
-                UserNotification notification = new UserNotification(userID, functionID, statues);
+            //    UserNotification notification = new UserNotification(userID, functionID, statues);
 
-                Database.addNotification(notification);
+            //    Database.addNotification(notification);
 
-                MessageBox.Show("Your request successfully sent to Administrater", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+            //    MessageBox.Show("Your request successfully sent to Management!", "Request Sent", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-                this.Close();
+            //    this.Close();
 
-            }
-            catch (Exception exp)
-            {
-                MessageBox.Show(exp.ToString());
-            }
+            //}
+            //catch (Exception exp)
+            //{
+            //    MessageBox.Show(exp.ToString());
+            //}
         }
     }
 }

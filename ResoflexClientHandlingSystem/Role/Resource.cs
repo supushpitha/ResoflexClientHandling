@@ -14,6 +14,10 @@ namespace ResoflexClientHandlingSystem.Role
         private int totalQty;
         private int availableQty;
 
+        public Resource()
+        {
+        }
+
         public Resource(int resourceId, string name, float value, int totalQty, int availableQty)
         {
             this.ResourceId = resourceId;
@@ -33,6 +37,12 @@ namespace ResoflexClientHandlingSystem.Role
             this.Value = value;
             this.TotalQty = totalQty;
             this.AvailableQty = availableQty;
+        }
+
+        public Resource(int resourceId, int totalQty)
+        {
+            this.resourceId = resourceId;
+            this.totalQty = totalQty;
         }
 
         public int ResourceId { get => resourceId; set => resourceId = value; }

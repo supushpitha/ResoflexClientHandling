@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +25,8 @@ namespace ResoflexClientHandlingSystem
 
         private void metroLink1_Click(object sender, EventArgs e)
         {
-
+            ForgotPassword fpfrm = new ForgotPassword();
+            fpfrm.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

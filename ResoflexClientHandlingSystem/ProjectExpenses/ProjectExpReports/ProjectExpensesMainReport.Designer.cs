@@ -42,6 +42,7 @@
             this.crvProjExpMainViewer.Size = new System.Drawing.Size(1101, 658);
             this.crvProjExpMainViewer.TabIndex = 0;
             this.crvProjExpMainViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
+            this.crvProjExpMainViewer.Load += new System.EventHandler(this.crvProjExpMainViewer_Load);
             // 
             // ProjectExpensesMainReport
             // 

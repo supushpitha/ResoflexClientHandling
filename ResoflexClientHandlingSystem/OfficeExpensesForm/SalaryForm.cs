@@ -20,27 +20,31 @@ namespace ResoflexClientHandlingSystem
         {
             InitializeComponent();
 
-
-            empid.DataSource = display();
-            empid.ValueMember = "staff_id";
-            empid.DisplayMember = "staff_id";
-
-
-            MySqlDataReader rdr1 = DBConnection.getData("select staff_id from staff");
-
-            DataTable dt = new DataTable();
-            dt.Load(rdr1);
-
-            rdr1.Close();
-
-            empid.DataSource = dt;
-            //empid.ValueMember = "staff_id";
-            empid.DisplayMember = "staff_id";
-
         }
 
         private void Sal_Load(object sender, EventArgs e)
         {
+
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select first_name from staff ");
+
+                while (reader.Read())
+                {
+                
+                    metroComboBox1.Items.Add(reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+
 
         }
 
@@ -53,17 +57,7 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
-        public DataTable display() {
-
-            MySqlDataReader reader = DBConnection.getData("select staff_id from staff");
-
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-
-            reader.Close();
-
-            return dt;
-        }
+       
 
         private void empid_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -84,33 +78,37 @@ namespace ResoflexClientHandlingSystem
                 int Rate = Int32.Parse(rate.Text.ToString());
                 int Hours = Int32.Parse(hours.Text.ToString());
                 double Allowance = Double.Parse(allowance.Text.ToString());
-                double etfepf = Double.Parse(etf.Text.ToString());
+                double deductions = Double.Parse(metroTextBox13.Text.ToString());
+                double ep1 = double.Parse(metroTextBox1.Text.ToString());
+
                 int otHrs = 0;
 
                 if (Hours > 240)
                     otHrs = Hours % 240;
 
-                double gross_sal = basicSal + ((double)Rate * otHrs) + Allowance;
+                double gross_sal = basicSal + Allowance +((double)Rate * otHrs);
+                double gross = basicSal + Allowance;
 
-                double net_sal = gross_sal - etfepf;
+                double net_sal = gross_sal - (deductions+ep1) ;
 
-                Gsal.Text = "" + gross_sal;
+
+               
                 netSal.Text = "" + net_sal;
                 metroTextBox12.Text = "" + gross_sal;
-                metroTextBox13.Text = "" + etfepf;
+              
             }
-            catch (Exception)
+            catch (FormatException)
             {
-                throw;
+                MessageBox.Show("Please enter valid informations to all fileds", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
+            
 
         }
 
 
         public void getdata()
         {
-            MySqlDataReader reader = DBConnection.getData("select * from staff where staff_id = " + empid.SelectedValue + ";");
+            MySqlDataReader reader = DBConnection.getData("select * from staff where staff_id = " + empid.Text.ToString()+ ";");
 
             if (reader.Read())
             {
@@ -131,7 +129,7 @@ namespace ResoflexClientHandlingSystem
             //string eddt = end.Value.ToString("yyyy-MM-dd");
 
 
-            MySqlDataReader reader1 = DBConnection.getData("SELECT SUM(total_hours) as total_hours FROM attendance WHERE (in_time = 2018 - 08 - 08 <= 2018 - 08 - 10) and staff_id = " + empid.SelectedValue);
+            MySqlDataReader reader1 = DBConnection.getData("SELECT SUM(total_hours) as total_hours FROM attendance WHERE (in_time = 2018 - 08 - 08 <= 2018 - 08 - 10) and staff_id = " + empid.Text.ToString());
 
             if (reader1.Read())
             {
@@ -148,16 +146,19 @@ namespace ResoflexClientHandlingSystem
 
 
 
-/*
-        private void metroButton2_Click(object sender, EventArgs e)
-        /*{
-            O= new PaidForm();
-            p.Show();
-        }*/
+        /*
+                private void metroButton2_Click(object sender, EventArgs e)
+                /*{
+                    O= new PaidForm();
+                    p.Show();
+                }*/
 
-private void empid_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void empid_SelectedIndexChanged_1(object sender, EventArgs e)
         {
 
+           
+
+            
         }
 
         private void metroLabel7_Click(object sender, EventArgs e)
@@ -179,13 +180,13 @@ private void empid_SelectedIndexChanged_1(object sender, EventArgs e)
         {
             ResoflexClientHandlingSystem.Role.Salary sal = new ResoflexClientHandlingSystem.Role.Salary();
 
-            sal.Empid = int.Parse(empid.SelectedValue.ToString());
+            sal.Empid = int.Parse(empid.Text.ToString());
             sal.BasicSalAmount = double.Parse(basicsal.Text.ToString());
             sal.Rate = int.Parse(rate.Text.ToString());
 
             int hrs = int.Parse(hours.Text.ToString());
 
-            if(hrs > 240)
+            if (hrs > 240)
             {
                 double temp = hrs - 240;
 
@@ -197,19 +198,20 @@ private void empid_SelectedIndexChanged_1(object sender, EventArgs e)
 
                 sal.Gross = temp;
 
-                sal.Net = temp - double.Parse(etf.Text.ToString());
+               // sal.Net = temp - double.Parse(epf.Text.ToString());
             }
             else
             {
                 sal.Gross = sal.BasicSalAmount + int.Parse(allowance.Text.ToString());
 
-                sal.Net = sal.BasicSalAmount - double.Parse(etf.Text.ToString());
+              //  sal.Net = sal.BasicSalAmount - double.Parse(epf.Text.ToString());
             }
 
 
             sal.Hours = new Attendance(hrs);
             sal.Allowance = float.Parse(allowance.Text.ToString());
-            sal.EtfEpf = double.Parse(etf.Text.ToString());
+            sal.EtfEpf = double.Parse(metroTextBox1.Text.ToString());
+            sal.Net = double.Parse(netSal.Text.ToString());
 
             Database.addSalary(sal);
         }
@@ -220,11 +222,164 @@ private void empid_SelectedIndexChanged_1(object sender, EventArgs e)
             Paid pay = new Paid();
             this.Hide();
             pay.Show();
-            
+
+        }
+
+        private void metroLabel15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double basicSal = Double.Parse(basicsal.Text.ToString());
+                double Allowance = Double.Parse(allowance.Text.ToString());
+
+                double balall = basicSal + Allowance;
+                double epf = (balall * 8 / 100); // deduc
+                double etf = (balall * 3 / 100); //from gov
+
+
+                metroTextBox1.Text = "" + epf;
+                metroTextBox2.Text = "" + etf;
+            }
+            catch
+            {
+
+            }
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allowance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void allowance_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                double basicSal = Double.Parse(basicsal.Text.ToString());
+                double Allowance = Double.Parse(allowance.Text.ToString());
+
+                double balall = basicSal + Allowance;
+                double epf = (balall * 8 / 100); // deduc
+                double etf = (balall * 3 / 100); //from gov
+
+
+                metroTextBox1.Text = "" + epf;
+                metroTextBox2.Text = "" + etf;
+            }catch (FormatException)
+            {
+                MessageBox.Show("Please enter valid number for Allowances","Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void metroButton3_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select staff_id from staff where first_name='" + metroComboBox1.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    empid.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select staff_id from staff where first_name='" + metroComboBox1.SelectedItem.ToString() + "';");
+
+                while (reader.Read())
+                {
+                    empid.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+            //geting basic salary
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select basic_salary from staff where staff_id= '"+empid.Text.ToString()+"'");
+
+                while (reader.Read())
+                {
+
+                    basicsal.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            //geting total hours
+            DateTime curdate = DateTime.Now;
+            curdate = curdate.AddDays(-30);
+            string a = DateTime.Now.ToString("yyyy-MM-dd");
+            string b = curdate.ToString("yyyy-MM-dd");
+
+            Console.WriteLine("\n\n" + b + "\n\n");
+            Console.WriteLine("\n\n" +a+ "\n\n");
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select sum(total_hours) from attendance where out_time between '"+b+"'  and '"+a+"' and staff_id='" + empid.Text.ToString()+"'");
+
+                while (reader.Read())
+                {
+
+                    hours.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
+
+            //geting ot rate
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select ot_rate from staff where staff_id='" + empid.Text.ToString() + "'");
+
+                while (reader.Read())
+                {
+
+                    rate.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
         }
     }
-
-
 }
 
     

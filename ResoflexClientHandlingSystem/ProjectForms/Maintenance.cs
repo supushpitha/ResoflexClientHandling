@@ -21,22 +21,9 @@ namespace ResoflexClientHandlingSystem.ProjectForms
 
         private void Maintenance_Load(object sender, EventArgs e)
         {
-           /* {
-                this.chart1.Series["Grading"].Points.Clear();
-                this.chart1.Series["Grading"].Points.Clear();
-
-                MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM job_performance WHERE year(perf_year) = " + Int32.Parse(metroComboBox1.SelectedItem.ToString()) + " and staff_id = " + employeeNo + ";");
-                while (reader3.Read())
-                {
-                    this.chart1.Series["Grading"].Points.AddXY("knowledge", reader3.GetInt32("knowledge"));
-                    this.chart1.Series["Grading"].Points.AddXY("Safety", reader3.GetInt32("saftey"));
-                    this.chart1.Series["Grading"].Points.AddXY("Quality", reader3.GetInt32("quality"));
-                    this.chart1.Series["Grading"].Points.AddXY("Adaptability", reader3.GetInt32("adaptability"));
-                    this.chart1.Series["Grading"].Points.AddXY("Productivity", reader3.GetInt32("productivity"));
-                    this.chart1.Series["Grading"].Points.AddXY("Initiative", reader3.GetInt32("Initiative"));
-                }
-                reader3.Close();
-            }*/
+            metroGrid1.DataSource = getmain();
+            fillCountTile();
+            fillCountTile1();
         }
 
 
@@ -45,15 +32,68 @@ namespace ResoflexClientHandlingSystem.ProjectForms
             DataTable table = new DataTable();
 
 
-            MySqlDataReader reader = DBConnection.getData("select p.proj_name,p.description,e.event_id,e.from_date_time from project p, event e where p.proj_id=e.proj_id and e.event_id=2");
+            MySqlDataReader reader = DBConnection.getData("select p.proj_name as Project,p.description as Description ,e.from_date_time as Date from project p, event e where p.proj_id=e.proj_id");
 
             table.Load(reader);
-            maintGrid.ClearSelection();
+            
 
             return table;
 
 
         }
 
+
+        private void fillCountTile()
+        {
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select count(event_id) as Maintenence_Count from event where event_id=2");
+
+                while (reader.Read())
+                {
+                    metroTile2.Text = (reader.GetValue(0).ToString());
+                }
+
+                reader.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+
+
+        }
+
+
+        private void fillCountTile1()
+        {
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select p.proj_name from event e, project p where  p.proj_id=e.proj_id and e.event_id=2");
+
+                while (reader.Read())
+                {
+                    metroTile1.Text = (reader.GetValue(0).ToString());
+                }
+
+                reader.Close();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.ToString());
+            }
+
+
+        }
+
+        private void metroTextBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTextBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

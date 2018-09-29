@@ -78,5 +78,10 @@ namespace ResoflexClientHandlingSystem.ProjectExpenses.ProjectExpReports
                 MessageBox.Show("No records yet!\n" + exc, "Project Expense Reporting", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void crvProjExpMainViewer_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -336,8 +336,10 @@ namespace ResoflexClientHandlingSystem
         {
             
             Dashboard frm = new Dashboard();
+            this.Hide();
             frm.ShowDialog();
-            
+            this.Close();
+
         }
 
         private void reqBtn_Click(object sender, EventArgs e)
@@ -370,7 +372,13 @@ namespace ResoflexClientHandlingSystem
 
             projectGrid.BackgroundColor = Color.FromArgb(color);*/
         }
-        
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ProjectForms.Reports rpt = new ProjectForms.Reports();
+            rpt.Show();
+        }
+
 
 
 

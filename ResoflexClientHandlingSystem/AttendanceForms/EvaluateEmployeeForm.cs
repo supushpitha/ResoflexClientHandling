@@ -2016,5 +2016,10 @@ namespace ResoflexClientHandlingSystem
             metroTile20.Enabled = false;
 
         }
+
+        private void chart6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

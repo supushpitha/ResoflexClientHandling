@@ -39,33 +39,35 @@
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
             this.type = new MetroFramework.Controls.MetroComboBox();
             this.combo = new MetroFramework.Controls.MetroComboBox();
-            this.view = new MetroFramework.Controls.MetroButton();
             this.SuspendLayout();
             // 
             // metroLabel1
             // 
             this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(77, 217);
+            this.metroLabel1.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel1.Location = new System.Drawing.Point(77, 194);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel1.Size = new System.Drawing.Size(47, 25);
             this.metroLabel1.TabIndex = 3;
             this.metroLabel1.Text = "Date";
             // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(77, 257);
+            this.metroLabel2.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel2.Location = new System.Drawing.Point(77, 254);
             this.metroLabel2.Name = "metroLabel2";
-            this.metroLabel2.Size = new System.Drawing.Size(64, 19);
+            this.metroLabel2.Size = new System.Drawing.Size(81, 25);
             this.metroLabel2.TabIndex = 4;
             this.metroLabel2.Text = "Category";
             // 
             // amount
             // 
             this.amount.AutoSize = true;
-            this.amount.Location = new System.Drawing.Point(77, 299);
+            this.amount.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.amount.Location = new System.Drawing.Point(77, 316);
             this.amount.Name = "amount";
-            this.amount.Size = new System.Drawing.Size(60, 19);
+            this.amount.Size = new System.Drawing.Size(78, 25);
             this.amount.TabIndex = 5;
             this.amount.Text = " Amount";
             // 
@@ -84,8 +86,9 @@
             this.category.CustomButton.UseSelectable = true;
             this.category.CustomButton.Visible = false;
             this.category.Lines = new string[0];
-            this.category.Location = new System.Drawing.Point(204, 253);
+            this.category.Location = new System.Drawing.Point(204, 251);
             this.category.MaxLength = 32767;
+            this.category.Multiline = true;
             this.category.Name = "category";
             this.category.PasswordChar = '\0';
             this.category.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -93,7 +96,7 @@
             this.category.SelectionLength = 0;
             this.category.SelectionStart = 0;
             this.category.ShortcutsEnabled = true;
-            this.category.Size = new System.Drawing.Size(200, 23);
+            this.category.Size = new System.Drawing.Size(200, 36);
             this.category.TabIndex = 9;
             this.category.UseSelectable = true;
             this.category.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -114,8 +117,9 @@
             this.inAmount.CustomButton.UseSelectable = true;
             this.inAmount.CustomButton.Visible = false;
             this.inAmount.Lines = new string[0];
-            this.inAmount.Location = new System.Drawing.Point(204, 295);
+            this.inAmount.Location = new System.Drawing.Point(204, 309);
             this.inAmount.MaxLength = 32767;
+            this.inAmount.Multiline = true;
             this.inAmount.Name = "inAmount";
             this.inAmount.PasswordChar = '\0';
             this.inAmount.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -123,7 +127,7 @@
             this.inAmount.SelectionLength = 0;
             this.inAmount.SelectionStart = 0;
             this.inAmount.ShortcutsEnabled = true;
-            this.inAmount.Size = new System.Drawing.Size(200, 23);
+            this.inAmount.Size = new System.Drawing.Size(200, 37);
             this.inAmount.TabIndex = 10;
             this.inAmount.UseSelectable = true;
             this.inAmount.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -131,7 +135,7 @@
             // 
             // datetime
             // 
-            this.datetime.Location = new System.Drawing.Point(204, 207);
+            this.datetime.Location = new System.Drawing.Point(204, 190);
             this.datetime.MinimumSize = new System.Drawing.Size(0, 29);
             this.datetime.Name = "datetime";
             this.datetime.Size = new System.Drawing.Size(200, 29);
@@ -140,18 +144,20 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(77, 181);
+            this.metroLabel4.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel4.Location = new System.Drawing.Point(77, 94);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(50, 19);
+            this.metroLabel4.Size = new System.Drawing.Size(114, 25);
             this.metroLabel4.TabIndex = 16;
-            this.metroLabel4.Text = "Staff id";
+            this.metroLabel4.Text = "Staff Member";
             // 
             // addBtn
             // 
-            this.addBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.addBtn.Location = new System.Drawing.Point(77, 404);
+            this.addBtn.BackColor = System.Drawing.Color.Silver;
+            this.addBtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.addBtn.Location = new System.Drawing.Point(189, 404);
             this.addBtn.Name = "addBtn";
-            this.addBtn.Size = new System.Drawing.Size(102, 33);
+            this.addBtn.Size = new System.Drawing.Size(127, 44);
             this.addBtn.TabIndex = 2;
             this.addBtn.Text = "Add";
             this.addBtn.UseCustomBackColor = true;
@@ -161,9 +167,10 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(77, 141);
+            this.metroLabel5.FontSize = MetroFramework.MetroLabelSize.Tall;
+            this.metroLabel5.Location = new System.Drawing.Point(77, 144);
             this.metroLabel5.Name = "metroLabel5";
-            this.metroLabel5.Size = new System.Drawing.Size(36, 19);
+            this.metroLabel5.Size = new System.Drawing.Size(46, 25);
             this.metroLabel5.TabIndex = 18;
             this.metroLabel5.Text = "Type";
             // 
@@ -174,7 +181,7 @@
             this.type.Items.AddRange(new object[] {
             "IOU",
             "Direct"});
-            this.type.Location = new System.Drawing.Point(204, 131);
+            this.type.Location = new System.Drawing.Point(204, 140);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(200, 29);
             this.type.TabIndex = 19;
@@ -185,30 +192,17 @@
             // 
             this.combo.FormattingEnabled = true;
             this.combo.ItemHeight = 23;
-            this.combo.Location = new System.Drawing.Point(204, 171);
+            this.combo.Location = new System.Drawing.Point(204, 94);
             this.combo.Name = "combo";
             this.combo.Size = new System.Drawing.Size(200, 29);
             this.combo.TabIndex = 20;
             this.combo.UseSelectable = true;
             // 
-            // view
-            // 
-            this.view.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.view.Location = new System.Drawing.Point(566, 398);
-            this.view.Name = "view";
-            this.view.Size = new System.Drawing.Size(84, 29);
-            this.view.TabIndex = 21;
-            this.view.Text = "View";
-            this.view.UseCustomBackColor = true;
-            this.view.UseSelectable = true;
-            this.view.Click += new System.EventHandler(this.view_Click);
-            // 
             // CashPaymentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.view);
+            this.ClientSize = new System.Drawing.Size(500, 500);
             this.Controls.Add(this.combo);
             this.Controls.Add(this.type);
             this.Controls.Add(this.metroLabel5);
@@ -221,7 +215,7 @@
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.addBtn);
             this.Name = "CashPaymentForm";
-            this.Text = "CashPaymentForm";
+            this.Text = "Cash Payment Form";
             this.Load += new System.EventHandler(this.CashPaymentForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -240,6 +234,5 @@
         private MetroFramework.Controls.MetroLabel metroLabel5;
         private MetroFramework.Controls.MetroComboBox type;
         private MetroFramework.Controls.MetroComboBox combo;
-        private MetroFramework.Controls.MetroButton view;
     }
 }

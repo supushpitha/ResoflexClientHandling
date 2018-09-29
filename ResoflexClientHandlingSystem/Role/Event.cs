@@ -27,6 +27,7 @@ namespace ResoflexClientHandlingSystem.Role
         private string accommodationMode;
         private string meals;
         private int schNo;
+        private ArrayList resoArray;
 
         public int EventId { get => eventId; set => eventId = value; }
         public DateTime From { get => from; set => from = value; }
@@ -46,6 +47,7 @@ namespace ResoflexClientHandlingSystem.Role
         internal EventType Type { get => type; set => type = value; }
         internal ArrayList ServEngineer { get => servEngineer; set => servEngineer = value; }
         public Schedule ScheduleId { get => scheduleId; set => scheduleId = value; }
+        public ArrayList ResoArray { get => resoArray; set => resoArray = value; }
 
         public Event()
         {

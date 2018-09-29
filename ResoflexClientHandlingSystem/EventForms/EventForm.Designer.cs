@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EventForm));
             this.addEvent = new MetroFramework.Controls.MetroButton();
             this.updateEvent = new MetroFramework.Controls.MetroButton();
@@ -41,9 +41,13 @@
             this.schCltName = new MetroFramework.Controls.MetroLabel();
             this.schPrjName = new MetroFramework.Controls.MetroLabel();
             this.schHome = new MetroFramework.Controls.MetroButton();
-            this.metroTile3 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.incompleteEvents = new MetroFramework.Controls.MetroTile();
+            this.totalEvents = new MetroFramework.Controls.MetroTile();
+            this.btnIou = new MetroFramework.Controls.MetroButton();
+            this.reports = new MetroFramework.Controls.MetroButton();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,27 +96,27 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
-            this.eventGrid.BackgroundColor = System.Drawing.Color.White;
+            this.eventGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.eventGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.eventGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle13.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.eventGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle14.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.eventGrid.DefaultCellStyle = dataGridViewCellStyle14;
             this.eventGrid.EnableHeadersVisualStyles = false;
             this.eventGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.eventGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
@@ -120,14 +124,14 @@
             this.eventGrid.Name = "eventGrid";
             this.eventGrid.ReadOnly = true;
             this.eventGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.eventGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle15.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle15.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.eventGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             this.eventGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.eventGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.eventGrid.Size = new System.Drawing.Size(543, 374);
@@ -237,44 +241,90 @@
             this.schHome.UseSelectable = true;
             this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
-            // metroTile3
+            // metroLabel3
             // 
-            this.metroTile3.ActiveControl = null;
-            this.metroTile3.Location = new System.Drawing.Point(23, 154);
-            this.metroTile3.Name = "metroTile3";
-            this.metroTile3.Size = new System.Drawing.Size(187, 87);
-            this.metroTile3.TabIndex = 27;
-            this.metroTile3.Text = "Incomplete Events";
-            this.metroTile3.UseSelectable = true;
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel3.Location = new System.Drawing.Point(23, 275);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(88, 19);
+            this.metroLabel3.TabIndex = 30;
+            this.metroLabel3.Text = "Total Events";
             // 
-            // metroTile2
+            // metroLabel1
             // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Location = new System.Drawing.Point(23, 267);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(187, 87);
-            this.metroTile2.TabIndex = 26;
-            this.metroTile2.Text = "Daily Events";
-            this.metroTile2.UseSelectable = true;
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel1.Location = new System.Drawing.Point(23, 154);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(130, 19);
+            this.metroLabel1.TabIndex = 28;
+            this.metroLabel1.Text = "Incomplete Events";
             // 
-            // metroTile1
+            // incompleteEvents
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Location = new System.Drawing.Point(23, 379);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(187, 87);
-            this.metroTile1.TabIndex = 25;
-            this.metroTile1.Text = "Total Events";
-            this.metroTile1.UseSelectable = true;
+            this.incompleteEvents.ActiveControl = null;
+            this.incompleteEvents.Location = new System.Drawing.Point(23, 176);
+            this.incompleteEvents.Name = "incompleteEvents";
+            this.incompleteEvents.Size = new System.Drawing.Size(187, 87);
+            this.incompleteEvents.TabIndex = 27;
+            this.incompleteEvents.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.incompleteEvents.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.incompleteEvents.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.incompleteEvents.UseSelectable = true;
+            // 
+            // totalEvents
+            // 
+            this.totalEvents.ActiveControl = null;
+            this.totalEvents.Location = new System.Drawing.Point(23, 297);
+            this.totalEvents.Name = "totalEvents";
+            this.totalEvents.Size = new System.Drawing.Size(187, 87);
+            this.totalEvents.TabIndex = 25;
+            this.totalEvents.Tag = "";
+            this.totalEvents.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalEvents.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.totalEvents.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.totalEvents.UseSelectable = true;
+            // 
+            // btnIou
+            // 
+            this.btnIou.Location = new System.Drawing.Point(62, 491);
+            this.btnIou.Name = "btnIou";
+            this.btnIou.Size = new System.Drawing.Size(102, 37);
+            this.btnIou.TabIndex = 32;
+            this.btnIou.Text = "Add Expences";
+            this.btnIou.UseSelectable = true;
+            // 
+            // reports
+            // 
+            this.reports.Location = new System.Drawing.Point(62, 394);
+            this.reports.Name = "reports";
+            this.reports.Size = new System.Drawing.Size(102, 37);
+            this.reports.TabIndex = 31;
+            this.reports.Text = "Event Report";
+            this.reports.UseSelectable = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(62, 443);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(102, 37);
+            this.metroButton1.TabIndex = 33;
+            this.metroButton1.Text = "Other Reports";
+            this.metroButton1.UseSelectable = true;
             // 
             // EventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.metroTile3);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnIou);
+            this.Controls.Add(this.reports);
+            this.Controls.Add(this.metroLabel3);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.incompleteEvents);
+            this.Controls.Add(this.totalEvents);
             this.Controls.Add(this.addEvent);
             this.Controls.Add(this.updateEvent);
             this.Controls.Add(this.deleteEvent);
@@ -305,8 +355,12 @@
         private MetroFramework.Controls.MetroLabel schCltName;
         private MetroFramework.Controls.MetroLabel schPrjName;
         private MetroFramework.Controls.MetroButton schHome;
-        private MetroFramework.Controls.MetroTile metroTile3;
-        private MetroFramework.Controls.MetroTile metroTile2;
-        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroTile incompleteEvents;
+        private MetroFramework.Controls.MetroTile totalEvents;
+        private MetroFramework.Controls.MetroButton btnIou;
+        private MetroFramework.Controls.MetroButton reports;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

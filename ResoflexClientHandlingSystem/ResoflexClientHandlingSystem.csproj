@@ -232,18 +232,6 @@
       <DependentUpon>ProjectProfileReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ClientForms\ClientReports\ProjectProfileSubReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectProfileSubReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ClientForms\ClientReports\SubReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SubReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="ClientForms\EmailClientForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -741,14 +729,6 @@
     <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProjectProfileReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileSubReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ProjectProfileSubReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClientForms\ClientReports\SubReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>SubReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>

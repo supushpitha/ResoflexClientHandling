@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.AdminForms;
+using ResoflexClientHandlingSystem.AdminForms.AdminReports;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
@@ -32,8 +33,7 @@ namespace ResoflexClientHandlingSystem
                 addUsers.Visible = false;
                 updateUsers.Visible = false;
                 reportbtn.Visible = false;
-                report1.Visible = false;
-
+            
             }
             else
             {
@@ -42,7 +42,7 @@ namespace ResoflexClientHandlingSystem
                     addUsers.Visible = false;
                     updateUsers.Visible = false;
                     reportbtn.Visible = false;
-                    report1.Visible = false;
+                    
                 }
 
                 profilebtn.Visible = true;
@@ -75,7 +75,7 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime, " +
-                    " u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id order by u.log_id DESC limit 20");
+                    " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id order by u.log_id DESC limit 20");
 
                 dt.Load(reader);
 
@@ -105,7 +105,7 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime, " +
-                    " u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and s.u_name LIKE'%" + metroTextBox1.Text.ToString()+"%' order by u.log_id DESC limit 20;");
+                    " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and s.u_name LIKE'%" + metroTextBox1.Text.ToString()+"%' order by u.log_id DESC limit 20;");
 
                 if (reader.HasRows)
                 {
@@ -114,6 +114,7 @@ namespace ResoflexClientHandlingSystem
                     table.Load(reader);
 
                     LogGrid.DataSource = table;
+                    reader.Close();
                 }
                 else
                 {
@@ -151,7 +152,7 @@ namespace ResoflexClientHandlingSystem
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
-                       +" u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '"+ dateTimefrom.Value.ToString("yyyy/MM/dd") +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "'order by u.log_id DESC limit 20;");
+                       +" u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '"+ dateTimefrom.Value.ToString("yyyy/MM/dd") +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "'order by u.log_id DESC limit 20;");
 
                     if (reader.HasRows)
                     {
@@ -159,6 +160,7 @@ namespace ResoflexClientHandlingSystem
 
                         table.Load(reader);
                         LogGrid.DataSource = table;
+                        reader.Close();
                     }
                     else
                     {
@@ -187,12 +189,13 @@ namespace ResoflexClientHandlingSystem
             {
                 MessageBox.Show("Invalid 'from' date");
             }
-            else
+            else if(!String.IsNullOrWhiteSpace(metroTextBox1.Text))
             {
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
-                       + " u.detail as Detail, u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "'order by u.log_id DESC limit 20;");
+                       + " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "' and" +
+                       " s.u_name LIKE'%" + metroTextBox1.Text.ToString() + "%' order by u.log_id DESC limit 20;");
 
                     if (reader.HasRows)
                     {
@@ -200,6 +203,32 @@ namespace ResoflexClientHandlingSystem
 
                         table.Load(reader);
                         LogGrid.DataSource = table;
+                        reader.Close();
+                    }
+                    else
+                    {
+                        reader.Close();
+                    }
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Invalid data!\n" + exc.StackTrace, "User Log finder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                try
+                {
+                    MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
+                       + " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "' order by u.log_id DESC limit 20;");
+
+                    if (reader.HasRows)
+                    {
+                        System.Data.DataTable table = new System.Data.DataTable();
+
+                        table.Load(reader);
+                        LogGrid.DataSource = table;
+                        reader.Close();
                     }
                     else
                     {
@@ -245,6 +274,12 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void reportbtn_Click(object sender, EventArgs e)
+        {
+            Report rep = new Report();
+            rep.Show();
+        }
+
+        private void LogGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }

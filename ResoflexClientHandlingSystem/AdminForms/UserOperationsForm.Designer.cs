@@ -67,7 +67,8 @@
             this.OpGrid.EnableHeadersVisualStyles = false;
             this.OpGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.OpGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.OpGrid.Location = new System.Drawing.Point(6, 63);
+            this.OpGrid.Location = new System.Drawing.Point(23, 51);
+            this.OpGrid.MinimumSize = new System.Drawing.Size(539, 437);
             this.OpGrid.Name = "OpGrid";
             this.OpGrid.ReadOnly = true;
             this.OpGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -81,17 +82,18 @@
             this.OpGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.OpGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.OpGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.OpGrid.Size = new System.Drawing.Size(333, 274);
+            this.OpGrid.Size = new System.Drawing.Size(539, 437);
             this.OpGrid.TabIndex = 0;
+            this.OpGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OpGrid_CellContentClick);
             this.OpGrid.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.OpGrid_CellDoubleClick);
             // 
             // UserOperationsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 350);
+            this.ClientSize = new System.Drawing.Size(575, 500);
             this.Controls.Add(this.OpGrid);
-            this.MinimumSize = new System.Drawing.Size(350, 350);
+            this.MinimumSize = new System.Drawing.Size(575, 500);
             this.Name = "UserOperationsForm";
             this.Text = "User Operations";
             this.Load += new System.EventHandler(this.UserOperationsForm_Load);

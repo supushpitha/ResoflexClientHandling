@@ -189,6 +189,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ClientForms\ClientReports\ProjectProfileReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -679,6 +685,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientReports\ClientReportForm.resx">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileMainReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

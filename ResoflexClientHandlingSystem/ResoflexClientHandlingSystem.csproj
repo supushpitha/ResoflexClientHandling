@@ -178,11 +178,28 @@
     <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientForms\ClientReportForm.cs">
+    <Compile Include="ClientForms\ClientReports\ClientReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientForms\ClientReportForm.Designer.cs">
+    <Compile Include="ClientForms\ClientReports\ClientReportForm.Designer.cs">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileSubReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileSubReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClientForms\EmailClientForm.cs">
       <SubType>Form</SubType>
@@ -596,8 +613,16 @@
     <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientForms\ClientReportForm.resx">
+    <EmbeddedResource Include="ClientForms\ClientReports\ClientReportForm.resx">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileSubReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileSubReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>
@@ -769,6 +794,17 @@
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsc">
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjectProfileDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xss">
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsc">
       <DependentUpon>ProjExpDataSet.xsd</DependentUpon>

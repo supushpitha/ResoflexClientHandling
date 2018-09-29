@@ -153,10 +153,11 @@ namespace ResoflexClientHandlingSystem.ClientForms
                         if (!techReader.IsClosed)
                             techReader.Close();
                     
-                    ProjectProfileReport rpt = new ProjectProfileReport();
+                    ProjectProfileMainReport rpt = new ProjectProfileMainReport();
+                    //ProjectProfileReport subRpt = new ProjectProfileReport();
 
                     rpt.Database.Tables["projectDataSet"].SetDataSource(projectTable);
-                    rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
+                    //rpt.Database.Tables["eventDataSet"].SetDataSource(eventTable);
                     rpt.Database.Tables["technicianDataSet"].SetDataSource(technicianTable);
 
                     clientReportViewer.ReportSource = null;

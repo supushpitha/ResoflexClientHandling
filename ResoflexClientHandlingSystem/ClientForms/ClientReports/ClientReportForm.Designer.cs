@@ -71,6 +71,9 @@
             // 
             // reportPanel
             // 
+            this.reportPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.reportPanel.Controls.Add(this.clientReportViewer);
             this.reportPanel.HorizontalScrollbarBarColor = true;
             this.reportPanel.HorizontalScrollbarHighlightOnWheel = false;
@@ -197,6 +200,7 @@
             this.Controls.Add(this.reportPanel);
             this.Controls.Add(this.fullReportBtn);
             this.Controls.Add(this.projectProfileBtn);
+            this.MinimumSize = new System.Drawing.Size(1280, 720);
             this.Name = "ClientReportForm";
             this.Text = "Client Reports";
             this.Load += new System.EventHandler(this.ClientReportForm_Load);

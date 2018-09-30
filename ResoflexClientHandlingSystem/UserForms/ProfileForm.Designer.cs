@@ -32,7 +32,6 @@
             this.txtUname = new MetroFramework.Controls.MetroTextBox();
             this.txtCurPass = new MetroFramework.Controls.MetroTextBox();
             this.txtConPass = new MetroFramework.Controls.MetroTextBox();
-            this.metroLink1 = new MetroFramework.Controls.MetroLink();
             this.metroLink2 = new MetroFramework.Controls.MetroLink();
             this.metroLink3 = new MetroFramework.Controls.MetroLink();
             this.metroLink4 = new MetroFramework.Controls.MetroLink();
@@ -40,6 +39,7 @@
             this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.metroLink6 = new MetroFramework.Controls.MetroLink();
             this.txtPass = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.SuspendLayout();
             // 
             // metroButton1
@@ -158,17 +158,6 @@
             this.txtConPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtConPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
-            // metroLink1
-            // 
-            this.metroLink1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.metroLink1.Location = new System.Drawing.Point(238, 100);
-            this.metroLink1.Name = "metroLink1";
-            this.metroLink1.Size = new System.Drawing.Size(141, 30);
-            this.metroLink1.TabIndex = 7;
-            this.metroLink1.UseSelectable = true;
-            // 
             // metroLink2
             // 
             this.metroLink2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -282,11 +271,22 @@
             this.txtPass.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.txtPass.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
             // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(238, 107);
+            this.metroLabel1.MinimumSize = new System.Drawing.Size(140, 23);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(140, 23);
+            this.metroLabel1.TabIndex = 16;
+            this.metroLabel1.WrapToLine = true;
+            // 
             // ProfileForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 488);
+            this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.metroLink6);
             this.Controls.Add(this.txtPass);
             this.Controls.Add(this.metroButton2);
@@ -294,7 +294,6 @@
             this.Controls.Add(this.metroLink4);
             this.Controls.Add(this.metroLink3);
             this.Controls.Add(this.metroLink2);
-            this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.txtConPass);
             this.Controls.Add(this.txtCurPass);
             this.Controls.Add(this.txtUname);
@@ -305,6 +304,7 @@
             this.Text = "My Profile";
             this.Load += new System.EventHandler(this.ProfileForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -313,7 +313,6 @@
         private MetroFramework.Controls.MetroTextBox txtUname;
         private MetroFramework.Controls.MetroTextBox txtCurPass;
         private MetroFramework.Controls.MetroTextBox txtConPass;
-        private MetroFramework.Controls.MetroLink metroLink1;
         private MetroFramework.Controls.MetroLink metroLink2;
         private MetroFramework.Controls.MetroLink metroLink3;
         private MetroFramework.Controls.MetroLink metroLink4;
@@ -321,5 +320,6 @@
         private MetroFramework.Controls.MetroButton metroButton2;
         private MetroFramework.Controls.MetroLink metroLink6;
         private MetroFramework.Controls.MetroTextBox txtPass;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
     }
 }

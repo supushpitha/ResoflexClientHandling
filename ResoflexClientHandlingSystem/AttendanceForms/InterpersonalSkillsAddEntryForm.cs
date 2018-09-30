@@ -288,5 +288,10 @@ namespace ResoflexClientHandlingSystem.AttendanceForms
             onlyNumbers(sender, e);
             LeadershipTxtbox.MaxLength = 2;
         }
+
+        private void interpersonalSkillsDateTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

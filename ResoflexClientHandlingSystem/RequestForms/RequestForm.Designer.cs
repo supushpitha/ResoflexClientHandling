@@ -69,6 +69,7 @@
             this.addReqNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.errorProviderReq = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).BeginInit();
@@ -585,11 +586,24 @@
             this.metroLabel9.Text = "To Start/End Developing Change Requests, Click The Row Header of Related Request";
             this.metroLabel9.UseStyleColors = true;
             // 
+            // metroButton1
+            // 
+            this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.metroButton1.Location = new System.Drawing.Point(23, 302);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(142, 23);
+            this.metroButton1.TabIndex = 32;
+            this.metroButton1.Text = "Change Request Reports";
+            this.metroButton1.UseCustomBackColor = true;
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1675, 833);
+            this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.addNewClientReqBtn);
             this.Controls.Add(this.addClientReqImportCheckBox);
@@ -673,5 +687,6 @@
         private System.Windows.Forms.NotifyIcon addReqNotify;
         private System.Windows.Forms.ErrorProvider errorProviderReq;
         private MetroFramework.Controls.MetroLabel metroLabel9;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

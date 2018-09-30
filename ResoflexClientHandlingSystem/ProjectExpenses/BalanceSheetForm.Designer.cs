@@ -33,21 +33,21 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.exp_grid_box = new MetroFramework.Controls.MetroGrid();
-            this.metroTile1 = new MetroFramework.Controls.MetroTile();
-            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.totInTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.totOutTile = new MetroFramework.Controls.MetroTile();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
-            this.metroProgressSpinner1 = new MetroFramework.Controls.MetroProgressSpinner();
-            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.getReportBtn = new MetroFramework.Controls.MetroButton();
             this.headInTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.addNewInBtn = new MetroFramework.Controls.MetroButton();
             this.errorProviderBalance = new System.Windows.Forms.ErrorProvider(this.components);
+            this.curBalTile = new MetroFramework.Controls.MetroTile();
+            this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             ((System.ComponentModel.ISupportInitialize)(this.exp_grid_box)).BeginInit();
-            this.metroTile1.SuspendLayout();
-            this.metroTile2.SuspendLayout();
+            this.totInTile.SuspendLayout();
+            this.totOutTile.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderBalance)).BeginInit();
+            this.curBalTile.SuspendLayout();
             this.SuspendLayout();
             // 
             // exp_grid_box
@@ -94,31 +94,18 @@
             this.exp_grid_box.Size = new System.Drawing.Size(1034, 329);
             this.exp_grid_box.TabIndex = 0;
             // 
-            // metroTile1
+            // totInTile
             // 
-            this.metroTile1.ActiveControl = null;
-            this.metroTile1.Controls.Add(this.metroLabel1);
-            this.metroTile1.Location = new System.Drawing.Point(24, 64);
-            this.metroTile1.Name = "metroTile1";
-            this.metroTile1.Size = new System.Drawing.Size(276, 97);
-            this.metroTile1.TabIndex = 1;
-            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile1.UseSelectable = true;
-            // 
-            // metroTile2
-            // 
-            this.metroTile2.ActiveControl = null;
-            this.metroTile2.Controls.Add(this.metroLabel2);
-            this.metroTile2.Location = new System.Drawing.Point(306, 64);
-            this.metroTile2.Name = "metroTile2";
-            this.metroTile2.Size = new System.Drawing.Size(276, 97);
-            this.metroTile2.TabIndex = 2;
-            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
-            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
-            this.metroTile2.UseSelectable = true;
+            this.totInTile.ActiveControl = null;
+            this.totInTile.Controls.Add(this.metroLabel1);
+            this.totInTile.Location = new System.Drawing.Point(24, 64);
+            this.totInTile.Name = "totInTile";
+            this.totInTile.Size = new System.Drawing.Size(276, 97);
+            this.totInTile.TabIndex = 1;
+            this.totInTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totInTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.totInTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.totInTile.UseSelectable = true;
             // 
             // metroLabel1
             // 
@@ -130,6 +117,19 @@
             this.metroLabel1.TabIndex = 0;
             this.metroLabel1.Text = "Total In";
             // 
+            // totOutTile
+            // 
+            this.totOutTile.ActiveControl = null;
+            this.totOutTile.Controls.Add(this.metroLabel2);
+            this.totOutTile.Location = new System.Drawing.Point(306, 64);
+            this.totOutTile.Name = "totOutTile";
+            this.totOutTile.Size = new System.Drawing.Size(276, 97);
+            this.totOutTile.TabIndex = 2;
+            this.totOutTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totOutTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.totOutTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.totOutTile.UseSelectable = true;
+            // 
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
@@ -139,38 +139,6 @@
             this.metroLabel2.Size = new System.Drawing.Size(66, 19);
             this.metroLabel2.TabIndex = 1;
             this.metroLabel2.Text = "Total Out";
-            // 
-            // metroProgressSpinner1
-            // 
-            this.metroProgressSpinner1.Location = new System.Drawing.Point(882, 64);
-            this.metroProgressSpinner1.Maximum = 100;
-            this.metroProgressSpinner1.Name = "metroProgressSpinner1";
-            this.metroProgressSpinner1.Size = new System.Drawing.Size(175, 175);
-            this.metroProgressSpinner1.TabIndex = 3;
-            this.metroProgressSpinner1.UseSelectable = true;
-            this.metroProgressSpinner1.Value = 75;
-            // 
-            // metroLabel3
-            // 
-            this.metroLabel3.AutoSize = true;
-            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel3.Location = new System.Drawing.Point(891, 242);
-            this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(98, 19);
-            this.metroLabel3.TabIndex = 4;
-            this.metroLabel3.Text = "Compared to";
-            this.metroLabel3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // metroLabel4
-            // 
-            this.metroLabel4.AutoSize = true;
-            this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel4.Location = new System.Drawing.Point(891, 261);
-            this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(166, 19);
-            this.metroLabel4.TabIndex = 5;
-            this.metroLabel4.Text = "Last Month End Balance";
-            this.metroLabel4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // getReportBtn
             // 
@@ -196,7 +164,7 @@
             this.headInTxtBox.CustomButton.UseSelectable = true;
             this.headInTxtBox.CustomButton.Visible = false;
             this.headInTxtBox.Lines = new string[0];
-            this.headInTxtBox.Location = new System.Drawing.Point(579, 257);
+            this.headInTxtBox.Location = new System.Drawing.Point(23, 319);
             this.headInTxtBox.MaxLength = 32767;
             this.headInTxtBox.Name = "headInTxtBox";
             this.headInTxtBox.PasswordChar = '\0';
@@ -217,7 +185,7 @@
             // 
             // addNewInBtn
             // 
-            this.addNewInBtn.Location = new System.Drawing.Point(778, 257);
+            this.addNewInBtn.Location = new System.Drawing.Point(222, 319);
             this.addNewInBtn.Name = "addNewInBtn";
             this.addNewInBtn.Size = new System.Drawing.Size(75, 23);
             this.addNewInBtn.TabIndex = 8;
@@ -228,47 +196,68 @@
             // 
             this.errorProviderBalance.ContainerControl = this;
             // 
+            // curBalTile
+            // 
+            this.curBalTile.ActiveControl = null;
+            this.curBalTile.Controls.Add(this.metroLabel3);
+            this.curBalTile.Location = new System.Drawing.Point(780, 64);
+            this.curBalTile.Name = "curBalTile";
+            this.curBalTile.Size = new System.Drawing.Size(276, 97);
+            this.curBalTile.TabIndex = 9;
+            this.curBalTile.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.curBalTile.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.curBalTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.curBalTile.UseSelectable = true;
+            // 
+            // metroLabel3
+            // 
+            this.metroLabel3.AutoSize = true;
+            this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Regular;
+            this.metroLabel3.Location = new System.Drawing.Point(3, 75);
+            this.metroLabel3.Name = "metroLabel3";
+            this.metroLabel3.Size = new System.Drawing.Size(106, 19);
+            this.metroLabel3.TabIndex = 1;
+            this.metroLabel3.Text = "Current Balance";
+            // 
             // BalanceSheetForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1080, 700);
+            this.Controls.Add(this.curBalTile);
             this.Controls.Add(this.addNewInBtn);
             this.Controls.Add(this.headInTxtBox);
             this.Controls.Add(this.getReportBtn);
-            this.Controls.Add(this.metroLabel4);
-            this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroProgressSpinner1);
-            this.Controls.Add(this.metroTile2);
-            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.totOutTile);
+            this.Controls.Add(this.totInTile);
             this.Controls.Add(this.exp_grid_box);
             this.Name = "BalanceSheetForm";
             this.Text = "Balance Sheet";
             this.Load += new System.EventHandler(this.BalanceSheetForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.exp_grid_box)).EndInit();
-            this.metroTile1.ResumeLayout(false);
-            this.metroTile1.PerformLayout();
-            this.metroTile2.ResumeLayout(false);
-            this.metroTile2.PerformLayout();
+            this.totInTile.ResumeLayout(false);
+            this.totInTile.PerformLayout();
+            this.totOutTile.ResumeLayout(false);
+            this.totOutTile.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderBalance)).EndInit();
+            this.curBalTile.ResumeLayout(false);
+            this.curBalTile.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private MetroFramework.Controls.MetroGrid exp_grid_box;
-        private MetroFramework.Controls.MetroTile metroTile1;
-        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroTile totInTile;
+        private MetroFramework.Controls.MetroTile totOutTile;
         private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel2;
-        private MetroFramework.Controls.MetroProgressSpinner metroProgressSpinner1;
-        private MetroFramework.Controls.MetroLabel metroLabel3;
-        private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroButton getReportBtn;
         private MetroFramework.Controls.MetroTextBox headInTxtBox;
         private MetroFramework.Controls.MetroButton addNewInBtn;
         private System.Windows.Forms.ErrorProvider errorProviderBalance;
+        private MetroFramework.Controls.MetroTile curBalTile;
+        private MetroFramework.Controls.MetroLabel metroLabel3;
     }
 }

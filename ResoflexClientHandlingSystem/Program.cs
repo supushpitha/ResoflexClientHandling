@@ -1,6 +1,7 @@
 ﻿using ResoflexClientHandlingSystem.AdminForms.AdminReports;
 using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.RequestForms;
+using ResoflexClientHandlingSystem.RequestForms.RequestReports;
 using System;
 using System.Collections.Generic;
 using System.Linq;

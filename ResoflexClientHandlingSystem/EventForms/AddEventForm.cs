@@ -359,13 +359,23 @@ namespace ResoflexClientHandlingSystem
 
         public void validation(object sender, EventArgs e)
         {
+            DateTime to = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
+
             if (!Validation.isEmpty(todoList.Text))
             {
                 if (!Validation.isEmpty(meals.Text))
                 {
                     if (!Validation.isDataTableEmpty(engGrid))
                     {
-                        addEvent();
+                        if (to > from)
+                        {
+                            addEvent();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please check the date selection!", "Error");
+                        }
                     }
                     else
                     {
@@ -429,7 +439,7 @@ namespace ResoflexClientHandlingSystem
 
             foreach (DataRow dr in feedbackGrid.Rows)
             {
-                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString()));
+                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4]));
             }
 
             foreach (DataRow dr in engGrid.Rows)
@@ -560,6 +570,37 @@ namespace ResoflexClientHandlingSystem
 
                 addExpFrm.Show();
             }*/
+        }
+
+        private void demo_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "Train the newly added system";
+            checkList.Text = "Check for rules and regulations";
+            meals.Text = "Provided";
+            overFeedback.Text = "Required work was well done";
+            other.Text = "None";
+            eventTask.Text = "Training the system";
+            time.Text = "14.5";
+            eventStartDate.Text = "2018-10-18";
+            eventEndDate.Text = "2018-10-20";
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "";
+            checkList.Text = "";
+            meals.Text = "";
+            overFeedback.Text = "";
+            other.Text = "";
+            eventTask.Text = "";
+            time.Text = "";
+            eventStartDate.Text = "";
+            eventEndDate.Text = "";
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

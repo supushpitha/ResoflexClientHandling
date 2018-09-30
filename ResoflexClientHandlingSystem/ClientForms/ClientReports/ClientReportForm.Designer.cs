@@ -116,9 +116,9 @@
             this.metroLabel1.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel1.Location = new System.Drawing.Point(23, 102);
             this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(197, 25);
+            this.metroLabel1.Size = new System.Drawing.Size(88, 25);
             this.metroLabel1.TabIndex = 6;
-            this.metroLabel1.Text = "Project Profile Report";
+            this.metroLabel1.Text = "By Client";
             // 
             // horizontalLineLbl
             // 
@@ -179,9 +179,9 @@
             this.metroLabel4.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel4.Location = new System.Drawing.Point(23, 291);
             this.metroLabel4.Name = "metroLabel4";
-            this.metroLabel4.Size = new System.Drawing.Size(185, 25);
+            this.metroLabel4.Size = new System.Drawing.Size(79, 25);
             this.metroLabel4.TabIndex = 13;
-            this.metroLabel4.Text = "Full Report Between";
+            this.metroLabel4.Text = "By Date";
             // 
             // ClientReportForm
             // 

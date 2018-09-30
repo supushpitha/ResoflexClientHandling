@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReqRepDataSet" targetNamespace="http://tempuri.org/ReqRepDataSet.xsd" xmlns:mstns="http://tempuri.org/ReqRepDataSet.xsd" xmlns="http://tempuri.org/ReqRepDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReqRepDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReqRepDataSet" msprop:Generator_UserDSName="ReqRepDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="ChangeReqTable" msprop:Generator_TableClassName="ChangeReqTableDataTable" msprop:Generator_TableVarName="tableChangeReqTable" msprop:Generator_TablePropName="ChangeReqTable" msprop:Generator_RowDeletingName="ChangeReqTableRowDeleting" msprop:Generator_RowChangingName="ChangeReqTableRowChanging" msprop:Generator_RowEvHandlerName="ChangeReqTableRowChangeEventHandler" msprop:Generator_RowDeletedName="ChangeReqTableRowDeleted" msprop:Generator_UserTableName="ChangeReqTable" msprop:Generator_RowChangedName="ChangeReqTableRowChanged" msprop:Generator_RowEvArgName="ChangeReqTableRowChangeEvent" msprop:Generator_RowClassName="ChangeReqTableRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Project" msprop:Generator_ColumnVarNameInTable="columnProject" msprop:Generator_ColumnPropNameInRow="Project" msprop:Generator_ColumnPropNameInTable="ProjectColumn" msprop:Generator_UserColumnName="Project" type="xs:string" minOccurs="0" />
+              <xs:element name="Client" msprop:Generator_ColumnVarNameInTable="columnClient" msprop:Generator_ColumnPropNameInRow="Client" msprop:Generator_ColumnPropNameInTable="ClientColumn" msprop:Generator_UserColumnName="Client" type="xs:string" minOccurs="0" />
+              <xs:element name="Request" msprop:Generator_ColumnVarNameInTable="columnRequest" msprop:Generator_ColumnPropNameInRow="Request" msprop:Generator_ColumnPropNameInTable="RequestColumn" msprop:Generator_UserColumnName="Request" type="xs:string" minOccurs="0" />
+              <xs:element name="Added" msprop:Generator_ColumnVarNameInTable="columnAdded" msprop:Generator_ColumnPropNameInRow="Added" msprop:Generator_ColumnPropNameInTable="AddedColumn" msprop:Generator_UserColumnName="Added" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Started" msprop:Generator_ColumnVarNameInTable="columnStarted" msprop:Generator_ColumnPropNameInRow="Started" msprop:Generator_ColumnPropNameInTable="StartedColumn" msprop:Generator_UserColumnName="Started" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Ended" msprop:Generator_ColumnVarNameInTable="columnEnded" msprop:Generator_ColumnPropNameInRow="Ended" msprop:Generator_ColumnPropNameInTable="EndedColumn" msprop:Generator_UserColumnName="Ended" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Dev_Time" msprop:Generator_ColumnVarNameInTable="columnDev_Time" msprop:Generator_ColumnPropNameInRow="Dev_Time" msprop:Generator_ColumnPropNameInTable="Dev_TimeColumn" msprop:Generator_UserColumnName="Dev_Time" type="xs:duration" minOccurs="0" />
+              <xs:element name="Perm_Granted_By" msprop:Generator_ColumnVarNameInTable="columnPerm_Granted_By" msprop:Generator_ColumnPropNameInRow="Perm_Granted_By" msprop:Generator_ColumnPropNameInTable="Perm_Granted_ByColumn" msprop:Generator_UserColumnName="Perm_Granted_By" type="xs:string" minOccurs="0" />
+              <xs:element name="Developer" msprop:Generator_ColumnVarNameInTable="columnDeveloper" msprop:Generator_ColumnPropNameInRow="Developer" msprop:Generator_ColumnPropNameInTable="DeveloperColumn" msprop:Generator_UserColumnName="Developer" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

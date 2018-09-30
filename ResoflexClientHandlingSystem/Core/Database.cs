@@ -773,7 +773,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
+                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", perm_by_id=" + Userglobals.uid + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
             }
             catch (Exception exp)
             {
@@ -831,7 +831,7 @@ namespace ResoflexClientHandlingSystem.Core
                         int esi = reader.GetInt16("event_staff_id");
                         reader.Close();
 
-                        DBConnection.updateDB("insert into event_technician_task (event_tech_id, task) values (" + esi + ", '" + et.Task + "');");
+                        DBConnection.updateDB("insert into event_technician_task (event_tech_id, task, man_hours) values (" + esi + ", '" + et.Task + "', " + et.ManHours + ");");
                     }
 
                 }

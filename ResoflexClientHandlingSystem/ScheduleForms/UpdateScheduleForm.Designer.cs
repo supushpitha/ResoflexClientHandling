@@ -375,6 +375,7 @@
             this.schCancel.TabIndex = 32;
             this.schCancel.Text = "Cancel";
             this.schCancel.UseSelectable = true;
+            this.schCancel.Click += new System.EventHandler(this.schCancel_Click);
             // 
             // schReset
             // 
@@ -393,7 +394,7 @@
             this.schSave.Name = "schSave";
             this.schSave.Size = new System.Drawing.Size(115, 23);
             this.schSave.TabIndex = 29;
-            this.schSave.Text = "Save";
+            this.schSave.Text = "Save Updates";
             this.schSave.UseSelectable = true;
             this.schSave.Click += new System.EventHandler(this.validation);
             // 
@@ -405,9 +406,9 @@
             this.metroLabel3.FontWeight = MetroFramework.MetroLabelWeight.Bold;
             this.metroLabel3.Location = new System.Drawing.Point(486, 18);
             this.metroLabel3.Name = "metroLabel3";
-            this.metroLabel3.Size = new System.Drawing.Size(156, 25);
+            this.metroLabel3.Size = new System.Drawing.Size(135, 25);
             this.metroLabel3.TabIndex = 5;
-            this.metroLabel3.Text = "Update Schedule";
+            this.metroLabel3.Text = "View Schedule";
             // 
             // checkList
             // 

@@ -116,7 +116,7 @@ namespace ResoflexClientHandlingSystem
 
             string projName = projectName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name" +
                          " from schedule s, project p, visit_type vt " +
                          " where(s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.proj_name like '%" + projName + "%') " +
                          " order by s.sch_no DESC limit 10;";
@@ -144,7 +144,7 @@ namespace ResoflexClientHandlingSystem
 
             string cName = clientName.Text.ToString();
 
-            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs" +
+            string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name" +
                          " from schedule s, project p, visit_type vt, client c " +
                          " where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%" + cName + "%') " +
                          " order s.sch_no DESC limit 10;";
@@ -255,7 +255,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs " +
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name " +
                                                             "from schedule s, project p, visit_type vt " +
                                                             "where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) " +
                                                             " order by s.sch_no DESC limit 10;");
@@ -367,6 +367,23 @@ namespace ResoflexClientHandlingSystem
 
             ScheduleReportsForm srf = new ScheduleReportsForm(proj_id, sch_no);
             srf.ShowDialog();
+        }
+
+        private void btnIou_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = scheduleGrid.CurrentRow;
+
+            CashIssuingForm cash = new CashIssuingForm(int.Parse(row.Cells[1].Value.ToString()),
+                int.Parse(row.Cells[0].Value.ToString()),
+                row.Cells[3].Value.ToString(),
+                row.Cells[13].Value.ToString(),
+                Convert.ToDateTime(row.Cells[5].Value.ToString()),
+                Convert.ToDateTime(row.Cells[6].Value.ToString()),
+                row.Cells[9].Value.ToString(),
+                row.Cells[10].Value.ToString(),
+                row.Cells[4].Value.ToString());
+
+            cash.ShowDialog();
         }
     }
 }

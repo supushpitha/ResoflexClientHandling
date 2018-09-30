@@ -58,8 +58,7 @@ namespace ResoflexClientHandlingSystem
                         if (!reader.IsClosed)
                             reader.Close();
 
-                    //MonthlyProjectExpReport rpt = new MonthlyProjectExpReport();
-                    ProjectProfileTestTwoReport rpt = new ProjectProfileTestTwoReport();
+                    MonthlyProjectExpReport rpt = new MonthlyProjectExpReport();
 
                     rpt.Database.Tables["ProjExp"].SetDataSource(table);
 
@@ -91,6 +90,11 @@ namespace ResoflexClientHandlingSystem
                          "p.client_id=c.client_id LEFT join event e on e.proj_id=p.proj_id LEFT join exp_detail_event ex on ex.proj_id=.p.proj_id where c.client_id=2 GROUP BY p.proj_id;";
             
             testReport(qry);
+        }
+
+        private void GenarateReportForm_Shown(object sender, EventArgs e)
+        {
+            crvProjExpMainViewer.Focus();
         }
     }
 }

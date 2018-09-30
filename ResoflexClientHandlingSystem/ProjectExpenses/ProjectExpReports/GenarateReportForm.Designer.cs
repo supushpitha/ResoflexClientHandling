@@ -31,29 +31,34 @@
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.reportPanel = new MetroFramework.Controls.MetroPanel();
             this.crvProjExpMainViewer = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.metroButton2 = new MetroFramework.Controls.MetroButton();
             this.reportPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // metroButton1
             // 
-            this.metroButton1.Location = new System.Drawing.Point(23, 142);
+            this.metroButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.metroButton1.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton1.Location = new System.Drawing.Point(23, 111);
             this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(154, 23);
+            this.metroButton1.Size = new System.Drawing.Size(182, 34);
             this.metroButton1.TabIndex = 0;
-            this.metroButton1.Text = "Test Btn 1";
+            this.metroButton1.Text = "Event Expense Full Report";
+            this.metroButton1.UseCustomBackColor = true;
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
             // reportPanel
             // 
+            this.reportPanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.reportPanel.Controls.Add(this.crvProjExpMainViewer);
             this.reportPanel.HorizontalScrollbarBarColor = true;
             this.reportPanel.HorizontalScrollbarHighlightOnWheel = false;
             this.reportPanel.HorizontalScrollbarSize = 10;
-            this.reportPanel.Location = new System.Drawing.Point(289, 28);
+            this.reportPanel.Location = new System.Drawing.Point(224, 63);
             this.reportPanel.Name = "reportPanel";
-            this.reportPanel.Size = new System.Drawing.Size(959, 687);
+            this.reportPanel.Size = new System.Drawing.Size(1024, 652);
             this.reportPanel.TabIndex = 1;
             this.reportPanel.VerticalScrollbarBarColor = true;
             this.reportPanel.VerticalScrollbarHighlightOnWheel = false;
@@ -67,31 +72,21 @@
             this.crvProjExpMainViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crvProjExpMainViewer.Location = new System.Drawing.Point(0, 0);
             this.crvProjExpMainViewer.Name = "crvProjExpMainViewer";
-            this.crvProjExpMainViewer.Size = new System.Drawing.Size(959, 687);
+            this.crvProjExpMainViewer.Size = new System.Drawing.Size(1024, 652);
             this.crvProjExpMainViewer.TabIndex = 2;
             this.crvProjExpMainViewer.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
-            // 
-            // metroButton2
-            // 
-            this.metroButton2.Location = new System.Drawing.Point(24, 172);
-            this.metroButton2.Name = "metroButton2";
-            this.metroButton2.Size = new System.Drawing.Size(153, 23);
-            this.metroButton2.TabIndex = 2;
-            this.metroButton2.Text = "Test Btn 2";
-            this.metroButton2.UseSelectable = true;
-            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // GenarateReportForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1271, 738);
-            this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.reportPanel);
             this.Controls.Add(this.metroButton1);
             this.Name = "GenarateReportForm";
             this.Text = "Get Reports";
             this.Load += new System.EventHandler(this.GenarateReportForm_Load);
+            this.Shown += new System.EventHandler(this.GenarateReportForm_Shown);
             this.reportPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -102,6 +97,5 @@
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroPanel reportPanel;
         private CrystalDecisions.Windows.Forms.CrystalReportViewer crvProjExpMainViewer;
-        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.RequestForms.RequestReports;
 using ResoflexClientHandlingSystem.Role;
 using System;
 using System.Collections.Generic;
@@ -44,9 +45,6 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
-            //fillClientCmbBoxes();
-            //fillProjectCmbBox();
-
             if (!projName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 0;
@@ -309,7 +307,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("Something went wrong!\n" + exc, "Save Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something went wrong!", "Save Change Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -359,7 +357,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 catch (Exception exc)
                 {
-                    MessageBox.Show("Something went wrong!\n" + exc, "Save Client Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Something went wrong!", "Save Client Request", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -912,7 +910,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                             }
                             else
                             {
-                                DialogResult result = MessageBox.Show("Start coding this change request NOW?\n" + uid, "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                DialogResult result = MessageBox.Show("Start coding this change request NOW?", "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                                 switch (result)
                                 {
@@ -984,7 +982,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                         }
                         else
                         {
-                            MessageBox.Show("This Change Request is already Developed!\n" + uid, "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                            MessageBox.Show("This Change Request is already Developed!", "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                         }
                     }
                 }
@@ -1065,6 +1063,13 @@ namespace ResoflexClientHandlingSystem.RequestForms
             changeGridRowColors("Change");
             newReqTile.Visible = false;
             markSeen();
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            RequestReportForm frm = new RequestReportForm();
+
+            frm.Show();
         }
     }
 }

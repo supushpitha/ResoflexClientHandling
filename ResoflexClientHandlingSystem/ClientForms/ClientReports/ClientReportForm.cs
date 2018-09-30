@@ -212,7 +212,7 @@ namespace ResoflexClientHandlingSystem.ClientForms
                     if (!techReader.IsClosed)
                         techReader.Close();
 
-                MessageBox.Show("Something went wrong!\n" + ex.Message + "\n" + ex.StackTrace, "Project Profile Report", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Something went wrong!", "Project Profile Report", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
                 clientCmbBox.SelectedItem = null;
                 clientReportViewer.Focus();

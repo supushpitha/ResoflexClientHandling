@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ResoflexClientHandlingSystem.UserForms;
 using System.Windows.Forms.DataVisualization.Charting;
+using ResoflexClientHandlingSystem.AttendanceForms.Reports;
 
 namespace ResoflexClientHandlingSystem
 {
@@ -772,6 +773,14 @@ namespace ResoflexClientHandlingSystem
         {
 
             staffAttendanceDataGrid.DataSource = searchEmployees();
+        }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            DataTable dt = (DataTable)staffAttendanceDataGrid.DataSource;
+
+            AttendanceReportViewerForm form = new AttendanceReportViewerForm(dt);
+            form.Show();
         }
     }
 }

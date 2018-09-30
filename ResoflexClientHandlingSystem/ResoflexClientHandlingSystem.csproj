@@ -191,6 +191,23 @@
     <Compile Include="AttendanceForms\RecordAttendanceForm.Designer.cs">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AttendanceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReportViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReportViewerForm.Designer.cs">
+      <DependentUpon>AttendanceReportViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AttendanceForms\StaffEvalutionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -732,6 +749,13 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\RecordAttendanceForm.resx">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AttendanceReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReportViewerForm.resx">
+      <DependentUpon>AttendanceReportViewerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\StaffEvalutionForm.resx">
       <DependentUpon>StaffEvalutionForm.cs</DependentUpon>

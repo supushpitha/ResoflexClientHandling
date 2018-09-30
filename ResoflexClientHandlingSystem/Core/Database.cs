@@ -26,7 +26,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Add client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         public static void addUsers(User user)
         {
             try
@@ -39,7 +39,7 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        
+
         public static void addLog(Role.UserLog log)
         {
             try
@@ -53,7 +53,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Logging in", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         public static void addOp(Role.UserOperation operation)
         {
             try
@@ -596,6 +596,13 @@ namespace ResoflexClientHandlingSystem.Core
                     DBConnection.updateDB("insert into schedule_technicians(sch_no, staff_id, proj_id) values (" + schedule.ScheduleId + ", " + s.StaffId + ", " + schedule.ProjectOfSchedule.ProjectID + ")");
                 }
 
+                foreach (var ary in schedule.ResoArray)
+                {
+                    Resource r = (Resource)ary;
+
+                    DBConnection.updateDB("insert into schedule_resources(sch_no, proj_id, resource_id, qty) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", " + r.ResourceId + ", " + r.TotalQty + ")");
+                }
+
                 return true;
 
             }
@@ -654,6 +661,54 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
+                return false;
+            }
+        }
+
+        //update reso
+        public static Boolean updateSchResource(Schedule schedule, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("update schedule_resources set qty = " + reso.TotalQty + " where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and resource_id = " + reso.ResourceId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //add reso
+        public static Boolean addSchResource(Schedule schedule, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into schedule_resources(sch_no, proj_id, resource_id, qty) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", " + reso.ResourceId + ", " + reso.TotalQty + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //remove reso (update)
+        public static Boolean removeSchResource(Schedule schedule, int reso_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from schedule_resources where proj_id = " + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + " and resource_id = " + reso_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
         }
@@ -781,6 +836,13 @@ namespace ResoflexClientHandlingSystem.Core
 
                 }
 
+                foreach (var ary in evnt.ResoArray)
+                {
+                    Resource r = (Resource)ary;
+
+                    DBConnection.updateDB("insert into event_resources(event_id, sch_no, proj_id, resource_id, qty) values (" + evnt.EventId + "," + evnt.ScheduleId.ScheduleId + ", " + evnt.EventProject.ProjectID + ", " + r.ResourceId + ", " + r.TotalQty + ")");
+                }
+
                 return true;
 
             }
@@ -866,8 +928,8 @@ namespace ResoflexClientHandlingSystem.Core
         public static void addOfficeExp(Role.OfficeExpenses exp)
         {
 
-            // try
-            // {
+             try
+            {
             String date = DateTime.Now.ToString("yyyy-MM-dd");
 
             String type = exp.ExpType;
@@ -879,15 +941,15 @@ namespace ResoflexClientHandlingSystem.Core
 
             DBConnection.updateDB("Insert into office_expenses (type, staff_id, date, Category, amount) values('" + type + "' , " + staff + " , '" + date + "' , '" + cat + "' , " + am + ");");
 
-            MessageBox.Show("Successfully added");
+            MessageBox.Show("Successfully added to Office Expenses", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
-            /*    }
+                }
 
                 catch (Exception)
                 {
                     MessageBox.Show("Something went wrong!","Add Expenses",MessageBoxButtons.OK,MessageBoxIcon.Error);
 
-                }*/
+                }
         }
 
         public static void addIou(OfficeIou i)
@@ -932,15 +994,20 @@ namespace ResoflexClientHandlingSystem.Core
         public static void addSalary(Role.Salary s)
         {
 
-            //try
-            //{            
+            try
+            {
 
 
-            DBConnection.updateDB("Insert into Salary(staff_id, basic_sal_amount, rate, hours, allowance, gross_sal, etf_epf_amount, net_sal) " +
-                "values" + "( " + s.Empid + " , " + s.BasicSalAmount + ", " + s.Rate + " , " + s.Hours.HoursWorked + ", " + s.Allowance + ", " + s.Gross + ", " + s.EtfEpf + ", " + s.Net + " );");
-            MessageBox.Show("Successfully added");
+                DBConnection.updateDB("Insert into Salary(staff_id, basic_sal_amount, allowance, etf_epf_amount, rate, hours, gross_sal, net_sal) " +
+                    "values" + "( " + s.Empid + " , " + s.BasicSalAmount + ", " + s.Allowance + " , " + s.EtfEpf + ", " + s.Rate + ", " + s.Hours.HoursWorked + ", " + s.Gross + ", " + s.Net + " );");
+                  MessageBox.Show("Successfully recorded", "Successfull",MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
 
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
         }
 
 
@@ -1104,15 +1171,51 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-        public static void acceptResetPass(UserNotification notifi)
+        //update event reso
+        public static Boolean updateEventResource(Event evnt, Resource reso)
         {
             try
             {
-                DBConnection.updateDB("UPDATE notification SET admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
+                DBConnection.updateDB("update event_resources set qty = " + reso.TotalQty + " where proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + " and resource_id = " + reso.ResourceId + ";");
+
+                return true;
             }
-            catch (Exception exp)
+            catch (Exception e)
             {
-                MessageBox.Show(exp.ToString());
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //add evnt reso
+        public static Boolean addEventResource(Event evnt, Resource reso)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into event_resources(event_id, sch_no, proj_id, resource_id, qty) values (" + evnt.EventId + "," + evnt.ScheduleId.ScheduleId + ", " + evnt.EventProject.ProjectID + ", " + reso.ResourceId + ", " + reso.TotalQty + ");");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
+
+        //remove event reso (update)
+        public static Boolean removeEventResource(Event evnt, int reso_id)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from event_resources where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + " and resource_id = " + reso_id + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
             }
         }
     }

@@ -20,11 +20,11 @@ namespace ResoflexClientHandlingSystem
         {
             InitializeComponent();
         }
-        
+
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
-           
+            
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
@@ -35,9 +35,12 @@ namespace ResoflexClientHandlingSystem
                 profilebtn.Text = Userglobals.uname;
                 login.Visible = false;
             }
-            
-            //notifications
 
+            notify();
+        }
+
+        public void notify()
+        {
             try
             {
                 if (Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
@@ -52,7 +55,7 @@ namespace ResoflexClientHandlingSystem
                 }
                 else if (!Userglobals.uname.Equals(""))
                 {
-                    MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id="+Userglobals.uid+"");
+                    MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id=" + Userglobals.uid + "");
 
                     while (reader2.Read())
                     {
@@ -147,6 +150,11 @@ namespace ResoflexClientHandlingSystem
             Login linfrm = new Login();
             linfrm.ShowDialog();
             this.Close();
+        }
+
+        private void Dashboard_Shown(object sender, EventArgs e)
+        {
+
         }
     }
 }

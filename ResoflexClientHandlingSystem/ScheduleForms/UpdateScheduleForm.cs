@@ -17,7 +17,8 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 {
     public partial class UpdateScheduleForm : MetroFramework.Forms.MetroForm
     {
-        DataTable engGrid = new DataTable();
+        private DataTable engGrid = new DataTable();
+        private DataTable resoTbl = new DataTable();
 
         private Schedule schedule;
 
@@ -53,6 +54,10 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             serviceEngCombo.DataSource = serviceEngDataSource();
             serviceEngCombo.ValueMember = "staff_id";
             serviceEngCombo.DisplayMember = "fullname";
+
+            schResoCombo.DataSource = scheduleResourcesSource();
+            schResoCombo.ValueMember = "resource_id";
+            schResoCombo.DisplayMember = "name";
 
             this.schedule = schedule;
             int proj_id = schedule.ProjectOfSchedule.ProjectID;
@@ -95,7 +100,31 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
 
             serviceEngGrid.DataSource = engGrid;
 
-            resoBox.Text = this.schedule.Resource.ToString();
+            //Getting all the resources
+            ArrayList reso = this.schedule.ResoArray;
+
+            resoTbl.Columns.Add("resource_id", typeof(int));
+            resoTbl.Columns.Add("name", typeof(string));
+            resoTbl.Columns.Add("qty", typeof(int));
+            resoTbl.PrimaryKey = new DataColumn[] { resoTbl.Columns["resource_id"] };
+
+            foreach (var item in reso)
+            {
+                DataRow row;
+                Resource r = (Resource)item;
+
+                row = resoTbl.NewRow();
+                row["resource_id"] = r.ResourceId;
+                row["name"] = r.Name;
+                row["qty"] = r.TotalQty;
+
+                resoTbl.Rows.Add(row);
+            }
+
+            resoGrid.DataSource = resoTbl;
+
+
+            //resoBox.Text = this.schedule.Resource.ToString();
             accomodation.Text = this.schedule.AccommodationMode.ToString();
             travelingMode.Text = this.schedule.TravelMode.ToString();
             meals.Text = this.schedule.Meals.ToString();
@@ -119,6 +148,19 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             dt.Load(prevSch);
 
             prevSch.Close();
+
+            return dt;
+        }
+
+        //resources datasource
+        public DataTable scheduleResourcesSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select resource_id, name from resource ");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
 
             return dt;
         }
@@ -220,71 +262,94 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             DataRow row;
             row = engGrid.NewRow();
             row["staff_id"] = staff_id;
-            row["fullname"] = serviceEngCombo.SelectedItem.ToString();
+            row["fullname"] = serviceEngCombo.Text.ToString();
 
-            MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
+            bool contain = false;
 
-            int count = 0;
-            double grade = 0;
-
-            while (reader.Read())
+            foreach (DataGridViewRow item in serviceEngGrid.Rows)
             {
-                string value = reader.GetString("feedback");
-
-                switch (value)
+                if ((int)row["staff_id"] == (int)item.Cells[0].Value)
                 {
-                    case "A":
-                        {
-                            grade += 5;
-                            count++;
-                            break;
-                        }
-
-                    case "B":
-                        {
-                            grade += 4;
-                            count++;
-                            break;
-                        }
-
-                    case "C":
-                        {
-                            grade += 3;
-                            count++;
-                            break;
-                        }
-
-                    case "D":
-                        {
-                            grade += 2;
-                            count++;
-                            break;
-                        }
-
-                    case "E":
-                        {
-                            grade += 1;
-                            count++;
-                            break;
-                        }
-
-                    case "None":
-                        {
-                            grade += 0;
-                            break;
-                        }
-
-                    default: break;
+                    contain = true;
                 }
             }
 
-            reader.Close();
-
-            if (grade / count < 2 && grade / count > 0)
+            if (!contain)
             {
-                DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure wyou want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
 
-                if (res == DialogResult.Yes)
+                int count = 0;
+                double grade = 0;
+
+                while (reader.Read())
+                {
+                    string value = reader.GetString("feedback");
+
+                    switch (value)
+                    {
+                        case "A":
+                            {
+                                grade += 5;
+                                count++;
+                                break;
+                            }
+
+                        case "B":
+                            {
+                                grade += 4;
+                                count++;
+                                break;
+                            }
+
+                        case "C":
+                            {
+                                grade += 3;
+                                count++;
+                                break;
+                            }
+
+                        case "D":
+                            {
+                                grade += 2;
+                                count++;
+                                break;
+                            }
+
+                        case "E":
+                            {
+                                grade += 1;
+                                count++;
+                                break;
+                            }
+
+                        case "None":
+                            {
+                                grade += 0;
+                                break;
+                            }
+
+                        default: break;
+                    }
+                }
+
+                reader.Close();
+
+                if (grade / count < 2 && grade / count > 0)
+                {
+                    DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure you want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                    if (res == DialogResult.Yes)
+                    {
+                        //checking and updating grid
+                        if (Database.addServiceEngineer(schedule, staff_id))
+                        {
+                            engGrid.Rows.Add(row);
+
+                            MessageBox.Show("Service Engineer assigned");
+                        }
+                    }
+                }
+                else
                 {
                     //checking and updating grid
                     if (Database.addServiceEngineer(schedule, staff_id))
@@ -297,15 +362,8 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
             else
             {
-                //checking and updating grid
-                if (Database.addServiceEngineer(schedule, staff_id))
-                {
-                    engGrid.Rows.Add(row);
-
-                    MessageBox.Show("Service Engineer assigned");
-                }
-            }
-            
+                MessageBox.Show("This service engineer is already added!");
+            }            
         }
 
         //deleteing eng
@@ -335,7 +393,88 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
-        public void validation(object sender, EventArgs e)
+        //add reso
+        private void addResource_Click(object sender, EventArgs e)
+        {
+            DataRow row;
+
+            row = resoTbl.NewRow();
+            row["resource_id"] = schResoCombo.SelectedValue;
+            row["name"] = schResoCombo.Text.ToString();
+
+            bool contain = false;
+
+            if (Validation.isNumber(resoQty.Text.ToString()))
+            {
+                foreach (DataGridViewRow item in resoGrid.Rows)
+                {
+                    if ((int)row["resource_id"] == (int)item.Cells[0].Value)
+                    {
+                        int i = (int)item.Cells[2].Value;
+                        item.Cells[2].Value = i + int.Parse(resoQty.Text);
+                        contain = true;
+
+                        Resource r = new Resource();
+                        r.ResourceId = (int)schResoCombo.SelectedValue;
+                        r.TotalQty = i + int.Parse(resoQty.Text);
+
+                        if (Database.updateSchResource(schedule, r))
+                        {
+
+                            MessageBox.Show("Resource quantity updated !");
+                        }
+                    }
+                }
+
+                if (!contain)
+                {
+                    Resource r = new Resource();
+                    r.ResourceId = (int)schResoCombo.SelectedValue;
+                    r.TotalQty = int.Parse(resoQty.Text);
+
+                    if (Database.addSchResource(schedule, r))
+                    {
+
+                        MessageBox.Show("Resource added !");
+                    }
+
+                    row["qty"] = int.Parse(resoQty.Text);
+                    resoTbl.Rows.Add(row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a numeric value");
+            }
+        }
+
+        //remove reso
+        private void removeResource_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = resoGrid.CurrentRow;
+
+            int reso_id = int.Parse(row.Cells[0].Value.ToString());
+
+            if (Database.removeSchResource(schedule, reso_id))
+            {
+                for (int i = resoTbl.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow r = resoTbl.Rows[i];
+                    DataGridViewRow gr = resoGrid.CurrentRow;
+
+                    if (r["resource_id"].ToString().Equals(gr.Cells[0].Value.ToString()))
+                    {
+                        resoTbl.Rows[i].Delete();
+
+                        break;
+                    }
+                }
+
+                MessageBox.Show("Resource removed !");
+            }
+        }
+
+            public void validation(object sender, EventArgs e)
         {
             if (!Validation.isEmpty(todoList.Text))
             {
@@ -366,13 +505,20 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             Schedule schedule = new Schedule();
 
             ArrayList serviceEng = new ArrayList();
-
+            //ArrayList resoArray = new ArrayList();
+            
             //getting service eng details from grid
             foreach (DataRow dr in engGrid.Rows)
             {
                 serviceEng.Add(new Staff((int)dr[0]));
             }
 
+            /*//getting resources
+            foreach (DataRow dr in resoTbl.Rows)
+            {
+                resoArray.Add(new Resource((int)dr[0], (int)dr[2]));
+            }*/
+            
             schedule.ScheduleId = int.Parse(schNo.Text.ToString());
             schedule.ProjectOfSchedule = new Project(int.Parse(projectName.SelectedValue.ToString()));
             schedule.Type = new EventType(int.Parse(scheduleType.SelectedValue.ToString()));
@@ -380,7 +526,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             schedule.To = Convert.ToDateTime(schEndDate.Text.ToString() + " " + schEndTime.Text.ToString());
             schedule.From = Convert.ToDateTime(schStartDate.Text.ToString() + " " + schStartTime.Text.ToString());
             schedule.TodoList = todoList.Text.ToString();
-            schedule.Resource = resoBox.Text.ToString();
+            //schedule.Resource = resoBox.Text.ToString();
             schedule.Checklist = checkList.Text.ToString();
             schedule.TravelMode = travelingMode.Text.ToString();
             schedule.AccommodationMode = accomodation.Text.ToString();
@@ -424,13 +570,13 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
-        private void addReso_Click(object sender, EventArgs e)
+        /*private void addReso_Click(object sender, EventArgs e)
         {
             string resources = schReso.Text.ToString();
             schReso.Text = "";
 
             resoBox.AppendText(resources + " ");
             resoBox.AppendText(Environment.NewLine);
-        }
+        }*/
     }
 }

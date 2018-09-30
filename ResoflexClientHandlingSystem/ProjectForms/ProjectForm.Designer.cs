@@ -50,8 +50,9 @@
             this.maintenanceBtn = new MetroFramework.Controls.MetroButton();
             this.profilebtn = new MetroFramework.Controls.MetroButton();
             this.reqBtn = new MetroFramework.Controls.MetroButton();
-            this.schHome = new MetroFramework.Controls.MetroButton();
             this.metroTextBox1 = new MetroFramework.Controls.MetroTextBox();
+            this.metroButton2 = new MetroFramework.Controls.MetroButton();
+            this.schHome = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.projectGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -361,19 +362,6 @@
             this.reqBtn.UseSelectable = true;
             this.reqBtn.Click += new System.EventHandler(this.reqBtn_Click);
             // 
-            // schHome
-            // 
-            this.schHome.BackColor = System.Drawing.Color.Transparent;
-            this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
-            this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.schHome.Location = new System.Drawing.Point(644, 36);
-            this.schHome.Margin = new System.Windows.Forms.Padding(2);
-            this.schHome.Name = "schHome";
-            this.schHome.Size = new System.Drawing.Size(29, 29);
-            this.schHome.TabIndex = 30;
-            this.schHome.UseSelectable = true;
-            this.schHome.Click += new System.EventHandler(this.schHome_Click);
-            // 
             // metroTextBox1
             // 
             // 
@@ -403,14 +391,40 @@
             this.metroTextBox1.TabIndex = 31;
             this.metroTextBox1.Text = "metroTextBox1";
             this.metroTextBox1.UseSelectable = true;
+            this.metroTextBox1.Visible = false;
             this.metroTextBox1.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.metroTextBox1.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroButton2
+            // 
+            this.metroButton2.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.metroButton2.Location = new System.Drawing.Point(590, 214);
+            this.metroButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.metroButton2.Name = "metroButton2";
+            this.metroButton2.Size = new System.Drawing.Size(103, 26);
+            this.metroButton2.TabIndex = 32;
+            this.metroButton2.Text = "Reports";
+            this.metroButton2.UseSelectable = true;
+            // 
+            // schHome
+            // 
+            this.schHome.BackColor = System.Drawing.Color.Transparent;
+            this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
+            this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.schHome.Location = new System.Drawing.Point(644, 36);
+            this.schHome.Margin = new System.Windows.Forms.Padding(2);
+            this.schHome.Name = "schHome";
+            this.schHome.Size = new System.Drawing.Size(29, 29);
+            this.schHome.TabIndex = 30;
+            this.schHome.UseSelectable = true;
+            this.schHome.Click += new System.EventHandler(this.schHome_Click);
             // 
             // ProjectForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.metroButton2);
             this.Controls.Add(this.metroTextBox1);
             this.Controls.Add(this.schHome);
             this.Controls.Add(this.reqBtn);
@@ -465,5 +479,6 @@
         private MetroFramework.Controls.MetroButton reqBtn;
         private MetroFramework.Controls.MetroButton schHome;
         private MetroFramework.Controls.MetroTextBox metroTextBox1;
+        private MetroFramework.Controls.MetroButton metroButton2;
     }
 }

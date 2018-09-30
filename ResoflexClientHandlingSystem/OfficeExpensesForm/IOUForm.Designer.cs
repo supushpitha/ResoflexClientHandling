@@ -42,7 +42,7 @@
             // metroLabel2
             // 
             this.metroLabel2.AutoSize = true;
-            this.metroLabel2.Location = new System.Drawing.Point(42, 117);
+            this.metroLabel2.Location = new System.Drawing.Point(77, 96);
             this.metroLabel2.Name = "metroLabel2";
             this.metroLabel2.Size = new System.Drawing.Size(45, 19);
             this.metroLabel2.TabIndex = 1;
@@ -51,7 +51,7 @@
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(51, 181);
+            this.metroLabel3.Location = new System.Drawing.Point(77, 152);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(36, 19);
             this.metroLabel3.TabIndex = 2;
@@ -59,7 +59,7 @@
             // 
             // Date
             // 
-            this.Date.Location = new System.Drawing.Point(154, 181);
+            this.Date.Location = new System.Drawing.Point(161, 152);
             this.Date.MinimumSize = new System.Drawing.Size(0, 29);
             this.Date.Name = "Date";
             this.Date.Size = new System.Drawing.Size(230, 29);
@@ -67,8 +67,9 @@
             // 
             // add
             // 
-            this.add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
-            this.add.Location = new System.Drawing.Point(40, 422);
+            this.add.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.add.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.add.Location = new System.Drawing.Point(191, 379);
             this.add.Name = "add";
             this.add.Size = new System.Drawing.Size(100, 32);
             this.add.TabIndex = 9;
@@ -80,7 +81,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(30, 250);
+            this.metroLabel4.Location = new System.Drawing.Point(77, 215);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(68, 19);
             this.metroLabel4.TabIndex = 10;
@@ -89,7 +90,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(40, 329);
+            this.metroLabel5.Location = new System.Drawing.Point(77, 308);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(56, 19);
             this.metroLabel5.TabIndex = 11;
@@ -101,17 +102,18 @@
             // 
             // 
             this.comment.CustomButton.Image = null;
-            this.comment.CustomButton.Location = new System.Drawing.Point(208, 1);
+            this.comment.CustomButton.Location = new System.Drawing.Point(178, 2);
             this.comment.CustomButton.Name = "";
-            this.comment.CustomButton.Size = new System.Drawing.Size(21, 21);
+            this.comment.CustomButton.Size = new System.Drawing.Size(49, 49);
             this.comment.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
             this.comment.CustomButton.TabIndex = 1;
             this.comment.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
             this.comment.CustomButton.UseSelectable = true;
             this.comment.CustomButton.Visible = false;
             this.comment.Lines = new string[0];
-            this.comment.Location = new System.Drawing.Point(154, 250);
+            this.comment.Location = new System.Drawing.Point(161, 215);
             this.comment.MaxLength = 32767;
+            this.comment.Multiline = true;
             this.comment.Name = "comment";
             this.comment.PasswordChar = '\0';
             this.comment.ScrollBars = System.Windows.Forms.ScrollBars.None;
@@ -119,7 +121,7 @@
             this.comment.SelectionLength = 0;
             this.comment.SelectionStart = 0;
             this.comment.ShortcutsEnabled = true;
-            this.comment.Size = new System.Drawing.Size(230, 23);
+            this.comment.Size = new System.Drawing.Size(230, 54);
             this.comment.TabIndex = 12;
             this.comment.UseSelectable = true;
             this.comment.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
@@ -140,7 +142,7 @@
             this.amt.CustomButton.UseSelectable = true;
             this.amt.CustomButton.Visible = false;
             this.amt.Lines = new string[0];
-            this.amt.Location = new System.Drawing.Point(154, 325);
+            this.amt.Location = new System.Drawing.Point(161, 308);
             this.amt.MaxLength = 32767;
             this.amt.Name = "amt";
             this.amt.PasswordChar = '\0';
@@ -159,7 +161,7 @@
             // 
             this.staffNameBox.FormattingEnabled = true;
             this.staffNameBox.ItemHeight = 23;
-            this.staffNameBox.Location = new System.Drawing.Point(154, 117);
+            this.staffNameBox.Location = new System.Drawing.Point(161, 96);
             this.staffNameBox.Name = "staffNameBox";
             this.staffNameBox.Size = new System.Drawing.Size(230, 29);
             this.staffNameBox.TabIndex = 14;
@@ -169,7 +171,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(480, 450);
             this.Controls.Add(this.staffNameBox);
             this.Controls.Add(this.amt);
             this.Controls.Add(this.comment);
@@ -180,7 +182,7 @@
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel2);
             this.Name = "IOUForm";
-            this.Text = "IOUForm";
+            this.Text = "Add IOU";
             this.Load += new System.EventHandler(this.IOUForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

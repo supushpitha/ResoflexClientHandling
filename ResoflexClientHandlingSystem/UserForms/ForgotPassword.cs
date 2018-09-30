@@ -1,4 +1,6 @@
 ﻿using ResoflexClientHandlingSystem.Common;
+using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,25 +24,46 @@ namespace ResoflexClientHandlingSystem.UserForms
         {
             string errorMsg;
 
-            if (!Validation.isValidEmail(email.Text, out errorMsg))
+            if (!Validation.isValidEmail(emailTxt.Text, out errorMsg))
             {
                 e.Cancel = true;
 
-                email.Select(0, email.Text.Length);
+                emailTxt.Select(0, emailTxt.Text.Length);
 
-                this.emailerrorprovider.SetError(email, errorMsg);
+                this.emailerrorprovider.SetError(emailTxt, errorMsg);
             }
         }
 
         private void email_Validated(object sender, EventArgs e)
         {
-            emailerrorprovider.SetError(email, "");
+            emailerrorprovider.SetError(emailTxt, "");
             emailerrorprovider.Clear();
         }
 
         private void ForgotPassword_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void metroButton1_Click(object sender, EventArgs e)
+        {
+            string email = emailTxt.Text.ToString();
+            int uid = 0;
+            MySql.Data.MySqlClient.MySqlDataReader reader = DBConnection.getData("SELECT u.user_id FROM user u, staff s WHERE u.user_id = s.staff_id and s.email = '"+email+"';");
+
+            while (reader.Read())
+            {
+                uid = int.Parse(reader["user_id"].ToString());
+            }
+            reader.Close();
+
+            UserNotification notification = new UserNotification();
+            notification.UserId = uid;
+            notification.FuctionId = 2;
+            notification.MainId = 0;
+            notification.Status = false;
+
+            Database.addNotification(notification);
         }
     }
 }

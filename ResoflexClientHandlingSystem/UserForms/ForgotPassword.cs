@@ -64,6 +64,9 @@ namespace ResoflexClientHandlingSystem.UserForms
             notification.Status = false;
 
             Database.addNotification(notification);
+
+            MessageBox.Show("Request made", "Password reset request", MessageBoxButtons.OK);
+            this.Close();
         }
     }
 }

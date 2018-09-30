@@ -33,7 +33,7 @@ namespace ResoflexClientHandlingSystem
             }
             else
             {
-                if (Userglobals.priv != "PM" || Userglobals.priv != "HR")
+                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
                 {
                     staffAddBtn.Visible = false;
                     staffClearBtn.Visible = false;
@@ -189,7 +189,7 @@ namespace ResoflexClientHandlingSystem
 
                 Database.addDesignation(des);
 
-                MessageBox.Show("New desigantion added successfully.", "New designation Adding", MessageBoxButtons.OK);
+                MessageBox.Show("New designation added successfully.", "New designation Adding", MessageBoxButtons.OK);
 
                 clear();
             }

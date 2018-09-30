@@ -69,6 +69,7 @@
             this.addNewDesTxtBox = new MetroFramework.Controls.MetroTextBox();
             this.errorProviderAddStaff = new System.Windows.Forms.ErrorProvider(this.components);
             this.homeBtn = new MetroFramework.Controls.MetroButton();
+            this.profilebtn = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.AddMemberTab.SuspendLayout();
             this.htmlLabel2.SuspendLayout();
@@ -95,7 +96,7 @@
             this.metroTabControl1.Controls.Add(this.AddDesignationTab);
             this.metroTabControl1.Location = new System.Drawing.Point(11, 50);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 1;
+            this.metroTabControl1.SelectedIndex = 0;
             this.metroTabControl1.Size = new System.Drawing.Size(771, 453);
             this.metroTabControl1.TabIndex = 0;
             this.metroTabControl1.UseSelectable = true;
@@ -849,11 +850,26 @@
             this.homeBtn.UseSelectable = true;
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
+            // profilebtn
+            // 
+            this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profilebtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profilebtn.Location = new System.Drawing.Point(673, 15);
+            this.profilebtn.Name = "profilebtn";
+            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.TabIndex = 17;
+            this.profilebtn.UseCustomBackColor = true;
+            this.profilebtn.UseSelectable = true;
+            this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
+            // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 538);
+            this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "StaffForm";
@@ -919,5 +935,6 @@
         private MetroFramework.Drawing.Html.HtmlLabel htmlLabel14;
         private System.Windows.Forms.ErrorProvider errorProviderAddStaff;
         private MetroFramework.Controls.MetroButton homeBtn;
+        private MetroFramework.Controls.MetroButton profilebtn;
     }
 }

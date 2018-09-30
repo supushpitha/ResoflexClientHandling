@@ -241,7 +241,7 @@ namespace ResoflexClientHandlingSystem
                 totalExpLbl.Text = "Rs. " + tot;
             }
         }
-
+        
         private void fillExpTypeCmbBox()
         {
             try

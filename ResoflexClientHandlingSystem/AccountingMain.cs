@@ -60,9 +60,10 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTile2_Click(object sender, EventArgs e)
         {
-            OfficeInterfaceForm frm = new OfficeInterfaceForm();
-
-            frm.Show();
+            OfficeExpensesForm.OfficeExpensesMainForm frm = new OfficeExpensesForm.OfficeExpensesMainForm();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
         }
     }
 }

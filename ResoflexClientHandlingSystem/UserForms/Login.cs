@@ -140,5 +140,11 @@ namespace ResoflexClientHandlingSystem
                 login();
             }
         }
+
+        private void demo_Click(object sender, EventArgs e)
+        {
+            unameTextBox.Text = "billrfs";
+            pwdTextBox.Text = "bill@123";
+        }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -37,7 +39,29 @@ namespace ResoflexClientHandlingSystem
 
         private void MemberListForm_Load(object sender, EventArgs e)
         {
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+                GotoAddmemBtn.Visible = false;
+                DelMemBtn.Visible = false;
+                UpdateMemBtn.Visible = false;
 
+            }
+            else
+            {
+                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
+                {
+                    GotoAddmemBtn.Visible = false;
+                    DelMemBtn.Visible = false;
+                    UpdateMemBtn.Visible = false;
+
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+
+            }
         }
         
         public void loadMembersToGrid()
@@ -133,6 +157,14 @@ namespace ResoflexClientHandlingSystem
         private void selectEmployeeTxtbox_TextChanged(object sender, EventArgs e)
         {
             MembersGrid.DataSource = searchFromStaff();
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
     }
 }

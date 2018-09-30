@@ -31,23 +31,22 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            this.maintGrid = new MetroFramework.Controls.MetroGrid();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            ((System.ComponentModel.ISupportInitialize)(this.maintGrid)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            this.metroGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.metroTile1 = new MetroFramework.Controls.MetroTile();
+            this.metroTile2 = new MetroFramework.Controls.MetroTile();
+            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
             // 
-            // maintGrid
+            // metroGrid1
             // 
-            this.maintGrid.AllowUserToResizeRows = false;
-            this.maintGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.maintGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maintGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.maintGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.metroGrid1.AllowUserToResizeRows = false;
+            this.metroGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.metroGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.metroGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.metroGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.metroGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
@@ -55,76 +54,105 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.maintGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.maintGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.metroGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.metroGrid1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.maintGrid.DefaultCellStyle = dataGridViewCellStyle2;
-            this.maintGrid.EnableHeadersVisualStyles = false;
-            this.maintGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.maintGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.maintGrid.Location = new System.Drawing.Point(22, 86);
-            this.maintGrid.Margin = new System.Windows.Forms.Padding(2);
-            this.maintGrid.Name = "maintGrid";
-            this.maintGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.metroGrid1.DefaultCellStyle = dataGridViewCellStyle2;
+            this.metroGrid1.EnableHeadersVisualStyles = false;
+            this.metroGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.metroGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.metroGrid1.Location = new System.Drawing.Point(23, 225);
+            this.metroGrid1.Name = "metroGrid1";
+            this.metroGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.maintGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.maintGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.maintGrid.RowTemplate.Height = 24;
-            this.maintGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.maintGrid.Size = new System.Drawing.Size(399, 189);
-            this.maintGrid.Style = MetroFramework.MetroColorStyle.Blue;
-            this.maintGrid.TabIndex = 16;
+            this.metroGrid1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.metroGrid1.RowHeadersWidth = 50;
+            this.metroGrid1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.metroGrid1.Size = new System.Drawing.Size(569, 205);
+            this.metroGrid1.TabIndex = 0;
+            this.metroGrid1.UseStyleColors = true;
             // 
-            // chart1
+            // metroTile1
             // 
-            chartArea1.Name = "Salary";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(483, 86);
-            this.chart1.Name = "chart1";
-            series1.ChartArea = "Salary";
-            series1.Legend = "Legend1";
-            series1.Name = "Salary";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(300, 300);
-            this.chart1.TabIndex = 17;
-            this.chart1.Text = "chart1";
-            title1.Name = "Salary";
-            this.chart1.Titles.Add(title1);
+            this.metroTile1.ActiveControl = null;
+            this.metroTile1.Location = new System.Drawing.Point(218, 97);
+            this.metroTile1.Name = "metroTile1";
+            this.metroTile1.Size = new System.Drawing.Size(178, 92);
+            this.metroTile1.TabIndex = 1;
+            this.metroTile1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile1.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile1.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Regular;
+            this.metroTile1.UseSelectable = true;
+            // 
+            // metroTile2
+            // 
+            this.metroTile2.ActiveControl = null;
+            this.metroTile2.Location = new System.Drawing.Point(23, 97);
+            this.metroTile2.Name = "metroTile2";
+            this.metroTile2.Size = new System.Drawing.Size(109, 92);
+            this.metroTile2.TabIndex = 2;
+            this.metroTile2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.metroTile2.TileTextFontSize = MetroFramework.MetroTileTextSize.Tall;
+            this.metroTile2.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
+            this.metroTile2.UseSelectable = true;
+            // 
+            // metroLabel1
+            // 
+            this.metroLabel1.AutoSize = true;
+            this.metroLabel1.Location = new System.Drawing.Point(218, 75);
+            this.metroLabel1.Name = "metroLabel1";
+            this.metroLabel1.Size = new System.Drawing.Size(80, 19);
+            this.metroLabel1.TabIndex = 4;
+            this.metroLabel1.Text = "Most Visited";
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(22, 75);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(122, 19);
+            this.metroLabel2.TabIndex = 5;
+            this.metroLabel2.Text = "Maintenance Count";
             // 
             // Maintenance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.chart1);
-            this.Controls.Add(this.maintGrid);
+            this.ClientSize = new System.Drawing.Size(618, 474);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroLabel1);
+            this.Controls.Add(this.metroTile2);
+            this.Controls.Add(this.metroTile1);
+            this.Controls.Add(this.metroGrid1);
             this.Name = "Maintenance";
             this.Style = MetroFramework.MetroColorStyle.Yellow;
             this.Text = "Maintenance";
             this.Load += new System.EventHandler(this.Maintenance_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.maintGrid)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private MetroFramework.Controls.MetroGrid maintGrid;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private MetroFramework.Controls.MetroGrid metroGrid1;
+        private MetroFramework.Controls.MetroTile metroTile1;
+        private MetroFramework.Controls.MetroTile metroTile2;
+        private MetroFramework.Controls.MetroLabel metroLabel1;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
     }
 }

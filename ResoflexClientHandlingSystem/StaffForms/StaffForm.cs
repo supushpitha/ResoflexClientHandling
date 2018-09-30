@@ -2,6 +2,7 @@
 using ResoflexClientHandlingSystem.Common;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,29 @@ namespace ResoflexClientHandlingSystem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+                staffAddBtn.Visible = false;
+                staffClearBtn.Visible = false;
+
+            }
+            else
+            {
+                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
+                {
+                    staffAddBtn.Visible = false;
+                    staffClearBtn.Visible = false;
+                    
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+
+            }
+
+
             fillDesigCmbBox();
         }
 
@@ -165,7 +189,7 @@ namespace ResoflexClientHandlingSystem
 
                 Database.addDesignation(des);
 
-                MessageBox.Show("New desigantion added successfully.", "New designation Adding", MessageBoxButtons.OK);
+                MessageBox.Show("New designation added successfully.", "New designation Adding", MessageBoxButtons.OK);
 
                 clear();
             }
@@ -225,6 +249,7 @@ namespace ResoflexClientHandlingSystem
             Designation desg = new Designation(desgCmbBox.SelectedItem.ToString());
 
             Staff stf = new Staff(firstName, lastName, Nic, pAddress, sAddress, telNumber, email, facebook, linkedIn, basicSal, otRate);
+            int stfid = 0; 
 
             try
             {
@@ -242,6 +267,24 @@ namespace ResoflexClientHandlingSystem
                 Database.addStaff(stf);
 
                 MessageBox.Show("New member added successfully.", "New member Adding", MessageBoxButtons.OK);
+
+                reader = DBConnection.getData("Select staff_id from staff where nic='" + Nic + "'");
+
+                while (reader.Read())
+                { 
+                    stfid = int.Parse(reader["staff_id"].ToString());
+                }
+                reader.Close();
+
+                UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new Staff member", stfid);
+
+                try{
+                    Database.addOp(operation);
+                }
+                catch(Exception)
+                {
+
+                }
 
                 clear();
             }
@@ -359,6 +402,14 @@ namespace ResoflexClientHandlingSystem
         private void htmlLabel16_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -429,7 +429,7 @@ namespace ResoflexClientHandlingSystem
 
             foreach (DataRow dr in feedbackGrid.Rows)
             {
-                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString()));
+                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4]));
             }
 
             foreach (DataRow dr in engGrid.Rows)

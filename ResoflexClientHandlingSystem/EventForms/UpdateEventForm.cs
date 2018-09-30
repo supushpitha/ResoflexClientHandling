@@ -388,27 +388,7 @@ namespace ResoflexClientHandlingSystem.EventForms
         //remove reso
         private void removeResource_Click(object sender, EventArgs e)
         {
-            DataGridViewRow row = resoGrid.CurrentRow;
 
-            int reso_id = int.Parse(row.Cells[0].Value.ToString());
-
-            if (Database.removeEventResource(et, reso_id))
-            {
-                for (int i = resoTbl.Rows.Count - 1; i >= 0; i--)
-                {
-                    DataRow r = resoTbl.Rows[i];
-                    DataGridViewRow gr = resoGrid.CurrentRow;
-
-                    if (r["resource_id"].ToString().Equals(gr.Cells[0].Value.ToString()))
-                    {
-                        resoTbl.Rows[i].Delete();
-
-                        break;
-                    }
-                }
-
-                MessageBox.Show("Resource removed !");
-            }
         }
 
         public void validation(object sender, EventArgs e)

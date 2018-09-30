@@ -470,6 +470,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ScheduleDataset.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleEngineers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleEngineers.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ScheduleForms\Reports\ScheduleReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -481,6 +487,12 @@
     </Compile>
     <Compile Include="ScheduleForms\Reports\ScheduleReportsForm.Designer.cs">
       <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleResources.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleResources.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScheduleForms\ScheduleForm.cs">
       <SubType>Form</SubType>
@@ -614,6 +626,9 @@
     <EmbeddedResource Include="EventForms\EventReports\EventReportForm.resx">
       <DependentUpon>EventReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\OtherReports.resx">
+      <DependentUpon>OtherReports.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -726,12 +741,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleEngineers.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleEngineers.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ScheduleReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReportsForm.resx">
       <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleResources.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleResources.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>

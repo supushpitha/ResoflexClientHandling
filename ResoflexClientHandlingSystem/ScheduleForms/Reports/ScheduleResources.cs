@@ -16,14 +16,14 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ScheduleReport : ReportClass {
+    public class ScheduleResources : ReportClass {
         
-        public ScheduleReport() {
+        public ScheduleResources() {
         }
         
         public override string ResourceName {
             get {
-                return "ScheduleReport.rpt";
+                return "ScheduleResources.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         
         public override string FullResourceName {
             get {
-                return "ResoflexClientHandlingSystem.ScheduleForms.Reports.ScheduleReport.rpt";
+                return "ResoflexClientHandlingSystem.ScheduleForms.Reports.ScheduleResources.rpt";
             }
             set {
                 // Do nothing
@@ -74,7 +74,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section DetailSection2 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -82,25 +82,17 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[5];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedScheduleReport : Component, ICachedReport {
+    public class CachedScheduleResources : Component, ICachedReport {
         
-        public CachedScheduleReport() {
+        public CachedScheduleResources() {
         }
         
         [Browsable(false)]
@@ -137,7 +129,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ScheduleReport rpt = new ScheduleReport();
+            ScheduleResources rpt = new ScheduleResources();
             rpt.Site = this.Site;
             return rpt;
         }

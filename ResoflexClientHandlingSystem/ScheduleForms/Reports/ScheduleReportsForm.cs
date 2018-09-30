@@ -104,6 +104,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports
                 reader2.Close();
 
                 ScheduleReport sr = new ScheduleReport();
+                ScheduleResources sreso = new ScheduleResources();
 
                 sr.Database.Tables["schedule"].SetDataSource(schedule);
                 sr.Database.Tables["scheduleReso"].SetDataSource(reso);

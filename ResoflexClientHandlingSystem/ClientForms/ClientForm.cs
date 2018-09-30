@@ -140,8 +140,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable table = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select client_id, name as Name, address as Address, " +
-                "phone_mobile as Mobile, phone_office as Office, fax as Fax, email as Email from client order by client_id DESC limit 50");
+            MySqlDataReader reader = DBConnection.getData("select c.client_id, c.name as Name, c.address as Address, c.phone_mobile as Mobile, c.phone_office as Office, c.fax as Fax, c.email as Email from client c left join project p on c.client_id=p.client_id left join event e on p.proj_id=e.event_id group by c.client_id order by IFNULL(e.from_date_time, '1994-10-05') desc, IFNULL(p.proj_id, 0) desc limit 20");
 
             table.Load(reader);
 

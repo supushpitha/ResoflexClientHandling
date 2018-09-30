@@ -80,11 +80,12 @@ namespace ResoflexClientHandlingSystem
 
                 notifySuccessClientAdding.Icon = SystemIcons.Application;
                 notifySuccessClientAdding.BalloonTipText = "Client Successfully added!";
-                notifySuccessClientAdding.ShowBalloonTip(1000);
-
-
+                notifySuccessClientAdding.ShowBalloonTip(200);
+                
                 clearTxtBoxes();
+
                 int id = 0;
+
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT client_id FROM client where email ='" + email + "';");
@@ -94,7 +95,9 @@ namespace ResoflexClientHandlingSystem
                         id = int.Parse(reader["client_id"].ToString());
 
                     }
+
                     reader.Close();
+
                     UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new Client", id);
                     Database.addOp(operation);
                 }
@@ -102,14 +105,11 @@ namespace ResoflexClientHandlingSystem
                 {
                     Console.WriteLine(ex.StackTrace);   
                 }
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Every detail must be added!", "Client Adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            
         }
 
         private void clearTxtBoxes()

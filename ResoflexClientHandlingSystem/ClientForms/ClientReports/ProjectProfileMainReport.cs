@@ -16,14 +16,14 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ProjectProfileSubReport : ReportClass {
+    public class ProjectProfileMainReport : ReportClass {
         
-        public ProjectProfileSubReport() {
+        public ProjectProfileMainReport() {
         }
         
         public override string ResourceName {
             get {
-                return "ProjectProfileSubReport.rpt";
+                return "ProjectProfileMainReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,8 +41,8 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         
         public override string FullResourceName {
             get {
-                return "ResoflexClientHandlingSystem.ClientForms.ClientReports.ProjectProfileSubReport.rp" +
-                    "t";
+                return "ResoflexClientHandlingSystem.ClientForms.ClientReports.ProjectProfileMainReport.r" +
+                    "pt";
             }
             set {
                 // Do nothing
@@ -107,9 +107,9 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedProjectProfileSubReport : Component, ICachedReport {
+    public class CachedProjectProfileMainReport : Component, ICachedReport {
         
-        public CachedProjectProfileSubReport() {
+        public CachedProjectProfileMainReport() {
         }
         
         [Browsable(false)]
@@ -146,7 +146,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ProjectProfileSubReport rpt = new ProjectProfileSubReport();
+            ProjectProfileMainReport rpt = new ProjectProfileMainReport();
             rpt.Site = this.Site;
             return rpt;
         }

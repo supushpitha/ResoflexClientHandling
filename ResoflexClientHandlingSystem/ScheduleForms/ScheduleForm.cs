@@ -346,15 +346,6 @@ namespace ResoflexClientHandlingSystem
             
             reader.Close();
 
-            MySqlDataReader reader1 = DBConnection.getData("select count(*) as count from schedule s, event e where s.sch_no != e.sch_no or s.proj_id != e.proj_id");
-
-            if (reader1.Read())
-            {
-                count += reader1.GetInt16("count");
-            }
-            
-            reader1.Close();
-
             incompleteSchedules.Text = count.ToString();
         }
 

@@ -32,6 +32,15 @@
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeTaskTimeComparisonForm));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.SelectMemComboBox = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.metroComboBox2 = new MetroFramework.Controls.MetroComboBox();
+            this.veiwGridBtn = new MetroFramework.Controls.MetroButton();
+            this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.htmlLabel2 = new MetroFramework.Drawing.Html.HtmlLabel();
             this.selectMemCmbBox = new MetroFramework.Controls.MetroComboBox();
             this.htmlLabel1 = new MetroFramework.Drawing.Html.HtmlLabel();
@@ -47,6 +56,9 @@
             this.reportsBtn = new MetroFramework.Controls.MetroButton();
             this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.timeDiffTile = new MetroFramework.Controls.MetroTile();
+            this.comparisonChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.profilebtn = new MetroFramework.Controls.MetroButton();
+            this.htmlLabel1.SuspendLayout();
             this.htmlLabel2.SuspendLayout();
             this.htmlLabel1.SuspendLayout();
             this.htmlLabel3.SuspendLayout();
@@ -227,7 +239,7 @@
             this.homeBtn.Click += new System.EventHandler(this.homeBtn_Click);
             // 
             // timeDiffTile
-            // 
+            //
             this.timeDiffTile.ActiveControl = null;
             this.timeDiffTile.BackColor = System.Drawing.Color.White;
             this.timeDiffTile.Location = new System.Drawing.Point(257, 441);
@@ -237,6 +249,40 @@
             this.timeDiffTile.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.timeDiffTile.TileTextFontWeight = MetroFramework.MetroTileTextWeight.Bold;
             this.timeDiffTile.UseSelectable = true;
+            this.comparisonChart.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.comparisonChart.BorderlineColor = System.Drawing.Color.LightSteelBlue;
+            chartArea2.Name = "ChartArea1";
+            this.comparisonChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.comparisonChart.Legends.Add(legend2);
+            this.comparisonChart.Location = new System.Drawing.Point(80, 158);
+            this.comparisonChart.Name = "comparisonChart";
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Expected time";
+            series4.ChartArea = "ChartArea1";
+            series4.Legend = "Legend1";
+            series4.Name = "Committed time";
+            this.comparisonChart.Series.Add(series3);
+            this.comparisonChart.Series.Add(series4);
+            this.comparisonChart.Size = new System.Drawing.Size(652, 337);
+            this.comparisonChart.TabIndex = 3;
+            this.comparisonChart.Text = "Task Chart";
+            this.comparisonChart.Click += new System.EventHandler(this.comparisonChart_Click);
+            // 
+            // profilebtn
+            // 
+            this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profilebtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profilebtn.Location = new System.Drawing.Point(729, 6);
+            this.profilebtn.Name = "profilebtn";
+            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.TabIndex = 18;
+            this.profilebtn.UseCustomBackColor = true;
+            this.profilebtn.UseSelectable = true;
+            this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
             // EmployeeTaskTimeComparisonForm
             // 
@@ -244,6 +290,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 575);
             this.Controls.Add(this.timeDiffTile);
+            this.ClientSize = new System.Drawing.Size(841, 528);
+            this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.reportsBtn);
             this.Controls.Add(this.timeChart);
@@ -284,5 +332,7 @@
         private MetroFramework.Controls.MetroButton reportsBtn;
         private MetroFramework.Controls.MetroButton homeBtn;
         private MetroFramework.Controls.MetroTile timeDiffTile;
+        private System.Windows.Forms.DataVisualization.Charting.Chart comparisonChart;
+        private MetroFramework.Controls.MetroButton profilebtn;
     }
 }

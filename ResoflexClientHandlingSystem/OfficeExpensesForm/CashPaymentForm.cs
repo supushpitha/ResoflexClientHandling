@@ -72,39 +72,17 @@ namespace ResoflexClientHandlingSystem.OfficeExpenses
                 exp.Amount = int.Parse(inAmount.Text.ToString());
                 exp.Category = category.Text.ToString();
                 Database.addOfficeExp(exp);
+
+                this.Close();
             }
             else
             {
-                MessageBox.Show("Invalid Number");
+                MessageBox.Show("Something went worng","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
             
            
         }
-                /*Role.OfficeExpenses of = new Role.OfficeExpenses();
-
-               int exp_id =int.Parse( expid.Text.ToString());
-                int staff_id = int.Parse(staffid.Text.ToString());
-                string categoryName = category.Text;
-                int Amount = int.Parse(amount.Text.ToString());
-                DateTime date = datetime.Value;
-
-                Role.OfficeExpenses exp = new Role.OfficeExpenses(new Staff(staff_id), date, categoryName, Amount);
-
-                Database.saveOfficeExpenses(exp);*/
-
-
-     /* public DataTable display()
-        {
-
-            MySqlDataReader reader = DBConnection.getData("select staff_id from staff");
-
-            DataTable dt = new DataTable();
-            dt.Load(reader);
-
-            reader.Close();
-
-            return dt;
-        }*/
+                
         private void metroComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             

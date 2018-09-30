@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
+using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +36,29 @@ namespace ResoflexClientHandlingSystem
 
         private void resourceForm_Load(object sender, EventArgs e)
         {
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+                resAddBtn.Visible = false;
+                DelResBtn.Visible = false;
+                UpdateResBtn.Visible = false;
+
+            }
+            else
+            {
+                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
+                {
+                    resAddBtn.Visible = false;
+                    DelResBtn.Visible = false;
+                    UpdateResBtn.Visible = false;
+
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+
+            }
 
             loadResourceToGrid();
 
@@ -188,12 +212,19 @@ namespace ResoflexClientHandlingSystem
         {
             ResGrid.DataSource = searchFromResource();
         }
-
+        
         private void demo_res_btn_Click(object sender, EventArgs e)
         {
             nameResTxtBox.Text = "Portable DVD drivers";
             valueResTxtBox.Text = "10";
             qtyResTxtBox.Text = "10000";
+        }
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
+            this.Close();
         }
     }
 }

@@ -20,8 +20,10 @@ namespace ResoflexClientHandlingSystem
             InitializeComponent();
         }
 
-        
-
+        int staffId = 0;
+        DateTime checkOutDate;
+        DateTime checkInDate;
+        double validateHours = 0;
 
         private void metroTextBox6_Click(object sender, EventArgs e)
         {
@@ -37,50 +39,44 @@ namespace ResoflexClientHandlingSystem
                 DateTime in_Day = DateTime.Parse(metroDateTime2.Text);
                 DateTime in_time = DateTime.Parse(dateTimePicker1.Text);
                 DateTime out_Day = DateTime.Parse(metroDateTime3.Text);
-                DateTime out_time = DateTime.Parse(dateTimePicker2.Text);
-                // DateTime in_time = DateTime.Parse(metroDateTime3.Text);
-                // DateTime out_time = DateTime.Parse(metroDateTime4.Text);
-                int total_hours = Int32.Parse(totalHoursTxtbox.Text);
-
-                // DateTime myDateTime = DateTime.Now;
+                DateTime out_time = DateTime.Parse(dateTimePicker2.Text);              
+                int total_hours = Int32.Parse(EffectiveHoursTxtbox.Text);
+                
                 DateTime inDateFinal = in_Day.Date + in_time.TimeOfDay;
                 DateTime outDateFinal = out_Day.Date + out_time.TimeOfDay;
 
                 string sqlFormattedDateValueStart = inDateFinal.ToString("yyyy-MM-dd HH:mm:ss");
                 string sqlFormattedDateValueEnd = outDateFinal.ToString("yyyy-MM-dd HH:mm:ss");
 
+                // outDateFinal = DateTime.Now.AddDays(-1);
 
-                // string sqlFormattedDateInDay = in_Day.ToString("yyyy-MM-dd");
+                //if (checkOutDate < inDateFinal && checkInDate > outDateFinal)
+                // {             
+                MySqlDataReader reader = DBConnection.getData("select * from attendanceView where staffID = " + empNo + " and Date(InTime) = '"+ DateTime.Now.ToString("y/M/d") +"'");
+                if (reader.HasRows)
+                {
+                    reader.Close();
+                    MessageBox.Show("There is a record for specified Date and Id.Try an Update", "Record Attendance", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                //   string sqlFormattedDateOutTime = out_time.ToString("HH:mm:ss.fff");
-                //  string sqlFormattedDateOutDay = out_Day.ToString("yyyy-MM-dd");
+                    
+                }
+                else {
+                    reader.Close();
+                    Attendance a = new Attendance(empNo, name, sqlFormattedDateValueStart, sqlFormattedDateValueEnd, total_hours);
 
-
-                int att;
-
-                Attendance a = new Attendance(empNo, name, sqlFormattedDateValueStart, sqlFormattedDateValueEnd, total_hours);
-
-                // MySqlDataReader reader1021 = DBConnection.getData("select * from attendanceview where DATE(in_time) = '" + in_Day+ "%' and staff_id = '" + empNo + "'");
-
-
-                // if (reader1021.HasRows == false) {
-
-                // MessageBox.Show("There is another record with the same date!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                //  reader1021.Close();
+                    Database.addRecord(a);
+                    Notification.showNotification();
+                    clearFunctionForAttendance();
+                }
+                
                 //  }
-
-
-
-                Database.addRecord(a);
-                Notification.showNotification();
-                clearFunctionForAttendance();
-
             }
             catch (Exception ex) {
+                
                 MessageBox.Show("Something went wrong!\n" + ex, "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              
             }
-          //  reader1021.Close();
-            //MySqlDataReader reader = DBConnection.getData("select a.staff_id, s.first_name, s.last_name, a.in_time, a.out_time, a.total_hours from attendance as a inner join staff as s on a.staff_id = s.staff_id");
+        
         }
 
         private void metroTextBox1_Click(object sender, EventArgs e)
@@ -101,19 +97,14 @@ namespace ResoflexClientHandlingSystem
             pastAttendanceDataGrid.DataSource = getAttendance();
             metroTile2.Enabled = false;
 
+            metroDateTime3.Value = DateTime.Now.AddDays(1);
+            metroTextBox2.Enabled = false;
+            TotalHoursTxtBox.Enabled = false;
+            
         }
-
-
-
-
 
         private DataTable getAttendance() {
             DataTable table = new DataTable();
-            //MySqlDataReader reader = DBConnection.getData("select a.staff_id, s.first_name, s.last_name, a.in_time, a.out_time, a.total_hours from attendance as a inner join staff as s on a.staff_id = s.staff_id");
-            //DateTime now = DateTime.Now;
-            //string today = now.GetDateTimeFormats('d')[0];
-            //DateTime today1 = DateTime.Parse(today);
-            //DateTime today3 = metroDateTime1.Value;
             DateTime myDateTime = DateTime.Now;
             string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
             MySqlDataReader reader = DBConnection.getData("SELECT * FROM attendanceView WHERE DATE(InTime) = '"+ sqlFormattedDate + "'");
@@ -171,25 +162,41 @@ namespace ResoflexClientHandlingSystem
 
         private void metroTextBox7_TextChanged(object sender, EventArgs e)
         {
-         //   metroGrid1.DataSource = searchEmployees();
+            double value = 0;
+            try
+            {
+                value = Convert.ToInt32(EffectiveHoursTxtbox.Text);
+                
+            }
+            catch
+            {
+
+            }
+            if (value >= validateHours)
+            {
+                MessageBox.Show("Please enter a lower value than total hours", "Record Attendance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                EffectiveHoursTxtbox.Text = null;
+                metroTextBox2.Text = null;
+            }
+            else
+            {
+
+                metroTextBox2.Text = (validateHours - value).ToString();
+            }
         }
 
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void metroGrid1_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             try
             {
-                //-------------------Grey out code------------------------------------------
-               // staffDataGrid.Enabled = false;
+                
                 metroTile2.Enabled = true;
                 metroTile1.Enabled = false;
                 dateTimePicker1.Enabled = true;
                 metroDateTime2.Enabled = true;
-                //---------------------------------End of grey out code-----------------------
+             
                 employeeNumberTxtbox.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
                 firstNameTxtbox.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
                 lastNameTxtbox.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -197,23 +204,18 @@ namespace ResoflexClientHandlingSystem
                 dateTimePicker1.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
                 metroDateTime3.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
                 dateTimePicker2.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                totalHoursTxtbox.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                EffectiveHoursTxtbox.Text = todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
 
                 employeeNumberTxtbox.Enabled = false;
                 firstNameTxtbox.Enabled = false;
                 lastNameTxtbox.Enabled = false;
-
+                staffId = Int32.Parse(todaysAttendanceDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
             }
             catch (Exception ex) {
                 MessageBox.Show("Something went wrong!\n" + ex, "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-
-
           
-
-
-
         }
 
         private void metroTextBox2_Click(object sender, EventArgs e)
@@ -236,7 +238,8 @@ namespace ResoflexClientHandlingSystem
             employeeNumberTxtbox.Text = staffDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
             firstNameTxtbox.Text = staffDataGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
             lastNameTxtbox.Text = staffDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
-           
+
+            staffId = Int32.Parse(staffDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
      
         }
 
@@ -251,7 +254,7 @@ namespace ResoflexClientHandlingSystem
                 DateTime out_Day = DateTime.Parse(metroDateTime3.Text);
                 DateTime out_time = DateTime.Parse(dateTimePicker2.Text);
 
-                int total_hours = Int32.Parse(totalHoursTxtbox.Text);
+                int total_hours = Int32.Parse(EffectiveHoursTxtbox.Text);
 
                 DateTime inDateFinal = in_Day.Date + in_time.TimeOfDay;
                 DateTime outDateFinal = out_Day.Date + out_time.TimeOfDay;
@@ -261,14 +264,24 @@ namespace ResoflexClientHandlingSystem
 
 
 
-                int att;
+                if ((checkOutDate < inDateFinal && checkInDate > outDateFinal) || (inDateFinal.Date == DateTime.Now.Date))
+                {
+                    Attendance a = new Attendance(empNo, name, sqlFormattedDateValueStart, sqlFormattedDateValueEnd, total_hours);
+                    Database.updateRecord(a);
+                    Notification.showNotification();
+                    metroTile1.Enabled = true;
+                    metroTile2.Enabled = false;
+                    clearFunctionForAttendance();
+                }
+                else {
 
-                Attendance a = new Attendance(empNo, name, sqlFormattedDateValueStart, sqlFormattedDateValueEnd, total_hours);
-                Database.updateRecord(a);
-                Notification.showNotification();
-                metroTile1.Enabled = true;
-                metroTile2.Enabled = false;
-                clearFunctionForAttendance();
+                    MessageBox.Show("Conflicting dates!", "Record attendance", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+
+                    metroDateTime3.Value = DateTime.Now.AddDays(1);
+                    metroDateTime2.Value = DateTime.Now;
+                }
+            
             }
             catch (Exception ex) {
 
@@ -301,7 +314,7 @@ namespace ResoflexClientHandlingSystem
             dateTimePicker1.Text = dtValue.ToString("HH:mm:ss");
             metroDateTime3.Text = dtValue.ToString("yyyy-MM-dd");
             dateTimePicker2.Text = dtValue.ToString("HH:mm:ss");
-            totalHoursTxtbox.Text = null;
+            EffectiveHoursTxtbox.Text = null;
 
             metroDateTime2.Enabled = true;
             dateTimePicker1.Enabled = true;
@@ -318,11 +331,9 @@ namespace ResoflexClientHandlingSystem
         {
             try
             {
-                //-------------------Grey out code------------------------------------------
-              //  staffDataGrid.Enabled = false;
+               
                 metroTile2.Enabled = true;
                 metroTile1.Enabled = false;
-                //---------------------------------End of grey out code-----------------------
                 employeeNumberTxtbox.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
                 firstNameTxtbox.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[1].Value.ToString();
                 lastNameTxtbox.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[2].Value.ToString();
@@ -330,13 +341,45 @@ namespace ResoflexClientHandlingSystem
                 dateTimePicker1.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
                 metroDateTime3.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
                 dateTimePicker2.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
-                totalHoursTxtbox.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+                EffectiveHoursTxtbox.Text = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[5].Value.ToString();
+
+                string empNo = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[0].Value.ToString();
+                string date2 = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string time1 = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string date3 = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+                string time2 = pastAttendanceDataGrid.Rows[e.RowIndex].Cells[4].Value.ToString();
+
+                staffId = Int32.Parse(empNo);
+
+                
+
+                string inDateFinal = Convert.ToDateTime(date2).ToString("y/M/d");
+                string outDateFinal = Convert.ToDateTime(date3).ToString("y/M/d");
 
                 employeeNumberTxtbox.Enabled = false;
                 firstNameTxtbox.Enabled = false;
                 lastNameTxtbox.Enabled = false;
-                metroDateTime2.Enabled = false;
-                dateTimePicker1.Enabled = false;
+               
+                 checkOutDate = DateTime.Now;
+                 checkInDate = DateTime.Now;
+                
+                MySqlDataReader reader = DBConnection.getData("select * from attendanceView where staffID = " + empNo + " and OutTime < '" + inDateFinal + "' order by OutTime desc limit 1");
+                while (reader.Read())
+                {
+                    checkOutDate = reader.GetDateTime("OutTime");
+                    
+                }
+                reader.Close();
+                
+                MySqlDataReader reader1 = DBConnection.getData("select * from attendanceView where staffID = " + empNo + " and InTime > '" + outDateFinal + "' order by InTime asc limit 1");
+                while (reader1.Read())
+                {
+                    checkInDate = reader1.GetDateTime("InTime");
+                   
+                }
+                reader1.Close();
+                
+               
 
             }
             catch (Exception ex)
@@ -373,13 +416,15 @@ namespace ResoflexClientHandlingSystem
             employeeNumberTxtbox.Text = null;
             firstNameTxtbox.Text = null;
             lastNameTxtbox.Text = null;
-
+            metroTextBox2.Text = null;
+           
             DateTime dtValue = DateTime.Now;  // load your date & time into this variable
+            DateTime dtValue1 = DateTime.Now.AddDays(1);
+            metroDateTime3.Text = dtValue1.ToString("yyyy-MM-dd");
+            dateTimePicker2.Text = dtValue1.ToString("HH:mm:ss");
             metroDateTime2.Text = dtValue.ToString("yyyy-MM-dd");
             dateTimePicker1.Text = dtValue.ToString("HH:mm:ss");
-            metroDateTime3.Text = dtValue.ToString("yyyy-MM-dd");
-            dateTimePicker2.Text = dtValue.ToString("HH:mm:ss");
-            totalHoursTxtbox.Text = null;
+            EffectiveHoursTxtbox.Text = null;
 
             metroDateTime2.Enabled = true;
             dateTimePicker1.Enabled = true;
@@ -398,6 +443,99 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             dashboard.ShowDialog();
             this.Close();
+        }
+
+        private void metroDateTime2_ValueChanged(object sender, EventArgs e)
+        {
+           
+            DateTime inDate = DateTime.Parse(metroDateTime2.Text).Date + DateTime.Parse(dateTimePicker1.Text).TimeOfDay;
+            DateTime outDate = DateTime.Parse(metroDateTime3.Text).Date + DateTime.Parse(dateTimePicker2.Text).TimeOfDay;
+
+
+        //    MySqlDataReader reader = DBConnection.getData("select * from attendanceView where staffID = " + staffId + " and Date(OutTime) > '" + inDate + "' order by OutTime");
+         //   if (reader.HasRows)
+           // {
+             //   reader.Close();
+             //   MessageBox.Show("Conflicting dates", "Record Attendance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               // metroDateTime2.Value = DateTime.Now;
+           // }
+            //else
+            //{
+              //  reader.Close();
+                if (outDate <= inDate)
+                {
+                    MessageBox.Show("Out date should be higher than the In date", "Record Attendance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    metroDateTime2.Value = DateTime.Now;
+                }
+                else
+                {
+                    TotalHoursTxtBox.Text = (outDate - inDate).TotalHours.ToString("N2");
+                    validateHours = (outDate - inDate).TotalHours;
+                }
+            //}
+            
+         }
+
+        private void metroDateTime3_ValueChanged(object sender, EventArgs e)
+        {
+
+            DateTime inDate = DateTime.Parse(metroDateTime2.Text).Date + DateTime.Parse(dateTimePicker1.Text).TimeOfDay;
+            DateTime outDate = DateTime.Parse(metroDateTime3.Text).Date + DateTime.Parse(dateTimePicker2.Text).TimeOfDay;
+
+
+
+            if (outDate <= inDate)
+            {
+                MessageBox.Show("Out date should have higher than the In date", "Record Attendance", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                metroDateTime3.Value = DateTime.Now.AddDays(1);
+            }
+            else
+            {
+                TotalHoursTxtBox.Text = (outDate - inDate).TotalHours.ToString("N2");
+                validateHours = (outDate - inDate).TotalHours;
+            }
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime inDate = DateTime.Parse(metroDateTime2.Text).Date + DateTime.Parse(dateTimePicker1.Text).TimeOfDay;
+            DateTime outDate = DateTime.Parse(metroDateTime3.Text).Date + DateTime.Parse(dateTimePicker2.Text).TimeOfDay;
+            TotalHoursTxtBox.Text = (outDate - inDate).TotalHours.ToString("N2");
+            validateHours = (outDate - inDate).TotalHours;
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime inDate = DateTime.Parse(metroDateTime2.Text).Date + DateTime.Parse(dateTimePicker1.Text).TimeOfDay;
+            DateTime outDate = DateTime.Parse(metroDateTime3.Text).Date + DateTime.Parse(dateTimePicker2.Text).TimeOfDay;
+            TotalHoursTxtBox.Text = (outDate - inDate).TotalHours.ToString("N2");
+            validateHours = (outDate - inDate).TotalHours;
+        }
+
+        private void metroDateTime2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void EffectiveHoursTxtbox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            
+        }
+
+        private void metroTextBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void EffectiveHoursTxtbox_KeyDown(object sender, KeyEventArgs e)
+        {
+           
+        }
+
+        private void EffectiveHoursTxtbox_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

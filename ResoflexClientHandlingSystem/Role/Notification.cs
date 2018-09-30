@@ -17,7 +17,6 @@ namespace ResoflexClientHandlingSystem.Role
             popup.ContentText = "Operation Successful";
             popup.Popup();
 
-
         }
     }
 }

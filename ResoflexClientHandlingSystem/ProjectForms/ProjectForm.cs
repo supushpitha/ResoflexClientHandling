@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ResoflexClientHandlingSystem.Properties;
-
+using ResoflexClientHandlingSystem.Role;
 
 namespace ResoflexClientHandlingSystem
 {
@@ -33,16 +33,81 @@ namespace ResoflexClientHandlingSystem
 
         private void Project1_Load(object sender, EventArgs e)
         {
+            if (Userglobals.uname == "")
+            {
+                profilebtn.Visible = false;
+                addProjectBtn.Visible = false;
+                updateProjectBtn.Visible = false;
+                metroButton1.Visible = false;
+
+            }
+            else
+            {
+                if (Userglobals.priv == "PM" || Userglobals.priv == "ADM")
+                {
+                    addProjectBtn.Visible = true;
+                    updateProjectBtn.Visible = true;
+                    metroButton1.Visible = true;
+                }
+                else
+                {
+                    addProjectBtn.Visible = true;
+                    updateProjectBtn.Visible = true;
+                    metroButton1.Visible = true;
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+
+
+            }
             projectGrid.DataSource = getProjects();
             projIdTile.BackColor = Color.DeepSkyBlue;
             fillCountTile();
             totExpenceTile.BackColor = Color.DeepSkyBlue;
             warrantyTile.BackColor = Color.DeepSkyBlue;
 
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("select statues from notification where user_id="+Userglobals.uid+"");
+
+                while (reader.Read())
+                {
+                    metroTextBox1.Text = (reader.GetValue(0).ToString());
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+
             if (clientName != "")
                 searchProjectTxtBox.Text = clientName;
 
             projectGrid.Columns[0].Visible = true;
+
+
+            if (Userglobals.uname == "")
+            {
+                addProjectBtn.Visible = false;
+                updateProjectBtn.Visible = false;
+                
+            }
+            else
+            {
+                if (!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                {
+                    addProjectBtn.Visible = false;
+                    updateProjectBtn.Visible = false;
+                }
+
+                profilebtn.Visible = true;
+                profilebtn.Text = Userglobals.uname;
+            }
+
+
         }
 
 
@@ -233,6 +298,7 @@ namespace ResoflexClientHandlingSystem
                     table1.Load(reader);
 
                     projectGrid.DataSource = table1;
+                    reader.Close();
                 }
                 else
                 {
@@ -297,10 +363,10 @@ namespace ResoflexClientHandlingSystem
 
         private void schHome_Click(object sender, EventArgs e)
         {
-            
             Dashboard frm = new Dashboard();
+            this.Hide();
             frm.ShowDialog();
-            
+            this.Close();
         }
 
         private void reqBtn_Click(object sender, EventArgs e)
@@ -310,6 +376,15 @@ namespace ResoflexClientHandlingSystem
             RequestForm frm = new RequestForm(projectName);
 
             frm.Show();
+
+            //MySqlDataReader reader = DBConnection.getData("select  statues from notification where user_id="+Userglobals.uid+"");
+
+            //if (reader.Read())
+            //{
+            //      bool per = reader.GetBoolean(0);
+            //      ProjectForms.GetPermission frm = new ProjectForms.GetPermission();
+            //      frm.ShowDialog();
+              // }
         }
 
         private void metroTrackBar1_Scroll(object sender, ScrollEventArgs e)
@@ -324,7 +399,13 @@ namespace ResoflexClientHandlingSystem
 
             projectGrid.BackgroundColor = Color.FromArgb(color);*/
         }
-        
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            ProjectForms.Reports rpt = new ProjectForms.Reports();
+            rpt.Show();
+        }
+
 
 
 

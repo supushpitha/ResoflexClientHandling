@@ -1,5 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
+﻿using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -201,12 +202,19 @@ namespace ResoflexClientHandlingSystem.StaffForms
             dashboard.ShowDialog();
             this.Close();
         }
-
+        
         private void reportsBtn_Click(object sender, EventArgs e)
         {
             StaffReports.StaffReportForm viewRepo = new StaffReports.StaffReportForm();
             this.Hide();
             viewRepo.ShowDialog();
+        }
+        
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
             this.Close();
         }
     }

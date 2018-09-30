@@ -75,6 +75,8 @@ namespace ResoflexClientHandlingSystem
                 while (reader.Read())
                 {
                     metroComboBox1.Items.Add(reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                    char [] fnamearr = reader.GetValue(0).ToString().ToCharArray(); 
+                    uname.Text = fnamearr[0] + reader.GetValue(1).ToString() ;
                     id.Text = (reader.GetValue(2).ToString());
 
                 }
@@ -169,6 +171,11 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 Database.addUsers(us);
+                notifySuccessUserAdding.Icon = SystemIcons.Application;
+                notifySuccessUserAdding.BalloonTipText = "User Successfully added!";
+                notifySuccessUserAdding.ShowBalloonTip(1000);
+
+                metroGrid1.DataSource = getUserList();
                 UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new User", uid);
 
                 try
@@ -199,18 +206,13 @@ namespace ResoflexClientHandlingSystem
                 }
                 
 
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Every detail must be added!", "User adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            notifySuccessUserAdding.Icon = SystemIcons.Application;
-            notifySuccessUserAdding.BalloonTipText = "User Successfully added!";
-            notifySuccessUserAdding.ShowBalloonTip(1000);
-
-            metroGrid1.DataSource = getUserList();
+            
 
         }
 
@@ -241,7 +243,7 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (Exception)
+            catch (Exception )
             {
                 MessageBox.Show("Something went wrong!\nPlease check your internet connection and email address", "Mail Sender", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }

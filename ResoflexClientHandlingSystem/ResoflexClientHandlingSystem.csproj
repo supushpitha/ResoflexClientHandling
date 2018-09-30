@@ -32,31 +32,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CircularProgressBar, Version=2.5.6403.13419, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\CircularProgressBar.2.5.6403.13419\lib\net35-client\CircularProgressBar.dll</HintPath>
+    <Reference Include="CircularProgressBar, Version=2.6.6823.24527, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\CircularProgressBar.2.6.6823.24527\lib\net35-client\CircularProgressBar.dll</HintPath>
     </Reference>
-    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.CrystalReports.Engine.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.ReportSource.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Shared.dll</HintPath>
-    </Reference>
-    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\CrystalDecisions.Windows.Forms.dll</HintPath>
-    </Reference>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
     <Reference Include="eCryptography">
       <HintPath>..\packages\Eramake.eCryptography.1.1.6\lib\net45\eCryptography.dll</HintPath>
     </Reference>
     <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\SAP BusinessObjects\Crystal Reports for .NET Framework 4.0\Common\SAP BusinessObjects Enterprise XI 4.0\win32_x86\dotnet\FlashControlV71.dll</HintPath>
+      <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\FlashControlV71.dll</HintPath>
     </Reference>
     <Reference Include="Google.Protobuf, Version=3.5.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Protobuf.3.5.1\lib\net45\Google.Protobuf.dll</HintPath>
@@ -72,6 +59,10 @@
     </Reference>
     <Reference Include="MySql.Data, Version=8.0.11.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>..\packages\MySql.Data.8.0.11\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="ShockwaveFlashObjects, Version=1.0.0.0, Culture=neutral, PublicKeyToken=692fbea5521e1304">
+      <HintPath>..\packages\CrystalReports.FlashControlV71.13.0.3501\lib\net20\ShockwaveFlashObjects.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel" />
@@ -108,6 +99,48 @@
     </Compile>
     <Compile Include="AccountingMain.Designer.cs">
       <DependentUpon>AccountingMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\MonthlyUsageReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyUsageReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Sample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\UserEfficiencyReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>UserEfficiencyReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="AdminForms\UserAddForm.cs">
       <SubType>Form</SubType>
@@ -169,6 +202,23 @@
     <Compile Include="AttendanceForms\RecordAttendanceForm.Designer.cs">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AttendanceReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReportViewerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\AttendanceReportViewerForm.Designer.cs">
+      <DependentUpon>AttendanceReportViewerForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AttendanceForms\Reports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="AttendanceForms\StaffEvalutionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,11 +237,28 @@
     <Compile Include="ClientForms\ClientForm.Designer.cs">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientForms\ClientReportForm.cs">
+    <Compile Include="ClientForms\ClientReports\ClientReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ClientForms\ClientReportForm.Designer.cs">
+    <Compile Include="ClientForms\ClientReports\ClientReportForm.Designer.cs">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClientForms\EmailClientForm.cs">
       <SubType>Form</SubType>
@@ -221,6 +288,56 @@
     <Compile Include="EventForms\AddEventForm.Designer.cs">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EventForms\EventReports\BestPerformance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BestPerformance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventDataSet.cs">
+      <DependentUpon>EventDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventEngineers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventEngineers.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventReportForm.Designer.cs">
+      <DependentUpon>EventReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventReports\EventResources.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EventResources.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\OtherReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EventForms\EventReports\OtherReports.Designer.cs">
+      <DependentUpon>OtherReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EventForms\EventReports\WorstPerformance.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WorstPerformance.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="EventForms\UpdateEventForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,35 +350,91 @@
     <Compile Include="OfficeExpensesForm\CashPaymentForm.Designer.cs">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\IouBalanceForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="OfficeExpensesForm\IouBalanceForm.Designer.cs">
-      <DependentUpon>IouBalanceForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="OfficeExpensesForm\IOUForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OfficeExpensesForm\IOUForm.Designer.cs">
       <DependentUpon>IOUForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.cs">
+    <Compile Include="OfficeExpensesForm\IOUMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\OfficeInterfaceForm.Designer.cs">
-      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
+    <Compile Include="OfficeExpensesForm\IOUMain.designer.cs">
+      <DependentUpon>IOUMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\OfficeReportForm.cs">
+    <Compile Include="OfficeExpensesForm\OfficeExpensesMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\OfficeReportForm.Designer.cs">
+    <Compile Include="OfficeExpensesForm\OfficeExpensesMainForm.designer.cs">
+      <DependentUpon>OfficeExpensesMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeExpReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OfficeExpReports.designer.cs">
+      <DependentUpon>OfficeExpReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\IouBalanceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\IouBalanceForm.Designer.cs">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\officeInterfaceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\officeInterfaceForm.Designer.cs">
+      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\OfficeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\officeReportForm.Designer.cs">
       <DependentUpon>OfficeReportForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\PaidForm.cs">
+    <Compile Include="OfficeExpensesForm\OldForms\PaidForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\PaidForm.Designer.cs">
+    <Compile Include="OfficeExpensesForm\OldForms\PaidForm.Designer.cs">
       <DependentUpon>PaidForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\UpdateSalaryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\OldForms\UpdateSalaryForm.Designer.cs">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\OfficeDataSet.cs">
+      <DependentUpon>OfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\OfficeDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OfficeDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\OfficeDirExp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OfficeDirExp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\OfficeIOUExp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OfficeIOUExp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\SalbyEmp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalbyEmp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OfficeExpensesForm\Reports\SalByMonth.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SalByMonth.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="OfficeExpensesForm\SalaryForm.cs">
       <SubType>Form</SubType>
@@ -269,11 +442,11 @@
     <Compile Include="OfficeExpensesForm\SalaryForm.Designer.cs">
       <DependentUpon>SalaryForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.cs">
+    <Compile Include="OfficeExpensesForm\SalaryMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OfficeExpensesForm\UpdateSalaryForm.Designer.cs">
-      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    <Compile Include="OfficeExpensesForm\SalaryMain.designer.cs">
+      <DependentUpon>SalaryMain.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\AddExpensesForm.cs">
       <SubType>Form</SubType>
@@ -305,22 +478,16 @@
     <Compile Include="ProjectExpenses\EventExpSeeMoreForm.Designer.cs">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ProjectExpenses\ExpensesAnalysisForm.designer.cs">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpensesMainForm.designer.cs">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\GenarateReportForm.designer.cs">
+    <Compile Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.designer.cs">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectExpenses\IOUDetailsForm.cs">
@@ -335,11 +502,17 @@
       <DependentUpon>MonthlyProjectExpReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.cs">
-      <SubType>Form</SubType>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileReportTestOne.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.Designer.cs">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
+    <Compile Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileTestTwoReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -351,6 +524,12 @@
     </Compile>
     <Compile Include="ProjectForms\AddCatagory.designer.cs">
       <DependentUpon>AddCatagory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectForms\GetPermission.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\GetPermission.Designer.cs">
+      <DependentUpon>GetPermission.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\Maintenance.cs">
       <SubType>Form</SubType>
@@ -376,11 +555,34 @@
     <Compile Include="ProjectForms\ProjectRanks.Designer.cs">
       <DependentUpon>ProjectRanks.cs</DependentUpon>
     </Compile>
+    <Compile Include="ProjectForms\ProjectReports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectForms\ProjectReports\ProjectRepot1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectRepot1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\ProjectReports\Proj_Exp.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Proj_Exp.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ProjectForms\ProjectUpdate.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ProjectForms\ProjectUpdate.Designer.cs">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProjectForms\Reports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProjectForms\Reports.Designer.cs">
+      <DependentUpon>Reports.cs</DependentUpon>
     </Compile>
     <Compile Include="ProjectForms\UpdateProjectForm.cs">
       <SubType>Form</SubType>
@@ -405,6 +607,29 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>resoflexclienthandlingsystemDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="RequestForms\RequestReports\ChangeRequestReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChangeRequestReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RequestForms\RequestReports\FullRequestReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FullRequestReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RequestForms\RequestReports\ReqRepDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReqRepDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="RequestForms\RequestReports\RequestReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RequestForms\RequestReports\RequestReportForm.Designer.cs">
+      <DependentUpon>RequestReportForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Role\ClientRelations.cs" />
     <Compile Include="Role\CommunicationSkills.cs" />
     <Compile Include="Role\EventType.cs" />
@@ -420,6 +645,7 @@
     <Compile Include="Role\Schedule.cs" />
     <Compile Include="Role\User.cs" />
     <Compile Include="Role\UserLog.cs" />
+    <Compile Include="Role\UserNotification.cs" />
     <Compile Include="Role\UserOperation.cs" />
     <Compile Include="ScheduleForms\AddScheduleForm.cs">
       <SubType>Form</SubType>
@@ -457,6 +683,43 @@
     <Compile Include="Role\Project.cs" />
     <Compile Include="Role\StaffExpenses.cs" />
     <Compile Include="Role\Staff.cs" />
+    <Compile Include="EventForms\EventReports\PerformaneDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PerformaneDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleDataset.cs">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleDataset.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleEngineers.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleEngineers.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReportsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleReportsForm.Designer.cs">
+      <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScheduleForms\Reports\ScheduleResources.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ScheduleResources.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ScheduleForms\ScheduleForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -539,11 +802,23 @@
     <Compile Include="StaffForms\UpdateMemberForm.Designer.cs">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForms\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserForms\Login.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UserForms\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForms\Notification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForms\Notification.Designer.cs">
+      <DependentUpon>Notification.cs</DependentUpon>
     </Compile>
     <Compile Include="UserForms\ProfileForm.cs">
       <SubType>Form</SubType>
@@ -553,6 +828,21 @@
     </Compile>
     <EmbeddedResource Include="AccountingMain.resx">
       <DependentUpon>AccountingMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\MonthlyUsageReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyUsageReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\Sample.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Sample.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\UserEfficiencyReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>UserEfficiencyReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
@@ -584,6 +874,13 @@
     <EmbeddedResource Include="AttendanceForms\RecordAttendanceForm.resx">
       <DependentUpon>RecordAttendanceForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AttendanceReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReportViewerForm.resx">
+      <DependentUpon>AttendanceReportViewerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\StaffEvalutionForm.resx">
       <DependentUpon>StaffEvalutionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -593,8 +890,16 @@
     <EmbeddedResource Include="ClientForms\ClientForm.resx">
       <DependentUpon>ClientForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ClientForms\ClientReportForm.resx">
+    <EmbeddedResource Include="ClientForms\ClientReports\ClientReportForm.resx">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileMainReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>
@@ -608,32 +913,86 @@
     <EmbeddedResource Include="EventForms\AddEventForm.resx">
       <DependentUpon>AddEventForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\BestPerformance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>BestPerformance.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\EventEngineers.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EventEngineers.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\EventReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EventReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\EventReportForm.resx">
+      <DependentUpon>EventReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\EventResources.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EventResources.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\OtherReports.resx">
+      <DependentUpon>OtherReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EventForms\EventReports\WorstPerformance.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>WorstPerformance.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="EventForms\UpdateEventForm.resx">
       <DependentUpon>UpdateEventForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpensesForm\CashPaymentForm.resx">
       <DependentUpon>CashPaymentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\IouBalanceForm.resx">
-      <DependentUpon>IouBalanceForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpensesForm\IOUForm.resx">
       <DependentUpon>IOUForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\OfficeInterfaceForm.resx">
-      <DependentUpon>OfficeInterfaceForm.cs</DependentUpon>
+    <EmbeddedResource Include="OfficeExpensesForm\IOUMain.resx">
+      <DependentUpon>IOUMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\OfficeReportForm.resx">
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeExpensesMainForm.resx">
+      <DependentUpon>OfficeExpensesMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OfficeExpReports.resx">
+      <DependentUpon>OfficeExpReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OldForms\IouBalanceForm.resx">
+      <DependentUpon>IouBalanceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OldForms\officeInterfaceForm.resx">
+      <DependentUpon>officeInterfaceForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OldForms\officeReportForm.resx">
       <DependentUpon>OfficeReportForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\PaidForm.resx">
+    <EmbeddedResource Include="OfficeExpensesForm\OldForms\PaidForm.resx">
       <DependentUpon>PaidForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\OldForms\UpdateSalaryForm.resx">
+      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\Reports\OfficeDirExp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OfficeDirExp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\Reports\OfficeIOUExp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OfficeIOUExp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\Reports\SalbyEmp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalbyEmp.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OfficeExpensesForm\Reports\SalByMonth.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SalByMonth.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="OfficeExpensesForm\SalaryForm.resx">
       <DependentUpon>SalaryForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OfficeExpensesForm\UpdateSalaryForm.resx">
-      <DependentUpon>UpdateSalaryForm.cs</DependentUpon>
+    <EmbeddedResource Include="OfficeExpensesForm\SalaryMain.resx">
+      <DependentUpon>SalaryMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\AddExpensesForm.resx">
       <DependentUpon>AddExpensesForm.cs</DependentUpon>
@@ -650,13 +1009,10 @@
     <EmbeddedResource Include="ProjectExpenses\EventExpSeeMoreForm.resx">
       <DependentUpon>EventExpSeeMoreForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ExpensesAnalysisForm.resx">
-      <DependentUpon>ExpensesAnalysisForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\ProjectExpensesMainForm.resx">
       <DependentUpon>ProjectExpensesMainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\GenarateReportForm.resx">
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\GenarateReportForm.resx">
       <DependentUpon>GenarateReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectExpenses\IOUDetailsForm.resx">
@@ -666,11 +1022,19 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>MonthlyProjectExpReport.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectExpensesMainReport.resx">
-      <DependentUpon>ProjectExpensesMainReport.cs</DependentUpon>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileReportTestOne.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileReportTestOne.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectExpenses\ProjectExpReports\ProjectProfileTestTwoReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileTestTwoReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\AddCatagory.resx">
       <DependentUpon>AddCatagory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\GetPermission.resx">
+      <DependentUpon>GetPermission.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\Maintenance.resx">
       <DependentUpon>Maintenance.cs</DependentUpon>
@@ -684,8 +1048,19 @@
     <EmbeddedResource Include="ProjectForms\ProjectRanks.resx">
       <DependentUpon>ProjectRanks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\ProjectReports\ProjectRepot1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectRepot1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\ProjectReports\Proj_Exp.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Proj_Exp.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\ProjectUpdate.resx">
       <DependentUpon>ProjectUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectForms\Reports.resx">
+      <DependentUpon>Reports.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProjectForms\UpdateProjectForm.resx">
       <DependentUpon>UpdateProjectForm.cs</DependentUpon>
@@ -695,6 +1070,17 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RequestForms\RequestForm.resx">
       <DependentUpon>RequestForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForms\RequestReports\ChangeRequestReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ChangeRequestReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForms\RequestReports\FullRequestReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>FullRequestReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RequestForms\RequestReports\RequestReportForm.resx">
+      <DependentUpon>RequestReportForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\AddScheduleForm.resx">
       <DependentUpon>AddScheduleForm.cs</DependentUpon>
@@ -715,6 +1101,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleEngineers.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleEngineers.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleReportsForm.resx">
+      <DependentUpon>ScheduleReportsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleForms\Reports\ScheduleResources.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ScheduleResources.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScheduleForms\ScheduleForm.resx">
       <DependentUpon>ScheduleForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -750,12 +1151,84 @@
     <EmbeddedResource Include="StaffForms\UpdateMemberForm.resx">
       <DependentUpon>UpdateMemberForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserForms\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForms\Notification.resx">
+      <DependentUpon>Notification.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AdminForms\AdminReports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet3.xsc">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet3.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet3.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet3.xss">
+      <DependentUpon>DataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsc">
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ProjectProfileDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xss">
+      <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EventForms\EventReports\EventDataSet.xsc">
+      <DependentUpon>EventDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EventForms\EventReports\EventDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>EventDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EventForms\EventReports\EventDataSet.xss">
+      <DependentUpon>EventDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OfficeExpensesForm\Reports\OfficeDataSet.xsc">
+      <DependentUpon>OfficeDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="OfficeExpensesForm\Reports\OfficeDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>OfficeDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="OfficeExpensesForm\Reports\OfficeDataSet.xss">
+      <DependentUpon>OfficeDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xsc">
       <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
@@ -767,6 +1240,17 @@
     </None>
     <None Include="ProjectExpenses\ProjectExpReports\ProjExpDataSet.xss">
       <DependentUpon>ProjExpDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectForms\ProjectReports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="ProjectForms\ProjectReports\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ProjectForms\ProjectReports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -809,6 +1293,39 @@
     </None>
     <None Include="StaffForms\StaffReports\TaskEff.xss">
       <DependentUpon>TaskEff.xsd</DependentUpon>
+    </None>
+    <None Include="EventForms\EventReports\PerformaneDataSet.xsc">
+      <DependentUpon>PerformaneDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="EventForms\EventReports\PerformaneDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PerformaneDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="EventForms\EventReports\PerformaneDataSet.xss">
+      <DependentUpon>PerformaneDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RequestForms\RequestReports\ReqRepDataSet.xsc">
+      <DependentUpon>ReqRepDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="RequestForms\RequestReports\ReqRepDataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReqRepDataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="RequestForms\RequestReports\ReqRepDataSet.xss">
+      <DependentUpon>ReqRepDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xsc">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
+    </None>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ScheduleDataset.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ScheduleForms\Reports\ScheduleDataset.xss">
+      <DependentUpon>ScheduleDataset.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

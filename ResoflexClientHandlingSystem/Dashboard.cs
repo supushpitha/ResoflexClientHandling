@@ -1,4 +1,6 @@
-﻿using ResoflexClientHandlingSystem.Role;
+﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.Core;
+using ResoflexClientHandlingSystem.Role;
 using ResoflexClientHandlingSystem.UserForms;
 using System;
 using System.Collections.Generic;
@@ -19,11 +21,6 @@ namespace ResoflexClientHandlingSystem
             InitializeComponent();
         }
 
-        private void metroTile1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Dashboard_Load(object sender, EventArgs e)
         {
             dateTimeLbl.Text = DateTime.Now.ToString("MMMM dd, yyyy");
@@ -31,17 +28,51 @@ namespace ResoflexClientHandlingSystem
             if (Userglobals.uname == "")
             {
                 profilebtn.Visible = false;
-
             }
             else
             {
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;
-
+                login.Visible = false;
             }
 
-            setAttendance();
-            
+            notify();
+        }
+
+        public void notify()
+        {
+            try
+            {
+                if (Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+                {
+                    MySqlDataReader reader = DBConnection.getData("select count(noti_ID) from notification where admin_view=0");
+
+                    while (reader.Read())
+                    {
+                        metroButton8.Text = (reader.GetValue(0).ToString());
+                    }
+                    reader.Close();
+                }
+                else if (!Userglobals.uname.Equals(""))
+                {
+                    MySqlDataReader reader2 = DBConnection.getData("select count(noti_ID) from notification where view=0 and user_id=" + Userglobals.uid + "");
+
+                    while (reader2.Read())
+                    {
+                        metroButton8.Text = (reader2.GetValue(0).ToString());
+                    }
+                    reader2.Close();
+                }
+                else
+                {
+                    metroButton6.Visible = false;
+                    metroButton8.Visible = false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
 
         private void profilebtn_Click(object sender, EventArgs e)
@@ -51,29 +82,14 @@ namespace ResoflexClientHandlingSystem
             prffrm.ShowDialog();
             this.Close();
         }
-
-        private void setAttendance()
-        {
-            //metroLabel2.Text = "12";
-        }
-
+        
         private void metroTile2_Click(object sender, EventArgs e)
         {
             ProjectForm frm = new ProjectForm();
 
             frm.Show();
         }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void metroButton3_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void metroButton4_Click(object sender, EventArgs e)
         {
             resourceForm frm = new resourceForm();
@@ -88,20 +104,14 @@ namespace ResoflexClientHandlingSystem
             this.Hide();
             frm.ShowDialog();
             this.Close();
-
-            //frm.Show();
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void metroButton2_Click(object sender, EventArgs e)
         {
             ProjectManager pm = new ProjectManager();
-           
-            pm.Show();
+            this.Hide();
+            pm.ShowDialog();
+            this.Close();
         }
 
         private void metroButton3_Click_1(object sender, EventArgs e)
@@ -127,8 +137,22 @@ namespace ResoflexClientHandlingSystem
             sEf.ShowDialog();
             this.Close();
         }
+        
+        private void metroButton6_Click(object sender, EventArgs e)
+        {
+            UserForms.Notification frm = new UserForms.Notification();
+            frm.ShowDialog();
+        }
 
-        private void metroPanel1_Paint(object sender, PaintEventArgs e)
+        private void login_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Login linfrm = new Login();
+            linfrm.ShowDialog();
+            this.Close();
+        }
+
+        private void Dashboard_Shown(object sender, EventArgs e)
         {
 
         }

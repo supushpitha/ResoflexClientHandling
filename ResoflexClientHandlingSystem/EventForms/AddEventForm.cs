@@ -19,6 +19,7 @@ namespace ResoflexClientHandlingSystem
     {
         private DataTable engGrid = new DataTable();
         private DataTable feedbackGrid = new DataTable();
+        private DataTable resoTbl = new DataTable();
         private int event_id;
 
         //service engineer datasource
@@ -110,6 +111,18 @@ namespace ResoflexClientHandlingSystem
             return dt;
         }
 
+        public DataTable eventResourcesSource()
+        {
+            MySqlDataReader reader = DBConnection.getData("select resource_id, name from resource ");
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
         public AddEventForm()
         {
             InitializeComponent();
@@ -138,8 +151,12 @@ namespace ResoflexClientHandlingSystem
             serviceEngCombo.ValueMember = "staff_id";
             serviceEngCombo.DisplayMember = "fullname";
 
+            eventResoCombo.DataSource = eventResourcesSource();
+            eventResoCombo.ValueMember = "resource_id";
+            eventResoCombo.DisplayMember = "name";
+
             //to resolve startup bug
-            projectNameChange();
+            projectNameChange(0);
 
             //eng grid columns
             engGrid.Columns.Add("staff_id", typeof(int));
@@ -150,9 +167,17 @@ namespace ResoflexClientHandlingSystem
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
+            feedbackGrid.Columns.Add("time", typeof(double));
+
+            //reso columns
+            resoTbl.Columns.Add("resource_id", typeof(int));
+            resoTbl.Columns.Add("name", typeof(string));
+            resoTbl.Columns.Add("qty", typeof(int));
+            resoTbl.PrimaryKey = new DataColumn[] { resoTbl.Columns["resource_id"] };
 
             serviceEngGrid.DataSource = engGrid;
             clientFeedback.DataSource = feedbackGrid;
+            resoGrid.DataSource = resoTbl;
 
             serviceEngFeed.DataSource = engGrid;
             serviceEngFeed.ValueMember = "staff_id";
@@ -187,8 +212,12 @@ namespace ResoflexClientHandlingSystem
             serviceEngCombo.ValueMember = "staff_id";
             serviceEngCombo.DisplayMember = "fullname";
 
+            eventResoCombo.DataSource = eventResourcesSource();
+            eventResoCombo.ValueMember = "resource_id";
+            eventResoCombo.DisplayMember = "name";
+
             //to resolve startup bug
-            projectNameChange();
+            projectNameChange(proj_id);
 
             //eng grid columns
             engGrid.Columns.Add("staff_id", typeof(int));
@@ -199,14 +228,22 @@ namespace ResoflexClientHandlingSystem
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
+            feedbackGrid.Columns.Add("time", typeof(double));
+            
+            //reso columns
+            resoTbl.Columns.Add("resource_id", typeof(int));
+            resoTbl.Columns.Add("name", typeof(string));
+            resoTbl.Columns.Add("qty", typeof(int));
+            resoTbl.PrimaryKey = new DataColumn[] { resoTbl.Columns["resource_id"] };
 
             serviceEngGrid.DataSource = engGrid;
             clientFeedback.DataSource = feedbackGrid;
+            resoGrid.DataSource = resoTbl;
 
             serviceEngFeed.DataSource = engGrid;
             serviceEngFeed.ValueMember = "staff_id";
             serviceEngFeed.DisplayMember = "fullname";
-
+                        
             projectName.SelectedValue = proj_id;
             eventsSch.SelectedValue = sch_no;
             
@@ -230,26 +267,46 @@ namespace ResoflexClientHandlingSystem
         //when project name combox box is changed
         public void onProjectNameChange(object sender, EventArgs e)
         {
-            projectNameChange();
+            projectNameChange(0);
         }
 
-        public void projectNameChange()
+        public void projectNameChange(int pid)
         {
-            int proj_id = int.Parse(projectName.SelectedValue.ToString());
+            int proj_id;
+
+            if (pid == 0)
+            {
+
+                proj_id = int.Parse(projectName.SelectedValue.ToString());
+            }
+            else
+            {
+                proj_id = pid;
+            }
+
             int client_id;
 
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id);");
 
-            DataTable dt = new DataTable();
-            dt.Load(reader);
+            if (reader.HasRows)
+            {
+                DataTable dt = new DataTable();
+                dt.Load(reader);
 
-            eventsSch.DataSource = dt;
-            eventsSch.ValueMember = "sch_no";
-            eventsSch.DisplayMember = "sch_no";
+                eventsSch.DataSource = dt;
+                eventsSch.ValueMember = "sch_no";
+                eventsSch.DisplayMember = "sch_no";
 
-            DataRow row = dt.Rows[0];
+                DataRow row = dt.Rows[0];
 
-            eventClientName.SelectedValue = row["client_id"];
+                eventClientName.SelectedValue = row["client_id"];
+            }
+            else
+            {
+                eventClientName.SelectedValue = 1;
+            }
+
+            
 
             reader.Close();
         }
@@ -262,8 +319,25 @@ namespace ResoflexClientHandlingSystem
             row = engGrid.NewRow();
             row["staff_id"] = serviceEngCombo.SelectedValue;
             row["fullname"] = serviceEngCombo.Text.ToString();
-            engGrid.Rows.Add(row);
 
+            bool contain = false;
+
+            foreach (DataGridViewRow item in serviceEngGrid.Rows)
+            {
+                if ((int)row["staff_id"] == (int)item.Cells[0].Value)
+                {
+                    contain = true;
+                }
+            }
+
+            if (!contain)
+            {
+                engGrid.Rows.Add(row);
+            }
+            else
+            {
+                MessageBox.Show("This service engineer is already added!");
+            }
         }
 
         //removing service engineers
@@ -285,13 +359,23 @@ namespace ResoflexClientHandlingSystem
 
         public void validation(object sender, EventArgs e)
         {
+            DateTime to = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
+
             if (!Validation.isEmpty(todoList.Text))
             {
                 if (!Validation.isEmpty(meals.Text))
                 {
                     if (!Validation.isDataTableEmpty(engGrid))
                     {
-                        addEvent();
+                        if (to > from)
+                        {
+                            addEvent();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please check the date selection!", "Error");
+                        }
                     }
                     else
                     {
@@ -319,9 +403,19 @@ namespace ResoflexClientHandlingSystem
             row["fullname"] = serviceEngFeed.Text.ToString();
             row["feedback"] = feedback.Text.ToString();
             row["task"] = eventTask.Text.ToString();
-            feedbackGrid.Rows.Add(row);
+
+            if(Validation.isDouble(time.Text.ToString()))
+            {
+                row["time"] = double.Parse(time.Text.ToString());
+                feedbackGrid.Rows.Add(row);
+            }
+            else
+            {
+                MessageBox.Show("Enter a numeric value");
+            }
 
             eventTask.Text = "";
+            time.Text = "";
         }
 
         private void addEvent()
@@ -330,6 +424,7 @@ namespace ResoflexClientHandlingSystem
 
             ArrayList serviceEng = new ArrayList();
             ArrayList mailEng = new ArrayList();
+            ArrayList resoArray = new ArrayList();
 
             MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
 
@@ -344,12 +439,17 @@ namespace ResoflexClientHandlingSystem
 
             foreach (DataRow dr in feedbackGrid.Rows)
             {
-                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString()));
+                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4]));
             }
 
             foreach (DataRow dr in engGrid.Rows)
             {
                 mailEng.Add(new Staff((int)dr[0]));
+            }
+
+            foreach (DataRow dr in resoTbl.Rows)
+            {
+                resoArray.Add(new Resource((int)dr[0], (int)dr[2]));
             }
 
             reader.Close();
@@ -362,7 +462,8 @@ namespace ResoflexClientHandlingSystem
             evnt.To = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
             evnt.From = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
             evnt.TodoList = todoList.Text.ToString();
-            evnt.Resource = resoBox.Text.ToString();
+            //evnt.Resource = resoBox.Text.ToString();
+            evnt.ResoArray = resoArray;
             evnt.Checklist = checkList.Text.ToString();
             evnt.TravelMode = travelingMode.Text.ToString();
             evnt.AccommodationMode = accomodation.Text.ToString();
@@ -402,11 +503,52 @@ namespace ResoflexClientHandlingSystem
         //adding resources
         private void addReso_Click(object sender, EventArgs e)
         {
-            string resources = eventReso.Text.ToString();
-            eventReso.Text = "";
+            DataRow row;
 
-            resoBox.AppendText(resources + " ");
-            resoBox.AppendText(Environment.NewLine);
+            row = resoTbl.NewRow();
+            row["resource_id"] = eventResoCombo.SelectedValue;
+            row["name"] = eventResoCombo.Text.ToString();
+
+            if (Validation.isNumber(resoQty.Text.ToString()))
+            {
+                bool contain = false;
+
+                foreach (DataGridViewRow item in resoGrid.Rows)
+                {
+                    if ((int)row["resource_id"] == (int)item.Cells[0].Value)
+                    {
+                        int i = (int)item.Cells[2].Value;
+                        item.Cells[2].Value = i + int.Parse(resoQty.Text);
+                        contain = true;
+                    }
+                }
+
+                if (!contain)
+                {
+                    row["qty"] = int.Parse(resoQty.Text);
+                    resoTbl.Rows.Add(row);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Enter a numeric value");
+            }
+        }
+
+        private void removerReso_Click(object sender, EventArgs e)
+        {
+            for (int i = resoTbl.Rows.Count - 1; i >= 0; i--)
+            {
+                DataRow r = resoTbl.Rows[i];
+                DataGridViewRow gr = resoGrid.CurrentRow;
+
+                if (r["resource_id"].ToString().Equals(gr.Cells[0].Value.ToString()))
+                {
+                    resoTbl.Rows[i].Delete();
+
+                    break;
+                }
+            }
         }
 
         private void serviceEngGrid_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
@@ -416,22 +558,49 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
+            /*MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
 
             if (reader.Read())
             {
-                event_id = reader.GetInt16("event_id") + 1;
-            }
-            else
-            {
-                event_id = 1;
-            }
+                event_id = reader.GetInt16("event_id");
 
-            reader.Close();
+                reader.Close();
 
-            AddExpensesForm add = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id);
-            
-            add.Show();
+                AddExpensesForm addExpFrm = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id, int.Parse(eventsSch.SelectedValue.ToString()));
+
+                addExpFrm.Show();
+            }*/
+        }
+
+        private void demo_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "Train the newly added system";
+            checkList.Text = "Check for rules and regulations";
+            meals.Text = "Provided";
+            overFeedback.Text = "Required work was well done";
+            other.Text = "None";
+            eventTask.Text = "Training the system";
+            time.Text = "14.5";
+            eventStartDate.Text = "2018-10-18";
+            eventEndDate.Text = "2018-10-20";
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "";
+            checkList.Text = "";
+            meals.Text = "";
+            overFeedback.Text = "";
+            other.Text = "";
+            eventTask.Text = "";
+            time.Text = "";
+            eventStartDate.Text = "";
+            eventEndDate.Text = "";
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

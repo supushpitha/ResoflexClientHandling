@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroLabel3 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel4 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel5 = new MetroFramework.Controls.MetroLabel();
@@ -45,29 +45,25 @@
             this.productivityTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.initiativeTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.JPaddBtn = new MetroFramework.Controls.MetroButton();
-            this.jobPerformanceDateTime = new MetroFramework.Controls.MetroDateTime();
             this.jobPerformanceGrid = new MetroFramework.Controls.MetroGrid();
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel10 = new MetroFramework.Controls.MetroLabel();
             this.JPUpdateBtn = new MetroFramework.Controls.MetroButton();
             this.JPClearBtn = new MetroFramework.Controls.MetroButton();
+            this.AprilBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.AugustBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.DecemberBtn = new MetroFramework.Controls.MetroRadioButton();
+            this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.metroComboBox1 = new MetroFramework.Controls.MetroComboBox();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.metroButton1 = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.jobPerformanceGrid)).BeginInit();
             this.SuspendLayout();
-            // 
-            // metroLabel1
-            // 
-            this.metroLabel1.AutoSize = true;
-            this.metroLabel1.Location = new System.Drawing.Point(535, 73);
-            this.metroLabel1.Name = "metroLabel1";
-            this.metroLabel1.Size = new System.Drawing.Size(36, 19);
-            this.metroLabel1.TabIndex = 0;
-            this.metroLabel1.Text = "Date";
-            this.metroLabel1.Click += new System.EventHandler(this.metroLabel1_Click);
             // 
             // metroLabel3
             // 
             this.metroLabel3.AutoSize = true;
-            this.metroLabel3.Location = new System.Drawing.Point(23, 171);
+            this.metroLabel3.Location = new System.Drawing.Point(23, 253);
             this.metroLabel3.Name = "metroLabel3";
             this.metroLabel3.Size = new System.Drawing.Size(73, 19);
             this.metroLabel3.TabIndex = 2;
@@ -76,7 +72,7 @@
             // metroLabel4
             // 
             this.metroLabel4.AutoSize = true;
-            this.metroLabel4.Location = new System.Drawing.Point(23, 227);
+            this.metroLabel4.Location = new System.Drawing.Point(23, 292);
             this.metroLabel4.Name = "metroLabel4";
             this.metroLabel4.Size = new System.Drawing.Size(44, 19);
             this.metroLabel4.TabIndex = 3;
@@ -85,7 +81,7 @@
             // metroLabel5
             // 
             this.metroLabel5.AutoSize = true;
-            this.metroLabel5.Location = new System.Drawing.Point(23, 289);
+            this.metroLabel5.Location = new System.Drawing.Point(23, 331);
             this.metroLabel5.Name = "metroLabel5";
             this.metroLabel5.Size = new System.Drawing.Size(50, 19);
             this.metroLabel5.TabIndex = 4;
@@ -94,7 +90,7 @@
             // metroLabel6
             // 
             this.metroLabel6.AutoSize = true;
-            this.metroLabel6.Location = new System.Drawing.Point(23, 345);
+            this.metroLabel6.Location = new System.Drawing.Point(23, 370);
             this.metroLabel6.Name = "metroLabel6";
             this.metroLabel6.Size = new System.Drawing.Size(79, 19);
             this.metroLabel6.TabIndex = 5;
@@ -103,7 +99,7 @@
             // metroLabel7
             // 
             this.metroLabel7.AutoSize = true;
-            this.metroLabel7.Location = new System.Drawing.Point(23, 402);
+            this.metroLabel7.Location = new System.Drawing.Point(23, 412);
             this.metroLabel7.Name = "metroLabel7";
             this.metroLabel7.Size = new System.Drawing.Size(77, 19);
             this.metroLabel7.TabIndex = 6;
@@ -112,7 +108,7 @@
             // metroLabel8
             // 
             this.metroLabel8.AutoSize = true;
-            this.metroLabel8.Location = new System.Drawing.Point(23, 449);
+            this.metroLabel8.Location = new System.Drawing.Point(23, 453);
             this.metroLabel8.Name = "metroLabel8";
             this.metroLabel8.Size = new System.Drawing.Size(56, 19);
             this.metroLabel8.TabIndex = 7;
@@ -133,7 +129,7 @@
             this.knowledgeTxtbox.CustomButton.UseSelectable = true;
             this.knowledgeTxtbox.CustomButton.Visible = false;
             this.knowledgeTxtbox.Lines = new string[0];
-            this.knowledgeTxtbox.Location = new System.Drawing.Point(129, 167);
+            this.knowledgeTxtbox.Location = new System.Drawing.Point(129, 249);
             this.knowledgeTxtbox.MaxLength = 32767;
             this.knowledgeTxtbox.Name = "knowledgeTxtbox";
             this.knowledgeTxtbox.PasswordChar = '\0';
@@ -147,6 +143,7 @@
             this.knowledgeTxtbox.UseSelectable = true;
             this.knowledgeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.knowledgeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.knowledgeTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.knowledgeTxtbox_KeyPress);
             // 
             // safetyTexbox
             // 
@@ -163,7 +160,7 @@
             this.safetyTexbox.CustomButton.UseSelectable = true;
             this.safetyTexbox.CustomButton.Visible = false;
             this.safetyTexbox.Lines = new string[0];
-            this.safetyTexbox.Location = new System.Drawing.Point(129, 223);
+            this.safetyTexbox.Location = new System.Drawing.Point(129, 288);
             this.safetyTexbox.MaxLength = 32767;
             this.safetyTexbox.Name = "safetyTexbox";
             this.safetyTexbox.PasswordChar = '\0';
@@ -177,6 +174,7 @@
             this.safetyTexbox.UseSelectable = true;
             this.safetyTexbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.safetyTexbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.safetyTexbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.safetyTexbox_KeyPress);
             // 
             // qualityTxtbox
             // 
@@ -193,7 +191,7 @@
             this.qualityTxtbox.CustomButton.UseSelectable = true;
             this.qualityTxtbox.CustomButton.Visible = false;
             this.qualityTxtbox.Lines = new string[0];
-            this.qualityTxtbox.Location = new System.Drawing.Point(129, 285);
+            this.qualityTxtbox.Location = new System.Drawing.Point(129, 327);
             this.qualityTxtbox.MaxLength = 32767;
             this.qualityTxtbox.Name = "qualityTxtbox";
             this.qualityTxtbox.PasswordChar = '\0';
@@ -207,6 +205,7 @@
             this.qualityTxtbox.UseSelectable = true;
             this.qualityTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.qualityTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.qualityTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.qualityTxtbox_KeyPress);
             // 
             // adaptabilityTxtbox
             // 
@@ -223,7 +222,7 @@
             this.adaptabilityTxtbox.CustomButton.UseSelectable = true;
             this.adaptabilityTxtbox.CustomButton.Visible = false;
             this.adaptabilityTxtbox.Lines = new string[0];
-            this.adaptabilityTxtbox.Location = new System.Drawing.Point(129, 341);
+            this.adaptabilityTxtbox.Location = new System.Drawing.Point(129, 366);
             this.adaptabilityTxtbox.MaxLength = 32767;
             this.adaptabilityTxtbox.Name = "adaptabilityTxtbox";
             this.adaptabilityTxtbox.PasswordChar = '\0';
@@ -237,6 +236,7 @@
             this.adaptabilityTxtbox.UseSelectable = true;
             this.adaptabilityTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.adaptabilityTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.adaptabilityTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.adaptabilityTxtbox_KeyPress);
             // 
             // productivityTxtbox
             // 
@@ -253,7 +253,7 @@
             this.productivityTxtbox.CustomButton.UseSelectable = true;
             this.productivityTxtbox.CustomButton.Visible = false;
             this.productivityTxtbox.Lines = new string[0];
-            this.productivityTxtbox.Location = new System.Drawing.Point(129, 398);
+            this.productivityTxtbox.Location = new System.Drawing.Point(129, 408);
             this.productivityTxtbox.MaxLength = 32767;
             this.productivityTxtbox.Name = "productivityTxtbox";
             this.productivityTxtbox.PasswordChar = '\0';
@@ -267,6 +267,7 @@
             this.productivityTxtbox.UseSelectable = true;
             this.productivityTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.productivityTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.productivityTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.productivityTxtbox_KeyPress);
             // 
             // initiativeTxtbox
             // 
@@ -283,7 +284,7 @@
             this.initiativeTxtbox.CustomButton.UseSelectable = true;
             this.initiativeTxtbox.CustomButton.Visible = false;
             this.initiativeTxtbox.Lines = new string[0];
-            this.initiativeTxtbox.Location = new System.Drawing.Point(129, 445);
+            this.initiativeTxtbox.Location = new System.Drawing.Point(129, 449);
             this.initiativeTxtbox.MaxLength = 32767;
             this.initiativeTxtbox.Name = "initiativeTxtbox";
             this.initiativeTxtbox.PasswordChar = '\0';
@@ -297,6 +298,7 @@
             this.initiativeTxtbox.UseSelectable = true;
             this.initiativeTxtbox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.initiativeTxtbox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.initiativeTxtbox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.initiativeTxtbox_KeyPress);
             // 
             // JPaddBtn
             // 
@@ -308,53 +310,45 @@
             this.JPaddBtn.UseSelectable = true;
             this.JPaddBtn.Click += new System.EventHandler(this.metroButton1_Click);
             // 
-            // jobPerformanceDateTime
-            // 
-            this.jobPerformanceDateTime.Location = new System.Drawing.Point(577, 63);
-            this.jobPerformanceDateTime.MinimumSize = new System.Drawing.Size(0, 29);
-            this.jobPerformanceDateTime.Name = "jobPerformanceDateTime";
-            this.jobPerformanceDateTime.Size = new System.Drawing.Size(187, 29);
-            this.jobPerformanceDateTime.TabIndex = 19;
-            this.jobPerformanceDateTime.ValueChanged += new System.EventHandler(this.metroDateTime1_ValueChanged);
-            // 
             // jobPerformanceGrid
             // 
             this.jobPerformanceGrid.AllowUserToResizeRows = false;
+            this.jobPerformanceGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.jobPerformanceGrid.BackgroundColor = System.Drawing.Color.White;
             this.jobPerformanceGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.jobPerformanceGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.jobPerformanceGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.jobPerformanceGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.jobPerformanceGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.jobPerformanceGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.jobPerformanceGrid.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.jobPerformanceGrid.DefaultCellStyle = dataGridViewCellStyle5;
             this.jobPerformanceGrid.EnableHeadersVisualStyles = false;
             this.jobPerformanceGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.jobPerformanceGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.jobPerformanceGrid.Location = new System.Drawing.Point(180, 167);
             this.jobPerformanceGrid.Name = "jobPerformanceGrid";
             this.jobPerformanceGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.jobPerformanceGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.jobPerformanceGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.jobPerformanceGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.jobPerformanceGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.jobPerformanceGrid.Size = new System.Drawing.Size(597, 301);
@@ -364,7 +358,7 @@
             // metroLabel9
             // 
             this.metroLabel9.AutoSize = true;
-            this.metroLabel9.Location = new System.Drawing.Point(399, 25);
+            this.metroLabel9.Location = new System.Drawing.Point(318, 30);
             this.metroLabel9.Name = "metroLabel9";
             this.metroLabel9.Size = new System.Drawing.Size(83, 19);
             this.metroLabel9.TabIndex = 21;
@@ -374,7 +368,7 @@
             // metroLabel10
             // 
             this.metroLabel10.AutoSize = true;
-            this.metroLabel10.Location = new System.Drawing.Point(306, 25);
+            this.metroLabel10.Location = new System.Drawing.Point(225, 30);
             this.metroLabel10.Name = "metroLabel10";
             this.metroLabel10.Size = new System.Drawing.Size(76, 19);
             this.metroLabel10.TabIndex = 60;
@@ -400,17 +394,86 @@
             this.JPClearBtn.UseSelectable = true;
             this.JPClearBtn.Click += new System.EventHandler(this.metroButton3_Click);
             // 
+            // AprilBtn
+            // 
+            this.AprilBtn.AutoSize = true;
+            this.AprilBtn.Location = new System.Drawing.Point(23, 150);
+            this.AprilBtn.Name = "AprilBtn";
+            this.AprilBtn.Size = new System.Drawing.Size(48, 15);
+            this.AprilBtn.TabIndex = 63;
+            this.AprilBtn.Text = "April";
+            this.AprilBtn.UseSelectable = true;
+            // 
+            // AugustBtn
+            // 
+            this.AugustBtn.AutoSize = true;
+            this.AugustBtn.Location = new System.Drawing.Point(23, 180);
+            this.AugustBtn.Name = "AugustBtn";
+            this.AugustBtn.Size = new System.Drawing.Size(61, 15);
+            this.AugustBtn.TabIndex = 64;
+            this.AugustBtn.Text = "August";
+            this.AugustBtn.UseSelectable = true;
+            // 
+            // DecemberBtn
+            // 
+            this.DecemberBtn.AutoSize = true;
+            this.DecemberBtn.Location = new System.Drawing.Point(23, 210);
+            this.DecemberBtn.Name = "DecemberBtn";
+            this.DecemberBtn.Size = new System.Drawing.Size(77, 15);
+            this.DecemberBtn.TabIndex = 65;
+            this.DecemberBtn.Text = "December";
+            this.DecemberBtn.UseSelectable = true;
+            // 
+            // metroLabel2
+            // 
+            this.metroLabel2.AutoSize = true;
+            this.metroLabel2.Location = new System.Drawing.Point(176, 102);
+            this.metroLabel2.Name = "metroLabel2";
+            this.metroLabel2.Size = new System.Drawing.Size(34, 19);
+            this.metroLabel2.TabIndex = 68;
+            this.metroLabel2.Text = "Year";
+            // 
+            // metroComboBox1
+            // 
+            this.metroComboBox1.FormattingEnabled = true;
+            this.metroComboBox1.ItemHeight = 23;
+            this.metroComboBox1.Location = new System.Drawing.Point(216, 92);
+            this.metroComboBox1.Name = "metroComboBox1";
+            this.metroComboBox1.Size = new System.Drawing.Size(121, 29);
+            this.metroComboBox1.TabIndex = 67;
+            this.metroComboBox1.UseSelectable = true;
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Visible = true;
+            // 
+            // metroButton1
+            // 
+            this.metroButton1.Location = new System.Drawing.Point(535, 483);
+            this.metroButton1.Name = "metroButton1";
+            this.metroButton1.Size = new System.Drawing.Size(75, 23);
+            this.metroButton1.TabIndex = 69;
+            this.metroButton1.Text = "demo";
+            this.metroButton1.UseSelectable = true;
+            this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click_1);
+            // 
             // JobPerformanceAddEntryForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.metroLabel2);
+            this.Controls.Add(this.metroComboBox1);
+            this.Controls.Add(this.DecemberBtn);
+            this.Controls.Add(this.AugustBtn);
+            this.Controls.Add(this.AprilBtn);
             this.Controls.Add(this.JPClearBtn);
             this.Controls.Add(this.JPUpdateBtn);
             this.Controls.Add(this.metroLabel10);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.jobPerformanceGrid);
-            this.Controls.Add(this.jobPerformanceDateTime);
             this.Controls.Add(this.JPaddBtn);
             this.Controls.Add(this.initiativeTxtbox);
             this.Controls.Add(this.productivityTxtbox);
@@ -424,7 +487,6 @@
             this.Controls.Add(this.metroLabel5);
             this.Controls.Add(this.metroLabel4);
             this.Controls.Add(this.metroLabel3);
-            this.Controls.Add(this.metroLabel1);
             this.Name = "JobPerformanceAddEntryForm";
             this.Text = "Job Performance";
             this.Load += new System.EventHandler(this.JobPerformanceAddEntryForm_Load);
@@ -435,8 +497,6 @@
         }
 
         #endregion
-
-        private MetroFramework.Controls.MetroLabel metroLabel1;
         private MetroFramework.Controls.MetroLabel metroLabel3;
         private MetroFramework.Controls.MetroLabel metroLabel4;
         private MetroFramework.Controls.MetroLabel metroLabel5;
@@ -449,12 +509,18 @@
         private MetroFramework.Controls.MetroTextBox productivityTxtbox;
         private MetroFramework.Controls.MetroTextBox initiativeTxtbox;
         private MetroFramework.Controls.MetroButton JPaddBtn;
-        private MetroFramework.Controls.MetroDateTime jobPerformanceDateTime;
         private MetroFramework.Controls.MetroGrid jobPerformanceGrid;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroLabel metroLabel10;
         private MetroFramework.Controls.MetroButton JPUpdateBtn;
         private MetroFramework.Controls.MetroTextBox knowledgeTxtbox;
         private MetroFramework.Controls.MetroButton JPClearBtn;
+        private MetroFramework.Controls.MetroRadioButton AprilBtn;
+        private MetroFramework.Controls.MetroRadioButton AugustBtn;
+        private MetroFramework.Controls.MetroRadioButton DecemberBtn;
+        private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroComboBox metroComboBox1;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private MetroFramework.Controls.MetroButton metroButton1;
     }
 }

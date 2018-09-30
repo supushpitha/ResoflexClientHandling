@@ -79,7 +79,7 @@ namespace ResoflexClientHandlingSystem.UserForms
 
                     while (reader.Read())
                     {
-                        metroLink1.Text = (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
+                        metroLabel1.Text = (reader.GetValue(0).ToString() + " " + reader.GetValue(1).ToString());
                         txtUname.Text = reader.GetValue(2).ToString();
 
                     }
@@ -187,6 +187,14 @@ namespace ResoflexClientHandlingSystem.UserForms
         private void metroLink5_Click(object sender, EventArgs e)
         {
 
-        }     
+        }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            Dashboard dsh = new Dashboard();
+            this.Hide();
+            dsh.ShowDialog();
+            this.Close();
+        }
     }
 }

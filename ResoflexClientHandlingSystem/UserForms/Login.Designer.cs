@@ -35,6 +35,7 @@
             this.pwdTextBox = new MetroFramework.Controls.MetroTextBox();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
             this.metroLink1 = new MetroFramework.Controls.MetroLink();
+            this.demo = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
@@ -162,11 +163,22 @@
             this.metroLink1.UseSelectable = true;
             this.metroLink1.Click += new System.EventHandler(this.metroLink1_Click);
             // 
+            // demo
+            // 
+            this.demo.Location = new System.Drawing.Point(369, 320);
+            this.demo.Name = "demo";
+            this.demo.Size = new System.Drawing.Size(58, 25);
+            this.demo.TabIndex = 6;
+            this.demo.Text = "Demo";
+            this.demo.UseSelectable = true;
+            this.demo.Click += new System.EventHandler(this.demo_Click);
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(450, 350);
+            this.Controls.Add(this.demo);
             this.Controls.Add(this.metroLink1);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.pwdTextBox);
@@ -192,5 +204,6 @@
         private MetroFramework.Controls.MetroTextBox pwdTextBox;
         private MetroFramework.Controls.MetroButton metroButton1;
         private MetroFramework.Controls.MetroLink metroLink1;
+        private MetroFramework.Controls.MetroButton demo;
     }
 }

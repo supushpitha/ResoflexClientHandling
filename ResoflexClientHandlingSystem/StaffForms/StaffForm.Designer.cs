@@ -70,6 +70,7 @@
             this.errorProviderAddStaff = new System.Windows.Forms.ErrorProvider(this.components);
             this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.demo_stf_btn = new MetroFramework.Controls.MetroButton();
+            this.profilebtn = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.AddMemberTab.SuspendLayout();
             this.htmlLabel2.SuspendLayout();
@@ -860,12 +861,26 @@
             this.demo_stf_btn.Text = "Demo";
             this.demo_stf_btn.UseSelectable = true;
             this.demo_stf_btn.Click += new System.EventHandler(this.demo_stf_btn_Click);
+            // profilebtn
+            // 
+            this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profilebtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profilebtn.Location = new System.Drawing.Point(673, 15);
+            this.profilebtn.Name = "profilebtn";
+            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.TabIndex = 17;
+            this.profilebtn.UseCustomBackColor = true;
+            this.profilebtn.UseSelectable = true;
+            this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
             // 
             // StaffForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(815, 538);
+            this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.homeBtn);
             this.Controls.Add(this.metroTabControl1);
             this.Name = "StaffForm";
@@ -932,5 +947,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderAddStaff;
         private MetroFramework.Controls.MetroButton homeBtn;
         private MetroFramework.Controls.MetroButton demo_stf_btn;
+        private MetroFramework.Controls.MetroButton profilebtn;
     }
 }

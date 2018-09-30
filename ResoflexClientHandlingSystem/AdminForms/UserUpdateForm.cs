@@ -16,6 +16,8 @@ namespace ResoflexClientHandlingSystem.AdminForms
 {
     public partial class UserUpdateForm : MetroFramework.Forms.MetroForm
     {
+        private string v;
+
         public UserUpdateForm()
         {
             InitializeComponent();
@@ -52,7 +54,8 @@ namespace ResoflexClientHandlingSystem.AdminForms
 
                 while (reader.Read())
                 {
-                    Linkname.Text = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
+                    string name = reader["first_name"].ToString() + " " + reader["last_name"].ToString();
+                    Linkname.Text = name;
                     permComboBox.SelectedItem = reader["designation_name"].ToString();
                 }
                 reader.Close();

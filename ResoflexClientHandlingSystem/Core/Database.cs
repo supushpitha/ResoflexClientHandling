@@ -557,6 +557,36 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        public static Boolean deleteResource(Resource resource)
+        {
+            try
+            {
+                DBConnection.updateDB("delete from resource where resource_id = " + resource.ResourceId + ";");
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Resource Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                return false;
+            }
+        }
+
+        public static void updateResource(Resource resource)
+        {
+            try
+            {
+
+                DBConnection.updateDB("update resource set name = '" + resource.Name + "', value = " + resource.Value + ", " +
+                    " total_qty = " + resource.TotalQty + ", available_qty = " + resource.AvailableQty + " where resource_id=" + resource.ResourceId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Something went wrong! '" + ex + "'", "Update resource", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         public static void addDesignation(Designation designation)
         {
             try
@@ -829,5 +859,7 @@ namespace ResoflexClientHandlingSystem.Core
                  " where staff_id = " + s.Empid + "");
             MessageBox.Show("Successfully added");
         }
+
+        
     }
 }

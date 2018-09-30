@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,7 +11,7 @@ namespace ResoflexClientHandlingSystem.Core
 {
     class DBConnection
     {
-        private static string connString = string.Format("Server=localhost; database=resoflexclienthandlingsystem; UID=root; password=; SSLMode=none");
+        private static string connString = string.Format("Server=localhost; database=resoflexclienthandlingsystem; UID=root; password=root; SSLMode=none");
         private static MySqlConnection conn = new MySqlConnection(connString);
         private static MySqlConnection tmpConn = null;
 
@@ -57,7 +58,7 @@ namespace ResoflexClientHandlingSystem.Core
             if (tmpConn.State.ToString().Equals("Open") || tmpConn.State.ToString().Equals("open"))
                 tmpConn.Close();
         }
-        
+
         public static MySqlDataReader getData(string qry)
         {
             if (conn != null)
@@ -73,29 +74,34 @@ namespace ResoflexClientHandlingSystem.Core
                 new MySqlCommand(qry, getConnection()).ExecuteNonQuery();
             }
         }
-        /*
-        public static void backupDB()
-        {
-            try
-            {
-                string file = "C:/Users/Geeth Sandaru/Downloads/Backup.sql";
 
-                if (conn != null)
-                {
-                    using (MySqlCommand cmd = new MySqlCommand())
-                    {
-                        using (MySqlBackup mb = new MySqlBackup(cmd))
-                        {
-                            cmd.Connection = getConnection();
-                            mb.ExportToFile(file);
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }*/
+        internal static SqlConnection getData()
+        {
+            throw new NotImplementedException();
+        }
+        /*
+public static void backupDB()
+{
+   try
+   {
+       string file = "C:/Users/Geeth Sandaru/Downloads/Backup.sql";
+
+       if (conn != null)
+       {
+           using (MySqlCommand cmd = new MySqlCommand())
+           {
+               using (MySqlBackup mb = new MySqlBackup(cmd))
+               {
+                   cmd.Connection = getConnection();
+                   mb.ExportToFile(file);
+               }
+           }
+       }
+   }
+   catch (Exception ex)
+   {
+       MessageBox.Show(ex.Message, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+   }
+}*/
     }
 }

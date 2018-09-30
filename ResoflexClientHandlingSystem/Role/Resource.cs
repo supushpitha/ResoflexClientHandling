@@ -35,6 +35,10 @@ namespace ResoflexClientHandlingSystem.Role
             this.AvailableQty = availableQty;
         }
 
+        public Resource()
+        {
+        }
+
         public int ResourceId { get => resourceId; set => resourceId = value; }
         public string Name { get => name; set => name = value; }
         public float Value { get => value; set => this.value = value; }

@@ -15,9 +15,22 @@ namespace ResoflexClientHandlingSystem
 {
     public partial class resourceForm : MetroFramework.Forms.MetroForm
     {
+        int Id;
+        int availableQty;
+        bool update = false;
+
         public resourceForm()
         {
             InitializeComponent();
+        }
+
+        public void setUpdateDetails(int Id, string name, float value, int totalQty, int availableQty)
+        {
+            this.Id = Id;
+            nameResTxtBox.Text = name;
+            valueResTxtBox.Text = value.ToString();
+            qtyResTxtBox.Text = totalQty.ToString();
+            this.availableQty = availableQty;
         }
 
         private void resourceForm_Load(object sender, EventArgs e)
@@ -38,6 +51,8 @@ namespace ResoflexClientHandlingSystem
 
         private void resClearBtn_Click(object sender, EventArgs e)
         {
+            update = false;
+            resAddBtn.Text = "Add";
             clear();
         }
 
@@ -48,7 +63,18 @@ namespace ResoflexClientHandlingSystem
 
         private void Update_Click(object sender, EventArgs e)
         {
-           
+            int resID = Int32.Parse(ResGrid.CurrentRow.Cells[0].Value.ToString());
+            string nm = ResGrid.CurrentRow.Cells[1].Value.ToString();
+            float val = float.Parse(ResGrid.CurrentRow.Cells[2].Value.ToString());
+            int totQty = Int32.Parse(ResGrid.CurrentRow.Cells[3].Value.ToString());
+            int avaQty = Int32.Parse(ResGrid.CurrentRow.Cells[4].Value.ToString());
+            update = true;
+
+            resAddBtn.Text = "Update";
+
+            setUpdateDetails(resID, nm, val, totQty, avaQty);
+            
+            //update resource by clicking update button
         }
 
         private void resAddBtn_Click(object sender, EventArgs e)
@@ -57,15 +83,25 @@ namespace ResoflexClientHandlingSystem
             float value = float.Parse(valueResTxtBox.Text);
             int totalQty = Int32.Parse(qtyResTxtBox.Text);
             int availableQty = Int32.Parse(qtyResTxtBox.Text);
-
-            Resource reso = new Resource(name, value, totalQty, availableQty);
-
+            
             try
             {
+                if (update)
+                {
+                    update = false;
+                    resAddBtn.Text = "Add";
 
-                Core.Database.addResource(reso);
+                    Resource reso2 = new Resource(Id, name, value, totalQty, availableQty);
+                    Core.Database.updateResource(reso2);
+                }
+                else
+                {
+                    Resource reso = new Resource(name, value, totalQty, availableQty);
+                    Core.Database.addResource(reso);
+                }
+                
                 loadResourceToGrid();
-
+                
                 try
                 {
                     clear();
@@ -109,8 +145,24 @@ namespace ResoflexClientHandlingSystem
 
         private void DelResBtn_Click(object sender, EventArgs e)
         {
-            int rowIndex = ResGrid.CurrentCell.RowIndex;
-            ResGrid.Rows.RemoveAt(rowIndex);
+            // int rowIndex = ResGrid.CurrentCell.RowIndex;
+            // ResGrid.Rows.RemoveAt(rowIndex);
+
+            DataGridViewRow dr = ResGrid.CurrentRow;
+
+            Resource resource = new Resource();
+            resource.ResourceId = int.Parse(dr.Cells[0].Value.ToString());
+
+            if (Database.deleteResource(resource))
+            {
+                MessageBox.Show("Schedule Successfully Deleted\n", "Resource Deleted", MessageBoxButtons.OK);
+
+                loadResourceToGrid();
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong!\n", "Resource Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
         }
 
@@ -135,6 +187,13 @@ namespace ResoflexClientHandlingSystem
         private void selectResourceTxtbox_TextChanged(object sender, EventArgs e)
         {
             ResGrid.DataSource = searchFromResource();
+        }
+
+        private void demo_res_btn_Click(object sender, EventArgs e)
+        {
+            nameResTxtBox.Text = "Portable DVD drivers";
+            valueResTxtBox.Text = "10";
+            qtyResTxtBox.Text = "10000";
         }
     }
 }

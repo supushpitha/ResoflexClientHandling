@@ -258,7 +258,7 @@ namespace ResoflexClientHandlingSystem.UserForms
                     UserNotification notification = new UserNotification();
                     notification.NotiId = int.Parse(g.CurrentRow.Cells[0].Value.ToString());
 
-                    Database.acceptResetPass(notification);
+                    //Database.acceptResetPass(notification);
 
                     MessageBox.Show("Notification cleared.");
 

@@ -31,12 +31,12 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle25 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle26 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle27 = new System.Windows.Forms.DataGridViewCellStyle();
             this.eventEndTime = new System.Windows.Forms.DateTimePicker();
             this.eventStartTime = new System.Windows.Forms.DateTimePicker();
             this.eventEndDate = new System.Windows.Forms.DateTimePicker();
@@ -47,6 +47,13 @@
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.accomodation = new MetroFramework.Controls.MetroComboBox();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.resoQty = new MetroFramework.Controls.MetroTextBox();
+            this.removeReso = new MetroFramework.Controls.MetroButton();
+            this.resoGrid = new MetroFramework.Controls.MetroGrid();
+            this.eventResoCombo = new MetroFramework.Controls.MetroComboBox();
+            this.addReso = new MetroFramework.Controls.MetroButton();
+            this.time = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
             this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.eventTask = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
@@ -87,17 +94,11 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel21 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel22 = new MetroFramework.Controls.MetroLabel();
-            this.time = new MetroFramework.Controls.MetroTextBox();
-            this.resoQty = new MetroFramework.Controls.MetroTextBox();
-            this.removeReso = new MetroFramework.Controls.MetroButton();
-            this.resoGrid = new MetroFramework.Controls.MetroGrid();
-            this.eventResoCombo = new MetroFramework.Controls.MetroComboBox();
-            this.addReso = new MetroFramework.Controls.MetroButton();
+            this.demo = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientFeedback)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.resoGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientFeedback)).BeginInit();
             this.SuspendLayout();
             // 
             // eventEndTime
@@ -230,6 +231,7 @@
             // metroPanel1
             // 
             this.metroPanel1.AutoScroll = true;
+            this.metroPanel1.Controls.Add(this.demo);
             this.metroPanel1.Controls.Add(this.resoQty);
             this.metroPanel1.Controls.Add(this.removeReso);
             this.metroPanel1.Controls.Add(this.resoGrid);
@@ -298,6 +300,156 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // resoQty
+            // 
+            // 
+            // 
+            // 
+            this.resoQty.CustomButton.Image = null;
+            this.resoQty.CustomButton.Location = new System.Drawing.Point(19, 1);
+            this.resoQty.CustomButton.Name = "";
+            this.resoQty.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.resoQty.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.resoQty.CustomButton.TabIndex = 1;
+            this.resoQty.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.resoQty.CustomButton.UseSelectable = true;
+            this.resoQty.CustomButton.Visible = false;
+            this.resoQty.Lines = new string[0];
+            this.resoQty.Location = new System.Drawing.Point(662, 334);
+            this.resoQty.MaxLength = 32767;
+            this.resoQty.Name = "resoQty";
+            this.resoQty.PasswordChar = '\0';
+            this.resoQty.PromptText = "qty";
+            this.resoQty.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.resoQty.SelectedText = "";
+            this.resoQty.SelectionLength = 0;
+            this.resoQty.SelectionStart = 0;
+            this.resoQty.ShortcutsEnabled = true;
+            this.resoQty.Size = new System.Drawing.Size(47, 29);
+            this.resoQty.TabIndex = 100;
+            this.resoQty.UseSelectable = true;
+            this.resoQty.WaterMark = "qty";
+            this.resoQty.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.resoQty.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // removeReso
+            // 
+            this.removeReso.Location = new System.Drawing.Point(640, 462);
+            this.removeReso.Name = "removeReso";
+            this.removeReso.Size = new System.Drawing.Size(69, 23);
+            this.removeReso.TabIndex = 99;
+            this.removeReso.Text = "Remove";
+            this.removeReso.UseSelectable = true;
+            this.removeReso.Click += new System.EventHandler(this.removerReso_Click);
+            // 
+            // resoGrid
+            // 
+            this.resoGrid.AllowUserToAddRows = false;
+            this.resoGrid.AllowUserToDeleteRows = false;
+            this.resoGrid.AllowUserToResizeRows = false;
+            this.resoGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.resoGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.resoGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.resoGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
+            this.resoGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.resoGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
+            this.resoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.resoGrid.DefaultCellStyle = dataGridViewCellStyle23;
+            this.resoGrid.EnableHeadersVisualStyles = false;
+            this.resoGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.resoGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.resoGrid.Location = new System.Drawing.Point(510, 369);
+            this.resoGrid.Name = "resoGrid";
+            this.resoGrid.ReadOnly = true;
+            this.resoGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.resoGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
+            this.resoGrid.RowHeadersWidth = 20;
+            this.resoGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.resoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.resoGrid.Size = new System.Drawing.Size(199, 87);
+            this.resoGrid.TabIndex = 98;
+            // 
+            // eventResoCombo
+            // 
+            this.eventResoCombo.FormattingEnabled = true;
+            this.eventResoCombo.ItemHeight = 23;
+            this.eventResoCombo.Location = new System.Drawing.Point(509, 334);
+            this.eventResoCombo.Name = "eventResoCombo";
+            this.eventResoCombo.Size = new System.Drawing.Size(146, 29);
+            this.eventResoCombo.TabIndex = 97;
+            this.eventResoCombo.UseSelectable = true;
+            // 
+            // addReso
+            // 
+            this.addReso.Location = new System.Drawing.Point(510, 462);
+            this.addReso.Name = "addReso";
+            this.addReso.Size = new System.Drawing.Size(69, 23);
+            this.addReso.TabIndex = 96;
+            this.addReso.Text = "Add";
+            this.addReso.UseSelectable = true;
+            this.addReso.Click += new System.EventHandler(this.addReso_Click);
+            // 
+            // time
+            // 
+            // 
+            // 
+            // 
+            this.time.CustomButton.Image = null;
+            this.time.CustomButton.Location = new System.Drawing.Point(22, 1);
+            this.time.CustomButton.Name = "";
+            this.time.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.time.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.time.CustomButton.TabIndex = 1;
+            this.time.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.time.CustomButton.UseSelectable = true;
+            this.time.CustomButton.Visible = false;
+            this.time.Lines = new string[0];
+            this.time.Location = new System.Drawing.Point(1009, 219);
+            this.time.MaxLength = 32767;
+            this.time.Name = "time";
+            this.time.PasswordChar = '\0';
+            this.time.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.time.SelectedText = "";
+            this.time.SelectionLength = 0;
+            this.time.SelectionStart = 0;
+            this.time.ShortcutsEnabled = true;
+            this.time.Size = new System.Drawing.Size(50, 29);
+            this.time.TabIndex = 94;
+            this.time.UseSelectable = true;
+            this.time.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.time.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel22
+            // 
+            this.metroLabel22.AutoSize = true;
+            this.metroLabel22.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel22.Location = new System.Drawing.Point(999, 197);
+            this.metroLabel22.Name = "metroLabel22";
+            this.metroLabel22.Size = new System.Drawing.Size(42, 19);
+            this.metroLabel22.TabIndex = 92;
+            this.metroLabel22.Text = "Time";
             // 
             // metroButton4
             // 
@@ -368,6 +520,7 @@
             this.metroButton3.TabIndex = 87;
             this.metroButton3.Text = "Clear";
             this.metroButton3.UseSelectable = true;
+            this.metroButton3.Click += new System.EventHandler(this.metroButton3_Click);
             // 
             // travelingMode
             // 
@@ -388,6 +541,7 @@
             this.metroButton2.TabIndex = 76;
             this.metroButton2.Text = "Clear";
             this.metroButton2.UseSelectable = true;
+            this.metroButton2.Click += new System.EventHandler(this.metroButton2_Click);
             // 
             // eventSave
             // 
@@ -871,155 +1025,15 @@
             this.metroLabel21.TabIndex = 8;
             this.metroLabel21.Text = "Add Event";
             // 
-            // metroLabel22
+            // demo
             // 
-            this.metroLabel22.AutoSize = true;
-            this.metroLabel22.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel22.Location = new System.Drawing.Point(999, 197);
-            this.metroLabel22.Name = "metroLabel22";
-            this.metroLabel22.Size = new System.Drawing.Size(42, 19);
-            this.metroLabel22.TabIndex = 92;
-            this.metroLabel22.Text = "Time";
-            // 
-            // time
-            // 
-            // 
-            // 
-            // 
-            this.time.CustomButton.Image = null;
-            this.time.CustomButton.Location = new System.Drawing.Point(22, 1);
-            this.time.CustomButton.Name = "";
-            this.time.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.time.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.time.CustomButton.TabIndex = 1;
-            this.time.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.time.CustomButton.UseSelectable = true;
-            this.time.CustomButton.Visible = false;
-            this.time.Lines = new string[0];
-            this.time.Location = new System.Drawing.Point(1009, 219);
-            this.time.MaxLength = 32767;
-            this.time.Name = "time";
-            this.time.PasswordChar = '\0';
-            this.time.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.time.SelectedText = "";
-            this.time.SelectionLength = 0;
-            this.time.SelectionStart = 0;
-            this.time.ShortcutsEnabled = true;
-            this.time.Size = new System.Drawing.Size(50, 29);
-            this.time.TabIndex = 94;
-            this.time.UseSelectable = true;
-            this.time.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.time.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // resoQty
-            // 
-            // 
-            // 
-            // 
-            this.resoQty.CustomButton.Image = null;
-            this.resoQty.CustomButton.Location = new System.Drawing.Point(19, 1);
-            this.resoQty.CustomButton.Name = "";
-            this.resoQty.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.resoQty.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.resoQty.CustomButton.TabIndex = 1;
-            this.resoQty.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.resoQty.CustomButton.UseSelectable = true;
-            this.resoQty.CustomButton.Visible = false;
-            this.resoQty.Lines = new string[0];
-            this.resoQty.Location = new System.Drawing.Point(662, 334);
-            this.resoQty.MaxLength = 32767;
-            this.resoQty.Name = "resoQty";
-            this.resoQty.PasswordChar = '\0';
-            this.resoQty.PromptText = "qty";
-            this.resoQty.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.resoQty.SelectedText = "";
-            this.resoQty.SelectionLength = 0;
-            this.resoQty.SelectionStart = 0;
-            this.resoQty.ShortcutsEnabled = true;
-            this.resoQty.Size = new System.Drawing.Size(47, 29);
-            this.resoQty.TabIndex = 100;
-            this.resoQty.UseSelectable = true;
-            this.resoQty.WaterMark = "qty";
-            this.resoQty.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.resoQty.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // removeReso
-            // 
-            this.removeReso.Location = new System.Drawing.Point(640, 462);
-            this.removeReso.Name = "removeReso";
-            this.removeReso.Size = new System.Drawing.Size(69, 23);
-            this.removeReso.TabIndex = 99;
-            this.removeReso.Text = "Remove";
-            this.removeReso.UseSelectable = true;
-            this.removeReso.Click += new System.EventHandler(this.removerReso_Click);
-            // 
-            // resoGrid
-            // 
-            this.resoGrid.AllowUserToAddRows = false;
-            this.resoGrid.AllowUserToDeleteRows = false;
-            this.resoGrid.AllowUserToResizeRows = false;
-            this.resoGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.resoGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.resoGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.resoGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
-            this.resoGrid.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.resoGrid.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
-            this.resoGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle23.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
-            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(136)))), ((int)(((byte)(136)))), ((int)(((byte)(136)))));
-            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.resoGrid.DefaultCellStyle = dataGridViewCellStyle23;
-            this.resoGrid.EnableHeadersVisualStyles = false;
-            this.resoGrid.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.resoGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.resoGrid.Location = new System.Drawing.Point(510, 369);
-            this.resoGrid.Name = "resoGrid";
-            this.resoGrid.ReadOnly = true;
-            this.resoGrid.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(174)))), ((int)(((byte)(219)))));
-            dataGridViewCellStyle24.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(198)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(17)))), ((int)(((byte)(17)))));
-            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.resoGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
-            this.resoGrid.RowHeadersWidth = 20;
-            this.resoGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.resoGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.resoGrid.Size = new System.Drawing.Size(199, 87);
-            this.resoGrid.TabIndex = 98;
-            // 
-            // eventResoCombo
-            // 
-            this.eventResoCombo.FormattingEnabled = true;
-            this.eventResoCombo.ItemHeight = 23;
-            this.eventResoCombo.Location = new System.Drawing.Point(509, 334);
-            this.eventResoCombo.Name = "eventResoCombo";
-            this.eventResoCombo.Size = new System.Drawing.Size(146, 29);
-            this.eventResoCombo.TabIndex = 97;
-            this.eventResoCombo.UseSelectable = true;
-            // 
-            // addReso
-            // 
-            this.addReso.Location = new System.Drawing.Point(510, 462);
-            this.addReso.Name = "addReso";
-            this.addReso.Size = new System.Drawing.Size(69, 23);
-            this.addReso.TabIndex = 96;
-            this.addReso.Text = "Add";
-            this.addReso.UseSelectable = true;
-            this.addReso.Click += new System.EventHandler(this.addReso_Click);
+            this.demo.Location = new System.Drawing.Point(824, 486);
+            this.demo.Name = "demo";
+            this.demo.Size = new System.Drawing.Size(75, 23);
+            this.demo.TabIndex = 101;
+            this.demo.Text = "Demo";
+            this.demo.UseSelectable = true;
+            this.demo.Click += new System.EventHandler(this.demo_Click);
             // 
             // AddEventForm
             // 
@@ -1036,8 +1050,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).EndInit();
             this.metroPanel1.ResumeLayout(false);
             this.metroPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.clientFeedback)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.resoGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientFeedback)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1102,5 +1116,6 @@
         private MetroFramework.Controls.MetroGrid resoGrid;
         private MetroFramework.Controls.MetroComboBox eventResoCombo;
         private MetroFramework.Controls.MetroButton addReso;
+        private MetroFramework.Controls.MetroButton demo;
     }
 }

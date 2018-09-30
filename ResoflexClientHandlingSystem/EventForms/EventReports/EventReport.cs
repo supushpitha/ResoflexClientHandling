@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
+namespace ResoflexClientHandlingSystem.EventForms.EventReports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ScheduleReport : ReportClass {
+    public class EventReport : ReportClass {
         
-        public ScheduleReport() {
+        public EventReport() {
         }
         
         public override string ResourceName {
             get {
-                return "ScheduleReport.rpt";
+                return "EventReport.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         
         public override string FullResourceName {
             get {
-                return "ResoflexClientHandlingSystem.ScheduleForms.Reports.ScheduleReport.rpt";
+                return "ResoflexClientHandlingSystem.EventForms.EventReports.EventReport.rpt";
             }
             set {
                 // Do nothing
@@ -98,9 +98,9 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedScheduleReport : Component, ICachedReport {
+    public class CachedEventReport : Component, ICachedReport {
         
-        public CachedScheduleReport() {
+        public CachedEventReport() {
         }
         
         [Browsable(false)]
@@ -137,7 +137,7 @@ namespace ResoflexClientHandlingSystem.ScheduleForms.Reports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ScheduleReport rpt = new ScheduleReport();
+            EventReport rpt = new EventReport();
             rpt.Site = this.Site;
             return rpt;
         }

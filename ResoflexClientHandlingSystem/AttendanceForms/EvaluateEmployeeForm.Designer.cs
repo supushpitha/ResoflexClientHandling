@@ -166,6 +166,7 @@
             this.metroComboBox8 = new MetroFramework.Controls.MetroComboBox();
             this.chart8 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.metroTabPage4 = new MetroFramework.Controls.MetroTabPage();
+            this.metroButton11 = new MetroFramework.Controls.MetroButton();
             this.metroButton5 = new MetroFramework.Controls.MetroButton();
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.attendanceOfEmployeeDateTime2 = new MetroFramework.Controls.MetroDateTime();
@@ -174,7 +175,6 @@
             this.attendanceDataGrid = new MetroFramework.Controls.MetroGrid();
             this.metroLabel1 = new MetroFramework.Controls.MetroLabel();
             this.shortComingsTimer = new System.Windows.Forms.Timer(this.components);
-            this.metroButton11 = new MetroFramework.Controls.MetroButton();
             this.metroTabControl1.SuspendLayout();
             this.metroTabPage1.SuspendLayout();
             this.metroTabControl2.SuspendLayout();
@@ -208,7 +208,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Location = new System.Drawing.Point(12, 82);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 0;
+            this.metroTabControl1.SelectedIndex = 2;
             this.metroTabControl1.Size = new System.Drawing.Size(770, 500);
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
@@ -2048,6 +2048,16 @@
             this.metroTabPage4.VerticalScrollbarSize = 10;
             this.metroTabPage4.Click += new System.EventHandler(this.metroTabPage4_Click);
             // 
+            // metroButton11
+            // 
+            this.metroButton11.Location = new System.Drawing.Point(670, 44);
+            this.metroButton11.Name = "metroButton11";
+            this.metroButton11.Size = new System.Drawing.Size(75, 23);
+            this.metroButton11.TabIndex = 13;
+            this.metroButton11.Text = "Print";
+            this.metroButton11.UseSelectable = true;
+            this.metroButton11.Click += new System.EventHandler(this.metroButton11_Click);
+            // 
             // metroButton5
             // 
             this.metroButton5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -2159,16 +2169,6 @@
             this.shortComingsTimer.Enabled = true;
             this.shortComingsTimer.Interval = 2000;
             this.shortComingsTimer.Tick += new System.EventHandler(this.shortComingsTimer_Tick);
-            // 
-            // metroButton11
-            // 
-            this.metroButton11.Location = new System.Drawing.Point(670, 44);
-            this.metroButton11.Name = "metroButton11";
-            this.metroButton11.Size = new System.Drawing.Size(75, 23);
-            this.metroButton11.TabIndex = 13;
-            this.metroButton11.Text = "Print";
-            this.metroButton11.UseSelectable = true;
-            this.metroButton11.Click += new System.EventHandler(this.metroButton11_Click);
             // 
             // EvaluateEmployeeForm
             // 

@@ -26,7 +26,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Add client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         public static void addUsers(User user)
         {
             try
@@ -39,7 +39,7 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
-
+        
         public static void addLog(Role.UserLog log)
         {
             try
@@ -53,7 +53,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Something went wrong!", "Logging in", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
+        
         public static void addOp(Role.UserOperation operation)
         {
             try
@@ -1101,6 +1101,18 @@ namespace ResoflexClientHandlingSystem.Core
             catch (Exception exc)
             {
                 MessageBox.Show("Something went wrong!\n" + exc, "Cash Issueing", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public static void acceptResetPass(UserNotification notifi)
+        {
+            try
+            {
+                DBConnection.updateDB("UPDATE notification SET admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
             }
         }
     }

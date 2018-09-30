@@ -349,5 +349,15 @@ namespace ResoflexClientHandlingSystem
             onlyNumbers(sender, e);
             initiativeTxtbox.MaxLength = 2;
         }
+
+        private void metroButton1_Click_1(object sender, EventArgs e)
+        {
+            knowledgeTxtbox.Text = "52";
+            safetyTexbox.Text = "58";
+            qualityTxtbox.Text = "71";
+            adaptabilityTxtbox.Text = "47";
+            productivityTxtbox.Text = "95";
+            initiativeTxtbox.Text = "43";
+        }
     }
 }

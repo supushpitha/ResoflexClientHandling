@@ -14,6 +14,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ResoflexClientHandlingSystem.AttendanceForms;
 using System.Windows.Forms.DataVisualization.Charting;
+using ResoflexClientHandlingSystem.AttendanceForms.Reports;
 
 namespace ResoflexClientHandlingSystem
 {
@@ -250,7 +251,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable getAttendanceOfEmployee()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + "");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = " + employeeNo + "");
             table.Load(reader);
             return table;
         }
@@ -260,7 +261,7 @@ namespace ResoflexClientHandlingSystem
             DateTime myDateTime = attendanceOfEmployeeDateTime.Value;
             string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = "+employeeNo+ " and DATE(InTime) = '"+ sqlFormattedDate + "'");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = "+employeeNo+ " and DATE(InTime) = '"+ sqlFormattedDate + "'");
             table.Load(reader);
             return table;
         }
@@ -268,7 +269,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable getAttendanceOfEmployeeUsingOutTime()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + " and DATE(OutTime) = '" + attendanceOfEmployeeDateTime2.Value.ToString("yyyy/M/d") + "'");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = " + employeeNo + " and DATE(OutTime) = '" + attendanceOfEmployeeDateTime2.Value.ToString("yyyy/M/d") + "'");
             table.Load(reader);
             return table;
         }
@@ -538,14 +539,14 @@ namespace ResoflexClientHandlingSystem
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Color = Color.Blue;
 
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Color = Color.Gray;
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM job_performance WHERE perf_year = '" + Convert.ToDateTime(metroComboBox1.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -595,16 +596,16 @@ namespace ResoflexClientHandlingSystem
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Color = Color.Blue;
 
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Color = Color.Gray;
 
-            MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM client_relations WHERE rel_year = '" + Convert.ToDateTime(metroComboBox3.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
+            MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM client_relations WHERE rel_year = '" + Convert.ToDateTime(metroComboBox4.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
             {
                 this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Points.AddXY("Telephone Skills", reader3.GetInt32("telephone_skills"));
@@ -616,7 +617,7 @@ namespace ResoflexClientHandlingSystem
             }
             reader3.Close();
 
-            MySqlDataReader reader4 = DBConnection.getData("SELECT * FROM client_relations WHERE rel_year = '" + Convert.ToDateTime(metroComboBox4.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = '" + employeeNo + "'");
+            MySqlDataReader reader4 = DBConnection.getData("SELECT * FROM client_relations WHERE rel_year = '" + Convert.ToDateTime(metroComboBox3.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = '" + employeeNo + "'");
             while (reader4.Read())
             {
                 this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Points.AddXY("Telephone Skills", reader4.GetInt32("telephone_skills"));
@@ -651,14 +652,18 @@ namespace ResoflexClientHandlingSystem
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.Blue;
 
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            // this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.Gray;
+
+
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM interpersonal_skills WHERE inter_year = '" + Convert.ToDateTime(metroComboBox8.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -708,14 +713,14 @@ namespace ResoflexClientHandlingSystem
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Color = Color.Blue;
 
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Color = Color.Gray;
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM communication_skills where comm_year = '" + Convert.ToDateTime(wecom1.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -838,6 +843,8 @@ namespace ResoflexClientHandlingSystem
         }
 
         long FP;
+        private object staffAttendanceDataGrid;
+
         private void metroComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
@@ -1836,8 +1843,8 @@ namespace ResoflexClientHandlingSystem
                 table.Load(reader);
                 projectDataGrid.DataSource = table;
             }
-            catch (Exception ex) {
-                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            catch {
+               // MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1850,9 +1857,9 @@ namespace ResoflexClientHandlingSystem
                 table.Load(reader);
                 projectDataGrid.DataSource = table;
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
+              //  MessageBox.Show("Input String was Not in correct format'" + ex + "'", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -1980,7 +1987,7 @@ namespace ResoflexClientHandlingSystem
 
         private void metroButton5_Click(object sender, EventArgs e)
         {
-            
+            attendanceDataGrid.DataSource = getAttendanceOfEmployee();
         }
 
         public void clearProjectShortcomings() {
@@ -2062,6 +2069,34 @@ namespace ResoflexClientHandlingSystem
         }
 
         private void searchProjectTxtBox_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTabPage9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTabPage6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroTabPage7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void metroButton11_Click(object sender, EventArgs e)
+        {
+            
+
+            AttendanceReportViewerForm form = new AttendanceReportViewerForm();
+            form.Show();
+        }
+
+        private void metroTabPage8_Click(object sender, EventArgs e)
         {
 
         }

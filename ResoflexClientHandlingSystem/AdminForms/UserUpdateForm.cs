@@ -16,6 +16,8 @@ namespace ResoflexClientHandlingSystem.AdminForms
 {
     public partial class UserUpdateForm : MetroFramework.Forms.MetroForm
     {
+        private string v;
+
         public UserUpdateForm()
         {
             InitializeComponent();

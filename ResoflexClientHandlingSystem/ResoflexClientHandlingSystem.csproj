@@ -1038,7 +1038,7 @@
     </None>
     <None Include="AdminForms\AdminReports\DataSet2.xss">
       <DependentUpon>DataSet2.xsd</DependentUpon>
-    </None>
+    </None>  
     <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsc">
       <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
     </None>

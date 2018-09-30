@@ -1218,5 +1218,17 @@ namespace ResoflexClientHandlingSystem.Core
                 return false;
             }
         }
+
+        public static void acceptResetPass(UserNotification notifi)
+        {
+            try
+            {
+                DBConnection.updateDB("UPDATE notification SET admin_view=1 WHERE noti_ID=" + notifi.NotiId + ";");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show(exp.ToString());
+            }
+        }
     }
 }

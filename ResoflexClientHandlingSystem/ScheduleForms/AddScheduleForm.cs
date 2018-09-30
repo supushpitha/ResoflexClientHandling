@@ -577,8 +577,22 @@ namespace ResoflexClientHandlingSystem
         //resetting form
         private void schReset_Click(object sender, EventArgs e)
         {
-
+            schLogs.Text = "";
+            checkList.Text = "";
+            meals.Text = "";
+            todoList.Text = "";
+            schStartDate.Text = "";
+            schEndDate.Text = "";
         }
 
+        private void demo_Click(object sender, EventArgs e)
+        {
+            schLogs.Text = "No logs";
+            checkList.Text = "Check for rules and regulations";
+            meals.Text = "Provided";
+            todoList.Text = "Train the newly added system";
+            schStartDate.Text = "2018-10-17";
+            schEndDate.Text = "2018-10-24";
+        }
     }
 }

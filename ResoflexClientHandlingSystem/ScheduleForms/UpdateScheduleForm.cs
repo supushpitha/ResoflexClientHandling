@@ -607,6 +607,11 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
+        private void schCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
         /*private void addReso_Click(object sender, EventArgs e)
         {
             string resources = schReso.Text.ToString();

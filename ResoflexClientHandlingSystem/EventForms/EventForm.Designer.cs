@@ -70,7 +70,7 @@
             this.updateEvent.Name = "updateEvent";
             this.updateEvent.Size = new System.Drawing.Size(90, 23);
             this.updateEvent.TabIndex = 23;
-            this.updateEvent.Text = "Update Event";
+            this.updateEvent.Text = "View Event";
             this.updateEvent.UseSelectable = true;
             this.updateEvent.Click += new System.EventHandler(this.updateEvent_Click);
             // 

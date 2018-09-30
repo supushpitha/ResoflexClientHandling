@@ -571,5 +571,36 @@ namespace ResoflexClientHandlingSystem
                 addExpFrm.Show();
             }*/
         }
+
+        private void demo_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "Train the newly added system";
+            checkList.Text = "Check for rules and regulations";
+            meals.Text = "Provided";
+            overFeedback.Text = "Required work was well done";
+            other.Text = "None";
+            eventTask.Text = "Training the system";
+            time.Text = "14.5";
+            eventStartDate.Text = "2018-10-18";
+            eventEndDate.Text = "2018-10-20";
+        }
+
+        private void metroButton2_Click(object sender, EventArgs e)
+        {
+            todoList.Text = "";
+            checkList.Text = "";
+            meals.Text = "";
+            overFeedback.Text = "";
+            other.Text = "";
+            eventTask.Text = "";
+            time.Text = "";
+            eventStartDate.Text = "";
+            eventEndDate.Text = "";
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

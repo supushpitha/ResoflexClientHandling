@@ -354,5 +354,10 @@ namespace ResoflexClientHandlingSystem.AttendanceForms
             onlyNumbers(sender, e);
             politeness.MaxLength = 2;
         }
+
+        private void clientRelationsDateTime_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using ResoflexClientHandlingSystem.AdminForms;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.Role;
 using System;
@@ -228,7 +229,7 @@ namespace ResoflexClientHandlingSystem.UserForms
             DataTable table = new DataTable();
 
             MySqlDataReader reader = DBConnection.getData("select n.noti_ID,n.noti_Date,u.u_name, f.function from user u, notification n, fucntion f where f.fucntion_id=n.function_id and n.user_id=u.user_id and function_id=2" +
-                " and n.noti_ID = 0");
+                " and n.admin_view = 0");
             table.Load(reader);
             metroGrid1.ClearSelection();
 
@@ -251,7 +252,6 @@ namespace ResoflexClientHandlingSystem.UserForms
             if (g.CurrentRow.Selected)
             {
                 string s = g.CurrentRow.Cells[3].Value.ToString();
-                
 
                 if (s.Equals("request password reset"))
                 {
@@ -261,8 +261,21 @@ namespace ResoflexClientHandlingSystem.UserForms
                     Database.acceptResetPass(notification);
 
                     MessageBox.Show("Notification cleared.");
-                }
 
+                    DataTable table = new DataTable();
+
+                    MySqlDataReader reader = DBConnection.getData("select n.noti_ID,n.noti_Date,u.u_name, f.function from user u, notification n, fucntion f where f.fucntion_id=n.function_id and n.user_id=u.user_id and function_id=2" +
+                        " and n.admin_view = 0");
+                    table.Load(reader);
+                    metroGrid1.ClearSelection();
+
+                    metroGrid1.DataSource = table;
+
+                    //metroGrid1.Columns[0].Visible = false;
+                    //metroGrid1.Columns[7].Visible = false;
+                    reader.Close();
+
+                }
 
             }
         }

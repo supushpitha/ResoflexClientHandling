@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ResoflexClientHandlingSystem.Core;
 using ResoflexClientHandlingSystem.EventForms;
+using ResoflexClientHandlingSystem.EventForms.EventReports;
 using ResoflexClientHandlingSystem.Role;
 using System;
 using System.Collections;
@@ -62,7 +63,7 @@ namespace ResoflexClientHandlingSystem
             MySqlDataReader reader = DBConnection.getData("select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, c.name as Client_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) " +
-                "order by e.event_id, e.proj_id limit 10;");
+                "order by e.event_id DESC limit 10;");
 
             dt.Load(reader);
 
@@ -123,7 +124,7 @@ namespace ResoflexClientHandlingSystem
             string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name,c.name as Client_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (p.proj_name like '%" + projName + "%') " +
-                "order by e.event_id, e.proj_id limit 10;";
+                "order by e.event_id DESC limit 10;";
 
             try
             {   
@@ -151,7 +152,7 @@ namespace ResoflexClientHandlingSystem
             string sql = "select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name,c.name as Client_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) and (c.name like '%" + cName + "%') " +
-                "order by e.event_id, e.proj_id limit 10;";
+                "order by e.event_id DESC limit 10;";
 
             try
             {
@@ -352,6 +353,24 @@ namespace ResoflexClientHandlingSystem
                 row.Cells[15].Value.ToString());
 
             aef.ShowDialog();
+        }
+
+        private void btnOtherReports_Click(object sender, EventArgs e)
+        {
+            OtherReports other = new OtherReports();
+            other.ShowDialog();
+        }
+
+        private void reports_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = eventGrid.CurrentRow;
+
+            int event_id = int.Parse(row.Cells[0].Value.ToString());
+            int proj_id = int.Parse(row.Cells[1].Value.ToString());
+            int sch_no = int.Parse(row.Cells[3].Value.ToString());
+
+            EventReportForm erf = new EventReportForm(proj_id, sch_no, event_id);
+            erf.ShowDialog();
         }
     }
 }

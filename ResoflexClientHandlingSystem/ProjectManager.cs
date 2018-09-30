@@ -55,5 +55,13 @@ namespace ResoflexClientHandlingSystem
             tf.ShowDialog();
             this.Close();
         }
+
+        private void schHome_Click(object sender, EventArgs e)
+        {
+            Dashboard frm = new Dashboard();
+            this.Hide();
+            frm.ShowDialog();
+            this.Close();
+        }
     }
 }

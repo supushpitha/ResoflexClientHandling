@@ -46,8 +46,7 @@
             this.incompleteEvents = new MetroFramework.Controls.MetroTile();
             this.totalEvents = new MetroFramework.Controls.MetroTile();
             this.btnExp = new MetroFramework.Controls.MetroButton();
-            this.reports = new MetroFramework.Controls.MetroButton();
-            this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.btnOtherReports = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.eventGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -288,7 +287,7 @@
             // 
             // btnExp
             // 
-            this.btnExp.Location = new System.Drawing.Point(62, 491);
+            this.btnExp.Location = new System.Drawing.Point(62, 467);
             this.btnExp.Name = "btnExp";
             this.btnExp.Size = new System.Drawing.Size(102, 37);
             this.btnExp.TabIndex = 32;
@@ -296,32 +295,23 @@
             this.btnExp.UseSelectable = true;
             this.btnExp.Click += new System.EventHandler(this.btnExp_Click);
             // 
-            // reports
+            // btnOtherReports
             // 
-            this.reports.Location = new System.Drawing.Point(62, 394);
-            this.reports.Name = "reports";
-            this.reports.Size = new System.Drawing.Size(102, 37);
-            this.reports.TabIndex = 31;
-            this.reports.Text = "Event Report";
-            this.reports.UseSelectable = true;
-            // 
-            // metroButton1
-            // 
-            this.metroButton1.Location = new System.Drawing.Point(62, 443);
-            this.metroButton1.Name = "metroButton1";
-            this.metroButton1.Size = new System.Drawing.Size(102, 37);
-            this.metroButton1.TabIndex = 33;
-            this.metroButton1.Text = "Other Reports";
-            this.metroButton1.UseSelectable = true;
+            this.btnOtherReports.Location = new System.Drawing.Point(62, 419);
+            this.btnOtherReports.Name = "btnOtherReports";
+            this.btnOtherReports.Size = new System.Drawing.Size(102, 37);
+            this.btnOtherReports.TabIndex = 33;
+            this.btnOtherReports.Text = "Reports";
+            this.btnOtherReports.UseSelectable = true;
+            this.btnOtherReports.Click += new System.EventHandler(this.btnOtherReports_Click);
             // 
             // EventForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
-            this.Controls.Add(this.metroButton1);
+            this.Controls.Add(this.btnOtherReports);
             this.Controls.Add(this.btnExp);
-            this.Controls.Add(this.reports);
             this.Controls.Add(this.metroLabel3);
             this.Controls.Add(this.metroLabel1);
             this.Controls.Add(this.incompleteEvents);
@@ -361,7 +351,6 @@
         private MetroFramework.Controls.MetroTile incompleteEvents;
         private MetroFramework.Controls.MetroTile totalEvents;
         private MetroFramework.Controls.MetroButton btnExp;
-        private MetroFramework.Controls.MetroButton reports;
-        private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroButton btnOtherReports;
     }
 }

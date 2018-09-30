@@ -359,13 +359,23 @@ namespace ResoflexClientHandlingSystem
 
         public void validation(object sender, EventArgs e)
         {
+            DateTime to = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
+
             if (!Validation.isEmpty(todoList.Text))
             {
                 if (!Validation.isEmpty(meals.Text))
                 {
                     if (!Validation.isDataTableEmpty(engGrid))
                     {
-                        addEvent();
+                        if (to > from)
+                        {
+                            addEvent();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please check the date selection!", "Error");
+                        }
                     }
                     else
                     {

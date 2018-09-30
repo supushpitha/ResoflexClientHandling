@@ -34,6 +34,7 @@
             this.btnEvents = new MetroFramework.Controls.MetroButton();
             this.btnSchedule = new MetroFramework.Controls.MetroButton();
             this.btnProjects = new MetroFramework.Controls.MetroButton();
+            this.schHome = new MetroFramework.Controls.MetroButton();
             this.home.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,11 +122,26 @@
             this.btnProjects.UseSelectable = true;
             this.btnProjects.Click += new System.EventHandler(this.btnProjects_Click);
             // 
+            // schHome
+            // 
+            this.schHome.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.schHome.BackColor = System.Drawing.Color.Transparent;
+            this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
+            this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.schHome.Location = new System.Drawing.Point(384, 26);
+            this.schHome.Margin = new System.Windows.Forms.Padding(2);
+            this.schHome.Name = "schHome";
+            this.schHome.Size = new System.Drawing.Size(29, 29);
+            this.schHome.TabIndex = 31;
+            this.schHome.UseSelectable = true;
+            this.schHome.Click += new System.EventHandler(this.schHome_Click);
+            // 
             // ProjectManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 600);
+            this.Controls.Add(this.schHome);
             this.Controls.Add(this.home);
             this.MaximumSize = new System.Drawing.Size(800, 600);
             this.MinimumSize = new System.Drawing.Size(800, 600);
@@ -143,5 +159,6 @@
         private MetroFramework.Controls.MetroButton btnEvents;
         private MetroFramework.Controls.MetroButton btnSchedule;
         private MetroFramework.Controls.MetroButton btnProjects;
+        private MetroFramework.Controls.MetroButton schHome;
     }
 }

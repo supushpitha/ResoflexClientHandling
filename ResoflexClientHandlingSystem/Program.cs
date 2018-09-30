@@ -1,4 +1,5 @@
-﻿using ResoflexClientHandlingSystem.ClientForms;
+﻿using ResoflexClientHandlingSystem.AdminForms.AdminReports;
+using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace ResoflexClientHandlingSystem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new OfficeExpensesForm.OfficeExpensesMainForm());
+            Application.Run(new Login());
         }
     }
 }

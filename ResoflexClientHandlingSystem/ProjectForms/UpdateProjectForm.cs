@@ -32,6 +32,12 @@ namespace ResoflexClientHandlingSystem
         string supTerms;
         string visitTerms;
         string warrTerms;
+        private string pname;
+        private string clientname;
+        private string description;
+        private string supporttrms;
+        private string visittrms;
+        private string warrantytrms;
 
         public UpdateProjectForm( string name, string desc, int projSubCatID, int projCatID, int clientID, string supTerms, string visitTerms, string warrTerms)
         {
@@ -53,9 +59,53 @@ namespace ResoflexClientHandlingSystem
             InitializeComponent();
         }
 
+        public UpdateProjectForm(string pname, string clientname, string description, string supporttrms, string visittrms, string warrantytrms, int catid, int subcatid)
+        {
+            this.pname = pname;
+            this.clientname = clientname;
+            this.description = description;
+            this.supporttrms = supporttrms;
+            this.visittrms = visittrms;
+            this.warrantytrms = warrantytrms;
+            this.projectCatID = catid;
+            this.projSubCatID = subcatid;
+            string catname = "";
 
+            try
+            {
+                MySqlDataReader reader = DBConnection.getData("SELECT sub_cat_name from proj_sub_category where proj_cat_id =  projectCatID and proj_sub_cat_id = projSubCatID;");
 
+                if (reader.Read())
+                {
+                    catname = reader["sub_cat_name"].ToString();
 
+                }
+                reader.Close();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
+
+            InitializeComponent();
+
+            metroComboBox1.SelectedText = clientname;
+            metroComboBox1.Enabled = false;
+            nameTxt.Text = pname;
+            nameTxt.Enabled = false;
+            catComboBox.SelectedText = catname;
+            catComboBox.Enabled = false;
+            DescripTxt.Text = description;
+            DescripTxt.Enabled = false;
+            visitTermTxt.Text = visittrms;
+            visitTermTxt.Enabled = false;
+            warTerTxt.Text = warrantytrms;
+            warTerTxt.Enabled = false;
+            supTermTxt.Text = supporttrms;
+            supTermTxt.Enabled = false;
+
+        }
         private void UpdateProjectForm_Load(object sender, EventArgs e)
         {
             try
@@ -140,7 +190,7 @@ namespace ResoflexClientHandlingSystem
             {
                 string name = nameTxt.Text;
                 string description = DescripTxt.Text;
-                
+
                 string catago = catComboBox.Text.ToString();
                 string supportTerms = supTermTxt.Text;
                 string visitTerms = visitTermTxt.Text;
@@ -164,7 +214,7 @@ namespace ResoflexClientHandlingSystem
 
                 try
                 {
-                    MySqlDataReader reader3 = DBConnection.getData("select proj_sub_cat_id, proj_cat_id from proj_sub_category where sub_cat_name='"+ catComboBox.SelectedItem.ToString()+ "'");
+                    MySqlDataReader reader3 = DBConnection.getData("select proj_sub_cat_id, proj_cat_id from proj_sub_category where sub_cat_name='" + catComboBox.SelectedItem.ToString() + "'");
 
                     if (reader3.Read())
                     {
@@ -175,7 +225,7 @@ namespace ResoflexClientHandlingSystem
                     }
                     reader3.Close();
 
-                }catch (Exception ex)
+                } catch (Exception ex)
                 {
 
                 }
@@ -189,19 +239,18 @@ namespace ResoflexClientHandlingSystem
                 notifySuccessProjectAdding.BalloonTipText = "Project Successfully Added!";
                 notifySuccessProjectAdding.ShowBalloonTip(1000);
 
-                String email;
-
+                int pid = 0;
 
                 try
                 {
-                    MySqlDataReader reader1 = DBConnection.getData("Select email from client where client_id='" + client.ClientID + "'");
+                    MySqlDataReader reader1 = DBConnection.getData("Select proj_id from project where proj_name='" + project.ProjectName + "'and client_id='" + project.ClientOfProject.ClientID + "';");
 
                     while (reader1.Read())
                     {
-                        email = reader1["email"].ToString();
-                        emailClient( email);
+                        pid = int.Parse(reader1["proj_id"].ToString());
                     }
                     reader1.Close();
+
 
                 }
                 catch (Exception ex)
@@ -209,14 +258,44 @@ namespace ResoflexClientHandlingSystem
                     Console.WriteLine(ex.StackTrace);
                 }
 
+                UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new Project", pid);
+
+                try{
+
+                    Database.addOp(operation);
+
+                    String email;
+
+
+                    try
+                    {
+                        MySqlDataReader reader1 = DBConnection.getData("Select email from client where client_id='" + client.ClientID + "'");
+
+                        while (reader1.Read())
+                        {
+                            email = reader1["email"].ToString();
+                            emailClient(email);
+                        }
+                        reader1.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString(), "Project Updating", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(ex.StackTrace);
                 }
 
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString(), "Project Updating", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
         private void catComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
 

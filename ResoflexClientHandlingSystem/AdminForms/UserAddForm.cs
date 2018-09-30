@@ -171,6 +171,11 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 Database.addUsers(us);
+                notifySuccessUserAdding.Icon = SystemIcons.Application;
+                notifySuccessUserAdding.BalloonTipText = "User Successfully added!";
+                notifySuccessUserAdding.ShowBalloonTip(1000);
+
+                metroGrid1.DataSource = getUserList();
                 UserOperation operation = new UserOperation(new Role.UserLog(Logglobals.id), "Added a new User", uid);
 
                 try
@@ -201,18 +206,13 @@ namespace ResoflexClientHandlingSystem
                 }
                 
 
-
             }
             catch (Exception)
             {
                 MessageBox.Show("Every detail must be added!", "User adding", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            notifySuccessUserAdding.Icon = SystemIcons.Application;
-            notifySuccessUserAdding.BalloonTipText = "User Successfully added!";
-            notifySuccessUserAdding.ShowBalloonTip(1000);
-
-            metroGrid1.DataSource = getUserList();
+            
 
         }
 

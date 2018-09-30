@@ -313,6 +313,7 @@
             this.btnIou.TabIndex = 21;
             this.btnIou.Text = "Add IOU";
             this.btnIou.UseSelectable = true;
+            this.btnIou.Click += new System.EventHandler(this.btnIou_Click);
             // 
             // ScheduleForm
             // 

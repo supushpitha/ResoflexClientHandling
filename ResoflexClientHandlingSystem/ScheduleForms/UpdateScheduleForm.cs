@@ -264,81 +264,118 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             row["staff_id"] = staff_id;
             row["fullname"] = serviceEngCombo.Text.ToString();
 
-            bool contain = false;
+            DateTime fromDate = Convert.ToDateTime(schStartDate.Text.ToString());
+            DateTime toDate = Convert.ToDateTime(schEndDate.Text.ToString());
 
-            foreach (DataGridViewRow item in serviceEngGrid.Rows)
+            string sql = "select count(*) as count from schedule s, schedule_technicians st " +
+               "where(s.sch_no = st.sch_no and s.proj_id = st.proj_id and st.staff_id = " + serviceEngCombo.SelectedValue + ") " +
+               "and ((Date(s.from_date_time) <= Date('" + fromDate.ToString("yyyy-MM-dd") + "') and Date(s.to_date_time) >= Date('" + fromDate.ToString("yyyy-MM-dd") + "')) or (Date(s.from_date_time) <= Date('" + toDate.ToString("yyyy-MM-dd") + "') and Date(s.to_date_time) >= Date('" + toDate.ToString("yyyy-MM-dd") + "')))";
+
+            MySqlDataReader rdr = DBConnection.getData(sql);
+
+            int taken = 0;
+
+            if (rdr.HasRows)
             {
-                if ((int)row["staff_id"] == (int)item.Cells[0].Value)
-                {
-                    contain = true;
-                }
+                rdr.Read();
+
+                taken += rdr.GetInt16("count");
             }
 
-            if (!contain)
+            rdr.Close();
+
+            if (taken > 0)
             {
-                MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
+                MessageBox.Show("This service engineer is already added to a schedule in this time period!");
+            }
+            else
+            {
+                bool contain = false;
 
-                int count = 0;
-                double grade = 0;
-
-                while (reader.Read())
+                foreach (DataGridViewRow item in serviceEngGrid.Rows)
                 {
-                    string value = reader.GetString("feedback");
-
-                    switch (value)
+                    if ((int)row["staff_id"] == (int)item.Cells[0].Value)
                     {
-                        case "A":
-                            {
-                                grade += 5;
-                                count++;
-                                break;
-                            }
-
-                        case "B":
-                            {
-                                grade += 4;
-                                count++;
-                                break;
-                            }
-
-                        case "C":
-                            {
-                                grade += 3;
-                                count++;
-                                break;
-                            }
-
-                        case "D":
-                            {
-                                grade += 2;
-                                count++;
-                                break;
-                            }
-
-                        case "E":
-                            {
-                                grade += 1;
-                                count++;
-                                break;
-                            }
-
-                        case "None":
-                            {
-                                grade += 0;
-                                break;
-                            }
-
-                        default: break;
+                        contain = true;
                     }
                 }
 
-                reader.Close();
-
-                if (grade / count < 2 && grade / count > 0)
+                if (!contain)
                 {
-                    DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure you want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    MySqlDataReader reader = DBConnection.getData("select feedback from event_technicians where staff_id = " + serviceEngCombo.SelectedValue + ";");
 
-                    if (res == DialogResult.Yes)
+                    int count = 0;
+                    double grade = 0;
+
+                    while (reader.Read())
+                    {
+                        string value = reader.GetString("feedback");
+
+                        switch (value)
+                        {
+                            case "A":
+                                {
+                                    grade += 5;
+                                    count++;
+                                    break;
+                                }
+
+                            case "B":
+                                {
+                                    grade += 4;
+                                    count++;
+                                    break;
+                                }
+
+                            case "C":
+                                {
+                                    grade += 3;
+                                    count++;
+                                    break;
+                                }
+
+                            case "D":
+                                {
+                                    grade += 2;
+                                    count++;
+                                    break;
+                                }
+
+                            case "E":
+                                {
+                                    grade += 1;
+                                    count++;
+                                    break;
+                                }
+
+                            case "None":
+                                {
+                                    grade += 0;
+                                    break;
+                                }
+
+                            default: break;
+                        }
+                    }
+
+                    reader.Close();
+
+                    if (grade / count < 2 && grade / count > 0)
+                    {
+                        DialogResult res = MessageBox.Show("This service engineer have bad feedback from this client. Are you sure you want to add this service engineer?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+                        if (res == DialogResult.Yes)
+                        {
+                            //checking and updating grid
+                            if (Database.addServiceEngineer(schedule, staff_id))
+                            {
+                                engGrid.Rows.Add(row);
+
+                                MessageBox.Show("Service Engineer assigned");
+                            }
+                        }
+                    }
+                    else
                     {
                         //checking and updating grid
                         if (Database.addServiceEngineer(schedule, staff_id))
@@ -351,18 +388,8 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
                 }
                 else
                 {
-                    //checking and updating grid
-                    if (Database.addServiceEngineer(schedule, staff_id))
-                    {
-                        engGrid.Rows.Add(row);
-
-                        MessageBox.Show("Service Engineer assigned");
-                    }
+                    MessageBox.Show("This service engineer is already added!");
                 }
-            }
-            else
-            {
-                MessageBox.Show("This service engineer is already added!");
             }            
         }
 
@@ -474,15 +501,25 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             }
         }
 
-            public void validation(object sender, EventArgs e)
+        public void validation(object sender, EventArgs e)
         {
+            DateTime to = Convert.ToDateTime(schEndDate.Text.ToString() + " " + schEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(schStartDate.Text.ToString() + " " + schStartTime.Text.ToString());
+
             if (!Validation.isEmpty(todoList.Text))
             {
                 if (!Validation.isEmpty(meals.Text))
                 {
                     if (!Validation.isDataTableEmpty(engGrid))
                     {
+                        if (to > from)
+                        {
                             scheduleUpdate();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please check dates!", "Error");
+                        }                           
                     }
                     else
                     {
@@ -568,6 +605,11 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
                 MessageBox.Show("Schedule Successfully Updated !");
                 this.Close();
             }
+        }
+
+        private void schCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         /*private void addReso_Click(object sender, EventArgs e)

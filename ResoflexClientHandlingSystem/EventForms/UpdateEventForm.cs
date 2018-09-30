@@ -413,13 +413,31 @@ namespace ResoflexClientHandlingSystem.EventForms
 
         public void validation(object sender, EventArgs e)
         {
+            DateTime to = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
+            DateTime from = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
+
             if (!Validation.isEmpty(todoList.Text))
             {
                 if (!Validation.isEmpty(meals.Text))
                 {
                     if (!Validation.isDataTableEmpty(engGrid))
                     {
-                        updateEvent();
+
+                        if(!Validation.isDataTableEmpty(feedbackGrid))
+                        {
+                            if (to > from)
+                            {
+                                updateEvent();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please check the date selection!", "Error");
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Tasks for service engineers should be assigned!", "Error");
+                        }
                     }
                     else
                     {
@@ -531,6 +549,11 @@ namespace ResoflexClientHandlingSystem.EventForms
 
             eventTask.Text = "";
             time.Text = "";
+        }
+
+        private void metroButton3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -45,6 +45,7 @@
             this.notifySuccessClientAdding = new System.Windows.Forms.NotifyIcon(this.components);
             this.addClientErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             this.addNewClientCancelBtn = new MetroFramework.Controls.MetroButton();
+            this.demoBtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.addClientErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -367,12 +368,23 @@
             this.addNewClientCancelBtn.UseStyleColors = true;
             this.addNewClientCancelBtn.Click += new System.EventHandler(this.addNewClientCancelBtn_Click);
             // 
+            // demoBtn
+            // 
+            this.demoBtn.Location = new System.Drawing.Point(86, 357);
+            this.demoBtn.Name = "demoBtn";
+            this.demoBtn.Size = new System.Drawing.Size(262, 12);
+            this.demoBtn.TabIndex = 14;
+            this.demoBtn.Text = "demo";
+            this.demoBtn.UseSelectable = true;
+            this.demoBtn.Click += new System.EventHandler(this.demoBtn_Click);
+            // 
             // AddNewClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.ClientSize = new System.Drawing.Size(382, 388);
+            this.Controls.Add(this.demoBtn);
             this.Controls.Add(this.addNewClientCancelBtn);
             this.Controls.Add(this.addNewClientBtn);
             this.Controls.Add(this.emailTxtBox);
@@ -421,5 +433,6 @@
         private System.Windows.Forms.NotifyIcon notifySuccessClientAdding;
         private System.Windows.Forms.ErrorProvider addClientErrorProvider;
         private MetroFramework.Controls.MetroButton addNewClientCancelBtn;
+        private MetroFramework.Controls.MetroButton demoBtn;
     }
 }

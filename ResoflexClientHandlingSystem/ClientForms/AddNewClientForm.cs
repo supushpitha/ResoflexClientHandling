@@ -267,5 +267,15 @@ namespace ResoflexClientHandlingSystem
                 addNewClientBtn.PerformClick();
             }
         }
+
+        private void demoBtn_Click(object sender, EventArgs e)
+        {
+            clientNameTxtBox.Text = "Seetha Traders";
+            clientAddressTxtBox.Text = "Kandy";
+            mobilePhoneTxtBox.Text = "0781551232";
+            officePhoneTxtBox.Text = "0812222222";
+            faxTxtBox.Text = "0812222222";
+            emailTxtBox.Text = "seetha@gmail.com";
+        }
     }
 }

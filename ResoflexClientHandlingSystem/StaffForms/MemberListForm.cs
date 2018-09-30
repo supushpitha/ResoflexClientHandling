@@ -49,7 +49,7 @@ namespace ResoflexClientHandlingSystem
             }
             else
             {
-                if (Userglobals.priv != "PM" || Userglobals.priv != "HR")
+                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
                 {
                     GotoAddmemBtn.Visible = false;
                     DelMemBtn.Visible = false;

@@ -1,4 +1,5 @@
-﻿using ResoflexClientHandlingSystem.ClientForms;
+﻿using ResoflexClientHandlingSystem.AdminForms.AdminReports;
+using ResoflexClientHandlingSystem.ClientForms;
 using ResoflexClientHandlingSystem.RequestForms;
 using System;
 using System.Collections.Generic;
@@ -15,10 +16,10 @@ namespace ResoflexClientHandlingSystem
         /// </summary>
         [STAThread]
         static void Main()
-       {
+        {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Login());
+            Application.Run(new BalanceSheetForm());
         }
     }
 }

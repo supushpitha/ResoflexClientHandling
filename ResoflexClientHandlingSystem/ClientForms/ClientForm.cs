@@ -52,8 +52,6 @@ namespace ResoflexClientHandlingSystem
                 profileBtn.Visible = true;
                 profileBtn.Text = Userglobals.uname;
             }
-
-            
         }
 
         private void findNonProfitClients()

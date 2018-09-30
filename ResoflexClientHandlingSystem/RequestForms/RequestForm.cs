@@ -72,6 +72,20 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
             changeReqGrid.Columns[0].Visible = false;
             changeReqGrid.Columns[1].Visible = false;
+
+            if (Userglobals.uname.Equals(""))
+            {
+                addNewChangeReqBtn.Visible = false;
+                addNewClientReqBtn.Visible = false;
+            }
+            else
+            {
+                if ((!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin")) && (!Userglobals.priv.ToLower().Equals("tch") && !Userglobals.priv.ToLower().Equals("technician")))
+                {
+                    addNewChangeReqBtn.Visible = false;
+                    addNewClientReqBtn.Visible = false;
+                }
+            }
         }
         
         private void fillProjectCmbBox()
@@ -861,7 +875,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    if (Userglobals.uid > 0)
+                    if (Userglobals.uid > 0 && (Userglobals.priv.Equals("TCH") || Userglobals.priv.Equals("ADM")))
                     {
                         int uid = Userglobals.uid;
                         Object startedDT = changeReqGrid.Rows[e.RowIndex].Cells[7].Value;

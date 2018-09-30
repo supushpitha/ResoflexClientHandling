@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ResoflexClientHandlingSystem.UserForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -57,6 +58,14 @@ namespace ResoflexClientHandlingSystem
             Dashboard dashboard = new Dashboard();
             this.Hide();
             dashboard.ShowDialog();
+            this.Close();
+        }
+
+        private void profilebtn_Click(object sender, EventArgs e)
+        {
+            ProfileForm prffrm = new ProfileForm();
+            this.Hide();
+            prffrm.ShowDialog();
             this.Close();
         }
     }

@@ -46,6 +46,7 @@
             this.homeBtn = new MetroFramework.Controls.MetroButton();
             this.selectResourceTxtbox = new MetroFramework.Controls.MetroTextBox();
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
+            this.profilebtn = new MetroFramework.Controls.MetroButton();
             ((System.ComponentModel.ISupportInitialize)(this.ResGrid)).BeginInit();
             this.SuspendLayout();
             // 
@@ -320,11 +321,26 @@
             this.metroLabel2.TabIndex = 25;
             this.metroLabel2.Text = "Search";
             // 
+            // profilebtn
+            // 
+            this.profilebtn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.profilebtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.profilebtn.FontSize = MetroFramework.MetroButtonSize.Medium;
+            this.profilebtn.ForeColor = System.Drawing.SystemColors.HighlightText;
+            this.profilebtn.Location = new System.Drawing.Point(668, 22);
+            this.profilebtn.Name = "profilebtn";
+            this.profilebtn.Size = new System.Drawing.Size(105, 29);
+            this.profilebtn.TabIndex = 27;
+            this.profilebtn.UseCustomBackColor = true;
+            this.profilebtn.UseSelectable = true;
+            this.profilebtn.Click += new System.EventHandler(this.profilebtn_Click);
+            // 
             // resourceForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 454);
+            this.Controls.Add(this.profilebtn);
             this.Controls.Add(this.selectResourceTxtbox);
             this.Controls.Add(this.metroLabel2);
             this.Controls.Add(this.homeBtn);
@@ -363,5 +379,6 @@
         private MetroFramework.Controls.MetroButton homeBtn;
         private MetroFramework.Controls.MetroTextBox selectResourceTxtbox;
         private MetroFramework.Controls.MetroLabel metroLabel2;
+        private MetroFramework.Controls.MetroButton profilebtn;
     }
 }

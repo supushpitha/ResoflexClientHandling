@@ -43,6 +43,7 @@
             this.metroLabel2 = new MetroFramework.Controls.MetroLabel();
             this.metroRadioButton1 = new MetroFramework.Controls.MetroRadioButton();
             this.metroRadioButton2 = new MetroFramework.Controls.MetroRadioButton();
+            this.passreset = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.metroGrid1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,7 +93,9 @@
             this.metroGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.metroGrid1.Size = new System.Drawing.Size(1036, 369);
             this.metroGrid1.TabIndex = 2;
+            this.metroGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.metroGrid1_CellDoubleClick);
             this.metroGrid1.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid1_RowHeaderMouseClick);
+            this.metroGrid1.RowHeaderMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.metroGrid1_RowHeaderMouseDoubleClick);
             // 
             // showAllBtn
             // 
@@ -278,11 +281,24 @@
             this.metroRadioButton2.UseSelectable = true;
             this.metroRadioButton2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.metroRadioButton2_MouseClick);
             // 
+            // passreset
+            // 
+            this.passreset.AutoSize = true;
+            this.passreset.FontSize = MetroFramework.MetroCheckBoxSize.Medium;
+            this.passreset.Location = new System.Drawing.Point(306, 153);
+            this.passreset.Name = "passreset";
+            this.passreset.Size = new System.Drawing.Size(173, 19);
+            this.passreset.TabIndex = 18;
+            this.passreset.Text = "Password reset requests";
+            this.passreset.UseSelectable = true;
+            this.passreset.MouseClick += new System.Windows.Forms.MouseEventHandler(this.passreset_MouseClick);
+            // 
             // Notification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1082, 570);
+            this.Controls.Add(this.passreset);
             this.Controls.Add(this.metroRadioButton2);
             this.Controls.Add(this.metroRadioButton1);
             this.Controls.Add(this.metroLabel2);
@@ -317,5 +333,6 @@
         private MetroFramework.Controls.MetroLabel metroLabel2;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton1;
         private MetroFramework.Controls.MetroRadioButton metroRadioButton2;
+        private MetroFramework.Controls.MetroRadioButton passreset;
     }
 }

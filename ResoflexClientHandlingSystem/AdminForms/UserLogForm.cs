@@ -105,7 +105,7 @@ namespace ResoflexClientHandlingSystem
             try
             {
                 MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime, " +
-                    " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and s.u_name LIKE'%" + metroTextBox1.Text.ToString()+"%' order by u.log_id DESC limit 20;");
+                    " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and s.u_name LIKE'%" + metroTextBox1.Text.ToString()+"%' order by u.log_id DESC;");
 
                 if (reader.HasRows)
                 {
@@ -152,7 +152,7 @@ namespace ResoflexClientHandlingSystem
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
-                       +" u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '"+ dateTimefrom.Value.ToString("yyyy/MM/dd") +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "'order by u.log_id DESC limit 20;");
+                       +" u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '"+ dateTimefrom.Value.ToString("yyyy/MM/dd") +"' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "'order by u.log_id DESC;");
 
                     if (reader.HasRows)
                     {
@@ -195,7 +195,7 @@ namespace ResoflexClientHandlingSystem
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
                        + " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "' and" +
-                       " s.u_name LIKE'%" + metroTextBox1.Text.ToString() + "%' order by u.log_id DESC limit 20;");
+                       " s.u_name LIKE'%" + metroTextBox1.Text.ToString() + "%' order by u.log_id DESC;");
 
                     if (reader.HasRows)
                     {
@@ -220,7 +220,7 @@ namespace ResoflexClientHandlingSystem
                 try
                 {
                     MySqlDataReader reader = DBConnection.getData("SELECT u.log_id as LogID, s.u_name as Username, u.logged_in_dateTime as LoginTime, u.logged_out_datetime as LogoutTime,"
-                       + " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "' order by u.log_id DESC limit 20;");
+                       + " u.ip as IP FROM user_log u, user s where s.user_id = u.user_id and date(u.logged_in_dateTime) >= '" + dateTimefrom.Value.ToString("yyyy/MM/dd") + "' and  date(u.logged_out_dateTime) <= '" + dateTimeTo.Value.ToString("yyyy/MM/dd") + "' order by u.log_id DESC;");
 
                     if (reader.HasRows)
                     {

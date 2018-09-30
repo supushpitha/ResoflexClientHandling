@@ -117,7 +117,7 @@ namespace ResoflexClientHandlingSystem
             string projName = projectName.Text.ToString();
 
             string sql = "select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name as Client " +
-                         " from schedule s, project p, visit_type vt " +
+                         " from schedule s, project p, visit_type vt, client c " +
                          " where(s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.proj_name like '%" + projName + "%') " +
                          " order by s.sch_no DESC limit 10;";
 
@@ -131,10 +131,9 @@ namespace ResoflexClientHandlingSystem
 
                 reader.Close();
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-
-                throw;
+                MessageBox.Show("Something went wrong!", "Search Schedules", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

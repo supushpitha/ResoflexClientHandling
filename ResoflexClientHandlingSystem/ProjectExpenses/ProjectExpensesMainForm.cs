@@ -47,20 +47,36 @@ namespace ResoflexClientHandlingSystem
 
                 reader.Close();
 
-                double progress = (thisMonthExp / lastMonthExp) * 100;
+                double progress = 0.0;
 
-                if (progress > 100)
+                if ((lastMonthExp > 0) || (lastMonthExp < 0))
                 {
-                    monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Green;
-                    progress = progress % 100;
-                }
-                else if (progress < 100)
-                    monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Red;
-                else
-                    monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Yellow;
+                    progress = (thisMonthExp / lastMonthExp) * 100;
 
-                progLbl.Text = "" + (int) progress + "%";
-                monthCompProgressSpinner.Value = (int) progress;
+                    if (progress > 100)
+                    {
+                        monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Green;
+                        progress = progress % 100;
+                    }
+                    else if (progress < 100)
+                        monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Red;
+                    else
+                        monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Yellow;
+
+                    progLbl.Text = "" + (int)progress + "%";
+                    monthCompProgressSpinner.Value = (int)progress;
+                }
+                else
+                {
+                    progress = 100.0;
+
+                    monthCompProgressSpinner.Style = MetroFramework.MetroColorStyle.Green;
+
+                    //progLbl.Text = "" + (int)progress + "%";
+                    monthCompProgressSpinner.Value = (int)progress;
+                }
+
+                
             }
             catch (Exception exc)
             {

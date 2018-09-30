@@ -773,7 +773,7 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
+                DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", perm_by_id=" + Userglobals.uid + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
             }
             catch (Exception exp)
             {

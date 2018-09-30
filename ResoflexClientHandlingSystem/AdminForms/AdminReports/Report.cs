@@ -144,7 +144,7 @@ namespace ResoflexClientHandlingSystem.AdminForms.AdminReports
 
         private void metroButton1_Click(object sender, EventArgs e)
         {
-            string query = "select u.u_name, sum(timestampdiff(MINUTE, (l.logged_in_dateTime), (l.logged_out_dateTime))) / 60 as diff, sum(a.total_hours)/100  as work_hour_sum from user_log l, user u, user_operations o, attendance a where u.user_id = l.user_id and l.logged_out_dateTime IS NOT NULL "+ 
+            string query = "select u.u_name, sum(timestampdiff(MINUTE, (l.logged_in_dateTime), (l.logged_out_dateTime))) / 60.0 as diff, sum(a.total_hours)/100.00  as work_hour_sum from user_log l, user u, user_operations o, attendance a where u.user_id = l.user_id and l.logged_out_dateTime IS NOT NULL "+ 
             "and a.staff_id = u.user_id and l.logged_in_dateTime between '" + from1.Value.ToString("yyyy/MM/dd HH:mm:ss") + "' and '" + to1.Value.ToString("yyyy/MM/dd  HH:mm:ss") + "' and a.in_time between '" + from1.Value.ToString("yyyy/MM/dd HH:mm:ss") + "' and '" + to1.Value.ToString("yyyy/MM/dd  HH:mm:ss") + "' and u.u_name= '" + uname1.SelectedItem.ToString() + "';";
 
             if (from1.Value > to1.Value)

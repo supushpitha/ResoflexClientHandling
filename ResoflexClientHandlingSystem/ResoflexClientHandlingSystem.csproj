@@ -729,7 +729,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>AttendanceReport.cs</LastGenOutput>
+      <LastGenOutput>AttendanceReport1.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="AttendanceForms\Reports\AttendanceReportViewerForm.resx">
       <DependentUpon>AttendanceReportViewerForm.cs</DependentUpon>

@@ -539,14 +539,14 @@ namespace ResoflexClientHandlingSystem
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart2.Series[Convert.ToDateTime(dateJP1).ToString("Y")].Color = Color.Blue;
 
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart2.Series[Convert.ToDateTime(dateJP2).ToString("Y")].Color = Color.Gray;
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM job_performance WHERE perf_year = '" + Convert.ToDateTime(metroComboBox1.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -596,14 +596,14 @@ namespace ResoflexClientHandlingSystem
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart3.Series[Convert.ToDateTime(dateCR1).ToString("Y")].Color = Color.Blue;
 
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart3.Series[Convert.ToDateTime(dateCR2).ToString("Y")].Color = Color.Gray;
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM client_relations WHERE rel_year = '" + Convert.ToDateTime(metroComboBox4.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -652,14 +652,18 @@ namespace ResoflexClientHandlingSystem
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            // this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart8.Series[Convert.ToDateTime(dateIS1).ToString("Y")].Color = Color.Blue;
 
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            // this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart8.Series[Convert.ToDateTime(dateIS2).ToString("Y")].Color = Color.Gray;
+
+
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM interpersonal_skills WHERE inter_year = '" + Convert.ToDateTime(metroComboBox8.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -709,14 +713,14 @@ namespace ResoflexClientHandlingSystem
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].IsValueShownAsLabel = true;
             this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            this.chart10.Series[Convert.ToDateTime(dateCS1).ToString("Y")].Color = Color.Blue;
 
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].ChartType = SeriesChartType.Column;
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].CustomProperties = "LabelStyle=Top";
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Font = new Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].IsValueShownAsLabel = true;
             this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].LabelForeColor = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Color = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.chart10.Series[Convert.ToDateTime(dateCS2).ToString("Y")].Color = Color.Gray;
 
             MySqlDataReader reader3 = DBConnection.getData("SELECT * FROM communication_skills where comm_year = '" + Convert.ToDateTime(wecom1.SelectedValue).ToString("yyyy/M/d") + "' and staff_id = " + employeeNo + ";");
             while (reader3.Read())
@@ -2090,6 +2094,11 @@ namespace ResoflexClientHandlingSystem
 
             AttendanceReportViewerForm form = new AttendanceReportViewerForm();
             form.Show();
+        }
+
+        private void metroTabPage8_Click(object sender, EventArgs e)
+        {
+
         }
 
 

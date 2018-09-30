@@ -208,7 +208,7 @@
             this.metroTabControl1.Controls.Add(this.metroTabPage4);
             this.metroTabControl1.Location = new System.Drawing.Point(12, 82);
             this.metroTabControl1.Name = "metroTabControl1";
-            this.metroTabControl1.SelectedIndex = 2;
+            this.metroTabControl1.SelectedIndex = 1;
             this.metroTabControl1.Size = new System.Drawing.Size(770, 500);
             this.metroTabControl1.TabIndex = 1;
             this.metroTabControl1.UseSelectable = true;
@@ -365,7 +365,7 @@
             // 
             this.deadlineDateTime.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.deadlineDateTime.Location = new System.Drawing.Point(514, 44);
-            this.deadlineDateTime.MinimumSize = new System.Drawing.Size(0, 29);
+            this.deadlineDateTime.MinimumSize = new System.Drawing.Size(4, 29);
             this.deadlineDateTime.Name = "deadlineDateTime";
             this.deadlineDateTime.Size = new System.Drawing.Size(200, 29);
             this.deadlineDateTime.TabIndex = 3;
@@ -417,7 +417,7 @@
             // startEventDateTime
             // 
             this.startEventDateTime.Location = new System.Drawing.Point(147, 46);
-            this.startEventDateTime.MinimumSize = new System.Drawing.Size(0, 29);
+            this.startEventDateTime.MinimumSize = new System.Drawing.Size(4, 29);
             this.startEventDateTime.Name = "startEventDateTime";
             this.startEventDateTime.Size = new System.Drawing.Size(199, 29);
             this.startEventDateTime.TabIndex = 16;
@@ -1030,7 +1030,7 @@
             this.metroTabControl3.Controls.Add(this.metroTabPage11);
             this.metroTabControl3.Location = new System.Drawing.Point(4, 2);
             this.metroTabControl3.Name = "metroTabControl3";
-            this.metroTabControl3.SelectedIndex = 3;
+            this.metroTabControl3.SelectedIndex = 0;
             this.metroTabControl3.Size = new System.Drawing.Size(752, 452);
             this.metroTabControl3.TabIndex = 5;
             this.metroTabControl3.UseSelectable = true;
@@ -1068,6 +1068,7 @@
             this.metroTabPage8.VerticalScrollbarBarColor = true;
             this.metroTabPage8.VerticalScrollbarHighlightOnWheel = false;
             this.metroTabPage8.VerticalScrollbarSize = 10;
+            this.metroTabPage8.Click += new System.EventHandler(this.metroTabPage8_Click);
             // 
             // metroButton9
             // 

@@ -74,30 +74,97 @@ namespace ResoflexClientHandlingSystem.AdminForms
                         MySqlDataReader reader1 = DBConnection.getData("SELECT user_id, u_name, first_name, last_name, password, permission from " +
                             "user , staff  where user_id="+chid+" and user_id = staff_id;");
 
-                        if (reader1.Read())
+                        while (reader1.Read())
                         {
                             string name = reader1["first_name"].ToString() +" " +reader1["last_name"].ToString();
                             string uname = reader1["u_name"].ToString();
                             string pass = Eramake.eCryptography.Decrypt(reader1["password"].ToString());
                             string permission = reader1["permission"].ToString();
 
-                            reader1.Close();
+                            
                             UserAddForm uaf = new UserAddForm(name, uname, pass, permission);
                             uaf.Show();
                             
                         }
+                        reader1.Close();
                     }
                     catch(Exception ex)
                     {
                         Console.WriteLine(ex.StackTrace);
                     }
                 }
+                else if (operation.Equals("Added a new Project") && reader.Read())
+                {
+                    chid = Int32.Parse(reader["id"].ToString());
+                    reader.Close();
+
+                    try
+                    {
+                        MySqlDataReader reader1 = DBConnection.getData("SELECT p.proj_name, c.name, p.description, p.proj_cat_id, p.proj_sub_cat_id, p.support_terms, p.visit_terms, p.warranty_terms from " +
+                            "project p , client c  where p.proj_id=" + chid + " and p.client_id = c.client_id;");
+
+                        while (reader1.Read())
+                        {
+                            string pname = reader1["proj_name"].ToString();
+                            string clientname = reader1["name"].ToString();
+                            string description = reader1["description"].ToString();
+                            string supporttrms = reader1["support_terms"].ToString();
+                            string visittrms = reader1["visit_terms"].ToString();
+                            string warrantytrms = reader1["warranty_terms"].ToString();
+                            int catid = int.Parse(reader1["proj_cat_id"].ToString());
+                            int subcatid = int.Parse(reader1["proj_sub_cat_id"].ToString());
+                            UpdateProjectForm upf = new UpdateProjectForm(pname, clientname, description, supporttrms, visittrms, warrantytrms, catid, subcatid);
+                            upf.Show();                     
+
+                        }
+                        reader1.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                else if (operation.Equals("Added a new Client") && reader.Read())
+                {
+                    chid = Int32.Parse(reader["id"].ToString());
+                    reader.Close();
+
+                    try
+                    {
+                        MySqlDataReader reader1 = DBConnection.getData("SELECT name, address, phone_mobile, phone_office, fax, email FROM" +
+                            " client where client_id = " + chid + " ; ");
+
+                        while (reader1.Read())
+                        {
+                            string name =reader1["name"].ToString();
+                            string address = reader1["address"].ToString();
+                            string phone_mob = reader1["phone_mobile"].ToString();
+                            string phone_office = reader1["phone_office"].ToString();
+                            string fax = reader1["fax"].ToString();
+                            string email = reader1["email"].ToString();
+                            AddNewClientForm anc = new AddNewClientForm(name, address, phone_mob, phone_office, fax, email);
+                            anc.Show();
+
+                        }
+                        reader1.Close();
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.StackTrace);
+                    }
+                }
+                reader.Close();
 
             }
             catch(Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
             }
+        }
+
+        private void OpGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

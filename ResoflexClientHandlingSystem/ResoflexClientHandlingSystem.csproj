@@ -100,6 +100,37 @@
     <Compile Include="AccountingMain.Designer.cs">
       <DependentUpon>AccountingMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet1.cs">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\DataSet2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\MonthlyUsageReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MonthlyUsageReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Report.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Report.Designer.cs">
+      <DependentUpon>Report.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminForms\AdminReports\Sample.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Sample.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="AdminForms\UserAddForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -189,16 +220,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="ClientForms\ClientReports\ProjectProfileMainReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProjectProfileMainReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ClientForms\ClientReports\ProjectProfileReport.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ProjectProfileReport.rpt</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ClientForms\ClientReports\ProjectProfileSubReport.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ProjectProfileSubReport.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ClientForms\EmailClientForm.cs">
@@ -653,6 +684,17 @@
     <EmbeddedResource Include="AccountingMain.resx">
       <DependentUpon>AccountingMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\MonthlyUsageReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MonthlyUsageReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\Report.resx">
+      <DependentUpon>Report.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminForms\AdminReports\Sample.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Sample.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="AdminForms\UserAddForm.resx">
       <DependentUpon>UserAddForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -695,13 +737,13 @@
     <EmbeddedResource Include="ClientForms\ClientReports\ClientReportForm.resx">
       <DependentUpon>ClientReportForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileMainReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProjectProfileMainReport.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileReport.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ProjectProfileReport.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ClientForms\ClientReports\ProjectProfileSubReport.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>ProjectProfileSubReport.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="ClientForms\EmailClientForm.resx">
       <DependentUpon>EmailClientForm.cs</DependentUpon>
@@ -912,6 +954,28 @@
     <EmbeddedResource Include="UserForms\ProfileForm.resx">
       <DependentUpon>ProfileForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="AdminForms\AdminReports\DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet1.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xsc">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="AdminForms\AdminReports\DataSet2.xss">
+      <DependentUpon>DataSet2.xsd</DependentUpon>
+    </None>  
     <None Include="ClientForms\ClientReports\ProjectProfileDataSet.xsc">
       <DependentUpon>ProjectProfileDataSet.xsd</DependentUpon>
     </None>

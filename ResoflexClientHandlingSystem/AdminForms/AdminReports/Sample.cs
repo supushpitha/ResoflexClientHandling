@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
+namespace ResoflexClientHandlingSystem.AdminForms.AdminReports {
     using System;
     using System.ComponentModel;
     using CrystalDecisions.Shared;
@@ -16,14 +16,14 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class ProjectProfileSubReport : ReportClass {
+    public class Sample : ReportClass {
         
-        public ProjectProfileSubReport() {
+        public Sample() {
         }
         
         public override string ResourceName {
             get {
-                return "ProjectProfileSubReport.rpt";
+                return "Sample.rpt";
             }
             set {
                 // Do nothing
@@ -41,8 +41,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         
         public override string FullResourceName {
             get {
-                return "ResoflexClientHandlingSystem.ClientForms.ClientReports.ProjectProfileSubReport.rp" +
-                    "t";
+                return "ResoflexClientHandlingSystem.AdminForms.AdminReports.Sample.rpt";
             }
             set {
                 // Do nothing
@@ -67,7 +66,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupHeaderSection1 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
             get {
                 return this.ReportDefinition.Sections[2];
             }
@@ -75,7 +74,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section3 {
+        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
             get {
                 return this.ReportDefinition.Sections[3];
             }
@@ -83,33 +82,17 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         
         [Browsable(false)]
         [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section GroupFooterSection1 {
-            get {
-                return this.ReportDefinition.Sections[4];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public CrystalDecisions.CrystalReports.Engine.Section Section4 {
-            get {
-                return this.ReportDefinition.Sections[5];
-            }
-        }
-        
-        [Browsable(false)]
-        [DesignerSerializationVisibilityAttribute(System.ComponentModel.DesignerSerializationVisibility.Hidden)]
         public CrystalDecisions.CrystalReports.Engine.Section Section5 {
             get {
-                return this.ReportDefinition.Sections[6];
+                return this.ReportDefinition.Sections[4];
             }
         }
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedProjectProfileSubReport : Component, ICachedReport {
+    public class CachedSample : Component, ICachedReport {
         
-        public CachedProjectProfileSubReport() {
+        public CachedSample() {
         }
         
         [Browsable(false)]
@@ -146,7 +129,7 @@ namespace ResoflexClientHandlingSystem.ClientForms.ClientReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            ProjectProfileSubReport rpt = new ProjectProfileSubReport();
+            Sample rpt = new Sample();
             rpt.Site = this.Site;
             return rpt;
         }

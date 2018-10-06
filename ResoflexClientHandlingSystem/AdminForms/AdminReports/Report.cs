@@ -45,13 +45,22 @@ namespace ResoflexClientHandlingSystem.AdminForms.AdminReports
             {
                 reader = Core.DBConnection.getData(query);
 
-                if (reader.HasRows)
+                try
                 {
-                    while (reader.Read())
+                    if (reader.HasRows)
                     {
-                        table.Rows.Add(reader["u_name"].ToString(), reader["operation"].ToString(), reader["logged_in_dateTime"].ToString(), reader["logged_out_dateTime"].ToString());
+                        while (reader.Read())
+                        {
+                            table.Rows.Add(reader["u_name"].ToString(), reader["operation"].ToString(), reader.GetDateTime("logged_in_dateTime"), reader.GetDateTime("logged_out_dateTime"));
+                        }
                     }
                 }
+                catch (Exception)
+                {
+
+                    throw;
+                }
+
                 reader.Close();
 
                 Sample sample = new Sample();

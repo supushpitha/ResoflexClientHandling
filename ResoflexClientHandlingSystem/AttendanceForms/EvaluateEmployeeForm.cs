@@ -251,7 +251,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable getAttendanceOfEmployee()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = " + employeeNo + "");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + "");
             table.Load(reader);
             return table;
         }
@@ -261,7 +261,7 @@ namespace ResoflexClientHandlingSystem
             DateTime myDateTime = attendanceOfEmployeeDateTime.Value;
             string sqlFormattedDate = myDateTime.ToString("yyyy-MM-dd");
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = "+employeeNo+ " and DATE(InTime) = '"+ sqlFormattedDate + "'");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = "+employeeNo+ " and DATE(InTime) = '"+ sqlFormattedDate + "'");
             table.Load(reader);
             return table;
         }
@@ -269,7 +269,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable getAttendanceOfEmployeeUsingOutTime()
         {
             DataTable table = new DataTable();
-            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, EffectiveHours FROM attendanceview where StaffId = " + employeeNo + " and DATE(OutTime) = '" + attendanceOfEmployeeDateTime2.Value.ToString("yyyy/M/d") + "'");
+            MySqlDataReader reader = DBConnection.getData("SELECT InTime, OutTime, TotalHours FROM attendanceview where StaffId = " + employeeNo + " and DATE(OutTime) = '" + attendanceOfEmployeeDateTime2.Value.ToString("yyyy/M/d") + "'");
             table.Load(reader);
             return table;
         }

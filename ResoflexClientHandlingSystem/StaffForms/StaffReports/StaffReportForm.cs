@@ -33,7 +33,7 @@ namespace ResoflexClientHandlingSystem.StaffForms.StaffReports
 
         private void Report_Click(object sender, EventArgs e)
         {
-            string qry = "select event_tech_id,task,appointed_time,used_time from event_technician_task where event_tech_id = " + tId + "";
+            string qry = "select event_tech_id,task,appointed_time,used_time from event_technician__task where event_tech_id = " + tId + "";
             //string qry2 = "select appointed_time-used_time from event_technician_task";
             // string qry2 = "select time_format(appointed_time - used_time, '"+expression+"') from event_technician_task where task = '"+r+"'";
 
@@ -107,7 +107,7 @@ namespace ResoflexClientHandlingSystem.StaffForms.StaffReports
         {
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select * from event_technician_task ");
+                MySqlDataReader reader = DBConnection.getData("select * from event_technician__task ");
 
                 selectStaffCmbBox.Items.Clear();
 
@@ -150,7 +150,7 @@ namespace ResoflexClientHandlingSystem.StaffForms.StaffReports
             {
                 string expression = "%T";
 
-                MySqlDataReader reader = DBConnection.getData("select time_format(appointed_time, '" + expression + "') as AppointedTime from event_technician_task where task = '" + tsk + "'");
+                MySqlDataReader reader = DBConnection.getData("select time_format(appointed_time, '" + expression + "') as AppointedTime from event_technician__task where task = '" + tsk + "'");
 
                 while (reader.Read())
                 {
@@ -160,7 +160,7 @@ namespace ResoflexClientHandlingSystem.StaffForms.StaffReports
 
                 reader.Close();
 
-                reader = DBConnection.getData("select time_format(used_time, '" + expression + "') as UsedTime from event_technician_task where task = '" + tsk + "'");
+                reader = DBConnection.getData("select time_format(used_time, '" + expression + "') as UsedTime from event_technician__task where task = '" + tsk + "'");
 
                 while (reader.Read())
                 {

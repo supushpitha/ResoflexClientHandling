@@ -90,7 +90,7 @@ namespace ResoflexClientHandlingSystem.AttendanceForms.Reports
             int staffID = Int32.Parse(metroComboBox1.SelectedValue.ToString());
             DateTime from = fromDT.Value;
             DateTime to = ToDT.Value;
-            setReport("SELECT staffID, FirstName, LastName, InTime as InTime, OutTime as OutTime, TIMEDIFF(OutTime, InTime) as TotalHours, EffectiveHours as EffectiveHours FROM attendanceview where staffID = " +staffID+ " AND (DATE(InTime) >= '" + from.ToString("y/M/d") + "' AND DATE(InTime) <= '" + to.ToString("y/M/d") + "')");
+            setReport("SELECT staffID, FirstName, LastName, InTime as InTime, OutTime as OutTime, TIMEDIFF(OutTime, InTime) as TotalHours, TotalHours as EffectiveHours FROM attendanceview where staffID = " +staffID+ " AND (DATE(InTime) >= '" + from.ToString("y/M/d") + "' AND DATE(InTime) <= '" + to.ToString("y/M/d") + "')");
 
         }
     }

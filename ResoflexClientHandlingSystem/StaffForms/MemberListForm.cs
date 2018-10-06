@@ -49,13 +49,13 @@ namespace ResoflexClientHandlingSystem
             }
             else
             {
-                if (Userglobals.priv != "PM" || Userglobals.priv != "HR" || Userglobals.priv != "ADM")
-                {
-                    GotoAddmemBtn.Visible = false;
-                    DelMemBtn.Visible = false;
-                    UpdateMemBtn.Visible = false;
+                //if (Userglobals.priv != "PM"  Userglobals.priv != "HR" || Userglobals.priv != "ADM")
+                //{
+                //    GotoAddmemBtn.Visible = false;
+                //    DelMemBtn.Visible = false;
+                //    UpdateMemBtn.Visible = false;
 
-                }
+                //}
 
                 profilebtn.Visible = true;
                 profilebtn.Text = Userglobals.uname;

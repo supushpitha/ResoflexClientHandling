@@ -40,7 +40,7 @@ namespace ResoflexClientHandlingSystem.StaffForms
         {
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select * from event_technician_task ");
+                MySqlDataReader reader = DBConnection.getData("select * from event_technician__task ");
 
                 selectMemCmbBox.Items.Clear();
 
@@ -78,7 +78,7 @@ namespace ResoflexClientHandlingSystem.StaffForms
         {
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select task from event_technician_task where event_tech_id = " +tId+ "");
+                MySqlDataReader reader = DBConnection.getData("select task from event_technician__task where event_tech_id = " +tId+ "");
                // MySqlDataReader reader = DBConnection.getData("select * from event_technician_task");
 
                 selectTaskCmbBox.Items.Clear();
@@ -103,7 +103,7 @@ namespace ResoflexClientHandlingSystem.StaffForms
             {
                 string expression = "%T";
 
-                MySqlDataReader reader = DBConnection.getData("select time_format(appointed_time, '"+expression+"') as AppointedTime from event_technician_task where task = '" + tsk + "'");
+                MySqlDataReader reader = DBConnection.getData("select time_format(appointed_time, '"+expression+"') as AppointedTime from event_technician__task where task = '" + tsk + "'");
 
                 while (reader.Read())
                 {
@@ -112,7 +112,7 @@ namespace ResoflexClientHandlingSystem.StaffForms
 
                 reader.Close();
 
-                reader = DBConnection.getData("select time_format(used_time, '" + expression + "') as UsedTime from event_technician_task where task = '" + tsk + "'");
+                reader = DBConnection.getData("select time_format(used_time, '" + expression + "') as UsedTime from event_technician__task where task = '" + tsk + "'");
 
                 while (reader.Read())
                 {

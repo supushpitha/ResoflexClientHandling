@@ -336,7 +336,7 @@ namespace ResoflexClientHandlingSystem
         {
             int count = 0;
 
-            MySqlDataReader reader = DBConnection.getData("select count(*) as count from schedule s, event e where s.sch_no = e.sch_no and s.proj_id = e.proj_id and e.to_date_time > NOW()");
+            MySqlDataReader reader = DBConnection.getData("select count(*) as count from schedule where to_date_time > NOW()");
 
             if (reader.Read())
             {

@@ -796,12 +796,30 @@ namespace ResoflexClientHandlingSystem.Core
             }
         }
 
+        public static void assignChangeRequest(UserNotification notification)
+        {
+            try
+            {
+                DBConnection.updateDB("insert into notification(user_id, function_id, statues, main_id, sub_id, perm_by_id, admin_view) " +
+                    "values(" + notification.UserId + ", " + notification.FuctionId + ", " + notification.Status + ", " + notification.MainId + ", " + notification.SubId + ", " + Userglobals.uid + ", 1)");
+            }
+            catch (Exception exp)
+            {
+                MessageBox.Show("Something went wrong!\n" + exp, "Saving Assignment", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         //Granting permission
         public static void grantPermission(UserNotification notifi)
         {
             try
             {
                 DBConnection.updateDB("UPDATE notification SET statues =" + notifi.Status + ", perm_by_id=" + Userglobals.uid + ", admin_view=1 WHERE noti_ID=" + notifi.NotiId + "");
+
+                if (!notifi.Status)
+                {
+                    DBConnection.updateDB("UPDATE notification SET view=1 WHERE noti_ID=" + notifi.NotiId + "");
+                }
             }
             catch (Exception exp)
             {
@@ -889,7 +907,7 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
-                while (reader.Read())
+                if (reader.Read())
                 {
                     DBConnection.updateDB("delete from event_technician_task where event_tech_id = " + reader.GetInt16("event_staff_id") + ";");
                 }
@@ -904,7 +922,7 @@ namespace ResoflexClientHandlingSystem.Core
             }
             catch (Exception e)
             {
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Schedule Deleted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\n", "Delete Events", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }
@@ -1097,6 +1115,8 @@ namespace ResoflexClientHandlingSystem.Core
             try
             {
                 DBConnection.updateDB("update proj_request set started_dateTime='" + DateTime.Now.ToString("yyyy/MM/d HH:mm:ss") + "', staff_id=" + uid + " where proj_id=" + projId + " and req_id=" + reqId);
+
+                DBConnection.updateDB("UPDATE notification SET view=1 WHERE main_id=" + projId + " and sub_id=" + reqId + " and user_id=" + uid);
             }
             catch (Exception exc)
             {

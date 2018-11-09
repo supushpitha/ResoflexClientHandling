@@ -54,7 +54,7 @@
             // 
             this.addEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.addEvent.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.addEvent.Location = new System.Drawing.Point(681, 554);
+            this.addEvent.Location = new System.Drawing.Point(961, 674);
             this.addEvent.Name = "addEvent";
             this.addEvent.Size = new System.Drawing.Size(96, 23);
             this.addEvent.TabIndex = 24;
@@ -66,7 +66,7 @@
             // 
             this.updateEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.updateEvent.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.updateEvent.Location = new System.Drawing.Point(463, 554);
+            this.updateEvent.Location = new System.Drawing.Point(743, 674);
             this.updateEvent.Name = "updateEvent";
             this.updateEvent.Size = new System.Drawing.Size(90, 23);
             this.updateEvent.TabIndex = 23;
@@ -78,7 +78,7 @@
             // 
             this.deleteEvent.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.deleteEvent.FontSize = MetroFramework.MetroButtonSize.Medium;
-            this.deleteEvent.Location = new System.Drawing.Point(234, 554);
+            this.deleteEvent.Location = new System.Drawing.Point(514, 674);
             this.deleteEvent.Name = "deleteEvent";
             this.deleteEvent.Size = new System.Drawing.Size(96, 23);
             this.deleteEvent.TabIndex = 22;
@@ -94,7 +94,7 @@
             this.eventGrid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
+            this.eventGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.eventGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.eventGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.eventGrid.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
@@ -133,7 +133,7 @@
             this.eventGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.eventGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.eventGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.eventGrid.Size = new System.Drawing.Size(543, 374);
+            this.eventGrid.Size = new System.Drawing.Size(823, 494);
             this.eventGrid.TabIndex = 19;
             // 
             // clientName
@@ -154,7 +154,7 @@
             this.clientName.CustomButton.UseSelectable = true;
             this.clientName.CustomButton.Visible = false;
             this.clientName.Lines = new string[0];
-            this.clientName.Location = new System.Drawing.Point(612, 116);
+            this.clientName.Location = new System.Drawing.Point(892, 116);
             this.clientName.MaxLength = 32767;
             this.clientName.Name = "clientName";
             this.clientName.PasswordChar = '\0';
@@ -188,7 +188,7 @@
             this.projectName.CustomButton.UseSelectable = true;
             this.projectName.CustomButton.Visible = false;
             this.projectName.Lines = new string[0];
-            this.projectName.Location = new System.Drawing.Point(341, 116);
+            this.projectName.Location = new System.Drawing.Point(621, 116);
             this.projectName.MaxLength = 32767;
             this.projectName.Name = "projectName";
             this.projectName.PasswordChar = '\0';
@@ -209,7 +209,7 @@
             this.schCltName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schCltName.AutoSize = true;
             this.schCltName.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.schCltName.Location = new System.Drawing.Point(515, 116);
+            this.schCltName.Location = new System.Drawing.Point(795, 116);
             this.schCltName.Name = "schCltName";
             this.schCltName.Size = new System.Drawing.Size(91, 19);
             this.schCltName.TabIndex = 16;
@@ -220,7 +220,7 @@
             this.schPrjName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.schPrjName.AutoSize = true;
             this.schPrjName.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.schPrjName.Location = new System.Drawing.Point(234, 116);
+            this.schPrjName.Location = new System.Drawing.Point(514, 116);
             this.schPrjName.Name = "schPrjName";
             this.schPrjName.Size = new System.Drawing.Size(101, 19);
             this.schPrjName.TabIndex = 15;
@@ -232,7 +232,7 @@
             this.schHome.BackColor = System.Drawing.Color.Transparent;
             this.schHome.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("schHome.BackgroundImage")));
             this.schHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.schHome.Location = new System.Drawing.Point(380, 40);
+            this.schHome.Location = new System.Drawing.Point(520, 40);
             this.schHome.Margin = new System.Windows.Forms.Padding(2);
             this.schHome.Name = "schHome";
             this.schHome.Size = new System.Drawing.Size(30, 24);
@@ -309,7 +309,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 600);
+            this.ClientSize = new System.Drawing.Size(1080, 720);
             this.Controls.Add(this.btnOtherReports);
             this.Controls.Add(this.btnExp);
             this.Controls.Add(this.metroLabel3);
@@ -325,6 +325,7 @@
             this.Controls.Add(this.schCltName);
             this.Controls.Add(this.schPrjName);
             this.Controls.Add(this.schHome);
+            this.MinimumSize = new System.Drawing.Size(1080, 720);
             this.Name = "EventForm";
             this.Style = MetroFramework.MetroColorStyle.Green;
             this.Text = "Event";

@@ -22,8 +22,7 @@ namespace ResoflexClientHandlingSystem.EventForms
         private DataTable resoTbl = new DataTable();
         int eventID;
         private Event et;
-
-        //service engineer datasource
+        
         public DataTable serviceEngDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
@@ -50,8 +49,7 @@ namespace ResoflexClientHandlingSystem.EventForms
 
             return dt2;
         }
-
-        //travelling mode datasource
+        
         public DataTable travelModeDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select id, details from travelingmode");
@@ -134,7 +132,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             InitializeComponent();
 
             et = evnt;
-
+            
             projectName.DataSource = projectDataSource();
             projectName.ValueMember = "proj_id";
             projectName.DisplayMember = "proj_name";
@@ -162,15 +160,12 @@ namespace ResoflexClientHandlingSystem.EventForms
             eventResoCombo.DataSource = eventResourcesSource();
             eventResoCombo.ValueMember = "resource_id";
             eventResoCombo.DisplayMember = "name";
-
-            //to resolve startup bug
+            
             projectNameChange(evnt.EventProject.ProjectID);
-
-            //eng grid columns
+            
             engGrid.Columns.Add("staff_id", typeof(int));
             engGrid.Columns.Add("fullname", typeof(string));
-
-            //feedback grid columns
+            
             feedbackGrid.Columns.Add("staff_id", typeof(int));
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
@@ -189,7 +184,6 @@ namespace ResoflexClientHandlingSystem.EventForms
             eventsSch.SelectedValue = evnt.ScheduleId.ScheduleId;
             scheduleType.SelectedValue = evnt.Type.EventTypeId;
             todoList.Text = evnt.TodoList;
-            //resoBox.Text = evnt.Resource;
             eventStartDate.Value = evnt.From;
             eventStartTime.Value = evnt.From;
             eventEndDate.Value = evnt.To;
@@ -208,14 +202,12 @@ namespace ResoflexClientHandlingSystem.EventForms
             {
                 DataRow erow, frow;
                 EventTechnician et = (EventTechnician)item;
-
-                //eng grid
+                
                 erow = engGrid.NewRow();
                 erow["staff_id"] = et.Technician.StaffId;
                 erow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
                 engGrid.Rows.Add(erow);
-
-                //eng feedback grid
+                
                 frow = feedbackGrid.NewRow();
                 frow["staff_id"] = et.Technician.StaffId;
                 frow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
@@ -223,8 +215,7 @@ namespace ResoflexClientHandlingSystem.EventForms
                 frow["task"] = et.Task;
                 feedbackGrid.Rows.Add(frow);
             }
-
-            //Getting all the resources
+            
             ArrayList reso = evnt.ResoArray;
 
             resoTbl.Columns.Add("resource_id", typeof(int));
@@ -246,9 +237,12 @@ namespace ResoflexClientHandlingSystem.EventForms
             }
 
             resoGrid.DataSource = resoTbl;
-        }
 
-        //when project name combox box is changed
+            clientFeedback.Columns[0].Visible = false;
+            serviceEngGrid.Columns[0].Visible = false;
+            resoGrid.Columns[0].Visible = false;
+        }
+        
         public void onProjectNameChange(object sender, EventArgs e)
         {
             projectNameChange(0);
@@ -266,9 +260,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             {
                 proj_id = pid;
             }
-
-            int client_id;
-
+            
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id);");
 
             DataTable dt = new DataTable();
@@ -284,8 +276,7 @@ namespace ResoflexClientHandlingSystem.EventForms
 
             reader.Close();
         }
-
-        //adding service engineers
+        
         private void addEng_MouseClick(object sender, MouseEventArgs e)
         {
             DataRow row;
@@ -313,8 +304,7 @@ namespace ResoflexClientHandlingSystem.EventForms
                 MessageBox.Show("This service engineer is already added!");
             }
         }
-
-        //removing service engineers
+        
         private void removeSerEng_Click(object sender, EventArgs e)
         {
             for (int i = engGrid.Rows.Count - 1; i >= 0; i--)
@@ -384,8 +374,7 @@ namespace ResoflexClientHandlingSystem.EventForms
                 MessageBox.Show("Enter a numeric value");
             }
         }
-
-        //remove reso
+        
         private void removeResource_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = resoGrid.CurrentRow;
@@ -473,8 +462,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             evnt.TravelMode = travelingMode.Text;
             evnt.AccommodationMode = accomodation.Text;
             evnt.Meals = meals.Text;
-
-            //service eng
+            
             ArrayList eng = new ArrayList();
 
             foreach(DataRow row in feedbackGrid.Rows){
@@ -486,7 +474,6 @@ namespace ResoflexClientHandlingSystem.EventForms
 
             if (Database.updateEvent(evnt))
             {
-                //sending mails
                 if (evntSendMail.Checked)
                 {
                     notifyIconEvent.Icon = SystemIcons.Application;
@@ -525,8 +512,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             }
 
         }
-
-        //adding details to feedback grid
+        
         private void addFeedback_MouseClick(object sender, MouseEventArgs e)
         {
             DataRow row;

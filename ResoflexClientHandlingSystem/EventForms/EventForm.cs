@@ -24,10 +24,11 @@ namespace ResoflexClientHandlingSystem
 
             eventGrid.DataSource = getEvents();
 
+            eventGrid.Columns[0].Visible = false;
             eventGrid.Columns[1].Visible = false;
             eventGrid.Columns[2].Visible = false;
-
-            //Autocompelete data source
+            eventGrid.Columns[3].Visible = false;
+            
             projectName.AutoCompleteCustomSource = projectNameAutoComplete();
             clientName.AutoCompleteCustomSource = clientNameAutoComplete();
 
@@ -52,10 +53,10 @@ namespace ResoflexClientHandlingSystem
         {
             AddEventForm ef = new AddEventForm();
             ef.ShowDialog();
+
             eventGrid.DataSource = getEvents();
         }
-
-        //Data for grid
+        
         private DataTable getEvents()
         {
             DataTable dt = new DataTable();
@@ -74,8 +75,7 @@ namespace ResoflexClientHandlingSystem
 
             return dt;
         }
-
-        //for autocomplete project names
+        
         private AutoCompleteStringCollection projectNameAutoComplete()
         {
             DataTable dt = new DataTable();
@@ -94,8 +94,7 @@ namespace ResoflexClientHandlingSystem
 
             return colString;
         }
-
-        //for autocomplete client names
+        
         private AutoCompleteStringCollection clientNameAutoComplete()
         {
             DataTable dt = new DataTable();
@@ -114,8 +113,7 @@ namespace ResoflexClientHandlingSystem
 
             return colString;
         }
-
-        //search by project name
+        
         private void searchScheduleByProjectName_TextChanged(object sender, EventArgs e)
         {
 
@@ -131,6 +129,7 @@ namespace ResoflexClientHandlingSystem
                 MySqlDataReader reader = DBConnection.getData(sql);
 
                 DataTable dt = new DataTable();
+
                 dt.Load(reader);
                 eventGrid.DataSource = dt;
 
@@ -138,12 +137,10 @@ namespace ResoflexClientHandlingSystem
             }
             catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Something went wrong!\nPlease check your MySQL database connection...", "Search by project name", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //search by client name
+        
         private void searchScheduleByClientName_TextChanged(object sender, EventArgs e)
         {
 
@@ -159,6 +156,7 @@ namespace ResoflexClientHandlingSystem
                 MySqlDataReader reader = DBConnection.getData(sql);
 
                 DataTable dt = new DataTable();
+
                 dt.Load(reader);
                 eventGrid.DataSource = dt;
 
@@ -166,12 +164,10 @@ namespace ResoflexClientHandlingSystem
             }
             catch (Exception)
             {
-
-                throw;
+                MessageBox.Show("Something went wrong!\nPlease check your MySQL database connection...", "Search by client name", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        //deleting event
+        
         private void deleteEvent_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = eventGrid.CurrentRow;
@@ -186,7 +182,7 @@ namespace ResoflexClientHandlingSystem
             evnt.EventProject = new Project(proj_id);
             evnt.ScheduleId = new Schedule(sch_no);
 
-            DialogResult res = MessageBox.Show("Are you sure you want delete this schedule?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            DialogResult res = MessageBox.Show("Are you sure you want to delete this schedule?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (res == DialogResult.Yes)
             {
@@ -195,10 +191,6 @@ namespace ResoflexClientHandlingSystem
                     MessageBox.Show("Event Successfully Deleted!");
 
                     eventGrid.DataSource = getEvents();
-                }
-                else
-                {
-                    MessageBox.Show("Something Went Wrong!");
                 }
             }
         }
@@ -217,7 +209,6 @@ namespace ResoflexClientHandlingSystem
             uef.ShowDialog();
 
             eventGrid.DataSource = getEvents();
-
         }
 
         private Event getEventRow(int proj_id, int sch_no, int event_id)
@@ -299,12 +290,10 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("Something went wrong!");
                 throw;
             }
-
-
+            
             return evnt;
         }
-
-        //data for tiles
+        
         public void totalEventsTile()
         {
             MySqlDataReader reader = DBConnection.getData("select count(*) as count from event;");

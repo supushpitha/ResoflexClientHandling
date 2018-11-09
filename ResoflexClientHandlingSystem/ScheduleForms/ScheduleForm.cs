@@ -25,6 +25,7 @@ namespace ResoflexClientHandlingSystem
 
             scheduleGrid.DataSource = getSchedules();
 
+            scheduleGrid.Columns[0].Visible = false;
             scheduleGrid.Columns[1].Visible = false;
             scheduleGrid.Columns[2].Visible = false;
 

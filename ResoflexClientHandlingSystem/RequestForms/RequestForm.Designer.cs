@@ -70,6 +70,7 @@
             this.errorProviderReq = new System.Windows.Forms.ErrorProvider(this.components);
             this.metroLabel9 = new MetroFramework.Controls.MetroLabel();
             this.metroButton1 = new MetroFramework.Controls.MetroButton();
+            this.myAssignmentsRadioBtn = new MetroFramework.Controls.MetroRadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.changeReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientReqGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderReq)).BeginInit();
@@ -598,11 +599,23 @@
             this.metroButton1.UseSelectable = true;
             this.metroButton1.Click += new System.EventHandler(this.metroButton1_Click);
             // 
+            // myAssignmentsRadioBtn
+            // 
+            this.myAssignmentsRadioBtn.AutoSize = true;
+            this.myAssignmentsRadioBtn.Location = new System.Drawing.Point(555, 465);
+            this.myAssignmentsRadioBtn.Name = "myAssignmentsRadioBtn";
+            this.myAssignmentsRadioBtn.Size = new System.Drawing.Size(111, 15);
+            this.myAssignmentsRadioBtn.TabIndex = 33;
+            this.myAssignmentsRadioBtn.Text = "My Assignments";
+            this.myAssignmentsRadioBtn.UseSelectable = true;
+            this.myAssignmentsRadioBtn.MouseClick += new System.Windows.Forms.MouseEventHandler(this.myAssignmentsRadioBtn_MouseClick);
+            // 
             // RequestForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1675, 833);
+            this.Controls.Add(this.myAssignmentsRadioBtn);
             this.Controls.Add(this.metroButton1);
             this.Controls.Add(this.metroLabel9);
             this.Controls.Add(this.addNewClientReqBtn);
@@ -688,5 +701,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderReq;
         private MetroFramework.Controls.MetroLabel metroLabel9;
         private MetroFramework.Controls.MetroButton metroButton1;
+        private MetroFramework.Controls.MetroRadioButton myAssignmentsRadioBtn;
     }
 }

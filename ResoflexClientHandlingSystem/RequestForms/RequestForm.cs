@@ -22,6 +22,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
         private int oldCount = 0;
         private List<Int32> projIds = new List<int>();
         private List<Int32> reqIds = new List<int>();
+        private int assignedUserId = -1;
 
         public RequestForm()
         {
@@ -45,6 +46,9 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
         private void RequestForm_Load(object sender, EventArgs e)
         {
+            fillClientCmbBoxes();
+            fillProjectCmbBox();
+
             if (!projName.Equals(""))
             {
                 searchTypeCmbBox.SelectedIndex = 0;
@@ -77,13 +81,19 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 addNewChangeReqBtn.Visible = false;
                 addNewClientReqBtn.Visible = false;
+                myAssignmentsRadioBtn.Visible = false;
             }
             else
             {
-                if ((!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin")) && (!Userglobals.priv.ToLower().Equals("tch") && !Userglobals.priv.ToLower().Equals("technician")))
+                if ((!Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin")) && (!Userglobals.priv.ToLower().Equals("mng") && !Userglobals.priv.ToLower().Equals("pm")) && (!Userglobals.priv.ToLower().Equals("tch") && !Userglobals.priv.ToLower().Equals("technician")))
                 {
                     addNewChangeReqBtn.Visible = false;
                     addNewClientReqBtn.Visible = false;
+                }
+
+                if (!Userglobals.priv.ToLower().Equals("tch"))
+                {
+                    myAssignmentsRadioBtn.Visible = false;
                 }
             }
         }
@@ -426,8 +436,6 @@ namespace ResoflexClientHandlingSystem.RequestForms
             verticalLineLbl.Width = 2;
             verticalLineLbl.Height = 890;
             verticalLineLbl.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            fillClientCmbBoxes();
-            fillProjectCmbBox();
 
             if (!projName.Equals(""))
             {
@@ -441,7 +449,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             {
                 allRadioBtn.Checked = true;
             }
-
+            
             changeGridRowColors("Change");
             changeGridRowColors("Client");
             markSeen();
@@ -799,6 +807,65 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 markSeen();
             }
         }
+        
+        private void myAssignmentsRadioBtn_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (myAssignmentsRadioBtn.Checked)
+            {
+                string qry = "";
+                Object tmpName = SearchNameCmbBox.SelectedItem;
+
+                if (tmpName != null)
+                {
+                    Object tmpType = searchTypeCmbBox.SelectedItem;
+
+                    if (tmpType != null)
+                    {
+                        if (tmpType.ToString().Equals("Client"))
+                        {
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN notification n ON r.proj_id=n.main_id AND r.req_id=n.sub_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id " +
+                        "where n.user_id=" + Userglobals.uid + " and n.admin_view=1 and n.statues=1 and c.name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                        else if (tmpType.ToString().Equals("Project"))
+                        {
+                            qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN notification n ON r.proj_id=n.main_id AND r.req_id=n.sub_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id " +
+                        "where n.user_id=" + Userglobals.uid + " and n.admin_view=1 and n.statues=1 and p.proj_name='" + tmpName.ToString() + "' order by r.state asc, r.urgent desc;";
+                        }
+                    }
+                    else
+                    {
+                        qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN notification n ON r.proj_id=n.main_id AND r.req_id=n.sub_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id " +
+                        "where n.user_id=" + Userglobals.uid + " and n.admin_view=1 and n.statues=1 and (c.name='" + tmpName.ToString() + "' or p.proj_name='" + tmpName.ToString() + "') " +
+                        "order by r.state asc, r.urgent desc;";
+                    }
+                }
+                else
+                {
+                    qry = "SELECT p.proj_id, r.req_id, p.proj_name as Project, c.name as Client, r.request as Request, r.state as State, r.added_date as Added, " +
+                        "IFNULL(r.started_dateTime, '') as Started, IFNULL(r.ended_dateTime, '') as Ended, r.urgent as Urgent, IFNULL(s.first_name, '') as Dev FROM proj_request r INNER JOIN project p ON " +
+                        "r.proj_id=p.proj_id INNER JOIN notification n ON r.proj_id=n.main_id AND r.req_id=n.sub_id INNER JOIN client c ON p.client_id=c.client_id LEFT JOIN staff s ON r.staff_id=s.staff_id " +
+                        "where n.user_id=" + Userglobals.uid + " and n.admin_view=1 and n.statues=1 order by r.state asc, r.urgent desc;";
+                }
+
+                MySqlDataReader reader = DBConnection.getData(qry);
+                DataTable table = new DataTable();
+
+                table.Load(reader);
+
+                changeReqGrid.DataSource = table;
+
+                changeReqGrid.Columns[0].Visible = false;
+                changeReqGrid.Columns[1].Visible = false;
+                changeGridRowColors("Change");
+                markSeen();
+            }
+        }
 
         private void importanceRadioBtn_MouseClick(object sender, MouseEventArgs e)
         {
@@ -863,7 +930,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
             }
         }
 
-        private void changeReqGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void changeReqGridRowHeaderClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             DataGridView dgv = sender as DataGridView;
 
@@ -875,7 +942,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 }
                 else
                 {
-                    if (Userglobals.uid > 0 && (Userglobals.priv.Equals("TCH") || Userglobals.priv.Equals("ADM")))
+                    if (Userglobals.uid > 0 && (Userglobals.priv.Equals("TCH")))
                     {
                         int uid = Userglobals.uid;
                         Object startedDT = changeReqGrid.Rows[e.RowIndex].Cells[7].Value;
@@ -892,7 +959,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
 
                             if (!requested)
                             {
-                                DialogResult r = MessageBox.Show("You need permission to start this change request development!\nRequest Permission?", "Request Permission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                DialogResult r = MessageBox.Show("You are not assigned/requested to start this change request development!\nRequest Permission?", "Request Permission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                                 switch (r)
                                 {
@@ -905,6 +972,141 @@ namespace ResoflexClientHandlingSystem.RequestForms
                                         addReqNotify.Icon = SystemIcons.Application;
                                         addReqNotify.BalloonTipText = "Your request successfully sent!";
                                         addReqNotify.ShowBalloonTip(500);
+
+                                        break;
+
+                                    case DialogResult.No:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                            else if (uid != assignedUserId)
+                            {
+                                MessageBox.Show("A request been already made!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (!adminView)
+                            {
+                                MessageBox.Show("Your request is still pending!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else if (!status)
+                            {
+                                MessageBox.Show("Your request has been declined!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                            {
+                                DialogResult result = MessageBox.Show("Start coding this change request NOW?", "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                                switch (result)
+                                {
+                                    case DialogResult.Yes:
+
+                                        ProjectRequest startReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+                                        Database.startCodingChangeRequest(startReq);
+
+                                        changeReqGrid.DataSource = getChangeRequests();
+
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        markSeen();
+
+                                        addReqNotify.Icon = SystemIcons.Application;
+                                        addReqNotify.BalloonTipText = "Change Request Development Started!";
+                                        addReqNotify.ShowBalloonTip(1000);
+
+                                        break;
+
+                                    case DialogResult.No:
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        }
+                        else if (!DateTime.TryParse(endedDT.ToString(), out dt))
+                        {
+                            DialogResult result = MessageBox.Show("End coding this change request NOW?", "End Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                            switch (result)
+                            {
+                                case DialogResult.Yes:
+
+                                    ProjectRequest endReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+                                    if (Database.endCodingChangeRequest(endReq))
+                                    {
+                                        changeReqGrid.DataSource = getChangeRequests();
+
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        changeGridRowColors("Change");
+                                        markSeen();
+
+                                        addReqNotify.Icon = SystemIcons.Application;
+                                        addReqNotify.BalloonTipText = "Change Request Development Ended!";
+                                        addReqNotify.ShowBalloonTip(1000);
+                                    }
+                                    else
+                                    {
+                                        changeReqGrid.DataSource = getChangeRequests();
+
+                                        changeReqGrid.Columns[0].Visible = false;
+                                        changeReqGrid.Columns[1].Visible = false;
+                                        changeGridRowColors("Change");
+                                        markSeen();
+                                    }
+
+                                    break;
+
+                                case DialogResult.No:
+                                    break;
+                                default:
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("This Change Request is already Developed!", "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                        }
+                    }
+                    else if (Userglobals.uid > 0 && (Userglobals.priv.Equals("PM") || (Userglobals.priv.Equals("ADM"))))
+                    {
+                        int uid = Userglobals.uid;
+                        Object startedDT = changeReqGrid.Rows[e.RowIndex].Cells[7].Value;
+                        Object endedDT = changeReqGrid.Rows[e.RowIndex].Cells[8].Value;
+                        DateTime dt;
+                        int projId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        int reqId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+
+                        if (!DateTime.TryParse(startedDT.ToString(), out dt))
+                        {
+                            bool requested, adminView, status;
+
+                            status = getReqStatus(projId, reqId, out adminView, out requested);
+
+                            if (!requested)
+                            {
+                                DialogResult r = MessageBox.Show("Assign to a developer?", "Request Assignment", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                                switch (r)
+                                {
+                                    case DialogResult.Yes:
+
+                                        AssignForm frm = new AssignForm();
+
+                                        frm.ShowDialog();
+                                        
+                                        if (AssignForm.dev_id > 0)
+                                        {
+                                            UserNotification notification = new UserNotification(AssignForm.dev_id, 1, true, projId, reqId);
+
+                                            Database.assignChangeRequest(notification);
+
+                                            addReqNotify.Icon = SystemIcons.Application;
+                                            addReqNotify.BalloonTipText = "Change request successfully assigned!";
+                                            addReqNotify.ShowBalloonTip(500);
+                                        }
 
                                         break;
 
@@ -955,44 +1157,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                         }
                         else if (!DateTime.TryParse(endedDT.ToString(), out dt))
                         {
-                            DialogResult result = MessageBox.Show("End coding this change request NOW?\n" + uid, "End Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-                            switch (result)
-                            {
-                                case DialogResult.Yes:
-
-                                    ProjectRequest endReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
-
-                                    if (Database.endCodingChangeRequest(endReq))
-                                    {
-                                        changeReqGrid.DataSource = getChangeRequests();
-
-                                        changeReqGrid.Columns[0].Visible = false;
-                                        changeReqGrid.Columns[1].Visible = false;
-                                        changeGridRowColors("Change");
-                                        markSeen();
-
-                                        addReqNotify.Icon = SystemIcons.Application;
-                                        addReqNotify.BalloonTipText = "Change Request Development Ended!";
-                                        addReqNotify.ShowBalloonTip(1000);
-                                    }
-                                    else
-                                    {
-                                        changeReqGrid.DataSource = getChangeRequests();
-
-                                        changeReqGrid.Columns[0].Visible = false;
-                                        changeReqGrid.Columns[1].Visible = false;
-                                        changeGridRowColors("Change");
-                                        markSeen();
-                                    }
-
-                                    break;
-
-                                case DialogResult.No:
-                                    break;
-                                default:
-                                    break;
-                            }
+                            MessageBox.Show("This Change Request has already started developing!", "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
                         }
                         else
                         {
@@ -1003,12 +1168,154 @@ namespace ResoflexClientHandlingSystem.RequestForms
             }
         }
 
+        private void changeReqGrid_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            changeReqGridRowHeaderClick(sender, e);
+
+            //DataGridView dgv = sender as DataGridView;
+
+            //if (dgv.CurrentRow.Selected)
+            //{
+            //    if (Userglobals.uname.Equals(""))
+            //    {
+            //        MessageBox.Show("You must Login first!", "Develop change requests", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            //    }
+            //    else
+            //    {
+            //        if (Userglobals.uid > 0 && (Userglobals.priv.Equals("TCH") || Userglobals.priv.Equals("ADM")))
+            //        {
+            //            int uid = Userglobals.uid;
+            //            Object startedDT = changeReqGrid.Rows[e.RowIndex].Cells[7].Value;
+            //            Object endedDT = changeReqGrid.Rows[e.RowIndex].Cells[8].Value;
+            //            DateTime dt;
+            //            int projId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[0].Value.ToString());
+            //            int reqId = Int32.Parse(changeReqGrid.Rows[e.RowIndex].Cells[1].Value.ToString());
+
+            //            if (!DateTime.TryParse(startedDT.ToString(), out dt))
+            //            {
+            //                bool requested, adminView, status;
+
+            //                status = getReqStatus(projId, reqId, out adminView, out requested);
+
+            //                if (!requested)
+            //                {
+            //                    DialogResult r = MessageBox.Show("You need permission to start this change request development!\nRequest Permission?", "Request Permission", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //                    switch (r)
+            //                    {
+            //                        case DialogResult.Yes:
+
+            //                            UserNotification notification = new UserNotification(uid, 1, false, projId, reqId);
+
+            //                            Database.addNotification(notification);
+
+            //                            addReqNotify.Icon = SystemIcons.Application;
+            //                            addReqNotify.BalloonTipText = "Your request successfully sent!";
+            //                            addReqNotify.ShowBalloonTip(500);
+
+            //                            break;
+
+            //                        case DialogResult.No:
+            //                            break;
+            //                        default:
+            //                            break;
+            //                    }
+            //                }
+            //                else if (!adminView)
+            //                {
+            //                    MessageBox.Show("Your request is still pending!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                }
+            //                else if (!status)
+            //                {
+            //                    MessageBox.Show("Your request has been declined!", "Request Permission", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //                }
+            //                else
+            //                {
+            //                    DialogResult result = MessageBox.Show("Start coding this change request NOW?", "Start Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //                    switch (result)
+            //                    {
+            //                        case DialogResult.Yes:
+
+            //                            ProjectRequest startReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+            //                            Database.startCodingChangeRequest(startReq);
+
+            //                            changeReqGrid.DataSource = getChangeRequests();
+
+            //                            changeReqGrid.Columns[0].Visible = false;
+            //                            changeReqGrid.Columns[1].Visible = false;
+            //                            markSeen();
+
+            //                            addReqNotify.Icon = SystemIcons.Application;
+            //                            addReqNotify.BalloonTipText = "Change Request Development Started!";
+            //                            addReqNotify.ShowBalloonTip(1000);
+
+            //                            break;
+
+            //                        case DialogResult.No:
+            //                            break;
+            //                        default:
+            //                            break;
+            //                    }
+            //                }
+            //            }
+            //            else if (!DateTime.TryParse(endedDT.ToString(), out dt))
+            //            {
+            //                DialogResult result = MessageBox.Show("End coding this change request NOW?\n" + uid, "End Developing Change Requests", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            //                switch (result)
+            //                {
+            //                    case DialogResult.Yes:
+
+            //                        ProjectRequest endReq = new ProjectRequest(new Project(projId), reqId, new Staff(uid));
+
+            //                        if (Database.endCodingChangeRequest(endReq))
+            //                        {
+            //                            changeReqGrid.DataSource = getChangeRequests();
+
+            //                            changeReqGrid.Columns[0].Visible = false;
+            //                            changeReqGrid.Columns[1].Visible = false;
+            //                            changeGridRowColors("Change");
+            //                            markSeen();
+
+            //                            addReqNotify.Icon = SystemIcons.Application;
+            //                            addReqNotify.BalloonTipText = "Change Request Development Ended!";
+            //                            addReqNotify.ShowBalloonTip(1000);
+            //                        }
+            //                        else
+            //                        {
+            //                            changeReqGrid.DataSource = getChangeRequests();
+
+            //                            changeReqGrid.Columns[0].Visible = false;
+            //                            changeReqGrid.Columns[1].Visible = false;
+            //                            changeGridRowColors("Change");
+            //                            markSeen();
+            //                        }
+
+            //                        break;
+
+            //                    case DialogResult.No:
+            //                        break;
+            //                    default:
+            //                        break;
+            //                }
+            //            }
+            //            else
+            //            {
+            //                MessageBox.Show("This Change Request is already Developed!", "Developing Change Requests", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            //            }
+            //        }
+            //    }
+            //}
+        }
+
         private bool getReqStatus(int projId, int reqId, out bool adminView, out bool requested)
         {
             bool status = false;
             adminView = false;
 
-            MySqlDataReader reader = DBConnection.getData("select statues, admin_view from notification where main_id=" + projId + " and sub_id=" + reqId);
+            MySqlDataReader reader = DBConnection.getData("select statues, admin_view, user_id from notification where main_id=" + projId + " and sub_id=" + reqId);
 
             if (reader.HasRows)
             {
@@ -1018,6 +1325,7 @@ namespace ResoflexClientHandlingSystem.RequestForms
                 {
                     status = reader.GetBoolean(0);
                     adminView = reader.GetBoolean(1);
+                    assignedUserId = reader.GetInt32(2);
                 }
             }
             else

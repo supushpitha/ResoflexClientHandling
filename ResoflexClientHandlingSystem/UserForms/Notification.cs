@@ -40,7 +40,7 @@ namespace ResoflexClientHandlingSystem.UserForms
 
         private DataTable getNotifi()
         {
-            if (Userglobals.priv.ToLower().Equals("adm") && !Userglobals.priv.ToLower().Equals("admin"))
+            if (Userglobals.priv.ToLower().Equals("adm"))
             {
                 DataTable table = new DataTable();
 
@@ -59,7 +59,7 @@ namespace ResoflexClientHandlingSystem.UserForms
 
                 MySqlDataReader reader = DBConnection.getData("select n.noti_ID, n.noti_Date, s.first_name, f.function, n.statues, r.request, r.urgent, n.admin_view from " +
                     "notification n, fucntion f, proj_request r, staff s where n.function_id=f.fucntion_id and n.user_id=s.staff_id and n.main_id=r.proj_id and " +
-                    "n.sub_id=r.req_id and s.staff_id=" + Userglobals.uid + " order by view desc;");
+                    "n.sub_id=r.req_id and s.staff_id=" + Userglobals.uid + " order by view asc;");
 
                 table.Load(reader);
                 metroGrid1.ClearSelection();

@@ -38,8 +38,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show(exp.ToString());
             }
         }
-
-
+        
         public static void addLog(Role.UserLog log)
         {
             try
@@ -179,8 +178,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
+        
         public static void addProjectCat(ResoflexClientHandlingSystem.Role.ProjectCategory projectCat)
         {
 
@@ -195,8 +193,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show("Error" + exc, "Project NOT added", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
+        
         public static void updateProject(ResoflexClientHandlingSystem.Role.Project project)
         {
             try
@@ -583,11 +580,36 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, to_date_time, from_date_time, to_do_list, resource, check_list, travelling_mode, accommodation, meals, logs) " +
+                DBConnection.updateDB("insert into schedule (proj_id, visit_type_id, to_date_time, from_date_time, resource, check_list, travelling_mode, accommodation, meals, logs) " +
                     "VALUES (" + schedule.ProjectOfSchedule.ProjectID + ", " + schedule.Type.EventTypeId + ", '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" +
-                    schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + schedule.TodoList + "', " +
+                    schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', " +
                     "'" + schedule.Resource + "', '" + schedule.Checklist + "', '" + schedule.TravelMode + "'," +
                     " '" + schedule.AccommodationMode + "', '" + schedule.Meals + "', '" + schedule.Logs + "'); ");
+
+                if (schedule.TodoList[schedule.TodoList.Length - 1].Equals('/'))
+                {
+                    StringBuilder tmp = new StringBuilder(schedule.TodoList);
+
+                    tmp.Remove(schedule.TodoList.Length - 1, 1);
+
+                    schedule.TodoList = tmp.ToString();
+                }
+
+                if (schedule.TodoList[0].Equals('/'))
+                {
+                    StringBuilder tmp = new StringBuilder(schedule.TodoList);
+
+                    tmp.Remove(0, 1);
+
+                    schedule.TodoList = tmp.ToString();
+                }
+
+                string[] tasks = schedule.TodoList.Split('/');
+
+                foreach (string t in tasks)
+                {
+                    DBConnection.updateDB("insert into schedule_task (sch_no, proj_id, task) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", '" + t + "')");
+                }
 
                 foreach (var ary in schedule.ServEngineer)
                 {
@@ -717,12 +739,38 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-
                 DBConnection.updateDB("update schedule set visit_type_id = " + schedule.Type.EventTypeId + ", to_date_time = '" + schedule.To.ToString("yyyy-MM-dd HH:mm:ss") +
-                    "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', to_do_list = '" + schedule.TodoList + "', resource = " +
+                    "', from_date_time ='" + schedule.From.ToString("yyyy-MM-dd HH:mm:ss") + "', resource = " +
                     "'" + schedule.Resource + "', check_list = '" + schedule.Checklist + "', travelling_mode = '" + schedule.TravelMode + "'," +
                     " accommodation = '" + schedule.AccommodationMode + "', meals = '" + schedule.Meals + "', logs = '" + schedule.Logs + "' where proj_id = "
                     + schedule.ProjectOfSchedule.ProjectID + " and sch_no = " + schedule.ScheduleId + ";");
+
+                DBConnection.updateDB("delete from schedule_task where sch_no=" + schedule.ScheduleId + " and proj_id=" + schedule.ProjectOfSchedule.ProjectID);
+                
+                if (schedule.TodoList[schedule.TodoList.Length - 1].Equals('/'))
+                {
+                    StringBuilder tmp = new StringBuilder(schedule.TodoList);
+
+                    tmp.Remove(schedule.TodoList.Length - 1, 1);
+
+                    schedule.TodoList = tmp.ToString();
+                }
+
+                if (schedule.TodoList[0].Equals('/'))
+                {
+                    StringBuilder tmp = new StringBuilder(schedule.TodoList);
+
+                    tmp.Remove(0, 1);
+
+                    schedule.TodoList = tmp.ToString();
+                }
+                
+                string[] tasks = schedule.TodoList.Split('/');
+
+                foreach (string t in tasks)
+                {
+                    DBConnection.updateDB("insert into schedule_task (sch_no, proj_id, task) values (" + schedule.ScheduleId + ", " + schedule.ProjectOfSchedule.ProjectID + ", '" + t + "')");
+                }
 
                 return true;
 
@@ -857,17 +905,17 @@ namespace ResoflexClientHandlingSystem.Core
         {
             try
             {
-                DBConnection.updateDB("insert into event (proj_id, visit_type_id, to_date_time, from_date_time, sch_no, feedback, Other, to_do_list, resource, check_list, travelling_mode, accommodation_mode, meals) " +
+                DBConnection.updateDB("insert into event (proj_id, visit_type_id, to_date_time, from_date_time, sch_no, feedback, Other, resource, check_list, travelling_mode, accommodation_mode, meals) " +
                     " values (" + evnt.EventProject.ProjectID + ", " + evnt.Type.EventTypeId + ", '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "', '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") +
-                    "', " + evnt.ScheduleId.ScheduleId + ", '" + evnt.Feedback + "', '" + evnt.Other + "', '" + evnt.TodoList + "', '" + evnt.Resource + "', '" + evnt.Checklist + "', '" + evnt.TravelMode + "', '" +
+                    "', " + evnt.ScheduleId.ScheduleId + ", '" + evnt.Feedback + "', '" + evnt.Other + "', '" + evnt.Resource + "', '" + evnt.Checklist + "', '" + evnt.TravelMode + "', '" +
                     evnt.AccommodationMode + "', '" + evnt.Meals + "' )");
 
                 foreach (var ary in evnt.ServEngineer)
                 {
                     EventTechnician et = (EventTechnician)ary;
 
-                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, feedback, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
-                        ", '" + et.Feedback + "', " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
+                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
+                        ", " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
 
                     MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
                         " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
@@ -875,11 +923,19 @@ namespace ResoflexClientHandlingSystem.Core
                     if (reader.Read())
                     {
                         int esi = reader.GetInt16("event_staff_id");
+
                         reader.Close();
 
-                        DBConnection.updateDB("insert into event_technician_task (event_tech_id, task, man_hours) values (" + esi + ", '" + et.Task + "', " + et.ManHours + ");");
+                        foreach (EventTask tsk in et.Task)
+                        {
+                            DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', " + tsk.UsedTime + ", " + tsk.AppTime + ", '" + tsk.Fb + "');");
+                        }
                     }
 
+                    if (!reader.IsClosed)
+                    {
+                        reader.Close();
+                    }
                 }
 
                 foreach (var ary in evnt.ResoArray)
@@ -890,7 +946,6 @@ namespace ResoflexClientHandlingSystem.Core
                 }
 
                 return true;
-
             }
             catch (Exception e)
             {
@@ -909,7 +964,7 @@ namespace ResoflexClientHandlingSystem.Core
 
                 if (reader.Read())
                 {
-                    DBConnection.updateDB("delete from event_technician_task where event_tech_id = " + reader.GetInt16("event_staff_id") + ";");
+                    DBConnection.updateDB("delete from event_technician__task where event_tech_id = " + reader.GetInt16("event_staff_id") + ";");
                 }
 
                 reader.Close();
@@ -1063,35 +1118,50 @@ namespace ResoflexClientHandlingSystem.Core
                  " where staff_id = " + s.Empid + "");
             MessageBox.Show("Successfully added");
         }
-
-        //update event
+        
         public static Boolean updateEvent(Event evnt)
         {
             try
             {
-                DBConnection.updateDB("update event set visit_type_id = " + evnt.Type.EventTypeId + " , to_date_time = '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "' , from_date_time = '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") + "' , sch_no = " + evnt.ScheduleId.ScheduleId + " , feedback = '" + evnt.Feedback + "' , Other = '" + evnt.Other + "' , to_do_list = '" + evnt.TodoList + "' , resource = '" + evnt.Resource + "' , check_list = '" + evnt.Checklist + "', travelling_mode = '" + evnt.TravelMode + "' , accommodation_mode = '" + evnt.AccommodationMode + "', meals = '" + evnt.Meals + "' where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+                DBConnection.updateDB("update event set visit_type_id = " + evnt.Type.EventTypeId + " , to_date_time = '" + evnt.To.ToString("yyyy-MM-dd HH:mm:ss") + "' , from_date_time = '" + evnt.From.ToString("yyyy-MM-dd HH:mm:ss") + "' , feedback = '" + evnt.Feedback + "' , Other = '" + evnt.Other + "', resource = '" + evnt.Resource + "' , check_list = '" + evnt.Checklist + "', travelling_mode = '" + evnt.TravelMode + "' , accommodation_mode = '" + evnt.AccommodationMode + "', meals = '" + evnt.Meals + "' where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+
+                while (reader.Read())
+                {
+                    DBConnection.updateDB("delete from event_technician__task where event_tech_id=" + reader.GetInt32(0));
+                }
+
+                reader.Close();
+
+                DBConnection.updateDB("delete from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
                 foreach (var item in evnt.ServEngineer)
                 {
                     EventTechnician et = (EventTechnician)item;
 
-                    DBConnection.updateDB("update event_technicians set event_id = " + evnt.EventId + ", staff_id = " + et.Technician.StaffId + ", feedback = '" + et.Feedback + "', proj_id = " + evnt.EventProject.ProjectID + ", sch_no = " + evnt.ScheduleId.ScheduleId + " where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + "; ");
+                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
+                        ", " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
 
-                    MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
+                    reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
+                        " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
                     if (reader.Read())
                     {
                         int esi = reader.GetInt16("event_staff_id");
+
                         reader.Close();
 
-                        DBConnection.updateDB("update event_technician_task set task = '" + et.Task + "' where event_tech_id = " + esi + ";");
-
+                        foreach (EventTask tsk in et.Task)
+                        {
+                            DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', " + tsk.UsedTime + ", " + tsk.AppTime + ", '" + tsk.Fb + "');");
+                        }
                     }
-                    else
+
+                    if (!reader.IsClosed)
                     {
                         reader.Close();
                     }
-
                 }
 
                 return true;

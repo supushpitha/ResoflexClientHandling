@@ -61,7 +61,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, c.name as Client_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.to_do_list as TODO_List, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
+            MySqlDataReader reader = DBConnection.getData("select e.event_id as Event_Id, e.proj_id, e.visit_type_id, e.sch_no as Schedule_No, p.proj_name as Project_Name, c.name as Client_Name, vt.type as Schedule_Type, e.from_date_time as Start_Date_and_Time, e.to_date_time as End_Date_and_Time, e.check_list as Check_List, e.Other as Other, e.feedback as Feedback, e.travelling_mode as Travelling_Mode, e.accommodation_mode as Accomodation, e.meals as Meals " +
                 "from event e, project p, visit_type vt, client c " +
                 "where (e.proj_id = p.proj_id) and(e.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) " +
                 "order by e.event_id DESC limit 10;");
@@ -217,7 +217,7 @@ namespace ResoflexClientHandlingSystem
 
             try
             {
-                MySqlDataReader reader = DBConnection.getData("select e.event_id, e.proj_id, e.visit_type_id, e.to_date_time, e.from_date_time, e.sch_no, e.feedback, e.Other, e.to_do_list, e.resource, e.check_list, e.travelling_mode, e.accommodation_mode, e.meals, p.client_id " +
+                MySqlDataReader reader = DBConnection.getData("select e.event_id, e.proj_id, e.visit_type_id, e.to_date_time, e.from_date_time, e.sch_no, e.feedback, e.Other, e.resource, e.check_list, e.travelling_mode, e.accommodation_mode, e.meals, p.client_id " +
                     " from event e, project p " +
                     " where e.proj_id = p.proj_id and e.event_id = " + event_id + " and e.proj_id = " + proj_id + " and e.sch_no = " + sch_no + ";");
 
@@ -231,7 +231,6 @@ namespace ResoflexClientHandlingSystem
                     evnt.To = reader.GetDateTime("to_date_time");
                     evnt.Feedback = reader.GetString("feedback");
                     evnt.Other = reader.GetString("other");
-                    evnt.TodoList = reader.GetString("to_do_list");
                     //evnt.Resource = reader.GetString("resource");
                     evnt.Checklist = reader.GetString("check_list");
                     evnt.TravelMode = reader.GetString("travelling_mode");
@@ -240,9 +239,22 @@ namespace ResoflexClientHandlingSystem
 
                     reader.Close();
 
-                    MySqlDataReader reader1 = DBConnection.getData("select s.staff_id, s.first_name, s.last_name, et.feedback, ett.task " +
-                        "from event_technicians et, event_technician_task ett, staff s " +
-                        "where (ett.event_tech_id = et.event_staff_id) and (s.staff_id = et.staff_id) and et.event_id = " + event_id + " and et.proj_id = " + proj_id + " and et.sch_no = " + sch_no + ";");
+                    string tasks = "";
+
+                    reader = DBConnection.getData("select t.task from event_technician__task t, event_technicians e where t.event_tech_id=e.event_staff_id and e.sch_no=" + sch_no + " and e.proj_id=" + proj_id + " and e.event_id=" + event_id + " order by t.task_id");
+
+                    while (reader.Read())
+                    {
+                        tasks += reader.GetString(0) + "/";
+                    }
+
+                    reader.Close();
+
+                    evnt.TodoList = tasks;
+
+                    MySqlDataReader reader1 = DBConnection.getData("select et.event_staff_id, s.staff_id, s.first_name, s.last_name " +
+                        "from event_technicians et, staff s " +
+                        "where (s.staff_id = et.staff_id) and et.event_id = " + event_id + " and et.proj_id = " + proj_id + " and et.sch_no = " + sch_no + ";");
 
                     ArrayList serEng = new ArrayList();
 
@@ -251,8 +263,13 @@ namespace ResoflexClientHandlingSystem
                         EventTechnician et = new EventTechnician();
 
                         et.Technician = new Staff(reader1.GetInt16("staff_id"), reader1.GetString("first_name"), reader1.GetString("last_name"));
-                        et.Task = reader1.GetString("task");
-                        et.Feedback = reader1.GetString("feedback");
+
+                        MySqlDataReader r = DBConnection.getDataViaTmpConnection("select task, used_time, appointed_time, feedback from event_technician__task where event_tech_id=" + reader1.GetString(0));
+
+                        while (r.Read())
+                        {
+                            et.Task.Add(new EventTask(r.GetString(0), r.GetString("feedback"), r.GetDouble(1), r.GetDouble(2)));
+                        }
 
                         serEng.Add(et);
                     }
@@ -285,10 +302,9 @@ namespace ResoflexClientHandlingSystem
                     evnt = null;
                 }
             }
-            catch (Exception)
+            catch (Exception exc)
             {
-                MessageBox.Show("Something went wrong!");
-                throw;
+                MessageBox.Show("Something went wrong!\n" + exc, "Update/View Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             
             return evnt;

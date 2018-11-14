@@ -21,8 +21,7 @@ namespace ResoflexClientHandlingSystem
         private DataTable feedbackGrid = new DataTable();
         private DataTable resoTbl = new DataTable();
         private int event_id;
-
-        //service engineer datasource
+        
         public DataTable serviceEngDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select staff_id, first_name, last_name from staff");
@@ -49,8 +48,7 @@ namespace ResoflexClientHandlingSystem
 
             return dt2;
         }
-
-        //travelling mode datasource
+        
         public DataTable travelModeDataSource()
         {
             MySqlDataReader reader = DBConnection.getData("select id, details from travelingmode");
@@ -123,6 +121,18 @@ namespace ResoflexClientHandlingSystem
             return dt;
         }
 
+        public DataTable tasksSource(int schNo, int projId)
+        {
+            MySqlDataReader reader = DBConnection.getData("select sch_task_id, task from schedule_task where sch_no=" + schNo + " and proj_id=" + projId);
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
         public AddEventForm()
         {
             InitializeComponent();
@@ -154,22 +164,17 @@ namespace ResoflexClientHandlingSystem
             eventResoCombo.DataSource = eventResourcesSource();
             eventResoCombo.ValueMember = "resource_id";
             eventResoCombo.DisplayMember = "name";
-
-            //to resolve startup bug
-            projectNameChange(0);
-
-            //eng grid columns
+            
             engGrid.Columns.Add("staff_id", typeof(int));
             engGrid.Columns.Add("fullname", typeof(string));
-
-            //feedback grid columns
+            
             feedbackGrid.Columns.Add("staff_id", typeof(int));
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("time", typeof(double));
-
-            //reso columns
+            feedbackGrid.Columns.Add("app", typeof(double));
+            feedbackGrid.Columns.Add("used", typeof(double));
+            
             resoTbl.Columns.Add("resource_id", typeof(int));
             resoTbl.Columns.Add("name", typeof(string));
             resoTbl.Columns.Add("qty", typeof(int));
@@ -232,8 +237,9 @@ namespace ResoflexClientHandlingSystem
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("time", typeof(double));
-            
+            feedbackGrid.Columns.Add("app", typeof(double));
+            feedbackGrid.Columns.Add("used", typeof(double));
+
             //reso columns
             resoTbl.Columns.Add("resource_id", typeof(int));
             resoTbl.Columns.Add("name", typeof(string));
@@ -270,8 +276,7 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
-
-        //when project name combox box is changed
+        
         public void onProjectNameChange(object sender, EventArgs e)
         {
             projectNameChange(0);
@@ -283,16 +288,13 @@ namespace ResoflexClientHandlingSystem
 
             if (pid == 0)
             {
-
                 proj_id = int.Parse(projectName.SelectedValue.ToString());
             }
             else
             {
                 proj_id = pid;
             }
-
-            int client_id;
-
+            
             MySqlDataReader reader = DBConnection.getData("select s.sch_no, p.client_id from schedule s, project p where s.proj_id =" + proj_id + " and (p.proj_id = s.proj_id);");
 
             if (reader.HasRows)
@@ -312,13 +314,10 @@ namespace ResoflexClientHandlingSystem
             {
                 eventClientName.SelectedValue = 1;
             }
-
             
-
             reader.Close();
         }
-
-        //adding service engineers
+        
         private void addEng_MouseClick(object sender, MouseEventArgs e)
         {
             DataRow row;
@@ -346,8 +345,7 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("This service engineer is already added!");
             }
         }
-
-        //removing service engineers
+        
         private void removeSerEng_Click(object sender, EventArgs e)
         {
             for (int i = engGrid.Rows.Count - 1; i >= 0; i--)
@@ -399,32 +397,7 @@ namespace ResoflexClientHandlingSystem
                 MessageBox.Show("Todo list field cannot be empty!", "Error");
             }
         }
-
-        //adding details to feedback grid
-        private void addFeedback_MouseClick(object sender, MouseEventArgs e)
-        {
-            DataRow row;
-
-            row = feedbackGrid.NewRow();
-            row["staff_id"] = serviceEngFeed.SelectedValue;
-            row["fullname"] = serviceEngFeed.Text.ToString();
-            row["feedback"] = feedback.Text.ToString();
-            row["task"] = eventTask.Text.ToString();
-
-            if(Validation.isDouble(time.Text.ToString()))
-            {
-                row["time"] = double.Parse(time.Text.ToString());
-                feedbackGrid.Rows.Add(row);
-            }
-            else
-            {
-                MessageBox.Show("Enter a numeric value");
-            }
-
-            eventTask.Text = "";
-            time.Text = "";
-        }
-
+        
         private void addEvent()
         {
             Event evnt = new Event();
@@ -446,7 +419,19 @@ namespace ResoflexClientHandlingSystem
 
             foreach (DataRow dr in feedbackGrid.Rows)
             {
-                serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4]));
+                bool done = false;
+
+                foreach (EventTechnician etch in serviceEng)
+                {
+                    if (etch.Technician.StaffId == (int)dr[0])
+                    {
+                        etch.addTask(dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]);
+                        done = true;
+                    }
+                }
+
+                if (!done)
+                    serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]));
             }
 
             foreach (DataRow dr in engGrid.Rows)
@@ -469,7 +454,6 @@ namespace ResoflexClientHandlingSystem
             evnt.To = Convert.ToDateTime(eventEndDate.Text.ToString() + " " + eventEndTime.Text.ToString());
             evnt.From = Convert.ToDateTime(eventStartDate.Text.ToString() + " " + eventStartTime.Text.ToString());
             evnt.TodoList = todoList.Text.ToString();
-            //evnt.Resource = resoBox.Text.ToString();
             evnt.ResoArray = resoArray;
             evnt.Checklist = checkList.Text.ToString();
             evnt.TravelMode = travelingMode.Text.ToString();
@@ -477,11 +461,9 @@ namespace ResoflexClientHandlingSystem
             evnt.Meals = meals.Text.ToString();
             evnt.Other = other.Text.ToString();
             evnt.Feedback = overFeedback.Text.ToString();
-
-            //checking if the insertion is successful
+            
             if (Database.addEvent(evnt))
             {
-                //sending mails
                 if (evntSendMail.Checked)
                 {
                     foreach (var ary in mailEng)
@@ -506,8 +488,7 @@ namespace ResoflexClientHandlingSystem
                 this.Close();
             }
         }
-
-        //adding resources
+        
         private void addReso_Click(object sender, EventArgs e)
         {
             DataRow row;
@@ -578,20 +559,7 @@ namespace ResoflexClientHandlingSystem
                 addExpFrm.Show();
             }*/
         }
-
-        private void demo_Click(object sender, EventArgs e)
-        {
-            todoList.Text = "Train the newly added system";
-            checkList.Text = "Check for rules and regulations";
-            meals.Text = "Provided";
-            overFeedback.Text = "Required work was well done";
-            other.Text = "None";
-            eventTask.Text = "Training the system";
-            time.Text = "14.5";
-            eventStartDate.Text = "2018-10-18";
-            eventEndDate.Text = "2018-10-20";
-        }
-
+        
         private void metroButton2_Click(object sender, EventArgs e)
         {
             todoList.Text = "";
@@ -599,15 +567,66 @@ namespace ResoflexClientHandlingSystem
             meals.Text = "";
             overFeedback.Text = "";
             other.Text = "";
-            eventTask.Text = "";
-            time.Text = "";
+            taskCmbBox.SelectedIndex = -1;
+            usedTime.Text = "";
             eventStartDate.Text = "";
             eventEndDate.Text = "";
         }
-
-        private void metroButton3_Click(object sender, EventArgs e)
+        
+        private void metroButton4_Click(object sender, EventArgs e)
         {
-            this.Close();
+            try
+            {
+                DataRow row;
+
+                row = feedbackGrid.NewRow();
+                row["staff_id"] = serviceEngFeed.SelectedValue;
+                row["fullname"] = serviceEngFeed.Text.ToString();
+                row["feedback"] = feedback.Text.ToString();
+                row["task"] = taskCmbBox.SelectedItem.ToString();
+
+                if ((Validation.isDouble(usedTime.Text.ToString())) && (Validation.isDouble(appTime.Text.ToString())))
+                {
+                    row["used"] = double.Parse(usedTime.Text.ToString());
+                    row["app"] = double.Parse(appTime.Text.ToString());
+                    feedbackGrid.Rows.Add(row);
+
+                    taskCmbBox.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid time!");
+                }
+                
+                usedTime.Text = "";
+                appTime.Text = "";
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Make sure to add previous information!", "Add Event", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void eventsSch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int proj_id, sch_no;
+
+            if (eventsSch.SelectedItem != null)
+            {
+                if (projectName.SelectedItem != null)
+                {
+                    if (int.TryParse(projectName.SelectedValue.ToString(), out proj_id) && int.TryParse(eventsSch.SelectedValue.ToString(), out sch_no))
+                    {
+                        taskCmbBox.DataSource = tasksSource(sch_no, proj_id);
+                        taskCmbBox.ValueMember = "sch_task_id";
+                        taskCmbBox.DisplayMember = "task";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("First choose a project!");
+                }
+            }
         }
     }
 }

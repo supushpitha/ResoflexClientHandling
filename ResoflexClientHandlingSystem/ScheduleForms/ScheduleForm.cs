@@ -182,7 +182,6 @@ namespace ResoflexClientHandlingSystem
                 sch.Type = new EventType(int.Parse(reader1.GetString("visit_type_id")));
                 sch.From = reader1.GetDateTime("from_date_time");
                 sch.To = reader1.GetDateTime("to_date_time");
-                sch.TodoList = reader1.GetString("to_do_list");
                 sch.Resource = reader1.GetString("resource");
                 sch.Checklist = reader1.GetString("check_list");
                 sch.TravelMode = reader1.GetString("travelling_mode");
@@ -191,6 +190,19 @@ namespace ResoflexClientHandlingSystem
                 sch.Logs = reader1.GetString("logs");
 
                 reader1.Close();
+
+                string tasks = "";
+
+                reader1 = DBConnection.getData("select task from schedule_task where sch_no=" + schNo + " and proj_id=" + proj_id + " order by sch_task_id");
+
+                while (reader1.Read())
+                {
+                    tasks += reader1.GetString(0) + "/";
+                }
+
+                reader1.Close();
+
+                sch.TodoList = tasks;
 
                 MySqlDataReader reader2 = DBConnection.getData("select st.staff_id, s.first_name, s.last_name from schedule_technicians st, staff s where ( st.sch_no =" + schNo + " and st.proj_id = " + proj_id + ") and (s.staff_id = st.staff_id);");
 
@@ -255,7 +267,7 @@ namespace ResoflexClientHandlingSystem
         {
             DataTable dt = new DataTable();
 
-            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.to_do_list as TODO_List, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name as Client " +
+            MySqlDataReader reader = DBConnection.getData("select s.sch_no as Schedule_No, s.proj_id, s.visit_type_id, p.proj_name as Project_Name, vt.type as Schedule_Type, s.from_date_time as Start_Date_and_Time, s.to_date_time as End_Date_and_Time, s.check_list as Check_List, s.travelling_mode as Travelling_Mode, s.accommodation as Accomodation, s.meals as Meals, s.logs as Logs, c.name as Client " +
                                                             "from schedule s, project p, visit_type vt, client c " +
                                                             "where (s.proj_id = p.proj_id) and (s.visit_type_id = vt.visit_type_id) and (p.client_id = c.client_id) " +
                                                             " order by s.sch_no DESC limit 10;");

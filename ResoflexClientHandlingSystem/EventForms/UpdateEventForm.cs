@@ -211,7 +211,7 @@ namespace ResoflexClientHandlingSystem.EventForms
                 frow = feedbackGrid.NewRow();
                 frow["staff_id"] = et.Technician.StaffId;
                 frow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
-                frow["feedback"] = et.Feedback;
+                //frow["feedback"] = et.Feedback;
                 frow["task"] = et.Task;
                 feedbackGrid.Rows.Add(frow);
             }
@@ -467,7 +467,7 @@ namespace ResoflexClientHandlingSystem.EventForms
 
             foreach(DataRow row in feedbackGrid.Rows){
 
-                eng.Add(new EventTechnician(null, new Staff(int.Parse(row[0].ToString())), row[2].ToString(), row[3].ToString()));
+               // eng.Add(new EventTechnician(null, new Staff(int.Parse(row[0].ToString())), row[2].ToString(), row[3].ToString()));
             }
 
             evnt.ServEngineer = eng;

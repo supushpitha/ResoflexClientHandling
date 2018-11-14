@@ -171,7 +171,7 @@ namespace ResoflexClientHandlingSystem
 
         private void AddScheduleForm_Load(object sender, EventArgs e)
         {
-            
+            prevSchedulesGrid.Columns[0].Visible = false;
         }
 
         //when project name combox box is changed

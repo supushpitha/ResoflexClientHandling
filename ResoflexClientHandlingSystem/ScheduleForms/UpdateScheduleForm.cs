@@ -612,6 +612,11 @@ namespace ResoflexClientHandlingSystem.ScheduleForms
             this.Close();
         }
 
+        private void UpdateScheduleForm_Load(object sender, EventArgs e)
+        {
+            prevSchedulesGrid.Columns[0].Visible = false;
+        }
+
         /*private void addReso_Click(object sender, EventArgs e)
         {
             string resources = schReso.Text.ToString();

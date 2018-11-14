@@ -621,6 +621,7 @@
     </Compile>
     <Compile Include="Role\ClientRelations.cs" />
     <Compile Include="Role\CommunicationSkills.cs" />
+    <Compile Include="Role\EventTask.cs" />
     <Compile Include="Role\EventType.cs" />
     <Compile Include="Role\InterpersonalSkills.cs" />
     <Compile Include="Role\JobPerformance.cs" />

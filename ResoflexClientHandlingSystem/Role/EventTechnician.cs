@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,32 +11,38 @@ namespace ResoflexClientHandlingSystem.Role
     {
         private Event eventOfTechnician;
         private Staff technician;
-        private string feedback;
-        private string task;
-        private double manHours;
+        private ArrayList task;
 
         public EventTechnician()
         {
 
         }
 
-        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string task)
+        public EventTechnician(Event eventOfTechnician, Staff technician, ArrayList task)
         {
             this.EventOfTechnician = eventOfTechnician;
             this.Technician = technician;
-            this.Feedback = feedback;
             this.Task = task;
         }
-
-        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string task, double manHours) : this(eventOfTechnician, technician, feedback, task)
+        
+        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string t, double appTime, double usedTime)
         {
-            this.ManHours = manHours;
+            Task = new ArrayList();
+
+            EventTask et = new EventTask(t, feedback, usedTime, appTime);
+
+            Task.Add(et);
+            this.EventOfTechnician = eventOfTechnician;
+            this.Technician = technician;
+        }
+
+        public void addTask(string fb, string task, double used, double app)
+        {
+            Task.Add(new EventTask(task, fb, used, app));
         }
 
         public Staff Technician { get => technician; set => technician = value; }
-        public string Feedback { get => feedback; set => feedback = value; }
         internal Event EventOfTechnician { get => eventOfTechnician; set => eventOfTechnician = value; }
-        public string Task { get => task; set => task = value; }
-        public double ManHours { get => manHours; set => manHours = value; }
+        public ArrayList Task { get => task; set => task = value; }
     }
 }

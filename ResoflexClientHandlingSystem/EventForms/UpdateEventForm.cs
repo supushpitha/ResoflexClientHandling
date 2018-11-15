@@ -523,9 +523,9 @@ namespace ResoflexClientHandlingSystem.EventForms
             row["feedback"] = feedback.Text.ToString();
             row["task"] = eventTask.Text.ToString();
 
-            if (Validation.isDouble(time.Text.ToString()))
+            if (Validation.isDouble(usedTime.Text.ToString()))
             {
-                row["time"] = double.Parse(time.Text.ToString());
+                row["time"] = double.Parse(usedTime.Text.ToString());
                 feedbackGrid.Rows.Add(row);
             }
             else
@@ -534,7 +534,7 @@ namespace ResoflexClientHandlingSystem.EventForms
             }
 
             eventTask.Text = "";
-            time.Text = "";
+            usedTime.Text = "";
         }
 
         private void metroButton3_Click(object sender, EventArgs e)

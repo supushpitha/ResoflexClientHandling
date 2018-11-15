@@ -15,7 +15,7 @@ namespace ResoflexClientHandlingSystem.Role
 
         public EventTechnician()
         {
-
+            Task = new ArrayList();
         }
 
         public EventTechnician(Event eventOfTechnician, Staff technician, ArrayList task)

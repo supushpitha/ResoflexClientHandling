@@ -917,24 +917,30 @@ namespace ResoflexClientHandlingSystem.Core
                     DBConnection.updateDB("insert into event_technicians (event_id, staff_id, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
                         ", " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
 
-                    MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
+                    if (et.Task != null)
+                    {
+                        MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
                         " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
-                    if (reader.Read())
-                    {
-                        int esi = reader.GetInt16("event_staff_id");
-
-                        reader.Close();
-
-                        foreach (EventTask tsk in et.Task)
+                        if (reader.Read())
                         {
-                            DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', " + tsk.UsedTime + ", " + tsk.AppTime + ", '" + tsk.Fb + "');");
-                        }
-                    }
+                            int esi = reader.GetInt16("event_staff_id");
 
-                    if (!reader.IsClosed)
-                    {
-                        reader.Close();
+                            reader.Close();
+
+                            foreach (EventTask tsk in et.Task)
+                            {
+                                TimeSpan u = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[1]), 0);
+                                TimeSpan a = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[1]), 0);
+
+                                DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', '" + u + "', '" + a + "', '" + tsk.Fb + "');");
+                            }
+                        }
+
+                        if (!reader.IsClosed)
+                        {
+                            reader.Close();
+                        }
                     }
                 }
 
@@ -962,12 +968,19 @@ namespace ResoflexClientHandlingSystem.Core
             {
                 MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
-                if (reader.Read())
+                ArrayList tmp = new ArrayList();
+
+                while (reader.Read())
                 {
-                    DBConnection.updateDB("delete from event_technician__task where event_tech_id = " + reader.GetInt16("event_staff_id") + ";");
+                    tmp.Add(reader.GetInt64(0));
                 }
 
                 reader.Close();
+
+                foreach (int id in tmp)
+                {
+                    DBConnection.updateDB("delete from event_technician__task where event_tech_id=" + id);
+                }
 
                 DBConnection.updateDB("delete from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
@@ -1069,29 +1082,7 @@ namespace ResoflexClientHandlingSystem.Core
             MessageBox.Show("Successfully added");
 
         }
-
-        //  catch (Exception)
-        //{
-        //MessageBox.Show("Something went wrong!", "Add Expenses", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-        //}
-
-
-        /*public static void updateOfficeExpense(OfficeExpenses exp)
-        {
-            try
-            {
-                DBConnection.updateDB("update client set name='" ( staff_id, date, category, amount)" +
-                                      " values (" + exp.StaffIssued.StaffId + "', '" + exp.Date + "', " +
-                                      "'" + exp.Category + "', '" + exp.Amount + "')");
-
-            }
-            catch (Exception)
-            {
-                MessageBox.Show("Something went wrong!", "Update client", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-        */
+        
         public static void addSalary(Role.Salary s)
         {
 
@@ -1110,8 +1101,7 @@ namespace ResoflexClientHandlingSystem.Core
                 MessageBox.Show(ex.ToString());
             }
         }
-
-
+        
         public static void updateSalary(Role.Salary s)
         {
             DBConnection.updateDB("Update Salary set basic_sal_amount = " + s.BasicSalAmount + ", rate = " + s.Rate + ", hours = " + s.Hours.HoursWorked + ", allowance = " + s.Allowance + ", gross_sal = " + s.Gross + ", etf_epf_amount = " + s.EtfEpf + ", net_sal = " + s.Net + " " +
@@ -1127,12 +1117,19 @@ namespace ResoflexClientHandlingSystem.Core
 
                 MySqlDataReader reader = DBConnection.getData("select event_staff_id from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
+                ArrayList tmp = new ArrayList();
+
                 while (reader.Read())
                 {
-                    DBConnection.updateDB("delete from event_technician__task where event_tech_id=" + reader.GetInt32(0));
+                    tmp.Add(reader.GetInt32(0));
                 }
 
                 reader.Close();
+
+                foreach (int id in tmp)
+                {
+                    DBConnection.updateDB("delete from event_technician__task where event_tech_id=" + id);
+                }
 
                 DBConnection.updateDB("delete from event_technicians where event_id = " + evnt.EventId + " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
@@ -1140,37 +1137,42 @@ namespace ResoflexClientHandlingSystem.Core
                 {
                     EventTechnician et = (EventTechnician)item;
 
-                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, proj_id, sch_no) values (" + et.EventOfTechnician.EventId + ", " + et.Technician.StaffId +
+                    DBConnection.updateDB("insert into event_technicians (event_id, staff_id, proj_id, sch_no) values (" + evnt.EventId + ", " + et.Technician.StaffId +
                         ", " + evnt.EventProject.ProjectID + ", " + evnt.ScheduleId.ScheduleId + ");");
 
-                    reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + et.EventOfTechnician.EventId +
+                    if (et.Task != null)
+                    {
+                        reader = DBConnection.getData("select event_staff_id from event_technicians where staff_id = " + et.Technician.StaffId + " and event_id = " + evnt.EventId +
                         " and proj_id = " + evnt.EventProject.ProjectID + " and sch_no = " + evnt.ScheduleId.ScheduleId + ";");
 
-                    if (reader.Read())
-                    {
-                        int esi = reader.GetInt16("event_staff_id");
-
-                        reader.Close();
-
-                        foreach (EventTask tsk in et.Task)
+                        if (reader.Read())
                         {
-                            DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', " + tsk.UsedTime + ", " + tsk.AppTime + ", '" + tsk.Fb + "');");
-                        }
-                    }
+                            int esi = reader.GetInt16("event_staff_id");
 
-                    if (!reader.IsClosed)
-                    {
-                        reader.Close();
+                            reader.Close();
+
+                            foreach (EventTask tsk in et.Task)
+                            {
+                                TimeSpan u = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[1]), 0);
+                                TimeSpan a = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[1]), 0);
+
+                                DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', '" + u + "', '" + a + "', '" + tsk.Fb + "');");
+                            }
+                        }
+
+                        if (!reader.IsClosed)
+                        {
+                            reader.Close();
+                        }
                     }
                 }
 
                 return true;
-
             }
             catch (Exception e)
             {
 
-                MessageBox.Show("Something went wrong!\n" + e.GetType(), "Update Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Something went wrong!\n" + e, "Update Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 return false;
             }

@@ -123,7 +123,7 @@ namespace ResoflexClientHandlingSystem
 
         public DataTable tasksSource(int schNo, int projId)
         {
-            MySqlDataReader reader = DBConnection.getData("select sch_task_id, task from schedule_task where sch_no=" + schNo + " and proj_id=" + projId);
+            MySqlDataReader reader = DBConnection.getData("select task from schedule_task where sch_no=" + schNo + " and proj_id=" + projId);
 
             DataTable dt = new DataTable();
             dt.Load(reader);
@@ -224,23 +224,19 @@ namespace ResoflexClientHandlingSystem
             eventResoCombo.DataSource = eventResourcesSource();
             eventResoCombo.ValueMember = "resource_id";
             eventResoCombo.DisplayMember = "name";
-
-            //to resolve startup bug
+            
             projectNameChange(proj_id);
-
-            //eng grid columns
+            
             engGrid.Columns.Add("staff_id", typeof(int));
             engGrid.Columns.Add("fullname", typeof(string));
-
-            //feedback grid columns
+            
             feedbackGrid.Columns.Add("staff_id", typeof(int));
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
             feedbackGrid.Columns.Add("app", typeof(double));
             feedbackGrid.Columns.Add("used", typeof(double));
-
-            //reso columns
+            
             resoTbl.Columns.Add("resource_id", typeof(int));
             resoTbl.Columns.Add("name", typeof(string));
             resoTbl.Columns.Add("qty", typeof(int));
@@ -433,10 +429,27 @@ namespace ResoflexClientHandlingSystem
                 if (!done)
                     serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]));
             }
-
+            
             foreach (DataRow dr in engGrid.Rows)
             {
                 mailEng.Add(new Staff((int)dr[0]));
+
+                int engId = (int)dr[0];
+                bool exists = false;
+
+                foreach (EventTechnician et in serviceEng)
+                {
+                    if (et.Technician.StaffId == engId)
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (!exists)
+                {
+                    serviceEng.Add(new EventTechnician(null, new Staff(engId), null));
+                }
             }
 
             foreach (DataRow dr in resoTbl.Rows)
@@ -543,22 +556,6 @@ namespace ResoflexClientHandlingSystem
         {
 
         }
-
-        private void metroButton1_Click(object sender, EventArgs e)
-        {
-            /*MySqlDataReader reader = DBConnection.getData("select event_id from event where proj_id = " + projectName.SelectedValue + " and sch_no = " + eventsSch.SelectedValue + ";");
-
-            if (reader.Read())
-            {
-                event_id = reader.GetInt16("event_id");
-
-                reader.Close();
-
-                AddExpensesForm addExpFrm = new AddExpensesForm(int.Parse(projectName.SelectedValue.ToString()), event_id, int.Parse(eventsSch.SelectedValue.ToString()));
-
-                addExpFrm.Show();
-            }*/
-        }
         
         private void metroButton2_Click(object sender, EventArgs e)
         {
@@ -583,7 +580,7 @@ namespace ResoflexClientHandlingSystem
                 row["staff_id"] = serviceEngFeed.SelectedValue;
                 row["fullname"] = serviceEngFeed.Text.ToString();
                 row["feedback"] = feedback.Text.ToString();
-                row["task"] = taskCmbBox.SelectedItem.ToString();
+                row["task"] = taskCmbBox.SelectedValue.ToString();
 
                 if ((Validation.isDouble(usedTime.Text.ToString())) && (Validation.isDouble(appTime.Text.ToString())))
                 {
@@ -618,7 +615,7 @@ namespace ResoflexClientHandlingSystem
                     if (int.TryParse(projectName.SelectedValue.ToString(), out proj_id) && int.TryParse(eventsSch.SelectedValue.ToString(), out sch_no))
                     {
                         taskCmbBox.DataSource = tasksSource(sch_no, proj_id);
-                        taskCmbBox.ValueMember = "sch_task_id";
+                        taskCmbBox.ValueMember = "task";
                         taskCmbBox.DisplayMember = "task";
                     }
                 }

@@ -231,7 +231,6 @@ namespace ResoflexClientHandlingSystem
                     evnt.To = reader.GetDateTime("to_date_time");
                     evnt.Feedback = reader.GetString("feedback");
                     evnt.Other = reader.GetString("other");
-                    //evnt.Resource = reader.GetString("resource");
                     evnt.Checklist = reader.GetString("check_list");
                     evnt.TravelMode = reader.GetString("travelling_mode");
                     evnt.AccommodationMode = reader.GetString("accommodation_mode");
@@ -241,7 +240,7 @@ namespace ResoflexClientHandlingSystem
 
                     string tasks = "";
 
-                    reader = DBConnection.getData("select t.task from event_technician__task t, event_technicians e where t.event_tech_id=e.event_staff_id and e.sch_no=" + sch_no + " and e.proj_id=" + proj_id + " and e.event_id=" + event_id + " order by t.task_id");
+                    reader = DBConnection.getData("select task from schedule_task where sch_no=" + sch_no + " and proj_id=" + proj_id + " order by sch_task_id");
 
                     while (reader.Read())
                     {
@@ -268,8 +267,14 @@ namespace ResoflexClientHandlingSystem
 
                         while (r.Read())
                         {
-                            et.Task.Add(new EventTask(r.GetString(0), r.GetString("feedback"), r.GetDouble(1), r.GetDouble(2)));
+                            double u = double.Parse("" + r.GetTimeSpan(1).Hours + "." + r.GetTimeSpan(1).Minutes);
+                            double a = double.Parse("" + r.GetTimeSpan(2).Hours + "." + r.GetTimeSpan(2).Minutes);
+
+                            et.Task.Add(new EventTask(r.GetString(0), r.GetString("feedback"), u, a));
                         }
+
+                        r.Close();
+                        DBConnection.closeTmpConnection();
 
                         serEng.Add(et);
                     }
@@ -295,7 +300,6 @@ namespace ResoflexClientHandlingSystem
                     evnt.ResoArray = resoArray;
 
                     reader3.Close();
-
                 }
                 else
                 {

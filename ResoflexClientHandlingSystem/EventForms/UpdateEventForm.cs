@@ -122,6 +122,18 @@ namespace ResoflexClientHandlingSystem.EventForms
             return dt;
         }
 
+        public DataTable tasksSource(int schNo, int projId)
+        {
+            MySqlDataReader reader = DBConnection.getData("select task from schedule_task where sch_no=" + schNo + " and proj_id=" + projId);
+
+            DataTable dt = new DataTable();
+            dt.Load(reader);
+
+            reader.Close();
+
+            return dt;
+        }
+
         public UpdateEventForm()
         {
             InitializeComponent();
@@ -132,7 +144,8 @@ namespace ResoflexClientHandlingSystem.EventForms
             InitializeComponent();
 
             et = evnt;
-            
+            eventID = evnt.EventId;
+
             projectName.DataSource = projectDataSource();
             projectName.ValueMember = "proj_id";
             projectName.DisplayMember = "proj_name";
@@ -170,7 +183,8 @@ namespace ResoflexClientHandlingSystem.EventForms
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("time", typeof(double));
+            feedbackGrid.Columns.Add("app", typeof(double));
+            feedbackGrid.Columns.Add("used", typeof(double));
 
             serviceEngGrid.DataSource = engGrid;
             clientFeedback.DataSource = feedbackGrid;
@@ -194,7 +208,6 @@ namespace ResoflexClientHandlingSystem.EventForms
             checkList.Text = evnt.Checklist;
             overFeedback.Text = evnt.Feedback;
             other.Text = evnt.Other;
-            eventID = evnt.EventId;
 
             ArrayList eng = evnt.ServEngineer;
 
@@ -211,9 +224,16 @@ namespace ResoflexClientHandlingSystem.EventForms
                 frow = feedbackGrid.NewRow();
                 frow["staff_id"] = et.Technician.StaffId;
                 frow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
-                //frow["feedback"] = et.Feedback;
-                frow["task"] = et.Task;
-                feedbackGrid.Rows.Add(frow);
+                
+                foreach (EventTask tsk in et.Task)
+                {
+                    frow["task"] = tsk.Task;
+                    frow["feedback"] = tsk.Fb;
+                    frow["app"] = tsk.AppTime;
+                    frow["used"] = tsk.UsedTime;
+
+                    feedbackGrid.Rows.Add(frow);
+                }
             }
             
             ArrayList reso = evnt.ResoArray;
@@ -457,17 +477,49 @@ namespace ResoflexClientHandlingSystem.EventForms
             evnt.Feedback = overFeedback.Text;
             evnt.Other = other.Text;
             evnt.TodoList = todoList.Text;
-            //evnt.Resource = resoBox.Text;
             evnt.Checklist = checkList.Text;
             evnt.TravelMode = travelingMode.Text;
             evnt.AccommodationMode = accomodation.Text;
             evnt.Meals = meals.Text;
             
             ArrayList eng = new ArrayList();
+            
+            foreach (DataRow dr in feedbackGrid.Rows)
+            {
+                bool done = false;
 
-            foreach(DataRow row in feedbackGrid.Rows){
+                foreach (EventTechnician etch in eng)
+                {
+                    if (etch.Technician.StaffId == (int)dr[0])
+                    {
+                        etch.addTask(dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]);
+                        done = true;
+                        break;
+                    }
+                }
 
-               // eng.Add(new EventTechnician(null, new Staff(int.Parse(row[0].ToString())), row[2].ToString(), row[3].ToString()));
+                if (!done)
+                    eng.Add(new EventTechnician(null, new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]));
+            }
+
+            foreach (DataRow dr in engGrid.Rows)
+            {
+                int engId = (int)dr[0];
+                bool exists = false;
+
+                foreach (EventTechnician et in eng)
+                {
+                    if (et.Technician.StaffId == engId)
+                    {
+                        exists = true;
+                        break;
+                    }
+                }
+
+                if (!exists)
+                {
+                    eng.Add(new EventTechnician(null, new Staff(engId), null));
+                }
             }
 
             evnt.ServEngineer = eng;
@@ -510,36 +562,75 @@ namespace ResoflexClientHandlingSystem.EventForms
                 MessageBox.Show("Failed to update the event !");
                 this.Close();
             }
-
         }
         
-        private void addFeedback_MouseClick(object sender, MouseEventArgs e)
-        {
-            DataRow row;
-
-            row = feedbackGrid.NewRow();
-            row["staff_id"] = serviceEngFeed.SelectedValue;
-            row["fullname"] = serviceEngFeed.Text.ToString();
-            row["feedback"] = feedback.Text.ToString();
-            row["task"] = eventTask.Text.ToString();
-
-            if (Validation.isDouble(usedTime.Text.ToString()))
-            {
-                row["time"] = double.Parse(usedTime.Text.ToString());
-                feedbackGrid.Rows.Add(row);
-            }
-            else
-            {
-                MessageBox.Show("Enter a numeric value");
-            }
-
-            eventTask.Text = "";
-            usedTime.Text = "";
-        }
-
         private void metroButton3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            todoList.Text = "";
+            checkList.Text = "";
+            meals.Text = "";
+            overFeedback.Text = "";
+            other.Text = "";
+            taskCmbBox.SelectedIndex = -1;
+            usedTime.Text = "";
+            eventStartDate.Text = "";
+            eventEndDate.Text = "";
+        }
+
+        private void metroButton4_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataRow row;
+
+                row = feedbackGrid.NewRow();
+                row["staff_id"] = serviceEngFeed.SelectedValue;
+                row["fullname"] = serviceEngFeed.Text.ToString();
+                row["feedback"] = feedback.Text.ToString();
+                row["task"] = taskCmbBox.SelectedValue.ToString();
+
+                if ((Validation.isDouble(usedTime.Text.ToString())) && (Validation.isDouble(appTime.Text.ToString())))
+                {
+                    row["used"] = double.Parse(usedTime.Text.ToString());
+                    row["app"] = double.Parse(appTime.Text.ToString());
+                    feedbackGrid.Rows.Add(row);
+
+                    taskCmbBox.SelectedIndex = -1;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid time!");
+                }
+
+                usedTime.Text = "";
+                appTime.Text = "";
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Make sure to add previous information!", "Add Event", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void eventsSch_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int proj_id, sch_no;
+
+            if (eventsSch.SelectedItem != null)
+            {
+                if (projectName.SelectedItem != null)
+                {
+                    if (int.TryParse(projectName.SelectedValue.ToString(), out proj_id) && int.TryParse(eventsSch.SelectedValue.ToString(), out sch_no))
+                    {
+                        taskCmbBox.DataSource = tasksSource(sch_no, proj_id);
+                        taskCmbBox.ValueMember = "task";
+                        taskCmbBox.DisplayMember = "task";
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("First choose a project!");
+                }
+            }
         }
     }
 }

@@ -930,8 +930,8 @@ namespace ResoflexClientHandlingSystem.Core
 
                             foreach (EventTask tsk in et.Task)
                             {
-                                TimeSpan u = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[1]), 0);
-                                TimeSpan a = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[1]), 0);
+                                TimeSpan u = new TimeSpan(int.Parse(tsk.UsedTime.Split(':')[0]), int.Parse(tsk.UsedTime.Split(':')[1]), 0);
+                                TimeSpan a = new TimeSpan(int.Parse(tsk.AppTime.Split(':')[0]), int.Parse(tsk.AppTime.Split(':')[1]), 0);
 
                                 DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', '" + u + "', '" + a + "', '" + tsk.Fb + "');");
                             }
@@ -1153,8 +1153,8 @@ namespace ResoflexClientHandlingSystem.Core
 
                             foreach (EventTask tsk in et.Task)
                             {
-                                TimeSpan u = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.UsedTime)).Split('.')[1]), 0);
-                                TimeSpan a = new TimeSpan(int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[0]), int.Parse(("" + string.Format("{0:0.0}", tsk.AppTime)).Split('.')[1]), 0);
+                                TimeSpan u = new TimeSpan(int.Parse(tsk.UsedTime.Split(':')[0]), int.Parse(tsk.UsedTime.Split(':')[1]), 0);
+                                TimeSpan a = new TimeSpan(int.Parse(tsk.AppTime.Split(':')[0]), int.Parse(tsk.AppTime.Split(':')[1]), 0);
 
                                 DBConnection.updateDB("insert into event_technician__task (event_tech_id, task, used_time, appointed_time, feedback) values (" + esi + ", '" + tsk.Task + "', '" + u + "', '" + a + "', '" + tsk.Fb + "');");
                             }

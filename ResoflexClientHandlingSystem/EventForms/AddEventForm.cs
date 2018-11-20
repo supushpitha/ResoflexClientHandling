@@ -172,8 +172,8 @@ namespace ResoflexClientHandlingSystem
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("app", typeof(double));
-            feedbackGrid.Columns.Add("used", typeof(double));
+            feedbackGrid.Columns.Add("app", typeof(string));
+            feedbackGrid.Columns.Add("used", typeof(string));
             
             resoTbl.Columns.Add("resource_id", typeof(int));
             resoTbl.Columns.Add("name", typeof(string));
@@ -234,8 +234,8 @@ namespace ResoflexClientHandlingSystem
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("app", typeof(double));
-            feedbackGrid.Columns.Add("used", typeof(double));
+            feedbackGrid.Columns.Add("app", typeof(string));
+            feedbackGrid.Columns.Add("used", typeof(string));
             
             resoTbl.Columns.Add("resource_id", typeof(int));
             resoTbl.Columns.Add("name", typeof(string));
@@ -421,13 +421,13 @@ namespace ResoflexClientHandlingSystem
                 {
                     if (etch.Technician.StaffId == (int)dr[0])
                     {
-                        etch.addTask(dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]);
+                        etch.addTask(dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString());
                         done = true;
                     }
                 }
 
                 if (!done)
-                    serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]));
+                    serviceEng.Add(new EventTechnician(new Event(event_id), new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString()));
             }
             
             foreach (DataRow dr in engGrid.Rows)
@@ -582,21 +582,48 @@ namespace ResoflexClientHandlingSystem
                 row["feedback"] = feedback.Text.ToString();
                 row["task"] = taskCmbBox.SelectedValue.ToString();
 
-                if ((Validation.isDouble(usedTime.Text.ToString())) && (Validation.isDouble(appTime.Text.ToString())))
+                if (usedTime.Text.ToString().Contains(':') && appTime.Text.ToString().Contains(':'))
                 {
-                    row["used"] = double.Parse(usedTime.Text.ToString());
-                    row["app"] = double.Parse(appTime.Text.ToString());
-                    feedbackGrid.Rows.Add(row);
+                    if (Validation.isNumber(usedTime.Text.ToString().Split(':')[0]) && Validation.isNumber(usedTime.Text.ToString().Split(':')[1]))
+                    {
+                        if (Validation.isNumber(appTime.Text.ToString().Split(':')[0]) && Validation.isNumber(appTime.Text.ToString().Split(':')[1]))
+                        {
+                            int uHr = int.Parse(usedTime.Text.ToString().Split(':')[0]);
+                            int uMin = int.Parse(usedTime.Text.ToString().Split(':')[1]);
 
-                    taskCmbBox.SelectedIndex = -1;
+                            int aHr = int.Parse(appTime.Text.ToString().Split(':')[0]);
+                            int aMin = int.Parse(appTime.Text.ToString().Split(':')[1]);
+
+                            if ((uHr >= 0 && aHr >= 0) && (uMin >= 0 && aMin >= 0) && (uMin <= 60 && aMin <= 60))
+                            {
+                                row["used"] = usedTime.Text.ToString();
+                                row["app"] = appTime.Text.ToString();
+
+                                feedbackGrid.Rows.Add(row);
+
+                                taskCmbBox.SelectedIndex = -1;
+                                usedTime.Text = "";
+                                appTime.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Hours and Minutes must be greater than or equal 0 and\nMinutes must also be less than or equal 60", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Time! Time can only contain numbers and the separator(:)", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Time! Time can only contain numbers and the separator(:)", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid time!");
+                    MessageBox.Show("Time format is wrong! should be HH:MM", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                
-                usedTime.Text = "";
-                appTime.Text = "";
             }
             catch (ArgumentException)
             {

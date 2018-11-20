@@ -173,18 +173,18 @@ namespace ResoflexClientHandlingSystem.EventForms
             eventResoCombo.DataSource = eventResourcesSource();
             eventResoCombo.ValueMember = "resource_id";
             eventResoCombo.DisplayMember = "name";
-            
+
             projectNameChange(evnt.EventProject.ProjectID);
-            
+
             engGrid.Columns.Add("staff_id", typeof(int));
             engGrid.Columns.Add("fullname", typeof(string));
-            
+
             feedbackGrid.Columns.Add("staff_id", typeof(int));
             feedbackGrid.Columns.Add("fullname", typeof(string));
             feedbackGrid.Columns.Add("feedback", typeof(string));
             feedbackGrid.Columns.Add("task", typeof(string));
-            feedbackGrid.Columns.Add("app", typeof(double));
-            feedbackGrid.Columns.Add("used", typeof(double));
+            feedbackGrid.Columns.Add("app", typeof(string));
+            feedbackGrid.Columns.Add("used", typeof(string));
 
             serviceEngGrid.DataSource = engGrid;
             clientFeedback.DataSource = feedbackGrid;
@@ -221,18 +221,25 @@ namespace ResoflexClientHandlingSystem.EventForms
                 erow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
                 engGrid.Rows.Add(erow);
                 
-                frow = feedbackGrid.NewRow();
-                frow["staff_id"] = et.Technician.StaffId;
-                frow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
-                
                 foreach (EventTask tsk in et.Task)
                 {
+                    frow = feedbackGrid.NewRow();
+
+                    frow["staff_id"] = et.Technician.StaffId;
+                    frow["fullname"] = et.Technician.FirstName + " " + et.Technician.LastName;
                     frow["task"] = tsk.Task;
                     frow["feedback"] = tsk.Fb;
                     frow["app"] = tsk.AppTime;
                     frow["used"] = tsk.UsedTime;
 
-                    feedbackGrid.Rows.Add(frow);
+                    try
+                    {
+                        feedbackGrid.Rows.Add(frow);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("" + exc);
+                    }
                 }
             }
             
@@ -492,14 +499,14 @@ namespace ResoflexClientHandlingSystem.EventForms
                 {
                     if (etch.Technician.StaffId == (int)dr[0])
                     {
-                        etch.addTask(dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]);
+                        etch.addTask(dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString());
                         done = true;
                         break;
                     }
                 }
 
                 if (!done)
-                    eng.Add(new EventTechnician(null, new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), (double)dr[4], (double)dr[5]));
+                    eng.Add(new EventTechnician(null, new Staff((int)dr[0]), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString()));
             }
 
             foreach (DataRow dr in engGrid.Rows)
@@ -589,21 +596,48 @@ namespace ResoflexClientHandlingSystem.EventForms
                 row["feedback"] = feedback.Text.ToString();
                 row["task"] = taskCmbBox.SelectedValue.ToString();
 
-                if ((Validation.isDouble(usedTime.Text.ToString())) && (Validation.isDouble(appTime.Text.ToString())))
+                if (usedTime.Text.ToString().Contains(':') && appTime.Text.ToString().Contains(':'))
                 {
-                    row["used"] = double.Parse(usedTime.Text.ToString());
-                    row["app"] = double.Parse(appTime.Text.ToString());
-                    feedbackGrid.Rows.Add(row);
+                    if (Validation.isNumber(usedTime.Text.ToString().Split(':')[0]) && Validation.isNumber(usedTime.Text.ToString().Split(':')[1]))
+                    {
+                        if (Validation.isNumber(appTime.Text.ToString().Split(':')[0]) && Validation.isNumber(appTime.Text.ToString().Split(':')[1]))
+                        {
+                            int uHr = int.Parse(usedTime.Text.ToString().Split(':')[0]);
+                            int uMin = int.Parse(usedTime.Text.ToString().Split(':')[1]);
 
-                    taskCmbBox.SelectedIndex = -1;
+                            int aHr = int.Parse(appTime.Text.ToString().Split(':')[0]);
+                            int aMin = int.Parse(appTime.Text.ToString().Split(':')[1]);
+
+                            if ((uHr >= 0 && aHr >= 0) && (uMin >= 0 && aMin >= 0) && (uMin <= 60 && aMin <= 60))
+                            {
+                                row["used"] = usedTime.Text.ToString();
+                                row["app"] = appTime.Text.ToString();
+
+                                feedbackGrid.Rows.Add(row);
+
+                                taskCmbBox.SelectedIndex = -1;
+                                usedTime.Text = "";
+                                appTime.Text = "";
+                            }
+                            else
+                            {
+                                MessageBox.Show("Hours and Minutes must be greater than or equal 0 and\nMinutes must also be less than or equal 60", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid Time! Time can only contain numbers and the separator(:)", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid Time! Time can only contain numbers and the separator(:)", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid time!");
+                    MessageBox.Show("Time format is wrong! should be HH:MM", "Add Task", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-
-                usedTime.Text = "";
-                appTime.Text = "";
             }
             catch (ArgumentException)
             {

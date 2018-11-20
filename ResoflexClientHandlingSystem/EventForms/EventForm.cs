@@ -267,10 +267,7 @@ namespace ResoflexClientHandlingSystem
 
                         while (r.Read())
                         {
-                            double u = double.Parse("" + r.GetTimeSpan(1).Hours + "." + r.GetTimeSpan(1).Minutes);
-                            double a = double.Parse("" + r.GetTimeSpan(2).Hours + "." + r.GetTimeSpan(2).Minutes);
-
-                            et.Task.Add(new EventTask(r.GetString(0), r.GetString("feedback"), u, a));
+                            et.Task.Add(new EventTask(r.GetString(0), r.GetString("feedback"), "" + r.GetTimeSpan(1).Hours + ":" + r.GetTimeSpan(1).Minutes, "" + r.GetTimeSpan(2).Hours + ":" + r.GetTimeSpan(2).Minutes));
                         }
 
                         r.Close();

@@ -42,6 +42,17 @@
             this.eventsSch = new MetroFramework.Controls.MetroComboBox();
             this.metroButton3 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
+            this.metroButton4 = new MetroFramework.Controls.MetroButton();
+            this.taskCmbBox = new MetroFramework.Controls.MetroComboBox();
+            this.appTime = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
+            this.usedTime = new MetroFramework.Controls.MetroTextBox();
+            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
+            this.serviceEngFeed = new MetroFramework.Controls.MetroComboBox();
+            this.feedback = new MetroFramework.Controls.MetroComboBox();
+            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
+            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
             this.resoQty = new MetroFramework.Controls.MetroTextBox();
             this.removeReso = new MetroFramework.Controls.MetroButton();
             this.resoGrid = new MetroFramework.Controls.MetroGrid();
@@ -86,17 +97,6 @@
             this.metroLabel13 = new MetroFramework.Controls.MetroLabel();
             this.metroLabel12 = new MetroFramework.Controls.MetroLabel();
             this.notifyIconEvent = new System.Windows.Forms.NotifyIcon(this.components);
-            this.taskCmbBox = new MetroFramework.Controls.MetroComboBox();
-            this.appTime = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel23 = new MetroFramework.Controls.MetroLabel();
-            this.usedTime = new MetroFramework.Controls.MetroTextBox();
-            this.metroLabel7 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel20 = new MetroFramework.Controls.MetroLabel();
-            this.serviceEngFeed = new MetroFramework.Controls.MetroComboBox();
-            this.feedback = new MetroFramework.Controls.MetroComboBox();
-            this.metroLabel17 = new MetroFramework.Controls.MetroLabel();
-            this.metroLabel18 = new MetroFramework.Controls.MetroLabel();
-            this.metroButton4 = new MetroFramework.Controls.MetroButton();
             this.metroPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.resoGrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.serviceEngGrid)).BeginInit();
@@ -209,6 +209,167 @@
             this.metroPanel1.VerticalScrollbarBarColor = true;
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
+            // 
+            // metroButton4
+            // 
+            this.metroButton4.Location = new System.Drawing.Point(992, 366);
+            this.metroButton4.Name = "metroButton4";
+            this.metroButton4.Size = new System.Drawing.Size(75, 23);
+            this.metroButton4.TabIndex = 117;
+            this.metroButton4.Text = "Add";
+            this.metroButton4.UseSelectable = true;
+            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
+            // 
+            // taskCmbBox
+            // 
+            this.taskCmbBox.FormattingEnabled = true;
+            this.taskCmbBox.ItemHeight = 23;
+            this.taskCmbBox.Location = new System.Drawing.Point(739, 323);
+            this.taskCmbBox.Name = "taskCmbBox";
+            this.taskCmbBox.Size = new System.Drawing.Size(328, 29);
+            this.taskCmbBox.TabIndex = 116;
+            this.taskCmbBox.UseSelectable = true;
+            // 
+            // appTime
+            // 
+            // 
+            // 
+            // 
+            this.appTime.CustomButton.Image = null;
+            this.appTime.CustomButton.Location = new System.Drawing.Point(44, 1);
+            this.appTime.CustomButton.Name = "";
+            this.appTime.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.appTime.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.appTime.CustomButton.TabIndex = 1;
+            this.appTime.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.appTime.CustomButton.UseSelectable = true;
+            this.appTime.CustomButton.Visible = false;
+            this.appTime.Lines = new string[0];
+            this.appTime.Location = new System.Drawing.Point(739, 269);
+            this.appTime.MaxLength = 32767;
+            this.appTime.Name = "appTime";
+            this.appTime.PasswordChar = '\0';
+            this.appTime.PromptText = "hh:mm";
+            this.appTime.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.appTime.SelectedText = "";
+            this.appTime.SelectionLength = 0;
+            this.appTime.SelectionStart = 0;
+            this.appTime.ShortcutsEnabled = true;
+            this.appTime.Size = new System.Drawing.Size(72, 29);
+            this.appTime.TabIndex = 115;
+            this.appTime.UseSelectable = true;
+            this.appTime.WaterMark = "hh:mm";
+            this.appTime.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.appTime.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel23
+            // 
+            this.metroLabel23.AutoSize = true;
+            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel23.Location = new System.Drawing.Point(739, 247);
+            this.metroLabel23.Name = "metroLabel23";
+            this.metroLabel23.Size = new System.Drawing.Size(108, 19);
+            this.metroLabel23.TabIndex = 114;
+            this.metroLabel23.Text = "appointed(hrs)";
+            // 
+            // usedTime
+            // 
+            // 
+            // 
+            // 
+            this.usedTime.CustomButton.Image = null;
+            this.usedTime.CustomButton.Location = new System.Drawing.Point(44, 1);
+            this.usedTime.CustomButton.Name = "";
+            this.usedTime.CustomButton.Size = new System.Drawing.Size(27, 27);
+            this.usedTime.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
+            this.usedTime.CustomButton.TabIndex = 1;
+            this.usedTime.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
+            this.usedTime.CustomButton.UseSelectable = true;
+            this.usedTime.CustomButton.Visible = false;
+            this.usedTime.Lines = new string[0];
+            this.usedTime.Location = new System.Drawing.Point(877, 269);
+            this.usedTime.MaxLength = 32767;
+            this.usedTime.Name = "usedTime";
+            this.usedTime.PasswordChar = '\0';
+            this.usedTime.PromptText = "hh:mm";
+            this.usedTime.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.usedTime.SelectedText = "";
+            this.usedTime.SelectionLength = 0;
+            this.usedTime.SelectionStart = 0;
+            this.usedTime.ShortcutsEnabled = true;
+            this.usedTime.Size = new System.Drawing.Size(72, 29);
+            this.usedTime.TabIndex = 113;
+            this.usedTime.UseSelectable = true;
+            this.usedTime.WaterMark = "hh:mm";
+            this.usedTime.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
+            this.usedTime.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            // 
+            // metroLabel7
+            // 
+            this.metroLabel7.AutoSize = true;
+            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel7.Location = new System.Drawing.Point(877, 247);
+            this.metroLabel7.Name = "metroLabel7";
+            this.metroLabel7.Size = new System.Drawing.Size(72, 19);
+            this.metroLabel7.TabIndex = 112;
+            this.metroLabel7.Text = "Used(hrs)";
+            // 
+            // metroLabel20
+            // 
+            this.metroLabel20.AutoSize = true;
+            this.metroLabel20.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel20.Location = new System.Drawing.Point(739, 301);
+            this.metroLabel20.Name = "metroLabel20";
+            this.metroLabel20.Size = new System.Drawing.Size(38, 19);
+            this.metroLabel20.TabIndex = 111;
+            this.metroLabel20.Text = "Task";
+            // 
+            // serviceEngFeed
+            // 
+            this.serviceEngFeed.FormattingEnabled = true;
+            this.serviceEngFeed.ItemHeight = 23;
+            this.serviceEngFeed.Location = new System.Drawing.Point(739, 215);
+            this.serviceEngFeed.Name = "serviceEngFeed";
+            this.serviceEngFeed.Size = new System.Drawing.Size(328, 29);
+            this.serviceEngFeed.TabIndex = 110;
+            this.serviceEngFeed.UseSelectable = true;
+            // 
+            // feedback
+            // 
+            this.feedback.FormattingEnabled = true;
+            this.feedback.ItemHeight = 23;
+            this.feedback.Items.AddRange(new object[] {
+            "A",
+            "B",
+            "C",
+            "D",
+            "E",
+            "None"});
+            this.feedback.Location = new System.Drawing.Point(986, 269);
+            this.feedback.Name = "feedback";
+            this.feedback.Size = new System.Drawing.Size(81, 29);
+            this.feedback.TabIndex = 109;
+            this.feedback.UseSelectable = true;
+            // 
+            // metroLabel17
+            // 
+            this.metroLabel17.AutoSize = true;
+            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel17.Location = new System.Drawing.Point(986, 247);
+            this.metroLabel17.Name = "metroLabel17";
+            this.metroLabel17.Size = new System.Drawing.Size(73, 19);
+            this.metroLabel17.TabIndex = 108;
+            this.metroLabel17.Text = "Feedback";
+            // 
+            // metroLabel18
+            // 
+            this.metroLabel18.AutoSize = true;
+            this.metroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Bold;
+            this.metroLabel18.Location = new System.Drawing.Point(739, 193);
+            this.metroLabel18.Name = "metroLabel18";
+            this.metroLabel18.Size = new System.Drawing.Size(121, 19);
+            this.metroLabel18.TabIndex = 107;
+            this.metroLabel18.Text = "Service Engineer";
             // 
             // resoQty
             // 
@@ -881,163 +1042,6 @@
             // 
             this.notifyIconEvent.Text = "notifyIcon1";
             this.notifyIconEvent.Visible = true;
-            // 
-            // taskCmbBox
-            // 
-            this.taskCmbBox.FormattingEnabled = true;
-            this.taskCmbBox.ItemHeight = 23;
-            this.taskCmbBox.Location = new System.Drawing.Point(739, 323);
-            this.taskCmbBox.Name = "taskCmbBox";
-            this.taskCmbBox.Size = new System.Drawing.Size(328, 29);
-            this.taskCmbBox.TabIndex = 116;
-            this.taskCmbBox.UseSelectable = true;
-            // 
-            // appTime
-            // 
-            // 
-            // 
-            // 
-            this.appTime.CustomButton.Image = null;
-            this.appTime.CustomButton.Location = new System.Drawing.Point(44, 1);
-            this.appTime.CustomButton.Name = "";
-            this.appTime.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.appTime.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.appTime.CustomButton.TabIndex = 1;
-            this.appTime.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.appTime.CustomButton.UseSelectable = true;
-            this.appTime.CustomButton.Visible = false;
-            this.appTime.Lines = new string[0];
-            this.appTime.Location = new System.Drawing.Point(739, 269);
-            this.appTime.MaxLength = 32767;
-            this.appTime.Name = "appTime";
-            this.appTime.PasswordChar = '\0';
-            this.appTime.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.appTime.SelectedText = "";
-            this.appTime.SelectionLength = 0;
-            this.appTime.SelectionStart = 0;
-            this.appTime.ShortcutsEnabled = true;
-            this.appTime.Size = new System.Drawing.Size(72, 29);
-            this.appTime.TabIndex = 115;
-            this.appTime.UseSelectable = true;
-            this.appTime.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.appTime.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel23
-            // 
-            this.metroLabel23.AutoSize = true;
-            this.metroLabel23.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel23.Location = new System.Drawing.Point(739, 247);
-            this.metroLabel23.Name = "metroLabel23";
-            this.metroLabel23.Size = new System.Drawing.Size(108, 19);
-            this.metroLabel23.TabIndex = 114;
-            this.metroLabel23.Text = "appointed(hrs)";
-            // 
-            // usedTime
-            // 
-            // 
-            // 
-            // 
-            this.usedTime.CustomButton.Image = null;
-            this.usedTime.CustomButton.Location = new System.Drawing.Point(44, 1);
-            this.usedTime.CustomButton.Name = "";
-            this.usedTime.CustomButton.Size = new System.Drawing.Size(27, 27);
-            this.usedTime.CustomButton.Style = MetroFramework.MetroColorStyle.Blue;
-            this.usedTime.CustomButton.TabIndex = 1;
-            this.usedTime.CustomButton.Theme = MetroFramework.MetroThemeStyle.Light;
-            this.usedTime.CustomButton.UseSelectable = true;
-            this.usedTime.CustomButton.Visible = false;
-            this.usedTime.Lines = new string[0];
-            this.usedTime.Location = new System.Drawing.Point(877, 269);
-            this.usedTime.MaxLength = 32767;
-            this.usedTime.Name = "usedTime";
-            this.usedTime.PasswordChar = '\0';
-            this.usedTime.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.usedTime.SelectedText = "";
-            this.usedTime.SelectionLength = 0;
-            this.usedTime.SelectionStart = 0;
-            this.usedTime.ShortcutsEnabled = true;
-            this.usedTime.Size = new System.Drawing.Size(72, 29);
-            this.usedTime.TabIndex = 113;
-            this.usedTime.UseSelectable = true;
-            this.usedTime.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
-            this.usedTime.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
-            // 
-            // metroLabel7
-            // 
-            this.metroLabel7.AutoSize = true;
-            this.metroLabel7.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel7.Location = new System.Drawing.Point(877, 247);
-            this.metroLabel7.Name = "metroLabel7";
-            this.metroLabel7.Size = new System.Drawing.Size(72, 19);
-            this.metroLabel7.TabIndex = 112;
-            this.metroLabel7.Text = "Used(hrs)";
-            // 
-            // metroLabel20
-            // 
-            this.metroLabel20.AutoSize = true;
-            this.metroLabel20.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel20.Location = new System.Drawing.Point(739, 301);
-            this.metroLabel20.Name = "metroLabel20";
-            this.metroLabel20.Size = new System.Drawing.Size(38, 19);
-            this.metroLabel20.TabIndex = 111;
-            this.metroLabel20.Text = "Task";
-            // 
-            // serviceEngFeed
-            // 
-            this.serviceEngFeed.FormattingEnabled = true;
-            this.serviceEngFeed.ItemHeight = 23;
-            this.serviceEngFeed.Location = new System.Drawing.Point(739, 215);
-            this.serviceEngFeed.Name = "serviceEngFeed";
-            this.serviceEngFeed.Size = new System.Drawing.Size(328, 29);
-            this.serviceEngFeed.TabIndex = 110;
-            this.serviceEngFeed.UseSelectable = true;
-            // 
-            // feedback
-            // 
-            this.feedback.FormattingEnabled = true;
-            this.feedback.ItemHeight = 23;
-            this.feedback.Items.AddRange(new object[] {
-            "A",
-            "B",
-            "C",
-            "D",
-            "E",
-            "None"});
-            this.feedback.Location = new System.Drawing.Point(986, 269);
-            this.feedback.Name = "feedback";
-            this.feedback.Size = new System.Drawing.Size(81, 29);
-            this.feedback.TabIndex = 109;
-            this.feedback.UseSelectable = true;
-            // 
-            // metroLabel17
-            // 
-            this.metroLabel17.AutoSize = true;
-            this.metroLabel17.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel17.Location = new System.Drawing.Point(986, 247);
-            this.metroLabel17.Name = "metroLabel17";
-            this.metroLabel17.Size = new System.Drawing.Size(73, 19);
-            this.metroLabel17.TabIndex = 108;
-            this.metroLabel17.Text = "Feedback";
-            // 
-            // metroLabel18
-            // 
-            this.metroLabel18.AutoSize = true;
-            this.metroLabel18.FontWeight = MetroFramework.MetroLabelWeight.Bold;
-            this.metroLabel18.Location = new System.Drawing.Point(739, 193);
-            this.metroLabel18.Name = "metroLabel18";
-            this.metroLabel18.Size = new System.Drawing.Size(121, 19);
-            this.metroLabel18.TabIndex = 107;
-            this.metroLabel18.Text = "Service Engineer";
-            // 
-            // metroButton4
-            // 
-            this.metroButton4.Location = new System.Drawing.Point(992, 366);
-            this.metroButton4.Name = "metroButton4";
-            this.metroButton4.Size = new System.Drawing.Size(75, 23);
-            this.metroButton4.TabIndex = 117;
-            this.metroButton4.Text = "Add";
-            this.metroButton4.UseSelectable = true;
-            this.metroButton4.Click += new System.EventHandler(this.metroButton4_Click);
             // 
             // UpdateEventForm
             // 

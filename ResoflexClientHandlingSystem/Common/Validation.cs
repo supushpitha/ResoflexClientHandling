@@ -60,7 +60,7 @@ namespace ResoflexClientHandlingSystem.Common
 
         public static bool isNumber(string text)
         {
-            return (Regex.IsMatch(text, "^[0-9 ]+$"));
+            return Regex.IsMatch(text, "^[0-9 ]+$");
         }
 
         public static bool isDouble(string text)

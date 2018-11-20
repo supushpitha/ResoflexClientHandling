@@ -25,7 +25,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.Task = task;
         }
         
-        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string t, double appTime, double usedTime)
+        public EventTechnician(Event eventOfTechnician, Staff technician, string feedback, string t, string appTime, string usedTime)
         {
             Task = new ArrayList();
 
@@ -36,7 +36,7 @@ namespace ResoflexClientHandlingSystem.Role
             this.Technician = technician;
         }
 
-        public void addTask(string fb, string task, double used, double app)
+        public void addTask(string fb, string task, string app, string used)
         {
             Task.Add(new EventTask(task, fb, used, app));
         }
